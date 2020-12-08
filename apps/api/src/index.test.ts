@@ -1,4 +1,4 @@
-import { add } from '@starter-project/adder'
+import { add } from '@labfaz/adder'
 import Middlewares from 'Middlewares'
 
 describe('server', () =>{

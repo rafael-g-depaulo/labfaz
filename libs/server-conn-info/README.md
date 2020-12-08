@@ -1,4 +1,4 @@
-# `@starter-project/server-conn-info`
+# `@labfaz/server-conn-info`
 
 A basic library whose purpose it is to be the sole source of truth of how to connect to the backend servers (both the main server api and the strapi api).
 
@@ -6,7 +6,7 @@ A basic library whose purpose it is to be the sole source of truth of how to con
 
 ```typescript
 // in an app trying to connect to the servers
-import { getApiUrl, getStrapiUrl } from '@starter-project/server-conn-info'
+import { getApiUrl, getStrapiUrl } from '@labfaz/server-conn-info'
 
 const apiConnection = axios.create({
   baseURL: getApiUrl(),
@@ -21,7 +21,7 @@ const strapiConnection = axios.create({
 
 ```typescript
 // in the main server app
-import { getApiPort } from '@starter-project/server-conn-info'
+import { getApiPort } from '@labfaz/server-conn-info'
 
 const port = getApiPort()
 

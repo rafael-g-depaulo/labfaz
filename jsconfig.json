@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@starter-project/*": [
+      "@labfaz/*": [
         "./libs/*",
         "./apps/*",
       ]

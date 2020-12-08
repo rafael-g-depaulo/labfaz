@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/adder",
+  "name": "@labfaz/adder",
   "version": "8.0.0",
   "license": "MIT",
   "main": "dist/index.js",

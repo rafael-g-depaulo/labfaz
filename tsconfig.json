@@ -36,7 +36,7 @@
 
   // lib import paths
   "paths": {
-    "@starter-project/*": [
+    "@labfaz/*": [
       "packages/libs/*"
     ],
   },
