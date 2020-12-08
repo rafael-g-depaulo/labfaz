@@ -1,0 +1,31 @@
+.env
+node_modules/
+build/
+dist/
+
+# yarn stuff
+yarn-error.log
+.log
+
+# jest test coverage report
+coverage/
+
+# VS CODE FILES
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+!.vscode/commands.json
+!.vscode/terminals.json
+
+# Local History for Visual Studio Code
+.history/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# ultra runner
+.ultra.cache.json

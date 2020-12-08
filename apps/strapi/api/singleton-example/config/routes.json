@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/singleton-example",
+      "handler": "singleton-example.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/singleton-example",
+      "handler": "singleton-example.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/singleton-example",
+      "handler": "singleton-example.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

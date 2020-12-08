@@ -1,0 +1,44 @@
+{
+  "autokill": true,
+  
+  "env": {
+  },
+  "terminals": [
+    {
+      "name": "Client",
+      "icon": "globe",
+      "description": "Run React.js client",
+      "persistent": "persistent_starter-project_client",
+      "focus": true,
+      "cwd": "[workspaceFolder]/apps/client",
+      "env": {
+        "BROWSER": "none"
+      },
+      "command": "yarn start"
+    },
+    {
+      "name": "Api",
+      "icon": "server",
+      "description": "Run an Express.js server with the API",
+      "persistent": "persistent_starter-project_api",
+      "cwd": "[workspaceFolder]/apps/api",
+      "command":"yarn start"
+    },
+    {
+      "name": "Strapi",
+      "icon": "server",
+      "description": "Run Strapi server",
+      "persistent": "persistent_starter-project_strapi",
+      "cwd": "[workspaceFolder]/apps/strapi",
+      "command": "yarn develop"
+    },
+    {
+      "name": "Build Libs",
+      "icon": "gear",
+      "description": "Build libs and dinamically link them",
+      "persistent": "persistent_starter-project_preconstruct",
+      "onlyMultiple": true,
+      "command": "yarn build:libs:watch"
+    }
+  ]
+}

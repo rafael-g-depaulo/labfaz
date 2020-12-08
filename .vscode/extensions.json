@@ -1,0 +1,40 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+		// used for creating and managing terminals
+		"fabiospampinato.vscode-terminals",
+		"fabiospampinato.vscode-commands",
+
+		// syntax highlight extensions
+		"coenraads.bracket-pair-colorizer-2",
+		"fabiospampinato.vscode-terminals",
+		"vincaslt.highlight-matching-tag",
+		"kamikillerto.vscode-colorize",
+		"jpoissonnier.vscode-styled-components",
+
+		// icons
+		"vscode-icons-team.vscode-icons",
+
+		// snippets
+		"ferdelamad.styled-snippets",
+
+		// git
+		"mhutchie.git-graph",
+		"donjayamanne.githistory",
+		"vtrois.gitmoji-vscode",
+		// "eamodio.gitlens",
+
+		// live share
+		"ms-vsliveshare.vsliveshare",
+		"ms-vsliveshare.vsliveshare-audio",
+		// "lostintangent.vsls-whiteboard",
+
+	],
+	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+	"unwantedRecommendations": [
+		
+	]
+}

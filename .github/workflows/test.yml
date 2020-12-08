@@ -1,0 +1,51 @@
+name: Test
+
+on: 
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    types: [ opened, synchronize, edited ]
+
+jobs:
+  test-all:
+    # Name the Job
+    name: Test all Apps & Libs
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    strategy:
+      # setup node version
+      matrix:
+        node-version: [12.x]
+      
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - uses: actions/checkout@v2
+
+      # use correct node version
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # cache node_modules
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      # install dependencies
+      - name: Install packages
+        run: yarn --frozen-lockfile
+
+      # build local libs
+      - name: Build Libs
+        run: yarn build:libs
+
+      # test project
+      - name: Test project
+        run: yarn test
+        env:
+          CI: true

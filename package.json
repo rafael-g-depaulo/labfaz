@@ -1,0 +1,68 @@
+{
+  "name": "starter-project",
+  "version": "7.1.0",
+  "description": "Monorepo of my starter project for fullstack web projects using React.js, Express.js, Sequelize & PostgreSQL",
+  "main": "index.js",
+  "repository": "git@github.com:rafael-g-depaulo/starter-project-fullstack-web.git",
+  "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "libs/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "${BUILD_SCRIPT:-yarn build:all}",
+    "build:all": "yarn build:libs && yarn build:apps",
+    "build:libs": "ultra -r -b --filter \"+libs/*\" build",
+    "build:libs:watch": "ultra -r -b --filter \"+libs/*\" build:watch",
+    "build:apps": "yarn build:api & yarn build:strapi & yarn build:client",
+    "build:api": "yarn build:libs && yarn build:only:api",
+    "build:client": "yarn build:libs && yarn build:only:client",
+    "build:strapi": "yarn workspace @starter-project/strapi run build",
+    "build:only:api": "yarn workspace @starter-project/api run build",
+    "build:only:client": "yarn workspace @starter-project/client run build",
+    "clean": "yarn clean:all",
+    "clean:all": "ultra -r clean",
+    "clean:libs": "ultra -r --filter \"libs/*\" clean",
+    "clean:apps": "ultra -r --filter \"apps/*\" clean",
+    "start": "yarn start:client",
+    "start:api": "yarn workspace @starter-project/api run start",
+    "start:client": "yarn workspace @starter-project/client run start",
+    "start:strapi": "yarn workspace @starter-project/strapi run start",
+    "test": "jest",
+    "test:api": "yarn workspace @starter-project/api run test",
+    "test:client": "yarn workspace @starter-project/client run test",
+    "watch": "jest --watch",
+    "watch:client": "jest --watch client",
+    "watch:api": "jest --watch api"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@types/jest": "^24.9",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-styled-components": "^1.11.1",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^3.0.3",
+    "lerna": "^3.22.1",
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^4.0.2"
+  },
+  "engines": {
+    "node": "12.x",
+    "yarn": "1.x"
+  },
+  "dependencies": {
+    "@preconstruct/cli": "^1.1.20",
+    "ts-node": "^9.0.0",
+    "ultra-runner": "^3.5.0"
+  }
+}

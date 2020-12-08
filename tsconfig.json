@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    
+    // import config
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "es5",
+
+    // baseUrl for absolute imports
+    // "baseUrl": "src",              // (this should be in the package's tsconfig, not this one)
+    
+    // code location and build output directory
+    // "rootDir": "./src",            // (this should be in the package's tsconfig, not this one)
+    // "outDir": "./dist",            // (this should be in the package's tsconfig, not this one)
+
+    // build specific config
+    "removeComments": true,
+    "declaration": true,
+    
+    // actual TS sintax config
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+  },
+
+  // lib import paths
+  "paths": {
+    "@starter-project/*": [
+      "packages/libs/*"
+    ],
+  },
+
+  // exclude tests in build
+  "exclude": [
+    // "**/*.test.ts",
+    "**/dist/**/*",
+  ],
+}
