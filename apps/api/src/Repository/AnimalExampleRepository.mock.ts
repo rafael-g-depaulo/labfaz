@@ -1,39 +1,41 @@
 import AnimalExample from "Entities/AnimalExample"
-import createMockRepo, { Create, Find, FindOne, MockRepo, Remove, Save } from "Utils/createMockRepo"
+import { DeepPartial, FindConditions } from "typeorm"
+import { Create, createRepoMock, Find, FindOne, Remove, Save } from "Utils/createMockRepo"
 import AnimalExampleRepository from "./AnimalExampleRepository"
 
-// mock function to create animal
-const create: Create<AnimalExample> = () => jest.fn(({ name = "", rank = 0 }) =>
-  ({ name, rank, id: `${name}.${rank}` }) as AnimalExample
-)
+// implementation for CRUD operations
+const createImpl: Create<AnimalExample, AnimalExampleRepository> = () => ({ name = "", rank = 0 }) => ({ name, rank, id: `${name}.${rank}` }) as AnimalExample
 
-// mock function to save animal to table
-const save: Save<AnimalExample> = repoConfig => jest.fn(animal => repoConfig.table.push(animal))
+const saveImpl: Save<AnimalExample, AnimalExampleRepository> = (repoConfig) => ({ name = "", rank = 0, id }: DeepPartial<AnimalExample>) => {
+  repoConfig.table
+    .push({ name, rank, id } as AnimalExample)
+  return Promise.resolve(repoConfig.table[repoConfig.table.length-1])
+}
 
-// mock function to remove animal from table
-const remove: Remove<AnimalExample> = repoConfig => jest.fn(animal => {
-  // keep all animals except any with the same id as the given animal to remove
+const removeImpl: Remove<AnimalExample, AnimalExampleRepository> = (repoConfig) => (animal: AnimalExample) => {
   repoConfig.table = repoConfig.table.filter(({ id }) => id !== animal.id)
-  // return given animal
   return Promise.resolve(animal)
-})
+}
 
-// mock function to find a number of animals from table
-const find: Find<AnimalExample> = repoConfig => jest.fn( ({ id } = {}) => {
+const findImpl: Find<AnimalExample, AnimalExampleRepository> = (repoConfig) => (animal?: FindConditions<AnimalExample>) => {
+  const id = animal?.id
   if (!!id) return Promise.resolve(repoConfig.table.filter(animal => animal.id === id))
-  // if no condition, return all
   return Promise.resolve(repoConfig.table)
+}
+
+const findOneImpl: FindOne<AnimalExample, AnimalExampleRepository> = (repoConfig) => (animal?: FindConditions<AnimalExample>) => {
+  const id = animal?.id
+  if (!!id) return Promise.resolve(repoConfig.table.filter(animal => animal.id === id)[0])
+  return Promise.resolve(repoConfig.table[0])
+}
+
+// create repository mock
+export const mockAnimalRepo = createRepoMock(() => new AnimalExampleRepository(), {
+  create:  createImpl,
+  save:    saveImpl,
+  remove:  removeImpl,
+  find:    findImpl,
+  findOne: findOneImpl,
 })
 
-// mock function to find a single animal from table
-const findOne: FindOne<AnimalExample> = repoConfig => jest.fn(cond => find(repoConfig)(cond).then(results => results[0]))
-
-export const CreateAnimalExampleRepo: MockRepo<AnimalExample, AnimalExampleRepository> = createMockRepo({
-  create,
-  save,
-  remove,
-  find,
-  findOne,
-})
-
-export default CreateAnimalExampleRepo
+export default mockAnimalRepo

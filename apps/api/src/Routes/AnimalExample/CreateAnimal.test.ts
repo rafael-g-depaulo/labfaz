@@ -1,21 +1,20 @@
 import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
 import expectStatus from "Utils/expectStatus"
 
-import getAnimalExampleRepo from "Repository/AnimalExampleRepository.mock"
 import CreateAnimal from "./CreateAnimal"
+import mockAnimalRepo from "Repository/AnimalExampleRepository.mock"
 
 describe('CreateAnimal Route Handler', () => {
 
-  const [ AnimalExampleRepo, RepoConfig ] = getAnimalExampleRepo()
+  // create mockRepo
+  const [ AnimalExampleRepo, repoConfig ] = mockAnimalRepo()
+  // create route
   const createAnimalRoute = CreateAnimal({ AnimalExampleRepo })
-  
-  // reset route and db between tests
-  beforeEach(() => {
-    RepoConfig.resetTable()
-  })
+
+  // reset table inbetween tests
+  beforeEach(() => { repoConfig.resetTable() })
 
   it('correctly saves the animal given in the request body in the database table', async () => {
-    
     const catInfo = {
       name: "Cat",
       rank: 5
@@ -30,14 +29,13 @@ describe('CreateAnimal Route Handler', () => {
     await mockRouteHandler(createAnimalRoute, request, response)
 
     // expect new dog to be saved to table
-    const AnimalExampleTable = RepoConfig.table
+    const AnimalExampleTable = repoConfig.table
     expect(AnimalExampleTable.length).toBe(1)
     expect(AnimalExampleTable[0]).toMatchObject(catEntity)
     
   })
 
   it('correctly returns the new animal in the response json', async () => {
-
     const dogInfo = {
       name: "Cat",
       rank: 25

@@ -1,53 +1,67 @@
-import { DeepPartial, FindConditions, Repository } from "typeorm";
+import { DeepPartial, FindConditions, Repository } from "typeorm"
 
-export type Table<Entity> = Entity[]
-
-export interface RepoConfig<T> {
-  resetTable(): void,
-  table: T[],
+export interface RepoConfig<E> {
+  resetTable: () => {},
+  table: E[],
 }
 
-export interface MockRepo<Entity, Repo extends Repository<Entity>> {
-  (): [ Repo, RepoConfig<Entity> ]
+// type RepoMocks<E, R extends Repository<E>> = { [key in keyof R]: jest.SpyInstance<Required<R>[key], []> }
+
+export interface RepoMocks<E> {
+  create:   jest.SpyInstance<{}, []>,
+  save:     jest.SpyInstance<{}, [e: E]>,
+  remove:   jest.SpyInstance<{}, [e: E]>,
+  find:     jest.SpyInstance<{}, []>,
+  findOne:  jest.SpyInstance<{}, []>,
 }
 
-export interface Create<E>  { (repoConfig: RepoConfig<E>): (partial: DeepPartial<E>) => E }
-export interface Save<E>    { (repoConfig: RepoConfig<E>): (entity: E) => void }
-export interface Remove<E>  { (repoConfig: RepoConfig<E>): (entity: E) => Promise<E> }
-export interface Find<E>    { (repoConfig: RepoConfig<E>): (cond: FindConditions<E>) => Promise<E[]> }
-export interface FindOne<E> { (repoConfig: RepoConfig<E>): (cond: FindConditions<E>) => Promise<E> }
+export interface Create  <E, R extends Repository<E>> { (repoConfig: RepoConfig<E>, repo: R): (partial: DeepPartial<E>) => E }
+export interface Save    <E, R extends Repository<E>> { (repoConfig: RepoConfig<E>, repo: R): (entity: E) => void }
+export interface Remove  <E, R extends Repository<E>> { (repoConfig: RepoConfig<E>, repo: R): (entity: E) => Promise<E> }
+export interface Find    <E, R extends Repository<E>> { (repoConfig: RepoConfig<E>, repo: R): (cond: FindConditions<E>) => Promise<E[]> }
+export interface FindOne <E, R extends Repository<E>> { (repoConfig: RepoConfig<E>, repo: R): (cond: FindConditions<E>) => Promise<E> }
 
-interface Deps<E> {
-  create:   Create<E>,
-  save:     Save<E>,
-  remove:   Remove<E>,
-  find:     Find<E>,
-  findOne:  FindOne<E>,
+export type MockRepo<Entity, Repo extends Repository<Entity>> = [ Repo, RepoConfig<Entity>, RepoMocks<Entity> ]
+
+interface CrudOps<E, R extends Repository<E>> {
+  create?:   Create<E, R>,
+  save?:     Save<E, R>,
+  remove?:   Remove<E, R>,
+  find?:     Find<E, R>,
+  findOne?:  FindOne<E, R>,
 }
 
-// export const createMockRepo: <E, R extends Repository<E>>(deps: Deps) => MockRepo<E, R> = () => {
-export const createMockRepo = <E, R extends Repository<E>>(deps: Deps<E>): MockRepo<E, R> => {
-  return () => {
-    let entityTable: E[] = []
-  
-    // use repository config
-    const ReposotoryConfig: RepoConfig<E> = {
-      resetTable: () => entityTable = [],
-      get table(){ return entityTable },
-      set table(newTable: E[]) { entityTable = newTable },
-    } as RepoConfig<E>
+export const createRepoMock = <E, R extends Repository<E>>(Repo: () => R, crudOps: CrudOps<E, R> = {}) => () => {
+  const OriginalRepo: R = Repo()
 
-    // use the given implementation of the mocked repo
-    const MockedRepo: R = {
-      create:   deps.create(ReposotoryConfig),
-      save:     deps.save(ReposotoryConfig),
-      remove:   deps.remove(ReposotoryConfig),
-      find:     deps.find(ReposotoryConfig),
-      findOne:  deps.findOne(ReposotoryConfig),
-    } as R
+  let entityTable: E[] = []
 
-    return [MockedRepo, ReposotoryConfig]
+  // use repository config
+  const ReposotoryConfig: RepoConfig<E> = {
+    resetTable: () => entityTable = [],
+    get table(){ return entityTable },
+    set table(newTable: E[]) { entityTable = newTable },
+  } as RepoConfig<E>
+
+  // spy CRUD methods
+  const mockedRepo = OriginalRepo
+  const mockObj: RepoMocks<E> = {
+    create:   jest.spyOn(OriginalRepo as { create: () => {} }, 'create'),
+    save:     jest.spyOn(OriginalRepo as { save: (e: E) => {} }, 'save'),
+    remove:   jest.spyOn(OriginalRepo as { remove: (e: E) => {} }, 'remove'),
+    find:     jest.spyOn(OriginalRepo as { find: () => {} }, 'find'),
+    findOne:  jest.spyOn(OriginalRepo as { findOne: () => {} }, 'findOne'),
   }
+
+  // mock CRUD methods, if mock implementation was given
+  if (crudOps.create ) mockObj.create .mockImplementation(crudOps.create (ReposotoryConfig, OriginalRepo) as unknown as typeof OriginalRepo.create )
+  if (crudOps.save   ) mockObj.save   .mockImplementation(crudOps.save   (ReposotoryConfig, OriginalRepo) as unknown as typeof OriginalRepo.save   )
+  if (crudOps.remove ) mockObj.remove .mockImplementation(crudOps.remove (ReposotoryConfig, OriginalRepo) as unknown as typeof OriginalRepo.remove )
+  if (crudOps.find   ) mockObj.find   .mockImplementation(crudOps.find   (ReposotoryConfig, OriginalRepo) as unknown as typeof OriginalRepo.find   )
+  if (crudOps.findOne) mockObj.findOne.mockImplementation(crudOps.findOne(ReposotoryConfig, OriginalRepo) as unknown as typeof OriginalRepo.findOne)
+  
+  const returnVal: MockRepo<E, R> = [ mockedRepo, ReposotoryConfig, mockObj ]
+  return returnVal
 }
 
-export default createMockRepo
+export default createRepoMock
