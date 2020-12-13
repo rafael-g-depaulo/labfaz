@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/client",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
     "@testing-library/dom": "^7.28.1",
