@@ -1,9 +1,9 @@
 {
   "name": "@labfaz/server-conn-info",
-  "version": "0.1.0",
+  "version": "9.0.0",
   "description": "lib to get connection info to connect apps to servers",
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
-  "homepage": "https://github.com/rafael-g-depaulo/labfaz-fullstack-web#readme",
+  "homepage": "https://github.com/rafael-g-depaulo/labfaz#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafael-g-depaulo/labfaz-fullstack-web.git"
+    "url": "git+https://github.com/rafael-g-depaulo/labfaz.git"
   },
   "keywords": [
     "lib",

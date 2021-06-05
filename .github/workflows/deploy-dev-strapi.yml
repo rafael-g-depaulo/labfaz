@@ -6,10 +6,6 @@ on:
     branches:
       - develop
     paths:
-      - '**'
-      - '!.github/workflows'
-      - '.github/workflows/deploy-dev-strapi.yml'
-      - '!apps/**'
       - 'apps/strapi/**'
 
 jobs:

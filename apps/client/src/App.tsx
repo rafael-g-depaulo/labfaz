@@ -12,6 +12,7 @@ export const App = () => {
       <ThemeProvider>
         <GlobalStyles />
         { showRoutes && <Routes />}
+        <span>test change</span>
       </ThemeProvider>
     </>
   )

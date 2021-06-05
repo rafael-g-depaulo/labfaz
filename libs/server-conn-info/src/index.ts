@@ -1,3 +1,5 @@
+export const localhost = `0.0.0.0`
+
 // API PORT
 export const getApiPort = () => {
   const portEnv = Number(process.env.PORT || "5000")
@@ -14,13 +16,16 @@ const getApiUrlEnvVar = () => process.env.API_URL ?? process.env.REACT_APP_API_U
 export const defaultApiUrl = `labfaz-api-prod.herokuapp.com/`
 export const getApiUrl = () => process.env.NODE_ENV === 'production'
   ? getApiUrlEnvVar() ?? defaultApiUrl
-  : `http://localhost:${getApiPort()}`
+  : `http://${localhost}:${getApiPort()}`
 
 // STRAPI
 const getStrapiUrlEnvVar = () => process.env.STRAPI_URL ?? process.env.REACT_APP_STRAPI_URL
 export const getStrapiPort = () => 1337
 
-export const defaultStrapiUrl = `labfaz-strapi-prod.herokuapp.com/`
+export const defaultStrapiHost = `labfaz-strapi-prod.herokuapp.com/`
+export const getStrapiHost = () => process.env.NODE_ENV === 'production'
+  ? defaultStrapiHost : `${localhost}:${getStrapiPort()}`
+
 export const getStrapiUrl = () => process.env.NODE_ENV === 'production'
-  ? getStrapiUrlEnvVar() ?? defaultStrapiUrl
-  : `http://localhost:${getStrapiPort()}`
+  ? getStrapiUrlEnvVar() ?? getStrapiHost()
+  : `http://${getStrapiHost()}`

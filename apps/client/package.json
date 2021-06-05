@@ -1,8 +1,9 @@
 {
   "name": "@labfaz/client",
-  "version": "0.1.0",
+  "version": "9.0.0",
   "license": "MIT",
   "dependencies": {
+    "@labfaz/server-conn-info": "^9.0.0",
     "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -65,7 +66,7 @@
     "@storybook/react": "^6.0.28",
     "@types/storybook__addon-a11y": "^5.1.2",
     "babel-loader": "^8.1.0",
-    "cypress": "^5.6.0",
+    "cypress": "^6.0.0",
     "cypress-react-selector": "^2.2.1",
     "react-is": "^17.0.1"
   }

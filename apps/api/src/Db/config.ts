@@ -6,8 +6,12 @@ const getDbFoldersRoot = () => process.env.IS_SERVING_BUNDLE === "true"
   : `src`
 
 export const getDbConnConfig: () => PostgresConnectionOptions = () => {
-  const baseConfig: { type: "postgres" } = {
+  const sslConfig = {
+    rejectUnauthorized: false
+  }
+  const baseConfig: { type: "postgres" } & any = {
     type: "postgres",
+    ssl: sslConfig,
   }
 
   // if DATABASE_URL provided

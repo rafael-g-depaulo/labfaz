@@ -6,11 +6,7 @@ on:
     branches:
       - master
     paths:
-      - '**'
-      - '!.github/workflows'
-      - '.github/workflows/deploy-prod-strapi.yml'
-      - '!apps/**'
-      - 'apps/strapi/**'
+      - apps/strapi/**
 
 jobs:
   deploy:
