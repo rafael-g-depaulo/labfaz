@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Container, Navbar, UserSession } from './style'
+import { Container, Navbar, UserSession, Button } from './style'
 
 export const Header: FC = () => {
   return (
@@ -18,7 +18,7 @@ export const Header: FC = () => {
       <div className="line" />
       <UserSession>
         <a href='/login'> Entrar </a>
-        <a href='/register'> Cadastre-se </a> 
+        <Button href='/register'> Cadastre-se </Button>
       </UserSession>
     </Container>
   )
