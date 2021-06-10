@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Header from '.'
+import Header from './'
 
 storiesOf("Components/Header", module)
   .addParameters({ component: Header })
