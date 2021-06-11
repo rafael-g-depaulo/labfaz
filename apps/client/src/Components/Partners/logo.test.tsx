@@ -1,7 +1,7 @@
 import React from 'react'
 import render from "Utils/render"
 
-import Logo from './'
+import Logo from './Logo'
 
 it("renders Partners component", () => {
   expect(() => render(<Logo />)).not.toThrow()
