@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 
 import { Container, Navbar, UserSession, Button } from './style'
+import Logo from 'Components/Logo'
 
 export const Header: FC = () => {
   return (
     <Container>
-      <a href="/home">
-        <img src="" alt="logo"/>
+      <a href="/home" data-testid="home">
+        <Logo />
       </a>
       <Navbar> 
         <a href="/about"> Quem Somos </a>
