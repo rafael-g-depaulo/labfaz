@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   /* TODO background-image: url() */
+  background-color: #C4C4C425;
   
   div {
     width: 35rem;
@@ -21,8 +22,8 @@ export const Container = styled.div`
     a {
       text-decoration: none;
       color: black;
-      border: 1px solid black;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 3rem;
+      background-color: #C4C4C4;
     }
 
     h1 {
