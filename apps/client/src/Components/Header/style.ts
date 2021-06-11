@@ -3,11 +3,13 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: flex;
   justify-content: space-around;
-  /* TODO background-color: ; */
+  background-color: #C4C4C4;
+  padding: 0.5rem 0;
 
   a {
     text-decoration: none;
     /* TODO color: ; */
+    color: black;
   }
 
   .line {
@@ -31,8 +33,6 @@ export const UserSession = styled.div`
 `;
 
 export const Button = styled.a`
-  /* TODO */
-  border: 1px solid black;
   /* TODO */
   background-color: white;
   cursor: pointer;
