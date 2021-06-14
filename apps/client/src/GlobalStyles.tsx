@@ -2,10 +2,17 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
 
+  /* variables */
+  html {
+    --color-text: black;
+    --font-size: 18px;
+  }
+
   * {
     box-sizing: border-box;
     font-family: "Town Text";
-    font-size: ${({ theme }) => theme.fontSize};
+    font-size: var(--font-size);
+    color: var(--colot-text);
   }
 
   body {
