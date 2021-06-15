@@ -23,6 +23,14 @@ export const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media(min-width: 600px) and (max-width: 1400px) {
+    min-width: 55%;
+  }
+
+  @media(min-width: 1400px) {
+    min-width: 40%;
+  }
 `;
 
 export const UserSession = styled.div`
@@ -30,6 +38,11 @@ export const UserSession = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media(max-width: 800px) {
+    width: 25%;
+    max-width: 25%;
+  }
 `;
 
 export const Button = styled.a`
@@ -38,4 +51,8 @@ export const Button = styled.a`
   cursor: pointer;
   /* TODO border-radius: ; */
   padding: 0.5rem 2rem;
+
+  @media(min-width: 600px) and (max-width: 1000px) {
+    padding: 0.5rem 1rem;
+  }
 `;
