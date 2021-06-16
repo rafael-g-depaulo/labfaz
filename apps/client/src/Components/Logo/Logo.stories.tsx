@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import React from 'react'
+import { storiesOf } from '@storybook/react'
 
-export const Image = styled.img`
-  width: 6rem;
-  height: 4rem;
-`
+import Logo from './'
+
+storiesOf("Components/Logo", module)
+  .addParameters({ component: Logo })
+  .add("logo", () => <Logo />)
