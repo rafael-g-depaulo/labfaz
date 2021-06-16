@@ -19,7 +19,7 @@ export class UserRepository extends Repository<User> {
 
   findById(id: string) {
 
-    return this.findOne({
+    return this.findOne({        
       where: { id }
     })
   }

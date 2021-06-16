@@ -22,7 +22,7 @@ export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
 
   const { name, email, password, old_password } = req.body as IUser
 
-  const user = await UserRepo.findById(req.user.id)
+  const user = await UserRepo.findById(req.body.id)
 
   if (!user) {
 

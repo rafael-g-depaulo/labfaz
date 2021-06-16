@@ -1,5 +1,4 @@
 import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
-import expectStatus from "Utils/expectStatus"
 
 import getUserRepo from "Repository/UserRepository.mock"
 import CreateUser from "./CreateUser"
@@ -27,19 +26,22 @@ describe('UpdateUser Route Handler', () => {
     const user = UserRepo.create(userInfo)
 
     const response = createResponseMock()
-    const updatedUser = createRequestMock({
-      user_id: user.id,
+    const request = createRequestMock(userInfo)
+
+    await mockRouteHandler(createUserRoute, request, response)
+
+    const updateRequest = createRequestMock({
       name: 'John Wick',
       email: 'johnwick@hotmail.com'
     })
 
-    await mockRouteHandler(updateUserRoute, updatedUser, response)
+    await mockRouteHandler(updateUserRoute, updateRequest, response)
 
     const UserTable = RepoConfig.table
-
+    console.log(UserTable)
     expect(UserTable.length).toBe(1)
-    expect(updatedUser.body?.name).toBe('John Wick')
-    expect(updatedUser.body?.email).toBe('johnwick@hotmail.com')
+    expect(request.body?.name).toBe('John Wick')
+    expect(request.body?.email).toBe('johnwick@hotmail.com')
   })
 
 })  

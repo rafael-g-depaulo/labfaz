@@ -1,29 +1,28 @@
 import User from "Entities/User"
-import createMockRepo, { Create, Find, FindOne, MockRepo, Remove, Save } from "Utils/createMockRepo"
+import createMockRepo, { Create, Find, FindOne, Remove, Save } from "Utils/createMockRepo"
 import UserRepository from "./UserRepository"
 
-const create: Create<User> = () => jest.fn(({ name = "", email = "", password = "" }) =>
+const create: Create<User, UserRepository> = () => ({ name = "", email = "", password = "" }) =>
   ({ name, email, password, id: `${name}.${password}` }) as User
-)
 
-const save: Save<User> = repoConfig => jest.fn(user => repoConfig.table.push(user))
+const save: Save<User, UserRepository> = repoConfig => user => repoConfig.table.push(user)
 
-const remove: Remove<User> = repoConfig => jest.fn(user => {
-
+const remove: Remove<User, UserRepository> = repoConfig => user => {
   repoConfig.table = repoConfig.table.filter(({ id }) => id !== user.id)
-
   return Promise.resolve(user)
-})
+}
 
-const find: Find<User> = repoConfig => jest.fn(({ id } = {}) => {
+const find: Find<User, UserRepository> = repoConfig => ({ id } = {}) => {
   if (!!id) return Promise.resolve(repoConfig.table.filter(user => user.id === id))
-
   return Promise.resolve(repoConfig.table)
-})
+}
 
-const findOne: FindOne<User> = repoConfig => jest.fn(cond => find(repoConfig)(cond).then(results => results[0]))
+const findOne: FindOne<User, UserRepository> = repoConfig => ({ id } = {}) => {
+  if (!!id) return Promise.resolve(repoConfig.table.filter(user => user.id === id)[0])
+  return Promise.resolve(repoConfig.table[0])
+}
 
-export const CreateUserRepo: MockRepo<User, UserRepository> = createMockRepo({
+export const CreateUserRepo = createMockRepo(() => new UserRepository(), {
   create,
   save,
   remove,
