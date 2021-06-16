@@ -1,10 +1,11 @@
 import styled from "styled-components"
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: space-around;
   background-color: #C4C4C4;
   padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
 
   a {
     text-decoration: none;
@@ -13,46 +14,40 @@ export const Container = styled.div`
   }
 
   .line {
-    width: 1px;
+    width: 0.07rem;
     background-color: black;
+  }
+  .home {
+    display: flex;
+    flex-Grow: 0.3;
+    justify-Content: space-around;
   }
 `;
 
 export const Navbar = styled.div`
-  min-width: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  @media(min-width: 600px) and (max-width: 1400px) {
-    min-width: 55%;
-  }
-
-  @media(min-width: 1400px) {
-    min-width: 40%;
-  }
+  flex-Grow: 1;
+  justify-content: space-evenly;
 `;
 
 export const UserSession = styled.div`
-  min-width: 20%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  @media(max-width: 800px) {
-    width: 25%;
-    max-width: 25%;
-  }
+  flex-Grow: 0.6;
+  justify-content: space-evenly;
 `;
 
-export const Button = styled.a`
-  /* TODO */
-  background-color: white;
-  cursor: pointer;
-  /* TODO border-radius: ; */
-  padding: 0.5rem 2rem;
+export const Button = styled(Link)`
+  && {
+    /* TODO */
+    background-color: white;
+    cursor: pointer;
+    /* TODO border-radius: ; */
+    padding: 0.5rem 2rem;
 
-  @media(min-width: 600px) and (max-width: 1000px) {
-    padding: 0.5rem 1rem;
+    @media(min-width: 600px) and (max-width: 1000px) {
+      padding: 0.5rem 1rem;
+    }
   }
 `;
