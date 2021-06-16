@@ -7,7 +7,7 @@ import UserRouter from "./User"
 import SessionRouter from './Session'
 
 export interface RequestHandler<ReqBody = {}, Params = {}> {
-  (req: Request<Params, {}, ReqBody>, res: Response, next?: NextFunction): any,
+  (req: Request<Params, {}, ReqBody>, res: Response, next: NextFunction): any,
 }
 
 export interface RouterDeps {

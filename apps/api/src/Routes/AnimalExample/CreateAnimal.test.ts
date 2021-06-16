@@ -1,38 +1,47 @@
-import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
+import { createResponseMock, mockRouteHandler, createRequestMock, asMock } from "Utils/mockUtils"
 import expectStatus from "Utils/expectStatus"
 
+import { AnimalExampleRepository } from "Repository/AnimalExampleRepository"
+import AnimalExample from "Entities/AnimalExample"
 import CreateAnimal from "./CreateAnimal"
-import mockAnimalRepo from "Repository/AnimalExampleRepository.mock"
+import { RequestHandler } from "express"
+import { DeepPartial } from "typeorm"
 
 describe('CreateAnimal Route Handler', () => {
 
-  // create mockRepo
-  const [ AnimalExampleRepo, repoConfig ] = mockAnimalRepo()
-  // create route
-  const createAnimalRoute = CreateAnimal({ AnimalExampleRepo })
+  let AnimalExampleRepo: AnimalExampleRepository
+  let createAnimalRoute: RequestHandler<DeepPartial<AnimalExample>>
 
-  // reset table inbetween tests
-  beforeEach(() => { repoConfig.resetTable() })
+  beforeAll(() => {
+    AnimalExampleRepo = new AnimalExampleRepository()
+    createAnimalRoute = CreateAnimal({ AnimalExampleRepo })
+    jest.spyOn(AnimalExampleRepo, 'create')
+      .mockImplementation(info => info as AnimalExample)
+      // .mockImplementation((info) => { console.log("created animal", info); return {...info, id: "2"} as AnimalExample })
+      // .mockReturnValue({  name: "dog" } as AnimalExample)
+    jest.spyOn(AnimalExampleRepo, 'save').mockReturnValue(Promise.resolve({} as AnimalExample))
+  })
 
-  it('correctly saves the animal given in the request body in the database table', async () => {
-    const catInfo = {
+  beforeEach(() => {
+    asMock(AnimalExampleRepo.create).mockClear()
+    asMock(AnimalExampleRepo.save).mockClear()
+  })
+
+  it('correctly saves the animal given in the request body in the database', async () => {
+    const catInfo: DeepPartial<AnimalExample> = {
       name: "Cat",
       rank: 5
     }
-    const catEntity = AnimalExampleRepo.create(catInfo)
-
-    // mock response and request objects
     const response = createResponseMock()
     const request = createRequestMock(catInfo)
 
     // call route
     await mockRouteHandler(createAnimalRoute, request, response)
 
-    // expect new dog to be saved to table
-    const AnimalExampleTable = repoConfig.table
-    expect(AnimalExampleTable.length).toBe(1)
-    expect(AnimalExampleTable[0]).toMatchObject(catEntity)
-    
+    // expect new cat to be saved
+    expect(AnimalExampleRepo.create).toHaveBeenCalledWith(catInfo)
+    const createResult = asMock(AnimalExampleRepo.create).mock.results[0].value
+    expect(AnimalExampleRepo.save).toHaveBeenCalledWith(createResult)
   })
 
   it('correctly returns the new animal in the response json', async () => {
@@ -40,7 +49,6 @@ describe('CreateAnimal Route Handler', () => {
       name: "Cat",
       rank: 25
     }
-    const dogEntity = AnimalExampleRepo.create(dogInfo)
 
     // mock response and request objects
     const response = createResponseMock()
@@ -51,10 +59,11 @@ describe('CreateAnimal Route Handler', () => {
 
     // expect newly created animal to be sent to client in response json
     const mockCalls = response.json.mock.calls
-    expect(mockCalls.length).toBe(1)  // expect to be called 1 time
-    expect(mockCalls[0][0]).toMatchObject({ animal: dogEntity })
+    expect(mockCalls.length).toBe(1)
+    const createResult = asMock(AnimalExampleRepo.create).mock.results[0].value
+    expect(mockCalls[0][0]).toMatchObject({ animal: createResult })
 
-    // if status is called, it should be called once with 200
+    // if status is called, it should be called once with 201
     expectStatus(201, expect, response)
   })
 })
