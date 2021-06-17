@@ -14,8 +14,10 @@ export interface EmailInfo {
   html?: string
 }
 
+export type SentMessageInfo = any;
+
 interface SendEmail {
-  sendEmail: (data: EmailInfo) => Promise<void>
+  sendEmail: (data: EmailInfo) => Promise<SentMessageInfo>
 }
 
 
@@ -23,20 +25,20 @@ export class MailProvider implements SendEmail {
   private readonly transponder: Mail
   constructor () {
     this.transponder = nodemailer.createTransport({
-      host: `smtp.${process.env.HOST}.email`,
+      // host: `smtp.${process.env.HOST}.email`,
       service: process.env.HOST,
       port: 587,
       secure: false,
       auth: {
         user: process.env.EMAIL,
-        pass: process.env.PASSWORD
+        pass: process.env.APPPASS
       },
       requireTLS: true
     })
   }
 
-  async sendEmail(data: EmailInfo): Promise<void> {
-    await this.transponder.sendMail({
+  async sendEmail(data: EmailInfo): Promise<SentMessageInfo> {
+    return await this.transponder.sendMail({
       to: {
         name: data.to.name,
         address: data.to.email
