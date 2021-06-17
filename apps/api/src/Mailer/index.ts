@@ -23,7 +23,8 @@ export class MailProvider implements SendEmail {
   private readonly transponder: Mail
   constructor () {
     this.transponder = nodemailer.createTransport({
-      host: process.env.HOST,
+      host: `smtp.${process.env.HOST}.email`,
+      service: process.env.HOST,
       port: 587,
       secure: false,
       auth: {
