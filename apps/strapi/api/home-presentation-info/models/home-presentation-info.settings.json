@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_presentation_infos",
+  "info": {
+    "name": "Home presentation info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "SubTitle": {
+      "type": "string"
+    },
+    "Video": {
+      "type": "string"
+    }
+  }
+}
