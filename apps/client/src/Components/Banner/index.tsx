@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container } from './style'
 
-const Banner = () => {
+export interface BannerProps {
+  title: string,
+  subtitle: string,
+  hrefKnowMore?: string,
+  align?: string,
+  height: number
+}
+
+
+export const Banner: FC<BannerProps> = ({
+    title,
+    subtitle,
+    hrefKnowMore="",
+    align='center',
+    height
+  }) => {
   return (
-    <Container>
+    <Container height={height} align={align}>
       <div>
-        <h1> LABFAZ </h1>
-        <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula
-          nibh, nec interdum nunc maximus at.
-        </h2>
-        <Link to='/about'> SAIBA MAIS </Link>
+        <h1> {title} </h1>
+        <h2> {subtitle} </h2>
+        {hrefKnowMore ? <Link to={hrefKnowMore}> SAIBA MAIS </Link> : <></>}
       </div>
     </Container>
   )

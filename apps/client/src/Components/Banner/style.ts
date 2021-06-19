@@ -2,22 +2,27 @@ import styled from 'styled-components'
 
 // TODO import image from 'Assets/image.jpg'
 
-export const Container = styled.div`
-  height: 25rem;
+export interface ContainerProps {
+  align: string
+  height: number
+}
+
+export const Container = styled.div<ContainerProps>`
+  height: ${props => props.height}rem;
   display: flex;
-  justify-content: center;
+  padding: 0.5rem 2rem;
+  justify-content: ${props => props.align};
   /* TODO background-image: url() */
   background-color: #C4C4C425;
   
   div {
     width: 35rem;
-    height: 20rem;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: ${props => props.align};
     justify-content: space-evenly;
-    text-align: center;
-    padding-top: 2rem;
+    text-align: ${props => props.align};
 
     a {
       text-decoration: none;
@@ -35,6 +40,10 @@ export const Container = styled.div`
       font-size: 15px;
       font-weight: medium;
       margin: 0;
+    }
+
+    @media(max-width: 660px) {
+      padding: 0 2rem;
     }
   }
   
