@@ -12,7 +12,7 @@ export const Container = styled.div`
     background-color: #E7E7E7;
     display: flex;
     position: absolute;
-    height: 100%;
+    height: 100vh;
     max-width: 18rem;
     padding: 0 1rem;
     z-index: 1;
