@@ -1,6 +1,6 @@
 {
   "name": "labfaz",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Monorepo for web infrastructure for LABFAZ project",
   "main": "index.js",
   "repository": "git@github.com:rafael-g-depaulo/labfaz.git",
