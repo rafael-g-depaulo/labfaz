@@ -1,0 +1,31 @@
+{
+  "name": "@labfaz/mail",
+  "version": "1.0.0",
+  "description": "lib to use the mailer service",
+  "author": "Lucas Gonçalves Ramalho <lucasramalho29@gmail.com>",
+  "homepage": "https://github.com/rafael-g-depaulo/labfaz#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafael-g-depaulo/labfaz.git"
+  },
+  "keywords": [
+    "lib",
+    "backend",
+    "mailer"
+  ],
+  "dependencies": {
+    "@types/nodemailer": "^6.4.2",
+    "nodemailer": "^6.6.2"
+  }
+}
