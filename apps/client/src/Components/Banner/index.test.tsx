@@ -5,11 +5,29 @@ import Render from 'Utils/render'
 import Banner from './'
 
 it('renders header component', () => {
-  expect(() => Render(<BrowserRouter><Banner /></BrowserRouter>)).not.toThrow()
+  expect(() => Render(
+    <BrowserRouter>
+      <Banner
+        title="LABFAZ"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
+        height={20}
+        hrefKnowMore="/about"
+      />
+    </BrowserRouter>
+  )).not.toThrow()
 })
 
 describe('Check content of Banner component', () => {
-  const { getByText } = Render(<BrowserRouter><Banner /></BrowserRouter>);
+  const { getByText } = Render(
+    <BrowserRouter>
+      <Banner
+        title="LABFAZ"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
+        height={20}
+        hrefKnowMore="/about"
+      />
+    </BrowserRouter>
+  );
   it('check render of title', () => {
     expect(getByText('LABFAZ')).toHaveTextContent('LABFAZ')
   })
