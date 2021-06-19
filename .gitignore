@@ -29,3 +29,6 @@ coverage/
 
 # ultra runner
 .ultra.cache.json
+
+# Local Netlify folder
+.netlify

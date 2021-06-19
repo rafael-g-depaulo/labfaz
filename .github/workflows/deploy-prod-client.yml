@@ -8,6 +8,7 @@ on:
     paths:
       - apps/client/**
       - libs/**
+      - netlify.toml
 
 jobs:
 
