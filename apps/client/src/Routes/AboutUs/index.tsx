@@ -13,7 +13,7 @@ export const AboutUs: Router = ({
   
   return (
     <Switch>
-      <Route exact path={path}>
+      <Route path={path}>
         {() => (
           <Suspense fallback={<Loading />}>
             <AboutUsPage />

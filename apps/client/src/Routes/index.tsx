@@ -71,12 +71,12 @@ const Routes: FC = () => {
             )}
         </Route>
 
-        <Route path="/about_us">
-            {({ match }) => (
-              <Suspense fallback={<Loading />}>
-                <AboutUs match={match} />
-              </Suspense>
-            )}
+        <Route path={["/aboutUs", "/about-us", "/AboutUs", "/About-us", "/About-Us"]}>
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <AboutUs match={match} />
+            </Suspense>
+          )          }
         </Route>
       </Switch>
 
