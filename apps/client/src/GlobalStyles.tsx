@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
+  /* import Cairo Font */
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 
   /* variables */
   html {
@@ -15,20 +17,20 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-large: 16px;
     --font-size-medium: 14px;
     --font-size-short: 12px;
+    --font-family: 'Cairo', sans-serif;
   }
 
   * {
     box-sizing: border-box;
-    font-family: "Town Text";
     font-size: var(--font-size-default);
-    color: var(--colot-text);
+    font-family: var(--font-family);
+    color: var(----color-text-text);
   }
 
   body {
     margin: 0;
     min-height: 100vh;
   }
-
 `
 
 export default GlobalStyles
