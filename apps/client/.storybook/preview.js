@@ -11,7 +11,6 @@ import {
   Stories,
 } from '@storybook/addon-docs/blocks';
 
-// import { ThemeProvider } from "../src/Themes"
 import GlobalStyles from "../src/GlobalStyles"
 
 export const parameters = {
@@ -35,10 +34,8 @@ export const parameters = {
 
 const injectGlobalStylesAndTheme = Story => (
   <>
-    {/* <ThemeProvider> */}
       <GlobalStyles />
       <Story />
-    {/* </ThemeProvider> */}
   </>
 )
 
