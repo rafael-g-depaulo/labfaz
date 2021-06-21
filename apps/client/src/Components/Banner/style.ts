@@ -10,7 +10,7 @@ export interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   height: ${props => props.height}rem;
   display: flex;
-  padding: 0.5rem 2rem;
+  padding: ${props => props.align === 'left' ? '0.5rem 7rem' : '0.5rem 2rem'};
   justify-content: ${props => props.align};
   /* TODO background-image: url() */
   background-color: #C4C4C425;
@@ -32,7 +32,7 @@ export const Container = styled.div<ContainerProps>`
     h1 {
       font-size: 35px;
       line-height: 0;
-      margin: 0;
+      margin: ${props => props.align === 'left' ? '2rem 0' : 0};
     }
     h2 {
       font-size: 15px;

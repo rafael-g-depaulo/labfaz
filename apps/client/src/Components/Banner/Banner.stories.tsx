@@ -6,13 +6,24 @@ import Banner from './'
 
 storiesOf("Components/Banner", module)
   .addParameters({ component: Banner })
-  .add("banner", () =>
+  .add("bannerCenter", () =>
     <BrowserRouter>
       <Banner
         title="LABFAZ"
-        subtitle="Testando"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta
+          ligula nibh, nec interdum nunc maximus at."
         height={15}
         hrefKnowMore="/about"
+      />
+    </BrowserRouter>
+  )
+  .add("bannerLeft", () => 
+    <BrowserRouter>
+      <Banner
+        title="Blog"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        align="left"
+        height={7}
       />
     </BrowserRouter>
   )
