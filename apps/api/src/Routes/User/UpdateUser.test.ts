@@ -1,17 +1,36 @@
-import { createResponseMock, mockRouteHandler, createRequestMock } from "Utils/mockUtils"
+import { createResponseMock, mockRouteHandler, createRequestMock, asMock } from "Utils/mockUtils"
+import expectStatus from "Utils/expectStatus"
 
-import getUserRepo from "Repository/UserRepository.mock"
+import UserRepository from "Repository/UserRepository"
+import User from "Entities/User"
 import CreateUser from "./CreateUser"
 import UpdateUser from "./UpdateUser"
+import { RequestHandler } from "express"
+import { DeepPartial } from "typeorm"
 
 describe('UpdateUser Route Handler', () => {
 
-  const [UserRepo, RepoConfig] = getUserRepo()
-  const createUserRoute = CreateUser({ UserRepo })
-  const updateUserRoute = UpdateUser({ UserRepo })
+  let UserRepo: UserRepository
+  let updateUserRoute: RequestHandler<DeepPartial<User>>
+  let createUserRoute: RequestHandler<DeepPartial<User>>
+  let mockTable: any
+
+  beforeAll(() => {
+    UserRepo = new UserRepository()
+    createUserRoute = CreateUser({ UserRepo })
+    updateUserRoute = UpdateUser({ UserRepo })
+
+    jest.spyOn(UserRepo, 'create').mockImplementation(info => mockTable.push({ ...info, id: `${info.name}.${info.password}`}) )
+    jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
+    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
+    jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => mockTable.find(findUser => findUser.email === email))
+    jest.spyOn(UserRepo, 'findById').mockImplementation(id => mockTable.find(findUser => findUser.id === id))
+  })
 
   beforeEach(() => {
-    RepoConfig.resetTable()
+    asMock(UserRepo.create).mockClear()
+    asMock(UserRepo.save).mockClear()
+    mockTable = [];
   })
 
 
@@ -23,25 +42,22 @@ describe('UpdateUser Route Handler', () => {
       password: '123456'
     }
 
-    const user = UserRepo.create(userInfo)
-
-    const response = createResponseMock()
-    const request = createRequestMock(userInfo)
+    let response = createResponseMock()
+    let request = createRequestMock(userInfo)
 
     await mockRouteHandler(createUserRoute, request, response)
 
-    const updateRequest = createRequestMock({
+    request = createRequestMock({
       name: 'John Wick',
-      email: 'johnwick@hotmail.com'
+      email: 'johnwick@hotmail.com',
+      password: '123456'
     })
 
-    await mockRouteHandler(updateUserRoute, updateRequest, response)
+    await mockRouteHandler(updateUserRoute, request, response)
 
-    const UserTable = RepoConfig.table
-    console.log(UserTable)
-    expect(UserTable.length).toBe(1)
-    expect(request.body?.name).toBe('John Wick')
-    expect(request.body?.email).toBe('johnwick@hotmail.com')
+    console.log(mockTable)
+    expect(mockTable.length).toBe(1)
+    expect(mockTable[0].name).toBe('John Wick')
+    expect(mockTable[0].email).toBe('johnwick@hotmail.com')
   })
-
 })  
