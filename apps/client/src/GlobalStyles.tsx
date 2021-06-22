@@ -5,13 +5,22 @@ export const GlobalStyles = createGlobalStyle`
   /* variables */
   html {
     --color-text: black;
-    --font-size: 18px;
+    --background-dark-gray: #C4C4C4;
+    --background-gray: #E7E7E7;
+    --background-light-gray: #C4C4C425;
+    --background-white: #FFFFFF;
+
+    --font-size-title: 35px;
+    --font-size-default: 18px;
+    --font-size-large: 16px;
+    --font-size-medium: 14px;
+    --font-size-short: 12px;
   }
 
   * {
     box-sizing: border-box;
     font-family: "Town Text";
-    font-size: var(--font-size);
+    font-size: var(--font-size-default);
     color: var(--colot-text);
   }
 
