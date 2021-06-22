@@ -12,7 +12,6 @@ storiesOf("Components/Banner", module)
         title="LABFAZ"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta
           ligula nibh, nec interdum nunc maximus at."
-        height={15}
         hrefKnowMore="/about"
       />
     </BrowserRouter>
@@ -23,7 +22,6 @@ storiesOf("Components/Banner", module)
         title="Blog"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
         align="left"
-        height={7}
       />
     </BrowserRouter>
   )
