@@ -32,11 +32,12 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 20px;
   height: 90%;
 
   p {
+    width: 100%;
     font-size: 14px;
     text-align: left;
     overflow: hidden;
@@ -59,12 +60,9 @@ export const CardContainer = styled.div`
 
 export const CardImage = styled.img`
   object-fit: cover;
-  height: 50%;
+  object-position: center;
+  height: 60%;
   width: 100%;
-
-  @media (max-width: 1023px) {
-    margin-bottom: 20px;
-  }
 
   @media (min-width: 1024px) {
     margin-bottom: 10px;
@@ -78,13 +76,16 @@ export const MainText = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-
+  
   p {
-    max-width: 50%;
-    overflow: hidden;
-    margin: 0;
+    margin: 0 20px 0 0;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: bold;
+
+    &:last-child {
+      text-align: right;      
+      margin: 0;
+    }
   }
 `;
