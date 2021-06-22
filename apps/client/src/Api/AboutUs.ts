@@ -3,8 +3,8 @@ import useFetchApi from "Hooks/useFetchApi"
 
 export interface AboutUsData {
   bannerData: string,
-  mainData: DataObject,
-  secondaryData: DataObject[]
+  welcomeData: DataObject,
+  aboutUsData: DataObject[]
 }
 
 interface DataObject {
