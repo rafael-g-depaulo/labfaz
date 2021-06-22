@@ -25,7 +25,7 @@ const Card: FC<DisplayProps> = ({ courses, screenWidth }): JSX.Element => {
                 />
                 <MainText>
                   <p>{item?.title}</p>
-                  <p>{format(item?.date, 'DD-MM-YYYY').replaceAll('-', '/')}</p>
+                  <p>{format(item?.date, 'DD-MM-YYYY').replace('-', '/').replace('-', '/')}</p>
                 </MainText>
                 <p>{item?.description}</p>
               </CardContainer>
