@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 
 import Logo from 'Components/Logo'
@@ -9,6 +8,9 @@ import {
   Button,
   CloseMenu,
   NavLink,
+  IconButton,
+  LogoLink,
+  NavBar
 } from './style'
 
 export const Mobile: FC = () => {
@@ -16,26 +18,26 @@ export const Mobile: FC = () => {
   return (
     <Container>
       <div className={open ? 'navBar active' : 'navBar'}>
-        <div>
+        <NavBar>
           <NavLink to="/"> HOME </NavLink>
           <NavLink to="/about"> QUEM SOMOS </NavLink>
           <NavLink to="/classes"> CURSOS </NavLink>
           <NavLink to="/blog"> BLOG </NavLink>
           <NavLink to="/calendar"> AGENDA </NavLink>
           <NavLink to="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
-          <Button backgroundColor="#C4C4C4" to='/login'> ENTRAR </Button>
+          <Button backgroundColor="var(--background-dark-gray)" to='/login'> ENTRAR </Button>
           <Button backgroundColor="white" to='/register'> REGISTRE-SE </Button>
-        </div>
+        </NavBar>
       </div>
       <CloseMenu open={open} onClick={() => setOpen(false)}></CloseMenu>
       <ContainerIcon>
         <div className="ContainerDiv">
-          <button onClick={() => setOpen(true)}>
+          <IconButton onClick={() => setOpen(true)}>
             <FaBars title="menu" />
-          </button>
-          <Link to="/" data-testid="home">
+          </IconButton>
+          <LogoLink to="/" data-testid="home">
             <Logo />
-          </Link>
+          </LogoLink>
         </div>
       </ContainerIcon>
     </Container>
