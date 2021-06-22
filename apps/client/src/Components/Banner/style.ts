@@ -1,47 +1,48 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+import mobileOnly from 'Utils/breakpoints/mobileOnly'
 
 // TODO import image from 'Assets/image.jpg'
 
-export interface ContainerProps {
+export interface Props {
   align: string
-  height: number
 }
 
-export const Container = styled.div<ContainerProps>`
-  height: ${props => props.height}rem;
+export const Container = styled.div<Props>`
   display: flex;
-  padding: ${props => props.align === 'left' ? '0.5rem 7rem' : '0.5rem 2rem'};
+  padding: ${props => props.align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0'};
   justify-content: ${props => props.align};
   /* TODO background-image: url() */
-  background-color: #C4C4C425;
+  background-color: var(--background-light-gray);
   
   div {
     width: 35rem;
-    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: ${props => props.align};
     justify-content: space-evenly;
     text-align: ${props => props.align};
-    a {
-      text-decoration: none;
-      color: black;
-      padding: 0.5rem 3rem;
-      background-color: #C4C4C4;
-    }
-    h1 {
-      font-size: 35px;
-      line-height: 0;
-      margin: ${props => props.align === 'left' ? '2rem 0' : 0};
-    }
-    h2 {
-      font-size: 15px;
-      font-weight: medium;
-      margin: 0;
-    }
-    @media(max-width: 660px) {
-      padding: 0 2rem;
-    }
+    gap: 1rem;
   }
+  ${mobileOnly('padding: 0.5rem 2.5rem')};
   
+`;
+
+export const Title = styled.h1`
+  font-size: var(--font-size-title);
+  margin: 0;
+`;
+
+export const Subtitle = styled.h2`
+  font-size: var(--font-size-medium);
+  margin: 0;
+`;
+
+export const KnowMoreButton = styled(Link)`
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0.5rem 3rem;
+  background-color: var(--background-dark-gray);
+  margin-top: 1.5rem;
 `;

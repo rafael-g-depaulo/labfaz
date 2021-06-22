@@ -1,34 +1,35 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
 
+import {ShortScreen, MediumScreen, LargeScreen} from 'Utils/breakpoints/webOnly'
+
 export const Container = styled.div`
-  background-color: #C4C4C4;
+  background-color: var(--background-dark-gray);
   padding: 0.5rem 0;
   display: flex;
   justify-content: space-around;
   a {
-    text-decoration: none;
-    /* TODO color: ; */
-    color: black;
-    @media(max-width: 780px) {
-      font-size: 12px;
-    }
-    @media(min-width: 781px) and (max-width: 880px) {
-      font-size: 14px;
-    }
-    @media(min-width: 881px) and (max-width: 1280px) {
-      font-size: 16px;
-    }
+    
   }
   .line {
     width: 1px;
-    background-color: black;
+    background-color: var(--color-text);
   }
   .home {
     display: flex;
     flex-Grow: 0.3;
     justify-Content: space-around;
   }
+`;
+
+export const RedirectLink = styled(Link)`
+  text-decoration: none;
+  /* TODO color: ; */
+  color: var(--color-text);
+
+  ${ShortScreen('font-size: var(--font-size-short)')};
+  ${MediumScreen('font-size: var(--font-size-medium)')};
+  ${LargeScreen('font-size: var(--font-size-large)')};
 `;
 
 export const Navbar = styled.div`
@@ -40,9 +41,17 @@ export const Navbar = styled.div`
 `;
 
 export const NavLink = styled(Link)`
-   ${Navbar} & {
+  ${Navbar} & {
     flex-grow: 0.5;
     text-align: center;
+    text-decoration: none;
+    /* TODO color: ; */
+    color: var(--color-text);
+    padding: 0.6rem 0;
+    
+    ${ShortScreen('font-size: var(--font-size-short)')};
+    ${MediumScreen('font-size: var(--font-size-medium)')};
+    ${LargeScreen('font-size: var(--font-size-large)')};
   }
 `
 
@@ -56,12 +65,15 @@ export const UserSession = styled.div`
 export const Button = styled(Link)`
   && {
     /* TODO */
-    background-color: white;
+    background-color: var(--background-white);
     cursor: pointer;
     /* TODO border-radius: ; */
     padding: 0.5rem 2rem;
-    @media(min-width: 600px) and (max-width: 1000px) {
-      padding: 0.5rem 1rem;
-    }
+    text-decoration: none;
+    /* TODO color: ; */
+    color: var(--color-text);
+    ${ShortScreen('font-size: var(--font-size-short); padding: 0.5rem 1rem')};
+    ${MediumScreen('font-size: var(--font-size-medium)')};
+    ${LargeScreen('font-size: var(--font-size-large)')};
   }
 `;
