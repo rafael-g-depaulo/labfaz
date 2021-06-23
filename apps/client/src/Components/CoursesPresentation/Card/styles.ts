@@ -1,10 +1,20 @@
 import styled from "styled-components";
+import mobileOnly from "Utils/breakpoints/mobileOnly";
+import { css } from "styled-components";
 
 export const Container = styled.div`
   height: 100%;
   display: grid;
+  max-width: 100%;
+  grid-template-columns: minmax(150px, 350px) minmax(150px, 350px);
+  grid-template-rows: minmax(200px, 400px) minmax(200px, 400px);
+  grid-template-areas:
+    "CardContainer CardContainer"
+    "CardContainer CardContainer";
+  justify-items: end;
+  align-items: start;
 
-  @media (max-width: 1023px) {
+  ${mobileOnly(css`
     grid-template-columns: minmax(150px, 300px);
     grid-template-rows: minmax(200px, 400px) minmax(200px, 400px);
     grid-template-areas:
@@ -13,21 +23,11 @@ export const Container = styled.div`
     margin: 30px 0;
     justify-items: center;
     align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 100%;
-    grid-template-columns: minmax(150px, 350px) minmax(150px, 350px);
-    grid-template-rows: minmax(200px, 400px) minmax(200px, 400px);
-    grid-template-areas:
-      "CardContainer CardContainer"
-      "CardContainer CardContainer";
-    justify-items: end;
-    align-items: start;
-  }
+  `)}
 `;
 
 export const CardContainer = styled.div`
+  width: 90%;
   background-color: #c4c4c4;
   display: flex;
   flex-direction: column;
@@ -37,25 +37,19 @@ export const CardContainer = styled.div`
   height: 90%;
 
   p {
+    margin: 0;
     width: 100%;
     font-size: 14px;
     text-align: left;
     overflow: hidden;
   }
 
-  @media (max-width: 1023px) {
+  ${mobileOnly(css`
     width: 100%;
     p {
       margin: 10px 0 0 0;
     }
-  }
-
-  @media (min-width: 1024px) {
-    width: 90%;
-    p {
-      margin: 0;
-    }
-  }
+  `)}
 `;
 
 export const CardImage = styled.img`
@@ -63,10 +57,11 @@ export const CardImage = styled.img`
   object-position: center;
   height: 60%;
   width: 100%;
+  margin-bottom: 10px;
 
-  @media (min-width: 1024px) {
-    margin-bottom: 10px;
-  }
+  ${mobileOnly(css`
+    margin-bottom: 0;
+  `)}
 `;
 
 export const MainText = styled.div`
@@ -76,7 +71,7 @@ export const MainText = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  
+
   p {
     margin: 0 20px 0 0;
     font-size: 16px;
@@ -84,7 +79,7 @@ export const MainText = styled.div`
     font-weight: bold;
 
     &:last-child {
-      text-align: right;      
+      text-align: right;
       margin: 0;
     }
   }
