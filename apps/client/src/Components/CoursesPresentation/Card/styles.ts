@@ -36,19 +36,8 @@ export const CardContainer = styled.div`
   padding: 20px;
   height: 90%;
 
-  p {
-    margin: 0;
-    width: 100%;
-    font-size: 14px;
-    text-align: left;
-    overflow: hidden;
-  }
-
   ${mobileOnly(css`
     width: 100%;
-    p {
-      margin: 10px 0 0 0;
-    }
   `)}
 `;
 
@@ -71,16 +60,28 @@ export const MainText = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+`;
 
-  p {
-    margin: 0 20px 0 0;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: bold;
+export const CardTitle = styled.p`
+  margin: 0 20px 0 0;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: bold;
 
-    &:last-child {
-      text-align: right;
-      margin: 0;
-    }
+  &:last-child {
+    text-align: right;
+    margin: 0;
   }
+`;
+
+export const CardDescription = styled.p`
+  margin: 0;
+  width: 100%;
+  font-size: 0.8em;
+  text-align: left;
+  overflow: hidden;
+
+  ${mobileOnly(css`
+    margin: 10px 0 0 0;
+  `)}
 `;

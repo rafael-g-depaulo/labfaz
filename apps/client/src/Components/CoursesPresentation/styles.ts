@@ -28,33 +28,33 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  h1 {
-    font-size: 40px;
-    margin: 0 0 40px 0;
-    color: black;
-    font-weight: bold;
-  }
-
-  p {
-    font-size: 20px;
-    margin: 40px 0;
-    color: black;
-    text-align: justify;
-  }
-
   ${mobileOnly(css`
     width: 100%;
     justify-content: center;
     margin: 0;
+  `)}
+`;
 
-    h1 {
-      font-size: 35px;
-      margin: 0 0 30px 0;
-    }
+export const Title = styled.h1`
+  font-size: 2.2em;
+  margin: 0 0 40px 0;
+  color: black;
+  font-weight: bold;
 
-    p {
-      font-size: 18px;
-      margin: 0;
-    }
+  ${mobileOnly(css`
+    font-size: 1.8em;
+    margin: 0 0 30px 0;
+  `)}
+`;
+
+export const Text = styled.p`
+  font-size: 1.1em;
+  margin: 40px 0;
+  color: black;
+  text-align: justify;
+
+  ${mobileOnly(css`
+    font-size: 1em;
+    margin: 0;
   `)}
 `;

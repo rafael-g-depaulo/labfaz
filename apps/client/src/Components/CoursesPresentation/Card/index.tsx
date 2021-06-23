@@ -1,7 +1,14 @@
 import React, { FC } from "react";
-import { Container, CardContainer, MainText, CardImage } from "./styles";
+import {
+  Container,
+  CardContainer,
+  MainText,
+  CardImage,
+  CardDescription,
+  CardTitle,
+} from "./styles";
 import { CoursePresentation } from "Api/CoursePresentation";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 interface DisplayProps {
   courses: CoursePresentation[];
@@ -24,10 +31,14 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                   alt={item?.banner_image?.name}
                 />
                 <MainText>
-                  <p>{item?.title}</p>
-                  <p>{format(item?.date, 'DD-MM-YYYY').replace('-', '/').replace('-', '/')}</p>
+                  <CardTitle>{item?.title}</CardTitle>
+                  <CardTitle>
+                    {format(item?.date, "DD-MM-YYYY")
+                      .replace("-", "/")
+                      .replace("-", "/")}
+                  </CardTitle>
                 </MainText>
-                <p>{item?.description}</p>
+                <CardDescription>{item?.description}</CardDescription>
               </CardContainer>
             </React.Fragment>
           );
