@@ -7,7 +7,7 @@ export interface AboutUsData {
   aboutUsData: DataObject[]
 }
 
-interface DataObject {
+export interface DataObject {
   img: string,
   txt: string
 }
