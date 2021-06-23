@@ -5,15 +5,15 @@ import { format } from 'date-fns';
 
 interface DisplayProps {
   courses: CoursePresentation[];
-  screenWidth: number;
+  isMobile: boolean;
 }
 
-const Card: FC<DisplayProps> = ({ courses, screenWidth }): JSX.Element => {
+const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
   return (
     <Container>
       {courses?.map((item, index) => {
         // Show only two cards if it's a mobile screen
-        if (screenWidth < 1024 && index > 1) {
+        if (isMobile && index > 1) {
           return <React.Fragment key={index} />;
         } else {
           return (

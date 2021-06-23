@@ -17,13 +17,13 @@ const cardExample = [
 
 it("renders Card component", () => {
   expect(() =>
-    render(<Card courses={cardExample} screenWidth={1024} />)
+    render(<Card courses={cardExample} isMobile={true}/>)
   ).not.toThrow();
 });
 
 describe("Check content of Card component", () => {
   const { getByText, getByRole } = render(
-    <Card courses={cardExample} screenWidth={1024} />
+    <Card courses={cardExample} isMobile={true}/>
   );
 
   it("checks if title rendered", () => {
