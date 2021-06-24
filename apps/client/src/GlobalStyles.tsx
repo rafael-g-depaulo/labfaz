@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-large: 16px;
     --font-size-medium: 14px;
     --font-size-short: 12px;
+    --line-height: 48.72px; 
   }
 
   * {
