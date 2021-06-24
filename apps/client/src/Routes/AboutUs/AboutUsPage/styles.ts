@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 80vw;
+  width: 100vw;
   height: 40%;
   box-sizing: content-box;
   display: flex;
@@ -9,15 +9,17 @@ export const Wrapper = styled.div`
   align-self: center;
 `
 
-export const AboutComponent = styled.div`
+export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2em;
   min-height: 400px;
   max-height: 500px;
+  line-height: var(--line-height);
+  margin: 20px;
 `
 
 export const Image = styled.img`
-  height: 100%;
-  width: 100%;
+  max-height: 400px;
+  max-width: 789px;
 `
