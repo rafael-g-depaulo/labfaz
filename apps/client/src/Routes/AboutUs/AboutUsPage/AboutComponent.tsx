@@ -15,9 +15,9 @@ const About: FC<AboutProps> = ({data}) => {
       {
         data.map((item) => {
           return (
-            <AboutComponent>
+            <AboutComponent key={item.id}>
               <Text>
-                {item.txt}
+                {item.text}
               </Text>
               <Image src="https://i.imgur.com/rSnSOKD.jpega/6rKiG" alt="KKKKKKKKKK"/>
             </AboutComponent>

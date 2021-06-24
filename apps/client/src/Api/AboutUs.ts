@@ -1,19 +1,31 @@
-import { api } from "Api"
+import { strapi } from "Api"
 import useFetchApi from "Hooks/useFetchApi"
 
 export interface AboutUsData {
-  bannerData: string,
-  welcomeData: DataObject,
-  aboutUsData: DataObject[]
+  banner_data: string,
+  welcome_data: DataObject,
+  about_us_data: DataObject[]
 }
 
 export interface DataObject {
-  img: string,
-  txt: string
+  id: number,
+  img: ImgObject,
+  text: string
 }
 
-export const fetchAboutUsData = () => api
-  .get<AboutUsData>("/about-us")
-  .then(({ data }) => data)
+export interface ImgObject {
+  name: string,
+  url: string,
+  img: any 
+}
+
+export const fetchAboutUsData = () => strapi
+  .get<AboutUsData[]>("/about-uses")
+  .then(({ data }) => data[0])
+  .then(({ banner_data, welcome_data, about_us_data }) => ({
+    banner_data,
+    welcome_data,
+    about_us_data
+  }) )
 
 export const useAboutUsdata = () => useFetchApi<AboutUsData>('/about-us', fetchAboutUsData)
