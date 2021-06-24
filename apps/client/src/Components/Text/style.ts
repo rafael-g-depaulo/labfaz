@@ -6,11 +6,9 @@ export interface DivProps {
 }
 
 export interface ParagraphProps {
-  lineHeight?: string
-  fontSize?: String
-  textJustify?: CSSStyleRule
   textAlign?: String
   weight?: String
+  marginTop?: String | any,
 }
 
 export const TextDiv = styled.div<DivProps>`
@@ -22,4 +20,5 @@ export const TextDiv = styled.div<DivProps>`
 export const Paragraph = styled.p<ParagraphProps>`
   font-style: normal;
   text-align: justify;
+  margin-top: 0;
 `

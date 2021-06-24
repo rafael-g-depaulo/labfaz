@@ -1,16 +1,15 @@
 import React, { FC } from "react"
-import { TextDiv, Paragraph, DivProps, ParagraphProps } from "./style"
+import { TextDiv, Paragraph, ParagraphProps } from "./style"
 
 interface Props {
-  div?: DivProps,
   paragraph?: ParagraphProps,
 }
 
 
-export const Text: FC<Props> = ({ div, paragraph, children }) => {
+export const Text: FC<Props> = ({ paragraph, children }) => {
 
   return (
-    <TextDiv {...div}>
+    <TextDiv>
       <Paragraph {...paragraph}>
         {children}
       </Paragraph>
