@@ -21,7 +21,5 @@ export const TextDiv = styled.div<DivProps>`
 
 export const Paragraph = styled.p<ParagraphProps>`
   font-style: normal;
-  line-height: ${props => props.lineHeight ? props.lineHeight : '48.7px'};
   text-align: justify;
-  font-size: 26px
 `
