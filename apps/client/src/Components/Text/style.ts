@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import mobileOnly from "Utils/breakpoints/mobileOnly"
 
 export interface DivProps {
   height?: string,
@@ -13,12 +14,23 @@ export interface ParagraphProps {
 
 export const TextDiv = styled.div<DivProps>`
   display: flex;
-  height: ${props => props.height ? props.height : "100%"};
-  width: ${props => props.width ? props.width : "100%"};
+  height: 100%;
+  max-width: 100%;
+
+  ${mobileOnly(`
+    max-width: 75%;
+  `)}
 `
 
 export const Paragraph = styled.p<ParagraphProps>`
   font-style: normal;
   text-align: justify;
   margin-top: 0;
+
+  ${
+    mobileOnly(`
+      font-size: 14px;
+      line-height: 25px;
+    `)
+  }
 `
