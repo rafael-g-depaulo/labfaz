@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from "@storybook/react"
 
-import About from "./AboutComponent"
+import About from "."
 
 const about_us_data = [{
   id: 1,

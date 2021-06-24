@@ -5,7 +5,7 @@ import Header from "Components/Header"
 import Banner from "Components/Banner"
 
 
-import About from "./AboutComponent"
+import About from "./AboutUsComponent"
 
 export interface DisplayProps {
   data: AboutUsBannerInfo

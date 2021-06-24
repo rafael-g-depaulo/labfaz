@@ -1,7 +1,7 @@
 import React from 'react'
 import render from 'Utils/render'
 
-import About from "./AboutComponent"
+import About from "."
 import { AboutUsData } from "Api/AboutUs"
 
 const data = {
