@@ -1,25 +1,26 @@
-import { AboutUsBannerInfo } from "Api/AboutUsBannerInfo"
+import { AboutUsData } from "Api/AboutUs"
 import React, { FC } from "react"
 
+import Fullpage from "Components/CoursesPresentation"
 import Header from "Components/Header"
-import Banner from "Components/Banner"
-
-
+import Banner from "./BannerComponent"
+import WelcomeComponent from "./WelcomeComponent"
 import About from "./AboutUsComponent"
 
 export interface DisplayProps {
-  data: AboutUsBannerInfo
+  data: AboutUsData
 }
 
 export const Display: FC<DisplayProps> = ({
   data,
 }) => {
-  const {title, subtitle} = data!
+  const {banner_data, welcome_data, about_us_data} = data!
   return (
-    <>
-     <Header />
-     <Banner title={title} subtitle={subtitle} align="left" />
-    </>
+    <Fullpage>
+      <Banner subtitle={banner_data}/>
+      <WelcomeComponent data={welcome_data} />
+      <About  data={about_us_data} />
+    </Fullpage>
   )
 }
 

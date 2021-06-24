@@ -1,5 +1,6 @@
 import { strapi } from "Api"
 import useFetchApi from "Hooks/useFetchApi"
+import { Image } from 'Utils/Image'
 
 export interface AboutUsData {
   banner_data: string,
@@ -9,15 +10,10 @@ export interface AboutUsData {
 
 export interface DataObject {
   id: number,
-  img: ImgObject,
+  img: Image,
   text: string
 }
 
-export interface ImgObject {
-  name: string,
-  url: string,
-  img: any 
-}
 
 export const fetchAboutUsData = () => strapi
   .get<AboutUsData[]>("/about-uses")
