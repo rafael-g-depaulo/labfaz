@@ -1,31 +1,36 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC } from 'react'
-import { Container, TextBlock } from './style'
+import React, { FC, useState, useEffect } from 'react'
+import { strapi } from "Api"
 
-import { YoutubePlayerResponsive } from 'Components/YoutubePlayerResponsive'
 import Loading from "Components/Loading"
-import { useHomePresentationInfo } from 'Api/Presentation';
-import useWidth from 'Hooks/useWidth';
+import Display from "./Display"
 
 export const Presentation: FC = () => {
-  const { data, error, isLoading } = useHomePresentationInfo()
-  let width = useWidth();
+  const[loading, setLoading] = useState(true)
+  const[data, setData] = useState(
+    {
+      Title: "",
+      SubTitle: "",
+      Video: ""
+    })
+  const[error, setError] = useState()
 
-  if (error) return <div>error: { error?.message ?? "" }</div>
-  if (isLoading) return <Loading />
+  useEffect(() => {
+    strapi
+      .get(`/home-presentation-info`)
+      .then(({ data }) => data)
+      .then(({ Title, SubTitle, Video }) => {
+        setData({ Title, SubTitle, Video })
+        console.log(data)
+        setLoading(false)
+      })
+      .catch((error) => setError(error.message))
+  }, [loading])
 
-  const { Title, SubTitle, Video} = data!
-  return (
-    <Container>
-      <div className="ContainerContent">
-        <YoutubePlayerResponsive href={Video} width={width}/>
-        <TextBlock>
-          <h1> {Title} </h1>
-          <p> {SubTitle} </p>
-        </TextBlock>
-      </div>
-    </Container>
-  )
+  if (error) return <div>error: {error ?? ""} </div>
+  if (loading) return <Loading />
+
+  return <Display Video={data.Video} Title={data.Title} SubTitle={data.SubTitle}/>
 }
 
 export default Presentation
