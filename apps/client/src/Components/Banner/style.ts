@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import mobileOnly from 'Utils/breakpoints/mobileOnly'
+import { MobileOnly }from 'Utils/breakpoints/mobileOnly'
 
 // TODO import image from 'Assets/image.jpg'
 
@@ -25,7 +25,7 @@ export const Container = styled.div<Props>`
     text-align: ${props => props.align};
     gap: 1rem;
   }
-  ${mobileOnly('padding: 0.5rem 2.5rem')};
+  ${MobileOnly('padding: 0.5rem 2.5rem')};
   
 `;
 
