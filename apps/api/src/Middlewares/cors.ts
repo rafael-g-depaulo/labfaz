@@ -16,6 +16,9 @@ export const setupAllowedOrigins = () => {
     allowedOrigins.push(newAllowedOrigin)
   }
 
+  // add labfaz to allowed origins
+  allowedOrigins.push(/labfaz\.com\.br/)
+
   return allowedOrigins
 }
 
@@ -35,6 +38,7 @@ export const originChecker = (allowedOrigins: RegExp[]) => (origin: string | und
   })
 
   if (!isAllowed) {
+    console.log("Rejecter request because of CORS policy.", `allowedOrigins: `, allowedOrigins, `origin: `, origin)
     const msg = `The CORS policy for this site does not allow access from the specified Origin (${origin})`
     return callback(new Error(msg), false)
   }
