@@ -2,6 +2,7 @@ import React, {FC} from 'react'
 
 import Header from 'Components/Header'
 import Banner from 'Components/Banner'
+import PostCard from "./PostCard"
 import { BlogBannerInfo } from 'Api/BlogBannerInfo'
 
 export interface DisplayProps {
@@ -16,8 +17,9 @@ export const Display: FC<DisplayProps> = ({
     <>
       <Header />
       <Banner title={title} subtitle={subtitle} align="left" />
+      <PostCard />
     </>
   )
 }
 
-export default Display
+export default Display;

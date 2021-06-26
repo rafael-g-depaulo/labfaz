@@ -13,7 +13,6 @@ export const Blog: Router = ({
   
   return (
     <Switch>
-
       <Route exact path={path}>
         {() => (
           <Suspense fallback={<Loading />}>

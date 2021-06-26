@@ -9,9 +9,9 @@ import {
 import Loading from 'Components/Loading'
 
 const Home = lazy(() => import('./Home'))
+const Blog = lazy(() => import('./Blog'))
 const PeopleExample = lazy(() => import('./PeopleExample'))
 const SingletonExample = lazy(() => import('./SingletonExample'))
-const Blog = lazy(() => import('./Blog'))
 const AboutUs = lazy(() => import('./AboutUs'))
 
 export type RouterProps<MatchParams = {}> = {
@@ -45,6 +45,7 @@ const Routes: FC = () => {
           )}
         </Route>
 
+        {/* blog router */}
         <Route path={["/blog"]}>
           {({ match }) => (
             <Suspense fallback={<Loading />}>
