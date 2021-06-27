@@ -27,10 +27,15 @@ const data = {
 
 }
 
-describe('About us component', () => {
+describe('Banner component', () => {
+  const mockedData: AboutUsData = data
   it("render component whiout errors", () => {
-    const mockedData: AboutUsData = data
-
     expect(() => render (<Banner subtitle={mockedData.banner_data} />))
+  })
+
+  it("Should render component with static text", () => {
+    const banner = render(<Banner subtitle={mockedData.banner_data}  />).getByRole("heading")
+    
+    expect(banner).toHaveTextContent('Quem somos')
   })
 })
