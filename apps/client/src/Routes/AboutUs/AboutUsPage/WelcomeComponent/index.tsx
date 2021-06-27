@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Container, Image } from "../styles"
-import Text from "Components/Text"
+import { TextDiv } from "../styles"
 
 import { DataObject } from "Api/AboutUs"
 
@@ -13,11 +13,11 @@ export interface WelcomeProps {
 export const WelcomeComponent: FC<WelcomeProps> = ({ data }) => {
   
   return (
-    <Container key={data.id}>
-      <Image src={data.img.url} alt={data.img.name}/>
-      <Text>
+    <Container key={data.id} marginBottom="6em">
+      <TextDiv position="right">
         {data.text}
-      </Text>
+      </TextDiv>
+      <Image src={data.img.url} alt={data.img.name} position="left"/>
     </Container>
   )
 }

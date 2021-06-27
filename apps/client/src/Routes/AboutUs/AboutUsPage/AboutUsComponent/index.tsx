@@ -11,11 +11,11 @@ export interface AboutProps {
 const About: FC<AboutProps> = ({data}) => {
 
   return (
-    <Wrapper>
+    <Wrapper marginBottom="7em">
       {
         data.map((item) => {
           return (
-            <Container key={item.id}>
+            <Container key={item.id} marginBottom="5em">
               <Text>
                 {item.text}
               </Text>

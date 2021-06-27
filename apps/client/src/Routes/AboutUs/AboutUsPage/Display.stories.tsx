@@ -7,13 +7,12 @@ import { mockImage } from 'Utils/Image'
 import { AboutUsData } from 'Api/AboutUs'
 
 const image = mockImage({
-  url: "https://labfaz-strapi-assets.s3.sa-east-1.amazonaws.com/large_usememo_ecb62c6bf7.png",
+  url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsegredosdomundo.r7.com%2Fwp-content%2Fuploads%2F2019%2F10%2Fornitorrinco-principais-caracteristicas-10-curiosidades-4.jpg&f=1&nofb=1",
   alternativeText: "string",
   caption: "string",
   width: 20,
   height: 20,
   ext: "png"
-
 })
 
 const mockedData: AboutUsData = {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { Wrapper } from '../styles'
-import Text from "Components/Text"
+import { BannerWrapper } from '../styles'
+// import Text from "Components/Text"
 
 export interface BannerProps {
   subtitle: string
@@ -8,12 +8,10 @@ export interface BannerProps {
 
 export const Banner: FC<BannerProps> = ({ subtitle }) => {
   return (
-    <Wrapper>
+    <BannerWrapper>
       <h1>Quem somos</h1>
-      <Text>
-        {subtitle}
-      </Text>
-    </Wrapper>
+      <p>{subtitle}</p>
+    </BannerWrapper>
   )
 }
 
