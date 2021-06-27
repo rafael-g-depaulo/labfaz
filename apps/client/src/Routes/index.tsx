@@ -11,6 +11,7 @@ import Loading from 'Components/Loading'
 const Home = lazy(() => import('./Home'))
 const PeopleExample = lazy(() => import('./PeopleExample'))
 const SingletonExample = lazy(() => import('./SingletonExample'))
+const Blog = lazy(() => import('./Blog'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History,
@@ -39,6 +40,14 @@ const Routes: FC = () => {
           {({ match }) => (
             <Suspense fallback={<Loading />}>
               <Home match={match}/>
+            </Suspense> 
+          )}
+        </Route>
+
+        <Route path={["/blog"]}>
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <Blog match={match}/>
             </Suspense> 
           )}
         </Route>
