@@ -7,23 +7,14 @@ interface WrapperProps {
   marginBottom?: string,
   marginLeft?: string,
   marginRight?: string,
-  backgroundColor?: string
 }
 
 interface ImageProps {
-  height?: string,
-  maxHeight?: string,
-  width?: string,
-  maxWidth?: string
   position?: string
 }
 
 interface ContainerProps {
-  marginTop?: string,
   marginBottom?: string,
-  marginLeft?: string,
-  marginRight?: string,
-  isWelcome?: boolean
 }
 
 export interface DivProps {
@@ -32,11 +23,6 @@ export interface DivProps {
   position?: string
 }
 
-export interface ParagraphProps {
-  textAlign?: String
-  weight?: String
-  marginTop?: String | any,
-}
 
 export const Wrapper = styled.div<WrapperProps>`
   max-width: 100vw;
@@ -45,13 +31,6 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   flex-direction: column;
   align-self: center;
-
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : "0"};
-  margin-top: ${props => props.marginTop ? props.marginTop : "0"};
-  margin-left: ${props => props.marginLeft ? props.marginLeft : "0"};
-  margin-right: ${props => props.marginRight ? props.marginRight : "0"};
-
-  background-color: ${props => props.backgroundColor ? props.backgroundColor : "white"};
 `
 
 export const Container = styled.div<ContainerProps>`
@@ -64,7 +43,8 @@ export const Container = styled.div<ContainerProps>`
   grid-column-gap: 4em;
   grid-row-gap: 2em;
   min-height: 400px;
-  max-height: 500px;
+  height: 80vh;
+  max-height: 1000px;
   max-width: 100%;
   line-height: var(--line-height);
   margin: 0 5vw;
@@ -82,10 +62,10 @@ export const Container = styled.div<ContainerProps>`
 `
 
 export const Image = styled.img<ImageProps>`
-  max-height: ${props => props.maxHeight ? props.maxHeight : "400px"};
-  max-width: ${props => props.maxWidth ? props.maxWidth : "789px"};
-  height: ${props => props.height ? props.height : "100%"};
-  width: ${props => props.width ? props.width : "100%"};
+  max-height: 400px;
+  max-width: 789px;
+  height: 100%;
+  width: 100%;
   grid-area: ${props => props.position ? props.position : "right"};
 
   ${mobileOnly(
@@ -112,7 +92,7 @@ export const TextDiv = styled.div<DivProps>`
   `)}
 `
 
-export const Paragraph = styled.p<ParagraphProps>`
+export const Paragraph = styled.p`
   font-style: normal;
   text-align: justify;
   margin-top: 0;

@@ -29,8 +29,9 @@ export const Paragraph = styled.p<ParagraphProps>`
 
   ${
     mobileOnly(`
-      font-size: 14px;
+      font-size: 16px;
       line-height: 25px;
+      align-items: baseline;
     `)
   }
 `
