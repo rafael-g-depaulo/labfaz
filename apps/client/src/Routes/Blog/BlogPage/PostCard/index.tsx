@@ -1,7 +1,6 @@
 import React, { FC, Fragment } from "react";
 import {
-  Container,
-  Content,
+  Wrapper,
   MainTextContainer,
   Title,
   Description,
@@ -14,29 +13,29 @@ import {
   Divisor,
 } from "./styles";
 
-import Test from "./perfil.jpg";
 import useMobile from "Utils/useMobile";
+import { BlogPost } from "Api/BlogPost";
 
-export const PostCard: FC = () => {
+interface DisplayProps {
+  post: BlogPost;
+}
+
+export const PostCard: FC<DisplayProps> = ({ post }) => {
   const isMobile = useMobile();
 
   return (
     <Fragment>
-      <Container>
+      <Wrapper>
         {isMobile ? (
-          <Content>
+          <>
             <MainTextContainer>
-              <Title>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-              </Title>
-              <Description>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. Donec.
-              </Description>
-              <Image src={Test} alt="example" />
+              <Title>{post?.title}</Title>
+              <Description>{post?.description}</Description>
+              {post?.image !== null ? (
+                <Image src={post?.image?.url} alt={post?.image?.name} />
+              ) : (
+                <></>
+              )}
             </MainTextContainer>
             <ButtonWrapper>
               <Button>
@@ -47,22 +46,18 @@ export const PostCard: FC = () => {
                 <Date>Segunda</Date>
                 <Date>14:00</Date>
               </DateContainer>
-            </ButtonWrapper>
-          </Content>
+            </ButtonWrapper>{" "}
+          </>
         ) : (
-          <Content>
+          <>
             <MainTextContainer>
-              <Title>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
-              </Title>
-              <Description>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. Donec.
-              </Description>
-              <Image src={Test} alt="example" />
+              <Title>{post?.title}</Title>
+              <Description>{post?.description}</Description>
+              {post?.image !== null ? (
+                <Image src={post?.image?.url} alt={post?.image?.name} />
+              ) : (
+                <></>
+              )}
               <Button>
                 <ButtonText>leia mais</ButtonText>
               </Button>
@@ -71,10 +66,10 @@ export const PostCard: FC = () => {
             <DateContainer>
               <Date>Segunda</Date>
               <Date>14:00</Date>
-            </DateContainer>
-          </Content>
+            </DateContainer>{" "}
+          </>
         )}
-      </Container>
+      </Wrapper>
     </Fragment>
   );
 };

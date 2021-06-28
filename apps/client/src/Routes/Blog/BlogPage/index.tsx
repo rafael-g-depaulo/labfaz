@@ -1,19 +1,22 @@
-import React, { FC } from "react"
+import React, { FC } from "react";
 
-import Loading from "Components/Loading"
-import Display from "./Display"
-import { useBlogBannerInfo } from "Api/BlogBannerInfo"
+import Loading from "Components/Loading";
+import Display from "./Display";
+import { useBlogPosts } from "Api/BlogPost";
+import { useBlogBannerInfo } from "Api/BlogBannerInfo";
 
 export const BlogPage: FC = () => {
-
   const result = useBlogBannerInfo()
 
   if (result.isLoading) return <Loading />
   if (result.error) return <div>error: {result.error.message}</div>
 
-  return (
-    <Display data={result.data}/>
-  )
-}
+  const posts = useBlogPosts();
 
-export default BlogPage
+  if (posts.isLoading) return <Loading />;
+  if (posts.error) return <div>error: {posts.error?.message ?? ""}</div>;
+
+  return <Display data={result.data} postData={posts.data} />;
+};
+
+export default BlogPage;

@@ -1,37 +1,26 @@
 import styled, { css } from "styled-components";
 import mobileOnly from "Utils/breakpoints/mobileOnly";
 
-
-export const Container = styled.div`
-  display: grid;
+export const Wrapper = styled.div`
   width: 100%;
-  grid-template-columns: minmax(5%, auto) minmax(450px, 800px) minmax(5%, auto);
-  grid-template-rows: minmax(0, 3fr) auto;
-  grid-template-areas:
-    ". content ."
-    ".    .    .";
-
-  ${mobileOnly(css`
-    grid-template-columns: minmax(8%, auto) minmax(250px, 700px) minmax(
-        8%,
-        auto
-      );
-  `)}
-`;
-
-export const Content = styled.div`
-  width: 100%;
-  grid-area: content;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin: 100px 0;
+  margin: 100px 0 0 0;
+
+  &:last-child {
+    margin-bottom: 100px;
+  }
 
   ${mobileOnly(css`
     flex-direction: column;
     align-items: center;
-    margin: 70px 0;
+    margin: 70px 0 0 0;
+
+    &:last-child {
+      margin-bottom: 70px;
+    }
   `)}
 `;
 
@@ -63,7 +52,7 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: 20px;
-  text-align: left;
+  text-align: justify;
   line-height: 1.5;
   margin: 50px 0 40px 0;
 
@@ -71,7 +60,6 @@ export const Description = styled.p`
     font-size: 14px;
     margin: 35px 0;
     line-height: 2;
-    text-align: justify;
   `)}
 `;
 
@@ -80,11 +68,10 @@ export const Image = styled.img`
   height: 400px;
   object-fit: cover;
   object-position: center;
-  margin: 0 0 80px 0;
+  margin: 0 0 40px 0;
 
   ${mobileOnly(css`
-    height: 295px;
-    margin: 0 0 40px 0;
+    height: 295px;    
   `)}
 `;
 
