@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mobileOnly from "Utils/breakpoints/mobileOnly";
+import {MobileOnlyCourses} from "Utils/breakpoints/mobileOnly";
 import { css } from "styled-components";
 
 export const Container = styled.div`
@@ -14,7 +14,7 @@ export const Container = styled.div`
   justify-items: end;
   align-items: start;
 
-  ${mobileOnly(css`
+  ${MobileOnlyCourses(css`
     grid-template-columns: minmax(150px, 300px);
     grid-template-rows: minmax(200px, 400px) minmax(200px, 400px);
     grid-template-areas:
@@ -36,7 +36,7 @@ export const CardContainer = styled.div`
   padding: 20px;
   height: 90%;
 
-  ${mobileOnly(css`
+  ${MobileOnlyCourses(css`
     width: 100%;
   `)}
 `;
@@ -48,7 +48,7 @@ export const CardImage = styled.img`
   width: 100%;
   margin-bottom: 10px;
 
-  ${mobileOnly(css`
+  ${MobileOnlyCourses(css`
     margin-bottom: 0;
   `)}
 `;
@@ -81,7 +81,7 @@ export const CardDescription = styled.p`
   text-align: left;
   overflow: hidden;
 
-  ${mobileOnly(css`
+  ${MobileOnlyCourses(css`
     margin: 10px 0 0 0;
   `)}
 `;

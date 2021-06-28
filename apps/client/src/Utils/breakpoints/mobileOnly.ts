@@ -27,3 +27,9 @@ export const ScreenMobileLarge = (cssCode: CSSProp) => css`
     ${cssCode}
   }
 `
+
+export const MobileOnlyCourses = (cssCode: CSSProp) => css`
+@media(max-width: 1023px) {
+  ${cssCode}
+}
+`
