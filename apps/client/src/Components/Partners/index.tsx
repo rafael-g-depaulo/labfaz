@@ -1,22 +1,17 @@
-import React from 'react'
+import React, {FC} from 'react'
 
-import Logo from './Logo'
-import { Container } from './styles'
+import { useHomePartners } from 'Api/HomePartners'
+import Loading from 'Components/Loading'
+import Display from './Display'
 
-const Partners = () => {
-  return(
-    <Container>
-      <h1> APOIO </h1>
-      <div>
-        <Logo />
-        <Logo />
-        <Logo />
-        <Logo />
-        <Logo />
-        <Logo />
-      </div>
-    </Container>
-  )
+export const Partners: FC = () => {
+  const {data, error, isLoading} = useHomePartners()
+
+  if (isLoading) return <Loading />
+
+  if (error) return <div>error: { error?.message ?? "" }</div>
+
+  return <Display data={data!}/>
 }
 
 export default Partners
