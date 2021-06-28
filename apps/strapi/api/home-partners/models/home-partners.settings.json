@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_partners",
+  "info": {
+    "name": "HomePartners",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "logo": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
