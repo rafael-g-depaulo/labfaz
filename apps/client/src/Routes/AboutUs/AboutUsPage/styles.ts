@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import mobileOnly from 'Utils/breakpoints/mobileOnly'
+import { Mobile } from 'Utils/breakpoints'
 
 interface WrapperProps {
   color?: string,
@@ -53,7 +53,7 @@ export const Container = styled.div<ContainerProps>`
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
 
   ${
-    mobileOnly(css`
+    Mobile(css`
       margin: 0 2vw;
       margin-bottom: 5em;
       grid-template-areas:
@@ -70,7 +70,7 @@ export const Image = styled.img<ImageProps>`
   width: 100%;
   grid-area: ${props => props.position ? props.position : "right"};
 
-  ${mobileOnly(
+  ${Mobile(
     css`
     max-height: 75%;
     max-width: 75%;
@@ -88,7 +88,7 @@ export const TextDiv = styled.div<DivProps>`
   max-width: 100%;
   grid-area: ${props => props.position ? props.position : "left"};
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     max-width: 75%;
     grid-area: top;
   `)}
@@ -119,7 +119,7 @@ export const BannerWrapper = styled.div`
     margin-left: 150px;
   }
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     h1 {
       font-size: 40px
     }
