@@ -42,7 +42,7 @@ export const Container = styled.div<ContainerProps>`
   "left right"
   "left right";
   grid-column-gap: 4em;
-  grid-row-gap: 2em;
+  grid-row-gap: 1em;
   min-height: 400px;
   height: 80vh;
   max-height: 1000px;
@@ -55,7 +55,7 @@ export const Container = styled.div<ContainerProps>`
   ${
     Mobile(css`
       margin: 0 2vw;
-      margin-bottom: 5em;
+      grid-template-rows: 0.3fr 0.8fr;
       grid-template-areas:
       "top top"
       "bottom bottom";
@@ -84,7 +84,7 @@ export const Image = styled.img<ImageProps>`
 
 export const TextDiv = styled.div<DivProps>`
   display: flex;
-  height: 100%;
+  height: 75%;
   max-width: 100%;
   grid-area: ${props => props.position ? props.position : "left"};
 
