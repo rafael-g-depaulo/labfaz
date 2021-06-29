@@ -1,35 +1,30 @@
 import styled from "styled-components"
 import mobileOnly from "Utils/breakpoints/mobileOnly"
 
-export interface DivProps {
-  height?: string,
-  width?: string,
-}
-
 export interface ParagraphProps {
-  textAlign?: String
-  weight?: String
-  marginTop?: String | any,
+  textAlign?: string
+  weight?: string
+  marginTop?: string
+  fontSize?: string
+  color?: string
 }
 
-export const TextDiv = styled.div<DivProps>`
-  display: flex;
-  height: 100%;
-  max-width: 100%;
-
-  ${mobileOnly(`
-    max-width: 75%;
-  `)}
-`
 
 export const Paragraph = styled.p<ParagraphProps>`
   font-style: normal;
-  text-align: justify;
   margin-top: 0;
+  font-size: var(--font-size-default);
+  text-align: ${props => props.textAlign ? props.textAlign : "left"};
+  font-size: ${props => props.fontSize ? 
+  "var(--font-size-"+ props.fontSize + ")" 
+  :
+  "var(--font-size-default)"
+  };
+
 
   ${
     mobileOnly(`
-      font-size: 16px;
+      font-size: var(--font-size-large);
       line-height: 25px;
       align-items: baseline;
     `)

@@ -1,19 +1,18 @@
 import React, { FC } from "react"
-import { TextDiv, Paragraph, ParagraphProps } from "./style"
+import { Paragraph, ParagraphProps } from "./style"
 
-interface Props {
-  paragraph?: ParagraphProps,
-}
+type TextProps = ParagraphProps & {
+  children: React.ReactNode
+};
 
+export const Text: FC<TextProps> = ({children, ...textProps}) => {
 
-export const Text: FC<Props> = ({ paragraph, children }) => {
+  console.log(textProps)
 
   return (
-    <TextDiv>
-      <Paragraph {...paragraph}>
+      <Paragraph {...textProps}>
         {children}
       </Paragraph>
-    </TextDiv>
   )
 }
 

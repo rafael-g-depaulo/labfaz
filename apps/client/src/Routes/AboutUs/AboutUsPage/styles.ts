@@ -94,18 +94,6 @@ export const TextDiv = styled.div<DivProps>`
   `)}
 `
 
-export const Paragraph = styled.p`
-  font-style: normal;
-  text-align: justify;
-  margin-top: 0;
-
-  ${
-    mobileOnly(`
-      font-size: 14px;
-      line-height: 25px;
-    `)
-  }
-`
 
 export const BannerWrapper = styled.div`
   display: flex;
