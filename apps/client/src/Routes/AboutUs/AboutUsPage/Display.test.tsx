@@ -1,20 +1,21 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
+
 import render from "Utils/render"
 import Display from "./Display"
 import { AboutUsData } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
 
-describe("Home Page", () => {
-  const image = mockImage({
-    url: "https://labfaz-strapi-assets.s3.sa-east-1.amazonaws.com/large_usememo_ecb62c6bf7.png",
-    alternativeText: "string",
-    caption: "string",
-    width: 20,
-    height: 20,
-    ext: "png"
 
+
+describe("Home Page", () => {
+
+  const image = mockImage({
+    url:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsegredosdomundo.r7.com%2Fwp-content%2Fuploads%2F2019%2F10%2Fornitorrinco-principais-caracteristicas-10-curiosidades-4.jpg&f=1&nofb=1",
+    alternativeText: "Some text as alternative",
+    caption: "Image description",
+    ext:"jpg"
   })
 
   const mockedData: AboutUsData = {
@@ -41,6 +42,14 @@ describe("Home Page", () => {
   it("renders without exploding", () => {
 
     expect(() => render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)).not.toThrow()
+  })
+  
+  it("Renders banner component", () => {
+    const Page = render(<Display data={mockedData} />)
+    const banner = Page.getAllByRole('heading')
+
+
+    expect( banner[1] ).toHaveTextContent("Welcome to Labfaz")
   })
 
   it("displays the data message", () => {
