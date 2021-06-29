@@ -1,37 +1,44 @@
 import { css, CSSProp } from "styled-components"
 
+export const desktopLarge = 1080
+export const desktopSmall = 720
+export const mobileLarge = 420
+
+const minBreakpoint = (breakpoint: number) => `(min-width: ${breakpoint}px)`
+const maxBreakpoint = (breakpoint: number) => `(max-width: ${breakpoint-1}px)`
+
 export const Desktop = (cssCode: CSSProp) => css`
-  @media (min-width: 720px) {
+  @media ${minBreakpoint(desktopSmall)} {
     ${cssCode}
   }
 `
 
 export const DesktopLarge = (cssCode: CSSProp) => css`
-  @media (min-width: 1080px) {
+  @media ${minBreakpoint(desktopLarge)} {
     ${cssCode}
   }
 `
 
 export const DesktopSmall = (cssCode: CSSProp) => css`
-  @media (min-width: 720px) and (max-width: 1079px) {
+  @media ${`${minBreakpoint(desktopSmall)} and ${maxBreakpoint(desktopLarge)}`} {
     ${cssCode}
   }
 `
 
 export const Mobile = (cssCode: CSSProp) => css`
-  @media (max-width: 719px) {
+  @media ${maxBreakpoint(desktopSmall)} {
     ${cssCode}
   }
 `
 
 export const MobileLarge = (cssCode: CSSProp) => css`
-  @media (min-width: 420px) and (max-width: 719px) {
+  @media ${`${minBreakpoint(mobileLarge)} and ${maxBreakpoint(desktopSmall)}`} {
     ${cssCode}
   }
 `
 
 export const MobileSmall = (cssCode: CSSProp) => css`
-  @media (max-width: 419px) {
+  @media ${maxBreakpoint(mobileLarge)} {
     ${cssCode}
   }
 `
