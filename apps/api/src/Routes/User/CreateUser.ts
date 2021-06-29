@@ -24,7 +24,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     password
   } = req.body as IUser
 
-  if (!name || !email || !password) return res.status(401).json({ error: "Incomplete request body" })
+  if (!name || !email || !password) return res.status(400).json({ error: "Incomplete request body" })
 
   if (typeof name !== 'string' || typeof email !== 'string' || typeof password !== 'string') return res.json(400).json({ error: "Invalid request body" })
 
