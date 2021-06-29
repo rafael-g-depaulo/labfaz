@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     --background-white: #FFFFFF;
 
     --font-size-title: 35px;
+    --font-size-title-medium: 30px;
     --font-size-default: 18px;
     --font-size-large: 16px;
     --font-size-medium: 14px;
