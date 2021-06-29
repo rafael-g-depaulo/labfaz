@@ -26,7 +26,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
 
   if (!name || !email || !password) return res.status(400).json({ error: "Incomplete request body" })
 
-  if (typeof name !== 'string' || typeof email !== 'string' || typeof password !== 'string') return res.json(400).json({ error: "Invalid request body" })
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof password !== 'string') return res.status(400).json({ error: "Invalid request body" })
 
   const checkUserExists = await UserRepo.findByEmail(email)
 
