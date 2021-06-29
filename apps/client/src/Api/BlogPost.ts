@@ -2,9 +2,9 @@ import { strapi } from "Api"
 import useFetchApi from 'Hooks/useFetchApi'
 
 export interface BlogPost {
-  title: String,
-  description: String,
-  created_at: String,
+  title: string,
+  description: string,
+  created_at: string,
   image: any, 
 }
 

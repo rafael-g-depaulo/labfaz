@@ -15,6 +15,7 @@ import {
 
 import useMobile from "Utils/useMobile";
 import { BlogPost } from "Api/BlogPost";
+import { formatPostDate } from "Utils/formatPostDate";
 
 interface DisplayProps {
   post: BlogPost;
@@ -22,6 +23,7 @@ interface DisplayProps {
 
 export const PostCard: FC<DisplayProps> = ({ post }) => {
   const isMobile = useMobile();
+  const date = formatPostDate(post?.created_at);
 
   return (
     <Fragment>
@@ -43,8 +45,8 @@ export const PostCard: FC<DisplayProps> = ({ post }) => {
               </Button>
               <Divisor />
               <DateContainer>
-                <Date>Segunda</Date>
-                <Date>14:00</Date>
+                <Date>{date?.day}</Date>
+                <Date>{date?.hour}</Date>
               </DateContainer>
             </ButtonWrapper>{" "}
           </>
@@ -64,8 +66,8 @@ export const PostCard: FC<DisplayProps> = ({ post }) => {
             </MainTextContainer>
             <Divisor />
             <DateContainer>
-              <Date>Segunda</Date>
-              <Date>14:00</Date>
+              <Date>{date?.day}</Date>
+              <Date>{date?.hour}</Date>
             </DateContainer>{" "}
           </>
         )}
