@@ -2,6 +2,7 @@ import { strapi } from "Api"
 import useFetchApi from "Hooks/useFetchApi"
 import { Image } from 'Utils/Image'
 
+import { Image } from 'Utils/Image'
 export interface AboutUsData {
   banner_data: string,
   welcome_data: DataObject,
