@@ -19,7 +19,10 @@
     "about_us_data": {
       "type": "component",
       "repeatable": true,
-      "component": "about-us.apresentation"
+      "component": "about-us.apresentation",
+      "required": false,
+      "max": 3,
+      "min": 1
     },
     "welcome_data": {
       "type": "component",
