@@ -42,22 +42,22 @@ describe('UpdateUser Route Handler', () => {
       password: '123456'
     }
 
-    let response = createResponseMock()
-    let request = createRequestMock(userInfo)
+    const user = UserRepo.create(userInfo)
 
-    await mockRouteHandler(createUserRoute, request, response)
-
-    request = createRequestMock({
+    const response = createResponseMock()
+    const updatedUser = createRequestMock({
+      user_id: user.id,
       name: 'John Wick',
-      email: 'johnwick@hotmail.com',
-      password: '123456'
+      email: 'johnwick@hotmail.com'
     })
 
-    await mockRouteHandler(updateUserRoute, request, response)
+    await mockRouteHandler(updateUserRoute, updatedUser, response)
 
-    console.log(mockTable)
-    expect(mockTable.length).toBe(1)
-    expect(mockTable[0].name).toBe('John Wick')
-    expect(mockTable[0].email).toBe('johnwick@hotmail.com')
+    const UserTable = RepoConfig.table
+
+    expect(UserTable.length).toBe(1)
+    expect(updatedUser.body?.name).toBe('John Wick')
+    expect(updatedUser.body?.email).toBe('johnwick@hotmail.com')
   })
+
 })  
