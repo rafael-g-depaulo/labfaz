@@ -71,7 +71,7 @@ const Routes: FC = () => {
             )}
         </Route>
 
-        <Route path={["/aboutUs", "/about-us", "/AboutUs", "/About-us", "/About-Us"]}>
+        <Route path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}>
           {({ match }) => (
             <Suspense fallback={<Loading />}>
               <AboutUs match={match} />
