@@ -15,6 +15,7 @@ interface ImageProps {
 
 interface ContainerProps {
   marginBottom?: string,
+  marginTop?: string,
 }
 
 export interface DivProps {
@@ -49,6 +50,7 @@ export const Container = styled.div<ContainerProps>`
   line-height: var(--line-height);
   margin: 0 5vw;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
+  margin-top: ${props => props.marginTop ? props.marginTop : ""};
 
   ${
     mobileOnly(`

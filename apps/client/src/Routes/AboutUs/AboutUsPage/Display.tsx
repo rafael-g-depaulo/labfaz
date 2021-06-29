@@ -3,7 +3,7 @@ import React, { FC } from "react"
 
 import Fullpage from "Components/CoursesPresentation"
 import Header from "Components/Header"
-import Banner from "./BannerComponent"
+import Banner from "Components/Banner"
 import WelcomeComponent from "./WelcomeComponent"
 import About from "./AboutUsComponent"
 
@@ -17,7 +17,7 @@ export const Display: FC<DisplayProps> = ({
   const {banner_data, welcome_data, about_us_data} = data!
   return (
     <Fullpage>
-      <Banner subtitle={banner_data}/>
+      <Banner title="Quem somos" subtitle={banner_data} align="left"/>
       <WelcomeComponent data={welcome_data} />
       <About  data={about_us_data} />
     </Fullpage>
