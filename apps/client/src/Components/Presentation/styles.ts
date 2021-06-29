@@ -1,35 +1,31 @@
-import styled from 'styled-components'
-import {
-  ScreenMobileShort,
-  ScreenMobileMedium,
-  ScreenMobileLarge,
-  ScreenMobileSmaller
-} from 'Utils/breakpoints/mobileOnly'
-import {
-  PlayerShortWebScreen,
-  PlayerMediumWebScreen,
-  PlayerLargeWebScreen,
-  PlayerSmallerWebScreen
-} from 'Utils/breakpoints/webOnly'
+import styled, { css } from 'styled-components'
+import { DesktopSmall, Mobile } from 'Utils/breakpoints'
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  height: 17rem;
-  
+
   .ContainerContent {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    height: 17rem;
     gap: 3rem;
-    width: 60rem;
-    ${PlayerShortWebScreen(
-      'flex-direction: column; align-items: center; justify-content: none; max-width: 30rem'
+    ${
+      Mobile(css`
+        flex-direction: column;
+        align-items: center;
+        justify-content: none;
+        gap: 0;
+      `)
+    }
+    /*
+      '   max-width: 30rem'
     )};
-    ${PlayerMediumWebScreen('width: 40rem')};
-    ${PlayerLargeWebScreen('width: 50rem')};
+    'width: 40rem')};
+    'width: 50rem')}; */
   }
-  ${PlayerShortWebScreen('height: auto')};
-  ${PlayerMediumWebScreen('height: 12rem')};
+  /* 'height: auto')};
+  'height: 12rem')}; */
 `
 
 export const TextBlock = styled.div`
@@ -39,13 +35,13 @@ export const TextBlock = styled.div`
   justify-content: space-between;
   align-items: space-between;
   padding: 0 1rem;
-  ${ScreenMobileSmaller('max-width: 17rem')};
+  /* 'max-width: 17rem')}; */
 `
 
 export const TextTitle = styled.h1`
-  font-size: var(--font-size-title-small);
+  font-size: var(--font-size-title-medium);
   margin: 0;
-  ${PlayerShortWebScreen('text-align: center; margin: 0 0 1rem 0')};
+  /* 'text-align: center; margin: 0 0 1rem 0')}; */
 `
 
 export const Subtitle = styled.p`
@@ -56,16 +52,23 @@ export const Subtitle = styled.p`
 
 export const YoutubePlayerResponsive = styled.div`
   display: flex;
-  align-items: end;
+  padding-top: 2rem;
   div {
-    height: 15rem;
-    width: 30rem;
-    ${ScreenMobileShort('max-width: 17rem')};
-    ${ScreenMobileMedium('max-width: 20rem; padding: 0 1rem')};
-    ${ScreenMobileLarge('max-width: 25rem; padding: 0 1rem')}
-    ${PlayerSmallerWebScreen('min-width: 20rem; padding: 0 1rem')};
-    ${PlayerMediumWebScreen('width: 20rem; height: 10rem')};
-    ${PlayerLargeWebScreen('width: 25rem;')}
+    width: 30em;
+
+    ${DesktopSmall(css`
+      width: 20em;
+    `)}
+    ${Mobile(css`
+      width: 10em;
+    `)}
+    
+    /* 'max-width: 17rem')};
+    'max-width: 20rem; padding: 0 1rem')};
+    'max-width: 25rem; padding: 0 1rem')}
+    'min-width: 20rem; padding: 0 1rem')};
+    'width: 20rem; height: 10rem')};
+    'width: 25rem;')} */
     
   }
 `;
