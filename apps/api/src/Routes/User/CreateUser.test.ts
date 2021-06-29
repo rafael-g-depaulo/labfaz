@@ -11,16 +11,27 @@ describe('CreateUser Route Handler', () => {
 
   let UserRepo: UserRepository
   let createUserRoute: RequestHandler<DeepPartial<User>>
-  let mockTable: any
+  let mockTable: User[] = []
 
   beforeAll(() => {
     UserRepo = new UserRepository()
     createUserRoute = CreateUser({ UserRepo })
 
-    jest.spyOn(UserRepo, 'create').mockImplementation(info => mockTable.push({ ...info, id: `${info.name}.${info.password}`}) )
+    jest.spyOn(UserRepo, 'create').mockImplementation(info => {
+      const user = { ...info, id: `${info.name}.${info.password}`} as User
+
+      mockTable.push(user)
+
+      return user
+    })
+
     jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
+
     jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
-    jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => mockTable.find(findUser => findUser.email === email))
+
+    jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => 
+      Promise.resolve(mockTable.find(findUser => findUser.email === email))
+    )
   })
 
   beforeEach(() => {
@@ -45,6 +56,7 @@ describe('CreateUser Route Handler', () => {
     expect(UserRepo.create).toHaveBeenCalledWith(userInfo)
     expect(mockTable.length).toBe(1)
     expect(mockTable[0]).toMatchObject(userInfo)
+    expectStatus(201, expect, response)
   })
 
   it('should not be able to create a new user in the database table missing some field in request body', async () => {
@@ -60,34 +72,47 @@ describe('CreateUser Route Handler', () => {
     await mockRouteHandler(createUserRoute, request, response)
 
     expect(mockTable.length).toBe(0)
-    expectStatus(401, expect, response)
+    expectStatus(400, expect, response)
   })
 
   it('should not be able to create in the database table a user with same email from another', async () => {
 
-    const user = {
+    UserRepo.create({
       name: 'john doe',
       email: 'johndoe@hotmail.com',
       password: '123456'
-    }  
+    })
     
-    let response = createResponseMock()
-    let request = createRequestMock(user)
-
-    await mockRouteHandler(createUserRoute, request, response)
-    
-    const newUser = {
+    const user = {
       name: 'FakeName',
       email: 'johndoe@hotmail.com',
       password: '123456'
     }
 
-    request = createRequestMock(newUser)
-    response = createResponseMock()
+    const request = createRequestMock(user)
+    const response = createResponseMock()
 
     await mockRouteHandler(createUserRoute, request, response)
 
     expect(mockTable.length).toBe(1)
     expectStatus(401, expect, response)
+  })
+
+  it('should not be able to create a new user in the database table with wrong field types', async () => {
+
+    const user = {
+      name: 'John Doe',
+      email: 'johndoe@email.com',
+      password: 12345,
+    }
+
+    const request = createRequestMock(user)
+    const response = createResponseMock()
+
+    await mockRouteHandler(createUserRoute, request, response)
+
+    expectStatus(400, expect, response)
+    expect(UserRepo.create).toHaveBeenCalledTimes(0)
+    expect(mockTable.length).toBe(0)
   })
 })  
