@@ -24,6 +24,10 @@ export const CreateSession: (deps: CreateSessionInterface) => RequestHandler<Dee
     password
   } = req.body as IUser
 
+  if ( !email || !password ) return res.status(400).json({ error: "Incomplete request body" })
+
+  if ( typeof email !== 'string' || typeof password !== 'string') return res.status(400).json({ error: "Invalid request body" })
+
   const user = await UserRepo.findByEmail(email)
 
   if (!user) {
