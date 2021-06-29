@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
 
-import {ShortScreen, MediumScreen, LargeScreen} from 'Utils/breakpoints/webOnly'
+// import {ShortScreen, MediumScreen, LargeScreen} from 'Utils/breakpoints/webOnly'
 
 export const Container = styled.div`
   background-color: var(--background-dark-gray);
@@ -27,9 +27,9 @@ export const RedirectLink = styled(Link)`
   /* TODO color: ; */
   color: var(--color-text);
 
-  ${ShortScreen('font-size: var(--font-size-short)')};
-  ${MediumScreen('font-size: var(--font-size-medium)')};
-  ${LargeScreen('font-size: var(--font-size-large)')};
+  /* $ {ShortScreen('font-size: var(--font-size-short)')}; */
+  /* $ {MediumScreen('font-size: var(--font-size-medium)')}; */
+  /* $ {LargeScreen('font-size: var(--font-size-large)')}; */
 `;
 
 export const Navbar = styled.div`
@@ -49,9 +49,9 @@ export const NavLink = styled(Link)`
     color: var(--color-text);
     padding: 0.6rem 0;
     
-    ${ShortScreen('font-size: var(--font-size-short)')};
-    ${MediumScreen('font-size: var(--font-size-medium)')};
-    ${LargeScreen('font-size: var(--font-size-large)')};
+    /* $ {ShortScreen('font-size: var(--font-size-short)')}; */
+    /* $ {MediumScreen('font-size: var(--font-size-medium)')}; */
+    /* $ {LargeScreen('font-size: var(--font-size-large)')}; */
   }
 `
 
@@ -72,8 +72,8 @@ export const Button = styled(Link)`
     text-decoration: none;
     /* TODO color: ; */
     color: var(--color-text);
-    ${ShortScreen('font-size: var(--font-size-short); padding: 0.5rem 1rem')};
-    ${MediumScreen('font-size: var(--font-size-medium)')};
-    ${LargeScreen('font-size: var(--font-size-large)')};
+    /* $ {ShortScreen('font-size: var(--font-size-short); padding: 0.5rem 1rem')}; */
+    /* $ {MediumScreen('font-size: var(--font-size-medium)')}; */
+    /* $ {LargeScreen('font-size: var(--font-size-large)')}; */
   }
 `;

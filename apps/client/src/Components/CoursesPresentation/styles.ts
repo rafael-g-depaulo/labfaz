@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mobileOnly from "Utils/breakpoints/mobileOnly";
+import { Mobile } from "Utils/breakpoints";
 import { css } from "styled-components";
 
 export const Container = styled.div`
@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: flex-start;
   padding: 5%;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     flex-direction: column;
     align-items: center;
     height: auto;
@@ -28,7 +28,7 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     width: 100%;
     justify-content: center;
     margin: 0;
@@ -41,7 +41,7 @@ export const Title = styled.h1`
   color: black;
   font-weight: bold;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     font-size: 1.8em;
     margin: 0 0 30px 0;
   `)}
@@ -53,7 +53,7 @@ export const Text = styled.p`
   color: black;
   text-align: justify;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     font-size: 1em;
     margin: 0;
   `)}
