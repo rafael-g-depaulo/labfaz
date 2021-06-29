@@ -1,13 +1,13 @@
 import React, { FC } from "react"
 
-import { YoutubePlayer } from 'Components/YoutubePlayer';
+import { YoutubePlayer } from 'Components/Youtube Player';
 import {
   Container,
   TextBlock,
   YoutubePlayerResponsive,
   TextTitle,
   Subtitle
-} from './style'
+} from './styles'
 
 
 
