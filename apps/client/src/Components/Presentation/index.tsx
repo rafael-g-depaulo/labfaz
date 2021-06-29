@@ -1,26 +1,36 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { FC, useState, useEffect } from 'react'
+import { strapi } from "Api"
 
-import render from 'Utils/render'
-import Presentation from './'
+import Loading from "Components/Loading"
 import Display from "./Display"
 
-it("renders Presentation component", () => {
-  expect(() => render(<Presentation />)).not.toThrow()
-})
+export const Presentation: FC = () => {
+  const[loading, setLoading] = useState(true)
+  const[data, setData] = useState(
+    {
+      Title: "",
+      SubTitle: "",
+      Video: ""
+    })
+  const[error, setError] = useState()
 
-describe('check content of Presentation Component', () => {
-  const { getByText} = render(
-    <Display
-      Title="LABFAZ"
-      SubTitle="Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-        nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec."
-      Video="https://www.youtube.com/watch?v=5qap5aO4i9A"
-    />
-  )
-  it('check component block text', () => {
-    expect(getByText('LABFAZ')).toHaveTextContent("LABFAZ")
-    expect(getByText('Aenean commodo', { exact: false })).toHaveTextContent("Lorem ipsum")
-  })
-})
+  useEffect(() => {
+    strapi
+      .get(`/home-presentation-info`)
+      .then(({ data }) => data)
+      .then(({ Title, SubTitle, Video }) => {
+        setData({ Title, SubTitle, Video })
+        console.log(data)
+        setLoading(false)
+      })
+      .catch((error) => setError(error.message))
+  }, [loading])
+
+  if (error) return <div>error: {error ?? ""} </div>
+  if (loading) return <Loading />
+
+  return <Display Video={data.Video} Title={data.Title} SubTitle={data.SubTitle}/>
+}
+
+export default Presentation
