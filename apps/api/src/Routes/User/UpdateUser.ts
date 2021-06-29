@@ -1,7 +1,5 @@
-import { DeepPartial } from "typeorm"
 import { RequestHandler } from "Routes"
 
-import User from "Entities/User"
 import UserRepository from "Repository/UserRepository"
 
 interface CreateUserInterface {
@@ -16,17 +14,21 @@ interface IUser {
   password?: string
 }
 
-export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<DeepPartial<User>> = ({
+export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<IUser> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 
-  const { name, email, password, old_password } = req.body as IUser
+  const { name, email, password, old_password } = req.body
+  
+  if ( !req.user ) {
+    return res.status(401).json({error: 'User need to be loged'})
+  }
 
-  const user = await UserRepo.findById(req.user.id)
+  const user = await UserRepo.findById(req.user?.id)
 
   if (!user) {
 
-    return res.json("User not found.")
+    return res.status(404).json("User not found.")
   }
 
   const userWithUpdatedEmail = await UserRepo.findByEmail(email)
@@ -40,11 +42,6 @@ export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   user.email = email
 
   if (password) {
-
-    if (password && !old_password) {
-
-      return res.status(401).json({ error: "You need to inform the old password to set a new password." })
-    }
 
     if (!old_password) {
       return res.status(401).json({ error: "You need to inform the old password to set a new password." })
