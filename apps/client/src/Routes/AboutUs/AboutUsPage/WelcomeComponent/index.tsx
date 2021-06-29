@@ -11,13 +11,15 @@ export interface WelcomeProps {
 }
 
 export const WelcomeComponent: FC<WelcomeProps> = ({ data }) => {
+
+  console.log(data)
   
   return (
     <Container key={data.id} marginBottom="6em">
       <TextDiv position="right">
         <p>{data.text}</p>
       </TextDiv>
-      <Image src={data.img.url} alt={data.img.name} position="left"/>
+      <Image src={data.img.url} alt={data.img.caption} position="left"/>
     </Container>
   )
 }

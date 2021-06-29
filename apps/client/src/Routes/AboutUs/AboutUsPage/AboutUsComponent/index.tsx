@@ -19,7 +19,7 @@ const About: FC<AboutProps> = ({data}) => {
               <Text>
                 {item.text}
               </Text>
-              <Image src={item.img.img} alt={item.img.name}/>
+              <Image src={item.img.url} alt={item.img.caption}/>
             </Container>
           )
         })
