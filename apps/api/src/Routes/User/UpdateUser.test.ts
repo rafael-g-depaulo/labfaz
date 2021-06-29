@@ -213,7 +213,7 @@ describe('UpdateUser Route Handler', () => {
     const response = createResponseMock()
     const request = createRequestMock(updateUser_2, {}, { id: '2' })
 
-    await mockRouteHandler(updateUserRoute, updatedUser, response)
+    await mockRouteHandler(updateUserRoute, request, response)
 
     expectStatus(401, expect, response)
     expect(UserRepo.save).toHaveBeenCalledTimes(0)
