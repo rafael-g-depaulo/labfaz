@@ -12,7 +12,6 @@ export interface WelcomeProps {
 
 export const WelcomeComponent: FC<WelcomeProps> = ({ data }) => {
 
-  console.log(data)
   
   return (
     <Container key={data.id} marginBottom="6em" marginTop="4em">
