@@ -5,9 +5,13 @@ export interface MockNext {
   (): void
 }
 
+export interface UserSession {
+  id: string
+}
 export interface MockRequest<Body = {}, Params = {}> {
   params?: Params,
   body?: Body,
+  user?: UserSession,
 }
 
 interface Jest {
@@ -21,8 +25,8 @@ export interface MockResponse {
   status: jest.Mock<Express.Response, [number]>,
 }
 
-export const createRequestMock: <Body = {}, Params = {}> (body?: Body, params?: Params) => MockRequest<Body, Params> =
-  (body, params) => ({ body, params })
+export const createRequestMock: <Body = {}, Params = {}> (body?: Body, params?: Params, user?: UserSession) => MockRequest<Body, Params> =
+  (body, params, user) => ({ body, params, user })
 
 export const createResponseMock = (_jest: Jest = jest) => {
   const responseMock: MockResponse = {
