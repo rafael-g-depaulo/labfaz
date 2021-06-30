@@ -18,13 +18,17 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-medium: 14px;
     --font-size-short: 12px;
     --font-family: 'Cairo', sans-serif;
+    
+    --footer-background-color: #FC0061; 
+    --footer-text-color: #FFEC99;
+
   }
 
   * {
     box-sizing: border-box;
     font-size: var(--font-size-default);
     font-family: var(--font-family);
-    color: var(----color-text);
+    color: var(--color-text);
 
   }
 
