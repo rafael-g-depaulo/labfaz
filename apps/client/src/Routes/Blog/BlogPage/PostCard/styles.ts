@@ -1,5 +1,31 @@
 import styled, { css } from "styled-components";
-import mobileOnly from "Utils/breakpoints/mobileOnly";
+import { Mobile } from "Utils/breakpoints";
+
+export const Container = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(5%, auto) minmax(450px, 800px) minmax(5%, auto);
+  grid-template-rows: minmax(0, 3fr) auto;
+  grid-template-areas:
+    ". content ."
+    ".    .    .";
+
+  ${Mobile(css`
+    grid-template-columns: minmax(8%, auto) minmax(250px, 700px) minmax(
+        8%,
+        auto
+      );
+  `)}
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -13,7 +39,7 @@ export const Wrapper = styled.div`
     margin-bottom: 100px;
   }
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     flex-direction: column;
     align-items: center;
     margin: 60px 0 0 0;
@@ -33,31 +59,31 @@ export const MainTextContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 35px;
+  font-size: var(--font-size-title);
   font-weight: bold;
   text-align: left;
   margin: 0 25px 0 0;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;
 
-  ${mobileOnly(css`
-    font-size: 24px;
+  ${Mobile(css`
+    font-size: var(--font-size-subtitle);
     margin: 0;
     line-height: 1.5;
   `)}
 `;
 
 export const Description = styled.p`
-  font-size: 20px;
+  font-size: var(--font-size-default);
   text-align: justify;
   line-height: 1.5;
   margin: 50px 0 40px 0;
 
-  ${mobileOnly(css`
-    font-size: 14px;
+  ${Mobile(css`
+    font-size: var(--font-size-medium);
     margin: 35px 0;
     line-height: 2;
   `)}
@@ -70,8 +96,8 @@ export const Image = styled.img`
   object-position: center;
   margin: 0 0 40px 0;
 
-  ${mobileOnly(css`
-    height: 295px;    
+  ${Mobile(css`
+    height: 295px;
   `)}
 `;
 
@@ -93,20 +119,20 @@ export const Button = styled.button`
   outline: none;
   border: none;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     width: 150px;
     height: 35px;
   `)}
 `;
 
 export const ButtonText = styled.p`
-  font-size: 14px;
+  font-size: var(--font-size-medium);
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
 
-  ${mobileOnly(css`
-    font-size: 10px;
+  ${Mobile(css`
+    font-size: var(--font-size-short);
   `)}
 `;
 
@@ -114,7 +140,7 @@ export const Divisor = styled.hr`
   height: 70px;
   margin: 5px 0;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     height: 35px;
     margin: 0;
   `)}
@@ -128,7 +154,7 @@ export const DateContainer = styled.div`
   align-items: center;
   margin-left: 25px;
 
-  ${mobileOnly(css`
+  ${Mobile(css`
     width: auto;
     margin: 0;
   `)}
@@ -136,13 +162,13 @@ export const DateContainer = styled.div`
 
 export const Date = styled.p`
   width: 100%;
-  font-size: 24px;
+  font-size: var(--font-size-subtitle);
   font-weight: 500;
   text-align: center;
   margin: 0 0 10px 0;
 
-  ${mobileOnly(css`
-    font-size: 14px;
+  ${Mobile(css`
+    font-size: var(--font-size-medium);
     margin: 0 0 5px 0;
   `)}
 `;

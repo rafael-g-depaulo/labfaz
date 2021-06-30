@@ -1,79 +1,17 @@
-import React, { FC, Fragment } from "react";
-import {
-  Wrapper,
-  MainTextContainer,
-  Title,
-  Description,
-  Image,
-  Button,
-  ButtonText,
-  ButtonWrapper,
-  DateContainer,
-  Date,
-  Divisor,
-} from "./styles";
+import React, { FC } from "react";
 
-import useMobile from "Utils/useMobile";
-import { BlogPost } from "Api/BlogPost";
-import { formatPostDate } from "Utils/formatPostDate";
+import { useBlogPosts } from "Api/BlogPost";
+import Loading from "Components/Loading";
 
-interface DisplayProps {
-  post: BlogPost;
-}
+import Display from "./Display";
 
-export const PostCard: FC<DisplayProps> = ({ post }) => {
-  const isMobile = useMobile();
-  const date = formatPostDate(post?.created_at);
+export const PostCard: FC = () => {
+  const { data, error, isLoading } = useBlogPosts();
 
-  return (
-    <Fragment>
-      <Wrapper>
-        {isMobile ? (
-          <>
-            <MainTextContainer>
-              <Title>{post?.title}</Title>
-              <Description>{post?.description}</Description>
-              {post?.image !== null ? (
-                <Image src={post?.image?.url} alt={post?.image?.name} />
-              ) : (
-                <></>
-              )}
-            </MainTextContainer>
-            <ButtonWrapper>
-              <Button>
-                <ButtonText>leia mais</ButtonText>
-              </Button>
-              <Divisor />
-              <DateContainer>
-                <Date>{date?.day}</Date>
-                <Date>{date?.hour}</Date>
-              </DateContainer>
-            </ButtonWrapper>{" "}
-          </>
-        ) : (
-          <>
-            <MainTextContainer>
-              <Title>{post?.title}</Title>
-              <Description>{post?.description}</Description>
-              {post?.image !== null ? (
-                <Image src={post?.image?.url} alt={post?.image?.name} />
-              ) : (
-                <></>
-              )}
-              <Button>
-                <ButtonText>leia mais</ButtonText>
-              </Button>
-            </MainTextContainer>
-            <Divisor />
-            <DateContainer>
-              <Date>{date?.day}</Date>
-              <Date>{date?.hour}</Date>
-            </DateContainer>{" "}
-          </>
-        )}
-      </Wrapper>
-    </Fragment>
-  );
+  if (isLoading) return <Loading />;
+  if (error) return <div>error: {error?.message ?? ""}</div>;
+
+  return <Display posts={data!} />;
 };
 
 export default PostCard;
