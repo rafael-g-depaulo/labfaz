@@ -22,6 +22,6 @@ export const fetchAboutUsData = () => strapi
     banner_data,
     welcome_data,
     about_us_data
-  }) )
+  }))
 
 export const useAboutUsdata = () => useFetchApi<AboutUsData>('/about-us', fetchAboutUsData)
