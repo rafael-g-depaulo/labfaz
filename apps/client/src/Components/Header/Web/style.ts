@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // import {ShortScreen, MediumScreen, LargeScreen} from 'Utils/breakpoints/webOnly'
 
 export const Container = styled.div`
-  background-color: var(--background-dark-gray);
+  background-color: var(--background-black);
   padding: 0.5rem 0;
   display: flex;
   justify-content: space-around;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
   .line {
     width: 1px;
-    background-color: var(--color-text);
+    background-color: var(--background-pink);
   }
   .home {
     display: flex;
@@ -24,8 +24,7 @@ export const Container = styled.div`
 
 export const RedirectLink = styled(Link)`
   text-decoration: none;
-  /* TODO color: ; */
-  color: var(--color-text);
+  color: var(--background-pink);
 
   /* $ {ShortScreen('font-size: var(--font-size-short)')}; */
   /* $ {MediumScreen('font-size: var(--font-size-medium)')}; */
@@ -46,7 +45,7 @@ export const NavLink = styled(Link)`
     text-align: center;
     text-decoration: none;
     /* TODO color: ; */
-    color: var(--color-text);
+    color: var(--background-pink);
     padding: 0.6rem 0;
     
     /* $ {ShortScreen('font-size: var(--font-size-short)')}; */
@@ -64,14 +63,11 @@ export const UserSession = styled.div`
 
 export const Button = styled(Link)`
   && {
-    /* TODO */
-    background-color: var(--background-white);
+    background-color: var(--background-pink);
     cursor: pointer;
-    /* TODO border-radius: ; */
     padding: 0.5rem 2rem;
     text-decoration: none;
-    /* TODO color: ; */
-    color: var(--color-text);
+    color: var(--color-text-beige);
     /* $ {ShortScreen('font-size: var(--font-size-short); padding: 0.5rem 1rem')}; */
     /* $ {MediumScreen('font-size: var(--font-size-medium)')}; */
     /* $ {LargeScreen('font-size: var(--font-size-large)')}; */
