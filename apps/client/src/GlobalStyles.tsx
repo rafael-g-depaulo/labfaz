@@ -4,14 +4,20 @@ export const GlobalStyles = createGlobalStyle`
 
   /* variables */
   html {
-    --color-text: black;
+    --color-text-black: #000000;
+    --color-text-white: #FFFFFF;
+    --color-text-beige: #FFEC99;
+
     --background-dark-gray: #C4C4C4;
     --background-gray: #E7E7E7;
     --background-light-gray: #C4C4C425;
     --background-white: #FFFFFF;
+    --background-black: #000000;
+    --background-pink: #FC0061;
 
     --font-size-title: 35px;
     --font-size-title-medium: 30px;
+    --font-size-title-small: 28px;
     --font-size-default: 18px;
     --font-size-large: 16px;
     --font-size-medium: 14px;
@@ -23,9 +29,9 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
-    font-family: "Town Text";
+    font-family: "Cairo", sans-serif;
     font-size: var(--font-size-default);
-    color: var(--colot-text);
+    color: var(--colot-text-white);
   }
 
   body {
