@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin: 100px 0 0 0;
+  margin: 80px 0 0 0;
 
   &:last-child {
     margin-bottom: 100px;
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   ${mobileOnly(css`
     flex-direction: column;
     align-items: center;
-    margin: 70px 0 0 0;
+    margin: 60px 0 0 0;
 
     &:last-child {
       margin-bottom: 70px;

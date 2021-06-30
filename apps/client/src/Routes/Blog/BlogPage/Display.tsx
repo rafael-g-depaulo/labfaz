@@ -21,7 +21,7 @@ export const Display: FC<DisplayProps> = ({ data, postData }) => {
       <Banner title={title} subtitle={subtitle} align="left" />
       <Container>
         <Content>
-          {postData.map((item, index) => {
+          {postData?.map((item, index) => {
             return <PostCard post={item} key={index} />;
           })}
         </Content>
