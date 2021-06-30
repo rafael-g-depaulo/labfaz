@@ -19,7 +19,7 @@ describe("Home Page", () => {
   })
 
   const mockedData: AboutUsData = {
-    banner_data: "Quem Somos",
+    banner_data: "Welcome to Labfaz",
     welcome_data: {
       id: 1,
       img: image,
@@ -32,7 +32,7 @@ describe("Home Page", () => {
 
     },
     {
-      id: 2,
+      id: 3,
       img: image,
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
@@ -45,7 +45,7 @@ describe("Home Page", () => {
   })
   
   it("Renders banner component", () => {
-    const Page = render(<Display data={mockedData} />)
+    const Page = render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)
     const banner = Page.getAllByRole('heading')
 
 
@@ -55,7 +55,7 @@ describe("Home Page", () => {
   it("displays the data message", () => {
     const { getByRole } = render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)
 
-    expect(getByRole("heading", {level: 1})).toHaveTextContent("Quem Somos")
-    expect(getByRole("heading", {level: 2})).toHaveTextContent("Lorem")
+    expect(getByRole("heading", {level: 1})).toHaveTextContent("Quem somos")
+    expect(getByRole("heading", {level: 2})).toHaveTextContent("Welcome to Labfaz")
   })
 })
