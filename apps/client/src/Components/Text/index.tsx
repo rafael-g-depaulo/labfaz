@@ -7,8 +7,6 @@ type TextProps = ParagraphProps & {
 
 export const Text: FC<TextProps> = ({children, ...textProps}) => {
 
-  console.log(textProps)
-
   return (
       <Paragraph {...textProps}>
         {children}
