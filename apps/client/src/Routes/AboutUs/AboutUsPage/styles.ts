@@ -37,14 +37,13 @@ export const Wrapper = styled.div<WrapperProps>`
 export const Container = styled.div<ContainerProps>`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr auto;
   grid-template-areas:
   "left right"
   "left right";
   grid-column-gap: 4em;
-  grid-row-gap: 1em;
+  grid-row-gap: 25vh;
   min-height: 400px;
-  height: 80vh;
   max-height: 1000px;
   max-width: 100%;
   line-height: var(--line-height);
@@ -55,10 +54,15 @@ export const Container = styled.div<ContainerProps>`
   ${
     Mobile(css`
       margin: 0 2vw;
-      grid-template-rows: 0.3fr 0.8fr;
+      grid-template-rows: auto auto;
       grid-template-areas:
       "top top"
       "bottom bottom";
+      grid-column-gap: 14vw;
+      grid-row-gap: 1vh;
+
+      margin-bottom: 7vh;
+      margin-top: 4vh;
     `)
   }
 `
@@ -84,48 +88,13 @@ export const Image = styled.img<ImageProps>`
 
 export const TextDiv = styled.div<DivProps>`
   display: flex;
-  height: 75%;
   max-width: 100%;
+  min-height: fit-content;
   grid-area: ${props => props.position ? props.position : "left"};
+  
 
   ${Mobile(css`
     max-width: 75%;
     grid-area: top;
-  `)}
-`
-
-
-export const BannerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-height: 250px;
-  min-height: 150px;
-  height: 200px;
-  max-width: 100vw;
-  width: 100%;
-
-  background-color: #C4C4C4;
-  margin-bottom: 6em;
-
-  justify-content: center;
-
-  h1 {
-    font-size: 48px;
-    line-height: 10px;
-
-  }
-
-  * {
-    margin-left: 150px;
-  }
-
-  ${Mobile(css`
-    h1 {
-      font-size: 40px
-    }
-  
-    * {
-      margin-left: 10vw;
-    }
   `)}
 `
