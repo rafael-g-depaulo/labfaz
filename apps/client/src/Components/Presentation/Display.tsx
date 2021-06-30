@@ -6,11 +6,9 @@ import {
   TextBlock,
   YoutubePlayerResponsive,
   TextTitle,
-  Subtitle
+  Subtitle,
+  Line
 } from './styles'
-
-
-
 export interface DisplayProps {
   Title: string,
   SubTitle: string,
@@ -22,6 +20,7 @@ export const Display: FC<DisplayProps> = ({
 }) => {
   return (
     <Container>
+      <Line />
       <div className="ContainerContent">
         <YoutubePlayerResponsive>
           <YoutubePlayer href={Video} />

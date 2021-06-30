@@ -1,15 +1,19 @@
 import styled, { css } from 'styled-components'
-import { DesktopSmall, Mobile } from 'Utils/breakpoints'
+import { DesktopSmall, Mobile, MobileSmall, DesktopLarge } from 'Utils/breakpoints'
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-black);
+  padding: 2rem;
   .ContainerContent {
     display: flex;
     justify-content: space-around;
-    height: 17rem;
+    height: 18rem;
     gap: 3rem;
+    padding: 2rem 0 0 0;
+    max-width: 60rem;
     ${
       Mobile(css`
         flex-direction: column;
@@ -18,14 +22,16 @@ export const Container = styled.div`
         gap: 0;
       `)
     }
-    /*
-      '   max-width: 30rem'
-    )};
-    'width: 40rem')};
-    'width: 50rem')}; */
   }
-  /* 'height: auto')};
-  'height: 12rem')}; */
+`
+
+export const Line = styled.div`
+  background-color: var(--background-pink);
+  height: 1px;
+  width: 15rem;
+  ${DesktopLarge(css`
+    width: 20rem;
+  `)}
 `
 
 export const TextBlock = styled.div`
@@ -34,41 +40,56 @@ export const TextBlock = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
-  padding: 0 1rem;
-  /* 'max-width: 17rem')}; */
+  ${
+    Mobile(css`
+      padding: 0 1rem;
+    `)
+  }
 `
 
 export const TextTitle = styled.h1`
   font-size: var(--font-size-title-medium);
   margin: 0;
-  /* 'text-align: center; margin: 0 0 1rem 0')}; */
+  color: var(--color-text-beige);
+  ${Mobile(css`
+    text-align: center;
+    margin: 0 0 1rem 0;
+  `)}
+
+  ${MobileSmall(css`
+    font-size: var(--font-size-title-small);
+  `)}
 `
 
 export const Subtitle = styled.p`
   margin: 0;
   font-size: var(--font-size-medium);
   text-align: justify;
+  color: var(--color-text-white);
 `
 
 export const YoutubePlayerResponsive = styled.div`
   display: flex;
   padding-top: 2rem;
+  // review units later
   div {
     width: 30em;
 
     ${DesktopSmall(css`
       width: 20em;
     `)}
+
     ${Mobile(css`
-      width: 10em;
+      width: 18em;
+      height: 12em;
+    `)}
+
+    ${MobileSmall(css`
+      width: 16em;
     `)}
     
-    /* 'max-width: 17rem')};
-    'max-width: 20rem; padding: 0 1rem')};
-    'max-width: 25rem; padding: 0 1rem')}
-    'min-width: 20rem; padding: 0 1rem')};
-    'width: 20rem; height: 10rem')};
-    'width: 25rem;')} */
-    
   }
+  ${Mobile(css`
+    padding: 0;
+  `)}
 `;

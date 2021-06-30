@@ -16,6 +16,7 @@ export const Presentation: FC = () => {
   const[error, setError] = useState()
 
   useEffect(() => {
+    // re-renders with useFetchApi hooks
     strapi
       .get(`/home-presentation-info`)
       .then(({ data }) => data)
