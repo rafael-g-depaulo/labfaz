@@ -24,7 +24,8 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-size: var(--font-size-default);
     font-family: var(--font-family);
-    color: var(----color-text-text);
+    color: var(----color-text);
+
   }
 
   body {
