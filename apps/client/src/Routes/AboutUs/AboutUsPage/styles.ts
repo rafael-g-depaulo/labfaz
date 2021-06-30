@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Mobile } from 'Utils/breakpoints'
+import { Mobile, DesktopSmall } from 'Utils/breakpoints'
 
 interface WrapperProps {
   color?: string,
@@ -16,6 +16,7 @@ interface ImageProps {
 interface ContainerProps {
   marginBottom?: string,
   marginTop?: string,
+  about?: boolean | string
 }
 
 export interface DivProps {
@@ -27,7 +28,6 @@ export interface DivProps {
 
 export const Wrapper = styled.div<WrapperProps>`
   max-width: 100vw;
-  height: 40%;
   box-sizing: content-box;
   display: flex;
   flex-direction: column;
@@ -36,8 +36,8 @@ export const Wrapper = styled.div<WrapperProps>`
 
 export const Container = styled.div<ContainerProps>`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-template-rows: 1fr auto;
+  grid-template-columns: ${props => props.about ? "2fr 1fr" : "1fr 2fr"};
+  grid-template-rows: auto auto;
   grid-template-areas:
   "left right"
   "left right";
@@ -46,7 +46,7 @@ export const Container = styled.div<ContainerProps>`
   min-height: 400px;
   max-height: 1000px;
   max-width: 100%;
-  line-height: var(--line-height);
+  line-height: var(--line-height-default);
   margin: 0 5vw;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
@@ -65,25 +65,37 @@ export const Container = styled.div<ContainerProps>`
       margin-top: 4vh;
     `)
   }
+
+  ${DesktopSmall(css`
+    grid-template-rows: auto 1fr;
+    margin: 0;
+    margin-top: 4vh;
+    font-size: var(--font-size-short);
+    line-height: var(--line-height-medium);
+
+  `)}
 `
 
 export const Image = styled.img<ImageProps>`
   max-height: 400px;
   max-width: 789px;
-  height: 100%;
-  width: 100%;
+  min-width: auto;
   grid-area: ${props => props.position ? props.position : "right"};
 
   ${Mobile(
     css`
     max-height: 75%;
-    max-width: 75%;
+    max-width: 100%;
     min-height: 200px;
     min-width: 300px;
     align-self: center;
     grid-area: bottom;
     `
   )}
+
+${DesktopSmall(css`
+    max-width: 400px;
+  `)}
 `
 
 export const TextDiv = styled.div<DivProps>`
@@ -94,7 +106,7 @@ export const TextDiv = styled.div<DivProps>`
   
 
   ${Mobile(css`
-    max-width: 75%;
+    max-width: 100%;
     grid-area: top;
   `)}
 `

@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Wrapper, Container, Image } from "../styles"
+import { Wrapper, Container, Image, TextDiv } from "../styles"
 import Text from "Components/Text"
 
 import { DataObject } from "Api/AboutUs"
@@ -15,10 +15,12 @@ const About: FC<AboutProps> = ({data}) => {
       {
         data.map((item) => {
           return (
-            <Container key={item.id}>
-              <Text>
-                {item.text}
-              </Text>
+            <Container key={item.id} about="true" marginBottom="20vh">
+              <TextDiv>
+                <Text>
+                  {item.text}
+                </Text>
+              </TextDiv>
               <Image src={item.img.url} alt={item.img.caption}/>
             </Container>
           )

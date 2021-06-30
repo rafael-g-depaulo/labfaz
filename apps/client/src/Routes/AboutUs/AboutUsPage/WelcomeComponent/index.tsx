@@ -16,7 +16,7 @@ export const WelcomeComponent: FC<WelcomeProps> = ({ data }) => {
   return (
     <Container key={data.id} marginTop="4em" marginBottom="6em">
       <TextDiv position="right">
-        <Text>{data.text}</Text>
+        <Text textAlign="jusitfy">{data.text}</Text>
       </TextDiv>
       <Image src={data.img.url} alt={data.img.caption} position="left"/>
     </Container>
