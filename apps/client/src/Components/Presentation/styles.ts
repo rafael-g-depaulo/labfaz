@@ -13,7 +13,6 @@ export const Container = styled.div`
     height: 18rem;
     gap: 3rem;
     padding: 2rem 0 0 0;
-    max-width: 60rem;
     ${
       Mobile(css`
         flex-direction: column;
