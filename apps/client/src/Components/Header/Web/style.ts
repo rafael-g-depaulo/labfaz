@@ -70,14 +70,13 @@ export const Button = styled(Link)`
   && {
     background-color: var(--background-pink);
     cursor: pointer;
-    padding: 0.5rem 1.5rem;
+    padding: 0.2rem 1.5rem;
     text-decoration: none;
     color: var(--color-text-beige);
-    box-shadow: -5px -5px var(--color-text-beige);
+    box-shadow: -3px -3px var(--color-text-beige);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
-      box-shadow: -3px -3px var(--color-text-beige);
       padding: 0.3rem;
     `)}
   }
