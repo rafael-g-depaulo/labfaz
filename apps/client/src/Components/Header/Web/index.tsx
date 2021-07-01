@@ -6,7 +6,8 @@ import {
   UserSession,
   Button,
   NavLink,
-  RedirectLink
+  RedirectLink,
+  LogIn
 } from './style'
 import Logo from 'Components/Logo'
 
@@ -25,7 +26,7 @@ export const Mobile: FC = () => {
       </Navbar>
       <div className="line" />
       <UserSession>
-        <RedirectLink to='/login'> ENTRAR </RedirectLink>
+        <LogIn to='/login'> ENTRAR </LogIn>
         <Button to='/register'> CADASTRE-SE </Button>
       </UserSession>
     </Container>

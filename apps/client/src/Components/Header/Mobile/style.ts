@@ -9,7 +9,7 @@ export interface PropsButton {
 }
 export const Container = styled.div`
   .navBar {
-    background-color: var(--background-gray);
+    background-color: var(--background-black);
     display: flex;
     position: fixed;
     height: 100vh;
@@ -43,6 +43,7 @@ export const NavLink = styled(Link)`
     flex-grow: 0.8;
     font-size: var(--font-size-short);
     text-decoration: none;
+    color: var(--background-pink);
   }
 `
 
@@ -72,7 +73,7 @@ export const CloseMenu = styled.div<PropsCloseMenu>`
 `
 
 export const ContainerIcon = styled.div`
-  background-color: var(--background-dark-gray);
+  background-color: var(--background-black);
   display: flex;
   padding: 0.5rem 0;
   justify-content: center;
@@ -89,9 +90,9 @@ export const IconButton = styled.button `
   background: transparent;
   border: none;
   cursor: pointer;
-
   svg {
     font-size: 1.2rem;
+    color: var(--background-pink);
   }
 `;
 
