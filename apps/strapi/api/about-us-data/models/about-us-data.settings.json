@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_us_data",
+  "info": {
+    "name": "AboutUs Data",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "welcome_data": {
+      "type": "component",
+      "repeatable": false,
+      "component": "about-us.apresentation"
+    },
+    "about_us_data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.apresentation",
+      "max": 3
+    },
+    "banner_data": {
+      "type": "string"
+    }
+  }
+}

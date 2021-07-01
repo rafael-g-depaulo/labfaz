@@ -16,8 +16,8 @@ export interface DataObject {
 
 
 export const fetchAboutUsData = () => strapi
-  .get<AboutUsData[]>("/about-uses")
-  .then(({ data }) => data[0])
+  .get<AboutUsData>("/about-us-data")
+  .then(({ data }) => data)
   .then(({ banner_data, welcome_data, about_us_data }) => ({
     banner_data,
     welcome_data,
