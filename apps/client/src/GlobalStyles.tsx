@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap');
 
   /* variables */
   html {
@@ -38,6 +39,8 @@ export const GlobalStyles = createGlobalStyle`
     --line-height-default: 48.72px; 
     --line-height-small: 20px; 
     --line-height-medium: 30px; 
+
+    --card-font-family: 'Cairo', 'Town text'
   }
 
   * {
