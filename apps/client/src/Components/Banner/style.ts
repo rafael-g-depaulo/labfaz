@@ -11,13 +11,12 @@ export interface Props {
 
 export const Container = styled.div<Props>`
   display: flex;
-  padding: ${props => props.align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0'};
+  padding: ${props => props.align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0 4rem 0'};
   justify-content: ${props => props.align};
-  /* TODO background-image: url() */
-  background-color: var(--background-light-gray);
+  background-color: var(--background-pink);
   
   div {
-    width: 35rem;
+    width: 30rem;
     display: flex;
     flex-direction: column;
     align-items: ${props => props.align};
@@ -30,19 +29,22 @@ export const Container = styled.div<Props>`
 `;
 
 export const Title = styled.h1`
-  font-size: var(--font-size-title);
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--color-text-beige);
   margin: 0;
 `;
 
 export const Subtitle = styled.h2`
-  font-size: var(--font-size-medium);
+  color: var(--color-text-beige);
   margin: 0;
 `;
 
 export const KnowMoreButton = styled(Link)`
   text-decoration: none;
-  color: var(--color-text);
-  padding: 0.5rem 3rem;
-  background-color: var(--background-dark-gray);
-  margin-top: 1.5rem;
+  color: var(--background-pink);
+  padding: 0.2rem 3rem;
+  background-color: var(--color-text-beige);
+  box-shadow: -5px -5px var(--color-text-black);
+  margin-top: 2.5rem;
 `;
