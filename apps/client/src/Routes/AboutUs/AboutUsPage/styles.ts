@@ -80,6 +80,7 @@ export const Image = styled.img<ImageProps>`
   max-height: 400px;
   max-width: 789px;
   min-width: auto;
+  object-fit: contain;
   grid-area: ${props => props.position ? props.position : "right"};
 
   ${Mobile(
