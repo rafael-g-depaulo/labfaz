@@ -31,7 +31,7 @@ describe('About us component', () => {
   const mockedData: AboutUsData = data
   
   
-  it("render component whiout errors", () => {
+  it("render component without errors", () => {
     
     expect(() => render (<About data={mockedData.about_us_data} />))
     .not.toThrow()

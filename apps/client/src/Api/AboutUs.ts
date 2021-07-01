@@ -14,6 +14,18 @@ export interface DataObject {
   text: string
 }
 
+export interface StaffObject {
+  name: string,
+  tag: string,
+  text: string,
+  image: Image,
+}
+
+export interface StaffData {
+  staffs: StaffObject[]
+}
+
+
 
 export const fetchAboutUsData = () => strapi
   .get<AboutUsData>("/about-us-data")
@@ -25,3 +37,11 @@ export const fetchAboutUsData = () => strapi
   }))
 
 export const useAboutUsdata = () => useFetchApi<AboutUsData>('/about-us', fetchAboutUsData)
+
+
+export const fetchStaffData = () => strapi
+  .get<StaffData>("/some-url")
+  .then(({data}) => data)
+
+
+export const useStaffData = () => useFetchApi<StaffData>('/staff', fetchStaffData)
