@@ -32,6 +32,7 @@ export const CardThumb = styled.div`
   margin-top: 1em;
 
   font-weight: 700;
+  font-family: var(--card-font-family) ;
 
   img {
     width: 100%;
@@ -44,13 +45,10 @@ export const CardBody = styled.div`
   max-width: 190px;
 `;
 
-export const CardImage = styled.img`
-
-`;
 
 export const Text = styled(Paragraph)`
   max-height: min-content;
-
+  font-family: var(--card-font-family);
     ${
     Mobile(css`
       font-size: var(--font-size-short);
@@ -63,4 +61,5 @@ export const Text = styled(Paragraph)`
 export const Span = styled.span`
   font-size: var(--font-size-short);
   font-weight: 600;
+  margin-bottom: 22px;
 `

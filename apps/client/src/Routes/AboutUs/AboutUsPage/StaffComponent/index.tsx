@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { StaffObject } from 'Api/AboutUs'
 
-import { Card, CardThumb, CardBody, CardImage, Text, Span } from './styles'
+import { Card, CardThumb, CardBody, Text, Span } from './styles'
 
 
 
@@ -16,8 +16,8 @@ export const StaffCard: FC<StaffObject> = ( data ) => {
   return(
     <Card>
       <CardThumb>
-        <CardImage src={image.url} alt={image.alternativeText}/>
-        <Text fontSize='medium' fontWeight={700}> {name} </Text>
+        <img src={image.url} alt={image.alternativeText}/>
+        <Text fontSize='medium' fontWeight={700} marginTop='1.2em'> {name} </Text>
       </CardThumb>
       <CardBody>
         <Span> {tag} </Span>
