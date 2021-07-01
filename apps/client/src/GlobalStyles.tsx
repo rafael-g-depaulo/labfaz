@@ -37,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-short: 11px;
 
     --line-height-default: 48.72px; 
-    --line-height-small: 20px; 
+    --line-height-small: 25px; 
     --line-height-medium: 30px; 
 
     --card-font-family: 'Cairo', 'Town text'
