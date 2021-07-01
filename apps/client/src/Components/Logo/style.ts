@@ -1,6 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import {DesktopSmall} from 'Utils/breakpoints'
 
-export const Image = styled.img`
-  width: 3.5rem;
-  object-fit: cover;
+export const Title = styled.h1`
+  font-size: var(--font-size-title-small);
+  color: var(--background-pink);
+
+  ${DesktopSmall(css`
+    font-size: 22px;
+  `)}
 `

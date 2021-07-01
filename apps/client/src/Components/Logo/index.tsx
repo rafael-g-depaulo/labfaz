@@ -1,10 +1,9 @@
 import React from 'react'
 
-import LogoImg from './Logo_Sample.png'
-import { Image } from './style'
+import { Title } from './style'
 
 const Logo = () => {
-  return <Image src={LogoImg} alt='logo' />
+  return <Title> LABFAZ </Title>
 }
 
 export default Logo
