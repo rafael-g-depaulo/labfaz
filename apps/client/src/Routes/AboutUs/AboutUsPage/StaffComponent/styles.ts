@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Paragraph } from 'Components/Text/style'
+import { Mobile } from 'Utils/breakpoints'
 
 
 export const Card = styled.div`
@@ -10,7 +12,7 @@ export const Card = styled.div`
   min-width: 229px;
   min-height: 362px;
   font-size: var(--font-size-medium);
-
+  font-family: var(--card-font-family);
   flex-direction: column;
   align-items: center;
 
@@ -34,7 +36,6 @@ export const CardThumb = styled.div`
   img {
     width: 100%;
     clip-path: circle();
-    margin-bottom: 1.2em;
   }
 `;
 
@@ -46,3 +47,20 @@ export const CardBody = styled.div`
 export const CardImage = styled.img`
 
 `;
+
+export const Text = styled(Paragraph)`
+  max-height: min-content;
+
+    ${
+    Mobile(css`
+      font-size: var(--font-size-short);
+      line-height: 25px;
+      align-items: baseline;
+    `)
+  }
+`;
+
+export const Span = styled.span`
+  font-size: var(--font-size-short);
+  font-weight: 600;
+`

@@ -9,12 +9,14 @@ export interface ParagraphProps {
   fontSize?: string
   color?: string
   fontWeight?: number
+  lineHeigt?: string
 }
 
 
 export const Paragraph = styled.p<ParagraphProps>`
   font-style: normal;
-  margin-top: 0;
+  margin-top: ${props => props.marginTop ? props.marginTop : 0};
+  margin-bottom: ${props => props.marginBottom ? props.marginBottom : ''};
   text-align: ${props => props.textAlign ? props.textAlign : "left"};
   font-size: ${props => props.fontSize ? 
   "var(--font-size-"+ props.fontSize + ")" 
@@ -22,7 +24,11 @@ export const Paragraph = styled.p<ParagraphProps>`
   "var(--font-size-default)"
   };
   font-weight: ${props => props.fontWeight ? props.fontWeight : 400};
-
+  line-height: ${props => props.lineHeigt ? 
+  "var(--line-height-"+ props.lineHeigt + ")" 
+  :
+  "var(--line-height-default)"
+  };
   ${
     Mobile(css`
       font-size: var(--font-size-large);
