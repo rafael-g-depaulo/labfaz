@@ -3,6 +3,37 @@ import { Paragraph } from 'Components/Text/style'
 import { Mobile } from 'Utils/breakpoints'
 
 
+export const StaffGrid = styled.div`
+  display: grid;
+  grid-gap: 6em;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  
+  max-width: 100vw;
+  align-items: center;
+
+`;
+
+export const StaffHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10vh;
+`
+
+export const StaffTitle = styled.h1`
+  font-size: var(--font-size-title);
+  font-family: var(card-font-family);
+`;
+
+export const StaffSubtitle = styled.h2`
+  font-family: var(card-font-family);
+  font-size: var(--font-size-medium);
+`
+
+
 export const Card = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,31 +1,37 @@
 import React, { FC } from 'react'
-import { StaffObject } from 'Api/AboutUs'
+import { StaffData, StaffObject } from 'Api/AboutUs'
 
-import { Card, CardThumb, CardBody, Text, Span } from './styles'
+import StaffCard from './StaffCard'
+import { StaffGrid, StaffTitle, StaffSubtitle, StaffHeader } from './styles'
 
-
-
-
-
-
-
-export const StaffCard: FC<StaffObject> = ( data ) => {
-
-  const { name, tag, text, image } = data
-
-  return(
-    <Card>
-      <CardThumb>
-        <img src={image.url} alt={image.alternativeText}/>
-        <Text fontSize='medium' fontWeight={700} marginTop='1.2em'> {name} </Text>
-      </CardThumb>
-      <CardBody>
-        <Span> {tag} </Span>
-        <Text fontSize='medium' lineHeigt='small' marginBottom='0' marginTop='1.2em'> {text} </Text>
-      </CardBody>
-    </Card>
-  )
-
+interface StaffProps {
+  data: StaffObject[]
 }
 
-export default StaffCard
+export const Staff: FC<StaffProps> = ( {data} ) => {
+
+  return (
+    <>
+      <StaffHeader>
+        <StaffTitle> Staff </StaffTitle>
+        <StaffSubtitle> Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </StaffSubtitle>        
+      </StaffHeader>
+      <StaffGrid>
+        {
+          data.map((staff) => {
+            return(
+              <StaffCard  
+                name={staff.name}
+                tag={staff.tag}
+                text={staff.text}
+                image={staff.image}/>
+            )
+          })
+        }
+      </StaffGrid>
+    </>
+
+  )
+}
+
+export default Staff

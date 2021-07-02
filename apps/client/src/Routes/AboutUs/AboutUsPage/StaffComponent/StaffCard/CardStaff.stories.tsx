@@ -1,10 +1,10 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { StaffData, StaffObject } from 'Api/AboutUs'
+import { StaffObject } from 'Api/AboutUs'
 
 
-import Staff from './index'
+import StaffCard from './index'
 import { mockImage } from 'Utils/Image'
 
 const image = mockImage({
@@ -21,10 +21,10 @@ const StaffInfo: StaffObject = {
   image: image
 }
 
-const Stafs: StaffData = {
-  staffs: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
-}
-
-storiesOf("Component/Staff", module)
-  .addParameters({ component: Staff })
-  .add("Default", () => <Staff data={Stafs.staffs}/>)
+storiesOf("Component/Staff Card", module)
+  .addParameters({ component: StaffCard })
+  .add("Default", () => <StaffCard  
+                          name={StaffInfo.name}
+                          tag={StaffInfo.tag}
+                          text={StaffInfo.text}
+                          image={StaffInfo.image}/>)
