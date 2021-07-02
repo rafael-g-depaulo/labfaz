@@ -1,34 +1,29 @@
-// import React, { FC, ButtonHTMLAttributes } from 'react'
-// import { Link } from 'react-router-dom'
-// import { StyledButton } from './style'
+import React, { FC, ButtonHTMLAttributes } from 'react'
 
-// export interface ButtonProps {
-//   ExternalLink?: boolean
-//   InternalLink?: boolean
-//   To: string
-//   width?: number
-// }
+import { StyledButton } from './style'
+
+export interface ButtonProps {
+  href: string
+  buttonColor?: 'white' | 'gray'
+}
 
 // type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>
 
-// export const Button: FC<ButtonProps & ButtonType> = ({
-//     InternalLink,
-//     ExternalLink,
-//     To,
-//     children,
-//     ...restProps
-//   }) => {
-//   return (
-//     <>
-//       {ExternalLink && (
-//         <StyledButton {...restProps} > {children} </StyledButton>
-//       )}
-
-//       {InternalLink && (
-//         <Link to={To}>
-//           <StyledButton {...restProps} > {children} </StyledButton>
-//         </Link>
-//       )}
-//     </>
-//   )
-// }
+export const InternalLinkButton: FC<ButtonProps> = ({
+  buttonColor = 'white',
+  href,
+  children,
+  ...props
+  }) => {
+  return (
+    <>
+      <StyledButton 
+        to={href}  
+        buttonColor={buttonColor} 
+        {...props}
+      > 
+        {children} 
+      </StyledButton>
+    </>
+  )
+}
