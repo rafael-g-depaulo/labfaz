@@ -9,34 +9,33 @@ it('renders header component', () => {
 })
 
 describe('Check links succesfully redirects to another page', () => {
-  const { 
+  const {
     getByText,
-    getByTestId,
-    getByRole
+    getByTestId
   } = render(<BrowserRouter><Header /></BrowserRouter>);
-  it('check link of home page and image logo', () => {
+  it('check link of home page and text logo', () => {
     expect(getByTestId('home').closest('a')).toHaveAttribute('href', '/')
-    expect(getByRole('img')).toHaveAttribute('alt', 'logo')
+    expect(getByText('LABFAZ')).toHaveTextContent("LABFAZ")
   })
 
   it('check link of about us page', () => {
-    expect(getByText('Quem Somos').closest('a')).toHaveAttribute('href', '/about')
+    expect(getByText('QUEM SOMOS').closest('a')).toHaveAttribute('href', '/about')
   })
 
   it('check link of list courses page', () => {
-    expect(getByText('Cursos').closest('a')).toHaveAttribute('href', '/classes')
+    expect(getByText('CURSOS').closest('a')).toHaveAttribute('href', '/classes')
   })
 
   it('check link of calendar page', () => {
-    expect(getByText('Agenda').closest('a')).toHaveAttribute('href', '/calendar')
+    expect(getByText('AGENDA').closest('a')).toHaveAttribute('href', '/calendar')
   })
 
   it('check link of blog page', () => {
-    expect(getByText('Blog').closest('a')).toHaveAttribute('href', '/blog')
+    expect(getByText('BLOG').closest('a')).toHaveAttribute('href', '/blog')
   })
 
   it('check link of professionals page', () => {
-    expect(getByText('Banco de Profissionais').closest('a'))
+    expect(getByText('BANCO DE PROFISSIONAIS').closest('a'))
     .toHaveAttribute('href', '/professionals')
   })
 })
@@ -44,10 +43,10 @@ describe('Check links succesfully redirects to another page', () => {
 describe('Check user session links', () => {
   const { getByText } = render(<BrowserRouter><Header /></BrowserRouter>);
   it('check signin button', () => {
-    expect(getByText('Entrar').closest('a')).toHaveAttribute('href', '/login')
+    expect(getByText('ENTRAR').closest('a')).toHaveAttribute('href', '/login')
   })
 
   it('check sign up button', () => {
-    expect(getByText('Cadastre-se').closest('a')).toHaveAttribute('href', '/register')
+    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute('href', '/register')
   })
 })

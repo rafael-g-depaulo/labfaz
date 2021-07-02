@@ -10,7 +10,6 @@ it('renders header component', () => {
       <Banner
         title="LABFAZ"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
-        height={20}
         hrefKnowMore="/about"
       />
     </BrowserRouter>
@@ -23,7 +22,6 @@ describe('Check content of Banner component', () => {
       <Banner
         title="LABFAZ"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
-        height={20}
         hrefKnowMore="/about"
       />
     </BrowserRouter>
