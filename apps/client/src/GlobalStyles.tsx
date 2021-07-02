@@ -26,6 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-title-medium: 30px;
     --font-size-title-small: 28px;
     --font-size-subtitle: 24px;
+    --font-size-title-smaller: 22px;
     --font-size-default: 18px;
     --font-size-large: 16px;
     --font-size-medium: 14px;
