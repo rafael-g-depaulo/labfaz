@@ -1,36 +1,31 @@
-// import React, { FC, ButtonHTMLAttributes } from 'react'
+import React, { FC, ButtonHTMLAttributes } from 'react'
 
-// import styled from 'styled-components'
+import { StyledButton } from './style'
 
-// export interface ButtonProps {
-//   padding?: string
-//   href: string
-// }
+export interface ButtonProps {
+  href: string
+  buttonColor?: 'white' | 'gray'
+}
 
-// type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>
+type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>
 
-// const StyledButton = styled.button`
-//   background-color: var(--background-white);
-//   cursor: pointer;
-//   /* TODO border-radius: ; */
-//   padding: 0.5rem 2rem;
-//   text-decoration: none;
-//   /* TODO color: ; */
-//   color: var(--color-text);
-//   border: none;
-// `
-
-
-// export const ExternalLinkButton: FC<ButtonProps & ButtonType> = ({
-//   children,
-//   href,
-//   ...restProps
-//   }) => {
-//   return (
-//     <>
-//       <a href={href}>
-//         <StyledButton {...restProps} > {children} </StyledButton>
-//       </a>
-//     </>
-//   )
-// }
+export const ExternalLinkButton: FC<ButtonProps & ButtonType> = ({
+  buttonColor = 'white',
+  href,
+  children,
+  ...props
+  }) => {
+  return (
+    <>
+      <a href={href} >
+        <StyledButton 
+          buttonColor={buttonColor} 
+          {...props}
+        > 
+          {children} 
+        </StyledButton>
+      </a>
+      
+    </>
+  )
+}
