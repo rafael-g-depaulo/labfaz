@@ -8,12 +8,19 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-white: #FFFFFF;
     --color-text-beige: #FFEC99;
 
+    --color-text: black;
+    --color-text-yellow: #FFEC99;
+    --color-text-pink: #FC0061;
+    
     --background-dark-gray: #C4C4C4;
     --background-gray: #E7E7E7;
     --background-light-gray: #C4C4C425;
     --background-white: #FFFFFF;
     --background-black: #000000;
     --background-pink: #FC0061;
+
+    --button-color-yellow: #FFEC99;
+    --button-color-pink: #FC0061;
 
     --font-size-title: 35px;
     --font-size-title-medium: 30px;
