@@ -4,7 +4,7 @@ import { StyledButton } from './style'
 
 export interface ButtonProps {
   href: string
-  buttonColor?: 'white' | 'gray'
+  buttonColor?: 'primary' | 'secondary' | 'secondary-variant-1' | 'white' | 'gray'
 }
 
 type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>
