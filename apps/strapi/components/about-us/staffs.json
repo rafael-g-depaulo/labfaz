@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_about_us_staffs",
+  "info": {
+    "name": "Staffs",
+    "icon": "user-friends"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "text": {
+      "type": "text",
+      "required": true,
+      "maxLength": 250
+    },
+    "tag": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}
