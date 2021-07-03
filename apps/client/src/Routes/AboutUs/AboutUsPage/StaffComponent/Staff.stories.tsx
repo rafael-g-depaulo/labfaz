@@ -21,10 +21,10 @@ const StaffInfo: StaffObject = {
   image: image
 }
 
-const Stafs: StaffData = {
-  staffs: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
+const Staffs: StaffData = {
+  staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
 }
 
 storiesOf("Component/Staff", module)
   .addParameters({ component: Staff })
-  .add("Default", () => <Staff data={Stafs.staffs}/>)
+  .add("Default", () => <Staff data={Staffs}/>)
