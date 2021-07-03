@@ -5,12 +5,15 @@ import { Mobile } from 'Utils/breakpoints'
 
 export const StaffGrid = styled.div`
   display: grid;
-  grid-gap: 6em;
+  grid-gap: 5vw;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   
   max-width: 100vw;
   align-items: center;
+  align-self: center;
+  justify-content: center;
 
+  max-width: 90vw;
 `;
 
 export const StaffHeader = styled.div`

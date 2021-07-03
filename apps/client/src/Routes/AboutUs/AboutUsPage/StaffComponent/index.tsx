@@ -1,24 +1,27 @@
 import React, { FC } from 'react'
-import { StaffData, StaffObject } from 'Api/AboutUs'
+import { StaffData } from 'Api/AboutUs'
 
 import StaffCard from './StaffCard'
 import { StaffGrid, StaffTitle, StaffSubtitle, StaffHeader } from './styles'
+import { Wrapper } from '../styles'
 
 interface StaffProps {
-  data: StaffObject[]
+  data: StaffData
 }
 
-export const Staff: FC<StaffProps> = ( {data} ) => {
+export const Staff: FC<StaffProps> = ( { data } ) => {
+
+  const { staff } =  data
 
   return (
-    <>
+    <Wrapper>
       <StaffHeader>
         <StaffTitle> Staff </StaffTitle>
         <StaffSubtitle> Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </StaffSubtitle>        
       </StaffHeader>
       <StaffGrid>
         {
-          data.map((staff) => {
+          staff.map((staff) => {
             return(
               <StaffCard  
                 name={staff.name}
@@ -29,7 +32,7 @@ export const Staff: FC<StaffProps> = ( {data} ) => {
           })
         }
       </StaffGrid>
-    </>
+    </Wrapper>
 
   )
 }

@@ -22,7 +22,7 @@ export interface StaffObject {
 }
 
 export interface StaffData {
-  staffs: StaffObject[]
+  staff: StaffObject[]
 }
 
 
@@ -40,8 +40,11 @@ export const useAboutUsdata = () => useFetchApi<AboutUsData>('/about-us', fetchA
 
 
 export const fetchStaffData = () => strapi
-  .get<StaffData>("/some-url")
+  .get<StaffData>("/staff-data")
   .then(({data}) => data)
+  .then(( { staff } ) => ({
+    staff
+  }))
 
 
 export const useStaffData = () => useFetchApi<StaffData>('/staff', fetchStaffData)

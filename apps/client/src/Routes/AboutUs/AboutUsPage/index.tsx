@@ -6,13 +6,14 @@ import Display from "./Display"
 
 export const AboutUsPage: FC = () => {
 
-  const result = useAboutUsdata()
+  const { data, error, isLoading } = useAboutUsdata()
+  
 
-  if (result.isLoading) return <Loading />
-  if (result.error) return <div>error: {result.error.message}</div>
+  if (isLoading) return <Loading />
+  if (error) return <div>error: {error.message}</div>
 
   return (
-    <Display data={result.data}/>
+    <Display about_data={data!}/>
   )
 }
 

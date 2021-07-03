@@ -1,4 +1,4 @@
-import { AboutUsData, StaffData } from "Api/AboutUs"
+import { AboutUsData, useStaffData } from "Api/AboutUs"
 import React, { FC } from "react"
 
 import Fullpage from "Components/FullPage"
@@ -7,18 +7,20 @@ import Banner from "Components/Banner"
 import WelcomeComponent from "./WelcomeComponent"
 import About from "./AboutUsComponent"
 import Staff from "./StaffComponent"
+import Loading from "Components/Loading"
 
 export interface DisplayProps {
-  data: AboutUsData
-  staff: StaffData
+  about_data: AboutUsData
 }
 
 export const Display: FC<DisplayProps> = ({
-  data,
-  staff
+  about_data,
 }) => {
-  const {banner_data, welcome_data, about_us_data} = data!
-  const staff_data = staff.staffs
+  const {banner_data, welcome_data, about_us_data} = about_data!
+  
+  const { data } = useStaffData()
+  
+
 
   return (
     <Fullpage>
@@ -26,7 +28,7 @@ export const Display: FC<DisplayProps> = ({
       <Banner title="Quem somos" subtitle={banner_data} align="left"/>
       <WelcomeComponent data={welcome_data} />
       <About  data={about_us_data} />
-      <Staff  data={staff_data}/>
+      {data ? <Staff data={data} /> : <Loading /> }
     </Fullpage>
   )
 }
