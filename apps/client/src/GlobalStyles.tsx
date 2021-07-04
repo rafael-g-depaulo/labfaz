@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-pink: #FC0061;
     --color-text: var(---color-text-black);
 
+    
     --background-dark-gray: #C4C4C4;
     --background-gray: #E7E7E7;
     --background-light-gray: #C4C4C425;
