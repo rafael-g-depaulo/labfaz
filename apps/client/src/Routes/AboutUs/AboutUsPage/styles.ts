@@ -32,6 +32,9 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   flex-direction: column;
   align-self: center;
+
+  background-color: var(--background-dark);
+  color: var(--color-text-primary);
 `
 
 export const Container = styled.div<ContainerProps>`
@@ -50,6 +53,10 @@ export const Container = styled.div<ContainerProps>`
   margin: 0 5vw;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
+
+
+  background-color: var(--background-dark);
+  color: var(--color-text-primary);
 
   ${
     Mobile(css`
