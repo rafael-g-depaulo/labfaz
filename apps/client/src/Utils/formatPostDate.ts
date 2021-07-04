@@ -1,5 +1,7 @@
+import { format } from "date-fns";
+
 // return time difference in days
-function timeDifference(date: any, actualDate: any) {
+export const timeDifference = (date: any, actualDate: any) => {
   const dateUtc = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
   const actualDateUtc = Date.UTC(
     actualDate.getFullYear(),
@@ -8,9 +10,18 @@ function timeDifference(date: any, actualDate: any) {
   );
   const dayDuration = 1000 * 60 * 60 * 24;
   return (actualDateUtc - dateUtc) / dayDuration;
-}
+};
 
-function formatWeekDay(day: string) {
+export type DateString =
+  | "Domingo"
+  | "Segunda"
+  | "Terça"
+  | "Quarta"
+  | "Quinta"
+  | "Sexta"
+  | "Sábado";
+
+export const formatWeekDay = (day: string): DateString => {
   switch (day) {
     case "Sun":
       return "Domingo";
@@ -27,9 +38,9 @@ function formatWeekDay(day: string) {
     case "Sat":
       return "Sábado";
     default:
-      return "Antigo";
+      return "Domingo";
   }
-}
+};
 
 export const formatPostDate = (value: string) => {
   const date = new Date(value);
@@ -46,15 +57,22 @@ export const formatPostDate = (value: string) => {
       day: "Hoje",
       hour: dateHour,
     };
-  } else if (dayDifference > 0 && dayDifference < 7) {
+  } else if (dayDifference === 1) {
+    return {
+      day: "Ontem",
+      hour: dateHour,
+    };
+  } else if (dayDifference > 1 && dayDifference < 7) {
     return {
       day: formatWeekDay(dateInfo[0]),
       hour: dateHour,
     };
   } else {
+    // if it's been more than 1 week, return the complete date
+    // without the hour of creation
     return {
-      day: "Antigo",
-      hour: dateHour,
+      day: format(value, "DD-MM-YYYY").replace("-", "/").split("-")[0],
+      hour: format(value, "DD-MM-YYYY").replace("-", "/").split("-")[1],
     };
   }
 };
