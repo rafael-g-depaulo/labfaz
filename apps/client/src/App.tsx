@@ -5,11 +5,10 @@ import Routes from 'Routes'
 import { showRoutes } from 'FeatureFlags'
 
 export const App = () => {
-
   return (
     <>
       <GlobalStyles />
-      { showRoutes && <Routes />}
+      { showRoutes ? <Routes /> : <div>em construção...</div> }
     </>
   )
 }

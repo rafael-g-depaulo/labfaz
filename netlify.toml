@@ -34,6 +34,8 @@
   [context.master.environment]
     REACT_APP_API_URL="https://api.labfaz.com.br/"
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
+    # feature flags
+    REACT_APP_SHOW_ROUTES=false
 
 
 # these configurations are added to deploys from the development branch
@@ -42,6 +44,8 @@
   [context.develop.environment]
     REACT_APP_API_URL="https://api-dev.labfaz.com.br/"
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
+    # feature flags
+    REACT_APP_SHOW_ROUTES=true
 
 # The following redirect makes the app work as a SPA
 [[redirects]]
