@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 import AboutUsPage from './Display'
+import Staff from './StaffComponent'
 import { mockImage } from 'Utils/Image'
 import { AboutUsData, StaffData, StaffObject } from 'Api/AboutUs'
 
@@ -51,9 +52,14 @@ const mockedAboutUsData: AboutUsData = {
 }
 
 const mockedStaffData: StaffData = {
-  staffs: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
+  staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
 }
 
 storiesOf("Pages/AboutUs", module)
-  .addParameters({ component: AboutUsPage })
-  .add("default", () => <BrowserRouter><AboutUsPage data={mockedAboutUsData} staff={mockedStaffData}/></BrowserRouter>)
+  .addParameters({ component: AboutUsPage, subcomponent: Staff  })
+  .add("default", () => (
+    <BrowserRouter>
+      <AboutUsPage about_data={mockedAboutUsData} />
+      <Staff data={mockedStaffData} />
+    </BrowserRouter>
+  ))
