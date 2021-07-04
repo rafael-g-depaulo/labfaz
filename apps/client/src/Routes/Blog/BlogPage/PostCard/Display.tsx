@@ -9,8 +9,10 @@ import {
   Description,
   Image,
   Button,
+  ButtonContainer,
   ButtonText,
   ButtonWrapper,
+  ButtonLayer,
   DateContainer,
   Date,
   Divisor,
@@ -40,15 +42,21 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
                       <Title>{post?.title}</Title>
                       <Description>{post?.description}</Description>
                       {post?.image !== null ? (
-                        <Image src={post?.image?.url} alt={post?.image?.name} />
+                        <Image
+                          src={post?.image?.url}
+                          alt={post?.image?.alternativeText}
+                        />
                       ) : (
                         <></>
                       )}
                     </MainTextContainer>
                     <ButtonWrapper>
-                      <Button>
-                        <ButtonText>leia mais</ButtonText>
-                      </Button>
+                      <ButtonContainer>
+                        <Button>
+                          <ButtonText>leia mais</ButtonText>
+                        </Button>
+                        <ButtonLayer />
+                      </ButtonContainer>
                       <Divisor />
                       <DateContainer>
                         <Date>{formatPostDate(post?.created_at)?.day}</Date>
@@ -62,10 +70,14 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
                       <Title>{post?.title}</Title>
                       <Description>{post?.description}</Description>
                       {post?.image !== null ? (
-                        <Image src={post?.image?.url} alt={post?.image?.name} />
+                        <Image
+                          src={post?.image?.url}
+                          alt={post?.image?.alternativeText}
+                        />
                       ) : (
                         <></>
                       )}
+                      <ButtonLayer />
                       <Button>
                         <ButtonText>leia mais</ButtonText>
                       </Button>
