@@ -11,7 +11,7 @@ export interface DisplayProps {
 }
 
 export const Display: FC<DisplayProps> = ({ data }) => {
-  const { title, subtitle } = data!;
+  const { title, subtitle } = data;
 
   return (
     <>

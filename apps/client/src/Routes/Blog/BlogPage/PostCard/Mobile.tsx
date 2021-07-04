@@ -35,11 +35,7 @@ export const Mobile: FC<DisplayProps> = ({
       <MainTextContainer>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        {image !== null ? (
-          <Image src={image?.url} alt={image?.name} />
-        ) : (
-          <></>
-        )}
+        {!!image && <Image src={image.url} alt={image.name} />}
       </MainTextContainer>
       <ButtonWrapper>
         <ButtonContainer>

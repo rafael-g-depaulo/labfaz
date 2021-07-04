@@ -33,11 +33,7 @@ export const Web: FC<DisplayProps> = ({
       <MainTextContainer>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        {image !== null ? (
-          <Image src={image?.url} alt={image?.name} />
-        ) : (
-          <></>
-        )}
+        {!!image && <Image src={image.url} alt={image.name} />}
         <ButtonLayer />
         <Button>
           <ButtonText>leia mais</ButtonText>

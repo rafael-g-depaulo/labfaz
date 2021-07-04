@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { Mobile } from "Utils/breakpoints";
 
 export const Container = styled.div`
-  background-color: #000000;
+  background-color: var(--background-black);
   display: grid;
   width: 100%;
   grid-template-columns: minmax(5%, auto) minmax(450px, 800px) minmax(5%, auto);
@@ -62,7 +62,7 @@ export const MainTextContainer = styled.div`
 export const Title = styled.h1`
   font-size: var(--font-size-title);
   font-weight: bold;
-  color: #ffffff;
+  color: var(--background-white);
   text-align: left;
   margin: 0 25px 0 0;
   overflow: hidden;
@@ -80,7 +80,7 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: var(--font-size-default);
-  color: #ffffff;
+  color: var(--background-white);
   text-align: justify;
   line-height: 1.5;
   margin: 50px 0 20px 0;
@@ -122,7 +122,7 @@ export const ButtonLayer = styled.div`
   position: relative;
   width: 250px;
   height: 45px;
-  background-color: #ffec99;
+  background-color: var(--background-light-pink);
   z-index: 1;
   top: 40px;
   right: 5px;
@@ -139,12 +139,12 @@ export const Button = styled.button`
   z-index: 2;
   width: 250px;
   height: 45px;
-  background-color: #fc0061;
+  background-color: var(--background-pink);
   display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
-  border: solid 1px #000000;
+  border: solid 1px var(--background-black);
 
   ${Mobile(css`
     width: 150px;
@@ -155,7 +155,7 @@ export const Button = styled.button`
 export const ButtonText = styled.p`
   font-size: var(--font-size-medium);
   font-weight: 700;
-  color: #ffec99;
+  color: var(--background-light-pink);
   text-transform: uppercase;
   margin: 0;
 
@@ -167,7 +167,7 @@ export const ButtonText = styled.p`
 export const Divisor = styled.hr`
   height: 70px;
   margin: 5px 0;
-  border-color: #fc0061;
+  border-color: var(--background-pink);
 
   ${Mobile(css`
     height: 35px;
@@ -193,7 +193,7 @@ export const Date = styled.p`
   width: 100%;
   font-size: var(--font-size-subtitle);
   font-weight: 500;
-  color: #fc0061;
+  color: var(--background-pink);
   text-align: center;
   margin: 0 0 10px 0;
 
