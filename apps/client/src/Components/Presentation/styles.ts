@@ -25,7 +25,7 @@ export const Container = styled.div`
 `
 
 export const Line = styled.div`
-  background-color: var(--background-pink);
+  background-color: var(--background-dark-pink);
   height: 1px;
   width: 15rem;
   ${DesktopLarge(css`

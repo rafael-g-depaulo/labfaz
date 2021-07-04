@@ -70,6 +70,7 @@ export const Title = styled.h1`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 1.2;
 
   ${Mobile(css`
     font-size: var(--font-size-subtitle);
@@ -192,10 +193,11 @@ export const DateContainer = styled.div`
 export const Date = styled.p`
   width: 100%;
   font-size: var(--font-size-subtitle);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--background-pink);
   text-align: center;
   margin: 0 0 10px 0;
+  line-height: 1.2;
 
   ${Mobile(css`
     font-size: var(--font-size-medium);
