@@ -22,7 +22,7 @@ it("renders blog post component", () => {
 });
 
 describe("Check content of PostCard component", () => {
-  const { getByText, getByRole } = render(<Display posts={postCardExample} />);
+  const { getByText } = render(<Display posts={postCardExample} />);
 
   it("checks if title rendered", () => {
     const title = getByText("Teste de blog post");
@@ -46,10 +46,5 @@ describe("Check content of PostCard component", () => {
   it("checks if description rendered", () => {
     const description = getByText("Isso é um teste");
     expect(description).toHaveTextContent("Isso é um teste");
-  });
-
-  it("checks if image rendered", () => {
-    const img = getByRole("img");
-    expect(img).toHaveAttribute("alt", "imagem aleatória");
   });
 });

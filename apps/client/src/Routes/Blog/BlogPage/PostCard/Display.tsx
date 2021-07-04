@@ -1,26 +1,11 @@
 import React, { FC, Fragment } from "react";
 
-import {
-  Container,
-  Content,
-  Wrapper,
-  MainTextContainer,
-  Title,
-  Description,
-  Image,
-  Button,
-  ButtonContainer,
-  ButtonText,
-  ButtonWrapper,
-  ButtonLayer,
-  DateContainer,
-  Date,
-  Divisor,
-} from "./styles";
+import { Container, Content, Wrapper } from "./styles";
 
-import useMobile from "Utils/useMobile";
 import { BlogPost } from "Api/BlogPost";
-import { formatPostDate } from "Utils/formatPostDate";
+import Web from "./Web";
+import Mobile from "./Mobile";
+import useMobile from "Utils/useMobile";
 
 interface DisplayProps {
   posts: BlogPost[];
@@ -37,57 +22,19 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
             <Fragment key={index}>
               <Wrapper>
                 {isMobile ? (
-                  <>
-                    <MainTextContainer>
-                      <Title>{post?.title}</Title>
-                      <Description>{post?.description}</Description>
-                      {post?.image !== null ? (
-                        <Image
-                          src={post?.image?.url}
-                          alt={post?.image?.alternativeText}
-                        />
-                      ) : (
-                        <></>
-                      )}
-                    </MainTextContainer>
-                    <ButtonWrapper>
-                      <ButtonContainer>
-                        <Button>
-                          <ButtonText>leia mais</ButtonText>
-                        </Button>
-                        <ButtonLayer />
-                      </ButtonContainer>
-                      <Divisor />
-                      <DateContainer>
-                        <Date>{formatPostDate(post?.created_at)?.day}</Date>
-                        <Date>{formatPostDate(post?.created_at)?.hour}</Date>
-                      </DateContainer>
-                    </ButtonWrapper>{" "}
-                  </>
+                  <Mobile
+                    title={post?.title}
+                    description={post?.description}
+                    image={post?.image}
+                    created_at={post?.created_at}
+                  />
                 ) : (
-                  <>
-                    <MainTextContainer>
-                      <Title>{post?.title}</Title>
-                      <Description>{post?.description}</Description>
-                      {post?.image !== null ? (
-                        <Image
-                          src={post?.image?.url}
-                          alt={post?.image?.alternativeText}
-                        />
-                      ) : (
-                        <></>
-                      )}
-                      <ButtonLayer />
-                      <Button>
-                        <ButtonText>leia mais</ButtonText>
-                      </Button>
-                    </MainTextContainer>
-                    <Divisor />
-                    <DateContainer>
-                      <Date>{formatPostDate(post?.created_at)?.day}</Date>
-                      <Date>{formatPostDate(post?.created_at)?.hour}</Date>
-                    </DateContainer>{" "}
-                  </>
+                  <Web
+                    title={post?.title}
+                    description={post?.description}
+                    image={post?.image}
+                    created_at={post?.created_at}
+                  />
                 )}
               </Wrapper>
             </Fragment>
