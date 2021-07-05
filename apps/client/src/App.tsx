@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
 import GlobalStyles from 'GlobalStyles'
 import Routes from 'Routes'
@@ -9,7 +10,7 @@ export const App = () => {
   return (
     <>
       <GlobalStyles />
-      { showRoutes ? <Routes /> : <Contruction /> }
+      { showRoutes ? <Routes /> : <BrowserRouter><Contruction /></BrowserRouter>}
     </>
   )
 }
