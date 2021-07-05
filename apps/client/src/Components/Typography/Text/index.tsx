@@ -2,25 +2,21 @@ import React, { FC } from 'react'
 
 import { StyledText } from './style'
 
-export interface TitleProps {
-  level?: 0 | 1 | 2 | 3 | 4 
-  color?: 'white' | 'yellow' | 'black' | 'pink' 
+export interface TextProps {
+  textColor?: 'white' | 'yellow' | 'black' | 'pink' 
 }
 
-export const Text: FC<TitleProps> = ({
-  level = 0,
+export const Text: FC<TextProps> = ({
   children,
-  color,
+  textColor,
   ...props
 }) => {
 
   return (
     <StyledText 
-      level={level} 
-      color={color}
+      className={textColor}
+      children={children}
       {...props}
-    >
-      {children}
-    </StyledText>
+    />
   )
 }
