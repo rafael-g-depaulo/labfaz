@@ -4,11 +4,6 @@ import { StaffObject } from 'Api/AboutUs'
 import { Card, CardThumb, CardBody, Text, Span, Circle } from '../styles'
 
 
-
-
-
-
-
 export const StaffCard: FC<StaffObject> = ( data ) => {
 
   const { name, tag, text, image } = data

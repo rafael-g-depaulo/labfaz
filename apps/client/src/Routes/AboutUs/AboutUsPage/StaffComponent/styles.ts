@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Paragraph } from 'Components/Text/style'
-import { Mobile } from 'Utils/breakpoints'
+import { Mobile, MobileSmall } from 'Utils/breakpoints'
 
 import { ParagraphProps } from 'Components/Text/style'
 
@@ -65,6 +65,11 @@ export const Card = styled.div`
   border: solid 2px #0C74FF;
   box-shadow: inset 2px -1px #FFEC99,2px 0px #FFEC99;
   border-radius: 14.3px;
+
+  ${MobileSmall(css`
+    max-width: 150px;
+    max-height: 240px;
+    `)}
 
 `
 
