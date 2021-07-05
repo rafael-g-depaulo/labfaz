@@ -6,7 +6,7 @@ import Web from './Web'
 
 export const Contruction: FC = () => {
 
-  if(useMobile()) return <Mobile /> 
+  if(useMobile()) return <Mobile />
   else return <Web />
 }
 
