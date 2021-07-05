@@ -54,6 +54,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Cairo", sans-serif;
     font-size: var(--font-size-default);
     color: var(--colot-text-white);
+    background-color: var(--background-black);
   }
 
   body {

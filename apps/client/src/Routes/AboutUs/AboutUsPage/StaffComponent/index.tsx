@@ -16,7 +16,7 @@ export const Staff: FC<StaffProps> = ( { data } ) => {
   return (
     <Wrapper>
       <StaffHeader>
-        <StaffTitle> Staff </StaffTitle>
+        <StaffTitle> STAFF </StaffTitle>
         <StaffSubtitle> Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </StaffSubtitle>        
       </StaffHeader>
       <StaffGrid>
