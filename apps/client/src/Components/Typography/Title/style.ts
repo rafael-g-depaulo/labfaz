@@ -1,48 +1,53 @@
 import styled, { css } from 'styled-components'
+
 interface TitleProps {
-  level?: 1 | 2 | 3 | 4 | 5
+  level?: 0 | 1 | 2 | 3 | 4
+  color?: 'white' | 'yellow' | 'black' | 'pink' 
 }
 
 const TitleFontVariation = {
+
+  0: css`
+    font-size: var(--font-size-default);
+  `,
 
   1: css`
     font-size: var(--font-size-title);
   `,
 
   2: css`
-    font-size: var(--font-size-default);
-  `,
-
-  3: css`
     font-size: var(--font-size-large);
   `,
   
-  4: css`
+  3: css`
     font-size: var(--font-size-medium);
   `,
   
-  5: css`
+  4: css`
     font-size: var(--font-size-short);
   `,
 };
 
-export const StyledTitle = styled.h1<TitleProps>`
-  ${(props) => TitleFontVariation[props.level || 1]};
-  margin: 0;
-  
-  &.white {
+const TitleColorVariation = {
+  'white': css`
     color: var(--color-text-white);
-  }
+  `,
 
-  &.yellow {
+  'yellow': css`
     color: var(--color-text-yellow);
-  } 
+  `,
 
-  &.black {
+  'black': css`
     color: var(--color-text);  
-  }
+  `,
 
-  &.pink {
-    color: var(--color-text-pink);  
-  }
+  'pink': css`
+  color: var(--color-text-pink);  
+  `
+}
+
+export const StyledTitle = styled.h1<TitleProps>`
+  ${(props) => TitleFontVariation[props.level || 0]};
+  ${(props) => TitleColorVariation[props.color || 'black']}
+  margin: 0;
 `
