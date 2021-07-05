@@ -14,16 +14,16 @@ export const Header: FC = () => {
     <Container>
       <Logo />
       <IconsDiv>
-        <Icon to="facebook.com">
+        <Icon to="facebook.com" data-testid="facebook">
           <FaFacebookSquare />
         </Icon>
-        <Icon to="facebook.com">
+        <Icon to="twitter.com" data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon to="facebook.com">
+        <Icon to="google.com" data-testid="google">
           <FaGooglePlusSquare />
         </Icon>
-        <Icon to="facebook.com">
+        <Icon to="linkedin.com" data-testid="linkedin">
           <FaLinkedin />
         </Icon>
       </IconsDiv>
