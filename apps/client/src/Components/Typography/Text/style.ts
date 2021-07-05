@@ -1,53 +1,21 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-interface TextProps {
-  level?: 0 | 1 | 2 | 3 | 4
-  color?: 'white' | 'yellow' | 'black' | 'pink' 
-}
-
-const TextFontVariation = {
-
-  0: css`
-    font-size: var(--font-size-default);
-  `,
-
-  1: css`
-    font-size: var(--font-size-title);
-  `,
-
-  2: css`
-    font-size: var(--font-size-large);
-  `,
+export const StyledText = styled.p`
+  font-size: var(--font-size-default);
   
-  3: css`
-    font-size: var(--font-size-medium);
-  `,
-  
-  4: css`
-    font-size: var(--font-size-short);
-  `,
-};
-
-const TextColorVariation = {
-  'white': css`
+  &.white {
     color: var(--color-text-white);
-  `,
+  }
 
-  'yellow': css`
+  &.yellow {
     color: var(--color-text-yellow);
-  `,
+  }
 
-  'black': css`
+  &.black {
     color: var(--color-text);  
-  `,
+  }
 
-  'pink': css`
-  color: var(--color-text-pink);  
-  `
-}
-
-
-export const StyledText = styled.p<TextProps>`
-  ${(props) => TextFontVariation[props.level || 0]};
-  ${(props) => TextColorVariation[props.color || 'black']}
+  &.pink {
+    color: var(--color-text-pink);  
+  }
 `
