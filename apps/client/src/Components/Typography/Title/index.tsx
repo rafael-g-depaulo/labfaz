@@ -3,14 +3,14 @@ import React, { FC } from 'react'
 import { StyledTitle } from './style'
 
 export interface TitleProps {
-  level?: 0 | 1 | 2 | 3 | 4 
-  color?: 'white' | 'yellow' | 'black' | 'pink' 
+  level?: 1 | 2 | 3 | 4 | 5 
+  titleColor?: 'white' | 'yellow' | 'black' | 'pink' 
 }
 
 export const Title: FC<TitleProps> = ({
   level = 1,
   children,
-  color,
+  titleColor,
   ...props
 }) => {
 
@@ -20,8 +20,6 @@ export const Title: FC<TitleProps> = ({
       className={titleColor}
       children={children}
       {...props}
-    >
-      {children}
-    </StyledTitle>
+    />
   )
 }
