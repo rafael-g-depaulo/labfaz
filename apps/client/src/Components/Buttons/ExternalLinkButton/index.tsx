@@ -1,31 +1,22 @@
-import React, { FC, ButtonHTMLAttributes } from 'react'
+import React, { FC } from 'react'
 
+import { ButtonProps } from '../ButtonProps'
 import { StyledButton } from './style'
 
-export interface ButtonProps {
-  href: string
-  buttonColor?: 'primary' | 'secondary' | 'secondary-variant-1' | 'white' | 'gray'
-}
-
-type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>
-
-export const ExternalLinkButton: FC<ButtonProps & ButtonType> = ({
-  buttonColor = 'white',
+export const ExternalLinkButton: FC<ButtonProps> = ({
+  buttonColor = 'primary',
   href,
   children,
   ...props
   }) => {
   return (
     <>
-      <a href={href} >
-        <StyledButton 
-          buttonColor={buttonColor} 
-          {...props}
-        > 
-          {children} 
-        </StyledButton>
-      </a>
-      
+      <StyledButton 
+        className={buttonColor} 
+        children={children}
+        as="a"
+        {...props}
+      /> 
     </>
   )
 }
