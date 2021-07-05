@@ -47,6 +47,10 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
   }
 
+  a {
+    margin: 0;
+    text-decoration: none;
+  }
 `
 
 export default GlobalStyles
