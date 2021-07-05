@@ -12,16 +12,16 @@ export interface ShowPersonProps {
 export const ShowPerson: FC<ShowPersonProps> = ({
   id,
 }) => {
-  const { data, error, isLoading } = usePersonExample(id)
+  const result = usePersonExample(id)
 
   // if is loading data
-  if (isLoading) return <Loading />
+  if (result.isLoading) return <Loading />
 
   // if there were any errors
-  if (error) return <div>error: { error?.message ?? "" }</div>
+  if (result.error) return <div>error: { result.error.message }</div>
 
   // if reached here, we know that data is loaded and there is no error
-  const person = data!
+  const person = result.data
 
   return (
     <Display person={person}/>

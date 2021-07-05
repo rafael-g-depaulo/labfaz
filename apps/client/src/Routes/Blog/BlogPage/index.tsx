@@ -6,13 +6,13 @@ import { useBlogBannerInfo } from "Api/BlogBannerInfo"
 
 export const BlogPage: FC = () => {
 
-  const { data, error, isLoading } = useBlogBannerInfo()
+  const result = useBlogBannerInfo()
 
-  if (isLoading) return <Loading />
-  if (error) return <div>error: { error?.message ?? "" }</div>
+  if (result.isLoading) return <Loading />
+  if (result.error) return <div>error: {result.error.message}</div>
 
   return (
-    <Display data={data!}/>
+    <Display data={result.data}/>
   )
 }
 

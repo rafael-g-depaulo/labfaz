@@ -5,13 +5,14 @@ import Loading from "Components/Loading"
 
 export const ShowSingleton: FC = () => {
 
-  const { data, error, isLoading } = useSingletonExample()
+  const result = useSingletonExample()
 
-  if (error) return <div>error: { error?.message ?? "" }</div>
+  if (result.error) return <div>error: { result.error.message }</div>
 
-  if (isLoading) return <Loading />
+  if (result.isLoading) return <Loading />
 
-  const { text, image} = data!
+  const { text, image } = result.data
+
   return (
     <div>
       <p>{text}</p>

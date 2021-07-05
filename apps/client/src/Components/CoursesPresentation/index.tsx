@@ -6,13 +6,13 @@ import Display from "./Display";
 
 export const CoursesPresentation: FC = () => {
 
-  const { data, error, isLoading } = useHomepage();
+  const result = useHomepage()
 
-  if (error) return <div>error: { error?.message ?? "" }</div>
-  if (isLoading) return <Loading />
+  if (result.isLoading) return <Loading />
+  if (result.error) return <div>error: {result.error.message}</div>
 
   return (
-    <Display texts={data!}/>
+    <Display texts={result.data}/>
   )
 }
 
