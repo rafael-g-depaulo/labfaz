@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: var(--background-black);
   align-items: center;
 `;
 
