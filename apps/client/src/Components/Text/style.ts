@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { Mobile } from "Utils/breakpoints"
+import { Mobile, MobileLarge, MobileSmall } from "Utils/breakpoints"
 
 export interface ParagraphProps {
   textAlign?: string
@@ -35,5 +35,17 @@ export const Paragraph = styled.p<ParagraphProps>`
       line-height: 25px;
       align-items: baseline;
     `)
+  }
+
+  ${MobileLarge(css`
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-medium);
+  `)
+  }
+
+${MobileSmall(css`
+    font-size: var(--font-size-medium);
+    line-height: var(--line-height-medium);
+  `)
   }
 `

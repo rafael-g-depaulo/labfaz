@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Mobile, DesktopSmall } from 'Utils/breakpoints'
+import { Mobile, DesktopSmall, MobileLarge, MobileSmall } from 'Utils/breakpoints'
 
 interface WrapperProps {
   color?: string,
@@ -33,8 +33,8 @@ export const Wrapper = styled.div<WrapperProps>`
   flex-direction: column;
   align-self: center;
 
-  background-color: var(--background-dark);
-  color: var(--color-text-primary);
+  background-color: var(--background-black);
+  color: var(--color-text-white);
 `
 
 export const Container = styled.div<ContainerProps>`
@@ -53,6 +53,7 @@ export const Container = styled.div<ContainerProps>`
   margin: 0 5vw;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
+  font-size: var(--font-size-default);
 
 
   background-color: var(--background-dark);
@@ -70,17 +71,54 @@ export const Container = styled.div<ContainerProps>`
 
       margin-bottom: 7vh;
       margin-top: 4vh;
+
+      align-items: center;
+      justify-content: center;
     `)
   }
 
-  ${DesktopSmall(css`
-    grid-template-rows: auto 1fr;
-    margin: 0;
-    margin-top: 4vh;
-    font-size: var(--font-size-short);
-    line-height: var(--line-height-medium);
+${
+    MobileLarge(css`
+      margin: 0 2vw;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+      "top top"
+      "bottom bottom";
+      grid-column-gap: 14vw;
+      grid-row-gap: 1vh;
 
-  `)}
+      margin-bottom: 7vh;
+      margin-top: 4vh;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: var(--font-size-medium);
+      line-height: var(--line-height-medium);
+    `)
+  }
+  
+  ${
+    DesktopSmall(css`
+      margin: 0 2vw;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+      "top top"
+      "bottom bottom";
+      grid-column-gap: 14vw;
+      grid-row-gap: 1vh;
+
+      margin-bottom: 7vh;
+      margin-top: 4vh;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: var(--font-size-large);
+      line-height: var(--line-height-medium);
+    `)
+  }
+
 `
 
 export const Image = styled.img<ImageProps>`
@@ -97,13 +135,34 @@ export const Image = styled.img<ImageProps>`
     min-height: 200px;
     min-width: 300px;
     align-self: center;
+    justify-self: center;
     grid-area: bottom;
     `
   )}
 
-${DesktopSmall(css`
-    max-width: 400px;
-  `)}
+${MobileLarge(
+    css`
+    max-height: 75%;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 300px;
+    align-self: center;
+    justify-self: center;
+    grid-area: bottom;
+    `
+  )}
+
+${DesktopSmall(
+    css`
+    max-height: 75%;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 300px;
+    align-self: center;
+    justify-self: center;
+    grid-area: bottom;
+    `
+  )}
 `
 
 export const TextDiv = styled.div<DivProps>`
@@ -117,4 +176,40 @@ export const TextDiv = styled.div<DivProps>`
     max-width: 100%;
     grid-area: top;
   `)}
+
+  ${
+    MobileLarge(css`
+      display: flex;
+      flex-direction: column;
+
+      max-width: 90%;
+
+      justify-items: center;
+    `)
+  }
+
+${
+    MobileSmall(css`
+      display: flex;
+      flex-direction: column;
+
+      max-width: 90%;
+
+      justify-self: center;
+
+      text-align: justify;
+    `)
+  }
+
+${DesktopSmall(
+    css`
+    max-height: 80%;
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 300px;
+    align-self: center;
+    justify-self: center;
+    grid-area: top;
+    `
+  )}
 `
