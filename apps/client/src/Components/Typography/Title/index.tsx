@@ -16,8 +16,9 @@ export const Title: FC<TitleProps> = ({
 
   return (
     <StyledTitle 
-      level={level} 
-      color={color}
+      as={`h${level}`}
+      className={titleColor}
+      children={children}
       {...props}
     >
       {children}
