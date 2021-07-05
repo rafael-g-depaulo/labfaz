@@ -12,9 +12,10 @@ export const ExternalLinkButton: FC<ButtonProps> = ({
   return (
     <>
       <StyledButton 
-        className={buttonColor} 
-        children={children}
         as="a"
+        href={href} 
+        className={buttonColor}
+        children={children}
         {...props}
       /> 
     </>
