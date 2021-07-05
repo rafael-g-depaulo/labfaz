@@ -9,9 +9,11 @@ import {
   ArgsTable,
   DocsContainer,
   Stories,
-} from '@storybook/addon-docs/blocks';
+} from '@storybook/addon-docs/blocks'
 
 import GlobalStyles from "../src/GlobalStyles"
+import { createGlobalStyle } from "styled-components"
+import Helmet from "react-helmet"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -32,13 +34,32 @@ export const parameters = {
   },
 }
 
+const BodyStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0 !important;
+    min-height: 100vh;
+  }
+`
+
 const injectGlobalStylesAndTheme = Story => (
   <>
       <GlobalStyles />
+      <BodyStyle />
       <Story />
+  </>
+)
+
+const injectGoogleFonts = Story => (
+  <>
+    <Helmet>
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet" />
+    </Helmet>
+    <Story />
   </>
 )
 
 export const decorators = [
   injectGlobalStylesAndTheme,
+  injectGoogleFonts,
 ]
