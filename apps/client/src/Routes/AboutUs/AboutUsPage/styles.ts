@@ -55,9 +55,8 @@ export const Container = styled.div<ContainerProps>`
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
   font-size: var(--font-size-default);
 
-
-  background-color: var(--background-dark);
-  color: var(--color-text-primary);
+  background-color: var(--background-black);
+  color: var(--color-text-white);
 
   ${
     Mobile(css`
