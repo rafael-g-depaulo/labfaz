@@ -17,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     --background-white: #FFFFFF;
     --background-black: #000000;
     --background-pink: #FC0061;
+    --background-blue: #0C74FF;
 
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
