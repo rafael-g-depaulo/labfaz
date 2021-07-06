@@ -23,11 +23,7 @@ export const Staff: FC<StaffProps> = ( { data } ) => {
         {
           staff.map((staff) => {
             return(
-              <StaffCard  
-                name={staff.name}
-                tag={staff.tag}
-                text={staff.text}
-                image={staff.image}/>
+              <StaffCard data={staff} key={staff.id}/>
             )
           })
         }

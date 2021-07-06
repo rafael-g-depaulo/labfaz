@@ -15,6 +15,7 @@ export interface DataObject {
 }
 
 export interface StaffObject {
+  id: number,
   name: string,
   tag: string,
   text: string,

@@ -41,11 +41,11 @@ describe("About us page", () => {
   
   it("renders without exploding", () => {
 
-    expect(() => render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)).not.toThrow()
+    expect(() => render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)).not.toThrow()
   })
   
   it("Renders banner component", () => {
-    const Page = render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)
+    const Page = render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)
     const banner = Page.getAllByRole('heading')
 
 
@@ -53,7 +53,7 @@ describe("About us page", () => {
   })
 
   it("displays the data message", () => {
-    const { getByRole } = render(<BrowserRouter><Display data={mockedData} /></BrowserRouter>)
+    const { getByRole } = render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)
 
     expect(getByRole("heading", {level: 1})).toHaveTextContent("Quem somos")
     expect(getByRole("heading", {level: 2})).toHaveTextContent("Welcome to Labfaz")

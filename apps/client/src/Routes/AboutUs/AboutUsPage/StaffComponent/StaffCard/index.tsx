@@ -3,10 +3,13 @@ import { StaffObject } from 'Api/AboutUs'
 
 import { Card, CardThumb, CardBody, Text, Span, Circle } from '../styles'
 
+interface StaffCardProps {
+  data: StaffObject
+}
 
-export const StaffCard: FC<StaffObject> = ( data ) => {
+export const StaffCard: FC<StaffCardProps> = ( {data} ) => {
 
-  const { name, tag, text, image } = data
+  const { name, tag, text, image } = data!
 
   return(
     <Card>

@@ -1,8 +1,10 @@
 import React from 'react'
 import render from 'Utils/render'
 
+import { BrowserRouter } from 'react-router-dom'
+
 import StaffCard from '.'
-import { StaffData } from '.'
+import { StaffObject } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
 
 const image = mockImage({
@@ -12,7 +14,8 @@ const image = mockImage({
   ext: "jpg"
 })
 
-const data: StaffData = {
+const StaffInfo: StaffObject = {
+  id: Math.random(),
   name: "Jhon Doe",
   tag: "Coordenação",
   text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",
@@ -20,10 +23,26 @@ const data: StaffData = {
 }
 
 describe('Staff card component',  () => {
-  const mockedData: StaffData = data
+  const mockedData: StaffObject = StaffInfo
 
   it('Should render without error', () => {
   
-    expect(() => render(<StaffCard data={mockedData}/>)).not.toThrow()
+    expect(() => render(<BrowserRouter><StaffCard data={mockedData}/></BrowserRouter>)).not.toThrow()
+  })
+
+  it('Should render staff image with src', () => {
+    const component = render(<BrowserRouter><StaffCard data={mockedData} /></BrowserRouter>)
+    
+    const Card = component.getByRole('img')
+
+    expect(Card).toHaveAttribute('src')
+  })
+
+  it('Should have alt text on image card', () => {
+    const component = render(<BrowserRouter><StaffCard data={mockedData} /></BrowserRouter>)
+
+    const Card = component.getByRole('img')
+
+    expect(Card).toHaveAttribute('alt')
   })
 })
