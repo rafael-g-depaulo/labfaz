@@ -17,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     --background-white: #FFFFFF;
     --background-black: #000000;
     --background-pink: #FC0061;
+    --background-light-pink: #FFEC99;
 
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
@@ -28,7 +29,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-large: 16px;
     --font-size-medium: 14px;
     --font-size-short: 12px;
-
+    --font-size-small: 10px;
     --line-height-default: 48.72px; 
     --line-height-small: 20px; 
     --line-height-medium: 30px; 

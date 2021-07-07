@@ -1,8 +1,9 @@
 import useWidth from "Hooks/useWidth";
+import { desktopSmall } from "./breakpoints";
 
 export const useMobile = () => {
   const screenWidth = useWidth()
-  return screenWidth < 1024
+  return screenWidth < desktopSmall
 }
 
 export default useMobile
