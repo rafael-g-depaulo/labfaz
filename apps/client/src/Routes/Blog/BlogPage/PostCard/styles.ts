@@ -128,7 +128,7 @@ export const ButtonLayer = styled.div`
   position: relative;
   width: 250px;
   height: 45px;
-  background-color: var(--background-light-pink);
+  background-color: var(--background-yellow);
   z-index: 1;
   top: 41px;
   right: 3px;

@@ -1,5 +1,15 @@
 import React, { FC } from "react";
-import { Container, TextContainer, Title, Text } from "./styles";
+import {
+  Container,
+  Divider,
+  TextContainer,
+  Title,
+  Text,
+  ButtonWrapper,
+  ButtonLayer,
+  Button,
+  ButtonText,
+} from "./styles";
 import { useMobile } from "Utils/useMobile";
 import { useCoursePresentations } from "Api/CoursePresentation";
 import Card from "./Card";
@@ -13,7 +23,7 @@ interface DisplayProps {
 const Display: FC<DisplayProps> = ({ texts }) => {
   const isMobile = useMobile();
 
-  const result = useCoursePresentations()
+  const result = useCoursePresentations();
 
   // if (result.isLoading) return <Loading />
   // if (result.error) return <div>error: {result.error.message}</div>
@@ -36,7 +46,14 @@ const Display: FC<DisplayProps> = ({ texts }) => {
             <Title>{texts.course_presentation_title}</Title>
             <Text>{texts.course_presentation_first_text}</Text>
             <Text>{texts.course_presentation_second_text}</Text>
+            <ButtonWrapper>
+              <Button>
+                <ButtonText>visitar cursos</ButtonText>
+              </Button>
+              <ButtonLayer />
+            </ButtonWrapper>
           </TextContainer>
+          <Divider />
           <Card courses={result.data!} isMobile={isMobile} />
         </>
       )}
