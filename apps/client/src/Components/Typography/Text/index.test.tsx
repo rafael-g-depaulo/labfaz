@@ -8,7 +8,6 @@ it('renders Text component', () => {
   expect(() => Render(
     <BrowserRouter>
       <Text 
-        textColor="black"
         children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
       />
     </BrowserRouter>
@@ -19,7 +18,6 @@ describe('Check content of Text', () => {
   const { getByText } = Render(
     <BrowserRouter>
       <Text 
-        textColor="black"
         children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta ligula nibh, nec interdum nunc maximus at."
       />
     </BrowserRouter>
