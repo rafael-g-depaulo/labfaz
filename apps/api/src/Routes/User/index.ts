@@ -7,6 +7,7 @@ import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 
 import CreateUser from "./CreateUser"
 import UpdateUser from "./UpdateUser"
+import { LogInUser } from "./logInUser"
 
 type UserDeps = {
   conn: Connection,
@@ -22,6 +23,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
   return express.Router(options)
     .post("/", CreateUser({ UserRepo }))
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }))
+    .post("/login", LogInUser({ UserRepo }))
 }
 
 export default UserRouter

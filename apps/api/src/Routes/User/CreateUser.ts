@@ -1,6 +1,8 @@
 import { DeepPartial } from "typeorm"
 import { RequestHandler } from "Routes"
 
+import { MailProvider, Addres } from "@labfaz/mail/src"
+
 import User from "Entities/User"
 import UserRepository from "Repository/UserRepository"
 
@@ -14,6 +16,13 @@ interface IUser {
   password: string
 }
 
+const mailer =  new MailProvider()
+const from: Addres = {
+  name: "Zipudhe Tech company",
+  email: "businessramalho@gmail.com"
+}
+
+
 export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepPartial<User>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
@@ -23,6 +32,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     email,
     password
   } = req.body as IUser
+
 
   if (!name || !email || !password) return res.status(400).json({ error: "Incomplete request body" })
 
@@ -40,6 +50,16 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   const user = UserRepo.create({ name, email, password: hashedPassword })
 
   await UserRepo.save(user)
+
+  mailer.sendEmail({
+    to:{
+      name: name,
+      email: email
+    },
+    from: from,
+    subject: "Email confirmation",
+    html: " <h1> Confirm email </h1> "
+  })
 
   return res.status(201).json({ user })
 }

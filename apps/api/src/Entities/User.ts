@@ -34,6 +34,9 @@ export class User extends BaseEntity {
   addId() {
     this.id = nanoid()
   }
+
+  @Column('boolean', { default: false })
+  active: boolean
 }
 
 export default User
