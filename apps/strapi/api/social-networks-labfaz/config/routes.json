@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/social-networks-labfaz",
+      "handler": "social-networks-labfaz.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/social-networks-labfaz",
+      "handler": "social-networks-labfaz.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/social-networks-labfaz",
+      "handler": "social-networks-labfaz.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

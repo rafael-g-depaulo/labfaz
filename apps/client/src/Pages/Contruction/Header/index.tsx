@@ -8,22 +8,29 @@ import {
 
 import Logo from 'Components/Logo'
 import { Container, Icon, IconsDiv } from './style'
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 
-export const Header: FC = () => {
+export interface Props {
+  data: SocialNetworksLabfaz
+}
+
+export const Header: FC<Props> = ({ data }) => {
+
+  const {facebook, twitter, linkedin, googlePlus} = data!
   return (
     <Container>
       <Logo />
       <IconsDiv>
-        <Icon to={{ pathname: "https://www.facebook.com" }} target="_blank" data-testid="facebook">
+        <Icon to={{ pathname: facebook }} target="_blank" data-testid="facebook">
           <FaFacebookSquare />
         </Icon>
-        <Icon to={{ pathname: "https://www.twitter.com" }} target="_blank" data-testid="twitter">
+        <Icon to={{ pathname: twitter }} target="_blank" data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon to={{ pathname: "https://www.google.com" }} target="_blank" data-testid="google">
+        <Icon to={{ pathname: googlePlus }} target="_blank" data-testid="google">
           <FaGooglePlusSquare />
         </Icon>
-        <Icon to={{ pathname: "https://linkedin.com" }} target="_blank" data-testid="linkedin">
+        <Icon to={{ pathname: linkedin }} target="_blank" data-testid="linkedin">
           <FaLinkedin />
         </Icon>
       </IconsDiv>

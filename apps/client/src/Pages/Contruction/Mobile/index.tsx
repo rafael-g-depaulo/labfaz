@@ -9,10 +9,17 @@ import {
   Rectangle
 } from './style'
 
-export const Mobile: FC = () => {
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
+
+export interface Props {
+  data: SocialNetworksLabfaz
+}
+
+export const Mobile: FC<Props> = ({ data }) => {
+  
   return (
     <Container>
-      <Header />
+      <Header data={data!} />
       <div>
         <Rectangle>
           <Image />

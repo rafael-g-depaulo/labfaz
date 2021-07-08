@@ -8,11 +8,17 @@ import {
   Text,
   Rectangle
 } from './style'
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 
-export const Web: FC = () => {
+export interface Props {
+  data: SocialNetworksLabfaz
+}
+
+export const Web: FC<Props> = ({ data }) => {
+
   return (
     <Container>
-      <Header />
+      <Header data={data!}/>
       <div>
         <Rectangle> 
           <Image />
