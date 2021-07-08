@@ -4,7 +4,6 @@ import { ButtonProps } from '../ButtonProps'
 import { StyledButton } from './style'
 
 export const InternalLinkButton: FC<ButtonProps> = ({
-  buttonColor = 'primary',
   href,
   children,
   ...props
@@ -13,9 +12,8 @@ export const InternalLinkButton: FC<ButtonProps> = ({
     <>
       <StyledButton 
         to={href}  
-        className={buttonColor} 
-        {...props}
         children={children}
+        {...props}
       /> 
     </>
   )
