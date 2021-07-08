@@ -4,7 +4,6 @@ import { ButtonProps } from '../ButtonProps'
 import { StyledButton } from './style'
 
 export const ExternalLinkButton: FC<ButtonProps> = ({
-  buttonColor = 'primary',
   href,
   children,
   ...props
@@ -14,7 +13,6 @@ export const ExternalLinkButton: FC<ButtonProps> = ({
       <StyledButton 
         as="a"
         href={href} 
-        className={buttonColor}
         children={children}
         {...props}
       /> 
