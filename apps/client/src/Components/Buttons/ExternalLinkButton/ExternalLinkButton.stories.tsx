@@ -10,7 +10,6 @@ storiesOf("Components/ExternalLinkButton", module)
     <BrowserRouter >
       <ExternalLinkButton 
         href="https://google.com.br" 
-        buttonColor="primary"
         children="External Button"
       />
     </BrowserRouter>)
