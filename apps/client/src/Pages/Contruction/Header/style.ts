@@ -1,10 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
+
+import { Mobile } from 'Utils/breakpoints'
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${Mobile(css`
+    padding: 1.5rem 1rem;
+  `)}
 `;
 
 export const IconsDiv = styled.div`
