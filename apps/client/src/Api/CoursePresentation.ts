@@ -3,21 +3,34 @@ import useFetchApi from "Hooks/useFetchApi";
 
 export interface CoursePresentation {
   title: string;
+  subtitle: string;
   description: string;
-  date: string;
+  finish_date: string;
   banner_image: any;
+  finished: boolean;
 }
 
 export const fetchCoursePresentation = (id: number) =>
   strapi
     .get<CoursePresentation>(`/course-presentations/${id}`)
     .then(({ data }) => data)
-    .then(({ title, description, date, banner_image }) => ({
-      title,
-      description,
-      date,
-      banner_image,
-    }));
+    .then(
+      ({
+        title,
+        subtitle,
+        description,
+        finish_date,
+        banner_image,
+        finished,
+      }) => ({
+        title,
+        subtitle,
+        description,
+        finish_date,
+        banner_image,
+        finished,
+      })
+    );
 
 export const useCoursePresentation = (id: number) =>
   useFetchApi<CoursePresentation>(`/course-presentations/${id}`, () =>
@@ -29,12 +42,23 @@ export const fetchCoursePresentations = () =>
     .get<CoursePresentation[]>(`/course-presentations`)
     .then(({ data }) => data)
     .then((courses) =>
-      courses.map(({ title, description, date, banner_image }) => ({
-        title,
-        description,
-        date,
-        banner_image,
-      }))
+      courses.map(
+        ({
+          title,
+          subtitle,
+          description,
+          finish_date,
+          banner_image,
+          finished,
+        }) => ({
+          title,
+          subtitle,
+          description,
+          finish_date,
+          banner_image,
+          finished,
+        })
+      )
     );
 
 export const useCoursePresentations = () =>

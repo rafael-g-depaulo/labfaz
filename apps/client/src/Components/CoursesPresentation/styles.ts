@@ -5,7 +5,7 @@ import { css } from "styled-components";
 export const Container = styled.div`
   background-color: var(--background-black);
   width: 100%;
-  height: 900px;
+  height: 970px;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -20,7 +20,7 @@ export const Container = styled.div`
   `)}
 
   ${DesktopSmall(css`
-    height: 820px;
+    height: 900px;
   `)}
 `;
 
@@ -93,21 +93,21 @@ export const ButtonLayer = styled.div`
   position: relative;
   z-index: 1;
   background-color: var(--background-pink);
-  bottom: 65px;
-  right: 5px;
+  bottom: 63px;
+  right: 3px;
 
   ${Mobile(css`
     width: 160px;
     height: 34px;
-    bottom: 37px;
-    right: 3px;
+    bottom: 36px;
+    right: 2px;
   `)}
 
   ${DesktopSmall(css`
     width: 190px;
     height: 40px;
-    bottom: 45px;
-    right: 3px;
+    bottom: 42px;
+    right: 2px;
   `)}
 `;
 

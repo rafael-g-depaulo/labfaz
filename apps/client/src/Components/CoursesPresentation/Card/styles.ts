@@ -6,6 +6,11 @@ interface GridProps {
   position: any;
 }
 
+interface ButtonColors {
+  colors: string;
+  border: string;
+}
+
 export const Container = styled.div`
   height: 100%;
   display: grid;
@@ -15,7 +20,7 @@ export const Container = styled.div`
       200px,
       330px
     );
-  grid-template-rows: minmax(325px, 450px) minmax(5%, auto) minmax(325px, 450px);
+  grid-template-rows: minmax(325px, 430px) minmax(5%, auto) minmax(325px, 430px);
   grid-template-areas:
     "CardContainer . CardContainer"
     "      .       .        .     "
@@ -23,9 +28,9 @@ export const Container = styled.div`
 
   ${Mobile(css`
     grid-template-columns: minmax(250px, 300px);
-    grid-template-rows: minmax(340px, 380px) minmax(7%, auto) minmax(
+    grid-template-rows: minmax(340px, 420px) minmax(7%, auto) minmax(
         340px,
-        380px
+        420px
       );
     grid-template-areas:
       "CardContainer"
@@ -56,7 +61,7 @@ export const CardContainer = styled.div<GridProps>`
 export const CardImage = styled.img`
   object-fit: cover;
   object-position: center;
-  height: 36%;
+  height: 140px;
   width: 100%;
   border-radius: 14px 14px 0 0;
   border-bottom: 6px solid rgba(0, 0, 0, 0.33);
@@ -65,7 +70,8 @@ export const CardImage = styled.img`
 
 export const MainText = styled.div`
   width: 100%;
-  padding: 10px 15px;
+  height: 100%;
+  padding: 10px 15px 20px 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -77,9 +83,14 @@ export const CardTitle = styled.p`
   font-size: var(--line-height-small);
   font-weight: 600;
   line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 
-  ${Mobile(css`
-    line-height: 1.5;
+  ${DesktopSmall(css`
+    font-size: var(--font-size-default);
   `)}
 `;
 
@@ -89,6 +100,11 @@ export const CardSubtitle = styled.p`
   color: var(--color-text-white);
   text-transform: uppercase;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 
 export const DescriptionBox = styled.div`
@@ -140,7 +156,7 @@ export const DateText = styled.p`
   }
 
   ${DesktopSmall(css`
-  font-size: var(--font-size-small);
+    font-size: var(--font-size-small);
   `)}
 `;
 
@@ -159,13 +175,14 @@ export const ButtonWrapper = styled.div`
   `)}
 `;
 
-export const ButtonLayer = styled.div`
+export const ButtonLayer = styled.div<ButtonColors>`
   width: 100%;
   height: 34px;
   position: relative;
   z-index: 1;
-  background-color: var(--background-black);
-  right: 5px;
+  background-color: ${(p) => p.colors};
+  border: solid 1px var(--background-black);
+  right: 3px;
 
   ${Mobile(css`
     height: 30px;
@@ -173,24 +190,24 @@ export const ButtonLayer = styled.div`
   `)}
 
   ${DesktopSmall(css`
-  width: 90px;
+    width: 90px;
     height: 30px;
     right: 3px;
   `)}
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonColors>`
   position: relative;
   z-index: 2;
-  bottom: 30px;
+  bottom: 31px;
   width: 100%;
   height: 34px;
-  background-color: var(--background-yellow);
+  background-color: ${(p) => p.colors};
   display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
-  border: solid 1px var(--background-pink);
+  border: solid 1px ${(p) => p.border};
   padding: 5px 30px;
 
   ${Mobile(css`
@@ -199,17 +216,17 @@ export const Button = styled.button`
   `)}
 
   ${DesktopSmall(css`
-  padding: 5px 10px;
-  width: 90px;
+    padding: 5px 10px;
+    width: 90px;
     height: 30px;
     bottom: 27px;
   `)}
 `;
 
-export const ButtonText = styled.p`
+export const ButtonText = styled.p<ButtonColors>`
   font-size: var(--font-size-short);
   font-weight: 700;
-  color: var(--background-pink);
+  color: ${(p) => p.colors};
   text-transform: uppercase;
   margin: 0;
 

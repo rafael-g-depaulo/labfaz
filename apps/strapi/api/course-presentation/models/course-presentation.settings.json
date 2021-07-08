@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "course_presentations",
   "info": {
-    "name": "CoursePresentation"
+    "name": "CoursePresentation",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,7 +19,7 @@
       "type": "text",
       "required": true
     },
-    "date": {
+    "finish_date": {
       "type": "date",
       "required": true
     },
@@ -29,6 +30,14 @@
         "images"
       ],
       "plugin": "upload",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "finished": {
+      "type": "boolean",
       "required": true
     }
   }
