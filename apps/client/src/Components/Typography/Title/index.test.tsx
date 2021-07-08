@@ -8,7 +8,6 @@ it('renders Title component', () => {
   expect(() => Render(
     <BrowserRouter>
       <Title 
-        titleColor="black"
         children="Some Title"
       />
     </BrowserRouter>
@@ -19,7 +18,6 @@ describe('Check content of Title', () => {
   const { getByText } = Render(
     <BrowserRouter>
       <Title 
-        titleColor="black"
         children="Some Title"
       />
     </BrowserRouter>
