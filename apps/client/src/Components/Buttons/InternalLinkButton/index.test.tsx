@@ -9,7 +9,6 @@ it('renders internal link button component', () => {
     <BrowserRouter>
       <InternalLinkButton 
         href="/blog" 
-        buttonColor="primary"
         children="Internal Button"
       />
     </BrowserRouter>
@@ -21,7 +20,6 @@ describe('Check content of Button component', () => {
     <BrowserRouter>
       <InternalLinkButton 
         href="/blog" 
-        buttonColor="primary"
         children="Internal Button"
       />
     </BrowserRouter>
