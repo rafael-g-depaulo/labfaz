@@ -9,14 +9,30 @@ const coursesPresentationExample = {
   course_presentation_second_text: "Segundo parágrafo",
 };
 
+const cardExample = [
+  {
+    title: "Teste",
+    subtitle: "iluminação",
+    description: "Descrição aqui",
+    finish_date: "2020-08-05",
+    banner_image: {
+      url: "https://www.pexels.com/pt-br/foto/aniversario-dia-do-nascimento-floracao-florescencia-8285483/",
+      name: "imagem aleatória",
+    },
+    finished: true,
+  },
+];
+
 it("renders CoursesPresentation component", () => {
   expect(() =>
-    render(<Display texts={coursesPresentationExample} />)
+    render(<Display texts={coursesPresentationExample} courses={cardExample} />)
   ).not.toThrow();
 });
 
 describe("Check content of CoursesPresentation component", () => {
-  const { getByText } = render(<Display texts={coursesPresentationExample} />);
+  const { getByText } = render(
+    <Display texts={coursesPresentationExample} courses={cardExample} />
+  );
 
   it("checks if title rendered", () => {
     const title = getByText("Isso é um exemplo");

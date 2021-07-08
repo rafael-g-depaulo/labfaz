@@ -48,23 +48,52 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                 />
                 <MainText>
                   <CardTitle>{item?.title}</CardTitle>
-                  <CardSubtitle>iluminação</CardSubtitle>
+                  <CardSubtitle>{item?.subtitle}</CardSubtitle>
                   <DescriptionBox>
                     <CardDescription>{item?.description}</CardDescription>
                   </DescriptionBox>
                   <BottomWrapper>
                     <DateWrapper>
-                      <DateText>Aberto até</DateText>
                       <DateText>
-                        {format(item?.date, "DD-MM-YYYY")
+                        {item?.finished ? "Encerrado em" : "Aberto até"}
+                      </DateText>
+                      <DateText>
+                        {format(item?.finish_date, "DD-MM-YYYY")
                           .replace("-", "/")
                           .replace("-", "/")}
                       </DateText>
                     </DateWrapper>
                     <ButtonWrapper>
-                      <ButtonLayer />
-                      <Button>
-                        <ButtonText>inscreva-se</ButtonText>
+                      <ButtonLayer
+                        colors={
+                          item?.finished
+                            ? "var(--background-pink)"
+                            : "var(--background-black)"
+                        }
+                        border="none"
+                      />
+                      <Button
+                        colors={
+                          item?.finished
+                            ? "var(--background-pink)"
+                            : "var(--background-light-pink)"
+                        }
+                        border={
+                          item?.finished
+                            ? "var(--background-black)"
+                            : "var(--background-pink)"
+                        }
+                      >
+                        <ButtonText
+                          colors={
+                            item?.finished
+                              ? "var(--color-text-black)"
+                              : "var(--background-pink)"
+                          }
+                          border="none"
+                        >
+                          {item?.finished ? "saiba mais" : "inscreva-se"}
+                        </ButtonText>
                       </Button>
                     </ButtonWrapper>
                   </BottomWrapper>

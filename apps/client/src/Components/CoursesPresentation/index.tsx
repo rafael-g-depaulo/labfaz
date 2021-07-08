@@ -1,19 +1,23 @@
-import React, { FC } from "react"
+import React, { FC } from "react";
 
 import { useHomepage } from "Api/Homepage";
+import { useCoursePresentations } from "Api/CoursePresentation";
+
 import Loading from "Components/Loading";
 import Display from "./Display";
 
 export const CoursesPresentation: FC = () => {
+  const { data, error, isLoading } = useHomepage();
+  const coursesData = useCoursePresentations();
 
-  const result = useHomepage()
+  if (error) return <div>error: {error?.message ?? ""}</div>;
+  if (isLoading) return <Loading />;
 
-  if (result.isLoading) return <Loading />
-  if (result.error) return <div>error: {result.error.message}</div>
+  if (coursesData.error)
+    return <div>error: {coursesData.error?.message ?? ""}</div>;
+  if (coursesData.isLoading) return <Loading />;
 
-  return (
-    <Display texts={result.data}/>
-  )
-}
+  return <Display texts={data!} courses={coursesData.data!} />;
+};
 
 export default CoursesPresentation;
