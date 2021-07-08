@@ -27,8 +27,13 @@ export class MailProvider implements SendEmail {
   private readonly transponder: Mail
   constructor () {
     this.transponder = nodemailer.createTransport({
+<<<<<<< HEAD
       host: `smtp.gmail.email`,
       service: "gmail",
+=======
+      host: `smtp.${process.env.HOST}.email`,
+      service: process.env.HOST,
+>>>>>>> e29a759 (🐛 Fix variable problem with lib)
       port: 465,
       secure: true,
       auth: {
