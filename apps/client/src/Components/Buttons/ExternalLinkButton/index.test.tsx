@@ -9,7 +9,6 @@ it('renders external link button component', () => {
     <BrowserRouter>
       <ExternalLinkButton 
         href="https://google.com.br" 
-        buttonColor="primary"
         children="External Button"
       />
     </BrowserRouter>
@@ -21,7 +20,6 @@ describe('Check content of Button component', () => {
     <BrowserRouter>
       <ExternalLinkButton 
         href="https://google.com.br" 
-        buttonColor="primary"
         children="External Button"
       />
     </BrowserRouter>
