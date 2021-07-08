@@ -10,7 +10,6 @@ storiesOf("Components/InternalLinkButton", module)
     <BrowserRouter >
       <InternalLinkButton 
         href="/blog" 
-        buttonColor="secondary"
         children="Internal Button"
       />
     </BrowserRouter>)
