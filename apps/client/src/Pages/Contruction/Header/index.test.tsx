@@ -11,18 +11,18 @@ it('renders header component', () => {
 describe('Check links succesfully redirects to another page', () => {
   const { getByTestId } = render(<BrowserRouter><Header /></BrowserRouter>);
   it('check link to facebook', () => {
-    expect(getByTestId('facebook').closest('a')).toHaveAttribute('href', '/facebook.com')
+    expect(getByTestId('facebook')).toHaveAttribute('href', 'https://www.facebook.com')
   })
 
   it('check link to twitter', () => {
-    expect(getByTestId('twitter').closest('a')).toHaveAttribute('href', '/twitter.com')
+    expect(getByTestId('twitter')).toHaveAttribute('href', 'https://www.twitter.com')
   })
 
   it('check link to google', () => {
-    expect(getByTestId('google').closest('a')).toHaveAttribute('href', '/google.com')
+    expect(getByTestId('google')).toHaveAttribute('href', 'https://www.google.com')
   })
 
   it('check link to linkedin', () => {
-    expect(getByTestId('linkedin').closest('a')).toHaveAttribute('href', '/linkedin.com')
+    expect(getByTestId('linkedin')).toHaveAttribute('href', 'https://linkedin.com')
   })
 })
