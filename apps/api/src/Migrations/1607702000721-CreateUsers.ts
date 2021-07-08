@@ -11,7 +11,6 @@ export class CreateUsers1607702000721 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
-                        default: 'nanoid()'
                     },
                     {
                         name: 'name',

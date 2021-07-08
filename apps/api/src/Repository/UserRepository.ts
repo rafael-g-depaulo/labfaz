@@ -1,11 +1,10 @@
 import { EntityRepository, Repository } from "typeorm"
-import { sign } from "jsonwebtoken"
+// import { sign } from "jsonwebtoken"
 import { hash } from 'bcryptjs'
 import { compare } from "bcryptjs"
 
 import User from "Entities/User"
-import authConfig from "config/auth"
-
+// import authConfig from "config/auth"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
