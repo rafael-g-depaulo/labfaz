@@ -14,16 +14,16 @@ export const Header: FC = () => {
     <Container>
       <Logo />
       <IconsDiv>
-        <Icon to="facebook.com" data-testid="facebook">
+        <Icon to={{ pathname: "https://www.facebook.com" }} target="_blank" data-testid="facebook">
           <FaFacebookSquare />
         </Icon>
-        <Icon to="twitter.com" data-testid="twitter">
+        <Icon to={{ pathname: "https://www.twitter.com" }} target="_blank" data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon to="google.com" data-testid="google">
+        <Icon to={{ pathname: "https://www.google.com" }} target="_blank" data-testid="google">
           <FaGooglePlusSquare />
         </Icon>
-        <Icon to="linkedin.com" data-testid="linkedin">
+        <Icon to={{ pathname: "https://linkedin.com" }} target="_blank" data-testid="linkedin">
           <FaLinkedin />
         </Icon>
       </IconsDiv>

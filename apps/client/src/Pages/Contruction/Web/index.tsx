@@ -1,16 +1,12 @@
 import React, { FC } from 'react'
 
-import { Header } from '../Header'
-import { Footer } from '../Footer'
-import image from '../construction.png'
+import Header from '../Header'
+import Footer from '../Footer'
+import Image from '../Image'
 import {
   Container,
   Text,
-  ImageConstruction,
-  Circle,
-  ImageDiv,
-  Rectangle,
-  Triangle
+  Rectangle
 } from './style'
 
 export const Web: FC = () => {
@@ -19,11 +15,7 @@ export const Web: FC = () => {
       <Header />
       <div>
         <Rectangle> 
-          <Triangle />
-          <ImageDiv>
-            <Circle />
-            <ImageConstruction src={image} alt="construction" />
-          </ImageDiv>
+          <Image />
           <Text>
             Olá, ainda estamos organizando as coisas.
           </Text>
