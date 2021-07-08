@@ -1,7 +1,8 @@
-import { MailProvider, Addres } from "@labfaz/mail"
 import { getApiUrl } from "@labfaz/server-conn-info"
 
 import  * as yup from "yup"
+
+import { MailProvider, Addres } from "@labfaz/mail/src"
 
 import UserRepository from "Repository/UserRepository"
 

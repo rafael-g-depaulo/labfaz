@@ -5,10 +5,16 @@ import { Router } from "Routes";
 import UserRepository from "Repository/UserRepository";
 import ensureAuthenticated from "Middlewares/ensureAuthenticated";
 
+<<<<<<< HEAD
 import CreateUser from "./CreateUser";
 import UpdateUser from "./UpdateUser";
 import GetAllUser from "./GetAllUser";
 import ShowUser from "./ShowUser";
+=======
+import CreateUser from "./CreateUser"
+import UpdateUser from "./UpdateUser"
+import { LogInUser } from "./logInUser"
+>>>>>>> 8f032a4 (✨ Create login user logi with email sender)
 
 type UserDeps = {
   conn: Connection;
@@ -23,7 +29,13 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .get("/", GetAllUser({ UserRepo }))
     .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
     .post("/", CreateUser({ UserRepo }))
+<<<<<<< HEAD
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }));
 };
+=======
+    .put("/", ensureAuthenticated, UpdateUser({ UserRepo }))
+    .post("/login", LogInUser({ UserRepo }))
+}
+>>>>>>> 8f032a4 (✨ Create login user logi with email sender)
 
 export default UserRouter;
