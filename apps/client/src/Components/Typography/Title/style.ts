@@ -9,20 +9,24 @@ const TitleFontVariation = {
   `,
 
   2: css`
-    font-size: var(--font-size-default);
+    font-size: var(--font-size-title-medium);
   `,
 
   3: css`
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-title-small);
   `,
   
   4: css`
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-default);
   `,
   
   5: css`
-    font-size: var(--font-size-short);
+    font-size: var(--font-size-large);
   `,
+
+  6: css`
+    font-size: var(--font-size-medium);
+  `
 };
 
 export const StyledTitle = styled.h1<TitleProps>`
