@@ -25,7 +25,9 @@
     "mailer"
   ],
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/nodemailer": "^6.4.2",
+    "dotenv": "^10.0.0",
     "nodemailer": "^6.6.2"
   }
 }
