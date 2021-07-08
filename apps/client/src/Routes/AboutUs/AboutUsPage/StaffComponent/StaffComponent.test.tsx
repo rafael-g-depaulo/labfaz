@@ -40,4 +40,28 @@ describe('Staffs component',  () => {
   
     expect(() => render(<BrowserRouter><Staff data={mockedData}/></BrowserRouter>)).not.toThrow()
   })
+
+  it('Should render 2 cards', () => {
+    const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
+
+    const cards = component.getAllByRole('img')
+
+    expect(cards.length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('Should have a header with the staff title',  () => {
+    const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
+
+    const header = component.getByRole('heading', { level: 1 })
+
+    expect(header).toHaveTextContent('STAFF')
+  })
+
+  it('Should have a subtitle header',  () => {
+    const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
+
+    const header = component.getByRole('heading', { level: 2 })
+
+    expect(header).toHaveTextContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+  })
 })
