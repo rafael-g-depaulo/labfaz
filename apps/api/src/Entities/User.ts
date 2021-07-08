@@ -26,6 +26,9 @@ export class User {
   addId() {
     this.id = nanoid()
   }
+
+  @Column('boolean', { default: false })
+  active: boolean
 }
 
 export default User
