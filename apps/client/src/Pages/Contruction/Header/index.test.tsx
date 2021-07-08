@@ -4,12 +4,27 @@ import { BrowserRouter } from 'react-router-dom';
 import render from 'Utils/render'
 import Header from '../Header'
 
+const mockedData = {
+  facebook: "https://www.facebook.com",
+  twitter: "https://www.twitter.com",
+  googlePlus: "https://www.google.com",
+  linkedin: "https://linkedin.com"
+}
+
 it('renders header component', () => {
-  expect(() => render(<BrowserRouter><Header /></BrowserRouter>)).not.toThrow()
+  expect(() => render(
+    <BrowserRouter>
+      <Header data={mockedData}/>
+    </BrowserRouter>
+  )).not.toThrow()
 })
 
 describe('Check links succesfully redirects to another page', () => {
-  const { getByTestId } = render(<BrowserRouter><Header /></BrowserRouter>);
+  const { getByTestId } = render(
+    <BrowserRouter>
+      <Header data={mockedData}/>
+    </BrowserRouter>
+  );
   it('check link to facebook', () => {
     expect(getByTestId('facebook')).toHaveAttribute('href', 'https://www.facebook.com')
   })

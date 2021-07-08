@@ -4,12 +4,27 @@ import { BrowserRouter } from 'react-router-dom';
 import render from 'Utils/render'
 import Web from './'
 
+const mockedData = {
+  facebook: "https://www.facebook.com",
+  twitter: "https://www.twitter.com",
+  googlePlus: "https://www.google.com",
+  linkedin: "https://linkedin.com"
+}
+
 it('renders header component', () => {
-  expect(() => render(<BrowserRouter><Web /></BrowserRouter>)).not.toThrow()
+  expect(() => render(
+    <BrowserRouter>
+      <Web data={mockedData}/>
+    </BrowserRouter>
+  )).not.toThrow()
 })
 
 describe('Check content of Page', () => {
-  const { getByText, getAllByRole } = render(<BrowserRouter><Web /></BrowserRouter>);
+  const { getByText, getAllByRole } = render(
+    <BrowserRouter>
+      <Web data={mockedData}/>
+    </BrowserRouter>
+  );
 
   it('check construction image', () => {
     const images = getAllByRole('img')
