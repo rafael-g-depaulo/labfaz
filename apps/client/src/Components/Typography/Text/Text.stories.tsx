@@ -11,6 +11,5 @@ storiesOf("Components/Text", module)
       <Text 
         children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
         porta ligula nibh, nec interdum nunc maximus at."
-        textColor="black"
       />
     </BrowserRouter>)
