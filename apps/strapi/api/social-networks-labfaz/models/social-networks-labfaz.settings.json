@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "social_networks_labfazs",
   "info": {
-    "name": "Social Networks Labfaz"
+    "name": "Social Networks Labfaz",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -20,6 +21,9 @@
       "type": "string"
     },
     "googlePlus": {
+      "type": "string"
+    },
+    "instagram": {
       "type": "string"
     }
   }
