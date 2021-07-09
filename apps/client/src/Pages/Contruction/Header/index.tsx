@@ -28,7 +28,7 @@ export const Header: FC<Props> = ({ data }) => {
         <Icon href={twitter} data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon href={instagram} data-testid="twitter">
+        <Icon href={instagram} data-testid="instagram">
           <FaInstagramSquare />
         </Icon>
         {
