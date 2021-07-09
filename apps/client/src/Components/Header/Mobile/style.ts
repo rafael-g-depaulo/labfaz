@@ -1,11 +1,12 @@
 import styled from "styled-components"
-import { Link } from 'react-router-dom'
+
+import { InternalLinkButton  } from 'Components/Buttons/InternalLinkButton';
 
 export interface PropsCloseMenu {
   open: boolean,
 }
 export interface PropsButton {
-  backgroundColor: string,
+  backgroundColor?: string,
 }
 export const Container = styled.div`
   .navBar {
@@ -38,29 +39,36 @@ export const NavBar = styled.nav`
   margin-top: 3rem;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(InternalLinkButton)`
   .navBar & {
     flex-grow: 0.8;
     font-size: var(--font-size-short);
-    text-decoration: none;
     color: var(--background-pink);
+    border: none;
+    background-color: transparent;
   }
 `
 
-export const Button = styled(Link)<PropsButton>`
-  && {
-    display: flex;
-    /* TODO */
-    background-color: ${props => props.backgroundColor};
-    cursor: pointer;
-    /* TODO border-radius: ; */
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    width: 12rem;
-    font-size: var(--font-size-short);
-    text-decoration: none;
-  }
+export const Button = styled(InternalLinkButton)<PropsButton>`
+  display: flex;
+  ${props => 
+    props.backgroundColor === "login" ?
+      'background-color: var(--background-pink);'
+      : 
+      'background-color: var(--color-text-yellow);'
+  };
+  ${props => 
+    props.backgroundColor === "login" ?
+      'color: var(--color-text-yellow);'
+      : 
+      'color: var(--background-pink);'
+  };
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 12rem;
+  border: none;
+  font-size: var(--font-size-short);
 `;
 
 export const CloseMenu = styled.div<PropsCloseMenu>`
@@ -86,7 +94,7 @@ export const ContainerIcon = styled.div`
   
 `
 
-export const IconButton = styled.button `
+export const IconButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
@@ -96,7 +104,7 @@ export const IconButton = styled.button `
   }
 `;
 
-export const LogoLink = styled(Link)`
-  font-size: 12px;
-  text-decoration: none;
+export const LogoLink = styled(InternalLinkButton)`
+  background-color: transparent;
+  border: none;
 `

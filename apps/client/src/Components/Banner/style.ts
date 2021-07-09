@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
 
-import { Mobile, DesktopSmall } from 'Utils/breakpoints'
+import { Mobile } from 'Utils/breakpoints'
+import { InternalLinkButton  } from 'Components/Buttons/InternalLinkButton';
+import { Title } from 'Components/Typography/Title'
 
 export interface Props {
   align: string
@@ -28,35 +29,30 @@ export const Container = styled.div<Props>`
   
 `;
 
-export const Title = styled.h1`
+export const TitleBanner = styled(Title)`
+  color: var(--color-text-beige);
   font-size: var(--font-size-title);
-  font-weight: bold;
-  color: var(--color-text-beige);
-  margin: 0;
 
-  ${DesktopSmall(css`
-    font-size: var(--font-size-title-smaller);
+  ${Mobile(css`
+    font-size: var(--font-size-title);
   `)}
+
 `;
 
-export const Subtitle = styled.h2`
+export const Subtitle = styled(Title)`
   color: var(--color-text-beige);
-  margin: 0;
-
-  ${DesktopSmall(css`
-    font-size: var(--font-size-short);
-  `)}
 `;
 
-export const KnowMoreButton = styled(Link)`
-  text-decoration: none;
+export const KnowMoreButton = styled(InternalLinkButton)`
   color: var(--background-pink);
   padding: 0.2rem 3rem;
   background-color: var(--color-text-beige);
-  box-shadow: -5px -5px var(--color-text-black);
   margin-top: 2.5rem;
 
-  ${DesktopSmall(css`
-    font-size: var(--font-size-short);
-  `)}
+  &:hover {
+    border-top: 3px solid;
+    border-left: 3px solid;
+    border-color: var(--background-black);
+  }
+
 `;

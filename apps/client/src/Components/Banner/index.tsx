@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Container, Title, Subtitle, KnowMoreButton } from './style'
+import { Container, TitleBanner, Subtitle, KnowMoreButton } from './style'
 
 export interface BannerProps {
   title: string,
@@ -19,9 +19,9 @@ export const Banner: FC<BannerProps> = ({
   return (
     <Container align={align}>
       <div>
-        <Title> {title} </Title>
-        <Subtitle> {subtitle} </Subtitle>
-        {hrefKnowMore ? <KnowMoreButton to={hrefKnowMore}> SAIBA MAIS </KnowMoreButton> : <></>}
+        <TitleBanner level={1}> {title} </TitleBanner>
+        <Subtitle level={2}> {subtitle} </Subtitle>
+        {hrefKnowMore ? <KnowMoreButton href={hrefKnowMore}> SAIBA MAIS </KnowMoreButton> : <></>}
       </div>
     </Container>
   )

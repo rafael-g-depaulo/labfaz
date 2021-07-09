@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-default: 18px;
     --font-size-large: 16px;
     --font-size-medium: 14px;
-    --font-size-short: 12px;
+    --font-size-short: 11px;
 
     --line-height-default: 48.72px; 
     --line-height-small: 20px; 

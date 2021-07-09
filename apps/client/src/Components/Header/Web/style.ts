@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
-import { Link } from 'react-router-dom'
 
 import { DesktopSmall } from 'Utils/breakpoints'
+import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
 export const Container = styled.div`
   background-color: var(--background-black);
@@ -12,16 +12,15 @@ export const Container = styled.div`
     width: 1px;
     background-color: var(--background-pink);
   }
-  .home {
-    display: flex;
-    flex-Grow: 0.3;
-    justify-Content: space-around;
-  }
 `;
 
-export const RedirectLink = styled(Link)`
-  text-decoration: none;
-  color: var(--background-pink);
+export const RedirectLink = styled(InternalLinkButton)`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-Grow: 0.3;
+  justify-Content: space-around;
+  padding: 0;
 
   ${DesktopSmall(css`
     font-size: var(--font-size-medium);
@@ -41,18 +40,18 @@ export const Navbar = styled.div`
   `)}
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(InternalLinkButton)`
   ${Navbar} & {
     flex-grow: 0.5;
-    text-align: center;
-    text-decoration: none;
     color: var(--background-pink);
     padding: 0.6rem 0;
+    background-color: transparent;
+    border: none;
+    font-size: var(--font-size-large);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
     `)}
-    
   }
 `
 
@@ -66,33 +65,36 @@ export const UserSession = styled.div`
   `)}
 `;
 
-export const Button = styled(Link)`
-  && {
-    background-color: var(--background-pink);
-    cursor: pointer;
-    padding: 0.2rem 1.5rem;
-    text-decoration: none;
-    color: var(--color-text-beige);
-    box-shadow: -3px -3px var(--color-text-beige);
+export const Button = styled(InternalLinkButton)`
+  padding: 0.2rem 1.5rem;
+  color: var(--color-text-beige);
+  border: none;
+  font-size: var(--font-size-large);
+  margin: 0 5px;
 
-    ${DesktopSmall(css`
-      font-size: var(--font-size-short);
-      padding: 0.3rem;
-    `)}
+  &:hover {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-color: var(--button-color-yellow);
   }
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-short);
+    padding: 0.3rem;
+  `)}
 `;
 
-export const LogIn = styled(Link)`
-  && {
-    text-decoration: none;
-    color: var(--background-pink);
-    border-bottom: 1px solid var(--background-pink);
-    padding: 0.5rem 2rem;
+export const LogIn = styled(InternalLinkButton)`
+  color: var(--background-pink);
+  border-top: none;
+  border-left: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--background-pink);
+  padding: 0.5rem 2rem;
+  font-size: var(--font-size-large);
 
-    ${DesktopSmall(css`
-      font-size: var(--font-size-short);
-      padding: 0.5rem;
-    `)}
-
-  }
+  ${DesktopSmall(css`
+    font-size: var(--font-size-short);
+    padding: 0.5rem;
+  `)}
 `

@@ -19,14 +19,14 @@ export const Mobile: FC = () => {
     <Container>
       <div className={open ? 'navBar active' : 'navBar'}>
         <NavBar>
-          <NavLink to="/"> HOME </NavLink>
-          <NavLink to="/about"> QUEM SOMOS </NavLink>
-          <NavLink to="/classes"> CURSOS </NavLink>
-          <NavLink to="/blog"> BLOG </NavLink>
-          <NavLink to="/calendar"> AGENDA </NavLink>
-          <NavLink to="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
-          <Button backgroundColor="var(--background-dark-gray)" to='/login'> ENTRAR </Button>
-          <Button backgroundColor="white" to='/register'> REGISTRE-SE </Button>
+          <NavLink href="/"> HOME </NavLink>
+          <NavLink href="/about"> QUEM SOMOS </NavLink>
+          <NavLink href="/classes"> CURSOS </NavLink>
+          <NavLink href="/blog"> BLOG </NavLink>
+          <NavLink href="/calendar"> AGENDA </NavLink>
+          <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
+          <Button backgroundColor="login" href='/login'> ENTRAR </Button>
+          <Button href='/register'> REGISTRE-SE </Button>
         </NavBar>
       </div>
       <CloseMenu open={open} onClick={() => setOpen(false)}></CloseMenu>
@@ -35,7 +35,7 @@ export const Mobile: FC = () => {
           <IconButton onClick={() => setOpen(true)}>
             <FaBars title="menu" />
           </IconButton>
-          <LogoLink to="/" data-testid="home">
+          <LogoLink href="/" data-testid="home">
             <Logo />
           </LogoLink>
         </div>

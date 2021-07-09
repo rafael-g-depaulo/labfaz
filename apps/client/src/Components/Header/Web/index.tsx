@@ -11,26 +11,26 @@ import {
 } from './style'
 import Logo from 'Components/Logo'
 
-export const Mobile: FC = () => {
+export const Web: FC = () => {
   return (
     <Container>
-      <RedirectLink className="home" to="/" data-testid="home">
+      <RedirectLink href="/" data-testid="home">
         <Logo />
       </RedirectLink>
       <Navbar>
-        <NavLink to="/about"> QUEM SOMOS </NavLink>
-        <NavLink to="/classes"> CURSOS </NavLink>
-        <NavLink to="/calendar"> AGENDA </NavLink>
-        <NavLink to="/blog"> BLOG </NavLink>
-        <NavLink to="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
+        <NavLink href="/about"> QUEM SOMOS </NavLink>
+        <NavLink href="/classes"> CURSOS </NavLink>
+        <NavLink href="/calendar"> AGENDA </NavLink>
+        <NavLink href="/blog"> BLOG </NavLink>
+        <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
       </Navbar>
       <div className="line" />
       <UserSession>
-        <LogIn to='/login'> ENTRAR </LogIn>
-        <Button to='/register'> CADASTRE-SE </Button>
+        <LogIn href='/login'> ENTRAR </LogIn>
+        <Button href='/register'> CADASTRE-SE </Button>
       </UserSession>
     </Container>
   )
 }
 
-export default Mobile
+export default Web
