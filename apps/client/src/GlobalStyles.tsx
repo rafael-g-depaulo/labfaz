@@ -7,12 +7,10 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-black: #000000;
     --color-text-white: #FFFFFF;
     --color-text-beige: #FFEC99;
-
-    --color-text: black;
     --color-text-yellow: #FFEC99;
     --color-text-pink: #FC0061;
-    --color-text-white: #FFFFFF;
-    
+    --color-text: var(---color-text-black);
+
     --background-dark-gray: #C4C4C4;
     --background-gray: #E7E7E7;
     --background-light-gray: #C4C4C425;
@@ -30,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-large: 16px;
     --font-size-medium: 14px;
     --font-size-short: 12px;
+
     --line-height-default: 48.72px; 
     --line-height-small: 20px; 
     --line-height-medium: 30px; 
@@ -44,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     margin: 0;
+    padding: 0;
     min-height: 100vh;
   }
 
