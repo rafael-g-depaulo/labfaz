@@ -47,7 +47,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
 
   const hashedPassword = await UserRepo.generateHash(password)
   
-  const userToken = UserRepo.generateEmailToken(email)
+  const userToken = await UserRepo.generateEmailToken(email)
   
   const user = UserRepo.create({ name, email, password: hashedPassword, token: userToken })
   

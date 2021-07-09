@@ -19,6 +19,8 @@ export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<IUser> = 
 }: CreateUserInterface) => async (req, res) => {
 
   const { name, email, password, old_password } = req.body
+
+  console.log(req.user);
   
   if ( !req.user ) {
     return res.status(401).json({error: 'User need to be loged'})
