@@ -3,7 +3,7 @@ import { verify } from "jsonwebtoken"
 
 import authConfig from "Config/auth"
 
-interface ITokenPayload {
+export interface ITokenPayload {
   iat: number
   exp: number
   sub: string
@@ -25,11 +25,13 @@ export default function ensureAuthenticated(req: Request, res: Response, next: N
 
     const decoded = verify(token, authConfig.jwt.secret)
 
+    console.log(`Decoded`, decoded);
     const { sub } = decoded as ITokenPayload
 
-    request.user = {
+    req.user = {
       id: sub,
     }
+
 
     return next()
 
