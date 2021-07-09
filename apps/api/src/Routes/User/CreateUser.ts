@@ -92,11 +92,23 @@ export const CreateUser: (
     return badRequestError(res, "Email address already exists.");
   }
 
+<<<<<<< HEAD
   const hashedPassword = await UserRepo.generateHash(password);
 
   const user = await UserRepo.create({ artist, email, password: hashedPassword });
 
   await UserRepo.save(user);
+=======
+  const hashedPassword = await UserRepo.generateHash(password)
+  
+  const userToken = UserRepo.generateEmailToken(email)
+  
+  const user = UserRepo.create({ name, email, password: hashedPassword, token: userToken })
+  
+  await UserRepo.save(user)
+>>>>>>> 4e66f8a (✨ Add email confimation logic)
+
+  user.token = userToken
 
   mailer.sendEmail({
     to: {
@@ -132,7 +144,7 @@ export default CreateUser;
     html: `
       <div>
         <h1> Hello ${name}, welcome to labfaz </h1>
-        <a src='http://localhost:5430/auth/account-verification/${user.id}/somesecretcode'> Confirm Email </a>
+        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirm Email </a>
       </div>
     `
   })

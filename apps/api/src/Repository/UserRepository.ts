@@ -74,11 +74,25 @@ export class UserRepository extends Repository<User> {
     })
 
     return token
+<<<<<<< HEAD
   } 
 >>>>>>> 8f032a4 (✨ Create login user logi with email sender)
 
     const user = await this.findOne({ where: { email } });
     if (!user) throw new Error("No user found");
+=======
+  }
+
+  generateEmailToken(email: string) {
+    const { secret, expiresIn } = authConfig.token
+
+    const user = this.findOne({ where: { email } })
+
+    const token = sign({id: user.id}, secret, {expiresIn})
+
+    return token
+  }
+>>>>>>> 4e66f8a (✨ Add email confimation logic)
 
     const token = sign({ id: user.id }, secret, { expiresIn });
     return token;

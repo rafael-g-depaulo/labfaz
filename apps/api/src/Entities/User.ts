@@ -35,13 +35,18 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
+  @Column('boolean', { default: false })
+  active: boolean
+
+  @Column('character varying', { default: '' })
+  token: string
+
   @BeforeInsert()
   addId() {
     this.id = nanoid();
   }
 
-  @Column('boolean', { default: false })
-  active: boolean
+
 }
 
 export default User;
