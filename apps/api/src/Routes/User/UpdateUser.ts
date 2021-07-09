@@ -10,7 +10,6 @@ interface CreateUserInterface {
 
 export interface IUser {
   id: string
-  name: string
   email: string
   old_password?: string
   password?: string
@@ -20,7 +19,7 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser, 
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 
-  const { name, password, old_password } = req.body
+  const { password, old_password } = req.body
 
   if ( !req.user ) {
     return unauthenticatedError(res, 'User need to be loged')
@@ -31,8 +30,6 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser, 
   if (!user) {
     return notFoundError(res, "User not found.")
   }
-
-  user.name = name
 
   if (password) {
 
