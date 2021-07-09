@@ -3,7 +3,8 @@ import {
   FaFacebookSquare,
   FaTwitterSquare,
   FaGooglePlusSquare,
-  FaLinkedin
+  FaLinkedin,
+  FaInstagramSquare
 }from 'react-icons/fa'
 
 import Logo from 'Components/Logo'
@@ -16,7 +17,7 @@ export interface Props {
 
 export const Header: FC<Props> = ({ data }) => {
 
-  const {facebook, twitter, linkedin, googlePlus} = data!
+  const {facebook, twitter, linkedin, googlePlus, instagram} = data
   return (
     <Container>
       <Logo />
@@ -24,15 +25,24 @@ export const Header: FC<Props> = ({ data }) => {
         <Icon href={facebook} data-testid="facebook">
           <FaFacebookSquare />
         </Icon>
-        <Icon href={twitter } data-testid="twitter">
+        <Icon href={twitter} data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon href={googlePlus } data-testid="google">
-          <FaGooglePlusSquare />
+        <Icon href={instagram} data-testid="twitter">
+          <FaInstagramSquare />
         </Icon>
-        <Icon href={linkedin } data-testid="linkedin">
-          <FaLinkedin />
-        </Icon>
+        {
+          !!googlePlus && googlePlus !== "" &&
+          <Icon href={googlePlus} data-testid="google">
+            <FaGooglePlusSquare />
+          </Icon>
+        }
+        {
+          !!linkedin && linkedin !== "" &&
+          <Icon href={linkedin} data-testid="linkedin">
+            <FaLinkedin />
+          </Icon>
+        }
       </IconsDiv>
     </Container>
   )
