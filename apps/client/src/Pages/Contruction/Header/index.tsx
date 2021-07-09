@@ -21,16 +21,16 @@ export const Header: FC<Props> = ({ data }) => {
     <Container>
       <Logo />
       <IconsDiv>
-        <Icon to={{ pathname: facebook }} target="_blank" data-testid="facebook">
+        <Icon href={facebook} data-testid="facebook">
           <FaFacebookSquare />
         </Icon>
-        <Icon to={{ pathname: twitter }} target="_blank" data-testid="twitter">
+        <Icon href={twitter } data-testid="twitter">
           <FaTwitterSquare />
         </Icon>
-        <Icon to={{ pathname: googlePlus }} target="_blank" data-testid="google">
+        <Icon href={googlePlus } data-testid="google">
           <FaGooglePlusSquare />
         </Icon>
-        <Icon to={{ pathname: linkedin }} target="_blank" data-testid="linkedin">
+        <Icon href={linkedin } data-testid="linkedin">
           <FaLinkedin />
         </Icon>
       </IconsDiv>

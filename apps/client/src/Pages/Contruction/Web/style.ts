@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 import RectangleImage from '../Rectangle.png'
 import { DesktopLarge, DesktopSmall } from 'Utils/breakpoints'
+import { Title } from 'Components/Typography/Title'
 
 export const Container = styled.div`
   display: flex;
@@ -39,10 +40,9 @@ export const Rectangle = styled.div`
   `)}
 `;
 
-export const Text = styled.h1`
+export const Text = styled(Title)`
   max-width: 8.2rem;
   color: var(--color-text-beige);
   font-size: var(--font-size-title);
-  margin: 0;
-  line-height: 2.5rem;
+  line-height: var(--line-height-default);
 `;

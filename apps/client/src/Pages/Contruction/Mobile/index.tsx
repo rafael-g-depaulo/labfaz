@@ -25,7 +25,7 @@ export const Mobile: FC<Props> = ({ data }) => {
           <Image />
         </Rectangle>
         <Rectangle invert={true}>
-          <Text>
+          <Text level={1}>
             Olá, ainda estamos organizando as coisas.
           </Text>
         </Rectangle>

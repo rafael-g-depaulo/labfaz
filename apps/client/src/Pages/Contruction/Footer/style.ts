@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { Mobile } from 'Utils/breakpoints'
+import { Text } from 'Components/Typography/Text'
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ export const Container = styled.div`
   `)}
 `;
 
-export const Text = styled.p`
+export const Paragraph = styled(Text)`
   color: var(--background-pink);
   text-align: center;
   font-weight: bold;

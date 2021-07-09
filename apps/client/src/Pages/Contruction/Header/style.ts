@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import { Mobile } from 'Utils/breakpoints'
+import{ ExternalLinkButton } from 'Components/Buttons/ExternalLinkButton'
 
 export const Container = styled.div`
   display: flex;
@@ -15,15 +15,17 @@ export const Container = styled.div`
 
 export const IconsDiv = styled.div`
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
 `;
 
-export const Icon = styled(Link)`
-  color: var(--background-pink);
+export const Icon = styled(ExternalLinkButton)`
+  box-shadow: none;
   background-color: transparent;
-  text-decoration: none;
   border: none;
-  cursor: pointer;
+  color: var(--background-pink);
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
   svg {
     font-size: 1.2rem;
   }

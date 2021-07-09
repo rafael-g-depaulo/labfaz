@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 
-import { Container, Text } from './style'
+import { Container, Paragraph } from './style'
 
 export const Footer: FC = () => {
   return (
     <Container>
-      <Text> Laboratório dos Fazeres e Saberes Técnicos da Economia Criativa </Text>
+      <Paragraph> Laboratório dos Fazeres e Saberes Técnicos da Economia Criativa </Paragraph>
     </Container>
   )
 }
