@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { Wrapper, Container, Image, TextDiv } from "../styles"
-import Text from "Components/Text"
+import { Text } from "Components/Typography/Text"
 
 import { DataObject } from "Api/AboutUs"
 
