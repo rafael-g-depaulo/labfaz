@@ -44,7 +44,17 @@ export class UserRepository extends Repository<User> {
     })
 
     return token
-  } 
+  }
+
+  generateEmailToken(email: string) {
+    const { secret, expiresIn } = authConfig.token
+
+    const user = this.findOne({ where: { email } })
+
+    const token = sign({id: user.id}, secret, {expiresIn})
+
+    return token
+  }
 
 }
 

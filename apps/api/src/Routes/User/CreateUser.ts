@@ -46,10 +46,14 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   }
 
   const hashedPassword = await UserRepo.generateHash(password)
-
-  const user = UserRepo.create({ name, email, password: hashedPassword })
-
+  
+  const userToken = UserRepo.generateEmailToken(email)
+  
+  const user = UserRepo.create({ name, email, password: hashedPassword, token: userToken })
+  
   await UserRepo.save(user)
+
+  user.token = userToken
 
   mailer.sendEmail({
     to:{
@@ -61,7 +65,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     html: `
       <div>
         <h1> Hello ${name}, welcome to labfaz </h1>
-        <a src='http://localhost:5430/auth/account-verification/${user.id}/somesecretcode'> Confirm Email </a>
+        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirm Email </a>
       </div>
     `
   })
