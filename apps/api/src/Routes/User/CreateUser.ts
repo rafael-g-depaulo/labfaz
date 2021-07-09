@@ -58,7 +58,12 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     },
     from: from,
     subject: "Email confirmation",
-    html: " <h1> Confirm email </h1> "
+    html: `
+      <div>
+        <h1> Hello ${name}, welcome to labfaz </h1>
+        <a src='http://localhost:5430/auth/account-verification/${user.id}/somesecretcode'> Confirm Email </a>
+      </div>
+    `
   })
 
   return res.status(201).json({ user })
