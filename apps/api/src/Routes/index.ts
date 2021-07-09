@@ -5,7 +5,6 @@ import { Connection } from "typeorm"
 import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
-
 export interface RequestHandler<ReqBody = {}, Params = {}> {
   (req: Request<Params, {}, ReqBody>, res: Response, next: NextFunction): any,
 }
@@ -31,5 +30,6 @@ const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => e
   .use("/animal-example", AnimalExampleRouter({ conn }, options))
   .use("/user", UserRouter({ conn }, options))
   .use("/sessions", SessionRouter({ conn }, options))
+
 
 export default Routes

@@ -40,6 +40,10 @@ export const CreateSession: (deps: CreateSessionInterface) => RequestHandler<Dee
     return res.status(401).json({ error: "Incorrect email/password combination." })
   }
 
+  if(!user.active) {
+    return res.status(401).json({ error: "Email confimation needed" })
+  }
+
   const { secret, expiresIn } = authConfig.jwt
 
   const token = sign({}, secret, {
