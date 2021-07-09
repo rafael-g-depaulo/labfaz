@@ -39,8 +39,6 @@ export const EmailConfirmation: (deps: ConfirmEmailInterface) => RequestHandler<
 
   await UserRepo.save(user)
 
-  console.log(user.active)
-
   return res.redirect('/sessions')
 }
 
