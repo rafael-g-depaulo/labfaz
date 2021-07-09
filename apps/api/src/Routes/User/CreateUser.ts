@@ -104,6 +104,7 @@ export const CreateUser: (
       email: email,
     },
     from: from,
+<<<<<<< HEAD
     subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
@@ -126,3 +127,18 @@ export const CreateUser: (
 };
 
 export default CreateUser;
+=======
+    subject: "Email confirmation",
+    html: `
+      <div>
+        <h1> Hello ${name}, welcome to labfaz </h1>
+        <a src='http://localhost:5430/auth/account-verification/${user.id}/somesecretcode'> Confirm Email </a>
+      </div>
+    `
+  })
+
+  return res.status(201).json({ user })
+}
+
+export default CreateUser
+>>>>>>> a7a7f88 (🔥 ♻️ Remove unecessary login and update session)

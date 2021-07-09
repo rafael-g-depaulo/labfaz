@@ -42,7 +42,15 @@ export const CreateSession: (
     return unauthorizedError(res, "Email confimation needed");
   }
 
+<<<<<<< HEAD
   const token = await UserRepo.generateToken(email);
+=======
+  if(!user.active) {
+    return res.status(401).json({ error: "Email confimation needed" })
+  }
+
+  const { secret, expiresIn } = authConfig.jwt
+>>>>>>> a7a7f88 (🔥 ♻️ Remove unecessary login and update session)
 
   //remove password from user query
   const userAsArray = Object.entries(userDB);

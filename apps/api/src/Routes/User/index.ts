@@ -13,8 +13,11 @@ import ShowUser from "./ShowUser";
 =======
 import CreateUser from "./CreateUser"
 import UpdateUser from "./UpdateUser"
+<<<<<<< HEAD
 import { LogInUser } from "./logInUser"
 >>>>>>> 8f032a4 (✨ Create login user logi with email sender)
+=======
+>>>>>>> a7a7f88 (🔥 ♻️ Remove unecessary login and update session)
 
 type UserDeps = {
   conn: Connection;
@@ -34,7 +37,6 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 };
 =======
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }))
-    .post("/login", LogInUser({ UserRepo }))
 }
 >>>>>>> 8f032a4 (✨ Create login user logi with email sender)
 

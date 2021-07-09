@@ -5,7 +5,13 @@ import { Connection } from "typeorm"
 import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
+<<<<<<< HEAD
 import { actionSuccessful } from "Utils/endpointReturns"
+=======
+export interface RequestHandler<ReqBody = {}, Params = {}> {
+  (req: Request<Params, {}, ReqBody>, res: Response, next: NextFunction): any,
+}
+>>>>>>> a7a7f88 (🔥 ♻️ Remove unecessary login and update session)
 
 export interface RouterDeps {
   conn: Connection
