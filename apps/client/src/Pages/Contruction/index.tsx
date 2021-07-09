@@ -13,7 +13,7 @@ export const Contruction: FC = () => {
   if (result.isLoading) return <Loading />
   if (result.error) return <div>error: {result.error.message}</div>
 
-  if(width) return <Mobile data={result.data!}/>
+  if(width) return <Mobile data={result.data}/>
   else return <Web data={result.data!}/>
 }
 
