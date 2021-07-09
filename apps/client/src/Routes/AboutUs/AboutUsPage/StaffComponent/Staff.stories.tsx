@@ -15,6 +15,7 @@ const image = mockImage({
 })
 
 const StaffInfo: StaffObject = {
+  id: 1,
   name: "Jhon Doe",
   tag: "Coordenação",
   text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",

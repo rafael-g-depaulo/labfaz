@@ -1,15 +1,19 @@
 import styled, { css } from 'styled-components'
-import { Paragraph } from 'Components/Text/style'
 import { Mobile, MobileSmall, DesktopSmall, MobileLarge } from 'Utils/breakpoints'
 
-import { ParagraphProps } from 'Components/Text/style'
 
 interface CircleProps {
   color: string
 }
 
-type SpanProps = ParagraphProps
-
+interface SpanProps  {
+  marginTop?: string,
+  marginBottom?: string,
+  color?: string,
+  fontSize?: string,
+  fontWeight?: number,
+  textAlign?: string
+}
 
 export const StaffGrid = styled.div`
   display: grid;
@@ -169,7 +173,7 @@ export const CardBody = styled.div`
 `;
 
 
-export const Text = styled(Paragraph)`
+export const Text = styled.span<SpanProps>`
   max-height: min-content;
   font-family: var(--card-font-family);
   color: var(--color-text-white);
