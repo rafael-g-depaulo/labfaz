@@ -19,7 +19,7 @@ export const Mobile: FC<Props> = ({ data }) => {
   
   return (
     <Container>
-      <Header data={data!} />
+      <Header data={data} />
       <div>
         <Rectangle>
           <Image />
