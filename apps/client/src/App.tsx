@@ -7,6 +7,7 @@ import { showRoutes } from 'FeatureFlags'
 import Contruction from 'Pages/Contruction'
 
 import ReactGA from 'react-ga';
+import RouteTracker from 'Utils/RouteTracker';
 
 
 export const App = () => {
@@ -17,10 +18,10 @@ export const App = () => {
   })
 
   return (
-    <>
+    <RouteTracker>
       <GlobalStyles />
       { showRoutes ? <Routes /> : <BrowserRouter><Contruction /></BrowserRouter>}
-    </>
+    </RouteTracker>
   )
 }
 
