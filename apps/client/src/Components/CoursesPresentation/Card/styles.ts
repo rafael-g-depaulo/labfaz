@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Mobile, DesktopSmall } from "Utils/breakpoints";
 import { css } from "styled-components";
+import { Text } from "Components/Typography/Text";
+import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
 interface GridProps {
   position: any;
@@ -78,7 +80,7 @@ export const MainText = styled.div`
   justify-content: space-between;
 `;
 
-export const CardTitle = styled.p`
+export const CardTitle = styled(Text)`
   margin: 0 0 0 8px;
   font-size: var(--line-height-small);
   font-weight: 600;
@@ -94,12 +96,11 @@ export const CardTitle = styled.p`
   `)}
 `;
 
-export const CardSubtitle = styled.p`
+export const CardSubtitle = styled(Text)`
   margin: 0 0 0 8px;
   font-size: var(--font-size-short);
   color: var(--color-text-white);
   text-transform: uppercase;
-  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -115,8 +116,7 @@ export const DescriptionBox = styled.div`
   margin: 8px 0 12px 0;
 `;
 
-export const CardDescription = styled.p`
-  margin: 0;
+export const CardDescription = styled(Text)`
   width: 100%;
   font-size: var(--font-size-short);
   text-align: justify;
@@ -144,8 +144,7 @@ export const DateWrapper = styled.div`
   justify-content: center;
 `;
 
-export const DateText = styled.p`
-  margin: 0;
+export const DateText = styled(Text)`
   font-size: var(--font-size-short);
   font-weight: 600;
   text-align: left;
@@ -196,7 +195,7 @@ export const ButtonLayer = styled.div<ButtonColors>`
   `)}
 `;
 
-export const Button = styled.button<ButtonColors>`
+export const Button = styled(InternalLinkButton)<ButtonColors>`
   position: relative;
   z-index: 2;
   bottom: 31px;
@@ -223,12 +222,11 @@ export const Button = styled.button<ButtonColors>`
   `)}
 `;
 
-export const ButtonText = styled.p<ButtonColors>`
+export const ButtonText = styled(Text)<ButtonColors>`
   font-size: var(--font-size-short);
   font-weight: 700;
   color: ${(p) => p.colors};
   text-transform: uppercase;
-  margin: 0;
 
   ${DesktopSmall(css`
     font-size: var(--font-size-small);
