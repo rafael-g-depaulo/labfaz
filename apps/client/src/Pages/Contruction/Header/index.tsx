@@ -22,15 +22,24 @@ export const Header: FC<Props> = ({ data }) => {
     <Container>
       <Logo />
       <IconsDiv>
-        <Icon href={facebook} data-testid="facebook">
-          <FaFacebookSquare />
-        </Icon>
-        <Icon href={twitter} data-testid="twitter">
-          <FaTwitterSquare />
-        </Icon>
-        <Icon href={instagram} data-testid="instagram">
-          <FaInstagramSquare />
-        </Icon>
+        {
+          !!facebook && facebook !== "" &&
+          <Icon href={facebook} data-testid="facebook">
+            <FaFacebookSquare />
+          </Icon>
+        }
+        {
+          !!twitter && twitter !== "" &&
+          <Icon href={twitter} data-testid="twitter">
+            <FaTwitterSquare />
+          </Icon>
+        }
+        {
+          !!instagram && instagram !== "" &&
+          <Icon href={instagram} data-testid="instagram">
+            <FaInstagramSquare />
+          </Icon>
+        }
         {
           !!googlePlus && googlePlus !== "" &&
           <Icon href={googlePlus} data-testid="google">
