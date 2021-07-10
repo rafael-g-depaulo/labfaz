@@ -12,7 +12,9 @@ export const ExternalLinkButton: FC<ButtonProps> = ({
     <>
       <StyledButton 
         as="a"
-        href={href} 
+        target="_blank"
+        rel="noopener"
+        href={href}
         children={children}
         {...props}
       /> 
