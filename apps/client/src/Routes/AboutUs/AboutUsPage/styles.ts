@@ -171,6 +171,11 @@ export const TextDiv = styled.div<DivProps>`
   grid-area: ${props => props.position ? props.position : "left"};
   
 
+  p {
+    color: var(--color-text-white);
+    line-height: var(--line-height-default);
+  }
+
   ${Mobile(css`
     max-width: 100%;
     grid-area: top;

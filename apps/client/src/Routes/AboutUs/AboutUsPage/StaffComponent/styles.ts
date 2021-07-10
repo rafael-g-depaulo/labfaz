@@ -24,7 +24,7 @@ export const StaffGrid = styled.div`
   align-self: center;
   justify-content: center;
 
-  max-width: 90vw;
+  max-width: 85vw;
 
   color: var(--color-text-beige);
 
@@ -135,6 +135,14 @@ export const CardThumb = styled.div`
 
   position: relative;
 
+  p {
+    color: var(--color-text-pink);
+    font-weight: 700;
+    font-size: var(--font-size-medium);
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
   ${Mobile(css`
     max-height: 100px;
     max-width: 80%;
@@ -159,16 +167,40 @@ export const CardThumb = styled.div`
 export const CardBody = styled.div`
   max-height: 130px;
   max-width: 80%;
+  
+  > p:first-child {
+    color: var(--color-text-beige);
+    font-weight: 600;
+    font-size: var(--font-size-short);
+    margin-bottom: 1.2em;
+  }
+
+  p {
+    color: var(--color-text-white);
+    font-size: var(--font-size-medium);
+    text-align: justify;
+    line-height: var(--line-height-small);
+  }
+
 
   ${Mobile(css`
     line-height: 16px;
     margin-top: 0.8em;
+
+    p {
+      font-size: 9px;
+      line-height: 16px;
+    }
   `)}
 
   ${DesktopSmall(css`
     max-height: 130px;
     line-height: var(--line-height-small);
     font-size: var(--font-size-medium);
+
+    p {
+      font-size: var(--font-size-short);
+    }
   `)}
 `;
 
