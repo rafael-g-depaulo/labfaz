@@ -1,5 +1,6 @@
 import React from "react";
 import render from "Utils/render";
+import { BrowserRouter } from "react-router-dom";
 import { formatPostDate } from "Utils/formatPostDate";
 
 import Display from "./Display";
@@ -18,11 +19,21 @@ const postCardExample = [
 ];
 
 it("renders blog post component", () => {
-  expect(() => render(<Display posts={postCardExample} />)).not.toThrow();
+  expect(() =>
+    render(
+      <BrowserRouter>
+        <Display posts={postCardExample} />
+      </BrowserRouter>
+    )
+  ).not.toThrow();
 });
 
 describe("Check content of PostCard component", () => {
-  const { getByText } = render(<Display posts={postCardExample} />);
+  const { getByText } = render(
+    <BrowserRouter>
+      <Display posts={postCardExample} />
+    </BrowserRouter>
+  );
 
   it("checks if title rendered", () => {
     const title = getByText("Teste de blog post");
