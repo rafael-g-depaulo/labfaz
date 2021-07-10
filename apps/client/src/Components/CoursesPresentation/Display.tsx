@@ -3,8 +3,8 @@ import {
   Container,
   Divider,
   TextContainer,
-  Title,
-  Text,
+  CoursesTitle,
+  CoursesText,
   ButtonWrapper,
   ButtonLayer,
   Button,
@@ -29,26 +29,30 @@ const Display: FC<DisplayProps> = ({ texts, courses }) => {
       {isMobile ? (
         <>
           <TextContainer>
-            <Title>{texts.course_presentation_title}</Title>
-            <Text>{texts.course_presentation_first_text}</Text>
+            <CoursesTitle level={1}>
+              {texts.course_presentation_title}
+            </CoursesTitle>
+            <CoursesText>{texts.course_presentation_first_text}</CoursesText>
             <Card courses={courses} isMobile={isMobile} />
             <ButtonWrapper>
-              <Button>
+              <Button href="">
                 <ButtonText>visitar cursos</ButtonText>
               </Button>
               <ButtonLayer />
             </ButtonWrapper>
-            <Text>{texts.course_presentation_second_text}</Text>
+            <CoursesText>{texts.course_presentation_second_text}</CoursesText>
           </TextContainer>
         </>
       ) : (
         <>
           <TextContainer>
-            <Title>{texts.course_presentation_title}</Title>
-            <Text>{texts.course_presentation_first_text}</Text>
-            <Text>{texts.course_presentation_second_text}</Text>
+            <CoursesTitle level={1}>
+              {texts.course_presentation_title}
+            </CoursesTitle>
+            <CoursesText>{texts.course_presentation_first_text}</CoursesText>
+            <CoursesText>{texts.course_presentation_second_text}</CoursesText>
             <ButtonWrapper>
-              <Button>
+              <Button href="">
                 <ButtonText>visitar cursos</ButtonText>
               </Button>
               <ButtonLayer />

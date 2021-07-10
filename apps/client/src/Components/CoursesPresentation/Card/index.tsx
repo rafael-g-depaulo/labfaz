@@ -73,6 +73,7 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                         border="none"
                       />
                       <Button
+                        href=""
                         colors={
                           item?.finished
                             ? "var(--background-pink)"

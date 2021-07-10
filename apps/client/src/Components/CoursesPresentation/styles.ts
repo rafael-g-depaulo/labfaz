@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Mobile, DesktopSmall } from "Utils/breakpoints";
 import { css } from "styled-components";
+import { Title } from "Components/Typography/Title";
+import { Text } from "Components/Typography/Text";
+import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
 export const Container = styled.div`
   background-color: var(--background-black);
@@ -40,10 +43,9 @@ export const TextContainer = styled.div`
   `)}
 `;
 
-export const Title = styled.h1`
+export const CoursesTitle = styled(Title)`
   width: 100%;
   font-size: var(--font-size-title);
-  margin: 0;
   color: var(--color-text-beige);
   font-weight: bold;
   text-transform: uppercase;
@@ -58,9 +60,7 @@ export const Title = styled.h1`
   `)}
 `;
 
-export const Text = styled.p`
-  font-size: var(--font-size-default);
-  margin: 0;
+export const CoursesText = styled(Text)`
   color: var(--color-text-white);
   text-align: justify;
 
@@ -111,7 +111,7 @@ export const ButtonLayer = styled.div`
   `)}
 `;
 
-export const Button = styled.button`
+export const Button = styled(InternalLinkButton)`
   position: relative;
   z-index: 2;
   width: 280px;
@@ -121,7 +121,8 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   outline: none;
-  border: solid 1px var(--background-black);
+  border-color: var(--background-black);
+  padding: 0;
 
   ${Mobile(css`
     width: 160px;
@@ -134,12 +135,9 @@ export const Button = styled.button`
   `)}
 `;
 
-export const ButtonText = styled.p`
-  font-size: var(--font-size-default);
-  font-weight: 700;
+export const ButtonText = styled(Text)`  
   color: var(--background-pink);
   text-transform: uppercase;
-  margin: 0;
 
   ${Mobile(css`
     font-size: var(--font-size-short);
