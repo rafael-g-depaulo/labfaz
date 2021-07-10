@@ -1,5 +1,12 @@
 import styled, { css } from "styled-components";
 import { Mobile } from "Utils/breakpoints";
+import { Title } from "Components/Typography/Title";
+import { Text } from "Components/Typography/Text";
+import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+
+interface DateProps {
+  size: string;
+}
 
 export const Container = styled.div`
   background-color: var(--background-black);
@@ -59,7 +66,7 @@ export const MainTextContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled.h1`
+export const PostTitle = styled(Title)`
   font-size: var(--font-size-title);
   font-weight: bold;
   color: var(--background-white);
@@ -79,9 +86,8 @@ export const Title = styled.h1`
   `)}
 `;
 
-export const Description = styled.p`
-  font-size: var(--font-size-default);
-  color: var(--background-white);
+export const Description = styled(Text)`
+  color: var(--color-text-white);
   text-align: justify;
   line-height: 1.5;
   margin: 50px 0 20px 0;
@@ -116,7 +122,6 @@ export const ButtonWrapper = styled.div`
 
 export const ButtonContainer = styled.div`
  margin-top: 5px;
- height: 36px;
 `;
 
 export const ButtonLayer = styled.div`
@@ -125,17 +130,17 @@ export const ButtonLayer = styled.div`
   height: 45px;
   background-color: var(--background-light-pink);
   z-index: 1;
-  top: 40px;
-  right: 5px;
+  top: 41px;
+  right: 3px;
 
   ${Mobile(css`
     width: 150px;
     height: 35px;
-    top: -40px;    
+    top: -39px;    
   `)}
 `;
 
-export const Button = styled.button`
+export const Button = styled(InternalLinkButton)`
   position: relative;
   z-index: 2;
   width: 250px;
@@ -145,7 +150,7 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   outline: none;
-  border: solid 1px var(--background-black);
+  border-color: var(--background-black);
 
   ${Mobile(css`
     width: 150px;
@@ -153,12 +158,11 @@ export const Button = styled.button`
   `)}
 `;
 
-export const ButtonText = styled.p`
+export const ButtonText = styled(Text)`
   font-size: var(--font-size-medium);
   font-weight: 700;
-  color: var(--background-light-pink);
+  color: var(--color-text-beige);
   text-transform: uppercase;
-  margin: 0;
 
   ${Mobile(css`
     font-size: var(--font-size-short);
@@ -190,9 +194,9 @@ export const DateContainer = styled.div`
   `)}
 `;
 
-export const Date = styled.p`
+export const Date = styled(Text)<DateProps>`
   width: 100%;
-  font-size: var(--font-size-subtitle);
+  font-size: ${(p) => p.size ? p.size : "var(--font-size-subtitle)"};;
   font-weight: 600;
   color: var(--background-pink);
   text-align: center;
@@ -203,4 +207,6 @@ export const Date = styled.p`
     font-size: var(--font-size-medium);
     margin: 0 0 5px 0;
   `)}
+
+
 `;

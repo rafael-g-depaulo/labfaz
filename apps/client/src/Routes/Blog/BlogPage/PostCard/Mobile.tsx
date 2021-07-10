@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import {
   MainTextContainer,
-  Title,
+  PostTitle,
   Description,
   Image,
   Button,
@@ -33,21 +33,25 @@ export const Mobile: FC<DisplayProps> = ({
   return (
     <>
       <MainTextContainer>
-        <Title>{title}</Title>
+        <PostTitle>{title}</PostTitle>
         <Description>{description}</Description>
         {!!image && <Image src={image.url} alt={image.name} />}
       </MainTextContainer>
       <ButtonWrapper>
         <ButtonContainer>
-          <Button>
+          <Button href="">
             <ButtonText>leia mais</ButtonText>
           </Button>
           <ButtonLayer />
         </ButtonContainer>
         <Divisor />
         <DateContainer>
-          <Date>{formatPostDate(created_at)?.day}</Date>
-          <Date>{formatPostDate(created_at)?.hour}</Date>
+          <Date size="var(--font-size-medium)">
+            {formatPostDate(created_at)?.day}
+          </Date>
+          <Date size="var(--font-size-medium)">
+            {formatPostDate(created_at)?.hour}
+          </Date>
         </DateContainer>
       </ButtonWrapper>{" "}
     </>
