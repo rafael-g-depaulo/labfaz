@@ -99,7 +99,7 @@ export const ButtonLayer = styled.div`
   ${Mobile(css`
     width: 160px;
     height: 34px;
-    bottom: 36px;
+    bottom: 37px;
     right: 2px;
   `)}
 
@@ -127,11 +127,13 @@ export const Button = styled(InternalLinkButton)`
   ${Mobile(css`
     width: 160px;
     height: 34px;
+    border: 1px solid var(--background-black);
   `)}
 
   ${DesktopSmall(css`
     width: 190px;
     height: 40px;
+    border: 1px solid var(--background-black);
   `)}
 `;
 

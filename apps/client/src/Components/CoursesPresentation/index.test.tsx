@@ -1,5 +1,6 @@
 import React from "react";
 import render from "Utils/render";
+import { BrowserRouter } from "react-router-dom";
 
 import Display from "./Display";
 
@@ -25,13 +26,19 @@ const cardExample = [
 
 it("renders CoursesPresentation component", () => {
   expect(() =>
-    render(<Display texts={coursesPresentationExample} courses={cardExample} />)
+    render(
+      <BrowserRouter>
+        <Display texts={coursesPresentationExample} courses={cardExample} />
+      </BrowserRouter>
+    )
   ).not.toThrow();
 });
 
 describe("Check content of CoursesPresentation component", () => {
   const { getByText } = render(
-    <Display texts={coursesPresentationExample} courses={cardExample} />
+    <BrowserRouter>
+      <Display texts={coursesPresentationExample} courses={cardExample} />
+    </BrowserRouter>
   );
 
   it("checks if title rendered", () => {
