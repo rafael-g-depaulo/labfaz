@@ -1,5 +1,6 @@
 import React from "react";
 import render from "Utils/render";
+import { BrowserRouter } from "react-router-dom";
 
 import Card from ".";
 
@@ -19,13 +20,19 @@ const cardExample = [
 
 it("renders Card component", () => {
   expect(() =>
-    render(<Card courses={cardExample} isMobile={true} />)
+    render(
+      <BrowserRouter>
+        <Card courses={cardExample} isMobile={true} />
+      </BrowserRouter>
+    )
   ).not.toThrow();
 });
 
 describe("Check content of Card component", () => {
   const { getByText, getByRole } = render(
-    <Card courses={cardExample} isMobile={true} />
+    <BrowserRouter>
+      <Card courses={cardExample} isMobile={true} />
+    </BrowserRouter>
   );
 
   it("checks if title rendered", () => {
