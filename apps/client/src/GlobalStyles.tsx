@@ -22,6 +22,9 @@ export const GlobalStyles = createGlobalStyle`
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
 
+    --font-size-title-xxxlarge: 64px;
+    --font-size-title-xxlarge: 56px;
+    --font-size-title-xlarge: 48px;
     --font-size-title: 35px;
     --font-size-title-medium: 30px;
     --font-size-title-small: 28px;

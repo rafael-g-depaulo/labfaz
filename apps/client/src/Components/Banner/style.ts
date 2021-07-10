@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { Mobile } from 'Utils/breakpoints'
+import { Mobile, MobileSmall } from 'Utils/breakpoints'
 import { InternalLinkButton  } from 'Components/Buttons/InternalLinkButton';
 import { Title } from 'Components/Typography/Title'
 
@@ -26,21 +26,38 @@ export const Container = styled.div<Props>`
   ${Mobile(css`
     padding: 0.5rem 2.5rem;
   `)}
+
+  ${MobileSmall(css`
+    padding: 1rem 1.5rem;
+  `)}
   
 `;
 
 export const TitleBanner = styled(Title)`
   color: var(--color-text-beige);
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-title-xxxlarge);
 
   ${Mobile(css`
-    font-size: var(--font-size-title);
+    font-size: var(--font-size-title-xxlarge);
+  `)}
+
+  ${MobileSmall(css`
+    font-size: var(--font-size-title-xlarge);
   `)}
 
 `;
 
 export const Subtitle = styled(Title)`
   color: var(--color-text-beige);
+  font-size: var(--font-size-title-smaller);
+
+  ${Mobile(css`
+    font-size: var(--font-size-default);
+  `)}
+
+  ${MobileSmall(css`
+    font-size: var(--font-size-large);
+  `)}
 `;
 
 export const KnowMoreButton = styled(InternalLinkButton)`
@@ -54,5 +71,14 @@ export const KnowMoreButton = styled(InternalLinkButton)`
     border-left: 3px solid;
     border-color: var(--background-black);
   }
+
+  ${Mobile(css`
+    font-size: var(--font-size-medium);
+  `)}
+
+  ${MobileSmall(css`
+    padding: 0.2rem 1.5rem;
+    font-size: var(--font-size-short);
+  `)}
 
 `;
