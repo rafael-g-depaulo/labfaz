@@ -1,34 +1,48 @@
 import React from "react";
 import render from "Utils/render";
+import { BrowserRouter } from "react-router-dom";
 
 import Card from ".";
 
 const cardExample = [
   {
     title: "Teste",
+    subtitle: "iluminação",
     description: "Descrição aqui",
-    date: "2020-08-05",
+    finish_date: "2020-08-05",
     banner_image: {
       url: "https://www.pexels.com/pt-br/foto/aniversario-dia-do-nascimento-floracao-florescencia-8285483/",
       name: "imagem aleatória",
     },
+    finished: true,
   },
 ];
 
 it("renders Card component", () => {
   expect(() =>
-    render(<Card courses={cardExample} isMobile={true}/>)
+    render(
+      <BrowserRouter>
+        <Card courses={cardExample} isMobile={true} />
+      </BrowserRouter>
+    )
   ).not.toThrow();
 });
 
 describe("Check content of Card component", () => {
   const { getByText, getByRole } = render(
-    <Card courses={cardExample} isMobile={true}/>
+    <BrowserRouter>
+      <Card courses={cardExample} isMobile={true} />
+    </BrowserRouter>
   );
 
   it("checks if title rendered", () => {
     const title = getByText("Teste");
     expect(title).toHaveTextContent("Teste");
+  });
+
+  it("checks if subtitle rendered", () => {
+    const subtitle = getByText("iluminação");
+    expect(subtitle).toHaveTextContent("iluminação");
   });
 
   it("checks if date rendered", () => {
