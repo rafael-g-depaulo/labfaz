@@ -49,7 +49,21 @@ export const StaffHeader = styled.div`
 
   margin-bottom: 10vh;
 
-  color: var(--color-text-beige);
+  .level-1 {
+    color: var(--color-text-beige);
+  }
+
+  .level-3 {
+    color: var(--color-text-beige);
+  }
+
+  ${Mobile(css`
+    .level-3 {
+      font-size: var(--font-size-default);
+      text-align: center;
+      max-width: 293px;
+    }
+  `)}
 `
 
 export const StaffTitle = styled.h1`
@@ -204,53 +218,6 @@ export const CardBody = styled.div`
   `)}
 `;
 
-
-export const Text = styled.span<SpanProps>`
-  max-height: min-content;
-  font-family: var(--card-font-family);
-  color: var(--color-text-white);
-
-  ${
-    Mobile(css`
-      font-size: 10px;
-      line-height: 16px;
-      align-items: baseline;
-      text-align: justify;
-    `)
-  }
-
-  ${DesktopSmall(css`
-      margin-top: 0;
-      font-size: var(--font-size-short);
-    `)}
-`;
-
-export const Span = styled.span<SpanProps>`
-  margin-top: ${props => props.marginTop ? props.marginTop : 0};
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : ''};
-  text-align: ${props => props.textAlign ? props.textAlign : "left"};
-  font-size: ${props => props.fontSize ? 
-  "var(--font-size-"+ props.fontSize + ")" 
-  :
-  "var(--font-size-default)"
-  };
-  font-weight: ${props => props.fontWeight ? props.fontWeight : 400};
-  color: ${props => props.color ? 
-  "var(--color-text-"+ props.color + ")" 
-  :
-  "var(--color-text-yellow)"
-  };
-
-  ${props => props.color ? 
-    Mobile(css`
-      font-size: var(--font-size-short);
-    `) 
-    : 
-    Mobile(css`
-      font-size: var(--font-size-short);
-    `)
-    }
-`
 
 export const Circle = styled.div<CircleProps>`
   background-color: ${props => "var(--background-" + props.color + ")"};
