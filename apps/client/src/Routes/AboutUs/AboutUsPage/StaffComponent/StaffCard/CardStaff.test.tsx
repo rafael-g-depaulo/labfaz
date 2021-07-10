@@ -69,10 +69,11 @@ describe('Staff card component',  () => {
   it('Should render all text data',  () =>{
     const component = render(<BrowserRouter><StaffCard data={mockedData} /></BrowserRouter>)
 
-    const element = component.getAllByRole('generic')
+    const Div = component.getAllByRole('generic')
 
-    const paragraph = element[5].querySelector('p')
+    const paragraphs = Div[0].querySelectorAll('p')
 
-    expect(paragraph).toBeTruthy()
+
+    expect(paragraphs[2]).toBeVisible()
   })
 })
