@@ -60,7 +60,7 @@ describe('Staffs component',  () => {
   it('Should have a subtitle header',  () => {
     const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
 
-    const header = component.getByRole('heading', { level: 2 })
+    const header = component.getByRole('heading', { level: 3 })
 
     expect(header).toHaveTextContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
   })
