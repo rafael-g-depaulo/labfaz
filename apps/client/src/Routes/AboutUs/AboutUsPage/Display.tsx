@@ -16,7 +16,7 @@ export interface DisplayProps {
 export const Display: FC<DisplayProps> = ({
   about_data,
 }) => {
-  const {banner_data, welcome_data, about_us_data} = about_data!
+  const {banner_data, welcome_data, about_us_data} = about_data
   
   const { data } = useStaffData()
   

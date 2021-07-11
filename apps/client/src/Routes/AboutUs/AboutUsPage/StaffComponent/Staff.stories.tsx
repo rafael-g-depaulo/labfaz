@@ -26,6 +26,6 @@ const Staffs: StaffData = {
   staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
 }
 
-storiesOf("Component/Staff", module)
+storiesOf("Components/Staff", module)
   .addParameters({ component: Staff })
   .add("Default", () => <Staff data={Staffs}/>)

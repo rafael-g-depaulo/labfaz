@@ -15,16 +15,13 @@ const image = mockImage({
 })
 
 const StaffInfo: StaffObject = {
+  id: 1,
   name: "Jhon Doe",
   tag: "Coordenação",
   text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",
   image: image
 }
 
-storiesOf("Component/Staff Card", module)
+storiesOf("Components/Staff Card", module)
   .addParameters({ component: StaffCard })
-  .add("Default", () => <StaffCard  
-                          name={StaffInfo.name}
-                          tag={StaffInfo.tag}
-                          text={StaffInfo.text}
-                          image={StaffInfo.image}/>)
+  .add("Default", () => <StaffCard  data={StaffInfo}/>)
