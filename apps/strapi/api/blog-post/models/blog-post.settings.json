@@ -2,8 +2,7 @@
   "kind": "collectionType",
   "collectionName": "blog_posts",
   "info": {
-    "name": "BlogPost",
-    "description": ""
+    "name": "BlogPost"
   },
   "options": {
     "increments": true,
@@ -27,6 +26,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
     }
   }
 }
