@@ -25,10 +25,12 @@ export const Container = styled.div<Props>`
   }
   ${Mobile(css`
     padding: 0.5rem 2.5rem;
+    max-height: 25rem;
   `)}
 
   ${MobileSmall(css`
     padding: 1rem 1.5rem;
+    max-height: 22rem;
   `)}
   
 `;
@@ -36,6 +38,7 @@ export const Container = styled.div<Props>`
 export const TitleBanner = styled(Title)`
   color: var(--color-text-beige);
   font-size: var(--font-size-title-xxxlarge);
+  font-weight: bold;
 
   ${Mobile(css`
     font-size: var(--font-size-title-xxlarge);
@@ -50,6 +53,7 @@ export const TitleBanner = styled(Title)`
 export const Subtitle = styled(Title)`
   color: var(--color-text-beige);
   font-size: var(--font-size-title-smaller);
+  font-weight: 600;
 
   ${Mobile(css`
     font-size: var(--font-size-default);
@@ -64,7 +68,8 @@ export const KnowMoreButton = styled(InternalLinkButton)`
   color: var(--background-pink);
   padding: 0.2rem 3rem;
   background-color: var(--color-text-beige);
-  margin-top: 2.5rem;
+  margin: 2.5rem 0 2rem 0;
+  font-weight: bold;
 
   &:hover {
     border-top: 3px solid;

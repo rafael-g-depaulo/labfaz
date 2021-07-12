@@ -98,8 +98,9 @@ export const IconButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  height: 1.5rem;
   svg {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--background-pink);
   }
 `;
@@ -107,4 +108,7 @@ export const IconButton = styled.button`
 export const LogoLink = styled(InternalLinkButton)`
   background-color: transparent;
   border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
 `
