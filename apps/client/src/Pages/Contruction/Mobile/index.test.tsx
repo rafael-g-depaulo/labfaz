@@ -8,7 +8,8 @@ const mockedData = {
   facebook: "https://www.facebook.com",
   twitter: "https://www.twitter.com",
   googlePlus: "https://www.google.com",
-  linkedin: "https://linkedin.com"
+  linkedin: "https://linkedin.com",
+  instagram: "https://instagram.com"
 }
 
 it('renders header component', () => {
