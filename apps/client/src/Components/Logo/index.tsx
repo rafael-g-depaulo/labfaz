@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { Title } from './style'
+import { Image } from './style'
+import LogoImage from './LABFAZ.png'
 
 const Logo = () => {
-  return <Title> LABFAZ </Title>
+  return <Image src={LogoImage} alt="logo"/>
 }
 
 export default Logo
