@@ -11,11 +11,12 @@ it('renders header component', () => {
 describe('Check links succesfully redirects to another page', () => {
   const {
     getByText,
+    getByRole,
     getByTestId
   } = render(<BrowserRouter><Header /></BrowserRouter>);
   it('check link of home page and text logo', () => {
     expect(getByTestId('home').closest('a')).toHaveAttribute('href', '/')
-    expect(getByText('LABFAZ')).toHaveTextContent("LABFAZ")
+    expect(getByRole('img')).toHaveAttribute("alt", "logo")
   })
 
   it('check link of about us page', () => {

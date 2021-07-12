@@ -8,6 +8,6 @@ it("renders Logo component", () => {
 })
 
 it("check if renders tag img", () => {
-  const { getByText } = render(<Logo />)
-  expect(getByText('LABFAZ')).toHaveTextContent('LABFAZ')
+  const { getByRole } = render(<Logo />)
+  expect(getByRole('img')).toHaveAttribute('alt', 'logo')
 })
