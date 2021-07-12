@@ -20,6 +20,7 @@ export const RedirectLink = styled(InternalLinkButton)`
   display: flex;
   flex-Grow: 0.3;
   justify-Content: space-around;
+  align-items: center;
   padding: 0;
 
   ${DesktopSmall(css`
