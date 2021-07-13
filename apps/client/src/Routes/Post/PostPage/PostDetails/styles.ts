@@ -80,34 +80,6 @@ export const PostTitle = styled(Title)`
   `)}
 `;
 
-export const MarkdownStyles = styled(Text)`
-  color: var(--color-text-white);
-  text-align: justify;
-  line-height: 1.5;
- 
-  ${Mobile(css`
-    font-size: var(--font-size-medium);
-    margin: 35px 0;
-    line-height: 2;
-  `)}
-
-  & > h1, h2, h3, h4, h5, h6, p, b {
-    margin: 50px 0 0 0;
-  }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  object-position: center;
-  margin: 50px 0 0 0;
-  ${Mobile(css`
-    height: 295px;
-    margin: 0 0 40px 0;
-  `)}
-`;
-
 export const Divisor = styled.hr`
   height: 70px;
   margin: 5px 0;

@@ -3,8 +3,6 @@ import React, { FC } from "react";
 import {
   MainTextContainer,
   PostTitle,
-  MarkdownStyles,
-  Image,
   DateContainer,
   Date,
   Divisor,
@@ -13,6 +11,8 @@ import {
 import { formatPostDate } from "Utils/formatPostDate";
 
 import Markdown from "Components/Markdown";
+
+import SocialMediaIcons from "Components/SocialMediaIcons";
 
 interface DisplayProps {
   title: string;
@@ -31,6 +31,7 @@ export const Web: FC<DisplayProps> = ({ title, created_at, content }) => {
       <MainTextContainer>
         <PostTitle>{title}</PostTitle>
         <Markdown content={content} />
+        <SocialMediaIcons />
       </MainTextContainer>
       <Divisor />
       <DateContainer>
