@@ -32,3 +32,6 @@ coverage/
 
 # Local Netlify folder
 .netlify
+
+#asdf files
+.tool-versions 

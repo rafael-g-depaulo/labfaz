@@ -30,7 +30,7 @@ describe('User Router', () => {
 
     jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
 
-    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
+    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => Promise.resolve(password))
     
     jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => 
       Promise.resolve(mockTable.find(findUser => findUser.email === email))
@@ -41,7 +41,7 @@ describe('User Router', () => {
     )
 
     jest.spyOn(UserRepo, 'compareHash').mockImplementation((old_password, user_password) => 
-      old_password === user_password
+     Promise.resolve(old_password === user_password)
     )
   })
 
