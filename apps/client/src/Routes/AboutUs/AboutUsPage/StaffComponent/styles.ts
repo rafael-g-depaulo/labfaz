@@ -1,19 +1,11 @@
 import styled, { css } from 'styled-components'
-import { Mobile, MobileSmall, DesktopSmall, MobileLarge } from 'Utils/breakpoints'
+import { Mobile, MobileSmall, DesktopSmall, MobileLarge, DesktopLarge } from 'Utils/breakpoints'
 
 
 interface CircleProps {
-  color: string
+  color?: string
 }
 
-interface SpanProps  {
-  marginTop?: string,
-  marginBottom?: string,
-  color?: string,
-  fontSize?: string,
-  fontWeight?: number,
-  textAlign?: string
-}
 
 export const StaffGrid = styled.div`
   display: grid;
@@ -98,6 +90,7 @@ export const Card = styled.div`
   font-size: var(--font-size-short);
   font-family: var(--card-font-family);
   align-items: center;
+  background-color: var(--background-black);
 
 
   border: solid 2px #0C74FF;
@@ -142,29 +135,58 @@ export const CardThumb = styled.div`
   max-height: 160px;
   max-width: 100%;
 
-  margin-top: 1em;
-
-  font-weight: 700;
-  font-family: var(--card-font-family) ;
-
+  padding-top: 2em;
+  
   position: relative;
 
   p {
     color: var(--color-text-pink);
     font-weight: 700;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-large);
     text-align: center;
-    margin-top: 0.5em;
+    padding-top: 3%;
+  }
+
+  .pink {
+    top: 11px;
+    right: 19px;
+    background-color: var(--background-pink);
+  }
+
+  .yellow {
+    top: 13px;
+    right: 13px;
+    z-index: 999;
+    background-color: var(--background-yellow);
   }
 
   ${Mobile(css`
     max-height: 100px;
     max-width: 80%;
+
+    p{
+      font-size: var(--font-size-short);
+    }
   `)}
 
   ${DesktopSmall(css`
       max-width: 75%;
       max-height: 130px;
+  `)}
+
+  ${DesktopLarge(css`
+    .pink {
+      top: 16px;
+      right: 19px;
+      background-color: var(--background-pink);
+    }
+
+    .yellow {
+      top: 18px;
+      right: 13px;
+      z-index: 999;
+      background-color: var(--background-yellow);
+    }
   `)}
 
   img {
@@ -182,64 +204,80 @@ export const CardBody = styled.div`
   max-height: 130px;
   max-width: 80%;
   
-  > p:first-child {
-    color: var(--color-text-beige);
-    font-weight: 600;
-    font-size: var(--font-size-short);
-    margin-bottom: 1.2em;
-  }
-
   p {
     color: var(--color-text-white);
     font-size: var(--font-size-medium);
     text-align: justify;
     line-height: var(--line-height-small);
+    padding-top: 10%;
+  }
+  
+
+  > p:first-child {
+    color: var(--color-text-beige);
+    font-weight: 600;
+    font-size: var(--font-size-medium);
+    padding-top: 10%;
   }
 
 
   ${Mobile(css`
     line-height: 16px;
-    margin-top: 0.8em;
+    padding-top: 1.3em;
 
     p {
-      font-size: 9px;
+      font-size: var(--font-size-short);
       line-height: 16px;
+      padding-top: 2.5%;
     }
+
+    > p:first-child {
+      padding-top: 2.5%;
+      font-size: var(--font-size-short);
+    }
+    
   `)}
 
   ${DesktopSmall(css`
     max-height: 130px;
     line-height: var(--line-height-small);
     font-size: var(--font-size-medium);
+    padding-top: 1.3em;
 
     p {
       font-size: var(--font-size-short);
+      padding-top: 0;
+    }
+
+    > p:first-child {
+      padding-top: 5%;
     }
   `)}
 `;
 
 
 export const Circle = styled.div<CircleProps>`
-  background-color: ${props => "var(--background-" + props.color + ")"};
   max-width: 126px;
   max-height: 126px;
   min-width: 126px;
   min-height: 126px;
   border-radius: 50%;
 
-  z-index: ${props => props.color === 'yellow' ? 99999 : 0};
 
   position: absolute;
-  top: ${props => props.color === 'yellow' ? '-7px' : '-11px'};
-  right: ${props => props.color === 'yellow' ? '13px' : '19px'};
 
+
+    .yellow {
+      top: 13px;
+      right: 19px;
+    }
 
   ${Mobile(css`
     max-width: 91px;
     max-height: 91px;
     min-width: 91px;
     min-height: 91px;
-      `)}
+  `)}
 
   ${DesktopSmall(css`
     max-width: 110px;

@@ -15,7 +15,7 @@ const About: FC<AboutProps> = ({data}) => {
       {
         data.map((item) => {
           return (
-            <Container key={item.id} about="true" marginBottom="20vh">
+            <Container key={item.id} about="true">
               <TextDiv>
                 <Text>
                   {item.text}

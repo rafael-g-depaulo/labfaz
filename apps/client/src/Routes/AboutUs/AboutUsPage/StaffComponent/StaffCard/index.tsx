@@ -16,8 +16,8 @@ export const StaffCard: FC<StaffCardProps> = ( {data} ) => {
     <Card>
       <CardThumb>
         <img src={image.url} alt={image.alternativeText}/>
-        <Circle color='yellow'/>
-        <Circle color='pink'/>
+        <Circle  className='yellow'/>
+        <Circle  className='pink'/>
         <Text> {name} </Text>
       </CardThumb>
       <CardBody>

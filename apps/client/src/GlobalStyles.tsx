@@ -18,13 +18,8 @@ export const GlobalStyles = createGlobalStyle`
     --background-white: #FFFFFF;
     --background-black: #000000;
     --background-pink: #FC0061;
-<<<<<<< HEAD
-    --background-blue: #0C74FF;
-    --background-light-pink: #FFEC99;
-=======
     --background-yellow: #FFEC99;
 
->>>>>>> ce94ce5 (💄 ✨ Add yellow backgrond to global styles)
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
 
@@ -44,8 +39,6 @@ export const GlobalStyles = createGlobalStyle`
     --line-height-default: 48.72px; 
     --line-height-small: 25px; 
     --line-height-medium: 30px; 
-
-    --card-font-family: 'Cairo', 'Town text'
   }
 
   * {
@@ -53,7 +46,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Cairo", sans-serif;
     font-size: var(--font-size-default);
     color: var(--colot-text-white);
-    background-color: var(--background-black);
   }
 
   body {

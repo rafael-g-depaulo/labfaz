@@ -14,7 +14,7 @@ export const WelcomeComponent: FC<WelcomeProps> = ({ data }) => {
 
   
   return (
-    <Container key={data.id} marginTop="4em" marginBottom="6em">
+    <Container key={data.id}>
       <TextDiv position="right">
         <Text>{data.text}</Text>
       </TextDiv>

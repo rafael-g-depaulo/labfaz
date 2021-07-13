@@ -50,10 +50,11 @@ export const Container = styled.div<ContainerProps>`
   max-height: 1000px;
   max-width: 100%;
   line-height: var(--line-height-default);
-  margin: 0 5vw;
+  padding: 10vh 5vw;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
   margin-top: ${props => props.marginTop ? props.marginTop : ""};
   font-size: var(--font-size-default);
+  text-align: justify;
 
   background-color: var(--background-black);
   color: var(--color-text-white);
