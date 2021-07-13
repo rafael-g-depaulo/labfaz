@@ -18,9 +18,20 @@ export const Display: FC<DisplayProps> = ({
 }) => {
   const {banner_data, welcome_data, about_us_data} = about_data
   
-  const { data } = useStaffData()
+  const { data, error  } = useStaffData()
   
+  if(error){
+    return(
+      <Fullpage>
+      <Header />
+      <Banner title="Quem somos" subtitle={banner_data} align="left"/>
+      <WelcomeComponent data={welcome_data} />
+      <About  data={about_us_data} />
+      {error.message}
+    </Fullpage>
 
+    )
+  }
 
   return (
     <Fullpage>
