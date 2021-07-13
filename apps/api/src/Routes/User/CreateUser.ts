@@ -92,11 +92,23 @@ export const CreateUser: (
     return badRequestError(res, "Email address already exists.");
   }
 
+<<<<<<< HEAD
   const hashedPassword = await UserRepo.generateHash(password);
 
   const user = await UserRepo.create({ artist, email, password: hashedPassword });
 
   await UserRepo.save(user);
+=======
+  const hashedPassword = await UserRepo.generateHash(password)
+  
+  const user = await UserRepo.create({ name, email, password: hashedPassword })
+  
+  await UserRepo.save(user)
+
+  const userToken = await UserRepo.generateEmailToken(email)
+  
+  user.token = userToken
+>>>>>>> ce8e28f (🐛 fix: removed bug from update user)
 
   mailer.sendEmail({
     to: {

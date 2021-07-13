@@ -21,7 +21,7 @@ describe("CreateUser Route Handler", () => {
     createUserRoute = CreateUser({ UserRepo });
 
     jest.spyOn(UserRepo, "create").mockImplementation((info) => {
-      const user = { ...info, id: `${info.name}.${info.password}` } as User;
+      const user = { ...info, id: `${info.password}` } as User;
 
       mockTable.push(user);
 
@@ -82,7 +82,6 @@ describe("CreateUser Route Handler", () => {
 
   it("should not be able to create in the database table a user with same email from another", async () => {
     UserRepo.create({
-      name: "john doe",
       email: "johndoe@hotmail.com",
       password: "123456",
     });
