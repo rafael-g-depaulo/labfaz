@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { sign, verify } from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 import { hash } from "bcryptjs";
 import { compare } from "bcryptjs";
 
@@ -42,6 +42,7 @@ export class UserRepository extends Repository<User> {
     const { secret, expiresIn } = authConfig.token;
 
     const user = await this.findOne({ where: { email } });
+    
     if (!user) throw new Error("No user found");
 
     const token = sign({ id: user?.id }, secret, { expiresIn });

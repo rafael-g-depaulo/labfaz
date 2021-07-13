@@ -18,9 +18,8 @@ export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<IUser> = 
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 
-  const { name, email, password, old_password } = req.body
+  const { name, password, old_password } = req.body
 
-  console.log(req.user);
   
   if ( !req.user ) {
     return res.status(401).json({error: 'User need to be loged'})
@@ -33,15 +32,7 @@ export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<IUser> = 
     return res.status(404).json("User not found.")
   }
 
-  const userWithUpdatedEmail = await UserRepo.findByEmail(email)
-
-  if (userWithUpdatedEmail && userWithUpdatedEmail.id !== user.id) {
-
-    return res.status(401).json({ error: "E-mail already in use." })
-  }
-
   user.name = name
-  user.email = email
 
   if (password) {
 
