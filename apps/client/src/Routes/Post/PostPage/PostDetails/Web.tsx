@@ -12,7 +12,7 @@ import {
 
 import { formatPostDate } from "Utils/formatPostDate";
 
-import ReactMarkdown from "react-markdown";
+import Markdown from "Components/Markdown";
 
 interface DisplayProps {
   title: string;
@@ -30,26 +30,7 @@ export const Web: FC<DisplayProps> = ({ title, created_at, content }) => {
     <>
       <MainTextContainer>
         <PostTitle>{title}</PostTitle>
-        <MarkdownStyles>
-          <ReactMarkdown
-            children={content}
-            components={{
-              p: ({ node, children }) => {
-                if (node.children[0].tagName === "img") {
-                  const image: any = node.children[0];
-                  return (
-                    <Image
-                      src={`${image.properties.src}`}
-                      alt={image.properties.alt}
-                    />
-                  );
-                }
-                // Return default child if it's not an image
-                return <MarkdownStyles>{children}</MarkdownStyles>;
-              },
-            }}
-          />
-        </MarkdownStyles>
+        <Markdown content={content} />
       </MainTextContainer>
       <Divisor />
       <DateContainer>

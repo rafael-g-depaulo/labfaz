@@ -59,9 +59,6 @@ export const MainTextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  color: var(--color-text-white);
-  text-align: justify;
-  line-height: 1.5;
 `;
 
 export const PostTitle = styled(Title)`
