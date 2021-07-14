@@ -4,11 +4,13 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.6rem;
 
   label {
     font-weight: 600;
     color: var(--color-text-black);
-    margin-bottom: -0.5rem;
+    /* margin-bottom: -0.5rem; */
+    margin-bottom: 0.75rem;
   }
 
   input {
