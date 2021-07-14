@@ -22,10 +22,17 @@ export const Markdown: FC<Props> = ({ content }) => {
                   value={link.children[0].value}
                 />
               );
+            } else if (node.children[0].tagName === "img") {
+              const image: any = node.children[0];
+              return (
+                <Image
+                  src={`${image.properties.src}`}
+                  alt={image.properties.alt}
+                />
+              );
             }
             return <p>{children}</p>;
-          },
-          image: Image,
+          },          
         }}
       />
     </MarkdownStyles>

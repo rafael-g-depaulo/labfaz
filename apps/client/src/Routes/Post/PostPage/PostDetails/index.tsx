@@ -11,8 +11,6 @@ export const PostDetails: FC = () => {
   if (isLoading) return <Loading />;
   if (error) return <div>error: {error?.message ?? ""}</div>;
 
-  console.log(data)
-
   return <Display post={data!} />;
 };
 

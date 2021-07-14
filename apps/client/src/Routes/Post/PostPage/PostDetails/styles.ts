@@ -74,7 +74,7 @@ export const PostTitle = styled(Title)`
   -webkit-box-orient: vertical;
   line-height: 1.2;
   ${Mobile(css`
-    font-size: var(--font-size-subtitle);
+    font-size: var(--font-size-title-small);
     margin: 0;
     line-height: 1.5;
   `)}
@@ -87,6 +87,18 @@ export const Divisor = styled.hr`
   ${Mobile(css`
     height: 35px;
     margin: 0;
+  `)}
+`;
+
+export const BottomWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  ${Mobile(css`    
+    margin: 25px 0 0 0;
   `)}
 `;
 

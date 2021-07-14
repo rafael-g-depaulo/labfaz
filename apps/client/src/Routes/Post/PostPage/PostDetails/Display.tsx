@@ -4,7 +4,7 @@ import { Container, Content, Wrapper } from "./styles";
 
 import { BlogPost } from "Api/BlogPost";
 import Web from "./Web";
-//import Mobile from "./Mobile";
+import Mobile from "./Mobile";
 import useMobile from "Utils/useMobile";
 
 interface DisplayProps {
@@ -14,26 +14,20 @@ interface DisplayProps {
 export const Display: FC<DisplayProps> = ({ post }) => {
   const isMobile = useMobile();
 
-  console.log(post);
-
   return (
     <Container>
       <Content>
         <Fragment>
           <Wrapper>
             {isMobile ? (
-              // <Mobile
-              //   title={post?.title}
-              //   description={post?.description}
-              //   image={post?.image}
-              //   created_at={post?.created_at}
-              // />
-              <> </>
+              <Mobile
+                title={post?.title}
+                created_at={post?.created_at}
+                content={post?.content}
+              />
             ) : (
               <Web
                 title={post?.title}
-                description={post?.description}
-                image={post?.image}
                 created_at={post?.created_at}
                 content={post?.content}
               />
