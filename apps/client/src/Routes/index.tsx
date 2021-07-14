@@ -101,6 +101,14 @@ const Routes: FC = () => {
             <NotFound />
           </Suspense>
         </Route>
+
+        <Route path={["/login"]}>
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <Login match={match} />
+            </Suspense>
+          )          }
+        </Route>
       </Switch>
     </BaseRouter>
   );
