@@ -46,7 +46,7 @@ export const StaffHeader = styled.div`
   }
 
   .level-3 {
-    color: var(--color-text-beige);
+    color: var(--color-text-white);
   }
 
   ${Mobile(css`
