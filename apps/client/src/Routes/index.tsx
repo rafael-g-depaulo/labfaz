@@ -16,6 +16,7 @@ const Blog = lazy(() => import("./Blog"))
 const AboutUs = lazy(() => import("./AboutUs"))
 const NotFound = lazy(() => import("../Pages/NotFound"))
 const Register = lazy(() => import('./SignUp'))
+const Login = lazy(() => import('./Login'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -95,6 +96,14 @@ const Routes: FC = () => {
           )          }
         </Route>
 
+        <Route path={["/login"]}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <Login match={match} />
+            </Suspense>
+          )          }
+        </Route>
+
         {/* default route (404) */}
         <Route>
           <Suspense fallback={<LoadingFullPage />}>
@@ -102,13 +111,7 @@ const Routes: FC = () => {
           </Suspense>
         </Route>
 
-        <Route path={["/login"]}>
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <Login match={match} />
-            </Suspense>
-          )          }
-        </Route>
+        
       </Switch>
     </BaseRouter>
   );
