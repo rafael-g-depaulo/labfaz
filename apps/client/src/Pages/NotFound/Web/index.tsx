@@ -2,23 +2,23 @@ import React, { FC } from 'react'
 
 import Header from "Components/Header"
 import Image from "../Image"
-import { Rectangle } from 'Pages/Contruction/Web/style'
-import { Text, Container, Content } from './style'
+import { Text, Container, Content, Rectangle2 } from './style'
 
-export const NotFound: FC = () => {
+export const Web: FC = () => {
   return (
     <Container>
       <Header />
       <Content>
-        <Rectangle>
+        <Rectangle2>
           <Image />
           <Text>
-            A página que você está procurando não existe
+            A página que você está procurando não existe.
           </Text>
-        </Rectangle>
+        </Rectangle2>
       </Content>
+      {/* Add footer component */}
     </Container>
   )
 }
 
-export default NotFound
+export default Web
