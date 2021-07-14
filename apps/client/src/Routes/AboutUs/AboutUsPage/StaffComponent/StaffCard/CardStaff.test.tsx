@@ -34,17 +34,11 @@ describe('Staff card component',  () => {
   it('Should render staff image with src', () => {
     const component = render(<BrowserRouter><StaffCard data={mockedData} /></BrowserRouter>)
     
-    const Card = component.getByRole('img')
+    const Card = component.getAllByRole('generic', { hidden: true })
 
-    expect(Card).toHaveAttribute('src')
-  })
-
-  it('Should have alt text on image card', () => {
-    const component = render(<BrowserRouter><StaffCard data={mockedData} /></BrowserRouter>)
-
-    const Card = component.getByRole('img')
-
-    expect(Card).toHaveAttribute('alt')
+    const CircleImage = Card[2]
+    
+    expect(CircleImage).toHaveStyle(`background-image: url(${mockedData.image.url})`)
   })
 
   it('Should have a tag text', () => {
