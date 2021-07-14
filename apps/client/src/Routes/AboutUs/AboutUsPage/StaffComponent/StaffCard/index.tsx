@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { StaffObject } from 'Api/AboutUs'
 
-import { Card, CardThumb, CardBody, Circle } from '../styles'
+import { Card, CardThumb, CardBody, Circle, ImageCircle } from '../styles'
 import { Text } from "Components/Typography/Text"
 
 interface StaffCardProps {
@@ -15,8 +15,7 @@ export const StaffCard: FC<StaffCardProps> = ( {data} ) => {
   return(
     <Card>
       <CardThumb>
-        <img src={image.url} alt={image.alternativeText}/>
-        <Circle  className='yellow'/>
+        <ImageCircle  image={image.url}/>
         <Circle  className='pink'/>
         <Text> {name} </Text>
       </CardThumb>

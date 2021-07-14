@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components'
-import { Mobile, MobileSmall, DesktopSmall, MobileLarge, DesktopLarge } from 'Utils/breakpoints'
+import { Mobile, MobileSmall, DesktopSmall, MobileLarge } from 'Utils/breakpoints'
 
 
-interface CircleProps {
-  color?: string
+interface ImageCircleProps {
+  image: string,
 }
-
 
 export const StaffGrid = styled.div`
   display: grid;
@@ -132,10 +131,10 @@ export const CardThumb = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 160px;
   max-width: 100%;
+  min-width: 100%;
 
-  padding-top: 2em;
+  padding-top: 1.77rem;
   
   position: relative;
 
@@ -144,21 +143,8 @@ export const CardThumb = styled.div`
     font-weight: 700;
     font-size: var(--font-size-large);
     text-align: center;
-    padding-top: 3%;
   }
 
-  .pink {
-    top: 11px;
-    right: 19px;
-    background-color: var(--background-pink);
-  }
-
-  .yellow {
-    top: 13px;
-    right: 13px;
-    z-index: 999;
-    background-color: var(--background-yellow);
-  }
 
   ${Mobile(css`
     max-height: 100px;
@@ -174,20 +160,6 @@ export const CardThumb = styled.div`
       max-height: 130px;
   `)}
 
-  ${DesktopLarge(css`
-    .pink {
-      top: 16px;
-      right: 19px;
-      background-color: var(--background-pink);
-    }
-
-    .yellow {
-      top: 18px;
-      right: 13px;
-      z-index: 999;
-      background-color: var(--background-yellow);
-    }
-  `)}
 
   img {
     width: 100%;
@@ -201,15 +173,14 @@ export const CardThumb = styled.div`
 `;
 
 export const CardBody = styled.div`
-  max-height: 130px;
   max-width: 80%;
-  
+
   p {
     color: var(--color-text-white);
     font-size: var(--font-size-medium);
     text-align: justify;
     line-height: var(--line-height-small);
-    padding-top: 10%;
+    padding-top: 1.28rem;
   }
   
 
@@ -217,7 +188,7 @@ export const CardBody = styled.div`
     color: var(--color-text-beige);
     font-weight: 600;
     font-size: var(--font-size-medium);
-    padding-top: 10%;
+    padding-top: 0.75rem;
     text-transform: uppercase;
   }
 
@@ -256,22 +227,18 @@ export const CardBody = styled.div`
   `)}
 `;
 
-
-export const Circle = styled.div<CircleProps>`
+export const ImageCircle = styled.div<ImageCircleProps>`
   max-width: 126px;
   max-height: 126px;
   min-width: 126px;
   min-height: 126px;
   border-radius: 50%;
 
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
 
-  position: absolute;
-
-
-    .yellow {
-      top: 13px;
-      right: 19px;
-    }
+  z-index: 999;
 
   ${Mobile(css`
     max-width: 91px;
@@ -285,7 +252,41 @@ export const Circle = styled.div<CircleProps>`
     max-height: 110px;
     min-width: 110px;
     min-height: 110px;
-    line-height: var(--line-height-small);
-    font-size: var(--font-size-medium);
+  `)}
+
+`
+
+export const Circle = styled.div`
+  max-width: 126px;
+  max-height: 126px;
+  min-width: 126px;
+  min-height: 126px;
+  border-radius: 50%;
+
+  background-color: var(--background-pink);
+
+  position: absolute;
+
+  top: 24px;
+  right: 55px;
+
+
+
+  ${Mobile(css`
+    max-width: 91px;
+    max-height: 91px;
+    min-width: 91px;
+    min-height: 91px;    
+    top: 6px;
+    right: 33px;
+  `)}
+
+  ${DesktopSmall(css`
+    max-width: 110px;
+    max-height: 110px;
+    min-width: 110px;
+    min-height: 110px;
+    top: 6px;
+    right: 45px;
   `)}
 `
