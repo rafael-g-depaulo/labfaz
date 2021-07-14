@@ -218,6 +218,7 @@ export const CardBody = styled.div`
     font-weight: 600;
     font-size: var(--font-size-medium);
     padding-top: 10%;
+    text-transform: uppercase;
   }
 
 
