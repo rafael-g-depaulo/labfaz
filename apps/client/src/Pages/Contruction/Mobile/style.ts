@@ -28,6 +28,7 @@ export const Rectangle = styled.div<Props>`
 
   ${MobileSmall(css`
     width: 15rem;
+    padding-right: 2rem;
   `)}
 `;
 
