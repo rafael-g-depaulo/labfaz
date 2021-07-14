@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Text } from "Components/Typography/Text";
 import { ExternalLinkButton } from "Components/Buttons/ExternalLinkButton";
+import { Mobile } from "Utils/breakpoints";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -24,10 +25,16 @@ export const IconsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 25px 0 0 0;
+
+  ${Mobile(css`
+    width: auto;
+    justify-content: start;
+    margin: 0;
+  `)}
 `;
 
 export const IconDiv = styled(ExternalLinkButton)`
-  margin: 0 20px 0 0;
+  margin: 10px 20px 0 0;
   padding: 0;
   background-color: transparent;
   border: none;

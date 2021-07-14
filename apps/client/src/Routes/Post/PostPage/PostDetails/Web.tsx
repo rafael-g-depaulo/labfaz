@@ -16,8 +16,6 @@ import SocialMediaIcons from "Components/SocialMediaIcons";
 
 interface DisplayProps {
   title: string;
-  description: string;
-  image: any;
   created_at: string;
   content: string;
 }
