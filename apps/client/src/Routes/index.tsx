@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense } from 'react'
+import React, { FC, lazy, Suspense, useEffect } from 'react'
 import {
   BrowserRouter as BaseRouter,
   match,
@@ -7,6 +7,12 @@ import {
 } from "react-router-dom"
 
 import Loading from 'Components/Loading'
+
+import RouteTracker from 'Utils/RouteTracker';
+
+import ReactGA from 'react-ga';
+
+
 
 const Home = lazy(() => import('./Home'))
 const Blog = lazy(() => import('./Blog'))
@@ -22,65 +28,70 @@ export type RouterProps<MatchParams = {}> = {
 export type Router<T = {}> = FC<RouterProps<T>>
 
 const Routes: FC = () => {
+
+  useEffect(() => {
+    ReactGA.initialize('UA-200607957-1')
+  })
+
   return (
     <BaseRouter>
-
-      <Switch>
-        
-        {/* default route */}
-        <Route exact path="/">
+      <RouteTracker>
+        <Switch>
+          
+          {/* default route */}
+          <Route exact path="/">
+              {({ match }) => (
+                <Suspense fallback={<Loading />}>
+                  <Home match={match}/>
+                </Suspense> 
+              )}
+          </Route>
+          
+          {/* home router */}
+          <Route path={["/home"]}>
             {({ match }) => (
               <Suspense fallback={<Loading />}>
                 <Home match={match}/>
               </Suspense> 
             )}
-        </Route>
-        
-        {/* home router */}
-        <Route path={["/home"]}>
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <Home match={match}/>
-            </Suspense> 
-          )}
-        </Route>
+          </Route>
 
-        {/* blog router */}
-        <Route path={["/blog"]}>
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <Blog match={match}/>
-            </Suspense> 
-          )}
-        </Route>
-
-        {/* strapi collection example router */}
-        <Route path="/people-example">
+          {/* blog router */}
+          <Route path={["/blog"]}>
             {({ match }) => (
               <Suspense fallback={<Loading />}>
-                <PeopleExample match={match} />
-              </Suspense>
+                <Blog match={match}/>
+              </Suspense> 
             )}
-        </Route>
+          </Route>
 
-        {/* strapi collection example router */}
-        <Route path="/singleton-example">
+          {/* strapi collection example router */}
+          <Route path="/people-example">
+              {({ match }) => (
+                <Suspense fallback={<Loading />}>
+                  <PeopleExample match={match} />
+                </Suspense>
+              )}
+          </Route>
+
+          {/* strapi collection example router */}
+          <Route path="/singleton-example">
+              {({ match }) => (
+                <Suspense fallback={<Loading />}>
+                  <SingletonExample match={match} />
+                </Suspense>
+              )}
+          </Route>
+
+          <Route path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}>
             {({ match }) => (
               <Suspense fallback={<Loading />}>
-                <SingletonExample match={match} />
+                <AboutUs match={match} />
               </Suspense>
-            )}
-        </Route>
-
-        <Route path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}>
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <AboutUs match={match} />
-            </Suspense>
-          )          }
-        </Route>
-      </Switch>
-
+            )          }
+          </Route>
+        </Switch>
+      </RouteTracker>
     </BaseRouter>
   )
 }

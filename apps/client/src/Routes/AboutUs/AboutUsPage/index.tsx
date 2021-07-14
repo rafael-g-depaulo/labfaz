@@ -1,10 +1,16 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 
 import { useAboutUsdata } from "Api/AboutUs"
 import Loading from "Components/Loading"
 import Display from "./Display"
 
+import ReactGa from 'react-ga';
+
 export const AboutUsPage: FC = () => {
+
+  useEffect(() => {
+    ReactGa.pageview('AboutUs')
+  }, [])
 
   const result = useAboutUsdata()
 
