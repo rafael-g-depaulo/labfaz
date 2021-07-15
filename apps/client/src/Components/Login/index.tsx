@@ -1,33 +1,81 @@
-import { InternalLinkButton } from 'Components/Buttons/InternalLinkButton'
-import { Input } from 'Components/Input'
-import { Title } from 'Components/Typography/Title'
 import React, { FC } from 'react'
+import { Formik, Form } from 'formik'
 
-import { Container, FormContainer, LeftSide, RightSide, Button, InputText, Form } from "./style"
+import { Title } from 'Components/Typography/Title'
 
-export const Login: FC = ({
-}) => {
+import Icon from './Icon.svg'
+import { 
+  Container, 
+  FormContainer, 
+  LeftSide, 
+  RightSide, 
+  Button, 
+  InputText, 
+  NavLink, 
+  InputCheckBox
+} from "./style"
+import { useHistory } from 'react-router-dom'
+
+interface FormProps {
+  name?: string
+  password?: string
+  stayConnected?: boolean
+}
+
+export const Login: FC = () => {
+  const history = useHistory()
+
+  function onSubmit(values: FormProps) {
+    console.log(values)
+    history.push('/login')
+  }
+
   return (
-    <>
-      <Container>
-        <Title level={1} children="Entrar"/>
-        <FormContainer>
-          <LeftSide />
-          <RightSide>
-            <Form >
-              <InputText htmlFor="email" placeholder="Digite seu email" name="email" label="Email"/>
-              <InputText htmlFor="Password" placeholder="Digite sua senha" name="password" label="Senha"/>
-              <div className="checkboxContainer">
-                <input type="checkbox" />
-                <label htmlFor="">Permanecer conectado</label>
-              </div>
-              <Button href="/#">
-                Entrar
-              </Button>
-            </Form>
-          </RightSide>
-        </FormContainer>
-      </Container>
-    </>
+    <Container>
+      <Title level={1} children="Entrar"/>
+      <FormContainer>
+        <LeftSide>
+          <img src={Icon} alt="Temp" />
+        </LeftSide>
+        <RightSide>
+          <Formik 
+            initialValues={{
+              email: '',
+              password: '',
+              stayConnected: false
+            }}
+            onSubmit={onSubmit}
+          >
+            {() => (
+              <Form>
+                <InputText  
+                  name="email" 
+                  type="text" 
+                  label="Email" 
+                  placeholder="Digite seu email"
+                />
+
+                <InputText  
+                  name="password" 
+                  type="password" 
+                  label="Senha" 
+                  placeholder="Digite sua senha"
+                />
+
+                <InputCheckBox type="checkbox" name="stayConnected" label="Permanecer conectado" />  
+
+                <Button type="submit">
+                  ENTRAR
+                </Button>
+
+                <NavLink to="/">
+                  Esqueceu sua senha?
+                </NavLink>
+             </Form>
+            )}  
+          </Formik>
+        </RightSide>
+      </FormContainer>
+    </Container>
   )
 }
