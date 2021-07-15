@@ -44,9 +44,9 @@ describe('Staffs component',  () => {
   it('Should render 2 cards', () => {
     const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
 
-    const cards = component.getAllByRole('img')
+    const cards = component.getAllByRole('generic', { hidden: true })
 
-    expect(cards.length).toBeGreaterThanOrEqual(2)
+    expect(cards[2].children.length).toBe(2)
   })
 
   it('Should have a header with the staff title',  () => {
