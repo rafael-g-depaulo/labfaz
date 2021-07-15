@@ -13,11 +13,11 @@ export const Container = styled.div`
     margin-bottom: 0.75rem;
   }
 
-  input {
+  input[type="text"], input[type="password"] {
     width: 12.4rem;
     height: 2.4rem;
     border: 0;
-    padding: 0.7rem 4.2rem 0.7rem 0.7rem;
+    padding: 0.7rem 0.2rem 0.7rem 0.7rem;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.25);
