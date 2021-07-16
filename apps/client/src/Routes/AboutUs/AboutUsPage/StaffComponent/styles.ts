@@ -37,15 +37,18 @@ export const StaffHeader = styled.div`
 
   align-items: center;
   justify-content: center;
+  color: var(--color-text-white);
 
   margin-bottom: 10vh;
 
   .level-1 {
-    color: var(--color-text-beige);
+    color: var(--color-text-white);
+    font-size: var(--font-size-title-xxlarge);
   }
 
   .level-3 {
     color: var(--color-text-white);
+    font-size: var(--font-size-title-small);
   }
 
   ${Mobile(css`
@@ -57,27 +60,6 @@ export const StaffHeader = styled.div`
   `)}
 `
 
-export const StaffTitle = styled.h1`
-  font-size: 42px;
-  font-family: var(card-font-family);
-`;
-
-export const StaffSubtitle = styled.h2`
-  font-family: var(card-font-family);
-  font-size: var(--font-size-medium);
-
-  ${Mobile(css`
-    font-size: var(--font-size-default);
-    text-align: center;
-    max-width: 293px;
-  `)}
-
-  ${DesktopSmall(css`
-      font-size: var(--font-title-small);
-  `)}
-`
-
-
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,8 +68,6 @@ export const Card = styled.div`
   max-width: 229px;
   min-width: 229px;
   min-height: 362px;
-  font-size: var(--font-size-short);
-  font-family: var(--card-font-family);
   align-items: center;
   background-color: var(--background-black);
 
