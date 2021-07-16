@@ -4,14 +4,19 @@ import { Route, Switch } from "react-router-dom"
 
 import { Router } from "Routes"
 
+import usePageview from "Hooks/usePageView"
+
 const HomePage = lazy(() => import("./HomePage"))
 // const ListItems = lazy(() => import("./ListItems"))
+
 
 export const Home: Router = ({
   match,
 }) => {
   const { path = "" } = match ?? {}
   
+  usePageview({ name: 'home' , path})
+
   return (
     <Switch>
 

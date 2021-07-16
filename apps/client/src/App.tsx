@@ -6,7 +6,13 @@ import Routes from 'Routes'
 import { showRoutes } from 'FeatureFlags'
 import Contruction from 'Pages/Contruction'
 
+import useGoogleAnalytics from 'Hooks/useInitializeGA'
+
+
 export const App = () => {
+
+  useGoogleAnalytics()
+
   return (
     <>
       <GlobalStyles />
