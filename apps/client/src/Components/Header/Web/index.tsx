@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import useEvent from 'Hooks/useEvent'
+
 import {
   Container,
   Navbar,
@@ -12,6 +14,9 @@ import {
 import Logo from 'Components/Logo'
 
 export const Web: FC = () => {
+
+  useEvent({ category: 'Navigation', action: 'click', value: 0 })
+
   return (
     <Container>
       <RedirectLink href="/" data-testid="home">
