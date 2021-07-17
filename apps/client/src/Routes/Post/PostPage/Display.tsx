@@ -6,18 +6,19 @@ import PostDetails from './PostDetails';
 import { BlogBannerInfo } from 'Api/BlogBannerInfo'
 
 export interface DisplayProps {
-  data: BlogBannerInfo
+  data: BlogBannerInfo;
+  id: string;
 }
 
 export const Display: FC<DisplayProps> = ({
-  data,
+  data, id,
 }) => {
   const {title, subtitle} = data!
   return (
     <>
       <Header />
       <Banner title={title} subtitle={subtitle} align="left" />
-      <PostDetails />
+      <PostDetails id={id}/>
     </>
   )
 }

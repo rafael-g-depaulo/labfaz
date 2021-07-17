@@ -5,8 +5,12 @@ import Loading from "Components/Loading";
 
 import Display from "./Display";
 
-export const PostDetails: FC = () => {
-  const { data, error, isLoading } = useBlogPost(3);
+interface Props {
+  id: string;
+}
+
+export const PostDetails: FC<Props> = ({ id }) => {
+  const { data, error, isLoading } = useBlogPost(Number(id));
 
   if (isLoading) return <Loading />;
   if (error) return <div>error: {error?.message ?? ""}</div>;
