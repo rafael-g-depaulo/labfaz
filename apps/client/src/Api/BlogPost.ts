@@ -7,18 +7,20 @@ export interface BlogPost {
   created_at: string;
   image: any;
   content: string;
+  id: number;
 }
 
 export const fetchBlogPost = (id: number) =>
   strapi
     .get<BlogPost>(`/blog-posts/${id}`)
     .then(({ data }) => data)
-    .then(({ title, description, created_at, image, content }) => ({
+    .then(({ title, description, created_at, image, content, id }) => ({
       title,
       description,
       created_at,
       image,
       content,
+      id,
     }));
 
 export const useBlogPost = (id: number) =>
@@ -29,12 +31,13 @@ export const fetchBlogPosts = () =>
     .get<BlogPost[]>(`/blog-posts`)
     .then(({ data }) => data)
     .then((people) =>
-      people.map(({ title, description, created_at, image, content }) => ({
+      people.map(({ title, description, created_at, image, content, id }) => ({
         title,
         description,
         created_at,
         image,
         content,
+        id,
       }))
     );
 

@@ -27,6 +27,7 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
                     description={post?.description}
                     image={post?.image}
                     created_at={post?.created_at}
+                    id={post?.id}
                   />
                 ) : (
                   <Web
@@ -34,6 +35,7 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
                     description={post?.description}
                     image={post?.image}
                     created_at={post?.created_at}
+                    id={post?.id}
                   />
                 )}
               </Wrapper>

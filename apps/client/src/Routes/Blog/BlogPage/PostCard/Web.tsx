@@ -20,6 +20,7 @@ interface DisplayProps {
   description: string;
   image: any;
   created_at: string;
+  id: number;
 }
 
 export const Web: FC<DisplayProps> = ({
@@ -27,9 +28,12 @@ export const Web: FC<DisplayProps> = ({
   description,
   image,
   created_at,
+  id
 }) => {
   const yearRegExp = /[0-9]{4}/;
   const isYear = yearRegExp.test(formatPostDate(created_at)?.hour);
+
+  const route = `/blog/${id}`;
 
   return (
     <>
@@ -38,7 +42,7 @@ export const Web: FC<DisplayProps> = ({
         <Description>{description}</Description>
         {!!image && <Image src={image.url} alt={image.name} />}
         <ButtonLayer />
-        <Button href="">
+        <Button href={route}>
           <ButtonText>leia mais</ButtonText>
         </Button>
       </MainTextContainer>

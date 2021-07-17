@@ -7,7 +7,7 @@ import { Router } from "Routes";
 const PostPage = lazy(() => import("./PostPage"));
 
 export const Post: Router = ({ match }) => {
-  const { path = "/post" } = match ?? {};
+  const { path = "/blog/:id_post" } = match ?? {}; 
 
   return (
     <Switch>

@@ -54,7 +54,7 @@ const Routes: FC = () => {
         </Route>
 
         {/* blog post details router */}
-        <Route path={["/post"]}>
+        <Route path={["/blog/:id_post"]}>
           {({ match }) => (
             <Suspense fallback={<Loading />}>
               <Post match={match} />

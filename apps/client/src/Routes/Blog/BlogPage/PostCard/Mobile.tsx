@@ -22,6 +22,7 @@ interface DisplayProps {
   description: string;
   image: any;
   created_at: string;
+  id: number;
 }
 
 export const Mobile: FC<DisplayProps> = ({
@@ -29,7 +30,10 @@ export const Mobile: FC<DisplayProps> = ({
   description,
   image,
   created_at,
+  id,
 }) => {
+  const route = `/blog/${id}`;
+
   return (
     <>
       <MainTextContainer>
@@ -39,7 +43,7 @@ export const Mobile: FC<DisplayProps> = ({
       </MainTextContainer>
       <ButtonWrapper>
         <ButtonContainer>
-          <Button href="">
+          <Button href={route}>
             <ButtonText>leia mais</ButtonText>
           </Button>
           <ButtonLayer />
