@@ -13,7 +13,6 @@ const PeopleExample = lazy(() => import("./PeopleExample"));
 const SingletonExample = lazy(() => import("./SingletonExample"));
 const Blog = lazy(() => import("./Blog"));
 const AboutUs = lazy(() => import("./AboutUs"));
-const Post = lazy(() => import("./Post"));
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -49,15 +48,6 @@ const Routes: FC = () => {
           {({ match }) => (
             <Suspense fallback={<Loading />}>
               <Blog match={match} />
-            </Suspense>
-          )}
-        </Route>
-
-        {/* blog post details router */}
-        <Route path={["/blog/:id_post"]}>
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <Post match={match} />
             </Suspense>
           )}
         </Route>
