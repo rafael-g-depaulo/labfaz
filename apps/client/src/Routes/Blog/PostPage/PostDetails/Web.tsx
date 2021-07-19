@@ -3,11 +3,6 @@ import React, { FC } from "react";
 import {
   MainTextContainer,
   PostTitle,
-  Description,
-  Image,
-  Button,
-  ButtonText,
-  ButtonLayer,
   DateContainer,
   Date,
   Divisor,
@@ -15,36 +10,26 @@ import {
 
 import { formatPostDate } from "Utils/formatPostDate";
 
+import Markdown from "Components/Markdown";
+
+import SocialMediaIcons from "Components/SocialMediaIcons";
+
 interface DisplayProps {
   title: string;
-  description: string;
-  image: any;
   created_at: string;
-  id: number;
+  content: string;
 }
 
-export const Web: FC<DisplayProps> = ({
-  title,
-  description,
-  image,
-  created_at,
-  id
-}) => {
+export const Web: FC<DisplayProps> = ({ title, created_at, content }) => {
   const yearRegExp = /[0-9]{4}/;
   const isYear = yearRegExp.test(formatPostDate(created_at)?.hour);
-
-  const route = `/blog/${id}`;
 
   return (
     <>
       <MainTextContainer>
         <PostTitle>{title}</PostTitle>
-        <Description>{description}</Description>
-        {!!image && <Image src={image.url} alt={image.name} />}
-        <ButtonLayer />
-        <Button href={route}>
-          <ButtonText>leia mais</ButtonText>
-        </Button>
+        <Markdown content={content} />
+        <SocialMediaIcons />
       </MainTextContainer>
       <Divisor />
       <DateContainer>

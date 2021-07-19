@@ -3,13 +3,7 @@ import React, { FC } from "react";
 import {
   MainTextContainer,
   PostTitle,
-  Description,
-  Image,
-  Button,
-  ButtonContainer,
-  ButtonText,
-  ButtonWrapper,
-  ButtonLayer,
+  BottomWrapper,
   DateContainer,
   Date,
   Divisor,
@@ -17,37 +11,25 @@ import {
 
 import { formatPostDate } from "Utils/formatPostDate";
 
+import Markdown from "Components/Markdown";
+
+import SocialMediaIcons from "Components/SocialMediaIcons";
+
 interface DisplayProps {
   title: string;
-  description: string;
-  image: any;
   created_at: string;
-  id: number;
+  content: string;
 }
 
-export const Mobile: FC<DisplayProps> = ({
-  title,
-  description,
-  image,
-  created_at,
-  id,
-}) => {
-  const route = `/blog/${id}`;
-
+export const Mobile: FC<DisplayProps> = ({ title, content, created_at }) => {
   return (
     <>
       <MainTextContainer>
         <PostTitle>{title}</PostTitle>
-        <Description>{description}</Description>
-        {!!image && <Image src={image.url} alt={image.name} />}
+        <Markdown content={content} />
       </MainTextContainer>
-      <ButtonWrapper>
-        <ButtonContainer>
-          <Button href={route}>
-            <ButtonText>leia mais</ButtonText>
-          </Button>
-          <ButtonLayer />
-        </ButtonContainer>
+      <BottomWrapper>
+        <SocialMediaIcons />
         <Divisor />
         <DateContainer>
           <Date size="var(--font-size-medium)">
@@ -57,7 +39,7 @@ export const Mobile: FC<DisplayProps> = ({
             {formatPostDate(created_at)?.hour}
           </Date>
         </DateContainer>
-      </ButtonWrapper>{" "}
+      </BottomWrapper>{" "}
     </>
   );
 };
