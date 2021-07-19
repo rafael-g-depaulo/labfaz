@@ -18,8 +18,8 @@ interface IUser {
 
 const mailer =  new MailProvider()
 const from: Addres = {
-  name: "Zipudhe Tech company",
-  email: "businessramalho@gmail.com"
+  name: "LabFaz",
+  email: "noreply.labfaz@gmail.com"
 }
 
 
@@ -55,17 +55,19 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   
   user.token = userToken
 
+  console.log(mailer);
+
   mailer.sendEmail({
     to:{
       name: name,
       email: email
     },
     from: from,
-    subject: "Email confirmation",
+    subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
-        <h1> Hello ${name}, welcome to labfaz </h1>
-        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirm Email </a>
+        <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
+        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirmar Email </a>
       </div>
     `
   })
