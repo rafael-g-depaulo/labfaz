@@ -30,10 +30,17 @@ interface IArtist {
   show_name: ShowName;
 }
 
+<<<<<<< HEAD
 export interface RequestBody {
   artist: IArtist;
   email: string;
   password: string;
+=======
+const mailer =  new MailProvider()
+const from: Addres = {
+  name: "LabFaz",
+  email: "noreply.labfaz@gmail.com"
+>>>>>>> a74ec09 (✨ add: noreply mailer sender)
 }
 
 const reqSchema = yup.object({
@@ -110,6 +117,8 @@ export const CreateUser: (
   user.token = userToken
 >>>>>>> ce8e28f (🐛 fix: removed bug from update user)
 
+  console.log(mailer);
+
   mailer.sendEmail({
     to: {
       name: artist.name,
@@ -119,10 +128,15 @@ export const CreateUser: (
     subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
+<<<<<<< HEAD
         <h1> Olá ${artist.name}, Bem Vindo ao Labfaz </h1>
         <a href='${getApiUrl()}/sessions/auth/account-verification/${
       user.id
     }'> Confirmar Email </a>
+=======
+        <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
+        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirmar Email </a>
+>>>>>>> a74ec09 (✨ add: noreply mailer sender)
       </div>
     `,
   });
