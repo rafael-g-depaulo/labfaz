@@ -7,7 +7,7 @@ import { BlogBannerInfo } from 'Api/BlogBannerInfo'
 
 export interface DisplayProps {
   data: BlogBannerInfo;
-  id: string;
+  id: number;
 }
 
 export const Display: FC<DisplayProps> = ({

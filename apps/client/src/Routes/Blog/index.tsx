@@ -1,10 +1,11 @@
 import Loading from "Components/Loading"
 import React, { lazy, Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, RouteComponentProps, Switch } from "react-router-dom"
 
 import { Router } from "Routes"
 
 const BlogPage = lazy(() => import("./BlogPage"))
+const PostPage = lazy(() => import("./PostPage"))
 
 export const Blog: Router = ({
   match,
@@ -17,6 +18,15 @@ export const Blog: Router = ({
         {() => (
           <Suspense fallback={<Loading />}>
             <BlogPage />
+          </Suspense>
+        )}
+      </Route>
+
+      {/* show de um post */}
+      <Route path={`${path}/:id`}>
+        {({ match }: RouteComponentProps<{ id: string }>) => (
+          <Suspense fallback={<Loading />}>
+            <PostPage id={Number(match?.params.id)} />
           </Suspense>
         )}
       </Route>
