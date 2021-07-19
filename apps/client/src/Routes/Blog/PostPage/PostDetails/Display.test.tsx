@@ -5,35 +5,33 @@ import { formatPostDate } from "Utils/formatPostDate";
 
 import Display from "./Display";
 
-const postCardExample = [
-  {
-    id: 1,
-    title: "Teste de blog post",
-    description: "Isso é um teste",
-    created_at: "2021-06-29T23:50:54.596Z",
-    image: {
-      url:
-        "https://www.pexels.com/pt-br/foto/aniversario-dia-do-nascimento-floracao-florescencia-8285483/",
-      name: "imagem aleatória",
-    },
-    content: "Este é o conteúdo do post!",
+const postExample = {
+  id: 1,
+  title: "Teste de blog post",
+  description: "Isso é um teste",
+  created_at: "2021-06-29T23:50:54.596Z",
+  image: {
+    url:
+      "https://www.pexels.com/pt-br/foto/aniversario-dia-do-nascimento-floracao-florescencia-8285483/",
+    name: "imagem aleatória",
   },
-];
+  content: "Este é o conteúdo do post!",
+};
 
-it("renders blog post component", () => {
+it("renders blog post", () => {
   expect(() =>
     render(
       <BrowserRouter>
-        <Display posts={postCardExample} />
+        <Display post={postExample} />
       </BrowserRouter>
     )
   ).not.toThrow();
 });
 
-describe("Check content of PostCard component", () => {
+describe("Check content of post component", () => {
   const { getByText } = render(
     <BrowserRouter>
-      <Display posts={postCardExample} />
+      <Display post={postExample} />
     </BrowserRouter>
   );
 
@@ -56,8 +54,8 @@ describe("Check content of PostCard component", () => {
     );
   });
 
-  it("checks if description rendered", () => {
-    const description = getByText("Isso é um teste");
-    expect(description).toHaveTextContent("Isso é um teste");
+  it("checks if content rendered", () => {
+    const content = getByText("Este é o conteúdo do post!");
+    expect(content).toHaveTextContent("Este é o conteúdo do post!");
   });
 });
