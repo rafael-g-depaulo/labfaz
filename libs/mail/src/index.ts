@@ -1,7 +1,9 @@
 import nodemailer from "nodemailer"
+import dotenv from "dotenv"
 
 import Mail from "nodemailer/lib/mailer"
 
+dotenv.config()
 export interface Addres {
   name: string,
   email: string
@@ -25,15 +27,15 @@ export class MailProvider implements SendEmail {
   private readonly transponder: Mail
   constructor () {
     this.transponder = nodemailer.createTransport({
-      host: `smtp.${process.env.HOST}.email`,
-      service: process.env.HOST,
-      port: 587,
-      secure: false,
+      host: `smtp.gmail.email`,
+      service: "gmail",
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.APPPASS
+        user: "noreply.labfaz@gmail.com",
+        pass: "n9zNHuTLswV5eDE"
       },
-      requireTLS: true,
+      requireTLS: true
     })
   }
 

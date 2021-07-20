@@ -1,6 +1,8 @@
 import { DeepPartial } from "typeorm"
 import { RequestHandler } from "Routes"
 
+import { MailProvider, Addres } from "@labfaz/mail/src"
+
 import User from "Entities/User"
 import UserRepository from "Repository/UserRepository"
 
@@ -14,6 +16,13 @@ interface IUser {
   password: string
 }
 
+const mailer =  new MailProvider()
+const from: Addres = {
+  name: "LabFaz",
+  email: "noreply@labfaz.com.br"
+}
+
+
 export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepPartial<User>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
@@ -23,6 +32,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     email,
     password
   } = req.body as IUser
+
 
   if (!name || !email || !password) return res.status(400).json({ error: "Incomplete request body" })
 
@@ -36,10 +46,25 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   }
 
   const hashedPassword = await UserRepo.generateHash(password)
-
-  const user = UserRepo.create({ name, email, password: hashedPassword })
-
+  
+  const user = await UserRepo.create({ name, email, password: hashedPassword })
+  
   await UserRepo.save(user)
+  
+  mailer.sendEmail({
+    to:{
+      name: name,
+      email: email
+    },
+    from: from,
+    subject: "Confirmação de Email - Labfaz",
+    html: `
+      <div>
+        <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
+        <a href='http://localhost:5000/sessions/auth/account-verification/${user.id}'> Confirmar Email </a>
+      </div>
+    `
+  })
 
   return res.status(201).json({ user })
 }
