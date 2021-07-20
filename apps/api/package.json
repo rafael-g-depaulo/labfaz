@@ -38,6 +38,8 @@
     "url": "https://github.com/rafael-g-depaulo/labfaz/issues"
   },
   "dependencies": {
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/typeorm": "^1.4.0",
     "@labfaz/adder": "^2.0.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",
@@ -45,6 +47,7 @@
     "@types/jest": "^24.9",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/nanoid": "^2.1.0",
+    "admin-bro": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
