@@ -38,9 +38,6 @@ export class User {
   @Column('boolean', { default: false })
   active: boolean
 
-  @Column('character varying', { default: '' })
-  token: string
-
   @BeforeInsert()
   addId() {
     this.id = nanoid();

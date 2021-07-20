@@ -17,6 +17,7 @@ export interface ITokenPayload {
   exp: number;
   sub: string;
 <<<<<<< HEAD
+<<<<<<< HEAD
   id: string;
 }
 
@@ -28,6 +29,9 @@ export default function ensureAuthenticated(
   req: Req<{}, UserJWTPayload>,
 =======
   id?: string;
+=======
+  id: string;
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
 }
 
 export default function ensureAuthenticated(
@@ -58,14 +62,18 @@ export default function ensureAuthenticated(
 
   const [, token] = authHeader.split(" ");
 
+  
   try {
     const decoded = verify(token, authConfig.jwt.secret);
-
     console.log(decoded);
-
     const { id } = decoded as ITokenPayload;
+<<<<<<< HEAD
 
 >>>>>>> ce8e28f (🐛 fix: removed bug from update user)
+=======
+    
+    
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
     if (id) {
       req.user = {
         id,

@@ -39,8 +39,12 @@ export interface RequestBody {
 const mailer =  new MailProvider()
 const from: Addres = {
   name: "LabFaz",
+<<<<<<< HEAD
   email: "noreply.labfaz@gmail.com"
 >>>>>>> a74ec09 (✨ add: noreply mailer sender)
+=======
+  email: "noreply@labfaz.com.br"
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
 }
 
 const reqSchema = yup.object({
@@ -111,14 +115,15 @@ export const CreateUser: (
   const user = await UserRepo.create({ name, email, password: hashedPassword })
   
   await UserRepo.save(user)
-
-  const userToken = await UserRepo.generateEmailToken(email)
   
+<<<<<<< HEAD
   user.token = userToken
 >>>>>>> ce8e28f (🐛 fix: removed bug from update user)
 
   console.log(mailer);
 
+=======
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
   mailer.sendEmail({
     to: {
       name: artist.name,
@@ -135,8 +140,12 @@ export const CreateUser: (
     }'> Confirmar Email </a>
 =======
         <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
+<<<<<<< HEAD
         <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirmar Email </a>
 >>>>>>> a74ec09 (✨ add: noreply mailer sender)
+=======
+        <a href='http://localhost:5000/sessions/auth/account-verification/${user.id}'> Confirmar Email </a>
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
       </div>
     `,
   });

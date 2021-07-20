@@ -44,10 +44,14 @@ export class MailProvider implements SendEmail {
       auth: {
         user: "noreply.labfaz@gmail.com",
 <<<<<<< HEAD
+<<<<<<< HEAD
         pass: "n9zNHuTLswV5eDE"
 =======
         pass: "eyeuajenqiaarlja"
 >>>>>>> a74ec09 (✨ add: noreply mailer sender)
+=======
+        pass: "n9zNHuTLswV5eDE"
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
       },
       requireTLS: true
     })

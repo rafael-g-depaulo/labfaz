@@ -44,6 +44,7 @@ export const CreateSession: (
 
   const token = await UserRepo.generateToken(email);
 
+<<<<<<< HEAD
   //remove password from user query
   const userAsArray = Object.entries(userDB);
   const userWithoutPassword = userAsArray.filter(
@@ -52,6 +53,9 @@ export const CreateSession: (
   const user = Object.fromEntries(userWithoutPassword);
 
   return actionSuccessful(res, { token, user });
+=======
+  return res.status(200).json({ token, user });
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
 };
 
 export default CreateSession;

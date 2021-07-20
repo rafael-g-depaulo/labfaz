@@ -28,6 +28,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .post("/reset-password", ResetPassword({ UserRepo }))
     .post("/", CreateSession({ UserRepo }))
 <<<<<<< HEAD
+<<<<<<< HEAD
     .post(
       "/auth/account-verification/:userId",
       EmailConfirmation({ UserRepo })
@@ -35,6 +36,9 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 };
 =======
     .post("/auth/account-verification/:userId/:userToken", EmailConfirmation({ UserRepo }))
+=======
+    .post("/auth/account-verification/:userId", EmailConfirmation({ UserRepo }))
+>>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
   }
 >>>>>>> 4e66f8a (✨ Add email confimation logic)
 
