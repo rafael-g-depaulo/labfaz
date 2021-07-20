@@ -20,7 +20,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express.Router(options)
     .post("/", CreateSession({ UserRepo }))
-    .post("/auth/account-verification/:userId/:userToken", EmailConfirmation({ UserRepo }))
+    .post("/auth/account-verification/:userId", EmailConfirmation({ UserRepo }))
   }
 
 export default UserRouter

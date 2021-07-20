@@ -48,21 +48,7 @@ export const CreateSession: (
     return res.status(401).json({ error: "Email confimation needed" });
   }
 
-  const { secret, expiresIn } = authConfig.jwt;
-
-  const token = sign(
-    {
-      user: {
-        id: user.id,
-      },
-    },
-    secret,
-    {
-      expiresIn,
-    }
-  );
-
-
+  const token = await UserRepo.generateToken(email);
 
   return res.status(200).json({ token, user });
 };

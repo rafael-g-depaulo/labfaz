@@ -7,7 +7,7 @@ export interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
-  id?: string;
+  id: string;
 }
 
 export default function ensureAuthenticated(
@@ -25,13 +25,13 @@ export default function ensureAuthenticated(
 
   const [, token] = authHeader.split(" ");
 
+  
   try {
     const decoded = verify(token, authConfig.jwt.secret);
-
     console.log(decoded);
-
     const { id } = decoded as ITokenPayload;
-
+    
+    
     if (id) {
       req.user = {
         id,

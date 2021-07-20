@@ -18,28 +18,21 @@ export const EmailConfirmation: (deps: ConfirmEmailInterface) => RequestHandler<
   UserRepo
 }: ConfirmEmailInterface) => async (req, res) => {
 
-  const { userId, userToken } = req.params as IUser
+  const { userId } = req.params as IUser
 
   
   const user = await UserRepo.findById(userId)
-  
+
   
   if(!user){
     return res.status(400).json({ error: "Invalid user" })
   }
-
-  const validToken = UserRepo.compareHash(user!.token, userToken)
-
   
-  if(!validToken) {
-    return res.status(400).json({ error: 'Token expired' })
-  }
-
   user.active = true
-
+  
   await UserRepo.save(user)
 
-  return res.redirect('/sessions')
+  return res.status(200).json({message: "Email Confirmado!!"});
 }
 
 export default EmailConfirmation
