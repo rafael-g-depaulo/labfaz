@@ -1,5 +1,6 @@
 import express from 'express'
 
+
 const app = express()
 
 // setup middlewares
@@ -9,6 +10,8 @@ Middewares(app)
 // setup db connection
 import Db from "Db"
 import Routes from "Routes"
+// import { adminBroRouter } from 'Routes/adminBro'
+
 // import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -20,6 +23,7 @@ Db()
   const port = process.env.PORT ?? 5000
   
   app.use("/", Routes({ conn }))
+
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
     

@@ -54,6 +54,8 @@
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.2.0",
     "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.2",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "nanoid": "^3.1.12",
