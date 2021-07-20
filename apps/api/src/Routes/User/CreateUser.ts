@@ -19,7 +19,7 @@ interface IUser {
 const mailer =  new MailProvider()
 const from: Addres = {
   name: "LabFaz",
-  email: "noreply.labfaz@gmail.com"
+  email: "noreply@labfaz.com.br"
 }
 
 
@@ -50,13 +50,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
   const user = await UserRepo.create({ name, email, password: hashedPassword })
   
   await UserRepo.save(user)
-
-  const userToken = await UserRepo.generateEmailToken(email)
   
-  user.token = userToken
-
-  console.log(mailer);
-
   mailer.sendEmail({
     to:{
       name: name,
@@ -67,7 +61,7 @@ export const CreateUser: (deps: CreateUserInterface) => RequestHandler<DeepParti
     html: `
       <div>
         <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
-        <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirmar Email </a>
+        <a href='http://localhost:5000/sessions/auth/account-verification/${user.id}'> Confirmar Email </a>
       </div>
     `
   })

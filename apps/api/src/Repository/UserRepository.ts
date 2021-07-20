@@ -34,18 +34,7 @@ export class UserRepository extends Repository<User> {
     const user = await this.findOne({ where: { email } });
     if (!user) throw new Error("No user found");
 
-    const token = sign({ id: user?.id }, secret, { expiresIn });
-    return token;
-  }
-
-  async generateEmailToken(email: string) {
-    const { secret, expiresIn } = authConfig.token;
-
-    const user = await this.findOne({ where: { email } });
-    
-    if (!user) throw new Error("No user found");
-
-    const token = sign({ id: user?.id }, secret, { expiresIn });
+    const token = sign({ id: user.id }, secret, { expiresIn });
     return token;
   }
 }

@@ -33,9 +33,6 @@ export class User extends BaseEntity {
   @Column('boolean', { default: false })
   active: boolean
 
-  @Column('character varying', { default: '' })
-  token: string
-
   @BeforeInsert()
   addId() {
     this.id = nanoid()

@@ -33,7 +33,7 @@ export class MailProvider implements SendEmail {
       secure: true,
       auth: {
         user: "noreply.labfaz@gmail.com",
-        pass: "eyeuajenqiaarlja"
+        pass: "n9zNHuTLswV5eDE"
       },
       requireTLS: true
     })
