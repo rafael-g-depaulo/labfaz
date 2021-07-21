@@ -1,31 +1,47 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { ExternalLinkButton } from 'Components/Buttons/ExternalLinkButton';
+import { Text } from 'Components/Typography/Text'
+import { Mobile, DesktopSmall } from 'Utils/breakpoints';
 
 export const LogoContainer = styled.div`
---font-size: 14px;
-display: flex;
-flex-direction: column;
-align-items: center;
-@media(min-width: 768px){
-align-items: flex-start;
-min-width: 200px;
-}
-> img {
-  height:100px;
-  width: 150px;
-}
-span {
-  text-transform: uppercase;
-  font-weight: 500;
-  line-height: 10px;
-  margin: 16px 0;
-}
-div {
-  a {
-    margin-right: 10px;
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
+export const Title = styled(Text)`
+  && {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--font-size-large);
+    color: var(--button-color-yellow);
+
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
+    ${Mobile(css`
+      font-weight: 500;
+    `)}
+  }
+`
+
+export const IconContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`
+
+export const Icon = styled(ExternalLinkButton)`
+  box-shadow: none;
+  background-color: transparent;
+  border: none;
+  color: var(--button-color-yellow);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  svg {
+    font-size: var(--font-size-large);
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
+  }
+`;
