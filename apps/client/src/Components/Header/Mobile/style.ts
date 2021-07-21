@@ -42,7 +42,7 @@ export const NavBar = styled.nav`
 export const NavLink = styled(InternalLinkButton)`
   .navBar & {
     flex-grow: 0.8;
-    font-size: var(--font-size-short);
+    font-size: 11px;
     color: var(--background-pink);
     border: none;
     background-color: transparent;
@@ -68,7 +68,7 @@ export const Button = styled(InternalLinkButton)<PropsButton>`
   height: 2rem;
   width: 12rem;
   border: none;
-  font-size: var(--font-size-short);
+  font-size: 11px;
 `;
 
 export const CloseMenu = styled.div<PropsCloseMenu>`

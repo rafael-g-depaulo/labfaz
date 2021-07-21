@@ -83,7 +83,7 @@ export const KnowMoreButton = styled(InternalLinkButton)`
 
   ${MobileSmall(css`
     padding: 0.2rem 1.5rem;
-    font-size: var(--font-size-short);
+    font-size: var(--font-size-short: 11px);
   `)}
 
 `;

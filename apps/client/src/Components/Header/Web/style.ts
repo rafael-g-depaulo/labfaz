@@ -51,7 +51,7 @@ export const NavLink = styled(InternalLinkButton)`
     font-size: var(--font-size-large);
 
     ${DesktopSmall(css`
-      font-size: var(--font-size-short);
+      font-size: var(--font-size-short: 11px);
     `)}
   }
 `
@@ -80,7 +80,7 @@ export const Button = styled(InternalLinkButton)`
   }
 
   ${DesktopSmall(css`
-    font-size: var(--font-size-short);
+    font-size: var(--font-size-short: 11px);
     padding: 0.3rem;
   `)}
 `;
@@ -95,7 +95,7 @@ export const LogIn = styled(InternalLinkButton)`
   font-size: var(--font-size-large);
 
   ${DesktopSmall(css`
-    font-size: var(--font-size-short);
+    font-size: var(--font-size-short: 11px);
     padding: 0.5rem;
   `)}
 `
