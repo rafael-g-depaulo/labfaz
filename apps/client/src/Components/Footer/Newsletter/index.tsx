@@ -14,8 +14,18 @@ const NewsLetter: FC = () => {
     <NewsletterContainer id="newsletter-container">
       <Title>Receba novidades e lançamentos</Title>
       <FormContainer>
-        <Input type="text" placeholder="Seu e-mail" onChange={e => setEmail(e.target.value)} value={email} />
-        <Button type="button" onClick={subscribeEmail}>Receber</Button>
+        <Input
+          type="text"
+          placeholder="Seu e-mail"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+          data-testid="input"
+        />
+        <Button
+          type="button"
+          onClick={subscribeEmail}
+          data-testid="button"
+        >Receber</Button>
       </FormContainer>
     </NewsletterContainer>
   )
