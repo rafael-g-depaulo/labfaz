@@ -65,7 +65,7 @@ export const CoursesText = styled(Text)`
   text-align: justify;
 
   ${Mobile(css`
-    font-size: var(--line-height-small);
+    font-size: var(--font-size-title-short);
   `)}
 
   ${DesktopSmall(css`

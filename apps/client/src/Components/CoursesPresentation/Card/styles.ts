@@ -82,7 +82,7 @@ export const MainText = styled.div`
 
 export const CardTitle = styled(Text)`
   margin: 0 0 0 8px;
-  font-size: var(--line-height-small);
+  font-size: var(--font-size-title-short);
   font-weight: 600;
   line-height: 1.3;
   overflow: hidden;
