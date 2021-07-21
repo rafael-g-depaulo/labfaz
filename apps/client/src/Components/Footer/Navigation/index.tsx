@@ -1,54 +1,21 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 
-const NavigationContainer = styled.div`
-  @media (max-width: 768px){
-    display: none;
-  }
-  --font-size: 14px;
-  text-transform: uppercase;
-  line-height: 32px;
-  min-width: 330px;
-  span {
-    font-weight: 500;
-  }
-  
-nav {
-  display: flex;
-  flex-direction: row;
-  
-  ul {
-    list-style: none;
-    padding-left: 20px;
-    
-    li {
-      a {
-        text-decoration: none;
-        font-weight: 500;
-      }
-    }
-  }
-}
-`
+import { NavigationContainer, Navbar, NavLink, Title } from './style';
 
-const Logo: FC = () => {
+const Navigation: FC = () => {
   return (
     <NavigationContainer id="navigation-container">
-      <span>Navegacao</span>
-      <nav>
-        <ul>
-          <li><a href="/quem-somos">Quem somos</a></li>
-          <li><a href="/cursos">Cursos</a></li>
-          <li><a href="/agenda">Agenda</a></li>
-        </ul>
-        <ul>
-          <li><a href="/blog">blog</a></li>
-          <li><a href="/banco-de-profissionais">Banco de profissionais</a></li>
-          <li><a href="/cadastro">Cadastre-se</a></li>
-        </ul>
-      </nav>
+      <Title>Navegação</Title>
+      <Navbar>
+        <NavLink href="/about"> QUEM SOMOS </NavLink>
+        <NavLink href="/classes"> CURSOS </NavLink>
+        <NavLink href="/calendar"> AGENDA </NavLink>
+        <NavLink href="/blog"> BLOG </NavLink>
+        <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
+        <NavLink href='/register'> CADASTRE-SE </NavLink>
+      </Navbar>
     </NavigationContainer>
   )
 }
 
-export default Logo;
+export default Navigation;
