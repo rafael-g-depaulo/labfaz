@@ -1,28 +1,28 @@
 import React, { FC } from 'react'
-import { FaWhatsapp } from 'react-icons/fa'
-import { FiMail } from 'react-icons/fi'
+import { FaWhatsapp, FaRegEnvelope } from 'react-icons/fa'
 
-import { ContactContainer } from './style'
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
+import { ContactContainer, Icon, Title, Subtitle } from './style'
 
 interface ContactProps {
-  email: string
-  phoneNumber: string
+  data: SocialNetworksLabfaz
 }
 
-const Contact: FC<ContactProps> = ({ email, phoneNumber }) => {
+const Contact: FC<ContactProps> = ({ data }) => {
+  const { ddd, phone, email} = data
   return (
     <ContactContainer id="contact-container">
-      <span>Fale com a gente</span>
-      <ul>
-        <li>
-          <FaWhatsapp />
-          <span>{phoneNumber}</span>
-        </li>
-        <li>
-          <FiMail />
-          <span>{email}</span>
-        </li>
-      </ul>
+      <Title>Fale com a gente</Title>
+      <div>
+        <Icon>
+          <FaWhatsapp name="Whatsapp"/>
+          <Subtitle>({ddd}) {phone}</Subtitle>
+        </Icon>
+        <Icon>
+          <FaRegEnvelope name="Email"/>
+          <Subtitle>{email}</Subtitle>
+        </Icon>
+      </div>
     </ContactContainer>
   )
 }

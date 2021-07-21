@@ -1,45 +1,60 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { Text } from 'Components/Typography/Text'
+import { Mobile, DesktopSmall } from 'Utils/breakpoints';
 
 export const ContactContainer = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-min-width: 200px;
---font-size: 14px;
-font-weight: 500;
-> span {
-  text-transform: uppercase;
-}
-ul {
-  list-style: none;
-  margin: 16px 0;
-  padding: 0;
-  li {
-    display: flex;
-    justify-content: center;
-  }
-}
-@media(min-width: 768px){
-align-items: flex-start;
-ul {
-  list-style: none;
-  margin: 16px 0;
-  padding: 0;
-  li {
-    flex-direction: row;
-    flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+
+  ${DesktopSmall(css`
+    height: 4.7rem;
+    justify-content: space-between;
+  `)}
+  ${Mobile(css`
     align-items: center;
-    justify-content: flex-start;
-    img {
-      width: 20px;
-      height: 20px;
-    }
-    span {
-      margin-left: 16px;
-    }
+  `)}
+`
+export const Icon = styled.div`
+  color: var(--button-color-yellow);
+  display: flex;
+  align-items: center;
+  svg {
+    font-size: var(--font-size-large);
+    margin-right: 0.5rem;
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
   }
-   
-}
-}
+  ${Mobile(css`
+    justify-content: center;
+  `)}
+`;
+
+export const Title = styled(Text)`
+  && {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--font-size-large);
+    color: var(--button-color-yellow);
+
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
+    ${Mobile(css`
+      font-weight: 500;
+    `)}
+  }
+`
+
+export const Subtitle = styled(Text)`
+  && {
+    font-weight: 500;
+    font-size: var(--font-size-large);
+    color: var(--button-color-yellow);
+
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
+  }
 `
