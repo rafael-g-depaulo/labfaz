@@ -1,5 +1,6 @@
 import express from 'express'
 
+import getAdminRouter, { getAdminBro } from 'Middlewares/adminBro'
 
 const app = express()
 
@@ -24,6 +25,9 @@ Db()
   
   app.use("/", Routes({ conn }))
 
+  const adminBro = getAdminBro(conn)
+
+  app.use(adminBro.options.rootPath, getAdminRouter(adminBro))
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
     

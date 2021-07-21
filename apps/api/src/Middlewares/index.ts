@@ -3,7 +3,6 @@ import { NextFunction, Request, Response, Express } from 'express'
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
 import cors from "./cors"
-import adminBroRouter, { adminBro } from './adminBro';
 
 
 export type Middleware = (req: Request, res: Response, next: NextFunction) => void
@@ -20,6 +19,4 @@ export default (app: Express) => {
   app.use(bodyParser.json({}))
   app.use(bodyParser.urlencoded({ extended: true }))
 
-  // To use admin bro UI
-  app.use(adminBro.options.rootPath, adminBroRouter);
 }

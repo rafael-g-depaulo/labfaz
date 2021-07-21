@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn } from 'typeorm'
+import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, BaseEntity } from 'typeorm'
 import { nanoid } from 'nanoid'
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
 
   @PrimaryColumn()
   id: string
