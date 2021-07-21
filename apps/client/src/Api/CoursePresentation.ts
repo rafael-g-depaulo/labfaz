@@ -1,18 +1,29 @@
 import { strapi } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
+import { Asset2Image, Image } from "Utils/Image"
+import StrapiAsset from "Utils/StrapiAsset"
 
 export interface CoursePresentation {
   title: string;
   subtitle: string;
   description: string;
   finish_date: string;
-  banner_image: any;
+  banner_image: Image;
   finished: boolean;
 }
 
-export const fetchCoursePresentation = (id: number) =>
+interface StrapiCoursePresentation {
+  title: string;
+  subtitle: string;
+  description: string;
+  finish_date: string;
+  banner_image: StrapiAsset;
+  finished: boolean;
+}
+
+export const fetchCoursePresentation: (id: number) => Promise<CoursePresentation> = (id: number) =>
   strapi
-    .get<CoursePresentation>(`/course-presentations/${id}`)
+    .get<StrapiCoursePresentation>(`/course-presentations/${id}`)
     .then(({ data }) => data)
     .then(
       ({
@@ -27,7 +38,7 @@ export const fetchCoursePresentation = (id: number) =>
         subtitle,
         description,
         finish_date,
-        banner_image,
+        banner_image: Asset2Image(banner_image),
         finished,
       })
     );
@@ -37,9 +48,9 @@ export const useCoursePresentation = (id: number) =>
     fetchCoursePresentation(id)
   );
 
-export const fetchCoursePresentations = () =>
+export const fetchCoursePresentations: () => Promise<CoursePresentation[]> = () =>
   strapi
-    .get<CoursePresentation[]>(`/course-presentations`)
+    .get<StrapiCoursePresentation[]>(`/course-presentations`)
     .then(({ data }) => data)
     .then((courses) =>
       courses.map(
@@ -55,7 +66,7 @@ export const fetchCoursePresentations = () =>
           subtitle,
           description,
           finish_date,
-          banner_image,
+          banner_image: Asset2Image(banner_image),
           finished,
         })
       )

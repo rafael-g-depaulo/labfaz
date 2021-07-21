@@ -34,7 +34,7 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
 
   return (
     <Container>
-      {courses?.map((item, index) => {
+      {courses.map((item, index) => {
         // Show only two cards if it's a mobile screen
         if (isMobile && index > 1) {
           return <React.Fragment key={index} />;
@@ -43,22 +43,22 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
             <React.Fragment key={index}>
               <CardContainer position={gridPositions[index]}>
                 <CardImage
-                  src={item?.banner_image?.url}
-                  alt={item?.banner_image?.name}
+                  src={item.banner_image.url}
+                  alt={item.banner_image.alternativeText}
                 />
                 <MainText>
-                  <CardTitle>{item?.title}</CardTitle>
-                  <CardSubtitle>{item?.subtitle}</CardSubtitle>
+                  <CardTitle>{item.title}</CardTitle>
+                  <CardSubtitle>{item.subtitle}</CardSubtitle>
                   <DescriptionBox>
-                    <CardDescription>{item?.description}</CardDescription>
+                    <CardDescription>{item.description}</CardDescription>
                   </DescriptionBox>
                   <BottomWrapper>
                     <DateWrapper>
                       <DateText>
-                        {item?.finished ? "Encerrado em" : "Aberto até"}
+                        {item.finished ? "Encerrado em" : "Aberto até"}
                       </DateText>
                       <DateText>
-                        {format(item?.finish_date, "DD-MM-YYYY")
+                        {format(item.finish_date, "DD-MM-YYYY")
                           .replace("-", "/")
                           .replace("-", "/")}
                       </DateText>
@@ -66,7 +66,7 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                     <ButtonWrapper>
                       <ButtonLayer
                         colors={
-                          item?.finished
+                          item.finished
                             ? "var(--background-pink)"
                             : "var(--background-black)"
                         }
@@ -75,25 +75,25 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                       <Button
                         href=""
                         colors={
-                          item?.finished
+                          item.finished
                             ? "var(--background-pink)"
                             : "var(--background-light-pink)"
                         }
                         border={
-                          item?.finished
+                          item.finished
                             ? "var(--background-black)"
                             : "var(--background-pink)"
                         }
                       >
                         <ButtonText
                           colors={
-                            item?.finished
+                            item.finished
                               ? "var(--color-text-black)"
                               : "var(--background-pink)"
                           }
                           border="none"
                         >
-                          {item?.finished ? "saiba mais" : "inscreva-se"}
+                          {item.finished ? "saiba mais" : "inscreva-se"}
                         </ButtonText>
                       </Button>
                     </ButtonWrapper>

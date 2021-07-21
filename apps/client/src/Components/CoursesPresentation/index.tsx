@@ -10,14 +10,14 @@ export const CoursesPresentation: FC = () => {
   const { data, error, isLoading } = useHomepage();
   const coursesData = useCoursePresentations();
 
-  if (error) return <div>error: {error?.message ?? ""}</div>;
+  if (error) return <div>error: {error.message}</div>;
   if (isLoading) return <Loading />;
 
   if (coursesData.error)
-    return <div>error: {coursesData.error?.message ?? ""}</div>;
+    return <div>error: {coursesData.error.message}</div>;
   if (coursesData.isLoading) return <Loading />;
 
-  return <Display texts={data!} courses={coursesData.data!} />;
+  return <Display texts={data!} courses={coursesData.data} />;
 };
 
 export default CoursesPresentation;
