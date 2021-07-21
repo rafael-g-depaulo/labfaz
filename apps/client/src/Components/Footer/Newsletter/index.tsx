@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 
-import { NewsletterContainer } from './style'
+import { NewsletterContainer, Button, Input, Title, FormContainer } from './style'
 
 const NewsLetter: FC = () => {
   const [email, setEmail] = useState("");
@@ -12,12 +12,11 @@ const NewsLetter: FC = () => {
 
   return (
     <NewsletterContainer id="newsletter-container">
-      <span>Receba novidades e lancamentos</span>
-      {email}
-      <div>
-        <input type="text" placeholder="Seu e-mail" onChange={e => setEmail(e.target.value)} value={email} />
-        <button type="button" onClick={subscribeEmail}>Receber</button>
-      </div>
+      <Title>Receba novidades e lançamentos</Title>
+      <FormContainer>
+        <Input type="text" placeholder="Seu e-mail" onChange={e => setEmail(e.target.value)} value={email} />
+        <Button type="button" onClick={subscribeEmail}>Receber</Button>
+      </FormContainer>
     </NewsletterContainer>
   )
 }
