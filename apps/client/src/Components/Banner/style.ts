@@ -65,6 +65,8 @@ export const Subtitle = styled(Title)`
 `;
 
 export const KnowMoreButton = styled(InternalLinkButton)`
+  --font-size-short: 11px;
+
   color: var(--background-pink);
   padding: 0.2rem 3rem;
   background-color: var(--color-text-beige);
@@ -83,7 +85,7 @@ export const KnowMoreButton = styled(InternalLinkButton)`
 
   ${MobileSmall(css`
     padding: 0.2rem 1.5rem;
-    font-size: var(--font-size-short: 11px);
+    font-size: var(--font-size-short);
   `)}
 
 `;

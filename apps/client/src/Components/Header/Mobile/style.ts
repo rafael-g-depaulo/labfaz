@@ -40,9 +40,10 @@ export const NavBar = styled.nav`
 `;
 
 export const NavLink = styled(InternalLinkButton)`
+  --font-size-short: 11px;
   .navBar & {
     flex-grow: 0.8;
-    font-size: 11px;
+    font-size: var(--font-size-short);
     color: var(--background-pink);
     border: none;
     background-color: transparent;
@@ -50,6 +51,7 @@ export const NavLink = styled(InternalLinkButton)`
 `
 
 export const Button = styled(InternalLinkButton)<PropsButton>`
+  --font-size-short: 11px;
   display: flex;
   ${props => 
     props.backgroundColor === "login" ?
@@ -68,7 +70,7 @@ export const Button = styled(InternalLinkButton)<PropsButton>`
   height: 2rem;
   width: 12rem;
   border: none;
-  font-size: 11px;
+  font-size: var(--font-size-short);
 `;
 
 export const CloseMenu = styled.div<PropsCloseMenu>`

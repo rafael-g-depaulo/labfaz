@@ -42,6 +42,8 @@ export const Navbar = styled.div`
 `;
 
 export const NavLink = styled(InternalLinkButton)`
+  --font-size-short: 11px;
+
   ${Navbar} & {
     flex-grow: 0.5;
     color: var(--background-pink);
@@ -51,7 +53,7 @@ export const NavLink = styled(InternalLinkButton)`
     font-size: var(--font-size-large);
 
     ${DesktopSmall(css`
-      font-size: var(--font-size-short: 11px);
+      font-size: var(--font-size-short);
     `)}
   }
 `
