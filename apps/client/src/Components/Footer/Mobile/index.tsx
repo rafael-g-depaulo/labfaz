@@ -15,7 +15,7 @@ const Mobile: FC<Props> = ({ data }) => {
     <FooterContainer>
       <div className="miniContainer">
         <LogoFooter data={data} />
-        <Contact data={data} />
+        <Contact phone={data.phone} email={data.email}/>
       </div>
     </FooterContainer>
   )

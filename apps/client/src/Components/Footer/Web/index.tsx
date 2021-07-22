@@ -21,7 +21,7 @@ const Web: FC<Props> = ({ data }) => {
         <LogoFooter data={data} />
         <Navigation />
         <NewsLetter />
-        <Contact data={data} />
+        <Contact phone={data.phone} email={data.email}/>
       </div>
     </FooterContainer>
   )

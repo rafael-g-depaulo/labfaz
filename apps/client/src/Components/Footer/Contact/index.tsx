@@ -1,22 +1,34 @@
 import React, { FC } from 'react'
 import { FaWhatsapp, FaRegEnvelope } from 'react-icons/fa'
 
-import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 import { ContactContainer, Icon, Title, Subtitle } from './style'
 
 interface ContactProps {
-  data: SocialNetworksLabfaz
+  phone: string,
+  email: string
 }
 
-const Contact: FC<ContactProps> = ({ data }) => {
-  const { ddd, phone, email} = data
+const Contact: FC<ContactProps> = ({ phone, email }) => {
+
+  let phoneCorrect = ""
+
+  if(phone.length === 12) {
+    phoneCorrect = `(${phone.substring(0, 3)}) ${phone.substring(3, 8)}-${phone.substring(8, 12)}`
+  } else if (phone.length === 11) {
+    phoneCorrect = `(${phone.substring(0, 2)}) ${phone.substring(2, 7)}-${phone.substring(7, 11)}`
+  } else if (phone.length === 9) {
+    phoneCorrect = `${phone.substring(0, 5)}-${phone.substring(5, 9)}`
+  } else if (phone.length === 8) {
+    phoneCorrect = `9${phone.substring(0, 4)}-${phone.substring(4, 8)}`
+  }
+  
   return (
     <ContactContainer id="contact-container">
       <Title>Fale com a gente</Title>
       <div>
         <Icon>
           <FaWhatsapp name="Whatsapp"/>
-          <Subtitle>({ddd}) {phone}</Subtitle>
+          <Subtitle>{phoneCorrect}</Subtitle>
         </Icon>
         <Icon>
           <FaRegEnvelope name="Email"/>
