@@ -8,8 +8,7 @@ export interface SocialNetworksLabfaz {
   linkedin: string,
   instagram: string,
   youtube: string,
-  ddd: number,
-  phone: number,
+  phone: string,
   email: string
 }
 
@@ -23,7 +22,6 @@ export const fetchSocialNetworksLabfaz: () => Promise<SocialNetworksLabfaz> = ()
     linkedin,
     instagram,
     youtube,
-    ddd,
     phone,
     email
   }) => ({
@@ -33,7 +31,6 @@ export const fetchSocialNetworksLabfaz: () => Promise<SocialNetworksLabfaz> = ()
     linkedin,
     instagram,
     youtube,
-    ddd,
     phone,
     email
   }))
