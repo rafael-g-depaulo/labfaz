@@ -6,6 +6,10 @@ import { DesktopSmall } from 'Utils/breakpoints'
 
 export const NavigationContainer = styled.div`
   width: 18rem;
+  height: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   ${DesktopSmall(css`
     width: 13rem;
@@ -29,8 +33,7 @@ export const Navbar = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 3.5rem;
-  line-height: 1.1rem;
+  max-height: 6rem;
 `;
 
 export const NavLink = styled(InternalLinkButton)`

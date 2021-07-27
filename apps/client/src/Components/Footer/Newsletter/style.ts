@@ -6,8 +6,8 @@ import { DesktopSmall } from 'Utils/breakpoints'
 export const NewsletterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 5rem;
+  height: 8.5rem;
+  gap: 0.7rem;
 
   ${DesktopSmall(css`
     height: 4.7rem;

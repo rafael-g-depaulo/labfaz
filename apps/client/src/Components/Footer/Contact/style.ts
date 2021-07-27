@@ -6,6 +6,7 @@ import { Mobile, DesktopSmall } from 'Utils/breakpoints';
 export const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 8.5rem;
 
   ${DesktopSmall(css`
     height: 4.7rem;
