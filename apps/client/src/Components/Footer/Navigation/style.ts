@@ -13,6 +13,7 @@ export const NavigationContainer = styled.div`
 
   ${DesktopSmall(css`
     width: 13rem;
+    height: 5.5rem;
   `)}
 `
 
@@ -31,9 +32,10 @@ export const Title = styled(Text)`
 
 export const Navbar = styled.div`
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 6rem;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const NavLink = styled(InternalLinkButton)`

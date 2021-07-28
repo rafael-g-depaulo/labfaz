@@ -8,9 +8,17 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   height: 8.5rem;
 
+  .icons {
+    display: flex;
+    flex-direction: column;
+    ${DesktopSmall(css`
+      gap: 0.2rem;
+  `)}
+  }
+
   ${DesktopSmall(css`
-    height: 4.7rem;
-    justify-content: space-between;
+    height: 5.5rem;
+    gap: 0.5rem;
   `)}
   ${Mobile(css`
     align-items: center;

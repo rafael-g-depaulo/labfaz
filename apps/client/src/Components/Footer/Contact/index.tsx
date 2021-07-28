@@ -23,9 +23,9 @@ const Contact: FC<ContactProps> = ({ phone, email }) => {
   }
   
   return (
-    <ContactContainer id="contact-container">
+    <ContactContainer>
       <Title>Fale com a gente</Title>
-      <div>
+      <div className="icons">
         <Icon>
           <FaWhatsapp name="Whatsapp"/>
           <Subtitle>{phoneCorrect}</Subtitle>

@@ -10,7 +10,7 @@ export const NewsletterContainer = styled.div`
   gap: 0.7rem;
 
   ${DesktopSmall(css`
-    height: 4.7rem;
+    height: 5.5rem;
   `)}
 `
 
