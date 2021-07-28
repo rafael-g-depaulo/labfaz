@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { Image, MarkdownStyles } from "./styles";
-import Link from "./Link";
+import Link from "Components/TextLink";
 
 interface Props {
   content: string;

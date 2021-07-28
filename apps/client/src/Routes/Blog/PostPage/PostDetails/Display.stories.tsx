@@ -11,9 +11,12 @@ const post: BlogPost = {
   description: "Isso é um teste",
   created_at: "2021-06-29T23:50:54.596Z",
   image: {
-    url:
-      "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    name: "imagem aleatória",
+    url: "https://labfaz-strapi-assets.s3.sa-east-1.amazonaws.com/Whats_App_Image_2020_12_19_at_17_23_28_439c4529a0.jpeg",
+    alternativeText: "Blog Banner Image",
+    caption: "string",
+    width: 20,
+    height: 20,
+    ext: "jpeg"
   },
   content: "Esse é o conteúdo do post!",
 };

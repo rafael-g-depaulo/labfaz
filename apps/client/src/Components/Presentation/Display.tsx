@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 
-import { YoutubePlayer } from 'Components/Youtube Player';
+import { YoutubePlayer } from 'Components/YoutubePlayer';
 import {
   Container,
   TextBlock,

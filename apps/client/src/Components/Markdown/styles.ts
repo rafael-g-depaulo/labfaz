@@ -7,7 +7,7 @@ export const Image = styled.img`
   height: 400px;
   object-fit: cover;
   object-position: center;
-  margin: 50px 0 0 0;
+  margin: 50px 0 -8px 0;
 
   ${Mobile(css`
     height: 340px;
@@ -19,22 +19,22 @@ export const MarkdownStyles = styled(Text)`
   margin: 0;
   color: var(--color-text-white);
   text-align: justify;
-  line-height: 1.5;
+  line-height: 40px;
 
   & > div {
     width: 100%;
     height: 400px;
   }
 
-  & > p {
+  & > p,
+  ul,
+  ol {
     margin: 50px 0 0 0;
   }
 
   & > b,
   i,
-  li,
-  ul,
-  ol {
+  li {
     margin: 0;
   }
 

@@ -10,12 +10,12 @@ interface Props {
 }
 
 export const PostDetails: FC<Props> = ({ id }) => {
-  const { data, error, isLoading } = useBlogPost(id);
+  const response = useBlogPost(id);
 
-  if (isLoading) return <Loading />;
-  if (error) return <div>error: {error?.message ?? ""}</div>;
+  if (response.isLoading) return <Loading />;
+  if (response.error) return <div>error: {response.error.message}</div>;
 
-  return <Display post={data!} />;
+  return <Display post={response.data!} />;
 };
 
 export default PostDetails;

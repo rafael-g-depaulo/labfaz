@@ -2,11 +2,11 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 const Click = styled.a`  
-  color: var(--color-text-pink);
-  text-decoration: none;
+  color: var(--color-text-white);
+  text-decoration: underline;
 
   &:active {
-    color: var(--color-text-white);
+    color: var(--color-text-pink);
   }
 `;
 

@@ -17,25 +17,25 @@ export const Display: FC<DisplayProps> = ({ posts }) => {
   return (
     <Container>
       <Content>
-        {posts?.map((post, index) => {
+        {posts.map((post, index) => {
           return (
             <Fragment key={index}>
               <Wrapper>
                 {isMobile ? (
                   <Mobile
-                    title={post?.title}
-                    description={post?.description}
-                    image={post?.image}
-                    created_at={post?.created_at}
-                    id={post?.id}
+                    title={post.title}
+                    description={post.description}
+                    image={post.image}
+                    created_at={post.created_at}
+                    id={post.id}
                   />
                 ) : (
                   <Web
-                    title={post?.title}
-                    description={post?.description}
-                    image={post?.image}
-                    created_at={post?.created_at}
-                    id={post?.id}
+                    title={post.title}
+                    description={post.description}
+                    image={post.image}
+                    created_at={post.created_at}
+                    id={post.id}
                   />
                 )}
               </Wrapper>

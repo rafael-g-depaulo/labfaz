@@ -21,15 +21,15 @@ export const Display: FC<DisplayProps> = ({ post }) => {
           <Wrapper>
             {isMobile ? (
               <Mobile
-                title={post?.title}
-                created_at={post?.created_at}
-                content={post?.content}
+                title={post.title}
+                created_at={post.created_at}
+                content={post.content}
               />
             ) : (
               <Web
-                title={post?.title}
-                created_at={post?.created_at}
-                content={post?.content}
+                title={post.title}
+                created_at={post.created_at}
+                content={post.content}
               />
             )}
           </Wrapper>

@@ -40,7 +40,7 @@ export const Web: FC<DisplayProps> = ({
       <MainTextContainer>
         <PostTitle>{title}</PostTitle>
         <Description>{description}</Description>
-        {!!image && <Image src={image.url} alt={image.name} />}
+        {!!image && <Image src={image.url} alt={image.alternativeText} />}
         <ButtonLayer />
         <Button href={route}>
           <ButtonText>leia mais</ButtonText>

@@ -6,12 +6,12 @@ import Loading from "Components/Loading";
 import Display from "./Display";
 
 export const PostCard: FC = () => {
-  const { data, error, isLoading } = useBlogPosts();
+  const result = useBlogPosts();
 
-  if (isLoading) return <Loading />;
-  if (error) return <div>error: {error?.message ?? ""}</div>;
+  if (result.isLoading) return <Loading />;
+  if (result.error) return <div>error: {result.error.message}</div>;
 
-  return <Display posts={data!} />;
+  return <Display posts={result.data!} />;
 };
 
 export default PostCard;
