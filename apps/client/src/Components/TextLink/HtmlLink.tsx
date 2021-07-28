@@ -5,7 +5,7 @@ const Click = styled.a`
   color: var(--color-text-white);
   text-decoration: underline;
 
-  &:active {
+  &:hover {
     color: var(--color-text-pink);
   }
 `;

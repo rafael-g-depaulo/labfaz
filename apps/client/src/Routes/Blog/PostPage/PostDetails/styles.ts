@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
   ${Mobile(css`
     flex-direction: column;
     align-items: center;
-    margin: 80px 0 0 0;
+    margin: 70px 0 0 0;
     &:last-child {
       margin-bottom: 70px;
     }

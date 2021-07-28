@@ -1,13 +1,12 @@
 import styled, { css } from "styled-components";
 import { Mobile } from "Utils/breakpoints";
-import { Text } from "Components/Typography/Text";
 
 export const Image = styled.img`
   width: 100%;
-  height: 400px;
+  height: auto;
   object-fit: cover;
   object-position: center;
-  margin: 50px 0 -8px 0;
+  margin: 50px 0 -12px 0;
 
   ${Mobile(css`
     height: 340px;
@@ -15,7 +14,7 @@ export const Image = styled.img`
   `)}
 `;
 
-export const MarkdownStyles = styled(Text)`
+export const MarkdownStyles = styled.div`
   margin: 0;
   color: var(--color-text-white);
   text-align: justify;
@@ -23,19 +22,45 @@ export const MarkdownStyles = styled(Text)`
 
   & > div {
     width: 100%;
-    height: 400px;
+    aspect-ratio: 16 / 9;
+    margin: 50px 0 -12px 0;
   }
 
   & > p,
   ul,
   ol {
     margin: 50px 0 0 0;
+
+    & > em {
+      font-weight: 200;
+    }
+
+    & > a {
+      color: var(--color-text-white);
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--color-text-pink);
+      }
+    }
   }
 
   & > b,
-  i,
   li {
     margin: 0;
+
+    & > em {
+      font-weight: 200;
+    }
+
+    & > a {
+      color: var(--color-text-white);
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--color-text-pink);
+      }
+    }
   }
 
   ${Mobile(css`
@@ -44,21 +69,36 @@ export const MarkdownStyles = styled(Text)`
     line-height: 2;
 
     & > div {
-      height: 340px;
+      margin: 40px 0 30px 0;
     }
 
-    & > p {
-      margin: 20px 0 0 0;
+    & > p,
+    ul,
+    ol {
       font-size: var(--font-size-large);
+      margin: 20px 0 0 0;
+
+      & > em {
+        font-size: var(--font-size-large);
+      }
+
+      & > a {
+        font-size: var(--font-size-large);
+      }
     }
 
     & > b,
-    i,
-    li,
-    ul,
-    ol {
-      margin: 0;
+    li {
       font-size: var(--font-size-large);
+      margin: 0;
+
+      & > em {
+        font-size: var(--font-size-large);
+      }
+
+      & > a {
+        font-size: var(--font-size-large);
+      }
     }
   `)}
 `;
