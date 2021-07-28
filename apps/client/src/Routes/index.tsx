@@ -12,9 +12,10 @@ import { showAboutUs, showBlog } from "FeatureFlags";
 const Home = lazy(() => import("./Home"));
 // const PeopleExample = lazy(() => import("./PeopleExample"))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
-const Blog = lazy(() => import("./Blog"));
-const AboutUs = lazy(() => import("./AboutUs"));
-const NotFound = lazy(() => import("../Pages/NotFound"));
+const Blog = lazy(() => import("./Blog"))
+const AboutUs = lazy(() => import("./AboutUs"))
+const NotFound = lazy(() => import("../Pages/NotFound"))
+const Register = lazy(() => import('./SignUp'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -85,6 +86,14 @@ const Routes: FC = () => {
             )}
           </Route>
         )}
+
+        <Route path={["/sign-up", "/signup", "/SignUp"]}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <Register match={match} />
+            </Suspense>
+          )          }
+        </Route>
 
         {/* default route (404) */}
         <Route>
