@@ -23,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
 
+    --font-size-title-xxxxlarge: 72px;
     --font-size-title-xxxlarge: 64px;
     --font-size-title-xxlarge: 56px;
     --font-size-title-xlarge: 48px;
@@ -37,6 +38,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-medium: 14px;
     --font-size-short: 12px;
     --font-size-small: 10px;
+    
     --line-height-default: 48.72px; 
     --line-height-small: 25px; 
     --line-height-medium: 30px; 
