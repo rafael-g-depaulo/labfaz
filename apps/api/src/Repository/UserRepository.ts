@@ -45,7 +45,7 @@ export class UserRepository extends Repository<User> {
     email: string,
     rawPassword: string,
     artist: ArtistInfo,
-    curriculum: UploadedFile,
+    curriculum: UploadedFile | undefined,
     profilePicture: UploadedFile
   ) {
     const hashedPwd = await this.generateHash(rawPassword);
@@ -160,12 +160,12 @@ export class UserRepository extends Repository<User> {
     createdArtist.race = artist.race;
     createdArtist.rg = artist.rg;
     createdArtist.photo_url = profilePicture.url;
-    createdArtist.curriculum = curriculum.url;
+    if (curriculum)
+      createdArtist.curriculum = curriculum.url;
 
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
     createdArtist.technical = createdTech;
-
     const artistRepo = getRepository(Artist);
     await artistRepo.save(createdArtist);
 
