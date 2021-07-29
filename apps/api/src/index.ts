@@ -1,6 +1,6 @@
 import express from 'express'
 
-import getAdminRouter, { getAdminBro } from 'Middlewares/adminBro'
+import getAdminRouter, { getAdminBro } from 'Admin/adminBro'
 
 const app = express()
 

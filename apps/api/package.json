@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@labfaz/adder": "^3.0.1",
+    "@admin-bro/design-system": "^1.7.3",
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/typeorm": "^1.4.0",
     "@types/cookie-parser": "^1.4.2",
