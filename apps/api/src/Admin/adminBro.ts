@@ -19,7 +19,7 @@ export const getAdminBro = (conn: Connection) => {
       resources: getResources(),
       branding: {
         companyName: "Labfaz",
-        logo: "apps/api/src/Assets/labfaz-logo.jpg"
+        logo: false
       },
       rootPath: '/admin'
     })
