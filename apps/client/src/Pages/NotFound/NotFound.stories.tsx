@@ -1,9 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
 
 import NotFound from './'
+import Web from './Web'
+import Mobile from './Mobile'
 
 storiesOf("Pages/NotFound", module)
   .addParameters({ component: NotFound })
-  .add("notFound", () => <BrowserRouter><NotFound /></BrowserRouter>)
+  .add("responsive", () => <NotFound />)
+  .add("web", () => <Web />)
+  .add("mobile", () => <Mobile />)

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import Header from "Components/Header"
+import Footer from 'Components/Footer'
 import Image from "../Image"
 import { Text, Container, Content, Rectangle2 } from './style'
 
@@ -16,7 +17,7 @@ export const Web: FC = () => {
           </Text>
         </Rectangle2>
       </Content>
-      {/* Add footer component */}
+      <Footer />
     </Container>
   )
 }

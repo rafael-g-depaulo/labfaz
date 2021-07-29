@@ -2,12 +2,12 @@ import { strapi } from "Api"
 import useFetchApi from "Hooks/useFetchApi"
 
 export interface SocialNetworksLabfaz {
-  facebook: string,
-  twitter: string,
-  googlePlus: string,
-  linkedin: string,
-  instagram: string,
-  youtube: string,
+  facebook?: string,
+  twitter?: string,
+  googlePlus?: string,
+  linkedin?: string,
+  instagram?: string,
+  youtube?: string,
   phone: string,
   email: string
 }

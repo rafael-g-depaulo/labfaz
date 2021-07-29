@@ -7,6 +7,7 @@ import {
   Text,
   Rectangle
 } from 'Pages/Contruction/Mobile/style'
+import Footer from 'Components/Footer'
 
 export const Mobile: FC = () => {
   
@@ -23,7 +24,7 @@ export const Mobile: FC = () => {
           </Text>
         </Rectangle>
       </div>
-      {/* Add footer component */}
+      <Footer />
     </Container>
   )
 }
