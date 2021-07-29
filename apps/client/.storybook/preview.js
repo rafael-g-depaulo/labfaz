@@ -13,6 +13,7 @@ import {
 
 import GlobalStyles from "../src/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
+import { BrowserRouter } from 'react-router-dom'
 import Helmet from "react-helmet"
 
 export const parameters = {
@@ -59,7 +60,14 @@ const injectGoogleFonts = Story => (
   </>
 )
 
+const injectReactRouter = Story => (
+  <BrowserRouter>
+    <Story />
+  </BrowserRouter>
+)
+
 export const decorators = [
   injectGlobalStylesAndTheme,
   injectGoogleFonts,
+  injectReactRouter,
 ]
