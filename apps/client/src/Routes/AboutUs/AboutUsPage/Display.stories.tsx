@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
 
 import AboutUsPage from './Display'
 import Staff from './StaffComponent'
@@ -24,6 +23,7 @@ const Staffimage = mockImage({
 })
 
 const StaffInfo: StaffObject = {
+  id: 54,
   name: "Jhon Doe",
   tag: "Coordenação",
   text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",
@@ -52,14 +52,9 @@ const mockedAboutUsData: AboutUsData = {
 }
 
 const mockedStaffData: StaffData = {
-  staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
+  staff: Array.from({ length: 40 }, () => StaffInfo)
 }
 
 storiesOf("Pages/AboutUs", module)
   .addParameters({ component: AboutUsPage, subcomponent: Staff  })
-  .add("default", () => (
-    <BrowserRouter>
-      <AboutUsPage about_data={mockedAboutUsData} />
-      <Staff data={mockedStaffData} />
-    </BrowserRouter>
-  ))
+  .add("responsive", () => (<AboutUsPage about_data={mockedAboutUsData} staff={mockedStaffData} />))

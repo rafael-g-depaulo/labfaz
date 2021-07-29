@@ -1,46 +1,37 @@
-import { AboutUsData, useStaffData } from "Api/AboutUs"
+import { AboutUsData, StaffData } from "Api/AboutUs"
 import React, { FC } from "react"
 
-import Fullpage from "Components/FullPage"
 import Header from "Components/Header"
 import Banner from "Components/Banner"
+import Footer from "Components/Footer"
+
 import WelcomeComponent from "./WelcomeComponent"
 import About from "./AboutUsComponent"
 import Staff from "./StaffComponent"
-import Loading from "Components/Loading"
+
+import { MainContainer, Spacer } from "./styles"
 
 export interface DisplayProps {
   about_data: AboutUsData
+  staff: StaffData,
 }
 
 export const Display: FC<DisplayProps> = ({
   about_data,
+  staff,
 }) => {
   const {banner_data, welcome_data, about_us_data} = about_data
-  
-  const { data, error  } = useStaffData()
-  
-  if(error){
-    return(
-      <Fullpage>
-      <Header />
-      <Banner title="Quem somos" subtitle={banner_data} align="left"/>
-      <WelcomeComponent data={welcome_data} />
-      <About  data={about_us_data} />
-      {error.message}
-    </Fullpage>
-
-    )
-  }
 
   return (
-    <Fullpage>
+    <MainContainer>
       <Header />
       <Banner title="Quem somos" subtitle={banner_data} align="left"/>
       <WelcomeComponent data={welcome_data} />
       <About  data={about_us_data} />
-      {data ? <Staff data={data} /> : <Loading /> }
-    </Fullpage>
+      <Staff data={staff} />
+      <Spacer />
+      <Footer />
+    </MainContainer>
   )
 }
 
