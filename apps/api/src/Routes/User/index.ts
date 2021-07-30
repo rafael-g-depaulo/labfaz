@@ -6,6 +6,7 @@ import UserRepository from "Repository/UserRepository";
 import ensureAuthenticated from "Middlewares/ensureAuthenticated";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CreateUser from "./CreateUser";
 import UpdateUser from "./UpdateUser";
 import GetAllUser from "./GetAllUser";
@@ -22,6 +23,12 @@ import { LogInUser } from "./logInUser"
 =======
 import GetAllUser from "./GetAllUser";
 >>>>>>> ce8e28f (🐛 fix: removed bug from update user)
+=======
+import CreateUser from "./CreateUser";
+import UpdateUser from "./UpdateUser";
+import GetAllUser from "./GetAllUser";
+import ShowUser from "./ShowUser";
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 
 type UserDeps = {
   conn: Connection;
@@ -31,6 +38,7 @@ type UserDeps = {
 const UserRouter: Router<UserDeps> = (deps, options) => {
   const { conn, UserRepo = conn.getCustomRepository(UserRepository) } = deps;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   return express
     .Router(options)
@@ -48,5 +56,14 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }))
 }
 >>>>>>> 8f032a4 (✨ Create login user logi with email sender)
+=======
+  return express
+    .Router(options)
+    .get("/", GetAllUser({ UserRepo }))
+    .get("/:id", ShowUser({ UserRepo }))
+    .post("/", CreateUser({ UserRepo }))
+    .put("/", ensureAuthenticated, UpdateUser({ UserRepo }));
+};
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 
 export default UserRouter;

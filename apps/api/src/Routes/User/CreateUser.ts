@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 import { getApiUrl } from "@labfaz/server-conn-info"
 
 import  * as yup from "yup"
+=======
+import { DeepPartial } from "typeorm";
+import { RequestHandler } from "Routes";
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 
-import { MailProvider, Addres } from "@labfaz/mail/src"
+import { MailProvider, Addres } from "@labfaz/mail/src";
 
+<<<<<<< HEAD
 import UserRepository from "Repository/UserRepository"
+=======
+import User from "Entities/User";
+import UserRepository from "Repository/UserRepository";
+import { getApiUrl } from "@labfaz/server-conn-info";
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 
 import { Race, ShowName } from "Entities/Artist"
 import { RouteHandler } from "Utils/routeHandler"
@@ -15,6 +26,7 @@ interface CreateUserInterface {
   UserRepo: UserRepository;
 }
 
+<<<<<<< HEAD
 interface IArtist {
   photo_url: string;
   name: string;
@@ -74,11 +86,23 @@ interface UserInfo extends yup.Asserts<typeof reqSchema> {}
 const mailer = new MailProvider();
 const from: Addres = {
   name: "LabFaz",
+=======
+interface IUser {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const mailer = new MailProvider();
+const from: Addres = {
+  name: "LabFaz",
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
   email: "noreply@labfaz.com.br",
 };
 
 export const CreateUser: (
   deps: CreateUserInterface
+<<<<<<< HEAD
 ) => RouteHandler<Req<RequestBody>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
@@ -127,6 +151,38 @@ export const CreateUser: (
   mailer.sendEmail({
     to: {
       name: artist.name,
+=======
+) => RequestHandler<DeepPartial<User>> = ({
+  UserRepo,
+}: CreateUserInterface) => async (req, res) => {
+  const { name, email, password } = req.body as IUser;
+
+  if (!name || !email || !password)
+    return res.status(400).json({ error: "Incomplete request body" });
+
+  if (
+    typeof name !== "string" ||
+    typeof email !== "string" ||
+    typeof password !== "string"
+  )
+    return res.status(400).json({ error: "Invalid request body" });
+
+  const checkUserExists = await UserRepo.findByEmail(email);
+
+  if (checkUserExists) {
+    return res.status(401).json({ error: "Email address already exists." });
+  }
+
+  const hashedPassword = await UserRepo.generateHash(password);
+
+  const user = await UserRepo.create({ name, email, password: hashedPassword });
+
+  await UserRepo.save(user);
+
+  mailer.sendEmail({
+    to: {
+      name: name,
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
       email: email,
     },
     from: from,
@@ -141,23 +197,37 @@ export const CreateUser: (
 =======
         <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <a href='http://localhost:5430/sessions/auth/account-verification/${user.id}/${userToken}'> Confirmar Email </a>
 >>>>>>> a74ec09 (✨ add: noreply mailer sender)
 =======
         <a href='http://localhost:5000/sessions/auth/account-verification/${user.id}'> Confirmar Email </a>
 >>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
+=======
+        <a href='${getApiUrl()}/sessions/auth/account-verification/${
+      user.id
+    }'> Confirmar Email </a>
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
       </div>
     `,
   });
 
+<<<<<<< HEAD
   //remove password and id
+=======
+  //remove password and id 
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
   let userAsArray = Object.entries(user);
   let userWithoutPassword = userAsArray.filter(
     ([key, _]) => key !== "password" && key !== "id"
   );
   let newUser = Object.fromEntries(userWithoutPassword);
 
+<<<<<<< HEAD
   return createdSuccessfully(res, { newUser })
+=======
+  return res.status(201).json({ newUser });
+>>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 };
 
 export default CreateUser;
