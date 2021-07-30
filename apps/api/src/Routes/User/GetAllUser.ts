@@ -12,7 +12,15 @@ export const GetAllUsers: (
 ) => RequestHandler<DeepPartial<User>> = ({
   UserRepo,
 }: GetAllUsersInterface) => async (_, res) => {
-  const users = await UserRepo.find();
+  let usersFind = await UserRepo.find();
+
+  //remove password from usersFind
+  const users = usersFind.map((user: any) => {
+    const userAsArray = Object.entries(user);
+    const userWithoutPassword = userAsArray.filter(([key, _]) => key !== 'password')
+    const newUser = Object.fromEntries(userWithoutPassword);
+    return newUser;    
+  })
 
   return res.status(201).json({ users });
 };

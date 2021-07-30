@@ -3,6 +3,8 @@
   "compilerOptions": {
     "jsx": "react",
 
+    "lib": ["ES2019"],
+
     // baseUrl for absolute imports
     "baseUrl": "src",
 

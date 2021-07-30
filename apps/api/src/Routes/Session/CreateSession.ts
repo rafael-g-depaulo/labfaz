@@ -1,10 +1,8 @@
 import { DeepPartial } from "typeorm";
-import { sign } from "jsonwebtoken";
 import { RequestHandler } from "Routes";
 
 import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
-import authConfig from "Config/auth";
 
 interface CreateSessionInterface {
   UserRepo: UserRepository;
@@ -28,15 +26,15 @@ export const CreateSession: (
   if (typeof email !== "string" || typeof password !== "string")
     return res.status(400).json({ error: "Invalid request body" });
 
-  const user = await UserRepo.findByEmail(email);
+  const userDB = await UserRepo.findByEmail(email);
 
-  if (!user) {
+  if (!userDB) {
     return res
       .status(401)
       .json({ error: "Incorrect email/password combination." });
   }
 
-  const passwordMatched = await UserRepo.compareHash(password, user.password);
+  const passwordMatched = await UserRepo.compareHash(password, userDB.password);
 
   if (!passwordMatched) {
     return res
@@ -44,11 +42,18 @@ export const CreateSession: (
       .json({ error: "Incorrect email/password combination." });
   }
 
-  if (!user.active) {
+  if (!userDB.active) {
     return res.status(401).json({ error: "Email confimation needed" });
   }
 
   const token = await UserRepo.generateToken(email);
+
+  //remove password from user query
+  const userAsArray = Object.entries(userDB);
+  const userWithoutPassword = userAsArray.filter(
+    ([key, _]) => key !== "password"
+  );
+  const user = Object.fromEntries(userWithoutPassword);
 
   return res.status(200).json({ token, user });
 };
