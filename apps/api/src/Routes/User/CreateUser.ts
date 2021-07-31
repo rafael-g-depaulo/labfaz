@@ -17,11 +17,11 @@ interface IUser {
   password: string;
 }
 
-const mailer = new MailProvider();
-const from: Addres = {
-  name: "LabFaz",
-  email: "noreply@labfaz.com.br",
-};
+  const mailer = new MailProvider();
+  const from: Addres = {
+    name: "LabFaz",
+    email: "noreply@labfaz.com.br",
+  };
 
 export const CreateUser: (
   deps: CreateUserInterface
