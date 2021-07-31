@@ -60,7 +60,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
   return express
     .Router(options)
     .get("/", GetAllUser({ UserRepo }))
-    .get("/:id", ShowUser({ UserRepo }))
+    .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
     .post("/", CreateUser({ UserRepo }))
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }));
 };

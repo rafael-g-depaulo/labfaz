@@ -93,12 +93,20 @@ interface IUser {
   password: string;
 }
 
+<<<<<<< HEAD
 const mailer = new MailProvider();
 const from: Addres = {
   name: "LabFaz",
 >>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
   email: "noreply@labfaz.com.br",
 };
+=======
+  const mailer = new MailProvider();
+  const from: Addres = {
+    name: "LabFaz",
+    email: "noreply@labfaz.com.br",
+  };
+>>>>>>> 040d905 (✨ Add: Reset Password with token)
 
 export const CreateUser: (
   deps: CreateUserInterface
