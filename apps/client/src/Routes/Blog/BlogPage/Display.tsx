@@ -21,7 +21,7 @@ export const Display: FC<DisplayProps> = ({ data }) => {
       <PostCard />
       <Footer />
     </>
-  );
-};
+  )
+}
 
 export default Display;
