@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import render from "Utils/render"
 import Display from "./Display"
-import { AboutUsData } from 'Api/AboutUs'
+import { AboutUsData, StaffData, StaffObject } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
 
 
@@ -38,24 +38,36 @@ describe("About us page", () => {
 
     }]
   }
+
   
+  const StaffInfo: StaffObject = {
+    id: 54,
+    name: "Jhon Doe",
+    tag: "Coordenação",
+    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",
+    image: image
+  }
+
+  const mockedStaffData: StaffData = {
+    staff: Array.from({ length: 40 }, (_, i) => ({ ...StaffInfo, id: i }))
+  }
+
   it("renders without exploding", () => {
 
-    expect(() => render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)).not.toThrow()
+    expect(() => render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)).not.toThrow()
   })
   
   it("Renders banner component", () => {
-    const Page = render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)
+    const Page = render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)
     const banner = Page.getAllByRole('heading')
-
 
     expect( banner[1] ).toHaveTextContent("Welcome to Labfaz")
   })
 
   it("displays the data message", () => {
-    const { getByRole } = render(<BrowserRouter><Display about_data={mockedData} /></BrowserRouter>)
+    const { getAllByRole } = render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)
 
-    expect(getByRole("heading", {level: 1})).toHaveTextContent("Quem somos")
-    expect(getByRole("heading", {level: 2})).toHaveTextContent("Welcome to Labfaz")
+    expect(getAllByRole("heading", {level: 1})[0]).toHaveTextContent("Quem somos")
+    expect(getAllByRole("heading", {level: 2})[0]).toHaveTextContent("Welcome to Labfaz")
   })
 })
