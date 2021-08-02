@@ -1,22 +1,27 @@
-import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, BaseEntity } from 'typeorm'
+import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, OneToOne } from 'typeorm'
 import { nanoid } from 'nanoid'
 
+import Artist from './Artist'
 
 // To work with admin bro classes must extend BaseEntity
 @Entity()
-export class User extends BaseEntity {
-
+export class User {
   @PrimaryColumn()
-  id: string
+  id: string;
+
+  @OneToOne(() => Artist, (artist) => artist.user, {
+    cascade: ["insert", "remove", "update"],
+  })
+  artist: Artist;
 
   @Column()
-  name: string
+  name: string;
 
   @Column()
-  email: string
+  email: string;
 
   @Column()
-  password: string
+  password: string;
 
   @Column({ default: false })
   isVerified: boolean
@@ -24,21 +29,19 @@ export class User extends BaseEntity {
   @Column({ default: false })
   banned: boolean
 
-  @CreateDateColumn()
-  created_at: Date
+  @Column("boolean", { default: false })
+  active: boolean;
 
   @CreateDateColumn()
-  updated_at: Date
+  created_at: Date;
 
-  @Column('boolean', { default: false })
-  active: boolean
+  @UpdateDateColumn()
+  updated_at: Date;
 
   @BeforeInsert()
   addId() {
-    this.id = nanoid()
+    this.id = nanoid();
   }
-
-
 }
 
-export default User
+export default User;
