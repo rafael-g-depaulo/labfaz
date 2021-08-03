@@ -1,4 +1,3 @@
-import FullPage from 'Components/FullPage'
 import styled, { css } from 'styled-components'
 import { Mobile, DesktopSmall, MobileLarge, MobileSmall } from 'Utils/breakpoints'
 
@@ -25,10 +24,6 @@ export interface DivProps {
   width?: string,
   position?: string
 }
-
-export const MainContainer = styled(FullPage)`
-  background-color: var(--background-black);
-`
 
 export const Spacer = styled.div`
   padding-bottom: 2.4rem;

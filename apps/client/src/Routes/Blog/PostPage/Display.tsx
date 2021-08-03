@@ -1,8 +1,7 @@
 import React, {FC} from 'react'
 
-import Header from 'Components/Header'
+import Wireframe from 'Components/Wireframe'
 import Banner from 'Components/Banner'
-import Footer from 'Components/Footer'
 
 import { BlogBannerInfo } from 'Api/BlogBannerInfo'
 import { BlogPost } from 'Api/BlogPost'
@@ -19,12 +18,10 @@ export const Display: FC<DisplayProps> = ({
 }) => {
   const { title, subtitle } = data
   return (
-    <>
-      <Header />
+    <Wireframe>
       <Banner title={title} subtitle={subtitle} align="left" />
       <PostDetails post={post}/>
-      <Footer />
-    </>
+    </Wireframe>
   )
 }
 
