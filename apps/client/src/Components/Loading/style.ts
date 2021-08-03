@@ -1,5 +1,4 @@
-import styled from "styled-components"
-import { css} from "@emotion/react";
+import styled, { css } from "styled-components"
 
 export const Container = styled.div`
   display: flex;

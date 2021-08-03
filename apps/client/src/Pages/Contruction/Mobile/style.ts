@@ -16,15 +16,22 @@ export const Container = styled.div`
 `;
 
 export const Rectangle = styled.div<Props>`
-  background-image: url(${RectangleImage});
+  background-image: url("${css`${RectangleImage}`}");
   width: 19rem;
   height: 10rem;
   display: flex;
   align-items: center;
-  ${props => props.invert ? 'justify-content: right;': 'justify-content: left;'}
-  ${props => props.invert ? 'padding-right: 3rem;': 'padding-left: 1rem;'}
-  ${props => props.invert ? '': 'float: right;'}
-  ${props => props.invert ? 'transform: scale(-1, -1);': ''}
+  ${props => props.invert
+    ? css`
+      justify-content: right;
+      padding-right: 3rem;
+      transform: scale(-1, -1);
+    ` : css`
+      justify-content: left;
+      padding-left: 1rem;
+      float: right;
+    `
+  }
 
   ${MobileSmall(css`
     width: 15rem;

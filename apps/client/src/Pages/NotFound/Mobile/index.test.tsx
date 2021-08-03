@@ -25,6 +25,6 @@ describe('Check content of Page', () => {
   })
 
   it('check text of in not_found', () => {
-    expect(getByText('procurando', { exact: false})).toHaveTextContent('página')
+    expect(getByText('procurando', { exact: false })).toHaveTextContent('página')
   })
 })
