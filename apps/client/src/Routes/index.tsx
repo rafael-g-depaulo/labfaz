@@ -29,20 +29,16 @@ const Routes: FC = () => {
       <Switch>
         {/* default route */}
         <Route exact path="/">
-          {() => (
-            <Suspense fallback={<Loading />}>
-              <NotFound />
-            </Suspense>
-          )}
+          <Suspense fallback={<Loading />}>
+            <NotFound />
+          </Suspense>
         </Route>
         
         {/* home router */}
         <Route path={["/home"]}>
-          {() => (
-            <Suspense fallback={<Loading />}>
-              <NotFound />
-            </Suspense>
-          )}
+          <Suspense fallback={<Loading />}>
+            <NotFound />
+          </Suspense>
         </Route>
 
         {/* blog router */}
@@ -85,6 +81,14 @@ const Routes: FC = () => {
         )}
         </Route>
         }
+
+        {/* default route (404) */}
+        <Route>
+          <Suspense fallback={<Loading />}>
+            <NotFound />
+          </Suspense>
+        </Route>
+
       </Switch>
     </BaseRouter>
   );
