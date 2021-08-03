@@ -6,13 +6,14 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Loading from "Components/Loading";
+import Loading from "Components/Loading"
+import { showAboutUs, showBlog, showHome } from "FeatureFlags"
 
-const Home = lazy(() => import("./Home"));
-// const PeopleExample = lazy(() => import("./PeopleExample"));
-// const SingletonExample = lazy(() => import("./SingletonExample"));
-const Blog = lazy(() => import("./Blog"));
-const AboutUs = lazy(() => import("./AboutUs"));
+const Home = lazy(() => import("./Home"))
+// const PeopleExample = lazy(() => import("./PeopleExample"))
+// const SingletonExample = lazy(() => import("./SingletonExample"))
+const Blog = lazy(() => import("./Blog"))
+const AboutUs = lazy(() => import("./AboutUs"))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -26,13 +27,15 @@ const Routes: FC = () => {
     <BaseRouter>
       <Switch>
         {/* default route */}
+        { showHome &&
         <Route exact path="/">
-          {({ match }) => (
+          {/* {({ match }) => (
             <Suspense fallback={<Loading />}>
-              <Home match={match} />
+            <Home match={match} />
             </Suspense>
-          )}
+          )} */}
         </Route>
+        }
 
         {/* home router */}
         <Route path={["/home"]}>
@@ -44,6 +47,7 @@ const Routes: FC = () => {
         </Route>
 
         {/* blog router */}
+        { showBlog &&
         <Route path={["/blog"]}>
           {({ match }) => (
             <Suspense fallback={<Loading />}>
@@ -51,6 +55,7 @@ const Routes: FC = () => {
             </Suspense>
           )}
         </Route>
+        }
 
         {/* strapi collection example router */}
         {/* <Route path="/people-example">
@@ -70,15 +75,17 @@ const Routes: FC = () => {
           )}
         </Route> */}
 
+        { showAboutUs &&
         <Route
           path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}
         >
-          {({ match }) => (
-            <Suspense fallback={<Loading />}>
-              <AboutUs match={match} />
-            </Suspense>
-          )}
+        {({ match }) => (
+          <Suspense fallback={<Loading />}>
+            <AboutUs match={match} />
+          </Suspense>
+        )}
         </Route>
+        }
       </Switch>
     </BaseRouter>
   );

@@ -36,6 +36,9 @@
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
     # feature flags
     REACT_APP_SHOW_ROUTES="false"
+    REACT_APP_SHOW_HOME="false"
+    REACT_APP_SHOW_BLOG="false"
+    REACT_APP_SHOW_ABOUT_US="false"
 
 
 # these configurations are added to deploys from the development branch
@@ -46,6 +49,9 @@
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
     # feature flags
     REACT_APP_SHOW_ROUTES="true"
+    REACT_APP_SHOW_HOME="false"
+    REACT_APP_SHOW_BLOG="true"
+    REACT_APP_SHOW_ABOUT_US="true"
 
 # The following redirect makes the app work as a SPA
 [[redirects]]

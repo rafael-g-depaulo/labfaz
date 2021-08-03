@@ -14,5 +14,8 @@ declare namespace NodeJS {
     // url of APIs used
     REACT_APP_STRAPI_URL: string
     REACT_APP_API_URL: string
+    REACT_APP_SHOW_HOME: string
+    REACT_APP_SHOW_BLOG: string
+    REACT_APP_SHOW_ABOUT_US: string
   }
 }
