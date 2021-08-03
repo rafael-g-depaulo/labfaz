@@ -101,3 +101,52 @@ export const LogIn = styled(InternalLinkButton)`
     padding: 0.5rem;
   `)}
 `
+
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+
+
+    font-size: var(--font-size-large);
+    font-weight: 700;
+
+    color: var(--background-pink);
+
+    &:hover {
+      cursor: pointer;
+    }
+    
+    svg {
+      margin-left: 3.05rem;
+      margin-right: 3.38rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+`
+
+export const UserAvatar = styled.div`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #A3A3A3;
+
+  margin-left: 3.2rem;
+  margin-right: 0.6rem;
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+`
