@@ -4,6 +4,6 @@ const useEnvVar = (varName: string, defaultValue: boolean) =>
 
 export const showRoutes = useEnvVar("REACT_APP_SHOW_ROUTES", true)
 
-export const showHome = useEnvVar("REACT_APP_SHOW_HOME", false)
-export const showBlog = useEnvVar("REACT_APP_SHOW_BLOG", false)
-export const showAboutUs = useEnvVar("REACT_APP_SHOW_ABOUT_US", false)
+export const showHome = useEnvVar("REACT_APP_SHOW_HOME", true)
+export const showBlog = useEnvVar("REACT_APP_SHOW_BLOG", true)
+export const showAboutUs = useEnvVar("REACT_APP_SHOW_ABOUT_US", true)
