@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 
-import Construction from './'
+import Construction from '.'
 import Web from './Web'
 import Mobile from './Mobile'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import render from 'Utils/render'
-import Footer from '../Footer'
+import Footer from '.'
 
 it('renders footer component', () => {
   expect(() => render(<Footer />)).not.toThrow()

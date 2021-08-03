@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { Title } from 'Components/Typography/Title'
-import { Rectangle } from 'Pages/Contruction/Web/style'
+import { Rectangle } from 'Pages/Construction/Web/style'
 import { DesktopSmall } from 'Utils/breakpoints'
 
 export const Container = styled.div`

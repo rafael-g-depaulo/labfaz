@@ -1,7 +1,7 @@
 import React from 'react'
 import render from "Utils/render"
 
-import Image from './'
+import Image from '.'
 
 it("renders Image component", () => {
   expect(() => render(<Image />)).not.toThrow()

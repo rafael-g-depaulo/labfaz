@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import GlobalStyles from 'GlobalStyles'
 import Routes from 'Routes'
 import { showRoutes } from 'FeatureFlags'
-import Contruction from 'Pages/Contruction'
+import Contruction from 'Pages/Construction'
 
 import useGoogleAnalytics from 'Hooks/useInitializeGA'
 

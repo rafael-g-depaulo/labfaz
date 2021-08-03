@@ -1,21 +1,24 @@
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz';
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom';
 
 import render from 'Utils/render'
-import Mobile from './'
+import Web from '.'
 
-const mockedData = {
+const mockedData: SocialNetworksLabfaz = {
   facebook: "https://www.facebook.com",
   twitter: "https://www.twitter.com",
   googlePlus: "https://www.google.com",
   linkedin: "https://linkedin.com",
-  instagram: "https://instagram.com"
+  instagram: "https://instagram.com",
+  phone: "9999999",
+  email: "teste@teste.com"
 }
 
 it('renders header component', () => {
   expect(() => render(
     <BrowserRouter>
-      <Mobile data={mockedData}/>
+      <Web data={mockedData}/>
     </BrowserRouter>
   )).not.toThrow()
 })
@@ -23,7 +26,7 @@ it('renders header component', () => {
 describe('Check content of Page', () => {
   const { getByText, getAllByRole } = render(
     <BrowserRouter>
-      <Mobile data={mockedData}/>
+      <Web data={mockedData}/>
     </BrowserRouter>
   );
 

@@ -6,7 +6,7 @@ import {
   Container,
   Text,
   Rectangle
-} from 'Pages/Contruction/Mobile/style'
+} from 'Pages/Construction/Mobile/style'
 import Footer from 'Components/Footer'
 
 export const Mobile: FC = () => {

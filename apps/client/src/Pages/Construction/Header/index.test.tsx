@@ -1,16 +1,18 @@
+import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz';
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom';
 
 import render from 'Utils/render'
-import Header from '../Header'
+import Header from '.'
 
-const mockedData = {
+const mockedData: SocialNetworksLabfaz = {
   facebook: "https://www.facebook.com",
   twitter: "https://www.twitter.com",
   googlePlus: "https://www.google.com",
   linkedin: "https://linkedin.com",
   instagram: "https://instagram.com",
-  youtube: "https://youtube.com"
+  phone: "9999999",
+  email: "teste@teste.com"
 }
 
 it('renders header component', () => {
