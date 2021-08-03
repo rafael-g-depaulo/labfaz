@@ -7,37 +7,50 @@ import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
 import { getApiUrl } from "@labfaz/server-conn-info";
 
+import { Race, ShowName } from "Entities/Artist";
+
 interface CreateUserInterface {
   UserRepo: UserRepository;
 }
 
-interface IUser {
+interface IArtist {
+  photo_url: string;
   name: string;
+  social_name: string;
+  artistic_name: string;
+  gender: string;
+  cpf: string;
+  birthday: Date;
+  rg: string;
+  expedition_department: string;
+  is_trans: boolean;
+  race: Race;
+  show_name: ShowName;
+}
+
+interface IReq {
+  artist: IArtist;
   email: string;
   password: string;
 }
 
-  const mailer = new MailProvider();
-  const from: Addres = {
-    name: "LabFaz",
-    email: "noreply@labfaz.com.br",
-  };
+const mailer = new MailProvider();
+const from: Addres = {
+  name: "LabFaz",
+  email: "noreply@labfaz.com.br",
+};
 
 export const CreateUser: (
   deps: CreateUserInterface
 ) => RequestHandler<DeepPartial<User>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
-  const { name, email, password } = req.body as IUser;
+  const { artist, email, password } = req.body as IReq;
 
-  if (!name || !email || !password)
+  if (!artist || !email || !password)
     return res.status(400).json({ error: "Incomplete request body" });
 
-  if (
-    typeof name !== "string" ||
-    typeof email !== "string" ||
-    typeof password !== "string"
-  )
+  if (typeof email !== "string" || typeof password !== "string")
     return res.status(400).json({ error: "Invalid request body" });
 
   const checkUserExists = await UserRepo.findByEmail(email);
@@ -48,20 +61,20 @@ export const CreateUser: (
 
   const hashedPassword = await UserRepo.generateHash(password);
 
-  const user = await UserRepo.create({ name, email, password: hashedPassword });
+  const user = await UserRepo.create({ artist, email, password: hashedPassword });
 
   await UserRepo.save(user);
 
   mailer.sendEmail({
     to: {
-      name: name,
+      name: artist.name,
       email: email,
     },
     from: from,
     subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
-        <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>
+        <h1> Olá ${artist.name}, Bem Vindo ao Labfaz </h1>
         <a href='${getApiUrl()}/sessions/auth/account-verification/${
       user.id
     }'> Confirmar Email </a>
@@ -69,7 +82,7 @@ export const CreateUser: (
     `,
   });
 
-  //remove password and id 
+  //remove password and id
   let userAsArray = Object.entries(user);
   let userWithoutPassword = userAsArray.filter(
     ([key, _]) => key !== "password" && key !== "id"

@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { nanoid } from "nanoid";
 import User from "./User";
@@ -36,6 +37,7 @@ export class Artist {
   @OneToOne(() => User, (user) => user.artist, {
     cascade: ["insert","update"],
   })
+  @JoinColumn()
   user: User;
 
   @OneToOne(() => Contact, contact => contact.artist, {

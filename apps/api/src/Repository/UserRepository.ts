@@ -14,6 +14,22 @@ export class UserRepository extends Repository<User> {
     });
   }
 
+  findByIdWithAll(id: string) {
+    return this.findOne({
+      where: { id },
+      relations: [
+        "artist",
+        "contact",
+        "address",
+        "technical",
+        "idiom",
+        "area",
+        "curriculum",
+        "certificate",
+      ],
+    });
+  }
+
   findById(id: string) {
     return this.findOne({
       where: { id },
@@ -47,8 +63,6 @@ export class UserRepository extends Repository<User> {
     const token = sign({ id: user.id }, secret, { expiresIn });
     return token;
   }
-
-
 }
 
 export default UserRepository;
