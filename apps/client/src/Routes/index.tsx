@@ -7,13 +7,14 @@ import {
 } from "react-router-dom";
 
 import Loading from "Components/Loading"
-import { showAboutUs, showBlog, showHome } from "FeatureFlags"
+import { showAboutUs, showBlog } from "FeatureFlags"
 
-const Home = lazy(() => import("./Home"))
+// const Home = lazy(() => import("./Home"))
 // const PeopleExample = lazy(() => import("./PeopleExample"))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
 const Blog = lazy(() => import("./Blog"))
 const AboutUs = lazy(() => import("./AboutUs"))
+const NotFound = lazy(() => import("../Pages/NotFound"))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -27,21 +28,19 @@ const Routes: FC = () => {
     <BaseRouter>
       <Switch>
         {/* default route */}
-        { showHome &&
         <Route exact path="/">
-          {/* {({ match }) => (
+          {() => (
             <Suspense fallback={<Loading />}>
-            <Home match={match} />
+              <NotFound />
             </Suspense>
-          )} */}
+          )}
         </Route>
-        }
-
+        
         {/* home router */}
         <Route path={["/home"]}>
-          {({ match }) => (
+          {() => (
             <Suspense fallback={<Loading />}>
-              <Home match={match} />
+              <NotFound />
             </Suspense>
           )}
         </Route>

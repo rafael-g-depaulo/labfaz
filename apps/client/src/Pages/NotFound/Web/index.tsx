@@ -1,14 +1,12 @@
 import React, { FC } from 'react'
 
-import Header from "Components/Header"
-import Footer from 'Components/Footer'
+import Wireframe from 'Components/Wireframe'
 import Image from "../Image"
-import { Text, Container, Content, Rectangle2 } from './style'
+import { Text, Content, Rectangle2 } from './style'
 
 export const Web: FC = () => {
   return (
-    <Container>
-      <Header />
+    <Wireframe>
       <Content>
         <Rectangle2>
           <Image />
@@ -17,8 +15,7 @@ export const Web: FC = () => {
           </Text>
         </Rectangle2>
       </Content>
-      <Footer />
-    </Container>
+    </Wireframe>
   )
 }
 

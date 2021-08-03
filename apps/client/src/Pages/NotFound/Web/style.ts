@@ -4,18 +4,10 @@ import { Title } from 'Components/Typography/Title'
 import { Rectangle } from 'Pages/Construction/Web/style'
 import { DesktopSmall } from 'Utils/breakpoints'
 
-export const Container = styled.div`
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--background-black);
-`;
-
 export const Content = styled.div`
-  padding: 0 10rem;
+  padding: 1.6rem 10rem;
   ${DesktopSmall(css`
-    padding: 0 5rem;
+    padding: 0.8rem 5rem;
   `)}
 `;
 
