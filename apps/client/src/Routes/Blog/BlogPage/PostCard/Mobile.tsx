@@ -36,7 +36,7 @@ export const Mobile: FC<DisplayProps> = ({
 
   return (
     <>
-      <MainTextContainer>
+      <MainTextContainer to={route}>
         <PostTitle>{title}</PostTitle>
         <Description>{description}</Description>
         {!!image && <Image src={image.url} alt={image.name} />}

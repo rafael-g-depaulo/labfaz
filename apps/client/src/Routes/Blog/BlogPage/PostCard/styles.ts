@@ -3,6 +3,7 @@ import { Mobile } from "Utils/breakpoints";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
 import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+import { Link } from "react-router-dom";
 
 interface DateProps {
   size: string;
@@ -50,15 +51,15 @@ export const Wrapper = styled.div`
   ${Mobile(css`
     flex-direction: column;
     align-items: center;
-    margin: 80px 0 0 0;
+    margin: 60px 0 0 0;
 
     &:last-child {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
     }
   `)}
 `;
 
-export const MainTextContainer = styled.div`
+export const MainTextContainer = styled(Link)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -89,7 +90,7 @@ export const PostTitle = styled(Title)`
 export const Description = styled(Text)`
   color: var(--color-text-white);
   text-align: justify;
-  line-height: 1.5;
+  line-height: 40px;
   margin: 50px 0 20px 0;
 
   ${Mobile(css`

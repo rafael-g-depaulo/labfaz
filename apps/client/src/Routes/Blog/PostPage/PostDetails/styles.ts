@@ -40,16 +40,11 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin: 100px 0 0 0;
-  &:last-child {
-    margin-bottom: 100px;
-  }
+  
   ${Mobile(css`
     flex-direction: column;
     align-items: center;
-    margin: 70px 0 0 0;
-    &:last-child {
-      margin-bottom: 70px;
-    }
+    margin: 60px 0 0 0;   
   `)}
 `;
 
