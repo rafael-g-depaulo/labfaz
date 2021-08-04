@@ -1,15 +1,15 @@
-import React, { FC, lazy, Suspense } from "react";
+import React, { FC, lazy, Suspense } from 'react'
 import {
   BrowserRouter as BaseRouter,
   match,
   Route,
   Switch,
-} from "react-router-dom";
+} from 'react-router-dom'
 
-import LoadingFullPage from "Components/LoadingFullPage";
-import { showAboutUs, showBlog } from "FeatureFlags";
+import LoadingFullPage from 'Components/LoadingFullPage'
+import { showAboutUs, showBlog } from 'FeatureFlags'
 
-const Home = lazy(() => import("./Home"));
+const Home = lazy(() => import('./Home'))
 // const PeopleExample = lazy(() => import("./PeopleExample"))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
 const Blog = lazy(() => import("./Blog"))
@@ -17,13 +17,14 @@ const AboutUs = lazy(() => import("./AboutUs"))
 const NotFound = lazy(() => import("../Pages/NotFound"))
 const Register = lazy(() => import('./SignUp'))
 const Login = lazy(() => import('./Login'))
+const Profile = lazy(() => import('./Profile'))
 
 export type RouterProps<MatchParams = {}> = {
-  history?: History;
-  location?: Location;
-  match: match<MatchParams> | null;
-};
-export type Router<T = {}> = FC<RouterProps<T>>;
+  history?: History
+  location?: Location
+  match: match<MatchParams> | null
+}
+export type Router<T = {}> = FC<RouterProps<T>>
 
 const Routes: FC = () => {
   return (
@@ -39,7 +40,7 @@ const Routes: FC = () => {
         </Route>
 
         {/* home router */}
-        <Route path={["/home"]}>
+        <Route path={['/home']}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <Home match={match} />
@@ -49,7 +50,7 @@ const Routes: FC = () => {
 
         {/* blog router */}
         {showBlog && (
-          <Route path={["/blog"]}>
+          <Route path={['/blog']}>
             {({ match }) => (
               <Suspense fallback={<LoadingFullPage />}>
                 <Blog match={match} />
@@ -78,7 +79,7 @@ const Routes: FC = () => {
 
         {showAboutUs && (
           <Route
-            path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}
+            path={['/aboutus', '/about-us', '/sobre-nos', '/sobre', '/about']}
           >
             {({ match }) => (
               <Suspense fallback={<LoadingFullPage />}>
@@ -93,7 +94,15 @@ const Routes: FC = () => {
             <Suspense fallback={<LoadingFullPage />}>
               <Register match={match} />
             </Suspense>
-          )          }
+          )}
+        </Route>
+        
+        <Route path={['/perfil', '/profile']}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <Profile match={match} />
+            </Suspense>
+          )}
         </Route>
 
         <Route path={["/login", "SignIn"]}>
@@ -113,7 +122,7 @@ const Routes: FC = () => {
 
       </Switch>
     </BaseRouter>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes
