@@ -14,6 +14,7 @@ const Home = lazy(() => import('./Home'))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
 const Blog = lazy(() => import("./Blog"))
 const AboutUs = lazy(() => import("./AboutUs"))
+const Classes = lazy(() => import("./Classes"))
 const NotFound = lazy(() => import("../Pages/NotFound"))
 const Register = lazy(() => import('./SignUp'))
 const Login = lazy(() => import('./Login'))
@@ -59,6 +60,17 @@ const Routes: FC = () => {
             )}
           </Route>
         )}
+
+        {/* classes router */}
+        { showBlog &&
+        <Route path={["/classes"]}>
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <Classes match={match} />
+            </Suspense>
+          )}
+        </Route>
+        }
 
         {/* strapi collection example router */}
         {/* <Route path="/people-example">
