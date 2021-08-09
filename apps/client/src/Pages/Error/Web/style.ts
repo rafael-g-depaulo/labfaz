@@ -15,7 +15,7 @@ export const Content = styled.div`
 `;
 
 export const Rectangle2 = styled(Rectangle)`
-  max-width: 60rem;
+  width: auto;
   display: flex;
   flex-direction: row;
   align-items: center;

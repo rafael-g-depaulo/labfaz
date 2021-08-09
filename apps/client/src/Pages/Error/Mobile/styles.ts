@@ -28,7 +28,7 @@ export const SubtitleText = styled(Text)`
 export const MobileRectangle = styled(Rectangle)`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   padding-left: 6rem;
   height: 215px;

@@ -10,7 +10,12 @@ import {
   Content,
 } from "./style";
 
-export const Web: FC = () => {
+export interface Props {
+  status: number | undefined;
+  message: string | undefined;
+}
+
+export const Web: FC<Props> = ({ status, message }) => {
   return (
     <Wireframe>
       <Content>
@@ -23,8 +28,11 @@ export const Web: FC = () => {
               Parece que algo deu errado
             </TitleText>
             <SubtitleText>
-              Error 401:
-              <br /> Acesso negado devido a credenciais não válidas.
+              Error {status !== undefined ? status : 401}:
+              <br />{" "}
+              {message !== undefined
+                ? message
+                : "Acesso negado devido a credenciais não válidas."}
             </SubtitleText>
           </TextWrapper>
         </Rectangle2>

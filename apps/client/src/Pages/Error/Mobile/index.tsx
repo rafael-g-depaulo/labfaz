@@ -9,15 +9,17 @@ import {
   TitleText,
   SubtitleText,
   MobileRectangle,
-  ImageRectangle
+  ImageRectangle,
 } from "./styles";
 import { SocialNetworksLabfaz } from "Api/SocialNetworksLabfaz";
 
 export interface Props {
   data: SocialNetworksLabfaz;
+  status: number | undefined;
+  message: string | undefined;
 }
 
-export const Mobile: FC<Props> = ({ data }) => {
+export const Mobile: FC<Props> = ({ data, status, message }) => {
   return (
     <ErrorContainer>
       <Header data={data} />
@@ -27,8 +29,11 @@ export const Mobile: FC<Props> = ({ data }) => {
         </ImageRectangle>
         <MobileRectangle invert={true}>
           <SubtitleText level={2}>
-            Error 401:
-            <br /> Acesso negado devido a credenciais não válidas.
+            Error {status !== undefined ? status : 401}:
+            <br />{" "}
+            {message !== undefined
+              ? message
+              : "Acesso negado devido a credenciais não válidas."}
           </SubtitleText>
           <TitleText level={1}>
             Ops...
