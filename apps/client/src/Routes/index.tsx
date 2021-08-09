@@ -15,6 +15,7 @@ const Home = lazy(() => import("./Home"));
 const Blog = lazy(() => import("./Blog"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const NotFound = lazy(() => import("../Pages/NotFound"));
+const Error = lazy(() => import("../Pages/Error"));
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
