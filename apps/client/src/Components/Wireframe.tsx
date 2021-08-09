@@ -15,6 +15,10 @@ const Container = styled(FullPage)`
 
 const Content = styled.div`
   flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export const Wireframe: FC = ({
