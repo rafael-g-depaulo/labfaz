@@ -10,6 +10,10 @@ import {
 import { nanoid } from "nanoid";
 import Technical from "./Technical";
 
+export interface IIdiom {
+  name: string;
+}
+
 @Entity()
 export class Idiom {
   @PrimaryColumn()

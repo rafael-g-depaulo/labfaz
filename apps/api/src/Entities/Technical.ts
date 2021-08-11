@@ -1,4 +1,3 @@
-
 import {
   Column,
   Entity,
@@ -13,7 +12,21 @@ import {
 import { nanoid } from "nanoid";
 import Artist from "./Artist";
 import Area from "./Area";
-import Idiom from "./Idiom"
+import Idiom from "./Idiom";
+
+import { IArea } from "Entities/Area";
+import { IIdiom } from "Entities/Idiom";
+
+export interface ITechnical {
+  formation: Formation;
+  is_drt: boolean;
+  is_ceac: boolean;
+  is_cnpj: boolean;
+  is_affiliated: boolean;
+  want_be_affiliated: boolean;
+  areas: IArea[];
+  IIdiom: IIdiom[];
+}
 
 export enum Formation {
   NO = "não tem",
@@ -22,35 +35,34 @@ export enum Formation {
   HIGH_SCHOOL = "ensino médio",
   TECH = "ensino médio tecnico",
   UNIVERSITY = "curso superior",
-  POS ="pos"
+  POS = "pos",
 }
 
 @Entity()
 export class Technical {
-
   @PrimaryColumn()
   id: string;
 
-  @OneToOne(() => Artist, artist => artist.technical, {
-    cascade: ["insert", "update", "remove"]
+  @OneToOne(() => Artist, (artist) => artist.technical, {
+    cascade: ["insert", "update", "remove"],
   })
   @JoinColumn()
   artist: Artist;
 
-  @OneToMany(() => Area, area => area.technical, {
-    cascade: ["insert", "update"]
+  @OneToMany(() => Area, (area) => area.technical, {
+    cascade: ["insert", "update"],
   })
   area: Area[];
 
-  @OneToMany(() => Idiom, idiom => idiom.technical, {
-    cascade: ["insert", "update"]
+  @OneToMany(() => Idiom, (idiom) => idiom.technical, {
+    cascade: ["insert", "update"],
   })
   idiom: Idiom[];
 
   @Column({
     type: "enum",
     enum: Formation,
-    default: Formation.NO
+    default: Formation.NO,
   })
   formation: Formation;
 
@@ -67,7 +79,7 @@ export class Technical {
   is_affiliated: boolean;
 
   @Column({ default: false })
-  want_be_affiliated: boolean
+  want_be_affiliated: boolean;
 
   @CreateDateColumn()
   created_at: Date;

@@ -17,6 +17,14 @@ export enum Residency {
   OUTSIDE = "fora df"
 }
 
+export interface IAddress {
+  city: string;
+  cep: string;
+  neighbourhood: string;
+  number: number;
+  complement: string;
+  residency: Residency;
+}
 @Entity()
 export class Address {
 

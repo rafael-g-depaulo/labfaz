@@ -10,6 +10,9 @@ import {
 import { nanoid } from "nanoid";
 import Area from "./Area";
 
+export interface ICertificate {
+  name: string;
+}
 @Entity()
 export class Certificate {
   @PrimaryColumn()

@@ -17,14 +17,20 @@ import UserRepository from "Repository/UserRepository";
 import { getApiUrl } from "@labfaz/server-conn-info";
 >>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
 
+<<<<<<< HEAD
 import { Race, ShowName } from "Entities/Artist"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 import { createdSuccessfully, badRequestError } from "Utils/endpointReturns"
+=======
+import { IUser } from "Entities/User";
+import { IArtist } from "Entities/Artist";
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
 
 interface CreateUserInterface {
   UserRepo: UserRepository;
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 interface IArtist {
@@ -91,6 +97,11 @@ interface IUser {
   name: string;
   email: string;
   password: string;
+=======
+interface IReq {
+  user: IUser;
+  artist: IArtist;
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
 }
 
 <<<<<<< HEAD
@@ -114,6 +125,7 @@ export const CreateUser: (
 ) => RouteHandler<Req<RequestBody>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
+<<<<<<< HEAD
   const { artist, email, password } = req.body
 
   if (!artist || !email || !password)
@@ -174,33 +186,84 @@ export const CreateUser: (
     typeof password !== "string"
   )
     return res.status(400).json({ error: "Invalid request body" });
+=======
+  const { user, artist } = req.body as IReq;
 
-  const checkUserExists = await UserRepo.findByEmail(email);
+  if (!user || !artist)
+    return res.status(400).json({ error: "Incomplete request body" });
+
+  if (
+    typeof user.email !== "string" &&
+    typeof user.password !== "string"
+  ) {
+    return res
+      .status(400)
+      .json({ error: "User param request has not valid types!!" });
+  }
+
+  if (
+    typeof artist.cpf !== "string" &&
+    typeof artist.expedition_department !== "string" &&
+    typeof artist.gender !== "string" &&
+    typeof artist.is_trans !== "boolean" &&
+    typeof artist.name !== "string" &&
+    typeof artist.photo_url !== "string" &&
+    typeof artist.rg !== "string" &&
+    typeof artist.social_name !== "string" &&
+    typeof artist.artistic_name !== "string" &&
+    typeof artist.birthday !== "string"
+  ) {
+    return res
+      .status(400)
+      .json({ error: "Artist param request has not valid types!!" });
+  }
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
+
+  const checkUserExists = await UserRepo.findByEmail(user.email);
 
   if (checkUserExists) {
     return res.status(401).json({ error: "Email address already exists." });
   }
 
-  const hashedPassword = await UserRepo.generateHash(password);
+  const hashedPassword = await UserRepo.generateHash(user.password);
 
+  const userData = await UserRepo.create({
+    email: user.email,
+    password: hashedPassword,
+    artist,
+  });
+
+<<<<<<< HEAD
   const user = await UserRepo.create({ name, email, password: hashedPassword });
+=======
+  console.log(userData);
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
 
-  await UserRepo.save(user);
+  await UserRepo.save(userData);
 
   mailer.sendEmail({
     to: {
+<<<<<<< HEAD
       name: name,
 >>>>>>> 1d7cec1 (✨ Add: Show of User in the API)
       email: email,
+=======
+      name: artist.name,
+      email: user.email,
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
     },
     from: from,
     subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <h1> Olá ${artist.name}, Bem Vindo ao Labfaz </h1>
+=======
+        <h1> Olá ${user.email}, Bem Vindo ao Labfaz </h1>
+>>>>>>> 641943b (🚧 WIP: Putting Routes to Artist in API)
         <a href='${getApiUrl()}/sessions/auth/account-verification/${
-      user.id
+      userData.id
     }'> Confirmar Email </a>
 =======
         <h1> Olá ${name}, Bem Vindo ao Labfaz </h1>

@@ -1,4 +1,3 @@
-
 import {
   Column,
   Entity,
@@ -10,9 +9,12 @@ import {
   OneToMany,
 } from "typeorm";
 import { nanoid } from "nanoid";
-import Technical from "./Technical"
+import Technical from "./Technical";
 import Certificate from "./Certificate";
 import Curriculum from "./Curriculum";
+
+import { ICurriculum } from "Entities/Curriculum";
+import { ICertificate } from "Entities/Certificate";
 
 export enum TechFormation {
   AUTO = "autodidata",
@@ -22,29 +24,37 @@ export enum TechFormation {
   UNIVERSITY = "universitaria",
 }
 
+export interface IArea {
+  technical_formation: TechFormation;
+  name: string;
+  describe: string;
+  started_year: string;
+  curriculum: ICurriculum[];
+  certificate: ICertificate[];
+}
+
 @Entity()
 export class Area {
-
   @PrimaryColumn()
   id: string;
 
-  @ManyToOne(() => Technical, technical => technical.area)
+  @ManyToOne(() => Technical, (technical) => technical.area)
   technical: Technical;
-  
-  @OneToMany(() => Certificate, certificate => certificate.area, {
-    cascade: ["insert", "update", "remove"]
+
+  @OneToMany(() => Certificate, (certificate) => certificate.area, {
+    cascade: ["insert", "update", "remove"],
   })
   certificate: Certificate[];
 
-  @OneToMany(() => Curriculum, curriculum => curriculum.area, {
-    cascade: ["insert", "update", "remove"]
+  @OneToMany(() => Curriculum, (curriculum) => curriculum.area, {
+    cascade: ["insert", "update", "remove"],
   })
   curriculum: Curriculum[];
 
   @Column({
     type: "enum",
     enum: TechFormation,
-    default: TechFormation.AUTO
+    default: TechFormation.AUTO,
   })
   technical_formation: TechFormation;
 
@@ -54,7 +64,7 @@ export class Area {
   @Column()
   started_year: string;
 
-  @Column({ type: "text"})
+  @Column({ type: "text" })
   describe: string;
 
   @CreateDateColumn()

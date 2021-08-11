@@ -10,6 +10,10 @@ import {
 import { nanoid } from "nanoid";
 import Area from "./Area";
 
+export interface ICurriculum {
+  url: string;
+}
+
 @Entity()
 export class Curriculum {
   @PrimaryColumn()

@@ -12,7 +12,11 @@ import { nanoid } from "nanoid";
 import User from "./User";
 import Contact from "./Contact";
 import Address from "./Address";
-import Technical from "./Technical"
+import Technical from "./Technical";
+
+import { IAddress } from "Entities/Address";
+import { IContact } from "Entities/Contact";
+import { ITechnical } from "Entities/Technical";
 
 export enum Race {
   NONE = "nenhuma",
@@ -28,12 +32,29 @@ export enum ShowName {
   SOCIAL = "nome social",
   ARTISTIC = "nome artistico",
 }
+export interface IArtist {
+  photo_url: string;
+  name: string;
+  social_name: string;
+  artistic_name: string;
+  gender: string;
+  cpf: string;
+  birthday: Date;
+  rg: string;
+  expedition_department: string;
+  is_trans: boolean;
+  race: Race;
+  show_name: ShowName;
+  address: IAddress;
+  contact: IContact;
+  technical: ITechnical;
+}
 
 @Entity()
 export class Artist {
   @PrimaryColumn()
   id: string;
-
+  
   @OneToOne(() => User, (user) => user.artist, {
     cascade: ["insert","update"],
   })

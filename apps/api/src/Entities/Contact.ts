@@ -11,6 +11,15 @@ import {
 import { nanoid } from "nanoid";
 import Artist from "./Artist";
 
+export interface IContact {
+  whatsapp: string;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  linkedin: string;
+  tiktok: string;
+  youtube: string;
+}
 @Entity()
 export class Contact {
   @PrimaryColumn()
