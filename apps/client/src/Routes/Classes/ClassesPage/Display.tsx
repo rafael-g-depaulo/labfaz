@@ -1,12 +1,18 @@
 import React, { FC } from "react";
 //import Wireframe from "Components/Wireframe";
 import Title from "./Title";
-import { MainContainer } from "./styles";
+import Card from "./Card";
+import { MainContainer, MainContent, TopWrapper } from "./styles";
 
 export const Display: FC = () => {
   return (
     <MainContainer>
-      <Title />
+      <MainContent>
+        <TopWrapper>
+          <Title />
+          <Card />
+        </TopWrapper>
+      </MainContent>
     </MainContainer>
   );
 };
