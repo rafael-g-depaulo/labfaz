@@ -9,7 +9,9 @@
       "module-resolver",
       {
         "root": ["."],
-        "alias": {}
+        "alias": {
+          "^@labfaz/(.+)": "../../libs/\\1/dist"
+        }
       }
     ],
     [
