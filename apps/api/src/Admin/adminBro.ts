@@ -26,7 +26,19 @@ export const getAdminBro = (conn: Connection) => {
 }
 
 const getAdminRouter = (adminBro: AdminBro) => {
-  return AdminBroExpress.buildRouter(adminBro);
+  return AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+    authenticate: (email, password) => {
+      console.log(email, password)
+    },
+    cookiePassword: 'somestrongpassowrd',
+    cookieName: 'nicename'
+  },
+  null,
+  {
+    saveUninitialized: false,
+    resave: true,
+    secret: 'somestrongpassword'
+  });
 }
 
 export default getAdminRouter;
