@@ -32,7 +32,11 @@
     "test:watch": "yarn test --watch",
     "watch": "yarn test:watch",
     "coverage": "yarn test --coverage",
-    "report": "yarn coverage"
+    "report": "yarn coverage",
+    "db:drop": "yarn typeorm schema:drop",
+    "db:build": "yarn typeorm migration:run",
+    "db:build:force": "yarn typeorm schema:sync",
+    "db:reset": "yarn db:drop && yarn db:build"
   },
   "bugs": {
     "url": "https://github.com/rafael-g-depaulo/labfaz/issues"
