@@ -1,7 +1,7 @@
 import { DeepPartial } from "typeorm";
 import { RequestHandler } from "Routes";
 
-import { MailProvider, Addres } from "@labfaz/mail/src";
+import { MailProvider, Addres } from "@labfaz/mail";
 
 import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";

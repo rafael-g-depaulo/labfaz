@@ -1,7 +1,7 @@
 import { DeepPartial } from "typeorm";
 import { RequestHandler } from "Routes";
 
-import { MailProvider, Addres } from "@labfaz/mail/src";
+import { MailProvider, Addres } from "@labfaz/mail";
 
 import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
@@ -28,7 +28,7 @@ interface IArtist {
   show_name: ShowName;
 }
 
-interface IReq {
+export interface IReq {
   artist: IArtist;
   email: string;
   password: string;
@@ -56,7 +56,7 @@ export const CreateUser: (
   const checkUserExists = await UserRepo.findByEmail(email);
 
   if (checkUserExists) {
-    return res.status(401).json({ error: "Email address already exists." });
+    return res.status(400).json({ error: "Email address already exists." });
   }
 
   const hashedPassword = await UserRepo.generateHash(password);

@@ -27,14 +27,19 @@ describe('CreateSession Route Handler', () => {
 
     jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
 
-    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
+    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => Promise.resolve(password))
 
     jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => 
       Promise.resolve(mockTable.find(findUser => findUser.email === email))
     )
+    
+    jest.spyOn(UserRepo, 'findOne').mockImplementation(({ where }: any) =>
+      Promise.resolve(mockTable.find(findUser => findUser.email === where.email))
+    )
 
     jest.spyOn(UserRepo, 'compareHash').mockImplementation((password, user_password) => 
-    password === user_password)
+      Promise.resolve(password === user_password)
+    )
   })
 
   beforeEach(() => {
@@ -46,7 +51,8 @@ describe('CreateSession Route Handler', () => {
   it('should be able to authenticate', async () => {
     UserRepo.create({
       email: 'johndoe@email.com',
-      password: '123456'
+      password: '123456',
+      active: true,
     })
 
     const user = {

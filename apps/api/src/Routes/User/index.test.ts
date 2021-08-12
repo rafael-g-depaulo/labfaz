@@ -6,6 +6,8 @@ import UserRepository from "Repository/UserRepository"
 import UserRouterFactory from "./index"
 import User from "Entities/User"
 import createTestApp from "Utils/createTestApp"
+import { IReq } from "./CreateUser"
+import { Race, ShowName } from "Entities/Artist"
 
 describe('User Router', () => {
 
@@ -55,17 +57,33 @@ describe('User Router', () => {
 
     it('should 201 with a valid User in the request body', async (done) => {
 
-      const userInfo = {
-        name: 'John Doe',
+      const userInfo: IReq = {
+        artist: {
+          artistic_name: "nome",
+          name: "nome",
+          birthday: ""+new Date() as any as Date,
+          cpf: "123",
+          expedition_department: "sdf",
+          gender: "asd",
+          is_trans: true,
+          photo_url: "https://afosgldsfl",
+          race: Race.WHITE,
+          rg: "2342344354365",
+          show_name: ShowName.SOCIAL,
+          social_name: "123213435",
+        },
         email: 'johndoe@email.com',
-        password: '123456'
+        password: '123456',
       }
+
+      const { password: _, ...userWithoutPwd } = userInfo
 
       agent
         .post('/user')
         .send(userInfo)
         .expect('Content-Type', /json/)
-        .expect(201, { user: userInfo })
+        .expect(201)
+        .expect(JSON.stringify({ newUser: userWithoutPwd }))
         .then(() => {
           expect(mockTable.length).toBe(1)
           expect(mockTable[0]).toMatchObject(userInfo)
@@ -98,24 +116,24 @@ describe('User Router', () => {
         .expect('Content-Type', /json/ )
         .expect(400, { error: 'Incomplete request body' })
 
-        Promise.all([ emptyBody, onlyName, onlyEmail, onlyPassword ])
-        .then(() => expect(mockTable).toHaveLength(0))
-        .then(() => done())
+        Promise
+          .all([ emptyBody, onlyName, onlyEmail, onlyPassword ])
+          .then(() => expect(mockTable).toHaveLength(0))
+          .then(() => done())
     })
 
     it('should 400 with already email existing', async (done) => {
 
-      UserRepo.create({
-        name: 'John Doe',
+      mockTable.push({
         email: 'johndoe@email.com',
         password: '123456'
-      })
+      } as User)
 
       agent
         .post('/user')
-        .send({ name: 'Name', email: 'johndoe@email.com', password: '654321' })
+        .send({ name: 'Name', email: 'johndoe@email.com', password: '654321', artist: {} })
         .expect('Content-Type', /json/ )
-        .expect(401, { error: 'Email address already exists.' })
+        .expect(400, { error: 'Email address already exists.' })
         .then(() => {
           expect(mockTable.length).toBe(1)
           done()
@@ -128,7 +146,7 @@ describe('User Router', () => {
         .post('/user')
         .send({ name: 123, email: 'johndoe@email.com', password: true })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Invalid request body' })
+        .expect(400, { error: 'Incomplete request body' })
         .then(() => {
           expect(mockTable.length).toBe(0)
           done()

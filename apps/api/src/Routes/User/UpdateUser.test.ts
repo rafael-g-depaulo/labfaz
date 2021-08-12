@@ -27,7 +27,7 @@ describe('UpdateUser Route Handler', () => {
 
     jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
 
-    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
+    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => Promise.resolve(password))
     
     jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => 
       Promise.resolve(mockTable.find(findUser => findUser.email === email))
@@ -38,7 +38,7 @@ describe('UpdateUser Route Handler', () => {
     )
 
     jest.spyOn(UserRepo, 'compareHash').mockImplementation((old_password, user_password) => 
-      old_password === user_password
+      Promise.resolve(old_password === user_password)
     )
   })
 
@@ -53,7 +53,6 @@ describe('UpdateUser Route Handler', () => {
 
     const user = {
       name: 'John Doe',
-      email: 'johndoe@email.com',
       id: '1'
     }
 
@@ -61,7 +60,6 @@ describe('UpdateUser Route Handler', () => {
 
     const userUpdated = {
       name: 'John Wick',
-      email: 'johnwick@email.com',
       id: '1'
     }
 
@@ -71,9 +69,7 @@ describe('UpdateUser Route Handler', () => {
     await mockRouteHandler(updateUserRoute, request, response )
 
     expect(UserRepo.save).toHaveBeenCalledTimes(1)
-    expect(mockTable[0].name).toBe('John Wick')
-    expect(mockTable[0].email).toBe('johnwick@email.com')
-
+    expect(UserRepo.save).toHaveBeenCalledWith(userUpdated)
   })
 
   it('should be able to update the user password', async () => {
@@ -186,39 +182,6 @@ describe('UpdateUser Route Handler', () => {
     expectStatus(401, expect, response)
     expect(UserRepo.save).toHaveBeenCalledTimes(0)
   })
-
-  it('should not be able to update email with the same email from another', async () => {
-
-    const user = {
-      name: 'John Doe',
-      email: 'Johndoe@email.com',
-      id: '1'
-    }
-
-    const user_2 = {
-      name: 'test',
-      email: 'test@email.com',
-      id: '2'
-    }
-
-    const updateUser_2 = {
-      name: 'John Doe',
-      email: 'Johndoe@email.com',
-      id: '2'
-    }
-    
-    UserRepo.create(user)
-    UserRepo.create(user_2)
-
-    const response = createResponseMock()
-    const request = createRequestMock(updateUser_2, {}, { id: '2' })
-
-    await mockRouteHandler(updateUserRoute, request, response)
-
-    expectStatus(401, expect, response)
-    expect(UserRepo.save).toHaveBeenCalledTimes(0)
-    expect(mockTable.length).toBe(2)
-  }) 
   
   it('should not be able to update profile unlogged on aplication', async () => {
     const user = {

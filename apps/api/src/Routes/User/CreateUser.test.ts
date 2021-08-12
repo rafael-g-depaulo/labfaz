@@ -49,7 +49,7 @@ describe("CreateUser Route Handler", () => {
 
   it("it should be able to create a new user in the database table", async () => {
     const userInfo = {
-      name: "john doe",
+      artist: { name: "john doe" },
       email: "johndoe@hotmail.com",
       password: "123456",
     };
@@ -59,10 +59,10 @@ describe("CreateUser Route Handler", () => {
 
     await mockRouteHandler(createUserRoute, request, response);
 
+    expectStatus(201, expect, response);
     expect(UserRepo.create).toHaveBeenCalledWith(userInfo);
     expect(mockTable.length).toBe(1);
     expect(mockTable[0]).toMatchObject(userInfo);
-    expectStatus(201, expect, response);
   });
 
   it("should not be able to create a new user in the database table missing some field in request body", async () => {
@@ -99,7 +99,7 @@ describe("CreateUser Route Handler", () => {
     await mockRouteHandler(createUserRoute, request, response);
 
     expect(mockTable.length).toBe(1);
-    expectStatus(401, expect, response);
+    expectStatus(400, expect, response);
   });
 
   it("should not be able to create a new user in the database table with wrong field types", async () => {

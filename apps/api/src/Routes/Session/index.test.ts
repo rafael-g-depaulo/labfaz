@@ -30,7 +30,7 @@ describe('Session Router', () => {
 
     jest.spyOn(UserRepo, 'save').mockReturnValue(Promise.resolve({} as User))
 
-    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => password)
+    jest.spyOn(UserRepo, 'generateHash').mockImplementation(password => Promise.resolve(password))
     
     jest.spyOn(UserRepo, 'findByEmail').mockImplementation(email => 
       Promise.resolve(mockTable.find(findUser => findUser.email === email))
@@ -39,9 +39,13 @@ describe('Session Router', () => {
     jest.spyOn(UserRepo, 'findById').mockImplementation(id => 
       Promise.resolve(mockTable.find(findUser => findUser.id === id))
     )
+    
+    jest.spyOn(UserRepo, 'findOne').mockImplementation(() => 
+      Promise.resolve(mockTable[0])
+    )
 
     jest.spyOn(UserRepo, 'compareHash').mockImplementation((old_password, user_password) => 
-      old_password === user_password
+      Promise.resolve(old_password === user_password)
     )
   })
 
@@ -52,15 +56,14 @@ describe('Session Router', () => {
   })
 
   describe('Create Session', () => {
-
     it('should 200 with a valid credentials in the request body', async (done) => {
-
-      UserRepo.create({
+      mockTable.push({
         name: 'John Doe',
         email: 'johndoe@email.com',
         password: '123456',
+        active: true,
         id: '1'
-      })
+      } as User)
 
       const userInfo = {
         email: 'johndoe@email.com',
@@ -97,9 +100,10 @@ describe('Session Router', () => {
         .expect('Content-Type', /json/ )
         .expect(400, { error: 'Incomplete request body' })
 
-        Promise.all([ emptyBody, onlyEmail, onlyPassword ])
-        .then(() => expect(mockTable).toHaveLength(0))
-        .then(() => done())
+        Promise
+          .all([ emptyBody, onlyEmail, onlyPassword ])
+          .then(() => expect(mockTable).toHaveLength(0))
+          .then(() => done())
     })
 
     it('should 400 with a request body containing invalid information', async (done) => {

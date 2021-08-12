@@ -43,6 +43,7 @@ export const CreateSession: (
   }
 
   if (!userDB.active) {
+    console.log("no user in DB")
     return res.status(401).json({ error: "Email confimation needed" });
   }
 
