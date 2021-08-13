@@ -15,7 +15,7 @@ export const Container = styled.div<VisibilityProps>`
   max-width: 92%;
   max-height: inherit;
   min-height: 118px;
-  min-width: 779px;
+  min-width: 92%;
   align-self: center;
   padding: 0 1.5em;
   align-items: ${props => props.display ? "" : "center"};
@@ -45,6 +45,10 @@ export const Haeder = styled.div<VisibilityProps>`
   margin: 0;
   margin-top: ${props => props.display ? '2em' : '0'};
   margin-bottom: ${props => props.display ? '5em' : '0'};
+
+  .visibility {
+    display: ${props => props.display ? "block" : "none"}
+  }
 
   ${props => props.display ?
     MobileSmall(css`
@@ -77,31 +81,6 @@ export const Button =  styled.button`
   }
 `
 
-export const Title = styled.p<VisibilityProps>`
-  font-size: var(--font-size-title-xlarge);
-  font-weight: 700;
-  max-width: 254px;
-  min-width: fit-content;
-  margin: 0;
-  color: rgba(255, 255, 255, 1);
-  padding-left: 3em;
-
-
-  ${DesktopSmall(css`
-    font-size: var(--font-size-title-medium);
-  `)}
-
-  ${props => props.display ?
-      MobileSmall(css`
-        padding-left: 0rem;
-        font-size: var(--font-size-title-medium);
-      `)
-      :
-      MobileSmall(css`
-      font-size: var(--font-size-title-medium);
-    `)
-  }
-`
 
 export const Description =  styled.p<VisibilityProps>`
   display: ${props => props.display ? 'block' : 'none'};
@@ -110,6 +89,7 @@ export const Description =  styled.p<VisibilityProps>`
   font-size: var(--font-size-subtitle);
   margin: 0;
   padding-left: 10em;
+  color: white;
 
 
   ${DesktopSmall(css`

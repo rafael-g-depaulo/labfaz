@@ -64,10 +64,10 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: content-box;
-  max-height: 362px;
-  max-width: 229px;
-  min-width: 229px;
-  min-height: 362px;
+  max-height: 460px;
+  max-width: 280px;
+  min-width: 280px;
+  min-height: 460px;
   align-items: center;
   background-color: var(--background-black);
 
@@ -248,7 +248,7 @@ export const Circle = styled.div`
   position: absolute;
 
   top: 24px;
-  right: 55px;
+  right: 83px;
 
 
 
