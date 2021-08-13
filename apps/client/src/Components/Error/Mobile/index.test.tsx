@@ -26,7 +26,7 @@ describe("Check if content of error page", () => {
 
   it("renders error image", () => {
     const images = getAllByRole("img");
-    expect(images[1]).toHaveAttribute("alt", "error");
+    expect(images[0]).toHaveAttribute("alt", "error");
   });
 
   it("renders generic text", () => {
