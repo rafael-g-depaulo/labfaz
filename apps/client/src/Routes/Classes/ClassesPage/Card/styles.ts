@@ -2,7 +2,14 @@ import styled from "styled-components";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
 
-export const Container = styled.div`
+interface GridProps {
+  maxWidth: string;
+  minWidth: string;
+  maxHeight: string;
+  minHeight: string;
+}
+
+export const Container = styled.div<GridProps>`
   display: grid;
   grid-template-columns: minmax(5%, auto) minmax(300px, 760px) minmax(5%, auto);
   grid-template-rows: minmax(300px, 360px) auto;

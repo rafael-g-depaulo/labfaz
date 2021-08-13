@@ -21,12 +21,15 @@ export const MainContent = styled.div`
   justify-content: space-between;
 `;
 
+// styles for first section
+
 export const TopWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 130px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -58,4 +61,14 @@ export const TitleButton = styled(InternalLinkButton)`
   font-size: var(--font-size-medium);
   text-transform: uppercase;
   margin-top: 35px;
+`;
+
+// styles for second section
+
+export const ClassesWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
 `;

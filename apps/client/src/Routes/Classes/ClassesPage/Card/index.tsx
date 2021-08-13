@@ -9,19 +9,22 @@ import {
   CardDate,
 } from "./styles";
 
-export const Card: FC = () => {
+export interface Props {
+  title: string;
+  date: string;
+  description: string;
+}
+
+export const Card: FC<Props> = ({ title, date, description }) => {
   return (
     <Container>
       <Image />
       <TextWrapper>
         <TopWrapper>
-          <CardTitle>O que é audio visual?</CardTitle>
-          <CardDate>22/12/2021</CardDate>
+          <CardTitle>{title}</CardTitle>
+          <CardDate>{date}</CardDate>
         </TopWrapper>
-        <CardText>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Aenean massa.{" "}
-        </CardText>
+        <CardText>{description}</CardText>
       </TextWrapper>
     </Container>
   );
