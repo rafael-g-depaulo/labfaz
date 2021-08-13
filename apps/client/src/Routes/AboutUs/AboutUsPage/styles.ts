@@ -35,6 +35,7 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   flex-direction: column;
   align-self: center;
+  margin-bottom: 4em;
 
   background-color: var(--background-black);
   color: var(--color-text-white);

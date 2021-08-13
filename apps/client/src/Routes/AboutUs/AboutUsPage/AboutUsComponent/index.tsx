@@ -11,7 +11,7 @@ export interface AboutProps {
 const About: FC<AboutProps> = ({data}) => {
 
   return (
-    <Wrapper marginBottom="1em">
+    <Wrapper>
       {
         data.map((item) => {
           return (

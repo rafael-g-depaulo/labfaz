@@ -16,16 +16,16 @@ export const Drawer: FC<DrawerProps> = ({ children, description, teamName }) => 
 
 
   return(
-    <Container display={isVisible}>
+    <Container isOpen={isVisible}>
       <Button onClick={() => setIsVisible(!isVisible)}>
         {/* Change color and size later */}
         {isVisible ? <FaAngleUp size={35} color="white" /> : <FaAngleDown size={35} color="white" />}
       </Button>
-      <Haeder display={isVisible}>
+      <Haeder isOpen={isVisible}>
         <Title level={1}> { teamName } </Title>
-        <Description display={isVisible}> { description } </Description>
+        <Description isOpen={isVisible}> { description } </Description>
       </Haeder>
-      <ContentDiv display={isVisible}>
+      <ContentDiv isOpen={isVisible}>
         {children}
       </ContentDiv>
     </Container>

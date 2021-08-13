@@ -8,14 +8,14 @@ interface ImageCircleProps {
 
 export const StaffGrid = styled.div`
   display: grid;
-  grid-gap: 7vw;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-gap: 8vw;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
   
   align-items: center;
   align-self: center;
   justify-content: center;
 
-  max-width: 85vw;
+  max-width: 90vw;
 
   color: var(--color-text-beige);
 
@@ -127,12 +127,13 @@ export const CardThumb = styled.div`
 
 
   ${Mobile(css`
-    max-height: 100px;
+    max-height: 110px;
     max-width: 80%;
 
-    p{
-      font-size: var(--font-size-short);
+    p {
+      font-size: var(--font-size-small);
     }
+
   `)}
 
   ${DesktopSmall(css`
@@ -178,7 +179,7 @@ export const CardBody = styled.div`
     padding-top: 1.3em;
 
     p {
-      font-size: var(--font-size-short);
+      font-size: var(--font-size-small);
       line-height: 16px;
       padding-top: 2.5%;
     }
