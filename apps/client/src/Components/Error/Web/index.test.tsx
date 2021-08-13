@@ -2,30 +2,16 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import render from "Utils/render";
-import Mobile from "./";
-import { SocialNetworksLabfaz } from "Api/SocialNetworksLabfaz";
+import Web from ".";
 
 const exampleStatus: number = 500;
 const exampleMessage: string = "Internal server error";
-const mockedData: SocialNetworksLabfaz = {
-  facebook: "https://www.facebook.com",
-  twitter: "https://www.twitter.com",
-  googlePlus: "https://www.google.com",
-  linkedin: "https://linkedin.com",
-  instagram: "https://instagram.com",
-  phone: "9999999",
-  email: "teste@teste.com",
-};
 
-it("renders mobile error component", () => {
+it("renders web error component", () => {
   expect(() =>
     render(
       <BrowserRouter>
-        <Mobile
-          data={mockedData}
-          status={exampleStatus}
-          message={exampleMessage}
-        />
+        <Web status={exampleStatus} message={exampleMessage} />
       </BrowserRouter>
     )
   ).not.toThrow();
@@ -34,11 +20,7 @@ it("renders mobile error component", () => {
 describe("Check if content of error page", () => {
   const { getByText, getAllByRole } = render(
     <BrowserRouter>
-      <Mobile
-        data={mockedData}
-        status={exampleStatus}
-        message={exampleMessage}
-      />
+      <Web status={exampleStatus} message={exampleMessage} />
     </BrowserRouter>
   );
 

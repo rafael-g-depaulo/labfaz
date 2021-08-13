@@ -2,16 +2,16 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import render from "Utils/render";
-import Web from "./";
+import Mobile from ".";
 
 const exampleStatus: number = 500;
 const exampleMessage: string = "Internal server error";
 
-it("renders web error component", () => {
+it("renders mobile error component", () => {
   expect(() =>
     render(
       <BrowserRouter>
-        <Web status={exampleStatus} message={exampleMessage} />
+        <Mobile status={exampleStatus} message={exampleMessage} />
       </BrowserRouter>
     )
   ).not.toThrow();
@@ -20,7 +20,7 @@ it("renders web error component", () => {
 describe("Check if content of error page", () => {
   const { getByText, getAllByRole } = render(
     <BrowserRouter>
-      <Web status={exampleStatus} message={exampleMessage} />
+      <Mobile status={exampleStatus} message={exampleMessage} />
     </BrowserRouter>
   );
 

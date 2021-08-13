@@ -4,14 +4,14 @@ import { Text, Rectangle } from "Pages/Construction/Mobile/style";
 import { Container } from "Pages/Construction/Mobile/style";
 
 export const ErrorContainer = styled(Container)`
+  min-height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 28px;
+  justify-content: center;
+  padding: 28px 0;
 `;
 
 export const TitleText = styled(Text)`
-  //text-transform: uppercase;
   font-size: var(--font-size-title-short);
   line-height: 1.2;
   margin: 25px 0;
@@ -36,4 +36,11 @@ export const MobileRectangle = styled(Rectangle)`
 
 export const ImageRectangle = styled(Rectangle)`
   height: 215px;
+`;
+
+export const TopWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
