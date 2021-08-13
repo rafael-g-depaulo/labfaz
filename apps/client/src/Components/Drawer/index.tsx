@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react'
 import { FaAngleUp, FaAngleDown } from "react-icons/fa"
 
-import { Container, Haeder, Button, Title, Description, ContentDiv } from "./styles"
+import { Title } from 'Components/Typography/Title'
+
+import { Container, Haeder, Button, Description, ContentDiv } from "./styles"
 
 interface DrawerProps {
   description?: string,
@@ -14,13 +16,13 @@ export const Drawer: FC<DrawerProps> = ({ children, description, teamName }) => 
 
 
   return(
-    <Container>
+    <Container display={isVisible}>
+      <Button onClick={() => setIsVisible(!isVisible)}>
+        {/* Change color and size later */}
+        {isVisible ? <FaAngleUp size={35} color="white" /> : <FaAngleDown size={35} color="white" />}
+      </Button>
       <Haeder display={isVisible}>
-        <Title display={isVisible}> { teamName } </Title>
-        <Button onClick={() => setIsVisible(!isVisible)}>
-          {/* Change color and size later */}
-          {isVisible ? <FaAngleUp size={35} /> : <FaAngleDown size={35}/>}
-        </Button>
+        <Title level={1}> { teamName } </Title>
         <Description display={isVisible}> { description } </Description>
       </Haeder>
       <ContentDiv display={isVisible}>

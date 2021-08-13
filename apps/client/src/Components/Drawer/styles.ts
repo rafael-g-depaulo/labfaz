@@ -7,20 +7,24 @@ interface VisibilityProps {
 }
 
 
-export const Container = styled.div`
+export const Container = styled.div<VisibilityProps>`
   display: flex;
-  flex-direction: column;
-  border: 1px solid #000000;
+  flex-direction: ${props => props.display ? "column" : "row"};
+  border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 8px;
   max-width: 92%;
-  max-height: 779px;
+  max-height: inherit;
   min-height: 118px;
+  min-width: 779px;
   align-self: center;
   padding: 0 1.5em;
-  justify-content: center;
+  align-items: ${props => props.display ? "" : "center"};
+  justify-content: start;
 
-  :nth-child(2) {
-    align-content: center;
+  h1 {
+    color: white;
+    padding-left: 3em;
+    min-width: fit-content;
   }
 
   ${DesktopSmall(css`
@@ -53,9 +57,12 @@ export const Button =  styled.button`
   font-size: 24px;
   background: transparent;
   border: none;
-  position: fixed;
+  position: relative;
   padding: 0;
   z-index: 9999;
+  display: flex;
+  align-self: baseline;
+  
   ${DesktopLarge(css`
   top: calc((118px - 35px)/2);
   `)}
@@ -76,7 +83,7 @@ export const Title = styled.p<VisibilityProps>`
   max-width: 254px;
   min-width: fit-content;
   margin: 0;
-
+  color: rgba(255, 255, 255, 1);
   padding-left: 3em;
 
 
