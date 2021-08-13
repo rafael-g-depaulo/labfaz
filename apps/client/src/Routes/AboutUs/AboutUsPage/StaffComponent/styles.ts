@@ -77,24 +77,24 @@ export const Card = styled.div`
   border-radius: 14.3px;
 
   ${MobileSmall(css`
-    max-width: 150px;
-    max-height: 240px;
-    min-width: 150px;
-    min-height: 240px;
+    max-width: 260px;
+    max-height: 247px;
+    min-width: 260px;
+    min-height: 247px;
     `)}
 
   ${MobileLarge(css`
-    max-width: 150px;
-    max-height: 240px;
-    min-width: 150px;
-    min-height: 240px;
+    max-width: 260px;
+    max-height: 247px;
+    min-width: 260px;
+    min-height: 247px;
   `)}
 
   ${Mobile(css`
-    max-width: 150px;
-    max-height: 240px;
-    min-width: 150px;
-    min-height: 240px;
+    max-width: 260px;
+    max-height: 247px;
+    min-width: 260px;
+    min-height: 247px;
   `)}
 
   ${DesktopSmall(css`
@@ -258,7 +258,7 @@ export const Circle = styled.div`
     min-width: 91px;
     min-height: 91px;    
     top: 6px;
-    right: 33px;
+    right: 90px;
   `)}
 
   ${DesktopSmall(css`
