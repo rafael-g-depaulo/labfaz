@@ -18,8 +18,7 @@ export const Container = styled.div`
   `)}
   .ContainerContent {
     display: flex;
-    justify-content: space-around;
-    //height: auto;
+    justify-content: space-around;    
     gap: 3rem;
     margin: 80px 0 0 0;
     ${Mobile(css`
@@ -82,9 +81,6 @@ export const Subtitle = styled.p`
 `;
 
 export const YoutubePlayerResponsive = styled.div`
-  //display: flex;
-  //padding-top: 2rem;
-  // review units later
   margin: 0;
   padding: 0;
   div {

@@ -14,12 +14,14 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding: 5%;
+  margin-bottom: 70px;
 
   ${Mobile(css`
     flex-direction: column;
     align-items: center;
     height: auto;
     padding: 60px 25px;
+    margin-bottom: 35px;
   `)}
 
   ${DesktopSmall(css`
