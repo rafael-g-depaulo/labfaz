@@ -6,15 +6,15 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Loading from "Components/Loading"
-import { showAboutUs, showBlog } from "FeatureFlags"
+import Loading from "Components/Loading";
+import { showAboutUs, showBlog } from "FeatureFlags";
 
-// const Home = lazy(() => import("./Home"))
+const Home = lazy(() => import("./Home"));
 // const PeopleExample = lazy(() => import("./PeopleExample"))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
-const Blog = lazy(() => import("./Blog"))
-const AboutUs = lazy(() => import("./AboutUs"))
-const NotFound = lazy(() => import("../Pages/NotFound"))
+const Blog = lazy(() => import("./Blog"));
+const AboutUs = lazy(() => import("./AboutUs"));
+const NotFound = lazy(() => import("../Pages/NotFound"));
 
 export type RouterProps<MatchParams = {}> = {
   history?: History;
@@ -29,28 +29,32 @@ const Routes: FC = () => {
       <Switch>
         {/* default route */}
         <Route exact path="/">
-          <Suspense fallback={<Loading />}>
-            <NotFound />
-          </Suspense>
-        </Route>
-        
-        {/* home router */}
-        <Route path={["/home"]}>
-          <Suspense fallback={<Loading />}>
-            <NotFound />
-          </Suspense>
-        </Route>
-
-        {/* blog router */}
-        { showBlog &&
-        <Route path={["/blog"]}>
           {({ match }) => (
             <Suspense fallback={<Loading />}>
-              <Blog match={match} />
+              <Home match={match} />
             </Suspense>
           )}
         </Route>
-        }
+
+        {/* home router */}
+        <Route path={["/home"]}>
+          {({ match }) => (
+            <Suspense fallback={<Loading />}>
+              <Home match={match} />
+            </Suspense>
+          )}
+        </Route>
+
+        {/* blog router */}
+        {showBlog && (
+          <Route path={["/blog"]}>
+            {({ match }) => (
+              <Suspense fallback={<Loading />}>
+                <Blog match={match} />
+              </Suspense>
+            )}
+          </Route>
+        )}
 
         {/* strapi collection example router */}
         {/* <Route path="/people-example">
@@ -70,17 +74,17 @@ const Routes: FC = () => {
           )}
         </Route> */}
 
-        { showAboutUs &&
-        <Route
-          path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}
-        >
-        {({ match }) => (
-          <Suspense fallback={<Loading />}>
-            <AboutUs match={match} />
-          </Suspense>
+        {showAboutUs && (
+          <Route
+            path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}
+          >
+            {({ match }) => (
+              <Suspense fallback={<Loading />}>
+                <AboutUs match={match} />
+              </Suspense>
+            )}
+          </Route>
         )}
-        </Route>
-        }
 
         {/* default route (404) */}
         <Route>
@@ -88,7 +92,6 @@ const Routes: FC = () => {
             <NotFound />
           </Suspense>
         </Route>
-
       </Switch>
     </BaseRouter>
   );

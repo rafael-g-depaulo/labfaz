@@ -1,24 +1,41 @@
-import { HelloExample } from "Api/HelloApiExample"
-import React, { FC } from "react"
-import CoursesPresentation from "Components/CoursesPresentation"
+import React, { FC } from "react";
+
+import Wireframe from "Components/Wireframe";
+import Partners from "Components/Partners";
+import Presentation from "Components/Presentation";
+import CoursesPresentation from "Components/CoursesPresentation";
+import Banner from "Components/Banner";
+
+import useMobile from "Utils/useMobile";
+
+import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
 
 export interface DisplayProps {
-  data: HelloExample
+  data: HomepageBannerInfo;
 }
 
-export const Display: FC<DisplayProps> = ({
-  data,
-}) => {
+export const Display: FC<DisplayProps> = ({ data }) => {
+  const mobile = useMobile();
+
   return (
-    <div>
-      <p>home page</p>
+    <Wireframe>
+      {mobile ? (
+        <>
+        <Banner title={data.title} subtitle={data.subtitle} />
+          <Presentation />
+          <Partners />
+          <CoursesPresentation />
+        </>
+      ) : (
+        <>
+          <Banner title={data.title} subtitle={data.subtitle} />
+          <Partners />
+          <Presentation />
+          <CoursesPresentation />
+        </>
+      )}
+    </Wireframe>
+  );
+};
 
-      <p>the following message was recieved from the main server api:</p>
-      <pre data-testid="data-json">{JSON.stringify(data!, null, 2)}</pre>
-
-      <CoursesPresentation />
-    </div>
-  )
-}
-
-export default Display
+export default Display;
