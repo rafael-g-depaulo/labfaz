@@ -49,7 +49,7 @@
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
     # feature flags
     REACT_APP_SHOW_ROUTES="true"
-    REACT_APP_SHOW_HOME="false"
+    REACT_APP_SHOW_HOME="true"
     REACT_APP_SHOW_BLOG="true"
     REACT_APP_SHOW_ABOUT_US="true"
 
