@@ -17,7 +17,6 @@ export const Container = styled.div<VisibilityProps>`
   min-height: 118px;
   min-width: 92%;
   align-self: center;
-  padding: 0 1.5em;
   align-items: ${props => props.isOpen ? "" : "center"};
   justify-content: start;
 
