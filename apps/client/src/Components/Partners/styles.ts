@@ -5,14 +5,17 @@ import {
 } from "Utils/breakpoints";
 
 export const Container = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   height: 9rem;
   justify-content: space-between;
   align-items: center;
+  padding: 0 7% 0 7%;
 
   ${DesktopSmall(css`
-    margin: 0 0 20px 0;
+    margin: 50px 0 20px 0;
+    padding: 0 5%;
   `)}
 
   ${Mobile(css`
@@ -35,7 +38,7 @@ export const Title = styled.h1`
 
 export const Logos = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 5rem;
   width: 100%;

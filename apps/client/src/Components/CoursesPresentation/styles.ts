@@ -8,12 +8,12 @@ import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 export const Container = styled.div`
   background-color: var(--background-black);
   width: 100%;
-  height: 970px;
+  height: 1020px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   align-items: flex-start;
-  padding: 5%;
+  padding: 2% 7% 5% 7%;
   margin-bottom: 70px;
 
   ${Mobile(css`
@@ -26,6 +26,7 @@ export const Container = styled.div`
 
   ${DesktopSmall(css`
     height: 900px;
+    padding: 5%;
   `)}
 `;
 
@@ -48,7 +49,7 @@ export const TextContainer = styled.div`
 export const CoursesTitle = styled(Title)`
   width: 100%;
   font-size: var(--font-size-title);
-  color: var(--color-text-beige);
+  color: var(--color-text-white);
   font-weight: bold;
   text-transform: uppercase;
   text-align: left;
@@ -68,6 +69,7 @@ export const CoursesText = styled(Text)`
 
   ${Mobile(css`
     font-size: var(--font-size-title-short);
+    margin-bottom: 15px;
   `)}
 
   ${DesktopSmall(css`

@@ -4,7 +4,7 @@ import {
   Mobile,
   MobileSmall,
   Desktop,
-  DesktopLarge
+  DesktopLarge,
 } from "Utils/breakpoints";
 
 export const Container = styled.div`
@@ -12,13 +12,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: var(--background-black);
-  padding: 5%;
+  padding: 7%;
+
   ${Mobile(css`
     padding: 60px 25px 25px 25px;
   `)}
   .ContainerContent {
     display: flex;
-    justify-content: space-around;    
+    justify-content: space-around;
     gap: 3rem;
     margin: 80px 0 0 0;
     ${Mobile(css`
@@ -29,6 +30,10 @@ export const Container = styled.div`
       gap: 50px;
     `)}
   }
+
+  ${DesktopSmall(css`
+    padding: 5%;
+  `)}
 `;
 
 export const Line = styled.div`
@@ -48,7 +53,7 @@ export const TextBlock = styled.div`
   align-items: space-between;
 
   ${Desktop(css`
-    margin: 0 0 25px 0;
+    margin: 0 0 15px 0;
   `)}
 `;
 
@@ -71,7 +76,7 @@ export const Subtitle = styled.p`
   text-align: justify;
   color: var(--color-text-white);
 
-  ${MobileSmall(css`
+  ${Mobile(css`
     font-size: var(--font-size-title-short);
   `)}
 

@@ -77,7 +77,7 @@ const Card: FC<DisplayProps> = ({ courses, isMobile }): JSX.Element => {
                         colors={
                           item.finished
                             ? "var(--background-pink)"
-                            : "var(--background-light-pink)"
+                            : "var(--background-yellow)"
                         }
                         border={
                           item.finished
