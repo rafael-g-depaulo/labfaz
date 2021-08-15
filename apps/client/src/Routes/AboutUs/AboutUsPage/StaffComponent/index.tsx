@@ -13,8 +13,10 @@ interface StaffProps {
 }
 
 export const Staff: FC<StaffProps> = ( { data } ) => {
+  
 
-  const { team } =  data
+
+  const { team } = data
 
   return (
     <Wrapper marginTop="70px">
@@ -25,7 +27,7 @@ export const Staff: FC<StaffProps> = ( { data } ) => {
       {
         team.map((team) => {
           return(
-            <Drawer teamName={team.name} description={team.description  }>
+            <Drawer teamName={team.name} description={team.description} key={team.id}>
               <StaffGrid>
                 {team.staff.map((staff) => {
                   return(

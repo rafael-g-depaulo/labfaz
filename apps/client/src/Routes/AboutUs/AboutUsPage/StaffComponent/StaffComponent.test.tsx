@@ -3,8 +3,10 @@ import render from 'Utils/render'
 import { BrowserRouter } from 'react-router-dom'
 
 import Staff from '.'
-import { StaffData, StaffObject } from 'Api/AboutUs'
+import { TeamsData, StaffObject, Team } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
+
+import { screen, logRoles } from "@testing-library/dom"
 
 const image = mockImage({
   url: "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
@@ -29,32 +31,39 @@ const StaffInfo2: StaffObject = {
   image: image
 }
 
-const Staffs: StaffData = {
-  staff: [StaffInfo, StaffInfo2]
+const team: Team = {
+  name: "Coordenação",
+  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
+  staff: [StaffInfo, StaffInfo, StaffInfo2, StaffInfo2]
+}
+
+const teams: TeamsData = {
+  team: [team, team]
 }
 
 describe('Staffs component',  () => {
-  const mockedData: StaffData = Staffs
+  const mockedData = teams
 
   it('Should render without error', () => {
   
-    expect(() => render(<BrowserRouter><Staff data={mockedData}/></BrowserRouter>)).not.toThrow()
+    expect(() => render(<BrowserRouter><Staff data={teams}  /></BrowserRouter>)).not.toThrow()
   })
 
-  it('Should render 2 cards', () => {
+  it('Should render 2 drawers', () => {
     const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
 
-    const cards = component.getAllByRole('generic', { hidden: true })
 
-    expect(cards[2].children.length).toBe(2)
+    const cards = component.getAllByRole('heading', { level: 1 })
+
+    expect(cards[2].innerHTML).toBe(" Coordenação ")
   })
 
   it('Should have a header with the staff title',  () => {
     const component = render(<BrowserRouter><Staff data={mockedData} /></BrowserRouter>)
 
-    const header = component.getByRole('heading', { level: 1 })
+    const header = component.getAllByRole('heading', { level: 1 })
 
-    expect(header).toHaveTextContent('STAFF')
+    expect(header[0]).toHaveTextContent('STAFF')
   })
 
   it('Should have a subtitle header',  () => {

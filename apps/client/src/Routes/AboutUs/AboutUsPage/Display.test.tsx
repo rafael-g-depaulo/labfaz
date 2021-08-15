@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import render from "Utils/render"
 import Display from "./Display"
-import { AboutUsData, StaffData, StaffObject } from 'Api/AboutUs'
+import { AboutUsData, TeamsData, Team, StaffObject } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
 
 
@@ -48,24 +48,31 @@ describe("About us page", () => {
     image: image
   }
 
-  const mockedStaffData: StaffData = {
-    staff: Array.from({ length: 40 }, (_, i) => ({ ...StaffInfo, id: i }))
-  }
+const team: Team = {
+  id: 2,
+  name: "Some name",
+  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
+  staff: Array.from({ length: 40 }, () => StaffInfo)
+}
+
+const mockedTeamData: TeamsData = {
+  team: [team, team]
+}
 
   it("renders without exploding", () => {
 
-    expect(() => render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)).not.toThrow()
+    expect(() => render(<BrowserRouter><Display about_data={mockedData} team={mockedTeamData} /></BrowserRouter>)).not.toThrow()
   })
   
   it("Renders banner component", () => {
-    const Page = render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)
+    const Page = render(<BrowserRouter><Display about_data={mockedData} team={mockedTeamData} /></BrowserRouter>)
     const banner = Page.getAllByRole('heading')
 
     expect( banner[1] ).toHaveTextContent("Welcome to Labfaz")
   })
 
   it("displays the data message", () => {
-    const { getAllByRole } = render(<BrowserRouter><Display about_data={mockedData} staff={mockedStaffData} /></BrowserRouter>)
+    const { getAllByRole } = render(<BrowserRouter><Display about_data={mockedData} team={mockedTeamData} /></BrowserRouter>)
 
     expect(getAllByRole("heading", {level: 1})[0]).toHaveTextContent("Quem somos")
     expect(getAllByRole("heading", {level: 2})[0]).toHaveTextContent("Welcome to Labfaz")

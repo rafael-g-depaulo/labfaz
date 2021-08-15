@@ -23,7 +23,7 @@ const Staffimage = mockImage({
 })
 
 const StaffInfo: StaffObject = {
-  id: 54,
+  id: 5,
   name: "Jhon Doe",
   tag: "Coordenação",
   text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ",
@@ -52,6 +52,7 @@ const mockedAboutUsData: AboutUsData = {
 }
 
 const team: Team = {
+  id: 1,
   name: "Some name",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
   staff: Array.from({ length: 40 }, () => StaffInfo)

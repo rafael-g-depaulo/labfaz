@@ -23,6 +23,7 @@ export interface StaffObject {
 }
 
 export interface Team {
+  id: number
   name: string,
   description: string,
   staff: StaffObject[]
