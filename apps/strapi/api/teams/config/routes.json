@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/teams",
+      "handler": "teams.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/teams",
+      "handler": "teams.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/teams",
+      "handler": "teams.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

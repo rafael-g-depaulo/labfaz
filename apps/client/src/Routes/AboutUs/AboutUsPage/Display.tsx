@@ -1,4 +1,4 @@
-import { AboutUsData, StaffData } from "Api/AboutUs"
+import { AboutUsData, TeamsData } from "Api/AboutUs"
 import React, { FC } from "react"
 
 import Wireframe from "Components/Wireframe"
@@ -12,12 +12,12 @@ import { Spacer } from "./styles"
 
 export interface DisplayProps {
   about_data: AboutUsData
-  staff: StaffData,
+  team: TeamsData,
 }
 
 export const Display: FC<DisplayProps> = ({
   about_data,
-  staff,
+  team,
 }) => {
   const {banner_data, welcome_data, about_us_data} = about_data
 
@@ -26,7 +26,7 @@ export const Display: FC<DisplayProps> = ({
       <Banner title="Quem somos" subtitle={banner_data} align="left"/>
       <WelcomeComponent data={welcome_data} />
       <About  data={about_us_data} />
-      <Staff data={staff} />
+      <Staff data={team} />
       <Spacer />
     </Wireframe>
   )

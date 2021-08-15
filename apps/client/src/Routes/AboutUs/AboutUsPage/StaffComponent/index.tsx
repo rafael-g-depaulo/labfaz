@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StaffData } from 'Api/AboutUs'
+import { TeamsData } from 'Api/AboutUs'
 
 import StaffCard from './StaffCard'
 import { StaffGrid, StaffHeader } from './styles'
@@ -9,12 +9,12 @@ import Drawer from "Components/Drawer"
 
 
 interface StaffProps {
-  data: StaffData
+  data: TeamsData
 }
 
 export const Staff: FC<StaffProps> = ( { data } ) => {
 
-  const { staff } =  data
+  const { team } =  data
 
   return (
     <Wrapper marginTop="70px">
@@ -22,19 +22,22 @@ export const Staff: FC<StaffProps> = ( { data } ) => {
         <Title level={1} > STAFF </Title>
         <Title level={3} > Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </Title>        
       </StaffHeader>
-      <Drawer>
-        <StaffGrid>
-          {
-            staff.map((staff) => {
-              return(
-                <StaffCard data={staff} key={staff.id}/>
-              )
-            })
-          }
-        </StaffGrid>
-      </Drawer>
+      {
+        team.map((team) => {
+          return(
+            <Drawer teamName={team.name} description={team.description  }>
+              <StaffGrid>
+                {team.staff.map((staff) => {
+                  return(
+                    <StaffCard data={staff} key={staff.id}/>                  
+                  )
+                })}
+              </StaffGrid>
+            </Drawer>
+          )
+        })
+      }
     </Wrapper>
-
   )
 }
 

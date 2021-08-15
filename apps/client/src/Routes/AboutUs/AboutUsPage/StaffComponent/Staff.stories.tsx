@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { StaffData, StaffObject } from 'Api/AboutUs'
+import { TeamsData, StaffObject, Team } from 'Api/AboutUs'
 
 
 import Staff from './index'
@@ -22,10 +22,16 @@ const StaffInfo: StaffObject = {
   image: image
 }
 
-const Staffs: StaffData = {
+const team: Team = {
+  name: "Some nice name",
+  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
   staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
+}
+
+const teams: TeamsData = {
+  team: [team, team]
 }
 
 storiesOf("Components/Staff", module)
   .addParameters({ component: Staff })
-  .add("Default", () => <Staff data={Staffs}/>)
+  .add("Default", () => <Staff data={teams}/>)
