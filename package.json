@@ -7,10 +7,10 @@
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "libs/*",
-    "apps/*"
-  ],
+  "workspaces": {
+    "packages": [ "libs/*", "apps/*" ],
+    "nohoist": [ "**/admin-bro", "**/admin-bro/**", "**/@admin-bro/**" ]
+  },
   "scripts": {
     "build": "${BUILD_SCRIPT:-yarn build:all}",
     "build:all": "yarn build:libs && yarn build:apps",
