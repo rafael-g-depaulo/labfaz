@@ -8,7 +8,7 @@ interface ImageCircleProps {
 
 export const StaffGrid = styled.div`
   display: grid;
-  grid-row-gap: 5vw;
+  grid-row-gap: 5vh;
   grid-template-columns: repeat(auto-fit, minmax(280px, auto));
   
   justify-items: center;
@@ -21,10 +21,11 @@ export const StaffGrid = styled.div`
   ${MobileLarge(css`
     max-width: 90vw;
     min-height: 100vh;
+    grid-row-gap: 2vh;
   `)}
 
   ${MobileSmall(css`
-    grid-column-gap: 0;
+    grid-row-gap: 10vh;
   `)}
 `;
 
@@ -82,10 +83,10 @@ export const Card = styled.div`
 
 
   ${MobileLarge(css`
-    max-width: 81%;
-    max-height: 247px;
-    min-width: 81%;
-    min-height: 247px;
+    max-height: 460px;
+    max-width: 280px;
+    min-width: 280px;
+    min-height: 460px;
   `)}
 
   ${Mobile(css`
@@ -199,11 +200,10 @@ export const CardBody = styled.div`
   ${DesktopSmall(css`
     max-height: 130px;
     line-height: var(--line-height-small);
-    font-size: var(--font-size-medium);
     padding-top: 1.28em;
 
     p {
-      font-size: var(--font-size-short);
+      font-size: var(--font-size-medium);
       padding-top: 0;
     }
 

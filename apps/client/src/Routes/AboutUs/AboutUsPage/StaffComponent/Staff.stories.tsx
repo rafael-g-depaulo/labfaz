@@ -23,9 +23,9 @@ const StaffInfo: StaffObject = {
 }
 
 const team: Team = {
-  name: "Some nice name",
+  name: "Coordenação",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
-  staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo, StaffInfo]
+  staff: [StaffInfo, StaffInfo, StaffInfo, StaffInfo]
 }
 
 const teams: TeamsData = {

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { DesktopSmall, DesktopLarge, MobileSmall } from "Utils/breakpoints"
+import { DesktopSmall, DesktopLarge, MobileSmall, MobileLarge } from "Utils/breakpoints"
 
 interface VisibilityProps {
   isOpen: boolean
@@ -16,13 +16,17 @@ export const Container = styled.div<VisibilityProps>`
   max-height: inherit;
   min-height: 118px;
   min-width: 92%;
+
   align-self: center;
   align-items: ${props => props.isOpen ? "" : "center"};
   justify-content: start;
+  
+  padding-bottom: ${props => props.isOpen ? "2.9rem" : ""};
+  margin-bottom: 15vh;
 
   h1 {
     color: white;
-    padding-left: ${props => props.isOpen ? "" : "3em"};
+    padding-left: ${props => props.isOpen ? "5em" : "3em"};
     margin-bottom: ${props => props.isOpen ? "1.3em" : "0"};
     min-width: fit-content;
   }
@@ -33,6 +37,11 @@ export const Container = styled.div<VisibilityProps>`
 
   ${MobileSmall(css`
     min-height: 100px;
+
+    h1 {
+      padding-left: 1em;
+      font-size: var(--font-size-title-medium);
+    }
   `)}
 `
 
@@ -50,6 +59,29 @@ export const Haeder = styled.div<VisibilityProps>`
   ${props => props.isOpen ?
     MobileSmall(css`
       flex-direction: column;
+      margin-bottom: 2.4em;
+
+      h1 {
+        padding-left: 0;
+      }
+  `) : ''}
+
+  ${props => props.isOpen ?
+    DesktopSmall(css`
+      flex-direction: column;
+      margin-bottom: 2.4em;
+      h1 {
+        padding-left: 0;
+      }
+  `) : ''}
+
+  ${props => props.isOpen ?
+    MobileLarge(css`
+      flex-direction: column;
+      margin-bottom: 2.4em;
+      h1 {
+        padding-left: 0;
+      }
   `) : ''}
 
 `
@@ -64,6 +96,8 @@ export const Button =  styled.button`
   display: flex;
   align-self: baseline;
   
+  padding-left: 10vw;
+
   ${DesktopSmall(css`
     top: calc((79px - 35px)/2);
     padding-left: 10vw;
@@ -73,9 +107,13 @@ export const Button =  styled.button`
     top: calc((118px - 35px)/2);
   `)}
   
+  ${MobileLarge(css`
+    top: calc((118px - 35px)/2);
+  `)}
+
   ${MobileSmall(css`
     top: calc((100px - 35px)/2);
-    left: 23px;
+    left: 0.5rem;
 `)}
 
   :hover {
@@ -90,18 +128,29 @@ export const Description =  styled.p<VisibilityProps>`
   max-height: 126px;
   font-size: var(--font-size-subtitle);
   margin: 0;
-  padding-left: 10em;
+  padding-left: 8em;
   color: white;
   text-align: justify;
 
+  margin-right: 5%;
 
   ${DesktopSmall(css`
     font-size: var(--font-size-large);
+    padding-left: 0;
+    max-width: 80%;
+  `)}
+
+  ${MobileLarge(css`
+    font-size: var(--font-size-large);
+    padding-left: 0;
+    max-width: 80%;
   `)}
 
   ${MobileSmall(css`
     font-size: var(--font-size-large);
     padding: 0;
+    max-width: 260px;
+    max-height: fit-content;
   `)}
 
 `
