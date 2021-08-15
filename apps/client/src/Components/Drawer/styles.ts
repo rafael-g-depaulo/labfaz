@@ -64,8 +64,13 @@ export const Button =  styled.button`
   display: flex;
   align-self: baseline;
   
+  ${DesktopSmall(css`
+    top: calc((79px - 35px)/2);
+    padding-left: 10vw;
+  `)}
+
   ${DesktopLarge(css`
-  top: calc((118px - 35px)/2);
+    top: calc((118px - 35px)/2);
   `)}
   
   ${MobileSmall(css`

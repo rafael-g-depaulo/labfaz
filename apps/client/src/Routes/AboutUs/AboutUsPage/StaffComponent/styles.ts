@@ -18,11 +18,6 @@ export const StaffGrid = styled.div`
 
   color: var(--color-text-beige);
 
-  ${DesktopSmall(css`
-    background-color: purple;
-  `)}
-
-
   ${MobileLarge(css`
     max-width: 90vw;
     min-height: 100vh;
