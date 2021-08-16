@@ -1,7 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { ParamsType, Req } from "Utils/request";
-import { createdSuccessfullyReturn, syntaticErrorReturn, unauthenticatedErrorReturn, unauthorizedErrorReturn } from "Utils/endpointReturns";
+import { createdSuccessfully, badRequestError, unauthenticatedError, unauthorizedError } from "Utils/endpointReturns";
 
 interface ShowUserInterface {
   UserRepo: UserRepository;
@@ -19,20 +19,20 @@ export const ShowUser: (
   const { id } = req.params;
 
   if (!id) {
-    return syntaticErrorReturn(res, "Incomplete request param");
+    return badRequestError(res, "Incomplete request param");
   }
   if (typeof id !== "string") {
-    return syntaticErrorReturn(res, "Invalid request param");
+    return badRequestError(res, "Invalid request param");
   }
 
   const user = await UserRepo.findById(id);
 
   if (!user) {
-    return unauthenticatedErrorReturn(res, "Not found user with that id" );
+    return unauthenticatedError(res, "Not found user with that id" );
   }
 
   if (!user.active) {
-    return unauthorizedErrorReturn(res, "This user didn't confirm his account in the email!!");
+    return unauthorizedError(res, "This user didn't confirm his account in the email!!");
   }
 
   //remove password from usersFind
@@ -42,7 +42,7 @@ export const ShowUser: (
   );
   const userQueried = Object.fromEntries(userWithoutPassword);
 
-  return createdSuccessfullyReturn(res, { user: userQueried })
+  return createdSuccessfully(res, { user: userQueried })
 };
 
 export default ShowUser;

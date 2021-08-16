@@ -1,7 +1,7 @@
 import UserRepository from "Repository/UserRepository"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
-import { createdSuccessfullyReturn, notFoundErrorReturn, semanticErrorReturn, syntaticErrorReturn, unauthenticatedErrorReturn } from "Utils/endpointReturns"
+import { createdSuccessfully, notFoundError, badRequestError, unauthenticatedError } from "Utils/endpointReturns"
 
 interface CreateUserInterface {
   UserRepo: UserRepository,
@@ -22,13 +22,13 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
   const { name, password, old_password } = req.body
 
   if ( !req.user ) {
-    return unauthenticatedErrorReturn(res, 'User need to be loged')
+    return unauthenticatedError(res, 'User need to be loged')
   }
 
   const user = await UserRepo.findById(req.user?.id)
 
   if (!user) {
-    return notFoundErrorReturn(res, "User not found.")
+    return notFoundError(res, "User not found.")
   }
 
   user.name = name
@@ -36,17 +36,17 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
   if (password) {
 
     if (!old_password) {
-      return syntaticErrorReturn(res, "You need to inform the old password to set a new password." )
+      return badRequestError(res, "You need to inform the old password to set a new password." )
     }
 
     if (password === old_password) {
-      return semanticErrorReturn(res, "Cannot change password to old password")
+      return badRequestError(res, "Cannot change password to old password")
     }
 
     const checkOldPassword = await UserRepo.compareHash(old_password, user.password)
 
     if (!checkOldPassword) {
-      return semanticErrorReturn(res, "Old password does not match.")
+      return badRequestError(res, "Old password does not match.")
     }
 
     user.password = await UserRepo.generateHash(password)
@@ -54,7 +54,7 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
 
   await UserRepo.save(user)
 
-  return createdSuccessfullyReturn(res, { user })
+  return createdSuccessfully(res, { user })
 }
 
 export default UpdateUser

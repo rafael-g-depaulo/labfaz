@@ -11,7 +11,7 @@ import Db from "Db"
 import Routes from "Routes"
 // import { adminBroRouter } from 'Routes/adminBro'
 
-import { actionSuccessfulReturn, syntaticErrorReturn } from 'Utils/endpointReturns'
+import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
 // import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -31,9 +31,9 @@ Db()
   // Foi preciso colocar os middlewares depois do admin bro por conta do body parser
   Middewares(app)
 
-  app.get('/hello', (_, res) => actionSuccessfulReturn(res, { msg: 'world' }))
+  app.get('/hello', (_, res) => actionSuccessful(res, { msg: 'world' }))
     
-  app.use("*", (_, res) => syntaticErrorReturn(res, "Route doesn't exist" ))
+  app.use("*", (_, res) => badRequestError(res, "Route doesn't exist" ))
 
   app.listen(port, () => console.log(`listening PORT ${port}, in typescript!`)) 
 })

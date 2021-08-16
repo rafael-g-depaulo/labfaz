@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 
 import authConfig from "Config/auth";
-import { unauthenticatedErrorReturn } from "Utils/endpointReturns";
+import { unauthenticatedError } from "Utils/endpointReturns";
 
 export interface ITokenPayload {
   iat: number;
@@ -21,11 +21,10 @@ export default function ensureAuthenticated(
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    return unauthenticatedErrorReturn(res, "JWT token is missing")
+    return unauthenticatedError(res, "JWT token is missing")
   }
 
   const [, token] = authHeader.split(" ");
-
   
   try {
     const decoded = verify(token, authConfig.jwt.secret);
@@ -43,6 +42,6 @@ export default function ensureAuthenticated(
 
     return next();
   } catch {
-    return unauthenticatedErrorReturn(res, "Invalid JWT token")
+    return unauthenticatedError(res, "Invalid JWT token")
   }
 }

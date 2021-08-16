@@ -1,5 +1,5 @@
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
-import { updatedSuccessfullyReturn } from "Utils/endpointReturns"
+import { updatedSuccessfully } from "Utils/endpointReturns"
 import { Req } from "Utils/request"
 import { RouteHandler } from "Utils/routeHandler"
 
@@ -12,7 +12,7 @@ export const ListAllAnimals: (deps: CreateAnimalInterface) => RouteHandler<Req> 
 }: CreateAnimalInterface) => async (_, res) => {
   const animals = await AnimalExampleRepo.find()
 
-  updatedSuccessfullyReturn(res, { animals })
+  updatedSuccessfully(res, { animals })
 }
 
 export default ListAllAnimals

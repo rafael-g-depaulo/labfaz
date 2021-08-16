@@ -6,7 +6,7 @@ import { getApiUrl } from "@labfaz/server-conn-info"
 import { Race, ShowName } from "Entities/Artist"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
-import { createdSuccessfullyReturn, semanticErrorReturn, syntaticErrorReturn } from "Utils/endpointReturns"
+import { createdSuccessfully, badRequestError } from "Utils/endpointReturns"
 
 interface CreateUserInterface {
   UserRepo: UserRepository;
@@ -33,8 +33,6 @@ export interface RequestBody {
   password: string;
 }
 
-type CreateUserReq = Req<RequestBody>
-
 const mailer = new MailProvider();
 const from: Addres = {
   name: "LabFaz",
@@ -43,21 +41,21 @@ const from: Addres = {
 
 export const CreateUser: (
   deps: CreateUserInterface
-) => RouteHandler<CreateUserReq> = ({
+) => RouteHandler<Req<RequestBody>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
-  const { artist, email, password } = req.body as RequestBody;
+  const { artist, email, password } = req.body
 
   if (!artist || !email || !password)
-    return syntaticErrorReturn(res, "Incomplete request body")
+    return badRequestError(res, "Incomplete request body")
 
   if (typeof email !== "string" || typeof password !== "string")
-    return syntaticErrorReturn(res, "Invalid request body")
+    return badRequestError(res, "Invalid request body")
 
   const checkUserExists = await UserRepo.findByEmail(email);
 
   if (checkUserExists) {
-    return semanticErrorReturn(res, "Email address already exists.");
+    return badRequestError(res, "Email address already exists.");
   }
 
   const hashedPassword = await UserRepo.generateHash(password);
@@ -90,7 +88,7 @@ export const CreateUser: (
   );
   let newUser = Object.fromEntries(userWithoutPassword);
 
-  return createdSuccessfullyReturn(res, { newUser })
+  return createdSuccessfully(res, { newUser })
 };
 
 export default CreateUser;

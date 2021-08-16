@@ -5,7 +5,7 @@ import { Connection } from "typeorm"
 import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
-import { actionSuccessfulReturn } from "Utils/endpointReturns"
+import { actionSuccessful } from "Utils/endpointReturns"
 
 export interface RouterDeps {
   conn: Connection
@@ -24,7 +24,7 @@ type BaseRouterDeps = {
 }
 
 const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => express.Router(options)
-  .get("/ping", (_, res) => actionSuccessfulReturn(res, "pong"))
+  .get("/ping", (_, res) => actionSuccessful(res, "pong"))
   .use("/animal-example", AnimalExampleRouter({ conn }, options))
   .use("/user", UserRouter({ conn }, options))
   .use("/sessions", SessionRouter({ conn }, options))
