@@ -1,7 +1,9 @@
 import { MailProvider, Addres } from "@labfaz/mail"
+import { getApiUrl } from "@labfaz/server-conn-info"
+
+import  * as yup from "yup"
 
 import UserRepository from "Repository/UserRepository"
-import { getApiUrl } from "@labfaz/server-conn-info"
 
 import { Race, ShowName } from "Entities/Artist"
 import { RouteHandler } from "Utils/routeHandler"
@@ -33,6 +35,30 @@ export interface RequestBody {
   password: string;
 }
 
+const reqSchema = yup.object({
+  email: yup.string().required().email(),
+  password: yup.string().required().min(6),
+  // artist: yup.object({
+  //   photo_url: yup.string().required().url(),
+  //   name: yup.string().required(),
+  //   social_name: yup.string(),
+  //   artistic_name: yup.string(),
+  //   gender: yup.string().required(),
+  //   cpf: yup.string().required().matches(/\d{3}\.\d{3}\.\d{3}-\d{2}/),
+  //   birthday: yup.date().required(),
+  //   rg: yup.string().required(),
+  //   expedition_department: yup.string().required(),
+  //   is_trans: yup.boolean().required(),
+  //   race: yup.mixed<Race>().required().oneOf(Object.values(Race)),
+  //   show_name: yup.string().required().oneOf(["artistic_name", "social_name", "name"]),
+  // }),
+})
+
+interface UserInfo extends yup.Asserts<typeof reqSchema> {}
+
+
+// type CreateUserReq = Req<UserInfo>
+
 const mailer = new MailProvider();
 const from: Addres = {
   name: "LabFaz",
@@ -51,6 +77,13 @@ export const CreateUser: (
 
   if (typeof email !== "string" || typeof password !== "string")
     return badRequestError(res, "Invalid request body")
+
+  // try {  
+  //   const result = await reqSchema.validate(req.body)
+  //   console.log("resultado foi", result)
+  // } catch (e) {
+  //   return syntaticErrorReturn(res, "mensagem de erro ruim que deu. request feio", { e })
+  // }
 
   const checkUserExists = await UserRepo.findByEmail(email);
 
