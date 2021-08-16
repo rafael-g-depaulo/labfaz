@@ -1,6 +1,6 @@
 import User from '../../Entities/User'
 import validateUser from "../features/validate-user"
-import { ResourceWithOptions } from 'admin-bro'
+import { ResourceWithOptions } from 'adminjs'
 
 
 // Modulated entity resource

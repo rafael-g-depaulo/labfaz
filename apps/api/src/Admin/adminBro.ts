@@ -1,6 +1,6 @@
-import AdminBro from 'admin-bro'
-import AdminBroExpress from '@admin-bro/express'
-import { Database, Resource } from '@admin-bro/typeorm';
+import AdminBro from 'adminjs'
+import AdminBroExpress from '@adminjs/express'
+import { Database, Resource } from '@adminjs/typeorm';
 // import User from 'Entities/User'; 
 import { Connection } from 'typeorm'
 import AnimalExample from 'Entities/AnimalExample';

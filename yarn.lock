@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@admin-bro/design-system@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@admin-bro/design-system/-/design-system-1.7.3.tgz#ca4f20819f71f43ec133bbe56929111b72effc8a"
-  integrity sha512-XEPV8gUG0Kob3v5K93QAQs7wVV13V0oWCxn4x0ZSKwYNq+5iV+sYVF27NnXMf+Qqlu3VD3JuQAEVEJ1V5mQAHw==
+"@adminjs/design-system@^2.0.0", "@adminjs/design-system@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@adminjs/design-system/-/design-system-2.0.1.tgz#52468031ee34ffab117f60740924793aa22cce39"
+  integrity sha512-+lBuFGHPISWPC7O1DSEB4Eae3S+vrVS6LD+TZbVju6nvhIUnGZgc3DHv/wLtmTzHwwgnDsEwY7RRMatsN3zuBQ==
   dependencies:
     "@carbon/icons-react" "^10.14.0"
     date-fns "2.15.0"
@@ -16,15 +16,15 @@
     react-datepicker "^3.1.3"
     styled-system "^5.1.5"
 
-"@admin-bro/express@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@admin-bro/express/-/express-3.1.0.tgz#0b8eec245ffbe1111da50b11d8dc0585252244b0"
-  integrity sha512-tPEopzGkmdIJuhg/oTokZ5iB1mXCwq1uaieIFIX1cETwuw+HDY+DoH5iS7KtIdxQYdNgf0ppjX+6eSeSYAZc0w==
+"@adminjs/express@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@adminjs/express/-/express-4.0.0.tgz#9a4aa6fe1281fbd5ca15df198efc0494c4a75a6d"
+  integrity sha512-QShs+f8BAsV6g4w2Wg5R2SMlCOPawOTKxY9SNYfOBGNIQTgr+1rsaCyvDPaJf1xVj2OZRWQYDBEDToyxMfrZHA==
 
-"@admin-bro/typeorm@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@admin-bro/typeorm/-/typeorm-1.4.0.tgz#8b29ecb6158e868959be4bea56b9f0322dbfbd82"
-  integrity sha512-3N86aBEtyZX+iIPX36Q0wnnwuBaQUzVfrtnE6ZhGRiZd4VAmgG4ucqv0dFa+Rn4hMgUfMZDqNenqUvMfI0YUSw==
+"@adminjs/typeorm@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@adminjs/typeorm/-/typeorm-2.0.0.tgz#a47f7ce7e6a69d4f7f02f19b034098708b1f58c6"
+  integrity sha512-jwHCBVZMCiBoGyq7y4XXP+DNgSGJ4mvLaxSLWTNj3dZCZ+6IMRys7gMbCmHhfqeNzGGHL7gOCWOe+ut8Z45gTQ==
 
 "@babel/cli@^7.10.5":
   version "7.12.1"
@@ -6348,12 +6348,12 @@ adjust-sourcemap-loader@2.0.0:
     object-path "0.11.4"
     regex-parser "2.2.10"
 
-admin-bro@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/admin-bro/-/admin-bro-4.0.1.tgz#0f193371396175f235b7dd76134e04bc05e1bc3a"
-  integrity sha512-tamyRcrIY9HzveRmkyB6GgZHCfPDXmcY3TzLttKF20oZ+zWaB5b7mMTdeUdnRndVK7rnw8PsqnwY3F+8Iq4/7Q==
+adminjs@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/adminjs/-/adminjs-5.1.0.tgz#61b090c467c0506720b4baf57e169ebb5944caf8"
+  integrity sha512-KlCXBhWYOiROKV3Wc4HFvQgJ/va2jwby2q3z/H88IKOPcHjnjmdZKO12fvuswfEFwZj7vZZV2S1HrlkXNyqOsQ==
   dependencies:
-    "@admin-bro/design-system" "^1.7.3"
+    "@adminjs/design-system" "^2.0.0"
     "@babel/core" "^7.10.2"
     "@babel/parser" "^7.10.2"
     "@babel/plugin-transform-runtime" "^7.10.1"

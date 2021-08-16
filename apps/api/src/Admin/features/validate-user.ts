@@ -1,4 +1,4 @@
-import { BaseRecord, buildFeature } from 'admin-bro'
+import { BaseRecord, buildFeature } from 'adminjs'
 
 // Create new action for admin example
 export const validateUser = () => buildFeature({
@@ -13,7 +13,6 @@ export const validateUser = () => buildFeature({
         record.update({
           isVerified: true
         })
-       
         return {
           record: record.toJSON(currentAdmin),
           notice: {

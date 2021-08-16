@@ -9,7 +9,7 @@
   "private": true,
   "workspaces": {
     "packages": [ "libs/*", "apps/*" ],
-    "nohoist": [ "**/admin-bro", "**/admin-bro/**", "**/@admin-bro/**" ]
+    "nohoist": [ "**/adminjs", "**/adminjs/**", "**/@adminjs/**" ]
   },
   "scripts": {
     "build": "${BUILD_SCRIPT:-yarn build:all}",
