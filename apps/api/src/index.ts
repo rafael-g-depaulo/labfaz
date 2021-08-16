@@ -6,8 +6,6 @@ const app = express()
 
 // setup middlewares
 import Middewares from "Middlewares"
-Middewares(app)
-
 // setup db connection
 import Db from "Db"
 import Routes from "Routes"
@@ -28,6 +26,9 @@ Db()
   const adminBro = getAdminBro(conn)
 
   app.use(adminBro.options.rootPath, getAdminRouter(adminBro))
+
+  // Foi preciso colocar os middlewares depois do admin bro por conta do body parser
+  Middewares(app)
 
   app.get('/hello', (_, res) => res.json({ msg: 'world' }))
     

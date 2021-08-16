@@ -28,7 +28,17 @@ export const getAdminBro = (conn: Connection) => {
 const getAdminRouter = (adminBro: AdminBro) => {
   return AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     authenticate: (email, password) => {
-      console.log(email, password)
+      // Tendo a entidade de usuario bem definida com roles da pra
+      // fazer essa autenticação usando a dados do banco de dados
+      if(email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
+        return {
+          email,
+          title: "Main",
+          id: 1
+        }
+      } else {
+        return null
+      }
     },
     cookiePassword: 'somestrongpassowrd',
     cookieName: 'nicename'
