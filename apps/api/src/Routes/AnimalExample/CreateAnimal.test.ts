@@ -7,6 +7,7 @@ import CreateAnimal from "./CreateAnimal"
 import { DeepPartial } from "typeorm"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
+import { SuccessObj } from "Utils/response"
 
 describe('CreateAnimal Route Handler', () => {
 
@@ -62,7 +63,7 @@ describe('CreateAnimal Route Handler', () => {
     const mockCalls = response.json.mock.calls
     expect(mockCalls.length).toBe(1)
     const createResult = asMock(AnimalExampleRepo.create).mock.results[0].value
-    expect(mockCalls[0][0]).toMatchObject({ animal: createResult })
+    expect(mockCalls[0][0]).toMatchObject(SuccessObj(201, { animal: createResult }))
 
     // if status is called, it should be called once with 201
     expectStatus(201, expect, response)

@@ -6,6 +6,7 @@ import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
+import { actionSuccessfulReturn, syntaticErrorReturn } from "Utils/endpointReturns";
 
 interface AskResetInterface {
   UserRepo: UserRepository;
@@ -30,19 +31,17 @@ export const AskReset: (
   const { email } = req.body as AskResetI;
 
   if (!email) {
-    return res.status(400).json({ error: "Incomplete request body!!" });
+    return syntaticErrorReturn(res, "Incomplete request body!!")
   }
 
   if (typeof email !== "string") {
-    return res.status(400).json({ error: "Invalid request body!!" });
+    return syntaticErrorReturn(res, "Invalid request body!!" );
   }
 
   const checkUserExists = await UserRepo.findByEmail(email);
 
   if (!checkUserExists) {
-    return res
-      .status(400)
-      .json({ error: "Esse email ainda não foi cadastrado!!" });
+    return syntaticErrorReturn(res, "Esse email ainda não foi cadastrado!!" )
   }
 
   const token = await UserRepo.generateResetPasswordToken(email);
@@ -62,7 +61,7 @@ export const AskReset: (
     `,
   })
 
-  return res.status(200).json({ msg: "Reset token sent to email!!" });
+  return actionSuccessfulReturn(res, "Reset token sent to email!!");
 };
 
 export default AskReset;

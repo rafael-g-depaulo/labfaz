@@ -1,5 +1,6 @@
 import AnimalExample from "Entities/AnimalExample"
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
+import { notFoundErrorReturn, syntaticErrorReturn } from "Utils/endpointReturns"
 import { ParamsType, Req } from "Utils/request"
 import { RouteHandler } from "Utils/routeHandler"
 
@@ -22,12 +23,12 @@ export const GetAnimalFromParams: (deps: GetAnimalDeps) => RouteHandler<Req<Anim
   const { id } = req.params ?? {}
 
   // return an error if id not in params
-  if (!id) return res.status(400).json({ error: "Id not present in route params" })
+  if (!id) return syntaticErrorReturn(res, "Id not present in route params")
 
   const animal = await AnimalExampleRepo.findOne({ id })
 
   // if id doesnt correspont to an animal
-  if (!animal) return res.status(404).json({ error: "Animal not found!" })
+  if (!animal) return notFoundErrorReturn(res, "Animal not found!" )
 
   // add animal to body
   req.body = { animal }

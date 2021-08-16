@@ -3,6 +3,7 @@ import expectStatus from "Utils/expectStatus"
 
 import AnimalExample from "Entities/AnimalExample"
 import ShowAnimalRoute from "./ShowAnimal"
+import { SuccessObj } from "Utils/response"
 
 describe('ShowAnimal Route Handler', () => {
   
@@ -21,6 +22,6 @@ describe('ShowAnimal Route Handler', () => {
 
     expectStatus(200, expect, response)
     expect(response.json).toBeCalledTimes(1)
-    expect(response.json.mock.calls[0][0]).toMatchObject({ animal: camel })
+    expect(response.json.mock.calls[0][0]).toMatchObject(SuccessObj(200, { animal: camel }))
   })
 })

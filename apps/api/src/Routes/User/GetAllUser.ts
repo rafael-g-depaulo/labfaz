@@ -1,6 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
+import { createdSuccessfullyReturn } from "Utils/endpointReturns";
 
 interface GetAllUsersInterface {
   UserRepo: UserRepository;
@@ -21,7 +22,7 @@ export const GetAllUsers: (
     return newUser;    
   })
 
-  return res.status(201).json({ users });
+  return createdSuccessfullyReturn(res, { users });
 };
 
 

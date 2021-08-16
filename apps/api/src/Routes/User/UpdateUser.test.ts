@@ -123,7 +123,7 @@ describe('UpdateUser Route Handler', () => {
       
     await mockRouteHandler(updateUserRoute, request, response )
 
-    expectStatus(401, expect, response)
+    expectStatus(400, expect, response)
     expect(UserRepo.save).toHaveBeenCalledTimes(0)
     expect(mockTable[0].password).toBe('123456')
   })
@@ -179,7 +179,7 @@ describe('UpdateUser Route Handler', () => {
 
     await mockRouteHandler(updateUserRoute, request, response)
 
-    expectStatus(401, expect, response)
+    expectStatus(400, expect, response)
     expect(UserRepo.save).toHaveBeenCalledTimes(0)
   })
   

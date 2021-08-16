@@ -28,7 +28,7 @@ const getAdminRouter = (adminBro: AdminBro) => {
     authenticate: (email, password) => {
       // Tendo a entidade de usuario bem definida com roles da pra
       // fazer essa autenticação usando a dados do banco de dados
-      if(email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
+      if (email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
         return {
           email,
           title: "Main",

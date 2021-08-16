@@ -1,6 +1,7 @@
 import UserRepository from "Repository/UserRepository"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
+import { createdSuccessfullyReturn, notFoundErrorReturn, semanticErrorReturn, syntaticErrorReturn, unauthenticatedErrorReturn } from "Utils/endpointReturns"
 
 interface CreateUserInterface {
   UserRepo: UserRepository,
@@ -21,13 +22,13 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
   const { name, password, old_password } = req.body
 
   if ( !req.user ) {
-    return res.status(401).json({error: 'User need to be loged'})
+    return unauthenticatedErrorReturn(res, 'User need to be loged')
   }
 
   const user = await UserRepo.findById(req.user?.id)
 
   if (!user) {
-    return res.status(404).json("User not found.")
+    return notFoundErrorReturn(res, "User not found.")
   }
 
   user.name = name
@@ -35,17 +36,17 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
   if (password) {
 
     if (!old_password) {
-      return res.status(401).json({ error: "You need to inform the old password to set a new password." })
+      return syntaticErrorReturn(res, "You need to inform the old password to set a new password." )
     }
 
     if (password === old_password) {
-      return res.status(401).json({ error: "Cannot change password to old password" })
+      return semanticErrorReturn(res, "Cannot change password to old password")
     }
 
     const checkOldPassword = await UserRepo.compareHash(old_password, user.password)
 
     if (!checkOldPassword) {
-      return res.status(401).json({ error: "Old password does not match." })
+      return semanticErrorReturn(res, "Old password does not match.")
     }
 
     user.password = await UserRepo.generateHash(password)
@@ -53,7 +54,7 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>>
 
   await UserRepo.save(user)
 
-  return res.status(201).json({ user })
+  return createdSuccessfullyReturn(res, { user })
 }
 
 export default UpdateUser

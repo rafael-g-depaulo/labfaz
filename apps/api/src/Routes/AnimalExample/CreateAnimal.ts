@@ -4,6 +4,7 @@ import AnimalExample from "Entities/AnimalExample"
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
+import { createdSuccessfullyReturn, syntaticErrorReturn } from "Utils/endpointReturns"
 
 interface CreateAnimalInterface {
   AnimalExampleRepo: AnimalExampleRepository,
@@ -18,15 +19,15 @@ export const CreateAnimal: (deps: CreateAnimalInterface) => RouteHandler<Req<Dee
   } = req.body
 
   // if request body not complete, return 400
-  if (!name || !rank) return res.status(400).json({ error: "Incomplete request body" })
+  if (!name || !rank) return syntaticErrorReturn(res, "Incomplete request body")
 
   // if request body has wrong types
-  if (typeof name !== 'string' || typeof rank !== 'number') return res.status(400).json({ error: "Invalid request body" })
+  if (typeof name !== 'string' || typeof rank !== 'number') return syntaticErrorReturn(res, "Invalid request body")
 
   const animal = AnimalExampleRepo.create({ name, rank })
   await AnimalExampleRepo.save(animal)
 
-  return res.status(201).json({ animal })
+  return createdSuccessfullyReturn(res, { animal })
 }
 
 export default CreateAnimal

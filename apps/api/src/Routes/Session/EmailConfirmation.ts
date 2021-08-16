@@ -1,6 +1,7 @@
 import UserRepository from "Repository/UserRepository"
 import { RouteHandler } from "Utils/routeHandler"
 import { ParamsType, Req } from "Utils/request"
+import { actionSuccessfulReturn, syntaticErrorReturn } from "Utils/endpointReturns"
 
 interface ConfirmEmailInterface {
   UserRepo: UserRepository
@@ -19,14 +20,14 @@ export const EmailConfirmation: (deps: ConfirmEmailInterface) => RouteHandler<Re
   const user = await UserRepo.findById(userId)
 
   if(!user){
-    return res.status(400).json({ error: "Invalid user" })
+    return syntaticErrorReturn(res, "Invalid user")
   }
   
   user.active = true
   
   await UserRepo.save(user)
 
-  return res.status(200).json({message: "Email Confirmado!!"});
+  return actionSuccessfulReturn(res, {message: "Email Confirmado!!"})
 }
 
 export default EmailConfirmation

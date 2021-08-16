@@ -1,6 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
+import { actionSuccessfulReturn, syntaticErrorReturn, unauthorizedErrorReturn } from "Utils/endpointReturns";
 
 interface CreateSessionInterface {
   UserRepo: UserRepository;
@@ -19,30 +20,26 @@ export const CreateSession: (
   const { email, password } = req.body
 
   if (!email || !password)
-    return res.status(400).json({ error: "Incomplete request body" });
+    return syntaticErrorReturn(res, "Incomplete request body");
 
   if (typeof email !== "string" || typeof password !== "string")
-    return res.status(400).json({ error: "Invalid request body" });
+    return syntaticErrorReturn(res, "Invalid request body");
 
   const userDB = await UserRepo.findByEmail(email);
 
   if (!userDB) {
-    return res
-      .status(401)
-      .json({ error: "Incorrect email/password combination." });
+    return unauthorizedErrorReturn(res, "Incorrect email/password combination.");
   }
 
   const passwordMatched = await UserRepo.compareHash(password, userDB.password);
 
   if (!passwordMatched) {
-    return res
-      .status(401)
-      .json({ error: "Incorrect email/password combination." });
+    return unauthorizedErrorReturn(res, "Incorrect email/password combination.");
   }
 
   if (!userDB.active) {
     console.log("no user in DB")
-    return res.status(401).json({ error: "Email confimation needed" });
+    return unauthorizedErrorReturn(res, "Email confimation needed");
   }
 
   const token = await UserRepo.generateToken(email);
@@ -54,7 +51,7 @@ export const CreateSession: (
   );
   const user = Object.fromEntries(userWithoutPassword);
 
-  return res.status(200).json({ token, user });
+  return actionSuccessfulReturn(res, { token, user });
 };
 
 export default CreateSession;

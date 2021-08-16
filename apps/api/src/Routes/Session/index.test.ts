@@ -6,6 +6,7 @@ import UserRepository from "Repository/UserRepository"
 import UserRouterFactory from "./index"
 import User from "Entities/User"
 import createTestApp from "Utils/createTestApp"
+import { ErrorObj } from "Utils/response"
 
 describe('Session Router', () => {
 
@@ -86,19 +87,19 @@ describe('Session Router', () => {
         .post('/sessions')
         .send({})
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyEmail = agent
         .post('/sessions')
         .send({ email: 'johndoe@email.com' })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyPassword = agent
         .post('/sessions')
         .send({ password: '123456' })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
         Promise
           .all([ emptyBody, onlyEmail, onlyPassword ])
@@ -111,7 +112,7 @@ describe('Session Router', () => {
         .post('/sessions')
         .send({ email: 'johndoe@email.com', password: true })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Invalid request body' })
+        .expect(400, ErrorObj(400, 'Invalid request body'))
         .then(() => {
           done()
         })
@@ -129,7 +130,7 @@ describe('Session Router', () => {
         .post('/sessions')
         .send({ email: 'johndoe@email.com', password: '123456' })
         .expect('Content-Type', /json/ )
-        .expect(401, { error: 'Incorrect email/password combination.' })
+        .expect(401, ErrorObj(401, 'Incorrect email/password combination.'))
         .then(() => {
           done()
         })
@@ -148,7 +149,7 @@ describe('Session Router', () => {
         .post('/sessions')
         .send({ name: 'John Doe', email: 'johndoe@email.com', password: '654321' })
         .expect('Content-Type', /json/ )
-        .expect(401, { error: 'Incorrect email/password combination.' })
+        .expect(401, ErrorObj(401, 'Incorrect email/password combination.'))
         .then(() => {
           done()
         })

@@ -6,6 +6,7 @@ import { getApiUrl } from "@labfaz/server-conn-info"
 import { Race, ShowName } from "Entities/Artist"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
+import { createdSuccessfullyReturn, semanticErrorReturn, syntaticErrorReturn } from "Utils/endpointReturns"
 
 interface CreateUserInterface {
   UserRepo: UserRepository;
@@ -48,15 +49,15 @@ export const CreateUser: (
   const { artist, email, password } = req.body as RequestBody;
 
   if (!artist || !email || !password)
-    return res.status(400).json({ error: "Incomplete request body" });
+    return syntaticErrorReturn(res, "Incomplete request body")
 
   if (typeof email !== "string" || typeof password !== "string")
-    return res.status(400).json({ error: "Invalid request body" });
+    return syntaticErrorReturn(res, "Invalid request body")
 
   const checkUserExists = await UserRepo.findByEmail(email);
 
   if (checkUserExists) {
-    return res.status(400).json({ error: "Email address already exists." });
+    return semanticErrorReturn(res, "Email address already exists.");
   }
 
   const hashedPassword = await UserRepo.generateHash(password);
@@ -89,7 +90,7 @@ export const CreateUser: (
   );
   let newUser = Object.fromEntries(userWithoutPassword);
 
-  return res.status(201).json({ newUser });
+  return createdSuccessfullyReturn(res, { newUser })
 };
 
 export default CreateUser;

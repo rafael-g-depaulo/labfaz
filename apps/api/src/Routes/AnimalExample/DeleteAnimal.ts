@@ -1,3 +1,4 @@
+import { createdSuccessfullyReturn } from "Utils/endpointReturns"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
@@ -18,7 +19,7 @@ export const DeleteAnimal: (deps: DeleteAnimalDeps) => RouteHandler<Req<AnimalRe
   // delete animal
   await AnimalExampleRepo.remove(animal)
 
-  return res.json({ animal })
+  return createdSuccessfullyReturn(res, { animal })
 }
 
 export default DeleteAnimal

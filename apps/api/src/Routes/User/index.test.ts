@@ -8,6 +8,7 @@ import User from "Entities/User"
 import createTestApp from "Utils/createTestApp"
 import { RequestBody } from "./CreateUser"
 import { Race, ShowName } from "Entities/Artist"
+import { ErrorObj, SuccessObj } from "Utils/response"
 
 describe('User Router', () => {
 
@@ -83,7 +84,7 @@ describe('User Router', () => {
         .send(userInfo)
         .expect('Content-Type', /json/)
         .expect(201)
-        .expect(JSON.stringify({ newUser: userWithoutPwd }))
+        .expect(JSON.stringify(SuccessObj(201, { newUser: userWithoutPwd })))
         .then(() => {
           expect(mockTable.length).toBe(1)
           expect(mockTable[0]).toMatchObject(userInfo)
@@ -96,25 +97,25 @@ describe('User Router', () => {
         .post('/user')
         .send({})
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyName = agent
         .post('/user')
         .send({ name: 'John Doe' })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyEmail = agent
         .post('/user')
         .send({ email: 'johndoe@email.com' })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyPassword = agent
         .post('/user')
         .send({ password: '123456' })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
         Promise
           .all([ emptyBody, onlyName, onlyEmail, onlyPassword ])
@@ -133,7 +134,7 @@ describe('User Router', () => {
         .post('/user')
         .send({ name: 'Name', email: 'johndoe@email.com', password: '654321', artist: {} })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Email address already exists.' })
+        .expect(400, ErrorObj(400, 'Email address already exists.' ))
         .then(() => {
           expect(mockTable.length).toBe(1)
           done()
@@ -146,7 +147,7 @@ describe('User Router', () => {
         .post('/user')
         .send({ name: 123, email: 'johndoe@email.com', password: true })
         .expect('Content-Type', /json/ )
-        .expect(400, { error: 'Incomplete request body' })
+        .expect(400, ErrorObj(400, 'Incomplete request body' ))
         .then(() => {
           expect(mockTable.length).toBe(0)
           done()

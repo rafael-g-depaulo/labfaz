@@ -5,6 +5,7 @@ import UserRepository from "Repository/UserRepository";
 import authConfig from "Config/auth";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
+import { actionSuccessfulReturn, semanticErrorReturn, syntaticErrorReturn, unauthenticatedErrorReturn } from "Utils/endpointReturns";
 
 interface ResetPasswordInterface {
   UserRepo: UserRepository;
@@ -23,11 +24,11 @@ export const ResetPassword: (
   const { password, token } = req.body
 
   if (!token || !password) {
-    return res.status(400).json({ error: "Incomplete request body!!" });
+    return syntaticErrorReturn(res, "Incomplete request body!!")
   }
 
   if (typeof token !== "string" || typeof password !== "string") {
-    return res.status(400).json({ error: "Invalid request body!!" });
+    return syntaticErrorReturn(res, "Invalid request body!!")
   }
 
   const decoded = verify(token, authConfig.token.secret);
@@ -38,26 +39,22 @@ export const ResetPassword: (
     const user = await UserRepo.findById(id);
 
     if (!user) {
-      return res
-        .status(400)
-        .json({ error: "Esse usuário ainda não foi cadastrado!!" });
+      return semanticErrorReturn(res, "Esse usuário ainda não foi cadastrado!!")
     }
 
     const comparePassword = await UserRepo.compareHash(password, user.password);
 
     if (comparePassword) {
-      return res
-        .status(400)
-        .json({ error: "Você não pode mudar para a mesma senha !!" });
+      return semanticErrorReturn(res, "Você não pode mudar para a mesma senha !!")
     }
 
     user.password = await UserRepo.generateHash(password);
     await UserRepo.save(user);
   } else {
-    return res.status(400).json({ error: "Token is not valid!!" });
+    return unauthenticatedErrorReturn(res, "Token is not valid!!")
   }
 
-  return res.status(200).json({ msg: "Password Changed Sucessfully !!" });
+  return actionSuccessfulReturn(res, "Password Changed Sucessfully !!");
 };
 
 export default ResetPassword;

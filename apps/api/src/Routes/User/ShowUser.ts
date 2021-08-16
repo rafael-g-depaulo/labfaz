@@ -1,6 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { ParamsType, Req } from "Utils/request";
+import { createdSuccessfullyReturn, syntaticErrorReturn, unauthenticatedErrorReturn, unauthorizedErrorReturn } from "Utils/endpointReturns";
 
 interface ShowUserInterface {
   UserRepo: UserRepository;
@@ -18,22 +19,20 @@ export const ShowUser: (
   const { id } = req.params;
 
   if (!id) {
-    return res.status(400).json({ error: "Incomplete request param" });
+    return syntaticErrorReturn(res, "Incomplete request param");
   }
   if (typeof id !== "string") {
-    return res.status(400).json({ error: "Invalid request param" });
+    return syntaticErrorReturn(res, "Invalid request param");
   }
 
   const user = await UserRepo.findById(id);
 
   if (!user) {
-    return res.status(401).json({ error: "Not found user with that id" });
+    return unauthenticatedErrorReturn(res, "Not found user with that id" );
   }
 
   if (!user.active) {
-    return res
-      .status(401)
-      .json({ error: "This user didn't confirm his account in the email!!" });
+    return unauthorizedErrorReturn(res, "This user didn't confirm his account in the email!!");
   }
 
   //remove password from usersFind
@@ -43,7 +42,7 @@ export const ShowUser: (
   );
   const userQueried = Object.fromEntries(userWithoutPassword);
 
-  return res.status(201).json({ user: userQueried });
+  return createdSuccessfullyReturn(res, { user: userQueried })
 };
 
 export default ShowUser;
