@@ -15,9 +15,6 @@ export class User {
   artist: Artist;
 
   @Column()
-  name: string;
-
-  @Column()
   email: string;
 
   @Column()
