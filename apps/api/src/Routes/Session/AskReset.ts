@@ -1,10 +1,11 @@
 import { DeepPartial } from "typeorm";
-import { RequestHandler } from "Routes";
 
 import { MailProvider, Addres } from "@labfaz/mail";
 
 import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
+import { RouteHandler } from "Utils/routeHandler";
+import { Req } from "Utils/request";
 
 interface AskResetInterface {
   UserRepo: UserRepository;
@@ -22,7 +23,7 @@ const from: Addres = {
 
 export const AskReset: (
   deps: AskResetInterface
-) => RequestHandler<DeepPartial<User>> = ({ UserRepo }: AskResetInterface) => async (
+) => RouteHandler<Req<DeepPartial<User>>> = ({ UserRepo }: AskResetInterface) => async (
   req,
   res
 ) => {

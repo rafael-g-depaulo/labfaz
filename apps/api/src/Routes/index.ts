@@ -1,13 +1,10 @@
-import express, { Router as ExpressRouter, Request, Response, NextFunction, RouterOptions } from "express"
+import express, { Router as ExpressRouter, RouterOptions } from "express"
 import { Connection } from "typeorm"
 
 // sub routers
 import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
-export interface RequestHandler<ReqBody = {}, Params = {}> {
-  (req: Request<Params, {}, ReqBody>, res: Response, next: NextFunction): any,
-}
 
 export interface RouterDeps {
   conn: Connection

@@ -1,22 +1,21 @@
-import { RequestHandler } from "express";
 import UserRepository from "Repository/UserRepository";
-import { DeepPartial } from "typeorm";
-import User from "Entities/User";
+import { RouteHandler } from "Utils/routeHandler";
+import { ParamsType, Req } from "Utils/request";
 
 interface ShowUserInterface {
   UserRepo: UserRepository;
 }
 
-interface IShow {
+interface IShow extends ParamsType{
   id: string;
 }
 
 export const ShowUser: (
   deps: ShowUserInterface
-) => RequestHandler<DeepPartial<User>> = ({
+) => RouteHandler<Req<{}, {}, IShow>> = ({
   UserRepo,
 }: ShowUserInterface) => async (req, res) => {
-  const { id } = req.params as IShow;
+  const { id } = req.params;
 
   if (!id) {
     return res.status(400).json({ error: "Incomplete request param" });

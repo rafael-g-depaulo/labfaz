@@ -1,11 +1,10 @@
-import { DeepPartial } from "typeorm";
-import { RequestHandler } from "Routes";
 import { verify } from "jsonwebtoken";
 
 import { ITokenPayload } from "Middlewares/ensureAuthenticated";
-import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
 import authConfig from "Config/auth";
+import { RouteHandler } from "Utils/routeHandler";
+import { Req } from "Utils/request";
 
 interface ResetPasswordInterface {
   UserRepo: UserRepository;
@@ -18,10 +17,10 @@ interface ResetPasswordI {
 
 export const ResetPassword: (
   deps: ResetPasswordInterface
-) => RequestHandler<DeepPartial<User>> = ({
+) => RouteHandler<Req<ResetPasswordI>> = ({
   UserRepo,
 }: ResetPasswordInterface) => async (req, res) => {
-  const { password, token } = req.body as ResetPasswordI;
+  const { password, token } = req.body
 
   if (!token || !password) {
     return res.status(400).json({ error: "Incomplete request body!!" });
@@ -32,7 +31,7 @@ export const ResetPassword: (
   }
 
   const decoded = verify(token, authConfig.token.secret);
-  console.log(decoded);
+  // console.log(decoded);
   const { id } = decoded as ITokenPayload;
 
   if (id) {

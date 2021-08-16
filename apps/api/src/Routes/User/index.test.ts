@@ -6,7 +6,7 @@ import UserRepository from "Repository/UserRepository"
 import UserRouterFactory from "./index"
 import User from "Entities/User"
 import createTestApp from "Utils/createTestApp"
-import { IReq } from "./CreateUser"
+import { RequestBody } from "./CreateUser"
 import { Race, ShowName } from "Entities/Artist"
 
 describe('User Router', () => {
@@ -57,7 +57,7 @@ describe('User Router', () => {
 
     it('should 201 with a valid User in the request body', async (done) => {
 
-      const userInfo: IReq = {
+      const userInfo: RequestBody = {
         artist: {
           artistic_name: "nome",
           name: "nome",

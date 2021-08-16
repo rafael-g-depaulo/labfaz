@@ -1,8 +1,6 @@
-import { DeepPartial } from "typeorm";
-import { RequestHandler } from "Routes";
-
-import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
+import { RouteHandler } from "Utils/routeHandler";
+import { Req } from "Utils/request";
 
 interface CreateSessionInterface {
   UserRepo: UserRepository;
@@ -15,10 +13,10 @@ interface IUser {
 
 export const CreateSession: (
   deps: CreateSessionInterface
-) => RequestHandler<DeepPartial<User>> = ({
+) => RouteHandler<Req<IUser>> = ({
   UserRepo,
 }: CreateSessionInterface) => async (req, res) => {
-  const { email, password } = req.body as IUser;
+  const { email, password } = req.body
 
   if (!email || !password)
     return res.status(400).json({ error: "Incomplete request body" });

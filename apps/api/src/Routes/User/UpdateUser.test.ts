@@ -3,14 +3,14 @@ import expectStatus from "Utils/expectStatus"
 
 import UserRepository from "Repository/UserRepository"
 import User from "Entities/User"
-import UpdateUser from "./UpdateUser"
-import { RequestHandler } from "express"
-import { DeepPartial } from "typeorm"
+import UpdateUser, { IUser } from "./UpdateUser"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 describe('UpdateUser Route Handler', () => {
 
   let UserRepo: UserRepository
-  let updateUserRoute: RequestHandler<DeepPartial<User>>
+  let updateUserRoute: RouteHandler<Req<IUser>>
   let mockTable: User[] = []
 
   beforeAll(() => {
@@ -51,17 +51,17 @@ describe('UpdateUser Route Handler', () => {
 
   it('should be able to update the user profile', async () => {
 
-    const user = {
+    const user: IUser = {
       name: 'John Doe',
       id: '1'
-    }
+    } as IUser
 
     UserRepo.create(user)
 
-    const userUpdated = {
+    const userUpdated: IUser = {
       name: 'John Wick',
       id: '1'
-    }
+    } as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1'})
@@ -74,7 +74,7 @@ describe('UpdateUser Route Handler', () => {
 
   it('should be able to update the user password', async () => {
 
-    const user = {
+    const user: IUser = {
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '123456',
@@ -83,7 +83,7 @@ describe('UpdateUser Route Handler', () => {
 
     UserRepo.create(user)
 
-    const userUpdated = {
+    const userUpdated: IUser = {
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '654321',
@@ -111,7 +111,7 @@ describe('UpdateUser Route Handler', () => {
 
     UserRepo.create(user)
 
-    const userUpdated = {
+    const userUpdated: IUser = {
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '654321',
@@ -193,10 +193,10 @@ describe('UpdateUser Route Handler', () => {
 
     UserRepo.create(user)
 
-    const updateUser = {
+    const updateUser: IUser = {
       name: 'test',
       email: 'johndoe@email.com',
-    }
+    } as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(updateUser)
@@ -218,10 +218,10 @@ describe('UpdateUser Route Handler', () => {
 
     UserRepo.create(user)
 
-    const updateUser = {
+    const updateUser: IUser = {
       name: 'test',
       email: 'johndoe@email.com',
-    }
+    } as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(updateUser, {}, { id: '2' })

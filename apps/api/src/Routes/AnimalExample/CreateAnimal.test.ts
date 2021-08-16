@@ -4,13 +4,14 @@ import expectStatus from "Utils/expectStatus"
 import { AnimalExampleRepository } from "Repository/AnimalExampleRepository"
 import AnimalExample from "Entities/AnimalExample"
 import CreateAnimal from "./CreateAnimal"
-import { RequestHandler } from "express"
 import { DeepPartial } from "typeorm"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 describe('CreateAnimal Route Handler', () => {
 
   let AnimalExampleRepo: AnimalExampleRepository
-  let createAnimalRoute: RequestHandler<DeepPartial<AnimalExample>>
+  let createAnimalRoute: RouteHandler<Req<DeepPartial<AnimalExample>>>
 
   beforeAll(() => {
     AnimalExampleRepo = new AnimalExampleRepository()
@@ -45,7 +46,7 @@ describe('CreateAnimal Route Handler', () => {
   })
 
   it('correctly returns the new animal in the response json', async () => {
-    const dogInfo = {
+    const dogInfo: DeepPartial<AnimalExample> = {
       name: "Cat",
       rank: 25
     }

@@ -1,12 +1,12 @@
-import { RequestHandler } from "Routes"
-
 import UserRepository from "Repository/UserRepository"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 interface CreateUserInterface {
   UserRepo: UserRepository,
 }
 
-interface IUser {
+export interface IUser {
   id: string
   name: string
   email: string
@@ -14,7 +14,7 @@ interface IUser {
   password?: string
 }
 
-export const UpdateUser: (deps: CreateUserInterface) => RequestHandler<IUser> = ({
+export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 

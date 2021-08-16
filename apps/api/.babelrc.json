@@ -23,9 +23,7 @@
       { "loose": true }
     ],
     "babel-plugin-transform-typescript-metadata",
-    
     "@babel/plugin-transform-runtime",
-    
     ["@babel/plugin-proposal-private-methods", { "loose": true }]
   ]
 }

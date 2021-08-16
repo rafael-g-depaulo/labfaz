@@ -1,13 +1,11 @@
-import { DeepPartial } from "typeorm";
-import { RequestHandler } from "Routes";
+import { MailProvider, Addres } from "@labfaz/mail"
 
-import { MailProvider, Addres } from "@labfaz/mail";
+import UserRepository from "Repository/UserRepository"
+import { getApiUrl } from "@labfaz/server-conn-info"
 
-import User from "Entities/User";
-import UserRepository from "Repository/UserRepository";
-import { getApiUrl } from "@labfaz/server-conn-info";
-
-import { Race, ShowName } from "Entities/Artist";
+import { Race, ShowName } from "Entities/Artist"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 interface CreateUserInterface {
   UserRepo: UserRepository;
@@ -28,11 +26,13 @@ interface IArtist {
   show_name: ShowName;
 }
 
-export interface IReq {
+export interface RequestBody {
   artist: IArtist;
   email: string;
   password: string;
 }
+
+type CreateUserReq = Req<RequestBody>
 
 const mailer = new MailProvider();
 const from: Addres = {
@@ -42,10 +42,10 @@ const from: Addres = {
 
 export const CreateUser: (
   deps: CreateUserInterface
-) => RequestHandler<DeepPartial<User>> = ({
+) => RouteHandler<CreateUserReq> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
-  const { artist, email, password } = req.body as IReq;
+  const { artist, email, password } = req.body as RequestBody;
 
   if (!artist || !email || !password)
     return res.status(400).json({ error: "Incomplete request body" });

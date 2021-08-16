@@ -1,14 +1,15 @@
 import { DeepPartial } from "typeorm"
-import { RequestHandler } from "Routes"
 
 import AnimalExample from "Entities/AnimalExample"
 import AnimalExampleRepository from "Repository/AnimalExampleRepository"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 interface CreateAnimalInterface {
   AnimalExampleRepo: AnimalExampleRepository,
 }
 
-export const CreateAnimal: (deps: CreateAnimalInterface) => RequestHandler<DeepPartial<AnimalExample>> = ({
+export const CreateAnimal: (deps: CreateAnimalInterface) => RouteHandler<Req<DeepPartial<AnimalExample>>> = ({
   AnimalExampleRepo,
 }: CreateAnimalInterface) => async (req, res) => {
   const {

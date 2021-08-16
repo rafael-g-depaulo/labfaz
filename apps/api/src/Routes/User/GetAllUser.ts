@@ -1,7 +1,6 @@
-import { RequestHandler } from "express";
 import UserRepository from "Repository/UserRepository";
-import { DeepPartial } from "typeorm";
-import User from "Entities/User";
+import { RouteHandler } from "Utils/routeHandler";
+import { Req } from "Utils/request";
 
 interface GetAllUsersInterface {
   UserRepo: UserRepository;
@@ -9,7 +8,7 @@ interface GetAllUsersInterface {
 
 export const GetAllUsers: (
   deps: GetAllUsersInterface
-) => RequestHandler<DeepPartial<User>> = ({
+) => RouteHandler<Req> = ({
   UserRepo,
 }: GetAllUsersInterface) => async (_, res) => {
   let usersFind = await UserRepo.find();

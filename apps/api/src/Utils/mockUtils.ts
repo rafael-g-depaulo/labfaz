@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response } from "express"
-import { RequestHandler } from "Routes"
+import { NextFunction, Response } from "express"
+import { ParamsType, QueryType, Req, BodyType } from "./request"
+import { RouteHandler } from "./routeHandler"
 
 export interface MockNext {
   (): void
@@ -25,8 +26,8 @@ export interface MockResponse {
   status: jest.Mock<Express.Response, [number]>,
 }
 
-export const createRequestMock: <Body = {}, Params = {}> (body?: Body, params?: Params, user?: UserSession) => MockRequest<Body, Params> =
-  (body, params, user) => ({ body, params, user })
+export const createRequestMock: <Body extends BodyType = {}, Params extends ParamsType = {}, Query extends QueryType = {}> (body?: Body, params?: Params, user?: UserSession) => Req<Body, UserSession, Params, Query> =
+  (body, params, user) => ({ body, params, user }) as any
 
 export const createResponseMock = (_jest: Jest = jest) => {
   const responseMock: MockResponse = {
@@ -37,8 +38,9 @@ export const createResponseMock = (_jest: Jest = jest) => {
   return responseMock
 }
 
-export const mockRouteHandler = <ReqBody = {}, ReqParams = {}>(handler: RequestHandler<ReqBody, ReqParams>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>
-  handler(request as Request<ReqParams>, response as unknown as Response, next as NextFunction)
+export const mockRouteHandler = <R extends Req>
+  (handler: RouteHandler<R>, request: R, response: MockResponse, next?: MockNext) =>
+    handler(request as R, response as unknown as Response, next as NextFunction)
 
 export type mock<Fn extends (...args: any) => any> = jest.Mock<ReturnType<Fn>, Parameters<Fn>>
 export const asMock = <A extends (...args: any) => any>(a: A) => a as any as mock<A>

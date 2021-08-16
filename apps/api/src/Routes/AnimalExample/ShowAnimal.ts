@@ -1,8 +1,9 @@
-import { RequestHandler } from "Routes"
+import { Req } from "Utils/request"
+import { RouteHandler } from "Utils/routeHandler"
 
-import { AnimalRequest } from "./GetAnimalFromParams"
+import { AnimalRequestBody } from "./GetAnimalFromParams"
 
-export const ShowAnimal: RequestHandler<AnimalRequest> = async (req, res) => {
+export const ShowAnimal: RouteHandler<Req<AnimalRequestBody>> = async (req, res) => {
   const { animal } = req.body
   res.json({ animal })
 }

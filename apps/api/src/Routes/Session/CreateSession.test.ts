@@ -4,13 +4,14 @@ import expectStatus from "Utils/expectStatus"
 import UserRepository from "Repository/UserRepository"
 import User from "Entities/User"
 import CreateSession from "./CreateSession"
-import { RequestHandler } from "express"
 import { DeepPartial } from "typeorm"
+import { RouteHandler } from "Utils/routeHandler"
+import { Req } from "Utils/request"
 
 describe('CreateSession Route Handler', () => {
 
   let UserRepo: UserRepository
-  let createSessionRoute: RequestHandler<DeepPartial<User>>
+  let createSessionRoute: RouteHandler<Req<DeepPartial<User>>>
   let mockTable: User[] = []
 
   beforeAll(() => {
@@ -55,7 +56,7 @@ describe('CreateSession Route Handler', () => {
       active: true,
     })
 
-    const user = {
+    const user: DeepPartial<User> = {
       email: 'johndoe@email.com',
       password: '123456'
     }
@@ -70,7 +71,7 @@ describe('CreateSession Route Handler', () => {
 
   it('should not be able to authenticate missing some field in request body', async () => {
 
-    const userInfo = {
+    const userInfo: DeepPartial<User> = {
       email: 'johndoe@hotmail.com',
     }
 
@@ -84,10 +85,10 @@ describe('CreateSession Route Handler', () => {
 
   it('should not be able to authenticate with wrong field types', async () => {
 
-    const user = {
+    const user: DeepPartial<User> = {
       email: 'johndoe@email.com',
       password: true,
-    }
+    } as any as DeepPartial<User>
 
     const request = createRequestMock(user)
     const response = createResponseMock()
@@ -101,7 +102,7 @@ describe('CreateSession Route Handler', () => {
 
   it('should not be able to authenticate with non existing user', async () => {
 
-    const user = {
+    const user: DeepPartial<User> = {
       email: 'johndoe@email.com',
       password: '123456'
     }
@@ -121,7 +122,7 @@ describe('CreateSession Route Handler', () => {
       password: '654321'
     })
 
-    const user = {
+    const user: DeepPartial<User> = {
       email: 'johndoe@email.com',
       password: '123456',
     }

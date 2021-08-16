@@ -1,4 +1,4 @@
-import { createResponseMock, mockRouteHandler } from "Utils/mockUtils"
+import { createRequestMock, createResponseMock, mockRouteHandler } from "Utils/mockUtils"
 import expectStatus from "Utils/expectStatus"
 
 import AnimalExample from "Entities/AnimalExample"
@@ -15,11 +15,7 @@ describe('ShowAnimal Route Handler', () => {
 
   it('works', async () => {
     const response = createResponseMock()
-    const request = {
-      body: {
-        animal: camel
-      }
-    }
+    const request = createRequestMock({ animal: camel })
 
     await mockRouteHandler(ShowAnimalRoute, request, response)
 
