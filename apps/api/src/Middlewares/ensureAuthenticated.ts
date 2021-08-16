@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 
 import authConfig from "Config/auth";
 import { unauthenticatedError } from "Utils/endpointReturns";
+import { Req } from "Utils/request";
 
 export interface ITokenPayload {
   iat: number;
@@ -11,8 +12,12 @@ export interface ITokenPayload {
   id: string;
 }
 
+export interface UserJWTPayload {
+  user: { id: string }
+}
+
 export default function ensureAuthenticated(
-  req: Request,
+  req: Req<{}, UserJWTPayload>,
   res: Response,
   next: NextFunction
 ) {
@@ -31,13 +36,12 @@ export default function ensureAuthenticated(
     console.log(decoded);
     const { id } = decoded as ITokenPayload;
     
-    
     if (id) {
       req.user = {
         id,
       };
     } else {
-      throw Error("User without id in token is not a valid token!! ");
+      return unauthenticatedError(res, "User without id in token is not a valid token!! ");
     }
 
     return next();

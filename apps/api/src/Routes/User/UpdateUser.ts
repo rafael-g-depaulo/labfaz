@@ -2,6 +2,7 @@ import UserRepository from "Repository/UserRepository"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 import { createdSuccessfully, notFoundError, badRequestError, unauthenticatedError } from "Utils/endpointReturns"
+import { UserJWTPayload } from "Middlewares/ensureAuthenticated"
 
 interface CreateUserInterface {
   UserRepo: UserRepository,
@@ -15,7 +16,7 @@ export interface IUser {
   password?: string
 }
 
-export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser>> = ({
+export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser, UserJWTPayload>> = ({
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 
