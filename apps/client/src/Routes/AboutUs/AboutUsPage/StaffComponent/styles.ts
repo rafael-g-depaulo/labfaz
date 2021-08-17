@@ -91,9 +91,9 @@ export const Card = styled.div`
 
   ${Mobile(css`
     max-width: 260px;
-    max-height: 247px;
+    max-height: 260px;
     min-width: 260px;
-    min-height: 247px;
+    min-height: 260px;
   `)}
 
   ${DesktopSmall(css`
@@ -139,7 +139,8 @@ export const CardThumb = styled.div`
 
 
     p {
-      font-size: var(--font-size-small);
+      font-size: var(--font-size-short);
+      padding-top: 0.28rem;
     }
 
   `)}
@@ -151,14 +152,13 @@ export const CardThumb = styled.div`
   `)}
 
   ${MobileSmall(css`
-    min-height: 124px;
+    min-height: 130px;
     justify-content: flex-end;
   `)}
 `;
 
 export const CardBody = styled.div`
   max-width: 100%;
-  padding-top: 1.25rem;
 
   p {
     color: var(--color-text-white);
@@ -182,10 +182,10 @@ export const CardBody = styled.div`
 
   ${Mobile(css`
     line-height: 16px;
-    padding-top: 1.3em;
+    padding-top: 1.2em;
 
     p {
-      font-size: var(--font-size-small);
+      font-size: var(--font-size-short);
       line-height: 16px;
       padding-top: 2.5%;
     }
@@ -293,7 +293,7 @@ export const Circle = styled.div`
     max-height: 91px;
     min-width: 91px;
     min-height: 91px;    
-    top: 6px;
+    top: 7px;
     right: 90px;
   `)}
 
@@ -307,7 +307,7 @@ export const Circle = styled.div`
   `)}
 
   ${MobileSmall(css`
-    top: 10px;
+    top: 7px;
     right: 88px;
   `)}
 `
