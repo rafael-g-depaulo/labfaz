@@ -30,7 +30,16 @@ export const Container = styled.div<VisibilityProps>`
 
   h1 {
     color: white;
-    padding-left: ${props => props.isOpen ? "5em" : "3em"};
+    ${props => props.isOpen ?
+    css`
+      padding-right: 5em;
+    `  
+    :
+    css`
+      padding-left: 5em;
+    `
+  }
+    /* padding-right: ${props => props.isOpen ? "5em" : "3em"}; */
     margin-bottom: ${props => props.isOpen ? "1.3em" : "0"};
     min-width: fit-content;
   }
@@ -44,6 +53,7 @@ export const Container = styled.div<VisibilityProps>`
 
     h1 {
       padding-left: 1em;
+      padding-right: 0;
       font-size: var(--font-size-title-medium);
     }
   `)}
@@ -54,9 +64,9 @@ export const Haeder = styled.div<VisibilityProps>`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 0;
-  margin-top: ${props => props.isOpen ? '2em' : '0'};
+  margin-top: ${props => props.isOpen ? '3em' : '0'};
   margin-bottom: ${props => props.isOpen ? '5em' : '0'};
 
 
