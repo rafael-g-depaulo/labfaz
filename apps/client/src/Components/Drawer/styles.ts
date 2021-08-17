@@ -24,6 +24,10 @@ export const Container = styled.div<VisibilityProps>`
   padding-bottom: ${props => props.isOpen ? "2.9rem" : ""};
   margin-bottom: 15vh;
 
+  :hover {
+    cursor: pointer;
+  }
+
   h1 {
     color: white;
     padding-left: ${props => props.isOpen ? "5em" : "3em"};
