@@ -6,7 +6,7 @@ export const validateUser = () => buildFeature({
     validation: {
       icon: "Task",
       actionType: "record",
-      handler: async (request, response, context ) => {
+      handler: async (_request, _response, context ) => {
         const { currentAdmin } = context
         const record = context.record as BaseRecord
 

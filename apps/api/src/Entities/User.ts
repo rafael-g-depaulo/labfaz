@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, BaseEntity, OneToMany, ManyToMany, JoinTable } from 'typeorm'
+import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, BaseEntity } from 'typeorm'
 import { nanoid } from 'nanoid'
 
 
