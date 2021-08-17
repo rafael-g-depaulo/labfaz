@@ -25,7 +25,7 @@ export interface ITechnical {
   is_affiliated: boolean;
   want_be_affiliated: boolean;
   areas: IArea[];
-  IIdiom: IIdiom[];
+  idiom: IIdiom[];
 }
 
 export enum Formation {
