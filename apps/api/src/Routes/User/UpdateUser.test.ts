@@ -64,7 +64,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser  as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(userUpdated, {}, { id: '1'})
+    const request = createRequestMock(userUpdated, {}, { user: { id: '1' } })
       
     await mockRouteHandler(updateUserRoute, request, response )
 
@@ -92,7 +92,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(userUpdated, {}, { id: '1'})
+    const request = createRequestMock(userUpdated, {}, { user: { id: '1' } })
       
     await mockRouteHandler(updateUserRoute, request, response )
 
@@ -119,7 +119,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(userUpdated, {}, { id: '1'})
+    const request = createRequestMock(userUpdated, {}, { user: { id: '1' } })
       
     await mockRouteHandler(updateUserRoute, request, response )
 
@@ -148,7 +148,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(userUpdated, {}, { id: '1'})
+    const request = createRequestMock(userUpdated, {}, { user: { id: '2' } })
       
     await mockRouteHandler(updateUserRoute, request, response )
 
@@ -175,7 +175,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(userUpdated, {}, { id: '1' })
+    const request = createRequestMock(userUpdated, {}, { user: { id: '1' } })
 
     await mockRouteHandler(updateUserRoute, request, response)
 
@@ -224,7 +224,7 @@ describe('UpdateUser Route Handler', () => {
     } as unknown as IUser
 
     const response = createResponseMock()
-    const request = createRequestMock(updateUser, {}, { id: '2' })
+    const request = createRequestMock(updateUser, {}, { user: { id: '2' } })
     
     await mockRouteHandler(updateUserRoute, request, response)
 

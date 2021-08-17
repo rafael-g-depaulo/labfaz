@@ -1,5 +1,5 @@
 import { NextFunction, Response } from "express"
-import { ParamsType, QueryType, Req, BodyType } from "./request"
+import { ParamsType, QueryType, Req, BodyType, ReqExtType } from "./request"
 import { RouteHandler } from "./routeHandler"
 
 export interface MockNext {
@@ -26,8 +26,12 @@ export interface MockResponse {
   status: jest.Mock<Express.Response, [number]>,
 }
 
-export const createRequestMock: <Body extends BodyType = {}, Params extends ParamsType = {}, Query extends QueryType = {}> (body?: Body, params?: Params, user?: UserSession) => Req<Body, UserSession, Params, Query> =
-  (body, params, user) => ({ body, params, user }) as any
+// export type createRequestMock = <Body extends BodyType = {}, ReqExt extends ReqExtType = {}, Params extends ParamsType = {}, Query extends QueryType = {}> (body?: Body, params?: Params, reqExt?: ReqExt, query?: Query) => Req<Body, ReqExt, Params, Query> 
+export const createRequestMock = <Body extends BodyType = {}, ReqExt extends ReqExtType = {}, Params extends ParamsType = {}, Query extends QueryType = {}> (body?: Body, params?: Params, reqExt?: ReqExt, query?: Query): Req<Body, ReqExt, Params, Query>  => {
+  const reqMock = { body, params, query } as Req<Body, ReqExt, Params, Query> 
+  const reqExtension = reqExt ?? {}
+  return { ...reqExtension, ...reqMock }
+}
 
 export const createResponseMock = (_jest: Jest = jest) => {
   const responseMock: MockResponse = {

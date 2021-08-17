@@ -9,6 +9,7 @@ import GetAllUsers from "./GetAllUser";
 import { CreateUser } from "./CreateUser";
 import ShowUser from "./ShowUser";
 import UpdateUser from "./UpdateUser";
+import { ParseUser } from "./ParseUser";
 
 type UserDeps = {
   conn: Connection;
@@ -22,7 +23,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .get("/", GetAllUsers({ UserRepo }))
     .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
-    .post("/", CreateUser({ UserRepo }))
+    .post("/", ParseUser, CreateUser({ UserRepo }))
     .put("/", ensureAuthenticated, UpdateUser({ UserRepo }));
 }
 
