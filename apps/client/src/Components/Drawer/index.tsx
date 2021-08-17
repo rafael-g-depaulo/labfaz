@@ -16,8 +16,8 @@ export const Drawer: FC<DrawerProps> = ({ children, description, teamName }) => 
 
 
   return(
-    <Container isOpen={isVisible}>
-      <Button onClick={() => setIsVisible(!isVisible)}>
+    <Container isOpen={isVisible} onClick={() => setIsVisible(!isVisible)}>
+      <Button>
         {/* Change color and size later */}
         {isVisible ? <FaAngleUp size={35} color="white" /> : <FaAngleDown size={35} color="white" />}
       </Button>
