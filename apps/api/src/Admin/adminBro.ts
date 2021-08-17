@@ -3,7 +3,6 @@ import AdminBroExpress from '@adminjs/express'
 import { Database, Resource } from '@adminjs/typeorm';
 // import User from 'Entities/User'; 
 import { Connection } from 'typeorm'
-import AnimalExample from 'Entities/AnimalExample';
 import { getResources, makeConnections } from './resources'
 
 // Vai precisar adicionar class validador ao adminBro caso use
@@ -13,7 +12,6 @@ AdminBro.registerAdapter( { Database, Resource } )
 
 export const getAdminBro = (conn: Connection) => {
     makeConnections(conn)
-    AnimalExample.useConnection(conn)
     return new AdminBro({
       // databases: [conn],
       resources: getResources(),
@@ -40,14 +38,17 @@ const getAdminRouter = (adminBro: AdminBro) => {
         return null
       }
     },
-    cookiePassword: 'somestrongpassowrd',
-    cookieName: 'nicename'
+    cookiePassword: process.env.COOKIE_PASSWORD!,
+    cookieName: 'adminbro',
   },
   null,
   {
     saveUninitialized: false,
     resave: true,
-    secret: 'somestrongpassword'
+    secret: process.env.COOKIE_SECRET!,
+    cookie: {
+      sameSite: true
+    }
   });
 }
 
