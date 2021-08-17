@@ -1,11 +1,24 @@
-import { Column, Entity, PrimaryColumn, BeforeInsert, CreateDateColumn, OneToOne } from 'typeorm'
-import { nanoid } from 'nanoid'
+import {
+  Column,
+  Entity,
+  PrimaryColumn,
+  BeforeInsert,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToOne,
+  BaseEntity,
+} from "typeorm";
+import { nanoid } from "nanoid";
+import Artist from "./Artist";
 
-import Artist from './Artist'
+export interface IUser {
+  email: string;
+  password: string;
+}
 
 // To work with admin bro classes must extend BaseEntity
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryColumn()
   id: string;
 
