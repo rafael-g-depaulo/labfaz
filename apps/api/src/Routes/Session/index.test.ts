@@ -64,7 +64,7 @@ describe('Session Router', () => {
         password: '123456',
         active: true,
         id: '1'
-      } as User)
+      } as unknown as User)
 
       const userInfo = {
         email: 'johndoe@email.com',
@@ -124,7 +124,7 @@ describe('Session Router', () => {
         name: 'John Doe',
         email: 'test@email.com',
         password: '123456'
-      })
+      } as unknown as User)
 
       agent
         .post('/sessions')
@@ -143,7 +143,7 @@ describe('Session Router', () => {
         name: 'John Doe',
         email: 'johndoe@email.com',
         password: '123456'
-      })
+      } as unknown as User)
 
       agent
         .post('/sessions')

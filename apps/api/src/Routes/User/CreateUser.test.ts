@@ -7,13 +7,13 @@ import {
 import expectStatus from "Utils/expectStatus";
 import UserRepository from "Repository/UserRepository";
 import User from "Entities/User";
-import CreateUser, { RequestBody } from "./CreateUser";
+import CreateUser from "./CreateUser";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
 
 describe("CreateUser Route Handler", () => {
   let UserRepo: UserRepository;
-  let createUserRoute: RouteHandler<Req<RequestBody>>;
+  let createUserRoute: RouteHandler<Req>;
   let mockTable: User[] = [];
 
   beforeAll(() => {
@@ -48,11 +48,11 @@ describe("CreateUser Route Handler", () => {
   });
 
   it("it should be able to create a new user in the database table", async () => {
-    const userInfo: RequestBody = {
+    const userInfo = {
       artist: { name: "john doe" },
       email: "johndoe@hotmail.com",
       password: "123456",
-    } as RequestBody
+    }
 
     const response = createResponseMock();
     const request = createRequestMock(userInfo);
@@ -66,10 +66,10 @@ describe("CreateUser Route Handler", () => {
   });
 
   it("should not be able to create a new user in the database table missing some field in request body", async () => {
-    const userInfo: RequestBody = {
+    const userInfo = {
       name: "john doe",
       email: "johndoe@hotmail.com",
-    } as any as RequestBody
+    } as any
 
     const response = createResponseMock();
     const request = createRequestMock(userInfo);
@@ -86,11 +86,11 @@ describe("CreateUser Route Handler", () => {
       password: "123456",
     });
 
-    const user: RequestBody = {
+    const user = {
       name: "FakeName",
       email: "johndoe@hotmail.com",
       password: "123456",
-    } as any as RequestBody
+    } as any
 
     const request = createRequestMock(user);
     const response = createResponseMock();
@@ -102,11 +102,11 @@ describe("CreateUser Route Handler", () => {
   });
 
   it("should not be able to create a new user in the database table with wrong field types", async () => {
-    const user: RequestBody = {
+    const user = {
       name: "John Doe",
       email: "johndoe@email.com",
       password: 12345,
-    } as any as RequestBody
+    } as any
 
     const request = createRequestMock(user);
     const response = createResponseMock();

@@ -52,20 +52,6 @@ export class UserRepository extends Repository<User> {
     if (!user) throw new Error("No user found");
 
     const token = sign({ id: user.id }, secret, { expiresIn });
-<<<<<<< HEAD
-    return token;
-  }
-
-  async generateResetPasswordToken(email: string) {
-    const { secret, expiresIn } = authConfig.token;
-
-    const user = await this.findOne({ where: { email } });
-    
-    if (!user) throw new Error("No user found");
-
-    const token = sign({ id: user.id }, secret, { expiresIn });
-=======
->>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
     return token;
   }
 

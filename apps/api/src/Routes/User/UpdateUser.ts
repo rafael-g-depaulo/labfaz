@@ -19,14 +19,8 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser, 
   UserRepo,
 }: CreateUserInterface) => async (req, res) => {
 
-<<<<<<< HEAD
   const { password, old_password } = req.body
 
-=======
-  const { name, password, old_password } = req.body
-
-  
->>>>>>> ce8e28f (🐛 fix: removed bug from update user)
   if ( !req.user ) {
     return unauthenticatedError(res, 'User need to be loged')
   }
@@ -34,18 +28,9 @@ export const UpdateUser: (deps: CreateUserInterface) => RouteHandler<Req<IUser, 
   const user = await UserRepo.findById(req.user?.id)
 
   if (!user) {
-<<<<<<< HEAD
     return notFoundError(res, "User not found.")
   }
 
-=======
-
-    return res.status(404).json("User not found.")
-  }
-
-  user.name = name
-
->>>>>>> ce8e28f (🐛 fix: removed bug from update user)
   if (password) {
 
     if (!old_password) {

@@ -35,15 +35,10 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @Column('boolean', { default: false })
-  active: boolean
-
   @BeforeInsert()
   addId() {
     this.id = nanoid();
   }
-
-
 }
 
 export default User;

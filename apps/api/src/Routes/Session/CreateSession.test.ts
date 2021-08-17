@@ -19,7 +19,7 @@ describe('CreateSession Route Handler', () => {
     createSessionRoute = CreateSession({ UserRepo })
 
     jest.spyOn(UserRepo, 'create').mockImplementation(info => {
-      const user = { ...info, id: `${info.name}.${info.password}`} as User
+      const user = { ...info, id: `${info.email}.${info.password}`} as User
       
       mockTable.push(user)
 

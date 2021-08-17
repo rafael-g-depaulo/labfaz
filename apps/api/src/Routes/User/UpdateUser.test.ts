@@ -54,14 +54,14 @@ describe('UpdateUser Route Handler', () => {
     const user: IUser = {
       name: 'John Doe',
       id: '1'
-    } as IUser
+    } as unknown as IUser  as unknown as IUser
 
     UserRepo.create(user)
 
     const userUpdated: IUser = {
       name: 'John Wick',
       id: '1'
-    } as IUser
+    } as unknown as IUser  as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1'})
@@ -79,7 +79,7 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
@@ -89,7 +89,7 @@ describe('UpdateUser Route Handler', () => {
       password: '654321',
       old_password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1'})
@@ -107,7 +107,7 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
@@ -116,7 +116,7 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '654321',
       id: '1'
-    }
+    } as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1'})
@@ -135,7 +135,7 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
@@ -145,7 +145,7 @@ describe('UpdateUser Route Handler', () => {
       password: '999999',
       old_password: '654321',
       id: '1'
-    }
+    } as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1'})
@@ -162,7 +162,7 @@ describe('UpdateUser Route Handler', () => {
       email: 'JohnDoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
@@ -172,7 +172,7 @@ describe('UpdateUser Route Handler', () => {
       password: '123456',
       old_password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(userUpdated, {}, { id: '1' })
@@ -189,14 +189,14 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
     const updateUser: IUser = {
       name: 'test',
       email: 'johndoe@email.com',
-    } as IUser
+    }  as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(updateUser)
@@ -214,14 +214,14 @@ describe('UpdateUser Route Handler', () => {
       email: 'johndoe@email.com',
       password: '123456',
       id: '1'
-    }
+    } as unknown as IUser
 
     UserRepo.create(user)
 
     const updateUser: IUser = {
       name: 'test',
       email: 'johndoe@email.com',
-    } as IUser
+    } as unknown as IUser
 
     const response = createResponseMock()
     const request = createRequestMock(updateUser, {}, { id: '2' })
