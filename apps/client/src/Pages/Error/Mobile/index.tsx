@@ -24,11 +24,8 @@ export const Mobile: FC<Props> = ({ status, message }) => {
       </TopWrapper>
       <MobileRectangle invert={true}>
         <SubtitleText level={2}>
-          Error {status !== undefined ? status : 401}:
-          <br />{" "}
-          {message !== undefined
-            ? message
-            : "Acesso negado devido a credenciais não válidas."}
+          Error {status ?? 401}:
+          <br /> {message ?? "Acesso negado devido a credenciais não válidas."}
         </SubtitleText>
         <TitleText level={1}>
           Ops...
