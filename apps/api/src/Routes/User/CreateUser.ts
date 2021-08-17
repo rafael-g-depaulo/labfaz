@@ -1,5 +1,5 @@
-import { MailProvider, Addres } from "@labfaz/mail"
-import { getApiUrl } from "@labfaz/server-conn-info"
+// import { MailProvider, Addres } from "@labfaz/mail"
+// import { getApiUrl } from "@labfaz/server-conn-info"
 
 import UserRepository from "Repository/UserRepository"
 
@@ -27,15 +27,15 @@ export const CreateUser: (
   const hashedPassword = await UserRepo.generateHash(password)
 
   // TODO: Fix user creation
-  // const user = await UserRepo.create({ artist, email, password: hashedPassword })
+  const user = await UserRepo.create({ artist, email, password: hashedPassword })
 
   // await UserRepo.save(user)
 
-  const mailer = new MailProvider()
-  const from: Addres = {
-    name: "LabFaz",
-    email: "noreply@labfaz.com.br",
-  }
+  // const mailer = new MailProvider()
+  // const from: Addres = {
+  //   name: "LabFaz",
+  //   email: "noreply@labfaz.com.br",
+  // }
   
   // mailer.sendEmail({
   //   to: {
@@ -61,7 +61,7 @@ export const CreateUser: (
   )
   let newUser = Object.fromEntries(userWithoutPassword)
 
-  return createdSuccessfully(res, { artist, email, password })
+  return createdSuccessfully(res, { artist, email, password, newUser })
 }
 
 export default CreateUser
