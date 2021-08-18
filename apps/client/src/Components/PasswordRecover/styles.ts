@@ -94,7 +94,6 @@ export const Blur = styled.div<ModalProps>`
   display: ${props => props.isVisible ? "grid" : "none"};
   position: fixed;
   top: 0;
-  border: 1px solid black;
   min-width: 100vw;
   min-height: 100vh;
   place-items: center;
@@ -103,7 +102,69 @@ export const Blur = styled.div<ModalProps>`
 
 export const ModalDiv = styled.div`
   display: flex;
+  flex-direction: column;
   background-color: white;
-  min-height: 500px;
-  min-width: 300px;
+  min-height: 707px;
+  min-width: 640px;
+  max-width: 640px;
+
+  background: rgba(229, 229, 229, 1);
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: justify;
+
+  h3 {
+    margin-top: 3.15em;
+  }
+
+  > p {
+    text-align: center;
+    max-width: 488px;
+    font-size: var(--font-size-title-short);
+  }
+
+  p:first-child {
+    display: none;
+  }
+
+  p:nth-child(2) {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+
+  p:nth-child(3) {
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+  
+  p:nth-child(4) {
+    font-weight: 700;
+  }
+
+  button {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
 `
+
+export const Button = styled.button`
+  min-width: 379px;
+  max-height: 48px;
+  min-height: 48px;
+  text-align: center;
+  align-items: center;
+  border: none;
+  background-color: white;
+`
+export const Span = styled.p`
+  margin-top: 1rem;
+  text-decoration: underline;
+  align-self: center;
+
+  :hover {
+    cursor: pointer;
+  }
+` 
