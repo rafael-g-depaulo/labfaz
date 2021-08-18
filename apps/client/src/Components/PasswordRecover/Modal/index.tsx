@@ -1,6 +1,9 @@
 import React, { FC } from 'react'
 
-import { ModalDiv, Blur } from '../styles'
+import { ModalDiv, Blur, Button } from '../styles'
+import { Title } from "Components/Typography/Title"
+import { Text } from "Components/Typography/Text"
+import SocialMediaIcons  from "Components/SocialMediaIcons"
 
 interface ModalProps {
   isVisible: boolean,
@@ -15,8 +18,12 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction }) => {
       isVisible={isVisible}
       >
       <ModalDiv>
-        <p> Hello there </p>
-        <button onClick={() => setFunction(!isVisible)} > Voltar </button>
+        <Title level={3}> Pedimos desculpas pelos problemas </Title>
+        <Text> O email com as instrucoes para recuperar sua senha foram enviados. Cheque sua caixa de mensagens ou em alguns minutos tente novamente. </Text>
+        <Text> (99)9999-999 </Text>
+        <Text> contato@labfaz.com.br </Text>
+        <SocialMediaIcons />
+        <Button onClick={() => setFunction(!isVisible)} > Voltar </Button>
       </ModalDiv>
     </Blur>
   )

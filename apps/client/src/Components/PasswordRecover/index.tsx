@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
-import { Wrapper, InputContainer, FormButton } from './styles'
+import { Wrapper, InputContainer, FormButton, Span } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
 import { Modal } from './Modal'
@@ -15,7 +15,7 @@ export const RecoverForm: FC = () => {
 
   const [emailSent, setEmailSent] = useState(false);
 
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleSubmit = (values:FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
     console.log(values.email)
@@ -56,13 +56,13 @@ export const RecoverForm: FC = () => {
                   placeholder="Digite seu email" 
                   name="email"
                   />
-                <Text> {emailSent ? "Enviamos um email pra você. Isso pode demorar alguns minutos." : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
+                <Text> {emailSent ? "O email com as instrucoes para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens." : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
               </InputContainer>
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
               </FormButton>
             </Form>
-            <button onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </button>
+            <Span onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </Span>
           </Wrapper>
           )
           }        
