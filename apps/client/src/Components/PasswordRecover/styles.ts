@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
   p:nth-child(3) {
     margin-top: 2rem;
     align-self: center;
+    text-decoration: underline;
   }
 
   a {
@@ -54,4 +55,18 @@ export const InputContainer = styled.div`
     text-align: center;
     margin-bottom: 9.7rem;
   }
+`
+export const FormButton = styled.button`
+  cursor: pointer;
+  border: 0;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  font-weight: bold;
+
+  color: var(--color-text-yellow);
+  background-color: var(--button-color-pink);
+
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-color: var(--button-color-yellow);
 `

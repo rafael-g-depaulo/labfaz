@@ -2,10 +2,9 @@ import React, { FC } from 'react'
 
 import { Formik, Form } from 'formik'
 
-import { Wrapper, InputContainer } from './styles'
+import { Wrapper, InputContainer, FormButton } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
-import { InternalLinkButton as Button } from "Components/Buttons/InternalLinkButton"
 
 interface FormProps {
   email: string
@@ -15,13 +14,29 @@ export const RecoverForm: FC = () => {
   const handleSubmit = (values: FormProps) => {
     console.log(values)
   }
+
+  const validateSubmit = (values: FormProps) => {
+    const errors: any = { }
+
+    if(!values.email){
+      errors.email = "Required"
+    } else if(
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+    ) {
+      errors.email = "Invalid email address"
+    }
+    
+    return errors
+  } 
+
   
   return (
     <Formik 
-    initialValues={{
+      initialValues={{
       email: ''
         }}
-        onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
+      validate={validateSubmit}
         >
         {() => (
         <Wrapper>
@@ -30,14 +45,13 @@ export const RecoverForm: FC = () => {
               <Input label="Email" placeholder="Digite seu email" htmlFor="Email" name="Email" />
               <Text> Enviaremos um email com as instruções para recuperar a sua senha </Text> 
             </InputContainer>
-            <Button href="#">
+            <FormButton type="submit">
               RECUPERAR SENHA
-            </Button>
+            </FormButton>
             <Text> Ainda está com problemas ? </Text> 
           </Form>
         </Wrapper>
         )
-
         }
 
         
