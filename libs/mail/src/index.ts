@@ -27,31 +27,13 @@ export class MailProvider implements SendEmail {
   private readonly transponder: Mail
   constructor () {
     this.transponder = nodemailer.createTransport({
-<<<<<<< HEAD
-<<<<<<< HEAD
-      host: `smtp.gmail.email`,
-      service: "gmail",
-=======
       host: `smtp.${process.env.HOST}.email`,
       service: process.env.HOST,
->>>>>>> e29a759 (🐛 Fix variable problem with lib)
-=======
-      host: `smtp.gmail.email`,
-      service: "gmail",
->>>>>>> a74ec09 (✨ add: noreply mailer sender)
       port: 465,
       secure: true,
       auth: {
-        user: "noreply.labfaz@gmail.com",
-<<<<<<< HEAD
-<<<<<<< HEAD
-        pass: "n9zNHuTLswV5eDE"
-=======
-        pass: "eyeuajenqiaarlja"
->>>>>>> a74ec09 (✨ add: noreply mailer sender)
-=======
-        pass: "n9zNHuTLswV5eDE"
->>>>>>> 2b5b086 (✨ Feature: Mailer and changes in the backend done)
+        user: process.env.EMAIL,
+        pass: process.env.APPPASS
       },
       requireTLS: true
     })
