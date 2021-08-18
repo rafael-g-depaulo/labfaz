@@ -1,18 +1,23 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
-import { Formik, Form } from 'formik'
+import { Formik, Form, FormikHelpers } from 'formik'
 
 import { Wrapper, InputContainer, FormButton } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
 
 interface FormProps {
-  email: string
+  email: string,
 }
 
 export const RecoverForm: FC = () => {
-  const handleSubmit = (values: FormProps) => {
-    console.log(values)
+
+  const [emailSent, setEmailSent] = useState(false);
+
+  const handleSubmit = (values:FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
+    console.log(values.email)
+    setEmailSent(true)
+    setSubmitting(false)
   }
 
   const validateSubmit = (values: FormProps) => {
@@ -25,7 +30,6 @@ export const RecoverForm: FC = () => {
     ) {
       errors.email = "Invalid email address"
     }
-    
     return errors
   } 
 
@@ -35,26 +39,29 @@ export const RecoverForm: FC = () => {
       initialValues={{
       email: ''
         }}
-      onSubmit={handleSubmit}
-      validate={validateSubmit}
+        validate={validateSubmit}
+        onSubmit={handleSubmit}
         >
-        {() => (
+        {({ isSubmitting }) => (
         <Wrapper>
           <Form>
             <InputContainer>
-              <Input label="Email" placeholder="Digite seu email" htmlFor="Email" name="Email" />
-              <Text> Enviaremos um email com as instruções para recuperar a sua senha </Text> 
+              <Input 
+                type="text" 
+                label="Email" 
+                placeholder="Digite seu email" 
+                name="email"
+                />
+              <Text> {emailSent ? "Enviamos um email pra você. Isso pode demorar alguns minutos." : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
             </InputContainer>
-            <FormButton type="submit">
+            <FormButton type="submit" disabled={isSubmitting}>
               RECUPERAR SENHA
             </FormButton>
             <Text> Ainda está com problemas ? </Text> 
           </Form>
         </Wrapper>
         )
-        }
-
-        
+        }        
       </Formik>
   )
 }

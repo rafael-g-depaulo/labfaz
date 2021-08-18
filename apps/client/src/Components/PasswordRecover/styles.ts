@@ -44,6 +44,7 @@ export const InputContainer = styled.div`
     min-width: 379px;
     min-height: 51px;
     margin-bottom: 0.9rem;
+    color: black;
   }
 
   label {
@@ -54,6 +55,12 @@ export const InputContainer = styled.div`
     max-width: 379px;
     text-align: center;
     margin-bottom: 9.7rem;
+  }
+
+  > div {
+    color: red;
+    font-weight: 600;
+    font-size: var(--font-size-short);
   }
 `
 export const FormButton = styled.button`
@@ -69,4 +76,8 @@ export const FormButton = styled.button`
   border-top: 2px solid;
   border-left: 2px solid;
   border-color: var(--button-color-yellow);
+
+  :disabled {
+    opacity: 0.5;
+  }
 `
