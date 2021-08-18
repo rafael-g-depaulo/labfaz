@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
+interface ModalProps {
+  isVisible: boolean
+}
+
+export const Wrapper = styled.div<ModalProps>`
   max-width: 640px;
   max-height: 707px;
   min-height: 707px;
@@ -12,6 +16,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
 
   border: 1px solid black;
+  filter: ${props => props.isVisible ? "blur(2.5px)" : ""};
 
   form {
     min-height: 50%;
@@ -26,6 +31,9 @@ export const Wrapper = styled.div`
     margin-top: 2rem;
     align-self: center;
     text-decoration: underline;
+    :hover {
+      cursor: pointer;
+    }
   }
 
   a {
@@ -80,4 +88,22 @@ export const FormButton = styled.button`
   :disabled {
     opacity: 0.5;
   }
+`
+
+export const Blur = styled.div<ModalProps>`
+  display: ${props => props.isVisible ? "grid" : "none"};
+  position: fixed;
+  top: 0;
+  border: 1px solid black;
+  min-width: 100vw;
+  min-height: 100vh;
+  place-items: center;
+  z-index: 99999999;
+`
+
+export const ModalDiv = styled.div`
+  display: flex;
+  background-color: white;
+  min-height: 500px;
+  min-width: 300px;
 `

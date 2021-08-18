@@ -5,6 +5,7 @@ import { Formik, Form, FormikHelpers } from 'formik'
 import { Wrapper, InputContainer, FormButton } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
+import { Modal } from './Modal'
 
 interface FormProps {
   email: string,
@@ -13,6 +14,8 @@ interface FormProps {
 export const RecoverForm: FC = () => {
 
   const [emailSent, setEmailSent] = useState(false);
+
+  const [isVisible, setIsVisible] = useState(true)
 
   const handleSubmit = (values:FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
     console.log(values.email)
@@ -35,34 +38,37 @@ export const RecoverForm: FC = () => {
 
   
   return (
-    <Formik 
-      initialValues={{
-      email: ''
-        }}
-        validate={validateSubmit}
-        onSubmit={handleSubmit}
-        >
-        {({ isSubmitting }) => (
-        <Wrapper>
-          <Form>
-            <InputContainer>
-              <Input 
-                type="text" 
-                label="Email" 
-                placeholder="Digite seu email" 
-                name="email"
-                />
-              <Text> {emailSent ? "Enviamos um email pra você. Isso pode demorar alguns minutos." : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
-            </InputContainer>
-            <FormButton type="submit" disabled={isSubmitting}>
-              RECUPERAR SENHA
-            </FormButton>
-            <Text> Ainda está com problemas ? </Text> 
-          </Form>
-        </Wrapper>
-        )
-        }        
-      </Formik>
+    <>
+      <Formik 
+        initialValues={{
+        email: ''
+          }}
+          validate={validateSubmit}
+          onSubmit={handleSubmit}
+          >
+          {({ isSubmitting }) => (
+          <Wrapper isVisible={isVisible}>
+            <Form>
+              <InputContainer>
+                <Input 
+                  type="text" 
+                  label="Email" 
+                  placeholder="Digite seu email" 
+                  name="email"
+                  />
+                <Text> {emailSent ? "Enviamos um email pra você. Isso pode demorar alguns minutos." : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
+              </InputContainer>
+              <FormButton type="submit" disabled={isSubmitting}>
+                RECUPERAR SENHA
+              </FormButton>
+            </Form>
+            <button onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </button>
+          </Wrapper>
+          )
+          }        
+        </Formik>
+        <Modal isVisible={isVisible} setFunction={setIsVisible} />
+      </>
   )
 }
 
