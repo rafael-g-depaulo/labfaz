@@ -9,7 +9,7 @@ export interface ParsedUser {
 
 export const ParseUser: RouteHandler<Req<UserInfo, ParsedUser>> = (req, res, next) => {
   // validate user
-  userSchema.validate(req.body)
+  userSchema.validate(req.body, { stripUnknown: true, abortEarly: false })
     // if request body is good, go to next middleware
     .then(userInfo => {
       req.user_info = userInfo

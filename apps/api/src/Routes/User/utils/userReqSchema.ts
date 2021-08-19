@@ -58,7 +58,7 @@ export const addressSchema = yup.object().required().shape({
   city: yup.string().required(),
   cep: yup.string().required(),
   neighbourhood: yup.string().required(),
-  number: yup.number().integer().positive().required(),
+  number: yup.number().integer().positive().required().moreThan(1000_0000),
   complement: yup.string().required(),
   residency: yup
     .mixed<Residency>()
