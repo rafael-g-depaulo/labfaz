@@ -10,7 +10,7 @@ export const FooterContainer = styled.div`
     width: 100vw;
     max-height: 12rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
   }
   

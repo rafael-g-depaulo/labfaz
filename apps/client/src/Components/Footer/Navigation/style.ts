@@ -9,7 +9,7 @@ export const NavigationContainer = styled.div`
   height: 8.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   ${DesktopSmall(css`
     width: 13rem;
