@@ -4,6 +4,78 @@ import { Residency } from "Entities/Address";
 import { Formation } from "Entities/Technical";
 import { TechFormation } from "Entities/Area";
 
+export const userTechnicalSchema = yup.object().required().shape({
+  formation: yup
+    .mixed<Formation>()
+    .required()
+    .oneOf(Object.values(Formation)),
+  is_drt: yup.boolean().required().default(false),
+  is_ceac: yup.boolean().required().default(false),
+  is_cnpj: yup.boolean().required().default(false),
+  is_affiliated: yup.boolean().required().default(false),
+  want_be_affiliated: yup.boolean().required().default(true),
+  areas: yup
+    .array()
+    .ensure()
+    .of(
+      yup.object({
+        technical_formation: yup
+          .mixed<TechFormation>()
+          .required()
+          .oneOf(Object.values(TechFormation)),
+        name: yup.string().required(),
+        describe: yup.string().required(),
+        started_year: yup.string().required(),
+        curriculum: yup
+          .array()
+          .ensure()
+          .of(
+            yup.object({
+              url: yup.string().required().url(),
+            })
+          ),
+        certificate: yup
+          .array()
+          .ensure()
+          .of(
+            yup.object({
+              name: yup.string().required(),
+            })
+          ),
+      })
+    ),
+  idiom: yup
+    .array()
+    .ensure()
+    .of(
+      yup.object({
+        name: yup.string().required(),
+      })
+    ),
+})
+
+export const addressSchema = yup.object().required().shape({
+  city: yup.string().required(),
+  cep: yup.string().required(),
+  neighbourhood: yup.string().required(),
+  number: yup.number().integer().positive().required(),
+  complement: yup.string().required(),
+  residency: yup
+    .mixed<Residency>()
+    .required()
+    .oneOf(Object.values(Residency)),
+})
+
+export const userContactSchema = yup.object().required().shape({
+  whatsapp: yup.string().required(),
+  twitter: yup.string().required(),
+  facebook: yup.string().required(),
+  instagram: yup.string().required(),
+  linkedin: yup.string().required(),
+  tiktok: yup.string().required(),
+  youtube: yup.string().required(),
+})
+
 export const userSchema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(6),
@@ -23,75 +95,9 @@ export const userSchema = yup.object({
     is_trans: yup.boolean().required(),
     race: yup.mixed<Race>().required().oneOf(Object.values(Race)),
     show_name: yup.mixed<ShowName>().required().oneOf(Object.values(ShowName)),
-    address: yup.object().required().shape({
-      city: yup.string().required(),
-      cep: yup.string().required(),
-      neighbourhood: yup.string().required(),
-      number: yup.number().integer().positive().required(),
-      complement: yup.string().required(),
-      residency: yup
-        .mixed<Residency>()
-        .required()
-        .oneOf(Object.values(Residency)),
-    }),
-    contact: yup.object().required().shape({
-      whatsapp: yup.string().required(),
-      twitter: yup.string().required(),
-      facebook: yup.string().required(),
-      instagram: yup.string().required(),
-      linkedin: yup.string().required(),
-      tiktok: yup.string().required(),
-      youtube: yup.string().required(),
-    }),
-    technical: yup.object().required().shape({
-      formation: yup
-        .mixed<Formation>()
-        .required()
-        .oneOf(Object.values(Formation)),
-      is_drt: yup.boolean().required().default(false),
-      is_ceac: yup.boolean().required().default(false),
-      is_cnpj: yup.boolean().required().default(false),
-      is_affiliated: yup.boolean().required().default(false),
-      want_be_affiliated: yup.boolean().required().default(true),
-      areas: yup
-        .array()
-        .ensure()
-        .of(
-          yup.object({
-            technical_formation: yup
-              .mixed<TechFormation>()
-              .required()
-              .oneOf(Object.values(TechFormation)),
-            name: yup.string().required(),
-            describe: yup.string().required(),
-            started_year: yup.string().required(),
-            curriculum: yup
-              .array()
-              .ensure()
-              .of(
-                yup.object({
-                  url: yup.string().required().url(),
-                })
-              ),
-            certificate: yup
-              .array()
-              .ensure()
-              .of(
-                yup.object({
-                  name: yup.string().required(),
-                })
-              ),
-          })
-        ),
-      idiom: yup
-        .array()
-        .ensure()
-        .of(
-          yup.object({
-            name: yup.string().required(),
-          })
-        ),
-    }),
+    address: addressSchema,
+    contact: userContactSchema,
+    technical: userTechnicalSchema,
   }),
 });
 
