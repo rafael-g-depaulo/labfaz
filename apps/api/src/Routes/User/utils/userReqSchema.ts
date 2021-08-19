@@ -7,7 +7,7 @@ import { TechFormation } from "Entities/Area";
 export const userSchema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(6),
-  artist: yup.object({
+  artist: yup.object().required().shape({
     photo_url: yup.string().required().url(),
     name: yup.string().required(),
     social_name: yup.string(),
@@ -23,7 +23,7 @@ export const userSchema = yup.object({
     is_trans: yup.boolean().required(),
     race: yup.mixed<Race>().required().oneOf(Object.values(Race)),
     show_name: yup.mixed<ShowName>().required().oneOf(Object.values(ShowName)),
-    address: yup.object({
+    address: yup.object().required().shape({
       city: yup.string().required(),
       cep: yup.string().required(),
       neighbourhood: yup.string().required(),
@@ -34,7 +34,7 @@ export const userSchema = yup.object({
         .required()
         .oneOf(Object.values(Residency)),
     }),
-    contact: yup.object({
+    contact: yup.object().required().shape({
       whatsapp: yup.string().required(),
       twitter: yup.string().required(),
       facebook: yup.string().required(),
@@ -43,7 +43,7 @@ export const userSchema = yup.object({
       tiktok: yup.string().required(),
       youtube: yup.string().required(),
     }),
-    technical: yup.object({
+    technical: yup.object().required().shape({
       formation: yup
         .mixed<Formation>()
         .required()
