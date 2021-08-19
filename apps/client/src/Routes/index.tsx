@@ -20,6 +20,7 @@ const Register = lazy(() => import('./SignUp'))
 const Login = lazy(() => import('./Login'))
 const EmailConfirmation = lazy(() => import('./ConfirmEmail'))
 const Profile = lazy(() => import('./Profile'))
+const Recover = lazy(() => import("./PasswordRecover"));
 
 export type RouterProps<MatchParams = {}> = {
   history?: History
@@ -135,6 +136,14 @@ const Routes: FC = () => {
           )}
         </Route>
 
+        {/* recover router */}
+        <Route path={["/recover"]}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <Recover match={match} />
+            </Suspense>
+          )}
+        </Route>
         {/* default route (404) */}
         <Route>
           <Suspense fallback={<LoadingFullPage />}>
