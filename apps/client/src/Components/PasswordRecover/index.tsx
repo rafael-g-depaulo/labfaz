@@ -6,19 +6,20 @@ import { Wrapper, InputContainer, FormButton, Span } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
 import { Modal } from './Modal'
-
 interface FormProps {
   email: string,
 }
 
 export const RecoverForm: FC = () => {
 
+
   const [emailSent, setEmailSent] = useState(false);
 
   const [isVisible, setIsVisible] = useState(false)
 
+
   const handleSubmit = (values:FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
-    console.log(values.email)
+    console.log(values)
     setEmailSent(true)
     setSubmitting(false)
   }
