@@ -52,7 +52,7 @@ export const CreateUser: (
 
   // TODO: Fix user creation
   // ...and user creation should happen inside userRepo.createUser, not here
-  // ...but we can and should change the function's type to include "artist"
+  // ...and we should change the function's type to include "artist"
   return UserRepo.createUser(email, password)
     // .then(user => { sendConfirmationEmail(user); return user })
     .then(user => {
