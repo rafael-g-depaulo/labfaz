@@ -59,7 +59,6 @@ describe('Session Router', () => {
   describe('Create Session', () => {
     it('should 200 with a valid credentials in the request body', async (done) => {
       mockTable.push({
-        name: 'John Doe',
         email: 'johndoe@email.com',
         password: '123456',
         active: true,
@@ -72,7 +71,7 @@ describe('Session Router', () => {
       }
 
       agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send(userInfo)
         .expect('Content-Type', /json/)
         .expect(200)
@@ -84,19 +83,19 @@ describe('Session Router', () => {
 
     it('should 400 with an incomplete User field in the request body', async (done) => {
       const emptyBody = agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({})
         .expect('Content-Type', /json/ )
         .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyEmail = agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({ email: 'johndoe@email.com' })
         .expect('Content-Type', /json/ )
         .expect(400, ErrorObj(400, 'Incomplete request body' ))
 
       const onlyPassword = agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({ password: '123456' })
         .expect('Content-Type', /json/ )
         .expect(400, ErrorObj(400, 'Incomplete request body' ))
@@ -109,7 +108,7 @@ describe('Session Router', () => {
 
     it('should 400 with a request body containing invalid information', async (done) => {
       agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({ email: 'johndoe@email.com', password: true })
         .expect('Content-Type', /json/ )
         .expect(400, ErrorObj(400, 'Invalid request body'))
@@ -127,7 +126,7 @@ describe('Session Router', () => {
       } as unknown as User)
 
       agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({ email: 'johndoe@email.com', password: '123456' })
         .expect('Content-Type', /json/ )
         .expect(401, ErrorObj(401, 'Incorrect email/password combination.'))
@@ -146,7 +145,7 @@ describe('Session Router', () => {
       } as unknown as User)
 
       agent
-        .post('/sessions')
+        .post('/sessions/create')
         .send({ name: 'John Doe', email: 'johndoe@email.com', password: '654321' })
         .expect('Content-Type', /json/ )
         .expect(401, ErrorObj(401, 'Incorrect email/password combination.'))
