@@ -31,6 +31,21 @@ export class UserRepository extends Repository<User> {
     });
   }
 
+  async createUser(email: string, rawPassword: string) {
+    const hashedPwd = await this.generateHash(rawPassword)
+    const createdUser = this.create({
+      email,
+      password: hashedPwd,
+      active: false,
+      isVerified: false,
+      banned: false
+    })
+
+    await createdUser.save()
+
+    return createdUser
+  }
+
   findById(id: string) {
     return this.findOne({
       where: { id },
