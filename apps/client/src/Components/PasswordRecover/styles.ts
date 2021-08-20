@@ -90,14 +90,13 @@ export const FormButton = styled.button`
   }
 `
 
-export const Blur = styled.div<ModalProps>`
-  display: ${props => props.isVisible ? "grid" : "none"};
-  position: fixed;
-  top: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+export const Blur = styled.div`
+  width: 100%;
+  height: 100%;
   place-items: center;
-  z-index: 99999999;
+  position: absolute;
+  z-index: 9999;
+  filter: blur(20px);
 `
 
 export const ModalDiv = styled.div`
@@ -148,6 +147,19 @@ export const ModalDiv = styled.div`
     margin-top: 3rem;
     margin-bottom: 5rem;
   }
+  z-index: 999999999;
+`
+
+export const Container = styled.div<ModalProps>`
+  display: ${props => props.isVisible ? "grid" : "none"};
+  position: fixed;
+  top: 7vh;
+  left: 0;
+  min-width: 100vw;
+  min-height: 85vh;
+  place-items: center;
+  z-index: 99999999;
+  max-height: 85vh;
 `
 
 export const Button = styled.button`
