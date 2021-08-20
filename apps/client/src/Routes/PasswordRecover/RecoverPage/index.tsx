@@ -1,11 +1,20 @@
 import React, { FC } from 'react'
 
-// import Loading from "Components/Loading"
+import Loading from "Components/Loading"
 import Display from "./Display"
 
+import { useRecoverPassImage } from "Api/RecoverPassImage"
+
 export const RecoverPasswordPage: FC = () => {
+
+  const response = useRecoverPassImage()
+
+  if (response.isLoading) return <Loading />
+  if (response.error) return <div>error: {response.error.message}</div>
+
+
   return(
-    <Display />
+    <Display image={response.data}/>
   )
 }
 
