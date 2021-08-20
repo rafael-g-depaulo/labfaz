@@ -16,7 +16,7 @@ export const Wrapper = styled.div<ModalProps>`
   justify-content: flex-start;
 
   border: 1px solid black;
-  filter: ${props => props.isVisible ? "blur(2.5px)" : ""};
+
 
   form {
     min-height: 50%;
@@ -90,14 +90,6 @@ export const FormButton = styled.button`
   }
 `
 
-export const Blur = styled.div`
-  width: 100%;
-  height: 100%;
-  place-items: center;
-  position: absolute;
-  z-index: 9999;
-  filter: blur(20px);
-`
 
 export const ModalDiv = styled.div`
   display: flex;
@@ -106,6 +98,8 @@ export const ModalDiv = styled.div`
   min-height: 707px;
   min-width: 640px;
   max-width: 640px;
+
+  position: absolute;
 
   background: rgba(229, 229, 229, 1);
 
@@ -160,7 +154,9 @@ export const Container = styled.div<ModalProps>`
   place-items: center;
   z-index: 99999999;
   max-height: 85vh;
+
 `
+
 
 export const Button = styled.button`
   min-width: 379px;

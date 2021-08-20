@@ -13,6 +13,7 @@ interface DisplayProps {
 }
 
 export const Display: FC<DisplayProps> = ({ image }) => {
+  
   return (
     <>
       <Header />
