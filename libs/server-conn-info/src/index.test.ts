@@ -1,4 +1,4 @@
-import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiHost, getStrapiPort, getStrapiUrl } from "."
+import { getApiPort, getApiUrl, defaultApiUrl, defaultStrapiHost, getStrapiPort, getStrapiUrl, getClientPort, getClientUrl, defaultClientUrl } from "."
 
 // reset test env inbetween tests
 const resetTestEnv : () => NodeJS.ProcessEnv = () => {
@@ -111,4 +111,60 @@ describe('server-conn-info', () => {
     })
   })
 
+  describe('client port', () => {
+    
+    test('works by default', () => {
+      process.env.PORT = ""
+      expect(getClientPort()).toBe(3000)
+
+      delete process.env.PORT
+      expect(getClientPort()).toBe(3000)
+
+    })
+
+    test('works with PORT env var', () => {
+      process.env.PORT = "1234"
+      expect(getClientPort()).toBe(1234)
+    })
+
+    test('throws if PORT env var is present but not a number', () => {
+      process.env.PORT = "123 !"
+      expect(getClientPort).toThrowError("PORT environment variable present, but not a number")
+    })
+
+  })
+
+  describe('client url', () => {
+
+    test('works on production with CLIENT_URL emv var (and REACT_APP_*)', () => {
+      process.env.NODE_ENV = "production"
+
+      process.env.CLIENT_URL = "https://www.google.com/"
+      delete process.env.REACT_APP_CLIENT_URL
+
+      expect(getClientUrl()).toBe(process.env.CLIENT_URL)
+
+      delete process.env.CLIENT_URL
+      process.env.REACT_APP_CLIENT_URL = "https://www.google.com/"
+
+      expect(getClientUrl()).toBe(process.env.REACT_APP_CLIENT_URL)
+    })
+    
+    test('works on production withouth env vars', () => {
+      process.env.NODE_ENV = "production"
+
+      delete process.env.REACT_APP_CLIENT_URL
+      delete process.env.CLIENT_URL
+
+      expect(getClientUrl()).toBe(defaultClientUrl)
+    })
+
+    test('works on dev mode', () => {
+      process.env.NODE_ENV = "develop"
+
+      const port = getClientPort()
+
+      expect(getClientUrl()).toBe(`http://0.0.0.0:${port}`)
+    })
+  })
 })
