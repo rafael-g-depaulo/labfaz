@@ -1,6 +1,5 @@
-import { NextFunction, Request, Response, Express } from 'express'
+import { NextFunction, Request, Response, Express, json, urlencoded } from 'express'
 
-import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
 import cors from "./cors"
 
@@ -16,7 +15,7 @@ export default (app: Express) => {
   app.use(cookieParser())
 
   // body parser to parse http requests' bodies
-  app.use(bodyParser.json({}))
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(json())
+  app.use(urlencoded({ extended: true }))
 
 }
