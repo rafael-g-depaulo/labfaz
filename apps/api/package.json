@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/api",
-  "version": "3.5.1",
+  "version": "3.7.0",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
@@ -52,8 +52,8 @@
     "@types/jest": "^24.9",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/nanoid": "^2.1.0",
-    "adminjs": "^5.1.0",
     "@types/yup": "^0.29.13",
+    "adminjs": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
