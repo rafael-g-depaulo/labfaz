@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { ModalDiv, Blur, Button, Container } from '../styles'
+import { ModalDiv, Button, Container } from '../styles'
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
 import SocialMediaIcons  from "Components/SocialMediaIcons"
@@ -23,7 +23,6 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction }) => {
         <SocialMediaIcons />
         <Button onClick={() => setFunction(!isVisible)} > Voltar </Button>
       </ModalDiv>
-      <Blur />
     </Container>
   )
 }
