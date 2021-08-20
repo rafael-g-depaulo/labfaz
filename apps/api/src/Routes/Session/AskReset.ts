@@ -46,22 +46,28 @@ export const AskReset: (
 
   const token = await UserRepo.generateResetPasswordToken(email);
 
-  mailer.sendEmail({
-    to: {
-      name: checkUserExists.artist.name,
-      email: email,
-    },
-    from: from,
-    subject: "Reset de Senha - Labfaz",
-    html:`
-    <div>
-      <h1> Olá ${checkUserExists.artist.name}, você pediu um reset de senha</h1>
-      <p>Esse é o token para utilizar na página <b>${token}</b></p>
-    </div>
-    `,
-  })
+  //! tem que trocar {{nome}} por ${checkUserExists.artist.name} depois
+  // TODO: usar o mailer de verdade
+  // TODO: não enviar o text e html na resposta
+  const text = `Olá {{nome}}, você pediu um reset de senha. Esse é o token para utilizar na página ${token}.`
+  const html = `
+  <div>
+    <h1> Olá {{nome}}, você pediu um reset de senha</h1>
+    <p>Esse é o token para utilizar na página <b>${token}</b></p>
+  </div>
+  `
+  // mailer.sendEmail({
+  //   to: {
+  //     name: checkUserExists.artist.name,
+  //     email: email,
+  //   },
+  //   from: from,
+  //   subject: "Reset de Senha - Labfaz",
+  //   html,
+  //   text,
+  // })
 
-  return actionSuccessful(res, "Reset token sent to email!!");
+  return actionSuccessful(res, { message: "Reset token sent to email!!", text, html });
 };
 
 export default AskReset;

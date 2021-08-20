@@ -23,8 +23,8 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .get("/", GetAllUsers({ UserRepo }))
     .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
-    .post("/", ParseUser, CreateUser({ UserRepo }))
-    .put("/", ensureAuthenticated, UpdateUser({ UserRepo }));
+    .post("/create", ParseUser, CreateUser({ UserRepo }))
+    .put("/update", ensureAuthenticated, UpdateUser({ UserRepo }));
 }
 
 export default UserRouter

@@ -21,7 +21,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .get("/ask-reset", AskReset({ UserRepo }))
     .post("/reset-password", ResetPassword({ UserRepo }))
-    .post("/", CreateSession({ UserRepo }))
+    .post("/create", CreateSession({ UserRepo }))
     .post(
       "/auth/account-verification/:userId",
       EmailConfirmation({ UserRepo })
