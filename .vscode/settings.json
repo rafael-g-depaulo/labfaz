@@ -5,7 +5,7 @@
   // vscode-icons-team.vscode-icons config
   "vsicons.associations.folders": [
     {
-      "icon": "helper",
+      "icon": "hook",
       "extensions": [
         "hooks"
       ]
@@ -46,6 +46,19 @@
         "jobs"
       ]
     },
+    {
+      "icon": "www",
+      "extensions": [
+        "insomnia"
+      ]
+    },
+    {
+      "icon": "sso",
+      "extensions": [
+        "Admin",
+        ".adminjs"
+      ]
+    }
   ],
   "vsicons.associations.files": [
     {
