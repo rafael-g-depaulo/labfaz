@@ -14,6 +14,7 @@ export interface EmailInfo {
   from: Addres,
   subject?: string,
   html?: string
+  text?: string
 }
 
 export type SentMessageInfo = any;
@@ -49,8 +50,9 @@ export class MailProvider implements SendEmail {
         name: data.from.name,
         address: data.from.email
       },
-      subject: data.subject ? data.subject : "",
-      html: data.html ? data.html : ""
+      subject: data.subject ?? "",
+      html: data.html,
+      text: data.text,
     })
   }
 }
