@@ -7,20 +7,40 @@ import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
 import { actionSuccessful, badRequestError } from "Utils/endpointReturns";
+import { getClientUrl } from "@labfaz/server-conn-info";
 
 interface AskResetInterface {
   UserRepo: UserRepository;
 }
 
-// interface AskResetI {
-//   email: string;
-// }
+const sendResetEmail = (user: User, token: string) => {
+  
+  const mailer = new MailProvider()
+  const from: Addres = {
+    name: "LabFaz",
+    email: "noreply@labfaz.com.br",
+  }
 
-const mailer = new MailProvider();
-const from: Addres = {
-  name: "LabFaz",
-  email: "noreply@labfaz.com.br",
-};
+  const frontendLink = `${getClientUrl()}/criar-nova-senha?token=${token}`
+  const text = `Olá ${user.artist.name}, você pediu um reset de senha. Para criar uma senha nova, vá em ${frontendLink}.`
+  const html = `
+  <div>
+    <h1>Olá ${user.artist.name}, você pediu um reset de senha</h1>
+    <p>Para criar uma nova senha, <a href="${frontendLink}">clique aqui</p>
+    <p>TESTE: Esse é o token para utilizar na página <b>${token}</b></p>
+  </div>
+  `
+  mailer.sendEmail({
+    to: {
+      name: user.artist.name,
+      email: user.email,
+    },
+    from: from,
+    subject: "Reset de Senha - Labfaz",
+    html,
+    text,
+  })
+}
 
 export const AskReset: (
   deps: AskResetInterface
@@ -38,36 +58,18 @@ export const AskReset: (
     return badRequestError(res, "Invalid request body!!" );
   }
 
-  const checkUserExists = await UserRepo.findByEmail(email);
+  const user = await UserRepo.findByEmail(email);
 
-  if (!checkUserExists) {
+  if (!user) {
     return badRequestError(res, "Esse email ainda não foi cadastrado!!" )
   }
 
   const token = await UserRepo.generateResetPasswordToken(email);
 
-  //! tem que trocar {{nome}} por ${checkUserExists.artist.name} depois
-  // TODO: usar o mailer de verdade
   // TODO: não enviar o text e html na resposta
-  const text = `Olá {{nome}}, você pediu um reset de senha. Esse é o token para utilizar na página ${token}.`
-  const html = `
-  <div>
-    <h1> Olá {{nome}}, você pediu um reset de senha</h1>
-    <p>Esse é o token para utilizar na página <b>${token}</b></p>
-  </div>
-  `
-  // mailer.sendEmail({
-  //   to: {
-  //     name: checkUserExists.artist.name,
-  //     email: email,
-  //   },
-  //   from: from,
-  //   subject: "Reset de Senha - Labfaz",
-  //   html,
-  //   text,
-  // })
+  sendResetEmail(user, token)
 
-  return actionSuccessful(res, { message: "Reset token sent to email!!", text, html });
+  return actionSuccessful(res, { message: "Reset token sent to email!!", token });
 };
 
 export default AskReset;
