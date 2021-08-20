@@ -33,7 +33,7 @@ export default function ensureAuthenticated(
 
   try {
     const decoded = verify(token, authConfig.jwt.secret);
-    console.log(decoded);
+
     const { id } = decoded as ITokenPayload;
 
     if (id) {

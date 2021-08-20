@@ -22,7 +22,6 @@ export const Presentation: FC = () => {
       .then(({ data }) => data)
       .then(({ Title, SubTitle, Video }) => {
         setData({ Title, SubTitle, Video })
-        console.log(data)
         setLoading(false)
       })
       .catch((error) => setError(error.message))
