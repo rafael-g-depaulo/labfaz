@@ -2,7 +2,9 @@ import { NextFunction, Response } from "express"
 
 import { badRequestError } from "Utils/endpointReturns"
 import { getFieldFiles } from "Utils/awsConfig"
+import byteNumToString from "Utils/byteNumToString"
 import { Req } from "Utils/request"
+
 import MulterMiddleware from "./upload"
 
 export enum FileType {
@@ -58,7 +60,7 @@ export const parseMultedFiles =
       return badRequestError(res, `Too many files sent for ${fieldName} field`)
 
     if (fieldFiles.some(file => file.size > maxSize))
-      return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${maxSize} bytes`)
+      return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${byteNumToString(maxSize)}`)
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
