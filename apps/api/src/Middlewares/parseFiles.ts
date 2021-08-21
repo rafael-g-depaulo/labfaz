@@ -13,7 +13,6 @@ export enum FileType {
   any = "ANY FILE"
 }
 
-
 export type ParsedFiles<T extends string> = {
   parsedFiles: {
     [key in T]: Express.Multer.File[]
@@ -50,7 +49,6 @@ export const parseMultedFiles =
       min = 0,
       max = Math.max(),
       maxSize = Math.max(),
-
       type = FileType.any,
     } = fileConfig
     
@@ -63,6 +61,9 @@ export const parseMultedFiles =
 
     if (fieldFiles.some(file => file.size > maxSize))
       return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${byteNumToString(maxSize)}`)
+
+    if (fieldFiles.some(file => !fileIsOfType(file, type)))
+      return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
