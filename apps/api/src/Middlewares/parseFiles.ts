@@ -2,6 +2,7 @@ import { NextFunction, Response } from "express"
 
 import { badRequestError } from "Utils/endpointReturns"
 import { getFieldFiles } from "Utils/awsConfig"
+<<<<<<< HEAD
 import byteNumToString from "Utils/byteNumToString"
 import { Req } from "Utils/request"
 
@@ -13,6 +14,11 @@ export enum FileType {
   any = "ANY FILE"
 }
 
+=======
+import { Req } from "Utils/request"
+import MulterMiddleware from "./upload"
+
+>>>>>>> 704140d (✨ Add parseFiles middleware)
 export type ParsedFiles<T extends string> = {
   parsedFiles: {
     [key in T]: Express.Multer.File[]
@@ -24,6 +30,7 @@ export type fileFieldParseConfig = {
   min?: number
   max?: number
   maxSize?: number
+<<<<<<< HEAD
   type?: FileType
 }
 
@@ -34,6 +41,8 @@ const fileIsOfType = (file: Express.Multer.File, type: FileType) => {
   if (type === FileType.pdf) return /application\/pdf$/.test(mimetype)
 
   return false
+=======
+>>>>>>> 704140d (✨ Add parseFiles middleware)
 }
 
 export const parseMultedFiles =
@@ -49,7 +58,10 @@ export const parseMultedFiles =
       min = 0,
       max = Math.max(),
       maxSize = Math.max(),
+<<<<<<< HEAD
       type = FileType.any,
+=======
+>>>>>>> 704140d (✨ Add parseFiles middleware)
     } = fileConfig
     
     const fieldFiles = getFieldFiles(req, fieldName)
@@ -60,10 +72,14 @@ export const parseMultedFiles =
       return badRequestError(res, `Too many files sent for ${fieldName} field`)
 
     if (fieldFiles.some(file => file.size > maxSize))
+<<<<<<< HEAD
       return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${byteNumToString(maxSize)}`)
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
+=======
+      return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${maxSize} bytes`)
+>>>>>>> 704140d (✨ Add parseFiles middleware)
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
