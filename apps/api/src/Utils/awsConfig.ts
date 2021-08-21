@@ -1,6 +1,6 @@
-import aws from "aws-sdk";
-import { PutObjectRequest } from "aws-sdk/clients/s3";
-import { Request } from "express";
+import aws from "aws-sdk"
+import { PutObjectRequest } from "aws-sdk/clients/s3"
+import { Request } from "express"
 
 aws.config.update({
   secretAccessKey: process.env.AWS_ACCESS_SECRET,
@@ -19,8 +19,13 @@ export const getReqFiles = (req: Request) => {
   return files
 }
 
+export interface UploadedFile {
+  url: string
+  fieldname: string
+}
+
 const uploadFile = (file: Express.Multer.File) => {
-  return new Promise<string>((resolve, reject) => {
+  return new Promise<UploadedFile>((resolve, reject) => {
     const base64 = Buffer.from(file.buffer);
 
     const { extension, filename } = /(?<filename>.+)\.(?<extension>[\w\d]+)$/i.exec(file.originalname)?.groups ?? {};
@@ -30,18 +35,17 @@ const uploadFile = (file: Express.Multer.File) => {
       Bucket: process.env.AWS_BUCKET ?? "",
       Body: base64,
       Key: `LabFazFiles/${file.fieldname}/${filename}-${new Date()}.${extension}`,
-    };
+    }
 
     s3.upload(params, (err, data) => {
       if (err) {
-        console.log("fuck", err)
-        return reject(err);
+        return reject(err)
       }
-      resolve(data.Location);
-    });
-  });
-};
+      resolve({ url: data.Location, fieldname: file.fieldname })
+    })
+  })
+}
 
 export const UploadFiles = (files: Express.Multer.File[]) => {
-  return Promise.all(files.map(uploadFile));
-};
+  return Promise.all(files.map(uploadFile))
+}
