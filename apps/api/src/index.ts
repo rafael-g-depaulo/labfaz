@@ -12,6 +12,7 @@ import Routes from "Routes"
 // import { adminBroRouter } from 'Routes/adminBro'
 
 import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
+import { errorHandler } from 'ErrorHandler'
 // import User from 'Db/Entities/User'
 Db()
   .then(async ({ conn }) => {
@@ -31,6 +32,9 @@ Db()
   app.use("/", Routes({ conn }))
   app.get('/hello', (_, res) => actionSuccessful(res, { msg: 'world' }))
   app.use("*", (_, res) => badRequestError(res, "Route doesn't exist" ))
+
+  // error handling
+  app.use(errorHandler)
 
   app.listen(port, () => console.log(`listening PORT ${port}, in typescript!`)) 
 })

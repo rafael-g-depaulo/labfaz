@@ -36,12 +36,14 @@ export const SuccessObj: SuccessObjFn = (code, data) => ({
   data,
 })
 
-export const errorReturn = (errorCode: number) => (res: Response, message: string, data?: object) => {
+export type errorReturnFn = (res: Response, message: string, data?: object) => Response
+export const errorReturn = (errorCode: number): errorReturnFn => (res, message, data) => {
   return res
     .status(errorCode)
     .json(ErrorObj(errorCode, message, data))
 }
 
+export type successReturnFn = (res: Response, data: Data) => Response
 export const successfulReturn = (status: number) => (res: Response, data: Data) => {
   return res
     .status(status)
