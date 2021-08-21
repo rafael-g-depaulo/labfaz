@@ -80,13 +80,16 @@ export class Artist {
   photo_url: string;
 
   @Column()
+  curriculum: string;
+
+  @Column()
   name: string;
 
   @Column()
   social_name: string;
 
-  @Column()
-  artistic_name: string;
+  @Column({ nullable: true })
+  artistic_name?: string;
 
   @Column()
   gender: string;

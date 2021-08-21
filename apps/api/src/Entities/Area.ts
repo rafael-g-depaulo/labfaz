@@ -11,9 +11,7 @@ import {
 import { nanoid } from "nanoid";
 import Technical from "./Technical";
 import Certificate from "./Certificate";
-import Curriculum from "./Curriculum";
 
-import { ICurriculum } from "Entities/Curriculum";
 import { ICertificate } from "Entities/Certificate";
 
 export enum TechFormation {
@@ -29,7 +27,6 @@ export interface IArea {
   name: string;
   describe: string;
   started_year: string;
-  curriculum: ICurriculum[];
   certificate: ICertificate[];
 }
 
@@ -45,11 +42,6 @@ export class Area {
     cascade: ["insert", "update", "remove"],
   })
   certificate: Certificate[];
-
-  @OneToMany(() => Curriculum, (curriculum) => curriculum.area, {
-    cascade: ["insert", "update", "remove"],
-  })
-  curriculum: Curriculum[];
 
   @Column({
     type: "enum",
