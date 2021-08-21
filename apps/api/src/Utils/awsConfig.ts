@@ -1,5 +1,5 @@
 import aws from "aws-sdk"
-import { PutObjectRequest } from "aws-sdk/clients/s3"
+import { ManagedUpload, PutObjectRequest } from "aws-sdk/clients/s3"
 import { Request } from "express"
 
 aws.config.update({
@@ -9,6 +9,19 @@ aws.config.update({
 });
 
 export const s3 = new aws.S3();
+export const s3UploadPromise = (params: PutObjectRequest) => new Promise<ManagedUpload.SendData>((resolve, reject) => {
+  return resolve({ Location: "a", Bucket: "a", ETag: "", Key: "a"})
+
+  s3.upload(params, (err, data) => {
+    if (err) return reject(err)
+    return resolve(data)
+  })
+})
+
+export const getFieldFiles = (req: Request, field: string) => {
+  if (!req.files || Array.isArray(req.files)) return []
+  return req.files[field] ?? []
+}
 
 export const getReqFiles = (req: Request) => {
   const files =
@@ -25,25 +38,22 @@ export interface UploadedFile {
 }
 
 const uploadFile = (file: Express.Multer.File) => {
-  return new Promise<UploadedFile>((resolve, reject) => {
-    const base64 = Buffer.from(file.buffer);
+  const base64 = Buffer.from(file.buffer);
 
-    const { extension, filename } = /(?<filename>.+)\.(?<extension>[\w\d]+)$/i.exec(file.originalname)?.groups ?? {};
-    
-    const params : PutObjectRequest = {
-      ACL: "public-read",
-      Bucket: process.env.AWS_BUCKET ?? "",
-      Body: base64,
-      Key: `LabFazFiles/${file.fieldname}/${filename}-${new Date()}.${extension}`,
-    }
+  const { extension, filename } = /(?<filename>.+)\.(?<extension>[\w\d]+)$/i.exec(file.originalname)?.groups ?? {};
+  
+  const params : PutObjectRequest = {
+    ACL: "public-read",
+    Bucket: process.env.AWS_BUCKET ?? "",
+    Body: base64,
+    Key: `LabFazFiles/${file.fieldname}/${filename}-${new Date()}.${extension}`,
+  }
 
-    s3.upload(params, (err, data) => {
-      if (err) {
-        return reject(err)
-      }
-      resolve({ url: data.Location, fieldname: file.fieldname })
-    })
-  })
+  return s3UploadPromise(params)
+    .then(data => ({
+      url: data.Location,
+      fieldname: file.fieldname
+    }))
 }
 
 export const UploadFiles = (files: Express.Multer.File[]) => {
