@@ -5,6 +5,12 @@ import { getFieldFiles } from "Utils/awsConfig"
 import { Req } from "Utils/request"
 import MulterMiddleware from "./upload"
 
+export enum FileType {
+  image = "IMAGE FILE",
+  pdf = "PDF FILE",
+  any = "ANY FILE"
+}
+
 export type ParsedFiles<T extends string> = {
   parsedFiles: {
     [key in T]: Express.Multer.File[]
@@ -16,6 +22,16 @@ export type fileFieldParseConfig = {
   min?: number
   max?: number
   maxSize?: number
+  type?: FileType
+}
+
+const fileIsOfType = (file: Express.Multer.File, type: FileType) => {
+  const { mimetype } = file
+  if (type === FileType.any) return true
+  if (type === FileType.image) return /image\/.+$/.test(mimetype)
+  if (type === FileType.pdf) return /application\/pdf$/.test(mimetype)
+
+  return false
 }
 
 export const parseMultedFiles =
@@ -31,6 +47,7 @@ export const parseMultedFiles =
       min = 0,
       max = Math.max(),
       maxSize = Math.max(),
+      type = FileType.any,
     } = fileConfig
     
     const fieldFiles = getFieldFiles(req, fieldName)
@@ -42,6 +59,9 @@ export const parseMultedFiles =
 
     if (fieldFiles.some(file => file.size > maxSize))
       return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${maxSize} bytes`)
+
+    if (fieldFiles.some(file => !fileIsOfType(file, type)))
+      return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
 
     req.parsedFiles![fieldName as T] = fieldFiles
   }

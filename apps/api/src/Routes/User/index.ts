@@ -7,7 +7,7 @@ import { Req } from "Utils/request"
 
 import UserRepository from "Repository/UserRepository"
 
-import { ParsedFiles, parseFiles } from "Middlewares/parseFiles"
+import { FileType, ParsedFiles, parseFiles } from "Middlewares/parseFiles"
 import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 import MulterMiddleware from "Middlewares/upload"
 
@@ -42,8 +42,8 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .post(
       "/upload_teste",
       parseFiles([
-        { fieldName: "profilePicture", max: 2, min: 1, maxSize: 100_000 },
-        { fieldName: "curriculum", max: 1, min: 0, maxSize: 100_000 },
+        { fieldName: "profilePicture", type: FileType.image, max: 2, min: 1, maxSize: 100 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
       ]),
       (req: Req<{}, ParsedFiles<"profilePicture" | "curriculum">>, res: Response) => {
         const curriculum = req.parsedFiles?.curriculum ?? []
