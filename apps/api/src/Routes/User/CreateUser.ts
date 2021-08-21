@@ -44,7 +44,7 @@ export const CreateUser: (
 ) => RouteHandler<Req<{}, ParsedUser>> = ({
   UserRepo,
 }: CreateUserDeps) => async (req, res) => {
-  const { email, password } = req.user_info! ?? {}
+  const { email, password, artist } = req.user_info! ?? {}
 
   const checkUserExists = await UserRepo.findByEmail(email)
   if (!!checkUserExists)
@@ -53,7 +53,7 @@ export const CreateUser: (
   // TODO: Fix user creation
   // ...and user creation should happen inside userRepo.createUser, not here
   // ...and we should change the function's type to include "artist"
-  return UserRepo.createUser(email, password)
+  return UserRepo.createUser(email, password, artist)
     // .then(user => { sendConfirmationEmail(user); return user })
     .then(user => {
       // remove password and id and send user back

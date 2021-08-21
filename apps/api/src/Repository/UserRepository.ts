@@ -5,7 +5,8 @@ import { compare } from "bcryptjs";
 
 import User from "Entities/User"
 import authConfig from "Config/auth"
-
+import { ArtistInfo } from "Routes/User/utils/userReqSchema";
+import Artist from "Entities/Artist";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -31,8 +32,9 @@ export class UserRepository extends Repository<User> {
     });
   }
 
-  async createUser(email: string, rawPassword: string) {
+  async createUser(email: string, rawPassword: string, artist: ArtistInfo) {
     const hashedPwd = await this.generateHash(rawPassword)
+
     const createdUser = this.create({
       email,
       password: hashedPwd,
@@ -42,6 +44,18 @@ export class UserRepository extends Repository<User> {
     })
 
     await createdUser.save()
+
+    const createdArtist = new Artist()
+    createdArtist.artistic_name = artist.artistic_name
+    createdArtist.birthday = artist.birthday
+    createdArtist.cpf = artist.cpf
+    createdArtist.expedition_department = artist.expedition_department
+    createdArtist.gender = artist.gender
+    createdArtist.is_trans = artist.is_trans
+    createdArtist.name = artist.name
+    createdArtist.race = artist.race
+    createdArtist.rg = artist.rg
+
 
     return createdUser
   }

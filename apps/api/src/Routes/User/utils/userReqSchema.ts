@@ -67,13 +67,13 @@ export const addressSchema = yup.object().required().shape({
 })
 
 export const userContactSchema = yup.object().required().shape({
-  whatsapp: yup.string().required(),
-  twitter: yup.string().required(),
-  facebook: yup.string().required(),
-  instagram: yup.string().required(),
-  linkedin: yup.string().required(),
-  tiktok: yup.string().required(),
-  youtube: yup.string().required(),
+  whatsapp: yup.string(),
+  twitter: yup.string(),
+  facebook: yup.string(),
+  instagram: yup.string(),
+  linkedin: yup.string(),
+  tiktok: yup.string(),
+  youtube: yup.string(),
 })
 
 export const userArtistSchema = yup.object().required().shape({
@@ -100,9 +100,11 @@ export const userArtistSchema = yup.object().required().shape({
 export const userSchema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(6),
-  // artist: userArtistSchema,
+  artist: userArtistSchema,
 });
 
 export interface UserInfo extends yup.Asserts<typeof userSchema> {}
+
+export interface ArtistInfo extends yup.Asserts<typeof userArtistSchema> {}
 
 export default userSchema;
