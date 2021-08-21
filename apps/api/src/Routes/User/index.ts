@@ -12,6 +12,7 @@ import UpdateUser from "./UpdateUser";
 import { ParseUser } from "./ParseUser";
 
 import MulterMiddleware from "Middlewares/upload";
+import { getReqFiles, UploadFiles } from "Utils/awsConfig";
 
 type UserDeps = {
   conn: Connection;
@@ -41,7 +42,9 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
         { name: "curriculum", maxCount: 1 },
       ]),
       (req, res) => {
-        const files = [...(req.files["profilePicture"] ?? [])]
+        UploadFiles(getReqFiles(req))
+          .then(files => res.json({ message: "here's your files, sir", files }))
+          .catch(errors => res.status(500).json({ errors }))
       }
     )
     .put(
