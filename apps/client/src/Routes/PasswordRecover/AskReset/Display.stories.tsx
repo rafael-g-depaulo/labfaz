@@ -20,4 +20,4 @@ const mockData: RecoverData = {
 
 storiesOf("Pages/Recover", module)
   .addParameters({ component: "Recover" })
-  .add("list posts", () => <RecoverPage image={mockData} />);
+  .add("Ask reset", () => <RecoverPage image={mockData} />);

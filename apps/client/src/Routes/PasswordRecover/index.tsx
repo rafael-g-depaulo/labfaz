@@ -6,7 +6,9 @@ import { Router } from "Routes"
 
 import usePageView from "Hooks/usePageView"
 
-const RecoverPage = lazy(() => import("./RecoverPage"))
+const AskResetPage = lazy(() => import("./AskReset"))
+const ResetEmail =  lazy(() => import("./ResetEmail"))
+
 
 export const PasswordRecover: Router = ({
   match,
@@ -20,7 +22,14 @@ export const PasswordRecover: Router = ({
       <Route path={path}>
         {() => (
           <Suspense fallback={<Loading />}>
-            <RecoverPage />
+            <AskResetPage />
+          </Suspense>
+        )}
+      </Route>
+      <Route path={`${path}/:token`}>
+        {() => (
+          <Suspense fallback={<Loading />}>
+            <ResetEmail />
           </Suspense>
         )}
       </Route>
