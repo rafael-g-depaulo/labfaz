@@ -6,7 +6,7 @@ import { render } from '@testing-library/react'
 
 import { mockImage } from 'Utils/Image'
 
-import Display from "./RecoverPage/Display"
+import Display from "./AskReset/Display"
 
 const image = mockImage({
   url: "https://images.fineartamerica.com/images-medium-large/reflections-of-longs-peak-vertical-image-james-bo-insogna.jpg",

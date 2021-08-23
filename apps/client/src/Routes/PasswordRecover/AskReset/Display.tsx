@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Container, PageTitle } from './styles'
+import { Container, PageTitle } from '../styles'
 import WithImageContainerForm from 'Components/WithImageContainerForm'
 import Footer from 'Components/Footer'
 import Header from 'Components/Header'

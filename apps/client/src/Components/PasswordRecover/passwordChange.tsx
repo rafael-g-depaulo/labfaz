@@ -40,6 +40,11 @@ export const PasswordChange: FC = () => {
       errors.password = "As senhas devem ser iguais"
       errors.passwordConfirmation = "As senhas devem ser iguais"
     } 
+
+    if(!values.password || !values.passwordConfirmation) {
+      errors.password = "Required"
+      errors.passwordConfirmation = "Required"
+    }
     return errors
   } 
 
