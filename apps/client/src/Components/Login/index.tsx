@@ -14,7 +14,6 @@ import {
   NavLink, 
   InputCheckBox
 } from "./style"
-import { useHistory } from 'react-router-dom'
 
 interface FormProps {
   name?: string
@@ -22,13 +21,15 @@ interface FormProps {
   stayConnected?: boolean
 }
 
-export const Login: FC = () => {
-  const history = useHistory()
+export interface LoginComponentProps {
+  onSubmit: FormSubmitFn
+}
 
-  function onSubmit(values: FormProps) {
-    console.log(values)
-    history.push('/login')
-  }
+export type FormSubmitFn = (values: FormProps) => any
+
+export const Login: FC<LoginComponentProps> = ({
+  onSubmit
+}) => {
 
   return (
     <Container>

@@ -1,16 +1,18 @@
 import React, { FC } from "react"
 
 import Header from "Components/Header"
-import { Login } from "Components/Login"
+import { Login, LoginComponentProps } from "Components/Login"
 
 import { LoginContainer } from "./style"
 
-export const Display: FC = () => {
+export const Display: FC<LoginComponentProps> = ({
+  onSubmit = () => { console.log("submitted form" )},
+}) => {
   return (
     <>
       <Header />
       <LoginContainer>
-        <Login />
+        <Login onSubmit={onSubmit}/>
       </LoginContainer>
     </>
   )
