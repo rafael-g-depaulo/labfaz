@@ -4,7 +4,9 @@ export const protocol = `http`
 
 // API PORT
 export const getApiPort = () => {
-  const portEnv = Number(process.env.PORT || "5000")
+  const portEnv = Number(process.env.PORT || "5430")
+
+  console.log(portEnv)
 
   if (isNaN(portEnv))
     throw new Error("PORT environment variable present, but not a number")
