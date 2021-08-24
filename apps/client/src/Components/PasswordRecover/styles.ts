@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
 
 interface ModalProps {
   isVisible: boolean
@@ -39,6 +41,47 @@ export const Wrapper = styled.div<ModalProps>`
   a {
     text-align: center;
   }
+
+  ${MobileSmall(css`
+    max-width: 99vw;
+    max-height: 99vh;
+    min-height: 99vh;
+    min-width: 99vw;
+    border: none;
+
+    form {
+      margin-top: 0;
+    }
+  `)}
+
+  ${Mobile(css`
+    max-width: 99vw;
+    max-height: 99vh;
+    min-height: 99vh;
+    min-width: 99vw;
+    border: none;
+
+    form {
+      margin-top: 0;
+    }
+  `)}
+
+  ${DesktopSmall(css`
+    max-width: 99vw;
+    max-height: 99vh;
+    min-height: 99vh;
+    min-width: 99vw;
+    border: none;
+
+    form {
+      margin-top: 0;
+    }
+  `)}
+
+  ${DesktopLarge(css`
+    max-width: 100%;
+    min-width: 100%;
+  `)}
 `;
 
 
@@ -57,6 +100,7 @@ export const InputContainer = styled.div`
 
   label {
     margin-bottom: 2rem;
+    font-size: var(--font-size-large);
   }
 
   p {
@@ -70,6 +114,23 @@ export const InputContainer = styled.div`
     font-weight: 600;
     font-size: var(--font-size-short);
   }
+
+  ${MobileSmall(css`
+    align-items: center;
+
+    input {
+      min-width: 305px;
+      max-width: 305px;
+      min-height: 51px;
+      margin-bottom: 0.9rem;
+      color: black;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 231px;
+    }
+  `)}
 `
 export const FormButton = styled.button`
   cursor: pointer;
@@ -88,6 +149,14 @@ export const FormButton = styled.button`
   :disabled {
     opacity: 0.5;
   }
+
+  ${MobileSmall(css`
+    align-self: center;
+
+    min-width: 305px;
+    max-width: 305px;
+    min-height: 38px;
+  `)}
 `
 
 
