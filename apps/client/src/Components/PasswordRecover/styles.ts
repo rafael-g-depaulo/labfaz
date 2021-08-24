@@ -211,6 +211,136 @@ export const ModalDiv = styled.div`
     margin-bottom: 5rem;
   }
   z-index: 999999999;
+
+  ${MobileSmall(css`
+    min-height: 530px;
+    max-height: 530px;
+    min-width: 303px;
+    max-width: 303px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 80%;
+    }
+
+
+    button {
+      margin-top: 2.7rem;
+      margin-bottom: 1rem;
+      max-width: 80%;
+      min-width: 70%;
+    }
+
+    div {
+      margin-top: 1em;
+    }
+  `)}
+
+  ${Mobile(css`
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 350px;
+    max-width: 350px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 80%;
+    }
+
+
+    button {
+      margin-top: 2.7rem;
+      margin-bottom: 1rem;
+      max-width: 80%;
+      min-width: 70%;
+    }
+
+    div {
+      margin-top: 1em;
+    }
+  `)}
+
+  ${DesktopSmall(css`
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 400px;
+    max-width: 400px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 80%;
+    }
+
+
+    button {
+      margin-top: 2.7rem;
+      margin-bottom: 1rem;
+      max-width: 80%;
+      min-width: 70%;
+    }
+
+    div {
+      margin-top: 1em;
+    }
+  `)}
+
+  ${DesktopLarge(css`
+    min-height: 650px;
+    max-height: 650px;
+    min-width: 500px;
+    max-width: 500px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 80%;
+    }
+
+
+    button {
+      margin-top: 2.7rem;
+      margin-bottom: 1rem;
+      max-width: 80%;
+      min-width: 70%;
+    }
+
+    div {
+      margin-top: 1em;
+    }
+
+  `)}
+
 `
 
 export const Container = styled.div<ModalProps>`
