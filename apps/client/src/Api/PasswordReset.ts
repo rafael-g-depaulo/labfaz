@@ -2,11 +2,6 @@ import { api } from "Api"
 
 import { useFetchApi } from "Hooks/useFetchApi"
 
-
-interface AskResetPassData {
-  email: string
-}
-
 interface AskResetPassResponseData {
   status: string,
   code: number,
@@ -17,16 +12,27 @@ interface ResetPassData {
   token: string
 }
 
+const headers = {
+  "Content-Type": "application/json"
+}
 
-export const askResetPassword: ({ email }: AskResetPassData) => Promise<AskResetPassResponseData> = ({ email }) => api
-.get<AskResetPassResponseData>('/ask-reset', { params: { email: email }})
+export const askResetPassword: (email: string ) => Promise<AskResetPassResponseData> = (email) => api
+.get<AskResetPassResponseData>('/sessions/ask-reset', {
+  headers: headers,
+  data: {
+    email
+  },
+})
 .then(({data}) => data)
 
-export const useAskResetPassword = () => useFetchApi<AskResetPassResponseData>('/ask-reset', askResetPassword);
+export const useAskResetPassword = (email: string) => useFetchApi<AskResetPassResponseData>('/ask-reset', () => askResetPassword(email));
 
 
-export const resetPassword: () => Promise<ResetPassData> = () => api
-.get<ResetPassData>('/ask-reset')
+export const resetPassword: (password: string, token: string) => Promise<ResetPassData> = (password: string, token: string) => api
+.post<ResetPassData>('/sessions/reset-password', {
+    password: password,
+    token: token
+})
 .then(({data}) => data)
 
-export const useResetPassowrd = () => useFetchApi<ResetPassData>('/ask-reset', resetPassword);
+export const useResetPassowrd = (password: string, token: string) => useFetchApi<ResetPassData>('/ask-reset', () => resetPassword(password, token));
