@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 
 import { useSingletonExample } from "Api/SingletonExample"
-import Loading from "Components/Loading"
+import LoadingFullPage from "Components/LoadingFullPage"
 
 export const ShowSingleton: FC = () => {
 
@@ -9,7 +9,7 @@ export const ShowSingleton: FC = () => {
 
   if (result.error) return <div>error: { result.error.message }</div>
 
-  if (result.isLoading) return <Loading />
+  if (result.isLoading) return <LoadingFullPage />
 
   const { text, image } = result.data
 

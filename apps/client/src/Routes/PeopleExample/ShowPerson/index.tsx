@@ -2,7 +2,7 @@ import React, { FC } from "react"
 
 import { usePersonExample } from "Api/PeopleExample"
 
-import Loading from "Components/Loading"
+import LoadingFullPage from "Components/LoadingFullPage"
 import Display from "./Display"
 
 export interface ShowPersonProps {
@@ -15,7 +15,7 @@ export const ShowPerson: FC<ShowPersonProps> = ({
   const result = usePersonExample(id)
 
   // if is loading data
-  if (result.isLoading) return <Loading />
+  if (result.isLoading) return <LoadingFullPage />
 
   // if there were any errors
   if (result.error) return <div>error: { result.error.message }</div>

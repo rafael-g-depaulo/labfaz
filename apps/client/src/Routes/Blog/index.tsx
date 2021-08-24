@@ -1,26 +1,25 @@
-import Loading from "Components/Loading"
-import React, { lazy, Suspense } from "react"
-import { Route, RouteComponentProps, Switch } from "react-router-dom"
+import React, { lazy, Suspense } from "react";
+import { Route, RouteComponentProps, Switch } from "react-router-dom";
 
-import { Router } from "Routes"
+import { Router } from "Routes";
 
-import usePageview from "Hooks/usePageView"
+import usePageview from "Hooks/usePageView";
 
-const BlogPage = lazy(() => import("./BlogPage"))
-const PostPage = lazy(() => import("./PostPage"))
+import LoadingFullPage from "Components/LoadingFullPage";
 
-export const Blog: Router = ({
-  match,
-}) => {
-  const { path = "/blog" } = match ?? {}
+const BlogPage = lazy(() => import("./BlogPage"));
+const PostPage = lazy(() => import("./PostPage"));
 
-  usePageview({ name: 'blog', path })
-  
+export const Blog: Router = ({ match }) => {
+  const { path = "/blog" } = match ?? {};
+
+  usePageview({ name: "blog", path });
+
   return (
     <Switch>
       <Route exact path={path}>
         {() => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <BlogPage />
           </Suspense>
         )}
@@ -29,13 +28,13 @@ export const Blog: Router = ({
       {/* show de um post */}
       <Route path={`${path}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <PostPage id={Number(match?.params.id)} />
           </Suspense>
         )}
       </Route>
     </Switch>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

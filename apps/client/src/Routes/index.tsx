@@ -6,7 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Loading from "Components/Loading";
+import LoadingFullPage from "Components/LoadingFullPage";
 import { showAboutUs, showBlog } from "FeatureFlags";
 
 const Home = lazy(() => import("./Home"));
@@ -30,7 +30,7 @@ const Routes: FC = () => {
         {/* default route */}
         <Route exact path="/">
           {({ match }) => (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingFullPage />}>
               <Home match={match} />
             </Suspense>
           )}
@@ -39,7 +39,7 @@ const Routes: FC = () => {
         {/* home router */}
         <Route path={["/home"]}>
           {({ match }) => (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingFullPage />}>
               <Home match={match} />
             </Suspense>
           )}
@@ -49,7 +49,7 @@ const Routes: FC = () => {
         {showBlog && (
           <Route path={["/blog"]}>
             {({ match }) => (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<LoadingFullPage />}>
                 <Blog match={match} />
               </Suspense>
             )}
@@ -59,7 +59,7 @@ const Routes: FC = () => {
         {/* strapi collection example router */}
         {/* <Route path="/people-example">
           {({ match }) => (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingFullPage />}>
               <PeopleExample match={match} />
             </Suspense>
           )}
@@ -68,7 +68,7 @@ const Routes: FC = () => {
         {/* strapi collection example router */}
         {/* <Route path="/singleton-example">
           {({ match }) => (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingFullPage />}>
               <SingletonExample match={match} />
             </Suspense>
           )}
@@ -79,7 +79,7 @@ const Routes: FC = () => {
             path={["/aboutus", "/about-us", "/sobre-nos", "/sobre", "/about"]}
           >
             {({ match }) => (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<LoadingFullPage />}>
                 <AboutUs match={match} />
               </Suspense>
             )}
@@ -88,7 +88,7 @@ const Routes: FC = () => {
 
         {/* default route (404) */}
         <Route>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <NotFound />
           </Suspense>
         </Route>

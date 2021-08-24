@@ -1,31 +1,30 @@
-import Loading from "Components/Loading"
-import React, { lazy, Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
+import React, { lazy, Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
 
-import { Router } from "Routes"
+import { Router } from "Routes";
 
-import usePageview from "Hooks/usePageView"
+import usePageview from "Hooks/usePageView";
 
-const AboutUsPage = lazy(() => import("./AboutUsPage"))
+import LoadingFullPage from "Components/LoadingFullPage";
 
-export const AboutUs: Router = ({
-  match,
-}) => {
-  const { path = "/about-us" } = match ?? {}
+const AboutUsPage = lazy(() => import("./AboutUsPage"));
 
-  usePageview({ name: 'sobre', path: path });
+export const AboutUs: Router = ({ match }) => {
+  const { path = "/about-us" } = match ?? {};
+
+  usePageview({ name: "sobre", path: path });
 
   return (
     <Switch>
       <Route path={path}>
         {() => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <AboutUsPage />
           </Suspense>
         )}
       </Route>
     </Switch>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;
