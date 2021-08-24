@@ -6,31 +6,39 @@ import { Wrapper, InputContainer, FormButton, Span } from './styles'
 import { Input } from 'Components/Input'
 import { Modal } from './Modal'
 
-import { api } from "Api"
+import { resetPassword } from "Api/PasswordReset"
 
 interface FormProps {
   password: string,
   passwordConfirmation: string
 }
 
-export const PasswordChange: FC = () => {
+interface PasswordChangeProps {
+  token: string
+}
+
+export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
 
   const [isVisible, setIsVisible] = useState(false)
 
 
-  const handleSubmit = (values: FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
-    api.post("/sessions/reset-password", {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: {
-        password: values.password,
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlkxcFFXTzEyUWtIVUkzaTdaOEtEcCIsImlhdCI6MTYyOTUxMzcyOSwiZXhwIjoxNjI5NTE0MzI5fQ.06qqbTYGEKVoPlWSeO7M6lB_H8xLRVHm4SW1X734DuU"  
-      }
+  const handleSubmit = ({ password }: FormProps, { setSubmitting, setValues, setErrors }: FormikHelpers<FormProps>)  => {    
+    resetPassword(password, token)
+    .then((res) => {
+        console.log(res)
     })
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error))
+    .catch(err => {
+      setErrors({
+        password: err.message
+      })
+    })
+
+
     setSubmitting(false)
+    setValues({
+      password: "",
+      passwordConfirmation: ""
+    })
   }
 
   const validateSubmit = (values: FormProps) => {

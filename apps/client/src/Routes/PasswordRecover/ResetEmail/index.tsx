@@ -5,7 +5,11 @@ import Display from "./Display"
 
 import { useRecoverPassImage } from "Api/RecoverPassImage"
 
-export const RecoverPasswordPage: FC = () => {
+interface RecoverPasswordPageProps {
+  token: string
+}
+
+export const RecoverPasswordPage: FC<RecoverPasswordPageProps> = ({ token }) => {
 
   const response = useRecoverPassImage()
 
@@ -14,7 +18,7 @@ export const RecoverPasswordPage: FC = () => {
 
 
   return(
-    <Display image={response.data}/>
+    <Display image={response.data} token={token}/>
   )
 }
 
