@@ -1,13 +1,13 @@
 import Loading from "Components/Loading"
 import React, { lazy, Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, RouteComponentProps } from "react-router-dom"
 
 import { Router } from "Routes"
 
 import usePageView from "Hooks/usePageView"
 
 const AskResetPage = lazy(() => import("./AskReset"))
-const ResetEmail =  lazy(() => import("./ResetEmail"))
+const ResetEmail = lazy(() => import("./ResetEmail"))
 
 
 export const PasswordRecover: Router = ({
@@ -19,17 +19,19 @@ export const PasswordRecover: Router = ({
 
   return (
     <Switch>
-      <Route path={path}>
+      <Route exact path={path}>
         {() => (
           <Suspense fallback={<Loading />}>
             <AskResetPage />
           </Suspense>
         )}
       </Route>
+
+      
       <Route path={`${path}/:token`}>
-        {() => (
+        {({ match }: RouteComponentProps<{ token: string }>) => (
           <Suspense fallback={<Loading />}>
-            <ResetEmail />
+            <ResetEmail token={match?.params.token} />
           </Suspense>
         )}
       </Route>

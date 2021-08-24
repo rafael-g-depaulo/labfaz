@@ -10,10 +10,11 @@ import { RecoverData } from "Api/RecoverPassImage"
 
 
 interface DisplayProps {
-  image: RecoverData
+  image: RecoverData,
+  token: string
 }
 
-export const Display: FC<DisplayProps> = ({ image }) => {
+export const Display: FC<DisplayProps> = ({ image, token }) => {
   
   return (
     <>
@@ -21,7 +22,7 @@ export const Display: FC<DisplayProps> = ({ image }) => {
       <Container>
         <PageTitle> Recuperação de senha </PageTitle>
         <WithImageContainerForm  image={image.image}> 
-          <PasswordChange />
+          <PasswordChange token={token} />
         </WithImageContainerForm>
       </Container>
       <Footer />

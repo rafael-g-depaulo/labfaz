@@ -34,5 +34,6 @@ export const resetPassword: (password: string, token: string) => Promise<ResetPa
     token: token
 })
 .then(({data}) => data)
+.catch((error) => error)
 
 export const useResetPassowrd = (password: string, token: string) => useFetchApi<ResetPassData>('/ask-reset', () => resetPassword(password, token));
