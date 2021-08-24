@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { DesktopSmall, MobileLarge, MobileSmall } from 'Utils/breakpoints'
 
 export const Container = styled.div`
   min-width: 100vw;
@@ -10,6 +12,18 @@ export const Container = styled.div`
 
 export const PageTitle = styled.h1`
   font-size: var(--font-size-title-xxxlarge);
-  justify-self: start;
-  padding-left: calc(100vw - (1280px + 21.8vw));
+  justify-self: center;
+  margin-right: 34%;
+
+  ${DesktopSmall(css`
+    display: none;
+  `)}
+
+  ${MobileLarge(css`
+    display: none;
+  `)}
+
+  ${MobileSmall(css`
+    display: none;
+  `)}
 `
