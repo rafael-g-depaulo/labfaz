@@ -7,35 +7,31 @@ import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
 import { Modal } from './Modal'
 
-import { api } from 'Api'
-
+import { askResetPassword } from 'Api/PasswordReset'  
 interface FormProps {
   email: string,
 }
 
-export const RecoverForm: FC = () => {
+export const AskReset: FC = () => {
 
 
   const [emailStatus, setEmailStatus] = useState("");
 
   const [isVisible, setIsVisible] = useState(false)
-  const [reqResponse, setReqResponse] = useState({})
 
-  const handleSubmit = (values:FormProps, { setSubmitting }: FormikHelpers<FormProps>)  => {    
+  // const AskReset = askResetPassword
 
-    api.get('/sessions/ask-reset', { headers: { "Content-Type": "application/json" }, data: { email: values.email } })
-      .then((data) => {
-        setReqResponse(data)
-      })
-      .catch(error => {
-        setReqResponse(error)
-      })
+  const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
-      if(reqResponse.status != 200) {
-        setEmailStatus("Erro ao enviar o email, tente novamente.")  
-      }
+    askResetPassword(values.email)
+    .then((response) => {
+      console.log(response)
+    })
+    setEmailStatus("O email com as instruções para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens.")
+    setValues({
+      email: ""
+    })
 
-    setEmailStatus("O email com as instrucoes para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens.")
     setSubmitting(false)
   }
 
@@ -88,4 +84,4 @@ export const RecoverForm: FC = () => {
   )
 }
 
-export default RecoverForm
+export default AskReset
