@@ -3,20 +3,22 @@ import React, { FC } from "react"
 import Banner from "Components/Banner"
 import { BlogBannerInfo } from "Api/BlogBannerInfo"
 
-import PostCard from "./PostCard"
+import PostCard from "./PostCard/Display"
 import Wireframe from "Components/Wireframe"
+import { BlogPost } from "Api/BlogPost"
 
 export interface DisplayProps {
-  data: BlogBannerInfo;
+  data: BlogBannerInfo
+  posts: BlogPost[]
 }
 
-export const Display: FC<DisplayProps> = ({ data }) => {
+export const Display: FC<DisplayProps> = ({ data, posts }) => {
   const { title, subtitle } = data;
 
   return (
     <Wireframe>
       <Banner title={title} subtitle={subtitle} align="left" />
-      <PostCard />
+      <PostCard posts={posts}/>
     </Wireframe>
   )
 }

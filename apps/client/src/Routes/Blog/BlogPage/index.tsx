@@ -1,17 +1,20 @@
-import React, { FC } from "react";
+import React, { FC } from "react"
 
-import LoadingFullPage from "Components/LoadingFullPage";
-import { useBlogBannerInfo } from "Api/BlogBannerInfo";
+import LoadingFullPage from "Components/LoadingFullPage"
+import { useBlogBannerInfo } from "Api/BlogBannerInfo"
 
-import Display from "./Display";
+import Display from "./Display"
+import { useBlogPosts } from "Api/BlogPost"
 
 export const BlogPage: FC = () => {
-  const result = useBlogBannerInfo();
+  const bannerInfo = useBlogBannerInfo()
+  const posts = useBlogPosts()
 
-  if (result.isLoading) return <LoadingFullPage />;
-  if (result.error) return <div>error: {result.error.message}</div>;
+  if (bannerInfo.isLoading || posts.isLoading) return <LoadingFullPage />
+  if (bannerInfo.error) return <div>error: {bannerInfo.error.message}</div>
+  if (posts.error) return <div>error: {posts.error.message}</div>
 
-  return <Display data={result.data} />;
-};
+  return <Display data={bannerInfo.data} posts={posts.data} />
+}
 
-export default BlogPage;
+export default BlogPage
