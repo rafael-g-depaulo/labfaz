@@ -18,7 +18,7 @@ export interface IAdmin {
 export class Admin extends BaseEntity {
   @PrimaryColumn()
   id: string;
-
+  
   @Column()
   email: string
 
@@ -35,6 +35,9 @@ export class Admin extends BaseEntity {
   addId() {
     this.id = nanoid();
   }
+  @Column({ default: "admin" })
+  admin: "admin" | "professor"
+
 }
 
 export default Admin

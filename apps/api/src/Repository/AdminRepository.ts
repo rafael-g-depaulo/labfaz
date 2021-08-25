@@ -5,6 +5,7 @@ import Admin from "Entities/Admin"
 
 @EntityRepository(Admin)
 export class AdminRepository extends Repository<Admin> {
+  
   findByEmail(email: string) {
     return this.findOne({
       where: { email },
@@ -40,3 +41,5 @@ export class AdminRepository extends Repository<Admin> {
 
 
 export default AdminRepository
+
+  

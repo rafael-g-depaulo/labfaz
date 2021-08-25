@@ -6,8 +6,13 @@ import User from 'Entities/User'
 
 export const getResources = (conn: Connection) => {
   return [
+<<<<<<< HEAD
     userResource(conn),
     adminResource(conn)
+=======
+    userResource(),
+    adminResource()
+>>>>>>> 0eef050 (✨ 🚧 feature add new admins)
   ]
 }
 
