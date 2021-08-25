@@ -6,6 +6,7 @@ import Admin from "Entities/Admin"
 @EntityRepository(Admin)
 export class AdminRepository extends Repository<Admin> {
 
+<<<<<<< HEAD
   findByEmail(email: string) {
     return this.findOne({
       where: { email },
@@ -42,3 +43,26 @@ export class AdminRepository extends Repository<Admin> {
 
 
 export default AdminRepository
+=======
+  findByName(name: string) {
+    return this.findOne({
+      where: { name },
+    });
+  }
+
+
+  async createAdmin(name: string, admin?: "admin" | "professor") {
+
+    const createAdmin = this.create({
+      name,
+      admin
+    })
+
+    await createAdmin.save()
+
+    return createAdmin
+  }
+
+
+}
+>>>>>>> 0eef050 (✨ 🚧 feature add new admins)

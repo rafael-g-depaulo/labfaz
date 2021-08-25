@@ -23,6 +23,7 @@ export class Admin extends BaseEntity {
   id: string;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   @Column()
   email: string
 
@@ -40,6 +41,11 @@ export class Admin extends BaseEntity {
     this.id = nanoid();
   }
 =======
+=======
+  @Column()
+  name: string
+
+>>>>>>> 0eef050 (✨ 🚧 feature add new admins)
   @Column({ default: "admin" })
   admin: "admin" | "professor"
 
