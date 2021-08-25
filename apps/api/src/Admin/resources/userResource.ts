@@ -7,7 +7,6 @@ import { ResourceWithOptions } from 'adminjs'
 const userResource = (): ResourceWithOptions => ({
     resource: User,
     options: {
-      listProperties: ["name", "email", "banned"],
       navigation: {
         icon: "Tools",
         name: "Labfaz Admin Panel"

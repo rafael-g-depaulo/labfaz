@@ -15,6 +15,9 @@ export class Admin extends BaseEntity {
   @PrimaryColumn()
   id: string;
 
+  @Column()
+  name: string
+
   @Column({ default: "admin" })
   admin: "admin" | "professor"
 

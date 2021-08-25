@@ -1,4 +1,5 @@
 import userResource from './userResource'
+import adminResource from './adminResource'
 import { Connection } from 'typeorm'
 import User from 'Entities/User'
 
@@ -6,6 +7,7 @@ import User from 'Entities/User'
 export const getResources = () => {
   return [
     userResource(),
+    adminResource()
   ]
 }
 
