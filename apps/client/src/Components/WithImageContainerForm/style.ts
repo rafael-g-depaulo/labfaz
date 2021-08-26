@@ -1,24 +1,21 @@
 import styled, { css } from 'styled-components'
 
-import { MobileSmall, DesktopSmall, Mobile, MobileLarge, DesktopLarge } from 'Utils/breakpoints';
+import { MobileSmall, DesktopSmall, Mobile, MobileLarge } from 'Utils/breakpoints';
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "left right";
+  display: flex;
 
   max-width: 1280px;
   max-height: 707px;
+  min-height: 45vh;
+  margin-bottom: 23vh;
 
   ${MobileSmall(css`
-    grid-template-columns: 1fr;
     max-width: 420px;
     max-height: 100vh;
   `)}
 
   ${Mobile(css`
-    grid-template-columns: 1fr;
     border: none;
   `)}
 
@@ -33,7 +30,6 @@ export const Image = styled.img`
   height: 100%;
   object-fit: cover;
   overflow: hidden;
-  grid-area: "left";
 
   ${MobileSmall(css`
     display: none;
@@ -48,7 +44,8 @@ export const ImageDiv = styled.div`
   display: flex;
   max-width: 640px;
   max-height: 707px;
-  border: 1px solid black;
+  min-height: 70vh;
+  /* border: 1px solid black; */
   align-content: center;
 
   ${Mobile(css`

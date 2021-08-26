@@ -9,15 +9,13 @@ interface ModalProps {
 export const Wrapper = styled.div<ModalProps>`
   max-width: 640px;
   max-height: 707px;
-  min-height: 707px;
-  min-width: 640px;
+  min-height: 45vh;
+  min-width: 40vw;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-
-  border: 1px solid black;
+  justify-content: center;
 
 
   form {
@@ -26,7 +24,6 @@ export const Wrapper = styled.div<ModalProps>`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 7.8rem;
   }
 
   p:nth-child(3) {
@@ -76,11 +73,6 @@ export const Wrapper = styled.div<ModalProps>`
     form {
       margin-top: 0;
     }
-  `)}
-
-  ${DesktopLarge(css`
-    max-width: 100%;
-    min-width: 100%;
   `)}
 `;
 
