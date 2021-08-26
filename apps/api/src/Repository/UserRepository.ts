@@ -34,17 +34,7 @@ export class UserRepository extends Repository<User> {
 
   async createUser(email: string, rawPassword: string, artist: ArtistInfo) {
     const hashedPwd = await this.generateHash(rawPassword)
-
-    const createdUser = this.create({
-      email,
-      password: hashedPwd,
-      active: false,
-      isVerified: false,
-      banned: false
-    })
-
-    await createdUser.save()
-
+    
     const createdArtist = new Artist()
     createdArtist.artistic_name = artist.artistic_name
     createdArtist.birthday = artist.birthday
@@ -56,6 +46,19 @@ export class UserRepository extends Repository<User> {
     createdArtist.race = artist.race
     createdArtist.rg = artist.rg
 
+
+    const createdUser = this.create({
+      email,
+      password: hashedPwd,
+      active: false,
+      isVerified: false,
+      banned: false,
+      artist: createdArtist,
+    })
+
+    await createdUser.save()
+
+    
 
     return createdUser
   }

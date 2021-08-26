@@ -1,26 +1,32 @@
-import { MailProvider, Addres } from "@labfaz/mail"
-import { getApiUrl } from "@labfaz/server-conn-info"
+import { MailProvider, Addres } from "@labfaz/mail";
+import { getApiUrl } from "@labfaz/server-conn-info";
 
-import UserRepository from "Repository/UserRepository"
+import UserRepository from "Repository/UserRepository";
+import { UploadFiles } from "Utils/awsConfig"
 
-import { createdSuccessfully, badRequestError, databaseError } from "Utils/endpointReturns"
-import { RouteHandler } from "Utils/routeHandler"
-import { Req } from "Utils/request"
+import {
+  createdSuccessfully,
+  badRequestError,
+  databaseError,
+} from "Utils/endpointReturns";
+import { RouteHandler } from "Utils/routeHandler";
+import { Req } from "Utils/request";
 
-import { ParsedUser } from "./ParseUser"
-import User from "Entities/User"
+import { ParsedUser } from "./ParseUser";
+import { ParsedFiles } from "Middlewares/parseFiles";
+import User from "Entities/User";
 
 interface CreateUserDeps {
-  UserRepo: UserRepository
+  UserRepo: UserRepository;
 }
 
 export const sendConfirmationEmail = (user: User) => {
-  const mailer = new MailProvider()
+  const mailer = new MailProvider();
   const from: Addres = {
     name: "LabFaz",
     email: "noreply@labfaz.com.br",
-  }
-  
+  };
+
   mailer.sendEmail({
     to: {
       name: user.artist.name,
@@ -36,32 +42,39 @@ export const sendConfirmationEmail = (user: User) => {
     }'> Confirmar Email </a>
       </div>
     `,
-  })
-}
+  });
+};
 
 export const CreateUser: (
   deps: CreateUserDeps
-) => RouteHandler<Req<{}, ParsedUser>> = ({
-  UserRepo,
-}: CreateUserDeps) => async (req, res) => {
-  const { email, password, artist } = req.user_info! ?? {}
+) => RouteHandler<
+  Req<{}, ParsedUser & ParsedFiles<"profilePicture" | "curriculum">>
+> = ({ UserRepo }: CreateUserDeps) => async (req, res) => {
+  const { email, password, artist } = req.user_info! ?? {};
 
-  const checkUserExists = await UserRepo.findByEmail(email)
+  const checkUserExists = await UserRepo.findByEmail(email);
   if (!!checkUserExists)
-    return badRequestError(res, "Email address already exists.")
+    return badRequestError(res, "Email address already exists.");
+
+  const curriculum = req.parsedFiles?.curriculum ?? [];
+  const profilePicture = req.parsedFiles?.profilePicture ?? [];
+
+  
 
   // TODO: Fix user creation
   // ...and user creation should happen inside userRepo.createUser, not here
   // ...and we should change the function's type to include "artist"
-  return UserRepo.createUser(email, password, artist)
-    // .then(user => { sendConfirmationEmail(user); return user })
-    .then(user => {
-      // remove password and id and send user back
-      //? not removing id here for testing
-      let { password: _, ...newUser } = user
-      return createdSuccessfully(res, newUser)
-    })
-    .catch(() => databaseError(res, "Error trying to create user."))
-}
+  return (
+    UserRepo.createUser(email, password, artist)
+      // .then(user => { sendConfirmationEmail(user); return user })
+      .then((user) => {
+        // remove password and id and send user back
+        //? not removing id here for testing
+        let { password: _, ...newUser } = user;
+        return createdSuccessfully(res, newUser);
+      })
+      .catch(() => databaseError(res, "Error trying to create user."))
+  );
+};
 
-export default CreateUser
+export default CreateUser;

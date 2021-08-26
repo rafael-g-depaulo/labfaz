@@ -31,9 +31,9 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .post(
       "/create",
-      MulterMiddleware.fields([
-        { name: "profilePicture", maxCount: 1 },
-        { name: "curriculum", maxCount: 1 },
+      parseFiles([
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 100 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
       ]),
       ParseUser,
       CreateUser({ UserRepo })
