@@ -24,13 +24,13 @@ export const AskReset: FC = () => {
   const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
     askResetPassword(values.email)
-    .then((response) => {
-      console.log(response)
-    })
-    setEmailStatus("O email com as instruções para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens.")
-    setValues({
-      email: ""
-    })
+      .then((response) => {
+        console.log(response)
+      })
+      setEmailStatus("O email com as instruções para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens.")
+      setValues({
+        email: ""
+      })
 
     setSubmitting(false)
   }
