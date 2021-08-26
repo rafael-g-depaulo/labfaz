@@ -19,7 +19,6 @@ import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
 
 
-
 type UserDeps = {
   conn: Connection;
   UserRepo?: UserRepository;
