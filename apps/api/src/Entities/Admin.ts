@@ -6,10 +6,6 @@ import {
   CreateDateColumn
 } from "typeorm"
 
-export interface IAdmin {
-
-}
-
 @Entity()
 export class Admin extends BaseEntity {
   @PrimaryColumn()
@@ -17,6 +13,9 @@ export class Admin extends BaseEntity {
 
   @Column()
   name: string
+
+  @Column()
+  email: string
 
   @Column({ default: "admin" })
   admin: "admin" | "professor"
