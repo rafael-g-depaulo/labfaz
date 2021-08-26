@@ -31,26 +31,26 @@ export class Contact {
   @JoinColumn()
   artist: Artist;
 
-  @Column()
-  whatsapp: string;
+  @Column({ nullable: true, type: "text"})
+  whatsapp: string | null;
 
-  @Column()
-  twitter: string;
+  @Column({ nullable: true, type: "text"})
+  twitter: string | null;
 
-  @Column()
-  facebook: string;
+  @Column({ nullable: true, type: "text"})
+  facebook: string | null;
 
-  @Column()
-  instagram: string;
+  @Column({ nullable: true, type: "text"})
+  instagram: string | null;
 
-  @Column()
-  linkedin: string;
+  @Column({ nullable: true, type: "text"})
+  linkedin: string | null;
 
-  @Column()
-  tiktok: string;
+  @Column({ nullable: true, type: "text"})
+  tiktok: string | null;
 
-  @Column()
-  youtube: string;
+  @Column({ nullable: true, type: "text"})
+  youtube: string | null;
 
   @CreateDateColumn()
   created_at: Date;
