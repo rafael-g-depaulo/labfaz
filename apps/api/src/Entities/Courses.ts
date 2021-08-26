@@ -7,26 +7,26 @@ import {
   OneToMany,
 } from "typeorm";
 import { nanoid } from "nanoid";
-import Admin from "./Admin"
+// import Admin from "./Admin"
 
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  @OneToMany(() => Admin, (admin) => admin.email)
-  professor: Admin
+  // @OneToMany(() => Admin, (admin) => admin.email)
+  // professor: Admin
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
 
-  @Column()
+  @Column('simple-array')
   tags: string[]
 
-  @Column()
+  @Column('simple-array')
   detail: string[]
 
-  @Column()
+  @Column('simple-array')
   fonte: string[]
 
   @Column()
@@ -60,3 +60,5 @@ export class Course extends BaseEntity {
     this.id = nanoid();
   }
 }
+
+export default Course
