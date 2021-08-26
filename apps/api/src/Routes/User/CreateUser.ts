@@ -55,11 +55,19 @@ export const CreateUser: (
   const checkUserExists = await UserRepo.findByEmail(email);
   if (!!checkUserExists)
     return badRequestError(res, "Email address already exists.");
+<<<<<<< HEAD
   try{
     const curriculum = req.parsedFiles?.curriculum ?? [];
     const profilePicture = req.parsedFiles?.profilePicture ?? [];
 
     const files = await UploadFiles([...curriculum, ...profilePicture ]);
+=======
+
+  const curriculum = req.parsedFiles?.curriculum ?? [];
+  const profilePicture = req.parsedFiles?.profilePicture ?? [];
+
+  
+>>>>>>> 5e26fac (🚧 WIP: Create User)
 
     const artistCurriculum = files.find((file) => file.fieldname === "curriculum")!;
     const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")!;
@@ -68,6 +76,7 @@ export const CreateUser: (
   // TODO: Fix user creation
   // ...and user creation should happen inside userRepo.createUser, not here
   // ...and we should change the function's type to include "artist"
+<<<<<<< HEAD
 
 
   return (
@@ -86,4 +95,19 @@ export const CreateUser: (
   }
 };
 
+=======
+  return (
+    UserRepo.createUser(email, password, artist)
+      // .then(user => { sendConfirmationEmail(user); return user })
+      .then((user) => {
+        // remove password and id and send user back
+        //? not removing id here for testing
+        let { password: _, ...newUser } = user;
+        return createdSuccessfully(res, newUser);
+      })
+      .catch(() => databaseError(res, "Error trying to create user."))
+  );
+};
+
+>>>>>>> 5e26fac (🚧 WIP: Create User)
 export default CreateUser;
