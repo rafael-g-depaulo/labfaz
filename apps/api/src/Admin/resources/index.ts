@@ -10,6 +10,7 @@ export const getResources = (conn: Connection) => {
 <<<<<<< HEAD
     userResource(conn),
     adminResource(conn)
+<<<<<<< HEAD
 =======
     userResource(),
 =======
@@ -17,6 +18,8 @@ export const getResources = (conn: Connection) => {
 >>>>>>> aac21ac (✨ feature ban and verify)
     adminResource()
 >>>>>>> 0eef050 (✨ 🚧 feature add new admins)
+=======
+>>>>>>> 327eea4 (✨ feature admin creation)
   ]
 }
 

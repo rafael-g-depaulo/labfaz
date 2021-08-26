@@ -7,6 +7,7 @@ import Admin from "Entities/Admin"
 export class AdminRepository extends Repository<Admin> {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   findByEmail(email: string) {
     return this.findOne({
       where: { email },
@@ -45,24 +46,44 @@ export class AdminRepository extends Repository<Admin> {
 export default AdminRepository
 =======
   findByName(name: string) {
+=======
+  findByEmail(email: string) {
+>>>>>>> 327eea4 (✨ feature admin creation)
     return this.findOne({
-      where: { name },
+      where: { email },
     });
   }
 
 
-  async createAdmin(name: string, admin?: "admin" | "professor") {
+  async createAdmin(email: string, rawPassword: string, role?: "admin" | "professor") {
+    const hashedPwd = await this.generateHash(rawPassword)
 
-    const createAdmin = this.create({
-      name,
-      admin
+    const createdAdmin = this.create({
+      email,
+      role,
+      password: hashedPwd
     })
 
-    await createAdmin.save()
+    await createdAdmin.save()
 
-    return createAdmin
+    return createdAdmin
   }
 
 
+  generateHash(password: string) {
+    return hash(password, 8);
+  }
+
+
+  compareHash(password: string, userPassword: string) {
+    return compare(password, userPassword);
+  }
+
 }
+<<<<<<< HEAD
 >>>>>>> 0eef050 (✨ 🚧 feature add new admins)
+=======
+
+
+export default AdminRepository
+>>>>>>> 327eea4 (✨ feature admin creation)
