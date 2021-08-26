@@ -12,11 +12,14 @@ import { nanoid } from "nanoid";
   CreateDateColumn
 } from "typeorm"
 
+<<<<<<< HEAD
 export interface IAdmin {
 
 }
 
 >>>>>>> a9fccd8 (✨ feature admin Entity)
+=======
+>>>>>>> aac21ac (✨ feature ban and verify)
 @Entity()
 export class Admin extends BaseEntity {
   @PrimaryColumn()
@@ -45,7 +48,13 @@ export class Admin extends BaseEntity {
   @Column()
   name: string
 
+<<<<<<< HEAD
 >>>>>>> 0eef050 (✨ 🚧 feature add new admins)
+=======
+  @Column()
+  email: string
+
+>>>>>>> aac21ac (✨ feature ban and verify)
   @Column({ default: "admin" })
   admin: "admin" | "professor"
 
