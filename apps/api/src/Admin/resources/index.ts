@@ -7,7 +7,7 @@ import User from 'Entities/User'
 export const getResources = (conn: Connection) => {
   return [
     userResource(conn),
-    adminResource()
+    adminResource(conn)
   ]
 }
 

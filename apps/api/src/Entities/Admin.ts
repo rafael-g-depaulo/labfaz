@@ -3,25 +3,31 @@ import {
   Entity,
   PrimaryColumn,
   BaseEntity,
-  CreateDateColumn
+  CreateDateColumn,
+  BeforeInsert
 } from "typeorm"
-
+import { nanoid } from "nanoid";
 @Entity()
 export class Admin extends BaseEntity {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  name: string
-
-  @Column()
   email: string
 
+  @Column()
+  password: string
+
   @Column({ default: "admin" })
-  admin: "admin" | "professor"
+  role: "admin" | "professor"
 
   @CreateDateColumn()
   created_at: Date
+
+  @BeforeInsert()
+  addId() {
+    this.id = nanoid();
+  }
 }
 
 export default Admin
