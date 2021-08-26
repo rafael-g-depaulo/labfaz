@@ -33,17 +33,13 @@ export default function ensureAuthenticated(
 
   try {
     const decoded = verify(token, authConfig.jwt.secret);
-
     const { id } = decoded as ITokenPayload;
 
-    if (id) {
-      req.user = {
-        id,
-      };
-    } else {
+    if (!id) {
       return unauthenticatedError(res, "Invalid JWT token")
     }
 
+    req.user = { id }
     return next();
   } catch {
     return unauthenticatedError(res, "Invalid JWT token")

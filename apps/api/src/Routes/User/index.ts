@@ -16,6 +16,7 @@ import UpdateUser from "./UpdateUser"
 import GetAllUsers from "./GetAllUser"
 import { ParseUser } from "./ParseUser"
 import { CreateUser } from "./CreateUser"
+import ShowCurrentUser from "./ShowCurrentUser"
 
 
 type UserDeps = {
@@ -28,8 +29,6 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    .get("/", GetAllUsers({ UserRepo }))
-    .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
     .post(
       "/create",
       MulterMiddleware.fields([
@@ -62,7 +61,10 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
       ]),
       ensureAuthenticated,
       UpdateUser({ UserRepo })
-    );
+    )
+    .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
+    .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
+    .get("/", GetAllUsers({ UserRepo }))
 };
 
 export default UserRouter;
