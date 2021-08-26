@@ -8,12 +8,9 @@ import {
 } from "typeorm"
 import { nanoid } from "nanoid";
 
- 
-
 export interface IAdmin {
 
 }
-
 @Entity()
 export class Admin extends BaseEntity {
   @PrimaryColumn()
@@ -35,6 +32,10 @@ export class Admin extends BaseEntity {
   addId() {
     this.id = nanoid();
   }
+
+  @Column()
+  name: string
+
   @Column({ default: "admin" })
   admin: "admin" | "professor"
 
