@@ -1,9 +1,9 @@
 import AdminBro from 'adminjs'
 import AdminBroExpress from '@adminjs/express'
 import { Database, Resource } from '@adminjs/typeorm';
-// import User from 'Entities/User'; 
 import { Connection } from 'typeorm'
 import { getResources, makeConnections } from './resources'
+import AdminRepository from 'Repository/AdminRepository';
 
 // Vai precisar adicionar class validador ao adminBro caso use
 
@@ -23,9 +23,10 @@ export const getAdminBro = (conn: Connection) => {
     })
 }
 
-const getAdminRouter = (adminBro: AdminBro) => {
+const getAdminRouter = (adminBro: AdminBro, conn: Connection) => {
   return AdminBroExpress.buildAuthenticatedRouter(adminBro, {
-    authenticate: (email, password) => {
+    authenticate: async (email, password) => {
+      const adminRepo = conn.getCustomRepository(AdminRepository)
       // Tendo a entidade de usuario bem definida com roles da pra
       // fazer essa autenticação usando a dados do banco de dados
       if (email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
@@ -35,8 +36,23 @@ const getAdminRouter = (adminBro: AdminBro) => {
           id: 1
         }
       } else {
-        return null
+
+        const current = await adminRepo.findByEmail(email)
+
+        if(current) {
+          if(current.email === email && adminRepo.compareHash(password, current.password)) {
+            return {
+              email,
+              title: current?.role,
+              id: current.id
+            }
+          }
+          
+          return null
+        }
       }
+
+      return null
     },
     cookiePassword: process.env.COOKIE_PASSWORD!,
     cookieName: 'adminbro',

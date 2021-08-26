@@ -24,7 +24,7 @@ Db()
   
   // Foi preciso colocar o admin bro antes dos middlewares por conta do body parser
   const adminBro = getAdminBro(conn)
-  app.use(adminBro.options.rootPath, getAdminRouter(adminBro))
+  app.use(adminBro.options.rootPath, getAdminRouter(adminBro, conn))
 
   Middewares(app)
 
