@@ -19,7 +19,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    .get("/ask-reset", AskReset({ UserRepo }))
+    .post("/ask-reset", AskReset({ UserRepo }))
     .post("/reset-password", ResetPassword({ UserRepo }))
     .post("/create", CreateSession({ UserRepo }))
     .post(
