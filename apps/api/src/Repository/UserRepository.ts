@@ -16,6 +16,7 @@ import Technical from "Entities/Technical";
 import Area, { TechFormation } from "Entities/Area";
 import Idiom from "Entities/Idiom";
 
+
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   findByEmail(email: string) {

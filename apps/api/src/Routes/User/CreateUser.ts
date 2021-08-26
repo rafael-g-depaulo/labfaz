@@ -60,7 +60,6 @@ export const CreateUser: (
   const checkUserExists = await UserRepo.findByEmail(email);
   if (!!checkUserExists)
     return badRequestError(res, "Email address already exists.");
-
   try {
     const curriculum = req.parsedFiles?.curriculum ?? [];
     const profilePicture = req.parsedFiles?.profilePicture ?? [];
