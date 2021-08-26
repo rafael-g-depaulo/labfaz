@@ -167,6 +167,7 @@ export class UserRepository extends Repository<User> {
     createdArtist.user = createdUser;
 
     return createdUser.save().then(() => createdUser);
+
   }
 
   findById(id: string) {
