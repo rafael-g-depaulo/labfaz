@@ -1,5 +1,5 @@
 import Admin from '../../Entities/Admin'
-import { ResourceWithOptions } from 'adminjs'
+import {  ResourceWithOptions } from 'adminjs'
 import { Connection } from 'typeorm'
 // import AdminRepository from 'Repository/AdminRepository'
 
@@ -33,5 +33,6 @@ const adminResource = (_conn: Connection): ResourceWithOptions => {
   
   })
 }
+
 
 export default adminResource
