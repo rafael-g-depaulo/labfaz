@@ -4,9 +4,9 @@ import { Connection } from 'typeorm'
 import User from 'Entities/User'
 
 
-export const getResources = () => {
+export const getResources = (conn: Connection) => {
   return [
-    userResource(),
+    userResource(conn),
     adminResource()
   ]
 }

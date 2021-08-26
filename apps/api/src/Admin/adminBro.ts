@@ -14,7 +14,7 @@ export const getAdminBro = (conn: Connection) => {
     makeConnections(conn)
     return new AdminBro({
       // databases: [conn],
-      resources: getResources(),
+      resources: getResources(conn),
       branding: {
         companyName: "Labfaz",
         logo: false
@@ -31,7 +31,7 @@ const getAdminRouter = (adminBro: AdminBro) => {
       if (email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
         return {
           email,
-          title: "Main",
+          title: "SuperAdmin",
           id: 1
         }
       } else {

@@ -1,10 +1,16 @@
 import User from '../../Entities/User'
-import validateUser from "../features/validate-user"
+import userActions from "../features/userFeatures"
 import { ResourceWithOptions } from 'adminjs'
+import UserRepository from 'Repository/UserRepository'
+import { Connection } from 'typeorm'
 
 
 // Modulated entity resource
-const userResource = (): ResourceWithOptions => ({
+const userResource = (conn: Connection): ResourceWithOptions => {
+
+  const userRepo = conn.getCustomRepository(UserRepository)
+
+  return({
     resource: User,
     options: {
       navigation: {
@@ -13,8 +19,9 @@ const userResource = (): ResourceWithOptions => ({
       }
     },
 
-    features: [validateUser()]
+    features: [userActions(userRepo)]
 })
+}
 
 export default userResource
 // <OperationsField32 />
