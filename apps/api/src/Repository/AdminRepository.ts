@@ -10,6 +10,7 @@ export class AdminRepository extends Repository<Admin> {
     return this.findOne({
       where: { email },
     });
+// import User from 'Entities/User'; 
   }
 
 
