@@ -24,3 +24,4 @@ export const login = (email: string, password: string) => api
   .post<SuccessObject<SessionReturn>>(`/sessions/create`, { email, password })
   .then(({ data }) => data.data)
   .then(({ token, user }) => ({ token, user: parseUser(user) }))
+  .catch(err => { throw err.response.data })
