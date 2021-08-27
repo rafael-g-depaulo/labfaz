@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
-import { Wrapper, InputContainer, FormButton, Span } from './styles'
+import { Wrapper, InputContainer, FormButton, Span, Message } from './styles'
 import { Input } from 'Components/Input'
 import { Modal } from './Modal'
 
@@ -20,19 +20,23 @@ interface PasswordChangeProps {
 export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
 
   const [isVisible, setIsVisible] = useState(false)
+  const [message, setMessage] = useState("")
+  const [error, setError] = useState(false)
 
-
-  const handleSubmit = ({ password }: FormProps, { setSubmitting, setValues, setErrors }: FormikHelpers<FormProps>)  => {    
+  const handleSubmit = ({ password }: FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
     resetPassword(password, token)
-    .then((res) => {
-        console.log(res)
+    .then(() => {
+        setMessage("Senha Alterada com sucesso!")
     })
-    .catch(err => {
-      setErrors({
-        password: err.message
-      })
+    .catch(() => {
+      setMessage("Alguma coisa não está certa. Tente novamente.")
+      setError(true)
     })
 
+    if(!message) {
+      setMessage("O Token de expirou, peça uma nova senha")
+      setError(true)
+    }
 
     setSubmitting(false)
     setValues({
@@ -86,6 +90,7 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
                   name="passwordConfirmation"
                   />
               </InputContainer>
+              <Message isError={error}> {message} </Message>
               <FormButton type="submit" disabled={isSubmitting}>
                 ATUALIZAR SENHA
               </FormButton>

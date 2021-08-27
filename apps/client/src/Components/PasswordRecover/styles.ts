@@ -1,9 +1,14 @@
 import styled, { css } from 'styled-components'
 
 import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
+import { Text } from "Components/Typography/Text"
 
 interface ModalProps {
   isVisible: boolean
+}
+
+interface MessageProps {
+  isError?: boolean
 }
 
 export const Wrapper = styled.div<ModalProps>`
@@ -26,7 +31,7 @@ export const Wrapper = styled.div<ModalProps>`
     justify-content: flex-start;
   }
 
-  p:nth-child(3) {
+  >:nth-child(2) {
     margin-top: 2rem;
     align-self: center;
     text-decoration: underline;
@@ -91,7 +96,7 @@ export const InputContainer = styled.div`
   }
 
   label {
-    margin-bottom: 2rem;
+    margin-bottom: 1em;
     font-size: var(--font-size-large);
   }
 
@@ -367,3 +372,10 @@ export const Span = styled.p`
     cursor: pointer;
   }
 ` 
+
+export const Message = styled(Text)<MessageProps>`
+  color: ${props => props.isError ? "red" : ""};
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5em 0;
+`
