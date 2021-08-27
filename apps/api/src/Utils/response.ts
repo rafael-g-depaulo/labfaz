@@ -11,6 +11,7 @@ export type Data = object | string
 export type SuccessObject = {
   status: "success",
   data: Data
+  code: number
 }
 
 export type ResponseObject = ErrorObject | SuccessObject

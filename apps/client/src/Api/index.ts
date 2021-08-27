@@ -6,8 +6,14 @@ import { getApiUrl, getStrapiUrl } from "@labfaz/server-conn-info"
 export const api = axios.create({
   baseURL: getApiUrl(),
 })
-
 // create axios instance to connect to strapi server
 export const strapi = axios.create({
   baseURL: getStrapiUrl(),
 })
+
+export type Data = object | string
+export type SuccessObject<T extends Data> = {
+  status: "success"
+  data: T
+  code: number
+}
