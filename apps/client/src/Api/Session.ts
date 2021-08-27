@@ -26,9 +26,13 @@ export const login = (email: string, password: string) => api
   .then(({ token, user }) => ({ token, user: parseUser(user) }))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   .catch(err => Promise.reject(err.response.data))
 =======
 >>>>>>> d43e9dd (✨ Add login code to frontend)
 =======
   .catch(err => { throw err.response.data })
 >>>>>>> dbad01d (✨ Improve error handling with login API calls)
+=======
+  .catch(err => Promise.reject(err.response.data))
+>>>>>>> fa2694e (♻️ Change way of rejecting api error in login)
