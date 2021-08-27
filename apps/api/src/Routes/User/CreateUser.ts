@@ -61,8 +61,8 @@ export const CreateUser: (
 
     const files = await UploadFiles([...curriculum, ...profilePicture ]);
 
-    const artistCurriculum = files.find((file) => file.fieldname === "curriculum");
-    const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")
+    const artistCurriculum = files.find((file) => file.fieldname === "curriculum")!;
+    const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")!;
       
   
   // TODO: Fix user creation

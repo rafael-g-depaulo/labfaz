@@ -12,8 +12,6 @@ export const userTechnicalSchema = yup.object().required().shape({
   is_drt: yup.boolean().required().default(false),
   is_ceac: yup.boolean().required().default(false),
   is_cnpj: yup.boolean().required().default(false),
-  is_affiliated: yup.boolean().required().default(false),
-  want_be_affiliated: yup.boolean().required().default(true),
   areas: yup
     .array()
     .ensure()
@@ -58,8 +56,8 @@ export const addressSchema = yup.object().required().shape({
   city: yup.string().required(),
   cep: yup.string().required(),
   neighbourhood: yup.string().required(),
-  number: yup.number().integer().positive().required().moreThan(1000_0000),
-  complement: yup.string().required(),
+  number: yup.number().integer().positive().required().min(1),
+  complement: yup.string(),
   residency: yup
     .mixed<Residency>()
     .required()
@@ -77,7 +75,6 @@ export const userContactSchema = yup.object().required().shape({
 })
 
 export const userArtistSchema = yup.object().required().shape({
-  photo_url: yup.string().required().url(),
   name: yup.string().required(),
   social_name: yup.string(),
   artistic_name: yup.string().min(4).max(10),

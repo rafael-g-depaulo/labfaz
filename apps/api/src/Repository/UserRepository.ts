@@ -53,36 +53,57 @@ export class UserRepository extends Repository<User> {
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
       const createdIdiom = new Idiom();
       createdIdiom.name = idiom.name;
-      await this.save(createdIdiom);
-      return createdIdiom;
+      return this.save(createdIdiom);
     });
-
     const createdArea = new Area();
-    createdArea.name = artist.technical.areas?.[0].name ?? "";
-    createdArea.started_year = artist.technical.areas?.[0].started_year ?? "";
+    createdArea.name = artist.technical.areas?.[0]?.name ?? "";
+    createdArea.started_year = artist.technical.areas?.[0]?.started_year ?? "";
     createdArea.technical_formation =
-      artist.technical.areas?.[0].technical_formation ?? TechFormation.AUTO;
-    createdArea.describe = artist.technical.areas?.[0].describe ?? "";
+      artist.technical.areas?.[0]?.technical_formation ?? TechFormation.AUTO;
+    createdArea.describe = artist.technical.areas?.[0]?.describe ?? "";
 
-    const certicates = artist.technical.areas?.[0].certificate?.map(
+    const certicates = artist.technical.areas?.[0]?.certificate?.map(
       async (certficate) => {
         const createdCertificate = new Certificate();
         createdCertificate.name = certficate.name;
         createdCertificate.area = createdArea;
-        await this.save(createdCertificate);
-        return createdCertificate;
+        return this.save(createdCertificate);
       }
     );
-    createdArea.certificate = await Promise.all(certicates ?? []);
+    try {
+      createdArea.certificate = await Promise.all(certicates ?? []);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating certificates!!");
+    }
+    console.log("criei certificado");
+
+    try {
+      await this.save(createdArea);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating area!!");
+    }
 
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
-    createdTech.is_affiliated = artist.technical.is_affiliated;
     createdTech.is_ceac = artist.technical.is_ceac;
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
-    createdTech.want_be_affiliated = artist.technical.want_be_affiliated;
-    createdTech.idiom = await Promise.all(Idioms ?? []);
+    try {
+      createdTech.idiom = await Promise.all(Idioms ?? []);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating idiom!!");
+    }
+    createdTech.area[0] = createdArea;
+
+    try {
+      await this.save(createdTech);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating techinical!!");
+    }
 
     const createdContact = new Contact();
     createdContact.facebook = artist.contact.facebook ?? null;
@@ -93,6 +114,13 @@ export class UserRepository extends Repository<User> {
     createdContact.whatsapp = artist.contact.whatsapp ?? null;
     createdContact.youtube = artist.contact.youtube ?? null;
 
+    try {
+      await this.save(createdContact);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating contact !!");
+    }
+
     const createdAddress = new Address();
     createdAddress.cep = artist.address.cep;
     createdAddress.city = artist.address.city;
@@ -100,6 +128,13 @@ export class UserRepository extends Repository<User> {
     createdAddress.neighbourhood = artist.address.neighbourhood;
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
+
+    try {
+      await this.save(createdAddress);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating address !!");
+    }
 
     const createdArtist = new Artist();
     createdArtist.artistic_name = artist.artistic_name;
@@ -129,7 +164,16 @@ export class UserRepository extends Repository<User> {
       artist: createdArtist,
     });
 
+    createdArtist.user = createdUser;
+
     await createdUser.save();
+
+    try {
+      await this.save(createdArtist);
+    } catch (error) {
+      console.log(error);
+      throw Error("Error creating artist !!");
+    }
 
     return createdUser;
   }

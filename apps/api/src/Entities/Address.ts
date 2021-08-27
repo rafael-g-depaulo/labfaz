@@ -49,8 +49,8 @@ export class Address {
   @Column()
   number: number;
 
-  @Column()
-  complement: string;
+  @Column({ nullable: true, type: "text"})
+  complement?: string;
 
   @Column({
     type: "enum",

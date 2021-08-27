@@ -23,7 +23,7 @@ export class User extends BaseEntity {
   id: string;
 
   @OneToOne(() => Artist, (artist) => artist.user, {
-    cascade: ["insert", "remove", "update"],
+    cascade: ["remove", "update"],
   })
   artist: Artist;
 
