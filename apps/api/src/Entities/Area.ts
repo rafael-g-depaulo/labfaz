@@ -47,6 +47,7 @@ export class Area {
     type: "enum",
     enum: TechFormation,
     default: TechFormation.AUTO,
+    
   })
   technical_formation: TechFormation;
 

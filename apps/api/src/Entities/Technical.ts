@@ -22,8 +22,6 @@ export interface ITechnical {
   is_drt: boolean;
   is_ceac: boolean;
   is_cnpj: boolean;
-  is_affiliated: boolean;
-  want_be_affiliated: boolean;
   areas: IArea[];
   idiom: IIdiom[];
 }
@@ -74,12 +72,6 @@ export class Technical {
 
   @Column({ default: false })
   is_cnpj: boolean;
-
-  @Column({ default: false })
-  is_affiliated: boolean;
-
-  @Column({ default: false })
-  want_be_affiliated: boolean;
 
   @CreateDateColumn()
   created_at: Date;
