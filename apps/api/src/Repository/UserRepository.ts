@@ -52,9 +52,13 @@ export class UserRepository extends Repository<User> {
     profilePicture: UploadedFile
   ) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // TODO: have a try-catch for every await (or one encompassing the entire function)
 =======
 >>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
+=======
+    // TODO: have a try-catch for every await (or one encompassing the entire function)
+>>>>>>> a7b7dcb (♻️ Fix promise use)
     const hashedPwd = await this.generateHash(rawPassword);
 
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
@@ -241,8 +245,7 @@ export class UserRepository extends Repository<User> {
         return createdCertificate;
       }
     );
-    //TODO Remove Promise from certificates
-    createdArea.certificate = certicates ?? [];
+    createdArea.certificate = await Promise.all(certicates ?? []);
 
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
@@ -251,8 +254,7 @@ export class UserRepository extends Repository<User> {
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
     createdTech.want_be_affiliated = artist.technical.want_be_affiliated;
-    //TODO Remove Promise from certificates
-    createdTech.idiom = Idioms
+    createdTech.idiom = await Promise.all(Idioms ?? []);
 
     const createdContact = new Contact();
     createdContact.facebook = artist.contact.facebook ?? null;
