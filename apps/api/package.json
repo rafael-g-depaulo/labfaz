@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/api",
-  "version": "3.12.2",
+  "version": "3.9.0",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
