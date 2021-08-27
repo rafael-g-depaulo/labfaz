@@ -47,6 +47,7 @@ export class UserRepository extends Repository<User> {
     curriculum: UploadedFile,
     profilePicture: UploadedFile
   ) {
+    // TODO: have a try-catch for every await (or one encompassing the entire function)
     const hashedPwd = await this.generateHash(rawPassword);
 
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
@@ -72,8 +73,7 @@ export class UserRepository extends Repository<User> {
         return createdCertificate;
       }
     );
-    //TODO Remove Promise from certificates
-    createdArea.certificate = certicates ?? [];
+    createdArea.certificate = await Promise.all(certicates ?? []);
 
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
@@ -82,8 +82,7 @@ export class UserRepository extends Repository<User> {
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
     createdTech.want_be_affiliated = artist.technical.want_be_affiliated;
-    //TODO Remove Promise from certificates
-    createdTech.idiom = Idioms
+    createdTech.idiom = await Promise.all(Idioms ?? []);
 
     const createdContact = new Contact();
     createdContact.facebook = artist.contact.facebook ?? null;
