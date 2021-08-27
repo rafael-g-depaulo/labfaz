@@ -80,7 +80,7 @@ export const CreateUser: (
       artistCurriculum,
       artistProfilePicture
     )
-      .then((user) => {
+     .then((user) => {
         sendConfirmationEmail(user);
         return user;
       })

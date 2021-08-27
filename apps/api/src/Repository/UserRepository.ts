@@ -55,6 +55,7 @@ export class UserRepository extends Repository<User> {
       createdIdiom.name = idiom.name;
       const idiomRepo = getRepository(Idiom);
       return idiomRepo.save(createdIdiom);
+
     });
 
     //Neste caso só temos uma area porém é possível criar varias areas a associar ao technical
