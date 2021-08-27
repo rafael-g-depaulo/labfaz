@@ -20,13 +20,13 @@ export class Course extends BaseEntity {
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
 
-  @Column('simple-array')
+  @Column('simple-array', { array: true })
   tags: string[]
 
-  @Column('simple-array')
+  @Column('simple-array', { array: true })
   detail: string[]
 
-  @Column('simple-array')
+  @Column('simple-array', { array: true })
   fonte: string[]
 
   @Column()
