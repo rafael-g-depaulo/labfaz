@@ -14,10 +14,12 @@ const image = mockImage({
   ext: "png"
 })
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlkxcFFXTzEyUWtIVUkzaTdaOEtEcCIsImlhdCI6MTYzMDA3MjIxMCwiZXhwIjoxNjMwMDcyODEwfQ._swjHtKo-Opv6xv0Yim51yOtsP77phUiPISVTzValZg"
+
 const mockData: RecoverData = {
   image: image
 }
 
   storiesOf("Pages/Recover", module)
   .addParameters({ component: "Reset" })
-  .add("Reset email", () => <ResetEmail image={mockData} />);
+  .add("Reset email", () => <ResetEmail image={mockData} token={token}/>);
