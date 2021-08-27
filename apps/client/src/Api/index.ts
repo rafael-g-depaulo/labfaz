@@ -12,11 +12,16 @@ export const strapi = axios.create({
 })
 
 export type Data = object | string
+<<<<<<< HEAD
 export type SuccessObject<T extends Data = object> = {
+=======
+export type SuccessObject<T extends Data> = {
+>>>>>>> d43e9dd (✨ Add login code to frontend)
   status: "success"
   data: T
   code: number
 }
+<<<<<<< HEAD
 
 export type ErrorObject<T extends Data = object> = {
   status: "error"
@@ -24,3 +29,5 @@ export type ErrorObject<T extends Data = object> = {
   message: string
   data?: T
 }
+=======
+>>>>>>> d43e9dd (✨ Add login code to frontend)
