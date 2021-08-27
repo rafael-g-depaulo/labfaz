@@ -48,6 +48,7 @@ export class UserRepository extends Repository<User> {
     curriculum: UploadedFile,
     profilePicture: UploadedFile
   ) {
+    // TODO: have a try-catch for every await (or one encompassing the entire function)
     const hashedPwd = await this.generateHash(rawPassword);
 
     //criando varios idiomas do usuário para cada string no array
