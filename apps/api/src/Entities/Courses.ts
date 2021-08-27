@@ -4,18 +4,18 @@ import {
   PrimaryColumn,
   BeforeInsert,
   BaseEntity,
-  OneToMany,
+  ManyToOne,
 } from "typeorm";
 import { nanoid } from "nanoid";
-// import Admin from "./Admin"
+import Admin from "./Admin"
 
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  // @OneToMany(() => Admin, (admin) => admin.email)
-  // professor: Admin
+  @ManyToOne(() => Admin, (admin) => admin.email)
+  teacher: Admin
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"

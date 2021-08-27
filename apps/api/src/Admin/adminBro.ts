@@ -5,8 +5,8 @@ import { Connection } from 'typeorm'
 import { getResources, makeConnections } from './resources'
 import AdminRepository from 'Repository/AdminRepository';
 
-// Vai precisar adicionar class validador ao adminBro caso use
 
+// Vai precisar adicionar class validador ao adminBro caso use
 AdminBro.registerAdapter( { Database, Resource } )
 
 
