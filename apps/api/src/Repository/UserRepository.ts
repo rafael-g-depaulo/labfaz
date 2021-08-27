@@ -16,7 +16,6 @@ import Technical from "Entities/Technical";
 import Area, { TechFormation } from "Entities/Area";
 import Idiom from "Entities/Idiom";
 
-
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   findByEmail(email: string) {
@@ -48,7 +47,6 @@ export class UserRepository extends Repository<User> {
     curriculum: UploadedFile,
     profilePicture: UploadedFile
   ) {
-    // TODO: have a try-catch for every await (or one encompassing the entire function)
     const hashedPwd = await this.generateHash(rawPassword);
 
     //criando varios idiomas do usuário para cada string no array
@@ -167,7 +165,6 @@ export class UserRepository extends Repository<User> {
     createdArtist.user = createdUser;
 
     return createdUser.save().then(() => createdUser);
-
   }
 
   findById(id: string) {
