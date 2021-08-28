@@ -34,5 +34,4 @@ const adminResource = (_conn: Connection): ResourceWithOptions => {
   })
 }
 
-
 export default adminResource
