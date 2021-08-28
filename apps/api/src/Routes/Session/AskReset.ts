@@ -1,13 +1,13 @@
 import { DeepPartial } from "typeorm";
 
-import { MailProvider, Addres } from "@labfaz/mail";
+import { MailProvider, Addres } from "@labfaz/mail/src/index";
 
 import User from "Entities/User";
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
 import { actionSuccessful, badRequestError } from "Utils/endpointReturns";
-import { getClientUrl } from "@labfaz/server-conn-info";
+import { getClientUrl } from "@labfaz/server-conn-info/src/index";
 
 interface AskResetInterface {
   UserRepo: UserRepository;

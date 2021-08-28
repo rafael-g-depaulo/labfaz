@@ -67,12 +67,6 @@ export const parseMultedFiles =
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
 
-    if (fieldFiles.some(file => !fileIsOfType(file, type)))
-      return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
-
-    if (fieldFiles.some(file => !fileIsOfType(file, type)))
-      return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
-
     req.parsedFiles![fieldName as T] = fieldFiles
   }
 
