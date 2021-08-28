@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from "typeorm";
+import { EntityRepository, getRepository, Repository } from "typeorm";
 import { sign } from "jsonwebtoken";
 import { hash } from "bcryptjs";
 import { compare } from "bcryptjs";
@@ -79,11 +79,14 @@ export class UserRepository extends Repository<User> {
     console.log("criei certificado");
 
     try {
-      await this.save(createdArea);
+      const areaRepo = getRepository(Area)
+      await areaRepo.save(createdArea);
     } catch (error) {
       console.log(error);
       throw Error("Error creating area!!");
     }
+
+    console.log("2")
 
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
@@ -91,15 +94,21 @@ export class UserRepository extends Repository<User> {
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
     try {
+      console.log("22")
       createdTech.idiom = await Promise.all(Idioms ?? []);
+      console.log("23")
     } catch (error) {
       console.log(error);
       throw Error("Error creating idiom!!");
     }
-    createdTech.area[0] = createdArea;
+    console.log("31")
+    createdTech.area = [createdArea]
+
+    console.log("32")
 
     try {
-      await this.save(createdTech);
+      const techRepo = getRepository(Technical)
+      await techRepo.save(createdTech);
     } catch (error) {
       console.log(error);
       throw Error("Error creating techinical!!");
@@ -114,8 +123,11 @@ export class UserRepository extends Repository<User> {
     createdContact.whatsapp = artist.contact.whatsapp ?? null;
     createdContact.youtube = artist.contact.youtube ?? null;
 
+    console.log("4")
+
     try {
-      await this.save(createdContact);
+      const contactRepo = getRepository(Contact)
+      await contactRepo.save(createdContact);
     } catch (error) {
       console.log(error);
       throw Error("Error creating contact !!");
@@ -128,13 +140,16 @@ export class UserRepository extends Repository<User> {
     createdAddress.neighbourhood = artist.address.neighbourhood;
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
-
+    
+    console.log("5")
     try {
-      await this.save(createdAddress);
+      const addrRepo = getRepository(Address)
+      await addrRepo.save(createdAddress);
     } catch (error) {
       console.log(error);
       throw Error("Error creating address !!");
     }
+    console.log("6")
 
     const createdArtist = new Artist();
     createdArtist.artistic_name = artist.artistic_name;
@@ -152,28 +167,34 @@ export class UserRepository extends Repository<User> {
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
 
-    createdAddress.artist = createdArtist;
-    createdContact.artist = createdArtist;
-
-    const createdUser = this.create({
-      email,
-      password: hashedPwd,
-      active: false,
-      isVerified: false,
-      banned: false,
-      artist: createdArtist,
-    });
-
-    createdArtist.user = createdUser;
-
-    await createdUser.save();
+    console.log("7")
 
     try {
-      await this.save(createdArtist);
+      const artistRepo = getRepository(Artist)
+      await artistRepo.save(createdArtist);
     } catch (error) {
       console.log(error);
       throw Error("Error creating artist !!");
     }
+    console.log("8")
+
+    createdAddress.artist = createdArtist;
+    createdContact.artist = createdArtist;
+
+    const createdUser = new User()
+    createdUser.email = email
+    createdUser.password = hashedPwd
+    createdUser.active = false
+    createdUser.isVerified = false
+    createdUser.banned = false
+    createdUser.artist = createdArtist
+    
+    console.log("9")
+
+    createdArtist.user = createdUser;
+
+    await createdUser.save();
+    console.log("10")
 
     return createdUser;
   }

@@ -79,7 +79,7 @@ export const CreateUser: (
         let { password: _, ...newUser } = user;
         return createdSuccessfully(res, newUser);
       })
-      .catch(() => databaseError(res, "Error trying to create user."))
+      .catch((err) => databaseError(res, "Error trying to create user.", { err }))
   );
   }catch(e){
     return badRequestError(res,"Error trying to create curriculum or profilePicture")

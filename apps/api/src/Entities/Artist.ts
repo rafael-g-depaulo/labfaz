@@ -85,8 +85,8 @@ export class Artist {
   @Column()
   name: string;
 
-  @Column()
-  social_name: string;
+  @Column({ nullable: true })
+  social_name?: string;
 
   @Column({ nullable: true })
   artistic_name?: string;

@@ -1,1 +1,578 @@
-{"_type":"export","__export_format":4,"__export_date":"2021-08-27T21:50:02.929Z","__export_source":"insomnia.desktop.app:v2020.5.2","resources":[{"_id":"req_24390e7aec89493eb07873d1dfe4972f","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1629465010412,"created":1629464572243,"url":"{{ _.baseRoute }}/hello","name":"Hello World","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1629464572243,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"wrk_b887edfcbe664abaa39d04cbe07c360c","parentId":null,"modified":1624585859357,"created":1624585859357,"name":"labfaz","description":"","scope":"collection","_type":"workspace"},{"_id":"req_aa9fb71328ea4a09bef5d7ea3643a073","parentId":"fld_c590a28eac99490eb96cdc50658e2351","modified":1629474138772,"created":1629474045949,"url":"{{ _.baseRoute }}/reset-password","name":"Reset Password","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"password\": \"nova senha\",\n\t\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFKdDMzZk5BZk9CUl9hQzh4d3JJaiIsImlhdCI6MTYyOTQ3NDAxMCwiZXhwIjoxNjI5NDc0NjEwfQ.020WILTpNqDqMLO_I8GSoF5VmX09_XhMeV5unhLUjGs\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_7ed6879379d14310a94eb320b9a6c2b2"}],"authentication":{},"metaSortKey":-1629474045949,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_c590a28eac99490eb96cdc50658e2351","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1629470771490,"created":1629470660182,"name":"Session","description":"","environment":{"baseRoute":"{{baseUrl}}{{sessionModule}}"},"environmentPropertyOrder":{"&":["baseRoute"]},"metaSortKey":-1629464493632.5,"_type":"request_group"},{"_id":"req_592a6a6f08ae4f6b9fd75e14b19729a5","parentId":"fld_c590a28eac99490eb96cdc50658e2351","modified":1629475828621,"created":1629474267972,"url":"{{ _.baseRoute }}/auth/account-verification/nidgBfuxb2-3ZD73sKqvH","name":"Verify account email","description":"","method":"POST","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1629472390307,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_18b0f334c27940f2be6b46ecf4398eb9","parentId":"fld_c590a28eac99490eb96cdc50658e2351","modified":1629472128574,"created":1629472059842,"url":"{{ _.baseRoute }}/ask-reset","name":"Ask for password reset","description":"","method":"GET","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"infra.plural@gmail.com\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_5b423e53b56a4fc2b760de9b5b65b89a"}],"authentication":{},"metaSortKey":-1629470734665,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_46087c91afc04482b76247b29c013262","parentId":"fld_c590a28eac99490eb96cdc50658e2351","modified":1629474153560,"created":1629470734615,"url":"{{baseRoute}}/create","name":"Create Session (log in)","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"infra.plural@gmail.com\",\n\t\"password\": \"123456\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_7ff64ef70bbb49b2b39b1b212b604472"}],"authentication":{},"metaSortKey":-1629470734615,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_eacbde2889fc499da45840b109d78ce3","parentId":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","modified":1629475801247,"created":1629470624510,"url":"{{ _.baseRoute }}/nidgBfuxb2-3ZD73sKqvH","name":"Show User","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_2ef754cf6474495eb737710cf4137f77","name":"authorization","value":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFKdDMzZk5BZk9CUl9hQzh4d3JJaiIsImlhdCI6MTYyOTQ3MTk4MiwiZXhwIjoxNjI5NTU4MzgyfQ.QKWC7NS1mYjhbWgA416hfrnIIShiurKSo43Aq0fW8JQ","description":""}],"authentication":{},"metaSortKey":-1629470624510,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1629465101596,"created":1629464415022,"name":"User","description":"","environment":{"baseRoute":"{{baseUrl}}{{ _.userModule }}"},"environmentPropertyOrder":{"&":["baseRoute"]},"metaSortKey":-1629464415022,"_type":"request_group"},{"_id":"req_ff690aeed67d4c4abaf9fe76a9dfe950","parentId":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","modified":1629465065076,"created":1629464911878,"url":"{{baseRoute}}","name":"List Users","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1629464415172,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_bfe4fb29050c41849bba69eff45e59f0","parentId":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","modified":1629497292636,"created":1629497170964,"url":"{{ _.baseRoute }}/upload_teste","name":"Teste Upload","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"name":"profilePicture","value":"","description":"","id":"pair_72a089ec7e45489abc15b308d3d887d8","type":"file","fileName":"/home/joao/Imagens/eu.jpg"},{"name":"curriculum","value":"","description":"","id":"pair_e40f045a9d05477fb7cf9b435a8c8d39","type":"file","fileName":"/home/joao/Imagens/zuko.jpg"}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data","id":"pair_67764645aa1e4dfd9553fbea1f619727"}],"authentication":{},"metaSortKey":-1629464415147,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_3e73b56993ee406587259768b079a712","parentId":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","modified":1629474185634,"created":1629146661898,"url":"{{baseRoute}}/update","name":"Update User","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"infra.labfaz@gmail.com\",\n\t\"password\": \"sdfsgdfsgdb\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_0c9e4d0cdbbf40f3b1b551117e8978c2","disabled":false}],"authentication":{},"metaSortKey":-1629464415122,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_c284b8ce468d4542821c9124f91d304b","parentId":"fld_d2cb3a7b4be44a5a9dd59a440d34170c","modified":1630095089799,"created":1625861041527,"url":"{{baseRoute}}/create","name":"Register User","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"name":"profilePicture","value":"","id":"pair_a2d141f29ad64f2eb655abfaf2350c45","type":"file","fileName":"/home/joao/Imagens/zuko.jpg"},{"name":"curriculum","value":"","description":"","id":"pair_4f34403844364416a542d5f3a9c13245","type":"file","fileName":"/home/joao/Downloads/politica-de-privacidade.pdf"},{"name":"email","value":"joao@gmail.com","description":"","id":"pair_e7c403599b2f4c48a4e78c147ce7508f"},{"name":"password","value":"123456","description":"","id":"pair_45a411f6ed7b402396a34bc821eec05b"},{"name":"artist[name]","value":"joaocabral","description":"","id":"pair_12667614b1fc40b3ab40e28846600c48"},{"name":"artist[social_name]","value":"cabral","description":"","id":"pair_d5e9c518fa404edebffd52217b511a1c"},{"name":"artist[artistic_name]","value":"cabral","description":"","id":"pair_96033ddaf0b0468f83c7ed54e9f437b8"},{"name":"artist[gender]","value":"masculino","description":"","id":"pair_8351242d85764bce8279efb3f3e41711"},{"name":"artist[cpf]","value":"065.845.361-06","description":"","id":"pair_9ea436cc598848acb0ab5e21f7d30975"},{"name":"artist[birthday]","value":"1997-12-30","description":"","id":"pair_0a1cf6110ee2402492e4725a252b6a01"},{"name":"artist[rg]","value":"3323930","description":"","id":"pair_13805992b91c4fe589a1ebcc35c0e047"},{"name":"artist[expedition_department]","value":"UF-DF","description":"","id":"pair_99c28360ed0847089c85d5b84478e498"},{"name":"artist[is_trans]","value":"true","description":"","id":"pair_cdb710ca048f417e99ea2b4f31c26083"},{"name":"artist[race]","value":"parda","description":"","id":"pair_a977985a46a24de99e52d72a7fc50f50"},{"name":"artist[show_name]","value":"nome social","description":"","id":"pair_5029a82a2150453580e54433979495ec"},{"name":"artist[address][city]","value":"brasília","description":"","id":"pair_46020f432be34b1caad59c4b7f7fccd1"},{"name":"artist[address][cep]","value":"71050060","description":"","id":"pair_1308b06c1c274d89b15dc5f8ce2e1c82"},{"name":"artist[address][neighbourhood]","value":"guara","description":"","id":"pair_db404ef2f828418fa2ca9d8281b98d77"},{"name":"artist[address][number]","value":"26","description":"","id":"pair_4cd9dd23bbc846d09f46f4dfc0fc69ca"},{"name":"artist[address][complement]","value":"casa","description":"","id":"pair_4fbd468ae41e41fd988b6a8e3e30fead"},{"name":"artist[address][residency]","value":"df","description":"","id":"pair_caaee9e6ed504aebb531c9bd74529b7a"},{"name":"artist[technical][formation]","value":"curso superior","description":"","id":"pair_9891f2fb0f0b4fe2b757be55cffc8d3b"}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data","id":"pair_0c9e4d0cdbbf40f3b1b551117e8978c2"}],"authentication":{},"metaSortKey":-1629464415072,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1629464690619,"created":1624585859817,"name":"Base Environment","data":{"protocol":"http","host":"localhost","port":5000,"basePath":"","baseUrl":"{{ _.protocol }}://{{ _.host }}:{{ _.port }}{{ _.basePath }}"},"dataPropertyOrder":{"&":["protocol","host","port","basePath","baseUrl"]},"color":null,"isPrivate":false,"metaSortKey":1624585859817,"_type":"environment"},{"_id":"jar_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1624585859822,"created":1624585859822,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_ba3f5f0a3e8a4f969ba148306de18951","parentId":"wrk_b887edfcbe664abaa39d04cbe07c360c","modified":1624585859362,"created":1624585859362,"fileName":"labfaz","contents":"","contentType":"yaml","_type":"api_spec"},{"_id":"env_fa244e1a2afb457fa03a755d450268b1","parentId":"env_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2","modified":1629470885504,"created":1629464695092,"name":"LABFAZ","data":{"protocol":"http","host":"localhost","port":5000,"basePath":"","baseUrl":"{{ _.protocol }}://{{ _.host }}:{{ _.port }}{{ _.basePath }}","baseRoute":"{{ _.baseUrl }}","userModule":"/user","sessionModule":"/sessions"},"dataPropertyOrder":{"&":["protocol","host","port","basePath","baseUrl","baseRoute","userModule","sessionModule"]},"color":"#fc0061","isPrivate":false,"metaSortKey":1629464695092,"_type":"environment"}]}
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-08-27T21:50:02.929Z",
+  "__export_source": "insomnia.desktop.app:v2020.5.2",
+  "resources": [
+    {
+      "_id": "req_24390e7aec89493eb07873d1dfe4972f",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1629465010412,
+      "created": 1629464572243,
+      "url": "{{ _.baseRoute }}/hello",
+      "name": "Hello World",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1629464572243,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "parentId": null,
+      "modified": 1624585859357,
+      "created": 1624585859357,
+      "name": "labfaz",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_aa9fb71328ea4a09bef5d7ea3643a073",
+      "parentId": "fld_c590a28eac99490eb96cdc50658e2351",
+      "modified": 1629474138772,
+      "created": 1629474045949,
+      "url": "{{ _.baseRoute }}/reset-password",
+      "name": "Reset Password",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"password\": \"nova senha\",\n\t\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFKdDMzZk5BZk9CUl9hQzh4d3JJaiIsImlhdCI6MTYyOTQ3NDAxMCwiZXhwIjoxNjI5NDc0NjEwfQ.020WILTpNqDqMLO_I8GSoF5VmX09_XhMeV5unhLUjGs\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_7ed6879379d14310a94eb320b9a6c2b2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629474045949,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_c590a28eac99490eb96cdc50658e2351",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1629470771490,
+      "created": 1629470660182,
+      "name": "Session",
+      "description": "",
+      "environment": {
+        "baseRoute": "{{baseUrl}}{{sessionModule}}"
+      },
+      "environmentPropertyOrder": {
+        "&": [
+          "baseRoute"
+        ]
+      },
+      "metaSortKey": -1629464493632.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_592a6a6f08ae4f6b9fd75e14b19729a5",
+      "parentId": "fld_c590a28eac99490eb96cdc50658e2351",
+      "modified": 1629475828621,
+      "created": 1629474267972,
+      "url": "{{ _.baseRoute }}/auth/account-verification/nidgBfuxb2-3ZD73sKqvH",
+      "name": "Verify account email",
+      "description": "",
+      "method": "POST",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1629472390307,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_18b0f334c27940f2be6b46ecf4398eb9",
+      "parentId": "fld_c590a28eac99490eb96cdc50658e2351",
+      "modified": 1629472128574,
+      "created": 1629472059842,
+      "url": "{{ _.baseRoute }}/ask-reset",
+      "name": "Ask for password reset",
+      "description": "",
+      "method": "GET",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"infra.plural@gmail.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5b423e53b56a4fc2b760de9b5b65b89a"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629470734665,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_46087c91afc04482b76247b29c013262",
+      "parentId": "fld_c590a28eac99490eb96cdc50658e2351",
+      "modified": 1629474153560,
+      "created": 1629470734615,
+      "url": "{{baseRoute}}/create",
+      "name": "Create Session (log in)",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"infra.plural@gmail.com\",\n\t\"password\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_7ff64ef70bbb49b2b39b1b212b604472"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629470734615,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_eacbde2889fc499da45840b109d78ce3",
+      "parentId": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "modified": 1629475801247,
+      "created": 1629470624510,
+      "url": "{{ _.baseRoute }}/nidgBfuxb2-3ZD73sKqvH",
+      "name": "Show User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_2ef754cf6474495eb737710cf4137f77",
+          "name": "authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFKdDMzZk5BZk9CUl9hQzh4d3JJaiIsImlhdCI6MTYyOTQ3MTk4MiwiZXhwIjoxNjI5NTU4MzgyfQ.QKWC7NS1mYjhbWgA416hfrnIIShiurKSo43Aq0fW8JQ",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629470624510,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1629465101596,
+      "created": 1629464415022,
+      "name": "User",
+      "description": "",
+      "environment": {
+        "baseRoute": "{{baseUrl}}{{ _.userModule }}"
+      },
+      "environmentPropertyOrder": {
+        "&": [
+          "baseRoute"
+        ]
+      },
+      "metaSortKey": -1629464415022,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_ff690aeed67d4c4abaf9fe76a9dfe950",
+      "parentId": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "modified": 1629465065076,
+      "created": 1629464911878,
+      "url": "{{baseRoute}}",
+      "name": "List Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1629464415172,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_bfe4fb29050c41849bba69eff45e59f0",
+      "parentId": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "modified": 1629497292636,
+      "created": 1629497170964,
+      "url": "{{ _.baseRoute }}/upload_teste",
+      "name": "Teste Upload",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "profilePicture",
+            "value": "",
+            "description": "",
+            "id": "pair_72a089ec7e45489abc15b308d3d887d8",
+            "type": "file",
+            "fileName": "/home/joao/Imagens/eu.jpg"
+          },
+          {
+            "name": "curriculum",
+            "value": "",
+            "description": "",
+            "id": "pair_e40f045a9d05477fb7cf9b435a8c8d39",
+            "type": "file",
+            "fileName": "/home/joao/Imagens/zuko.jpg"
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "multipart/form-data",
+          "id": "pair_67764645aa1e4dfd9553fbea1f619727"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629464415147,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3e73b56993ee406587259768b079a712",
+      "parentId": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "modified": 1629474185634,
+      "created": 1629146661898,
+      "url": "{{baseRoute}}/update",
+      "name": "Update User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"infra.labfaz@gmail.com\",\n\t\"password\": \"sdfsgdfsgdb\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0c9e4d0cdbbf40f3b1b551117e8978c2",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629464415122,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c284b8ce468d4542821c9124f91d304b",
+      "parentId": "fld_d2cb3a7b4be44a5a9dd59a440d34170c",
+      "modified": 1630095089799,
+      "created": 1625861041527,
+      "url": "{{baseRoute}}/create",
+      "name": "Register User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "profilePicture",
+            "value": "",
+            "id": "pair_a2d141f29ad64f2eb655abfaf2350c45",
+            "type": "file",
+            "fileName": "/home/joao/Imagens/zuko.jpg"
+          },
+          {
+            "name": "curriculum",
+            "value": "",
+            "description": "",
+            "id": "pair_4f34403844364416a542d5f3a9c13245",
+            "type": "file",
+            "fileName": "/home/joao/Downloads/politica-de-privacidade.pdf"
+          },
+          {
+            "name": "email",
+            "value": "joao@gmail.com",
+            "description": "",
+            "id": "pair_e7c403599b2f4c48a4e78c147ce7508f"
+          },
+          {
+            "name": "password",
+            "value": "123456",
+            "description": "",
+            "id": "pair_45a411f6ed7b402396a34bc821eec05b"
+          },
+          {
+            "name": "artist[name]",
+            "value": "joaocabral",
+            "description": "",
+            "id": "pair_12667614b1fc40b3ab40e28846600c48"
+          },
+          {
+            "name": "artist[social_name]",
+            "value": "cabral",
+            "description": "",
+            "id": "pair_d5e9c518fa404edebffd52217b511a1c"
+          },
+          {
+            "name": "artist[artistic_name]",
+            "value": "cabral",
+            "description": "",
+            "id": "pair_96033ddaf0b0468f83c7ed54e9f437b8"
+          },
+          {
+            "name": "artist[gender]",
+            "value": "masculino",
+            "description": "",
+            "id": "pair_8351242d85764bce8279efb3f3e41711"
+          },
+          {
+            "name": "artist[cpf]",
+            "value": "065.845.361-06",
+            "description": "",
+            "id": "pair_9ea436cc598848acb0ab5e21f7d30975"
+          },
+          {
+            "name": "artist[birthday]",
+            "value": "1997-12-30",
+            "description": "",
+            "id": "pair_0a1cf6110ee2402492e4725a252b6a01"
+          },
+          {
+            "name": "artist[rg]",
+            "value": "3323930",
+            "description": "",
+            "id": "pair_13805992b91c4fe589a1ebcc35c0e047"
+          },
+          {
+            "name": "artist[expedition_department]",
+            "value": "UF-DF",
+            "description": "",
+            "id": "pair_99c28360ed0847089c85d5b84478e498"
+          },
+          {
+            "name": "artist[is_trans]",
+            "value": "true",
+            "description": "",
+            "id": "pair_cdb710ca048f417e99ea2b4f31c26083"
+          },
+          {
+            "name": "artist[race]",
+            "value": "parda",
+            "description": "",
+            "id": "pair_a977985a46a24de99e52d72a7fc50f50"
+          },
+          {
+            "name": "artist[show_name]",
+            "value": "nome social",
+            "description": "",
+            "id": "pair_5029a82a2150453580e54433979495ec"
+          },
+          {
+            "name": "artist[address][city]",
+            "value": "brasília",
+            "description": "",
+            "id": "pair_46020f432be34b1caad59c4b7f7fccd1"
+          },
+          {
+            "name": "artist[address][cep]",
+            "value": "71050060",
+            "description": "",
+            "id": "pair_1308b06c1c274d89b15dc5f8ce2e1c82"
+          },
+          {
+            "name": "artist[address][neighbourhood]",
+            "value": "guara",
+            "description": "",
+            "id": "pair_db404ef2f828418fa2ca9d8281b98d77"
+          },
+          {
+            "name": "artist[address][number]",
+            "value": "26",
+            "description": "",
+            "id": "pair_4cd9dd23bbc846d09f46f4dfc0fc69ca"
+          },
+          {
+            "name": "artist[address][complement]",
+            "value": "casa",
+            "description": "",
+            "id": "pair_4fbd468ae41e41fd988b6a8e3e30fead"
+          },
+          {
+            "name": "artist[address][residency]",
+            "value": "df",
+            "description": "",
+            "id": "pair_caaee9e6ed504aebb531c9bd74529b7a"
+          },
+          {
+            "name": "artist[technical][formation]",
+            "value": "curso superior",
+            "description": "",
+            "id": "pair_9891f2fb0f0b4fe2b757be55cffc8d3b"
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "multipart/form-data",
+          "id": "pair_0c9e4d0cdbbf40f3b1b551117e8978c2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629464415072,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1629464690619,
+      "created": 1624585859817,
+      "name": "Base Environment",
+      "data": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 5000,
+        "basePath": "",
+        "baseUrl": "{{ _.protocol }}://{{ _.host }}:{{ _.port }}{{ _.basePath }}"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "protocol",
+          "host",
+          "port",
+          "basePath",
+          "baseUrl"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1624585859817,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1624585859822,
+      "created": 1624585859822,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_ba3f5f0a3e8a4f969ba148306de18951",
+      "parentId": "wrk_b887edfcbe664abaa39d04cbe07c360c",
+      "modified": 1624585859362,
+      "created": 1624585859362,
+      "fileName": "labfaz",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_fa244e1a2afb457fa03a755d450268b1",
+      "parentId": "env_e64ca3d75b7ed02f3e7aafe86390bf8e984a3cb2",
+      "modified": 1629470885504,
+      "created": 1629464695092,
+      "name": "LABFAZ",
+      "data": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 5000,
+        "basePath": "",
+        "baseUrl": "{{ _.protocol }}://{{ _.host }}:{{ _.port }}{{ _.basePath }}",
+        "baseRoute": "{{ _.baseUrl }}",
+        "userModule": "/user",
+        "sessionModule": "/sessions"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "protocol",
+          "host",
+          "port",
+          "basePath",
+          "baseUrl",
+          "baseRoute",
+          "userModule",
+          "sessionModule"
+        ]
+      },
+      "color": "#fc0061",
+      "isPrivate": false,
+      "metaSortKey": 1629464695092,
+      "_type": "environment"
+    }
+  ]
+}
