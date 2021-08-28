@@ -3,7 +3,8 @@ import {
   PrimaryColumn,
   OneToOne,
   Entity,
-  BaseEntity
+  BaseEntity,
+  JoinColumn
 } from 'typeorm'
 import Course from "./Courses"
 import User from "./User"
@@ -16,10 +17,15 @@ export class Request extends BaseEntity {
   @Column()
   status: "pending" | "accepted" | "denied"
 
-  @OneToOne(() => Course, course => course.id)
+  @OneToOne(() => Course)
+  @JoinColumn()
   course: Course
 
-  @OneToOne(() => User, user => user.id)
+  @OneToOne(() => User)
+  @JoinColumn()
   student: User
 
 }
+
+
+export default Request

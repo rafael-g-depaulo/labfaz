@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { nanoid } from "nanoid";
 import Artist from "./Artist";
+import Request from "./Requests"
 
 export interface IUser {
   email: string;
@@ -27,6 +28,9 @@ export class User extends BaseEntity {
     cascade: ["remove", "update"],
   })
   artist: Artist;
+
+  @OneToOne(() => Request, request => request.course)
+  course: Request[]
 
   @Column()
   email: string;

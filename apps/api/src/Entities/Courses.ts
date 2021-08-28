@@ -5,9 +5,11 @@ import {
   BeforeInsert,
   BaseEntity,
   ManyToOne,
+  OneToOne
 } from "typeorm";
 import { nanoid } from "nanoid";
 import Admin from "./Admin"
+import Request from "./Requests";
 
 @Entity()
 export class Course extends BaseEntity {
@@ -16,6 +18,9 @@ export class Course extends BaseEntity {
 
   @ManyToOne(() => Admin, (admin) => admin.email)
   teacher: Admin
+
+  @OneToOne(() => Request, request => request.student)
+  students: Request[]
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
