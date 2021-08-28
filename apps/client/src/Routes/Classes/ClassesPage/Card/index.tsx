@@ -13,11 +13,19 @@ export interface Props {
   title: string;
   date: string;
   description: string;
+  width: string;
+  height: string;
 }
 
-export const Card: FC<Props> = ({ title, date, description }) => {
+export const Card: FC<Props> = ({
+  title,
+  date,
+  description,
+  width,
+  height,
+}) => {
   return (
-    <Container>
+    <Container width={width} height={height}>
       <Image />
       <TextWrapper>
         <TopWrapper>

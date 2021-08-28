@@ -3,16 +3,14 @@ import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
 
 interface GridProps {
-  maxWidth: string;
-  minWidth: string;
-  maxHeight: string;
-  minHeight: string;
+  width: string;
+  height: string;
 }
 
 export const Container = styled.div<GridProps>`
   display: grid;
-  grid-template-columns: minmax(5%, auto) minmax(300px, 760px) minmax(5%, auto);
-  grid-template-rows: minmax(300px, 360px) auto;
+  grid-template-columns: ${(props) => props.width};
+  grid-template-rows: ${(props) => props.height};
   grid-template-areas:
     "imge    imge    imge"
     ".    text    .";

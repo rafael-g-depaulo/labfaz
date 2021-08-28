@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 //import Wireframe from "Components/Wireframe";
-import Title from "./Title";
+import Introduction from "./Introduction";
 import Card from "./Card";
+import CertifiedActivities from "./CertifiedActivities";
 import {
   MainContainer,
   MainContent,
@@ -19,47 +20,37 @@ export const Display: FC = () => {
     },
   ];
 
-  const middleClasses = [
-    {
-      title: "O que é audio visual?",
-      date: "12/12/2021",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-    },
-    {
-      title: "O que é audio visual?",
-      date: "12/12/2021",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-    },
-  ];
-
   return (
     <MainContainer>
       <MainContent>
         <TopWrapper>
-          <Title />
+          <Introduction />
           {mainClass.map((item) => {
             return (
               <Card
                 title={item.title}
                 date={item.date}
                 description={item.description}
+                width="minmax(5%, auto) minmax(300px, 570px) minmax(5%, auto)"
+                height="minmax(300px, 320px) auto"
               />
             );
           })}
         </TopWrapper>
-        <ClassesWrapper>
+        {/* <ClassesWrapper>
           {middleClasses.map((item) => {
             return (
               <Card
                 title={item.title}
                 date={item.date}
                 description={item.description}
+                width="minmax(5%, auto) minmax(200px, 256px) minmax(5%, auto)"
+                height="minmax(150px, 185px) auto"
               />
             );
           })}
-        </ClassesWrapper>
+        </ClassesWrapper> */}
+      <CertifiedActivities />
       </MainContent>
     </MainContainer>
   );

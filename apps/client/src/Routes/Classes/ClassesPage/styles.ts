@@ -29,11 +29,11 @@ export const TopWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 130px;
+  margin-bottom: 90px;
 `;
 
 export const TitleWrapper = styled.div`
-  max-width: 35%;
+  max-width: 38%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -55,12 +55,6 @@ export const TitleText = styled(Text)`
   margin: 50px 0 0 0;
   text-align: left;
   line-height: 2;
-`;
-
-export const TitleButton = styled(InternalLinkButton)`
-  font-size: var(--font-size-medium);
-  text-transform: uppercase;
-  margin-top: 35px;
 `;
 
 // styles for second section
