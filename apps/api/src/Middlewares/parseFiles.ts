@@ -63,12 +63,9 @@ export const parseMultedFiles =
 
     if (fieldFiles.some(file => file.size > maxSize))
       return badRequestError(res, `File too big for ${fieldName} field. Maximum file size is ${byteNumToString(maxSize)}`)
-<<<<<<< HEAD
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)
-=======
->>>>>>> 9b0c1c6 (✨ Add byteNumToString utility function)
 
     if (fieldFiles.some(file => !fileIsOfType(file, type)))
       return badRequestError(res, `Incorrect filetype for ${fieldName} field`)

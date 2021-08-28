@@ -40,10 +40,6 @@ export class UserRepository extends Repository<User> {
     });
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
   async createUser(
     email: string,
     rawPassword: string,
@@ -51,23 +47,16 @@ export class UserRepository extends Repository<User> {
     curriculum: UploadedFile,
     profilePicture: UploadedFile
   ) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // TODO: have a try-catch for every await (or one encompassing the entire function)
-=======
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
-=======
-    // TODO: have a try-catch for every await (or one encompassing the entire function)
->>>>>>> a7b7dcb (♻️ Fix promise use)
     const hashedPwd = await this.generateHash(rawPassword);
 
+    //criando varios idiomas do usuário para cada string no array
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
       const createdIdiom = new Idiom();
       createdIdiom.name = idiom.name;
-<<<<<<< HEAD
-<<<<<<< HEAD
       return this.save(createdIdiom);
     });
+
+    //Neste caso só temos uma area porém é possível criar varias areas a associar ao technical
     const createdArea = new Area();
     createdArea.name = artist.technical.areas?.[0]?.name ?? "";
     createdArea.started_year = artist.technical.areas?.[0]?.started_year ?? "";
@@ -75,6 +64,7 @@ export class UserRepository extends Repository<User> {
       artist.technical.areas?.[0]?.technical_formation ?? TechFormation.AUTO;
     createdArea.describe = artist.technical.areas?.[0]?.describe ?? "";
 
+    //criando varios certificados de acordo com area mesmo caso do idioma 
     const certicates = artist.technical.areas?.[0]?.certificate?.map(
       async (certficate) => {
         const createdCertificate = new Certificate();
@@ -83,14 +73,14 @@ export class UserRepository extends Repository<User> {
         return this.save(createdCertificate);
       }
     );
+    //pegando o erro quando for salvar o certificado
     try {
       createdArea.certificate = await Promise.all(certicates ?? []);
     } catch (error) {
       console.log(error);
       throw Error("Error creating certificates!!");
     }
-    console.log("criei certificado");
-
+    //mesmo caso com areas
     try {
       const areaRepo = getRepository(Area)
       await areaRepo.save(createdArea);
@@ -99,25 +89,24 @@ export class UserRepository extends Repository<User> {
       throw Error("Error creating area!!");
     }
 
-    console.log("2")
-
+    //criamos uma ficha tecnica ela que possui idiomas e areas 
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
     createdTech.is_ceac = artist.technical.is_ceac;
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
+
+    //criamos associamos a ficha tecnicas seus idiomas 
     try {
-      console.log("22")
       createdTech.idiom = await Promise.all(Idioms ?? []);
-      console.log("23")
     } catch (error) {
       console.log(error);
       throw Error("Error creating idiom!!");
     }
-    console.log("31")
+
+    //mesmo para area neste caso só temos uma area
     createdTech.area = [createdArea]
 
-    console.log("32")
 
     try {
       const techRepo = getRepository(Technical)
@@ -127,6 +116,7 @@ export class UserRepository extends Repository<User> {
       throw Error("Error creating techinical!!");
     }
 
+    //contato é um a um com artista então todo artista tem um contato e todo contato tem um artista
     const createdContact = new Contact();
     createdContact.facebook = artist.contact.facebook ?? null;
     createdContact.instagram = artist.contact.instagram ?? null;
@@ -135,8 +125,6 @@ export class UserRepository extends Repository<User> {
     createdContact.twitter = artist.contact.twitter ?? null;
     createdContact.whatsapp = artist.contact.whatsapp ?? null;
     createdContact.youtube = artist.contact.youtube ?? null;
-
-    console.log("4")
 
     try {
       const contactRepo = getRepository(Contact)
@@ -146,6 +134,7 @@ export class UserRepository extends Repository<User> {
       throw Error("Error creating contact !!");
     }
 
+    //mesmo caso do contato aplica para endereço um a um artista <=> endereço
     const createdAddress = new Address();
     createdAddress.cep = artist.address.cep;
     createdAddress.city = artist.address.city;
@@ -154,7 +143,6 @@ export class UserRepository extends Repository<User> {
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
     
-    console.log("5")
     try {
       const addrRepo = getRepository(Address)
       await addrRepo.save(createdAddress);
@@ -162,8 +150,9 @@ export class UserRepository extends Repository<User> {
       console.log(error);
       throw Error("Error creating address !!");
     }
-    console.log("6")
 
+    //finalmente criamos o artista ela um tipo de instância do usuário da plataforma e nela tem uma
+    // relação de um para um com o usuário, ou seja para cada usuário possui um artista
     const createdArtist = new Artist();
     createdArtist.artistic_name = artist.artistic_name;
     createdArtist.birthday = artist.birthday;
@@ -180,7 +169,6 @@ export class UserRepository extends Repository<User> {
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
 
-    console.log("7")
 
     try {
       const artistRepo = getRepository(Artist)
@@ -189,11 +177,12 @@ export class UserRepository extends Repository<User> {
       console.log(error);
       throw Error("Error creating artist !!");
     }
-    console.log("8")
 
+    //colocamos as associações um para um do artista 
     createdAddress.artist = createdArtist;
     createdContact.artist = createdArtist;
 
+    //criamos um usuário e associamos ele com artista 
     const createdUser = new User()
     createdUser.email = email
     createdUser.password = hashedPwd
@@ -202,167 +191,12 @@ export class UserRepository extends Repository<User> {
     createdUser.banned = false
     createdUser.artist = createdArtist
     
-    console.log("9")
-
-    createdArtist.user = createdUser;
-
-    await createdUser.save();
-    console.log("10")
-
-    return createdUser;
-=======
-  async createUser(email: string, rawPassword: string, artist: ArtistInfo) {
-    const hashedPwd = await this.generateHash(rawPassword)
-    
-    const createdArtist = new Artist()
-    createdArtist.artistic_name = artist.artistic_name
-    createdArtist.birthday = artist.birthday
-    createdArtist.cpf = artist.cpf
-    createdArtist.expedition_department = artist.expedition_department
-    createdArtist.gender = artist.gender
-    createdArtist.is_trans = artist.is_trans
-    createdArtist.name = artist.name
-    createdArtist.race = artist.race
-    createdArtist.rg = artist.rg
-=======
-      await this.save(createdIdiom);
-      return createdIdiom;
-    });
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
-
-=======
-      return this.save(createdIdiom);
-    });
->>>>>>> 7716064 (✨ Add: New Insomnia)
-    const createdArea = new Area();
-    createdArea.name = artist.technical.areas?.[0]?.name ?? "";
-    createdArea.started_year = artist.technical.areas?.[0]?.started_year ?? "";
-    createdArea.technical_formation =
-      artist.technical.areas?.[0]?.technical_formation ?? TechFormation.AUTO;
-    createdArea.describe = artist.technical.areas?.[0]?.describe ?? "";
-
-    const certicates = artist.technical.areas?.[0]?.certificate?.map(
-      async (certficate) => {
-        const createdCertificate = new Certificate();
-        createdCertificate.name = certficate.name;
-        createdCertificate.area = createdArea;
-        return this.save(createdCertificate);
-      }
-    );
-    try {
-      createdArea.certificate = await Promise.all(certicates ?? []);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating certificates!!");
-    }
-    console.log("criei certificado");
-
-    try {
-      await this.save(createdArea);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating area!!");
-    }
-
-    const createdTech = new Technical();
-    createdTech.formation = artist.technical.formation;
-    createdTech.is_ceac = artist.technical.is_ceac;
-    createdTech.is_cnpj = artist.technical.is_cnpj;
-    createdTech.is_drt = artist.technical.is_drt;
-    try {
-      createdTech.idiom = await Promise.all(Idioms ?? []);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating idiom!!");
-    }
-    createdTech.area[0] = createdArea;
-
-    try {
-      await this.save(createdTech);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating techinical!!");
-    }
-
-    const createdContact = new Contact();
-    createdContact.facebook = artist.contact.facebook ?? null;
-    createdContact.instagram = artist.contact.instagram ?? null;
-    createdContact.linkedin = artist.contact.linkedin ?? null;
-    createdContact.tiktok = artist.contact.tiktok ?? null;
-    createdContact.twitter = artist.contact.twitter ?? null;
-    createdContact.whatsapp = artist.contact.whatsapp ?? null;
-    createdContact.youtube = artist.contact.youtube ?? null;
-
-    try {
-      await this.save(createdContact);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating contact !!");
-    }
-
-    const createdAddress = new Address();
-    createdAddress.cep = artist.address.cep;
-    createdAddress.city = artist.address.city;
-    createdAddress.complement = artist.address.complement;
-    createdAddress.neighbourhood = artist.address.neighbourhood;
-    createdAddress.number = artist.address.number;
-    createdAddress.residency = artist.address.residency;
-
-    try {
-      await this.save(createdAddress);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating address !!");
-    }
-
-    const createdArtist = new Artist();
-    createdArtist.artistic_name = artist.artistic_name;
-    createdArtist.birthday = artist.birthday;
-    createdArtist.cpf = artist.cpf;
-    createdArtist.expedition_department = artist.expedition_department;
-    createdArtist.gender = artist.gender;
-    createdArtist.is_trans = artist.is_trans;
-    createdArtist.name = artist.name;
-    createdArtist.race = artist.race;
-    createdArtist.rg = artist.rg;
-    createdArtist.photo_url = profilePicture.url;
-    createdArtist.curriculum = curriculum.url;
-
-    createdArtist.address = createdAddress;
-    createdArtist.contact = createdContact;
-
-    createdAddress.artist = createdArtist;
-    createdContact.artist = createdArtist;
-
-    const createdUser = this.create({
-      email,
-      password: hashedPwd,
-      active: false,
-      isVerified: false,
-      banned: false,
-      artist: createdArtist,
-    });
 
     createdArtist.user = createdUser;
 
     await createdUser.save();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return createdUser
->>>>>>> 5e26fac (🚧 WIP: Create User)
-=======
-=======
-    try {
-      await this.save(createdArtist);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating artist !!");
-    }
-
->>>>>>> 7716064 (✨ Add: New Insomnia)
     return createdUser;
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
   }
 
   findById(id: string) {

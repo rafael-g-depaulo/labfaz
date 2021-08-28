@@ -17,10 +17,6 @@ import GetAllUsers from "./GetAllUser"
 import { ParseUser } from "./ParseUser"
 import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
-<<<<<<< HEAD
-
-=======
->>>>>>> 6155cf9 (✨ Add /user/me route)
 
 
 type UserDeps = {

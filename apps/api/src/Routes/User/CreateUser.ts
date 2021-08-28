@@ -1,4 +1,4 @@
-import { MailProvider, Addres } from "@labfaz/mail";
+import { MailProvider, Addres} from "@labfaz/mail/src/index";
 import { getApiUrl } from "@labfaz/server-conn-info";
 
 import UserRepository from "Repository/UserRepository";
@@ -55,37 +55,22 @@ export const CreateUser: (
   const checkUserExists = await UserRepo.findByEmail(email);
   if (!!checkUserExists)
     return badRequestError(res, "Email address already exists.");
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   try{
     const curriculum = req.parsedFiles?.curriculum ?? [];
     const profilePicture = req.parsedFiles?.profilePicture ?? [];
 
     const files = await UploadFiles([...curriculum, ...profilePicture ]);
-=======
-=======
-  try{
-    const curriculum = req.parsedFiles?.curriculum ?? [];
-    const profilePicture = req.parsedFiles?.profilePicture ?? [];
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
 
-    const files = await UploadFiles([...curriculum, ...profilePicture ]);
 
     const artistCurriculum = files.find((file) => file.fieldname === "curriculum")!;
     const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")!;
       
-  
-<<<<<<< HEAD
->>>>>>> 5e26fac (🚧 WIP: Create User)
-
-    const artistCurriculum = files.find((file) => file.fieldname === "curriculum")!;
-    const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")!;
       
   
   // TODO: Fix user creation
   // ...and user creation should happen inside userRepo.createUser, not here
   // ...and we should change the function's type to include "artist"
-<<<<<<< HEAD
 
 
   return (
@@ -104,29 +89,4 @@ export const CreateUser: (
   }
 };
 
-=======
-=======
-  // TODO: Fix user creation
-  // ...and user creation should happen inside userRepo.createUser, not here
-  // ...and we should change the function's type to include "artist"
-
-
->>>>>>> 6a342ca (🚧 WIP: Problems with typescript and Promises)
-  return (
-    UserRepo.createUser(email, password, artist, artistCurriculum, artistProfilePicture)
-      // .then(user => { sendConfirmationEmail(user); return user })
-      .then((user) => {
-        // remove password and id and send user back
-        //? not removing id here for testing
-        let { password: _, ...newUser } = user;
-        return createdSuccessfully(res, newUser);
-      })
-      .catch(() => databaseError(res, "Error trying to create user."))
-  );
-  }catch(e){
-    return badRequestError(res,"Error trying to create curriculum or profilePicture")
-  }
-};
-
->>>>>>> 5e26fac (🚧 WIP: Create User)
 export default CreateUser;

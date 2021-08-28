@@ -67,7 +67,6 @@ describe('User Router', () => {
           expedition_department: "sdf",
           gender: "asd",
           is_trans: true,
-          photo_url: "https://afosgldsfl",
           race: Race.WHITE,
           rg: "2342344354365",
           show_name: ShowName.SOCIAL,
