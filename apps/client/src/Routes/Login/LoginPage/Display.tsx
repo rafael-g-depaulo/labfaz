@@ -1,20 +1,19 @@
 import React, { FC } from "react"
 
-import Header from "Components/Header"
 import { Login, LoginComponentProps } from "Components/Login"
 
 import { LoginContainer } from "./style"
+import Wireframe from "Components/Wireframe"
 
 export const Display: FC<LoginComponentProps> = ({
   onSubmit = () => { console.log("submitted form" )},
 }) => {
   return (
-    <>
-      <Header />
+    <Wireframe>    
       <LoginContainer>
         <Login onSubmit={onSubmit}/>
       </LoginContainer>
-    </>
+    </Wireframe>
   )
 }
 
