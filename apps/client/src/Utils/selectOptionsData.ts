@@ -277,45 +277,29 @@ export const idiomOptions = [
     value: 'Francês',
   },
   {
-    label: 'Italiano',
-    value: 'Italiano',
+    label: 'Chines',
+    value: 'Chines',
   },
   {
     label: 'Chinês Cantonês',
     value: 'Chinês Cantonês',
   },
   {
-    label: 'Chines Mandarim',
-    value: 'Chines Mandarim',
+    label: 'Coreano',
+    value: 'Coreano',
   },
   {
-    label: 'Japonês',
-    value: 'Japonês',
-  },
-  {
-    label: 'Alemão',
-    value: 'Alemão',
-  },
-  {
-    label: 'LIBRAS (Língua Brasileira de Sinais)',
-    value: 'LIBRAS (Língua Brasileira de Sinais)',
-  },
-  {
-    label: 'LIBRAS tátil (Linguagem utilizada pelos surdo-cegos)',
-    value: 'LIBRAS tátil (Linguagem utilizada pelos surdo-cegos)',
-  },
-  {
-    label: 'Língua Inglesa de Sinais',
-    value: 'Língua Inglesa de Sinais',
-  },
-  {
-    label: 'Gestuno (Língua Internacional de Sinais)',
-    value: 'Gestuno (Língua Internacional de Sinais)',
+    label: 'Italiano',
+    value: 'Italiano',
   },
   {
     label: 'Outro',
     value: 'Outro',
   },
+  {
+    label: 'Nenhum outro idioma',
+    value: 'Nenhum outro idioma'
+  }
 ]
 
 export const formationOptions = [
@@ -349,37 +333,108 @@ export const formationOptions = [
   },
 ]
 
+export const certificationOptionsMobile = [
+  {
+    label: 'NR01',
+    value: 'NR 01 – Disposições Gerais e Gerenciamento de Riscos Ocupacionais',
+  },
+  {
+    label: 'NR04',
+    value: 'NR 04 – Serviços Especializados em Engenharia de Segurança e em Medicina do Trabalho',
+  },
+  {
+    label: 'NR05',
+    value: 'NR 05 – Comissão Interna de Prevenção de Acidentes',
+  },
+  {
+    label: 'NR06',
+    value: 'NR 06 – Equipamentos de Proteção Individual – EPI',
+  },
+  {
+    label: 'NR07',
+    value: 'NR 07 – Programas de Controle Médico de Saúde Ocupacional – PCMSONR 07 – Nova – Programas de Controle Médico de Saúde Ocupacional – PCMSO (Vigência 09/03/2021)',
+  },
+  {
+    label: 'NR09',
+    value: 'NR 09 – Programas de Prevenção de Riscos Ambientais NR 09 – Avaliação e Controle das Exposições Ocupacionais a Agentes Físicos, Químicos e Biológicos',
+  },
+  {
+    label: 'NR10',
+    value: 'NR 10 – Segurança em Instalações e Serviços em Eletricidade',
+  },
+  {
+    label: 'NR11',
+    value: 'NR 11 – Transporte, Movimentação, Armazenagem e Manuseio de Materiais',
+  },
+  {
+    label: 'NR12',
+    value: 'NR 12 – Segurança no Trabalho em Máquinas e Equipamentos',
+  },
+  {
+    label: 'NR15',
+    value: 'NR 15 – Atividades e Operações Insalubres',
+  },
+  {
+    label: 'NR16',
+    value: 'NR 16 – Atividades e Operações Perigosas',
+  },
+  {
+    label: 'NR20',
+    value: 'NR 20 – SST com Inflamáveis e Combustíveis',
+  },
+  {
+    label: 'NR21',
+    value: 'NR 21 – Trabalho a Céu Aberto',
+  },
+  {
+    label: 'NR23',
+    value: 'NR 23 – Proteção Contra Incêndios',
+  },
+  {
+    label: 'NR24',
+    value: 'NR 24 – Condições Sanitárias e de Conforto nos Locais de Trabalho',
+  },
+  {
+    label: 'NR26',
+    value: 'NR 26 – Sinalização de Segurança',
+  },
+  {
+    label: 'NR35',
+    value: 'NR 35 – Trabalho em Altura',
+  },
+]
+
 export const certificationOptionsPage1 = [
   {
     label: 'NR 01 – Disposições Gerais e Gerenciamento de Riscos Ocupacionais',
-    value: 'nr_01',
+    value: 'NR 01 – Disposições Gerais e Gerenciamento de Riscos Ocupacionais',
   },
   {
     label:
       'NR 04 – Serviços Especializados em Engenharia de Segurança e em Medicina do Trabalho',
-    value: 'nr_04',
+    value: 'NR 04 – Serviços Especializados em Engenharia de Segurança e em Medicina do Trabalho',
   },
   {
     label: 'NR 05 – Comissão Interna de Prevenção de Acidentes',
-    value: 'nr_05',
+    value: 'NR 05 – Comissão Interna de Prevenção de Acidentes',
   },
   {
     label: 'NR 06 – Equipamentos de Proteção Individual – EPI',
-    value: 'nr_06',
+    value: 'NR 06 – Equipamentos de Proteção Individual – EPI',
   },
   {
     label:
       'NR 07 – Programas de Controle Médico de Saúde Ocupacional – PCMSONR 07 – Nova – Programas de Controle Médico de Saúde Ocupacional – PCMSO (Vigência 09/03/2021)',
-    value: 'nr_07',
+    value: 'NR 07 – Programas de Controle Médico de Saúde Ocupacional – PCMSONR 07 – Nova – Programas de Controle Médico de Saúde Ocupacional – PCMSO (Vigência 09/03/2021)',
   },
   {
     label:
       'NR 09 – Programas de Prevenção de Riscos Ambientais NR 09 – Avaliação e Controle das Exposições Ocupacionais a Agentes Físicos, Químicos e Biológicos',
-    value: 'nr_09',
+    value: 'NR 09 – Programas de Prevenção de Riscos Ambientais NR 09 – Avaliação e Controle das Exposições Ocupacionais a Agentes Físicos, Químicos e Biológicos',
   },
   {
     label: 'NR 10 – Segurança em Instalações e Serviços em Eletricidade',
-    value: 'nr_10',
+    value: 'NR 10 – Segurança em Instalações e Serviços em Eletricidade',
   },
 ]
 
@@ -387,42 +442,42 @@ export const certificationOptionsPage2 = [
   {
     label:
       'NR 11 – Transporte, Movimentação, Armazenagem e Manuseio de Materiais',
-    value: 'nr_11',
+    value: 'NR 11 – Transporte, Movimentação, Armazenagem e Manuseio de Materiais',
   },
   {
     label: 'NR 12 – Segurança no Trabalho em Máquinas e Equipamentos',
-    value: 'nr_12',
+    value: 'NR 12 – Segurança no Trabalho em Máquinas e Equipamentos',
   },
   {
     label: 'NR 15 – Atividades e Operações Insalubres',
-    value: 'nr_15',
+    value: 'NR 15 – Atividades e Operações Insalubres',
   },
   {
     label: 'NR 16 – Atividades e Operações Perigosas',
-    value: 'nr_16',
+    value: 'NR 16 – Atividades e Operações Perigosas',
   },
   {
     label: 'NR 20 – SST com Inflamáveis e Combustíveis',
-    value: 'nr_20',
+    value: 'NR 20 – SST com Inflamáveis e Combustíveis',
   },
   {
     label: 'NR 21 – Trabalho a Céu Aberto',
-    value: 'nr_21',
+    value: 'NR 21 – Trabalho a Céu Aberto',
   },
   {
     label: 'NR 23 – Proteção Contra Incêndios',
-    value: 'nr_23',
+    value: 'NR 23 – Proteção Contra Incêndios',
   },
   {
     label: 'NR 24 – Condições Sanitárias e de Conforto nos Locais de Trabalho',
-    value: 'nr_24',
+    value: 'NR 24 – Condições Sanitárias e de Conforto nos Locais de Trabalho',
   },
   {
     label: 'NR 26 – Sinalização de Segurança',
-    value: 'nr_26',
+    value: 'NR 26 – Sinalização de Segurança',
   },
   {
     label: 'NR 35 – Trabalho em Altura',
-    value: 'nr_35',
+    value: 'NR 35 – Trabalho em Altura',
   },
 ]
