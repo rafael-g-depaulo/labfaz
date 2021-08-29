@@ -1,17 +1,30 @@
-import React, { FC } from "react"
+import React, { FC } from 'react'
 
-import Header from "Components/Header"
+import { LoginContainer } from './style'
+import { SignUp } from 'Components/SignUp'
+import Wireframe from 'Components/Wireframe'
+import useMobile from 'Utils/useMobile'
 
-import { LoginContainer } from "./style"
-import { SignUp } from "Components/SignUp"
+interface DisplayProps {
+  button_type: "submit" | "button" | "reset"
+}
 
-export const Display: FC = () => {
+export const Display: FC<DisplayProps> = ({ button_type }) => {
   return (
     <>
-      <Header />
-      <LoginContainer>
-        <SignUp buttonType="submit"/>
-      </LoginContainer>
+      {useMobile() ? (
+        <>
+          <LoginContainer>
+            <SignUp button_type={button_type ? button_type : 'submit'} />
+          </LoginContainer>
+        </>
+      ) : (
+        <Wireframe>
+          <LoginContainer>
+            <SignUp button_type={button_type ? button_type : 'submit'} />
+          </LoginContainer>
+        </Wireframe>
+      )}
     </>
   )
 }
