@@ -73,21 +73,13 @@ export class UserRepository extends Repository<User> {
         return this.save(createdCertificate);
       }
     );
+
     //pegando o erro quando for salvar o certificado
-    try {
-      createdArea.certificate = await Promise.all(certicates ?? []);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating certificates!!");
-    }
+    createdArea.certificate = await Promise.all(certicates ?? []);
+
     //mesmo caso com areas
-    try {
-      const areaRepo = getRepository(Area)
-      await areaRepo.save(createdArea);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating area!!");
-    }
+    const areaRepo = getRepository(Area)
+    await areaRepo.save(createdArea);
 
     //criamos uma ficha tecnica ela que possui idiomas e areas 
     const createdTech = new Technical();
@@ -97,24 +89,12 @@ export class UserRepository extends Repository<User> {
     createdTech.is_drt = artist.technical.is_drt;
 
     //criamos associamos a ficha tecnicas seus idiomas 
-    try {
-      createdTech.idiom = await Promise.all(Idioms ?? []);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating idiom!!");
-    }
+    createdTech.idiom = await Promise.all(Idioms ?? []);
 
     //mesmo para area neste caso só temos uma area
     createdTech.area = [createdArea]
-
-
-    try {
-      const techRepo = getRepository(Technical)
-      await techRepo.save(createdTech);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating techinical!!");
-    }
+    const techRepo = getRepository(Technical)
+    await techRepo.save(createdTech);
 
     //contato é um a um com artista então todo artista tem um contato e todo contato tem um artista
     const createdContact = new Contact();
@@ -126,13 +106,8 @@ export class UserRepository extends Repository<User> {
     createdContact.whatsapp = artist.contact.whatsapp ?? null;
     createdContact.youtube = artist.contact.youtube ?? null;
 
-    try {
-      const contactRepo = getRepository(Contact)
-      await contactRepo.save(createdContact);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating contact !!");
-    }
+    const contactRepo = getRepository(Contact)
+    await contactRepo.save(createdContact);
 
     //mesmo caso do contato aplica para endereço um a um artista <=> endereço
     const createdAddress = new Address();
@@ -143,13 +118,8 @@ export class UserRepository extends Repository<User> {
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
     
-    try {
-      const addrRepo = getRepository(Address)
-      await addrRepo.save(createdAddress);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating address !!");
-    }
+    const addrRepo = getRepository(Address)
+    await addrRepo.save(createdAddress);
 
     //finalmente criamos o artista ela um tipo de instância do usuário da plataforma e nela tem uma
     // relação de um para um com o usuário, ou seja para cada usuário possui um artista
@@ -169,14 +139,8 @@ export class UserRepository extends Repository<User> {
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
 
-
-    try {
-      const artistRepo = getRepository(Artist)
-      await artistRepo.save(createdArtist);
-    } catch (error) {
-      console.log(error);
-      throw Error("Error creating artist !!");
-    }
+    const artistRepo = getRepository(Artist)
+    await artistRepo.save(createdArtist);
 
     //colocamos as associações um para um do artista 
     createdAddress.artist = createdArtist;
@@ -191,12 +155,10 @@ export class UserRepository extends Repository<User> {
     createdUser.banned = false
     createdUser.artist = createdArtist
     
-
     createdArtist.user = createdUser;
 
-    await createdUser.save();
-
-    return createdUser;
+    return createdUser.save()
+      .then(() => createdUser)
   }
 
   findById(id: string) {
