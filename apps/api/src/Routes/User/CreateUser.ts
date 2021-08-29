@@ -15,6 +15,7 @@ import { Req } from "Utils/request";
 import { ParsedUser } from "./ParseUser";
 import { ParsedFiles } from "Middlewares/parseFiles";
 import User from "Entities/User";
+import { removeCircularity } from "Utils/stringifyCircular";
 
 interface CreateUserDeps {
   UserRepo: UserRepository;
@@ -53,39 +54,28 @@ export const CreateUser: (
   const { email, password, artist } = req.user_info! ?? {};
 
   const checkUserExists = await UserRepo.findByEmail(email);
-  if (!!checkUserExists)
-    return badRequestError(res, "Email address already exists.");
+  if (!!checkUserExists) return badRequestError(res, "Email address already exists.");
 
-  try{
+  try {
     const curriculum = req.parsedFiles?.curriculum ?? [];
     const profilePicture = req.parsedFiles?.profilePicture ?? [];
-
     const files = await UploadFiles([...curriculum, ...profilePicture ]);
-
 
     const artistCurriculum = files.find((file) => file.fieldname === "curriculum")!;
     const artistProfilePicture = files.find((file) => file.fieldname === "profilePicture")!;
-      
-      
-  
-  // TODO: Fix user creation
-  // ...and user creation should happen inside userRepo.createUser, not here
-  // ...and we should change the function's type to include "artist"
 
-
-  return (
-    UserRepo.createUser(email, password, artist, artistCurriculum, artistProfilePicture)
+    return UserRepo
+      .createUser(email, password, artist, artistCurriculum, artistProfilePicture)
       // .then(user => { sendConfirmationEmail(user); return user })
       .then((user) => {
-        // remove password and id and send user back
-        //? not removing id here for testing
+        // remove password and send user back
         let { password: _, ...newUser } = user;
-        return createdSuccessfully(res, newUser);
+        return createdSuccessfully(res, removeCircularity(newUser));
       })
-      .catch((err) => databaseError(res, "Error trying to create user.", { err }))
-  );
-  }catch(e){
-    return badRequestError(res,"Error trying to create curriculum or profilePicture")
+      .catch(err => databaseError(res, "Error trying to create user.", err))
+
+  } catch (e) {
+    return badRequestError(res,"Error trying to create curriculum or profilePicture", { msg: JSON.stringify(e), e })
   }
 };
 
