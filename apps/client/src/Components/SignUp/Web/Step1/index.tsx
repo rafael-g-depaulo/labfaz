@@ -17,7 +17,7 @@ import {
   SelectContainer,
   InputText,
   LeftSelectContainer,
-  InputTextContainer,
+  InputTextContainer, 
 } from './style'
 import { SelectInput } from 'Components/Inputs/SelectInput'
 import { CidadesDF, CidadesEntorno, Estados } from 'Utils/selectOptionsData'
