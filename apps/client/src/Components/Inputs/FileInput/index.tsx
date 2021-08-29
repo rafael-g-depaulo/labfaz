@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { useField, useFormikContext } from 'formik'
-
-import file from './file.svg'
+import { IoMdCloudUpload } from 'react-icons/io'
 
 import { Container, Input, InputFileText } from './style'
 
@@ -35,9 +34,11 @@ export const FileInput: FC<InputProps> = ({
   const [, meta] = useField(props)
   const { setFieldValue } = useFormikContext()
 
-
   return (
-    <Container {...props}>
+    <Container
+      {...props}
+      validationError={meta.touched && meta.error ? true : false}
+    >
       <Input>
         {() => (
           <>
@@ -50,14 +51,14 @@ export const FileInput: FC<InputProps> = ({
             />
             <label htmlFor="file" className="fileContent">
               <InputFileText>{label}</InputFileText>
-              <div></div>
-              <img src={file} alt="" />
+              {/* <div></div> */}
+              <IoMdCloudUpload />
             </label>
           </>
         )}
       </Input>
 
-      {meta.error && <div>{meta.error.toString()}</div>}
+      {meta.touched && meta.error && <p className="error">{meta.error}</p>}
     </Container>
   )
 }

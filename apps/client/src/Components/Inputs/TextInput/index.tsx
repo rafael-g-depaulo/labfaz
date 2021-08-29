@@ -3,6 +3,7 @@ import { useField } from 'formik'
 import InputMask from 'react-input-mask'
 
 import { Container, Input } from './style'
+import { IoMdInformationCircle } from 'react-icons/io'
 
 export interface InputProps {
   label?: string
@@ -11,6 +12,8 @@ export interface InputProps {
   width?: number
   height?: number
   inputMask?: string
+  informationText?: string
+  obrigatory?: boolean
   onChange?: (ev: any) => void
 }
 
@@ -20,13 +23,40 @@ export const TextInput: FC<InputProps> = ({
   width,
   inputMask,
   height,
+  obrigatory,
+  informationText,
+  children,
   ...props
 }) => {
   const [inputProps, meta] = useField(props)
 
   return (
-    <Container {...props}>
-      <label htmlFor={props.name}>{label}</label>
+    <Container
+      {...props}
+      validationError={meta.touched && meta.error ? true : false}
+    >
+      {label && (
+        <div className="labelContainer">
+          <div className="labelContent">
+            <label htmlFor={props.name}>
+              {label}
+
+              {obrigatory && <p className="obrigatory"> * </p>}
+
+              {informationText && (
+                <>
+                  <div className="svgContainer">
+                    <IoMdInformationCircle />
+                    <p className="information">{informationText}</p>
+                  </div>
+                </>
+              )}
+            </label>
+
+            {meta.touched && meta.error && <span>{meta.error}</span>}
+          </div>
+        </div>
+      )}
 
       <Input>
         {() => (
@@ -40,8 +70,6 @@ export const TextInput: FC<InputProps> = ({
           />
         )}
       </Input>
-
-      {meta.error && <div>{meta.error.toString()}</div>}
     </Container>
   )
 }

@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { useField } from 'formik'
+import { IoMdInformationCircle } from 'react-icons/io'
 
 import { Container, Input } from './style'
-
 export interface InputProps {
   label?: string
   placeholder?: string
@@ -14,6 +13,8 @@ export interface InputProps {
   text?: string
   inputMask?: string
   id?: string
+  paddingLeft?: number
+  information?: string
 }
 
 export const RadioInput: FC<InputProps> = ({
@@ -21,22 +22,33 @@ export const RadioInput: FC<InputProps> = ({
   type,
   placeholder,
   width,
+  paddingLeft,
   value,
   inputMask,
   text,
   height,
+  information,
+  children,
   id,
   ...props
 }) => {
-  const [, meta] = useField(props)
-
   return (
-    <Container>
+    <Container paddingLeft={paddingLeft ? paddingLeft : 3}>
       <Input type="radio" id={id ? id : value} {...props} value={value} />
 
-      <label htmlFor={id ? id : value}>{label}</label>
+      <div className="radio_input"></div>
 
-      {meta.error && <div>{meta.error.toString()}</div>}
+      <div className="informationContainer">
+        <label htmlFor={id ? id : value}>{label}</label>
+
+
+        {information && (
+          <div className="svgContainer">
+            <IoMdInformationCircle />
+          {information && <span className="information">{information}</span>}
+          </div>
+        )}
+      </div>
     </Container>
   )
 }

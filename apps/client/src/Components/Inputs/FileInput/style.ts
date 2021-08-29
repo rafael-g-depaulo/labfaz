@@ -1,14 +1,29 @@
 import { Text } from "Components/Typography/Text"
 import { Field } from "formik"
 import styled, { css } from "styled-components"
-import { DesktopSmall } from "Utils/breakpoints"
+import { DesktopSmall, Mobile } from "Utils/breakpoints"
 
-export const Container = styled.div`
+interface ContainerProps {
+  validationError: boolean
+}
+
+export const Container = styled.div<ContainerProps>`
 
   position: relative;
-  background-color: #fff;
+  background-color: #090909;
   display: flex;
   align-items: center;
+
+  .error {
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    color: red;
+    font-size: var(--font-size-small);
+  }
+  
+
+  border: ${({validationError}) => validationError ? '1px solid red' : '1px solid rgba(250, 250, 250, 0.7)' };
 
   width: 12.4rem;
   height: 2.55rem;
@@ -17,30 +32,37 @@ export const Container = styled.div`
     width: 8.36rem;
     height: 2rem;
   `)}
-    
+
+  ${Mobile(css`
+    width: 100%;
+  `)}
 
   appearance: none;
-  border: 0;
-  padding-left: 0.83rem;
-  padding-right: 0.83rem;
+  padding: 0 0.83rem;
 
   &:hover {
     cursor: pointer;
   }
 
   input {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    width: 12rem;
+    cursor: pointer;
   }
 
   .fileContent {  
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    z-index: 10;
 
     div {
       position: absolute;
       width: 1px;
       height: 22px;
-      background-color: #C4C4C4;
+      background-color: #FAFAFA;
 
       right: 3.03rem;
       top: 25%;
@@ -51,16 +73,23 @@ export const Container = styled.div`
         right: 2rem;
         height: 18px;
       `)}
+
+      ${Mobile(css`
+
+      `)}
     }
 
-    img {
-      position: absolute;
+    svg {
       z-index: 1;
       width: 24px;
       height: 24px;
 
-      right: 0.64rem;
+      padding: 0;
+      margin: 0;
+
+      right: 0.9rem;
       top: 25%;
+      color: #FAFAFA;
 
       ${DesktopSmall(css`
         width: 16px;
@@ -73,11 +102,14 @@ export const Container = styled.div`
     }
   }
 `
-export const Input = styled(Field)``
+export const Input = styled(Field)`
+  cursor: pointer;
+  position: relative;
+`
 
 export const InputFileText = styled(Text)`
   font-size: var(--font-size-medium);
-  color: #C4C4C4;
+  color: #FAFAFA;
   
   ${DesktopSmall(css`
     font-size: var(--font-size-small);

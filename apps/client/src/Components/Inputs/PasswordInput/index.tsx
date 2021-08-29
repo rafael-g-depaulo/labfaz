@@ -12,6 +12,7 @@ export interface InputProps {
   value?: string
   text?: string
   inputMask?: string
+  obrigatory?: boolean
 }
 
 export const PasswordInput: FC<InputProps> = ({
@@ -22,13 +23,25 @@ export const PasswordInput: FC<InputProps> = ({
   inputMask,
   text,
   height,
+  obrigatory,
   ...props
 }) => {
   const [inputProps, meta] = useField(props)
 
   return (
-    <Container {...props}>
-      <label htmlFor={props.name}>{label}</label>
+    <Container
+      {...props}
+      validationError={meta.touched && meta.error ? true : false}
+    >
+      <div className="labelContainer">
+        <div className="labelContent">
+          <label htmlFor={props.name}>
+            {label} {obrigatory && <p className="obrigatory"> *</p>}
+          </label>
+
+          {meta.touched && meta.error && <span>{meta.error}</span>}
+        </div>
+      </div>
 
       <input
         id={props.name}
@@ -37,8 +50,6 @@ export const PasswordInput: FC<InputProps> = ({
         placeholder={placeholder}
         {...inputProps}
       />
-
-      {meta.error && <div>{meta.error.toString()}</div>}
     </Container>
   )
 }

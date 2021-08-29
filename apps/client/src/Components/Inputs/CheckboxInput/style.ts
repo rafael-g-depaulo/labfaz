@@ -1,98 +1,114 @@
 import { Field } from "formik"
 import styled, { css } from "styled-components"
-import { DesktopSmall } from "Utils/breakpoints"
+import { DesktopSmall, Mobile } from "Utils/breakpoints"
 
 export const Container = styled.div`
-  display: flex;
+  display: inline-flex;
+  cursor: pointer;
+
+  position: relative;
+
   align-items: center;
+  justify-content: space-between;
+
+  ${Mobile(css`
+    align-items: flex-start;
+  `)}
+
+  p {
+    position: absolute;
+    font-size: var(--font-size-small);
+    white-space: nowrap;
+    bottom: -1.5rem;
+    left: 2.2rem;
+    color: red;
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+  
+    z-index: 2;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .checkbox_input {
+    width: 1rem;
+    height: 1rem;
+    padding: 5px;
+
+    border: 1px solid rgba(250, 250, 250, 0.7);
+
+    ${Mobile(css`
+      width: 30px;
+      height: 20px;
+      padding: 7px;
+    `)}
+
+    background: rgba(0, 0, 0, 0.46);  
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .checkbox_input::after {
+    content: '';
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    display: block;
+
+    background-color: #FC0061;
+
+    transform: scale(0);
+
+    transition: transform 0.15s;
+  }
+
+  input:checked  + .checkbox_input::after {
+    transform: scale(1);
+  }
   
   label {
     font-weight: 600;
     color: var(--color-text-black);
-    
+    display: inline-block;
+
+    color: #fafafa;
+
+    margin-left: 1.20rem;
+
+    line-height: 22px;
+
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    ${DesktopSmall(css`
+      font-size: var(--font-size-small);
+    `)}
+
+    ${Mobile(css`
+      font-size: var(--font-size-large);
+    `)}
+
     &:hover {
       cursor: pointer;
     }
-
-    ${DesktopSmall(css`
-      font-size: var(--font-size-short);
-    `)}
   }
-  
-  input{
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
 
-    &:checked, &:not(:checked) {
-      position: absolute;
-      left: -9999px;
-    }
-    
-    &:checked + label, &:not(:checked) + label {
-      position: relative;
-      padding-left: 3rem;
-      padding-top: 0.1rem;
-      cursor: pointer;
-      line-height: 20px;
-      display: inline-block;
-      color: var(--color-text-black);
-
-      ${DesktopSmall(css`
-        padding-left: 2rem;
-        padding-top: 0rem;
-      `)}
-    }
-
-    &:checked + label:before, &:not(:checked) + label:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      border: 1px solid #C4C4C4;
-      background: rgba(0, 0, 0, 0.46);  
-
-      ${DesktopSmall(css`
-        width: 14.75px;
-        height: 14.75px;
-      `)}
-    }
-    
-    &:checked + label:after, &:not(:checked) + label:after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #C4C4C4;
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      border-radius: 50%;
-      -webkit-transition: all 0.2s ease;
-      transition: all 0.2s ease;
-
-      ${DesktopSmall(css`
-
-        width: 5.36px;
-        height: 5.36px;
-
-        top: 5.5px;
-        left: 6px;
-      `)}
-    }
-    
-    &:not(:checked) + label:after {
-      opacity: 0;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    }
-
-    &:checked + label:after {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
+  a {
+    font-weight: 600;
+    color: var(--color-text-black);
+    font-size: var(--font-size-small);
+    text-decoration: underline;
   }
 `
 

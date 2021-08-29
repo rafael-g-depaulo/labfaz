@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useField } from 'formik'
 
 import { Container, Input } from './style'
 
@@ -13,6 +12,7 @@ export interface InputProps {
   value?: string
   text?: string
   inputMask?: string
+  inputRightSide?: boolean
 }
 
 export const CheckboxInput: FC<InputProps> = ({
@@ -24,17 +24,16 @@ export const CheckboxInput: FC<InputProps> = ({
   inputMask,
   text,
   height,
+  children,
   ...props
 }) => {
-  const [, meta] = useField(props)
-
   return (
     <Container>
       <Input type="checkbox" id={value} {...props} value={value} />
 
-      <label htmlFor={value}>{label}</label>
+      <div className="checkbox_input"></div>
 
-      {meta.error && <div>{meta.error.toString()}</div>}
+      <label htmlFor={value}>{children ? children : label}</label>
     </Container>
   )
 }

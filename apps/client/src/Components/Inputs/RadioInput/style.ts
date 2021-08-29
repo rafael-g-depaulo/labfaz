@@ -1,99 +1,148 @@
 import { Field } from "formik"
 import styled, { css } from "styled-components"
-import { DesktopSmall } from "Utils/breakpoints"
+import { DesktopSmall, Mobile } from "Utils/breakpoints"
 
-export const Container = styled.div`
-  display: flex;
+interface ContainerProps {
+  paddingLeft: number
+}
+
+export const Container = styled.div<ContainerProps>`
+  display: inline-flex;
   align-items: center;
-  
-  label {
-    font-weight: 600;
-    color: var(--color-text-black);
-    display: block;
-    
-    ${DesktopSmall(css`
-      font-size: var(--font-size-short);
-    `)}
+  cursor: pointer;
 
+  position: relative;
+
+  p {
+    position: absolute;
+    white-space: nowrap;
+    color: red;
+    font-size: var(--font-size-small);
+    bottom: -1.2rem;
+    left: 2.2rem;
+  }
+
+
+  input {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
 
     &:hover {
       cursor: pointer;
     }
   }
+
+  .radio_input {
+    width: 1rem;
+    height: 1rem;
+
+
+    border-radius: 50%;
+    border: 1px solid rgba(250, 250, 250, 0.7);
+
+    box-sizing: border-box;
   
-  input{
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+    background: #090909;  
 
-    &:checked, &:not(:checked) {
-      position: absolute;
-      left: -9999px;
-    }
-    
-    &:checked + label, &:not(:checked) + label {
-      position: relative;
-      padding-left: 3rem;
-      padding-top: 0.1rem;
+    padding: 5px;
+
+    &:hover {
       cursor: pointer;
-      line-height: 20px;
-      display: inline-block;
-      color: var(--color-text-black);
-
-      ${DesktopSmall(css`
-        padding-left: 2rem;
-        padding-top: 0rem;
-      `)}
     }
+  }
 
-    &:checked + label:before, &:not(:checked) + label:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      border: 1px solid #C4C4C4;
-      border-radius: 100%;
-      background: rgba(0, 0, 0, 0.46);  
+  .radio_input::after {
+    content: '';
 
-      ${DesktopSmall(css`
-        width: 14.75px;
-        height: 15.08px;
-      `)}
-    }
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    display: block;
+
+    background-color: #FC0061;
+
+    transform: scale(0);
+
+    transition: transform 0.15s;
+  }
+
+  input:checked  + .radio_input::after {
+    transform: scale(1);
+  }
+
+  label {
+    font-weight: 600;
+    color: #FAFAFA;
+    display: block;
+
+    margin-left: 1.20rem;
+    margin-right: 0.5rem;
+
     
-    &:checked + label:after, &:not(:checked) + label:after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #C4C4C4;
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short);
+    `)}
+
+    ${Mobile(css`
+      font-size: var(--font-size-large);
+    `)}
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .informationContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+      span {
+        display: none;
+
+        ${DesktopSmall(css`
+          display: block;
+        `)}
+
+        ${Mobile(css`
+          display: block;
+        `)}
+      }
+    }
+
+    span {
+      display: none;
       position: absolute;
-      top: 8px;
-      left: 8px;
-      border-radius: 50%;
-      -webkit-transition: all 0.2s ease;
-      transition: all 0.2s ease;
+      
+      padding: 0.5rem;
 
-      ${DesktopSmall(css`
-        width: 5.5px;
-        height: 5.5px;
+      width: 13rem;
 
-        top: 5.5px;
-        left: 6px;
-      `)}
-    }
+      font-size: 10px;
+      z-index: 3;
+
+      background-color: #6C6C6C;
+      color: #fff;
     
-    &:not(:checked) + label:after {
-      opacity: 0;
-      -webkit-transform: scale(0);
-      transform: scale(0);
+      font-weight: 400;
+
+      right: 2.2rem;
+
+      transform: translateX(50%);
     }
 
-    &:checked + label:after {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
+    .svgContainer {
+      position: relative;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        color: #6C6C6C;
+      }     
     }
   }
 `
