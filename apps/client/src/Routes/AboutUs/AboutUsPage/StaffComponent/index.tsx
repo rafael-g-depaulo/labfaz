@@ -13,16 +13,14 @@ interface StaffProps {
 }
 
 export const Staff: FC<StaffProps> = ( { data } ) => {
-  
 
-
-  const { team } = data
+  const { team, subtitulo } = data
 
   return (
     <Wrapper marginTop="70px">
       <StaffHeader>
-        <Title level={1} > STAFF </Title>
-        <Title level={3} > Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </Title>        
+        <Title level={1}> STAFF </Title>
+        <Title level={3}> {subtitulo} </Title>        
       </StaffHeader>
       {
         team.map((team) => {

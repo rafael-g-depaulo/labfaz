@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "teams",
   "info": {
-    "name": "Teams"
+    "name": "Teams",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,6 +15,10 @@
       "type": "component",
       "repeatable": true,
       "component": "about-us.teams"
+    },
+    "subtitulo": {
+      "type": "string",
+      "default": " "
     }
   }
 }

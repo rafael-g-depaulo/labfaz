@@ -29,7 +29,8 @@ export interface Team {
   staff: StaffObject[]
 }
 export interface TeamsData {
-  team: Team[]
+  team: Team[],
+  subtitulo: string
 }
 
 
@@ -49,8 +50,9 @@ export const useAboutUsdata = () => useFetchApi<AboutUsData>('/about-us', fetchA
 export const fetchTeamData = () => strapi
   .get<TeamsData>("/teams")
   .then(({data}) => data)
-  .then(( { team } ) => ({
-    team
+  .then(( { team, subtitulo } ) => ({
+    team,
+    subtitulo,
   }))
 
 
