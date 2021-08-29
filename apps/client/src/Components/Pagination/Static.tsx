@@ -24,7 +24,7 @@ export const Pagination = <T extends any> ({
       return slicedItems
     }, [itemsPerPage, page, items])
 
-    const onChange = useCallback(page => setPage(page), [page, setPage])
+    const onChange = useCallback(page => setPage(page), [setPage])
     return (
     <>
       {isFunction(children) ? children(renderedItems) : children}
