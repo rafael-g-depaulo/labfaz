@@ -7,6 +7,7 @@ export const StyledButton = styled(Link)`
   border: 0;
   padding: 0.5rem 2rem;
   font-weight: bold;
+  font-size: var(--font-size-default);
   text-decoration: none;
   border-top: 2px solid;
   border-left: 2px solid;
