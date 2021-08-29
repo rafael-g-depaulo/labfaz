@@ -54,7 +54,7 @@ export const Login: FC<LoginComponentProps> = () => {
         .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
     },
-    [setToken, history, setUser]
+    [setToken, setUser]
   )
 
   return (
@@ -108,7 +108,7 @@ export const Login: FC<LoginComponentProps> = () => {
                   <RegisterButton href="/SignUp">CADASTRE-SE</RegisterButton>
                 </ButtonContainer>
 
-                <NavLink to="/">Esqueceu sua senha?</NavLink>
+                <NavLink to="/recover">Esqueceu sua senha?</NavLink>
               </Form>
             )}
           </Formik>
