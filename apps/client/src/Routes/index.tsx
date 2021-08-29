@@ -88,20 +88,12 @@ const Routes: FC = () => {
           </Route>
         )}
 
-        <Route path={["/sign-up", "/signup", "/SignUp"]}>
-          {({ match }) => (
-            <Suspense fallback={<LoadingFullPage />}>
-              <Register match={match} />
-            </Suspense>
-          )          }
-        </Route>
-
-        <Route path={["/login"]}>
+        <Route path={["/login", "SignIn"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <Login match={match} />
             </Suspense>
-          )          }
+          )}
         </Route>
 
         {/* default route (404) */}
@@ -111,7 +103,6 @@ const Routes: FC = () => {
           </Suspense>
         </Route>
 
-        
       </Switch>
     </BaseRouter>
   );
