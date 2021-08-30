@@ -19,7 +19,7 @@ describe("Blog Page", () => {
         ext: "jpeg"
       }
     }
-    expect(() => render(<BrowserRouter><BlogPageDisplay data={mockedData} /></BrowserRouter>)).not.toThrow()
+    expect(() => render(<BrowserRouter><BlogPageDisplay data={mockedData} posts={[]}/></BrowserRouter>)).not.toThrow()
   })
 
   it("displays the data message", () => {
@@ -35,7 +35,7 @@ describe("Blog Page", () => {
         ext: "jpeg"
       }
     }
-    const { getByRole } = render(<BrowserRouter><BlogPageDisplay data={mockedData} /></BrowserRouter>)
+    const { getByRole } = render(<BrowserRouter><BlogPageDisplay data={mockedData} posts={[]}/></BrowserRouter>)
 
     expect(getByRole("heading", {level: 1})).toHaveTextContent("Blog")
     expect(getByRole("heading", {level: 2})).toHaveTextContent("LoremIpsum")

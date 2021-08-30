@@ -32,13 +32,15 @@ const StaffInfo2: StaffObject = {
 }
 
 const team: Team = {
+  id: 2,
   name: "Coordenação",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
   staff: [StaffInfo, StaffInfo, StaffInfo2, StaffInfo2]
 }
 
 const teams: TeamsData = {
-  team: [team, team]
+  team: [team, team],
+  subtitulo: "teste teste teste"
 }
 
 describe('Staffs component',  () => {
@@ -71,6 +73,6 @@ describe('Staffs component',  () => {
 
     const header = component.getByRole('heading', { level: 3 })
 
-    expect(header).toHaveTextContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    expect(header).toHaveTextContent(teams.subtitulo)
   })
 })
