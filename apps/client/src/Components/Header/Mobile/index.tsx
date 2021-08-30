@@ -25,7 +25,7 @@ export const Mobile: FC = () => {
           <NavLink href="/blog"> BLOG </NavLink>
           <NavLink href="/calendar"> AGENDA </NavLink>
           <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
-          <Button backgroundColor="login" href='/login'> ENTRAR </Button>
+          <Button BackgroundColor="login" href='/login'> ENTRAR </Button>
           <Button href='/register'> REGISTRE-SE </Button>
         </NavBar>
       </div>

@@ -6,7 +6,7 @@ export interface PropsCloseMenu {
   open: boolean,
 }
 export interface PropsButton {
-  backgroundColor?: string,
+  BackgroundColor?: string,
 }
 export const Container = styled.div`
   .navBar {
@@ -54,13 +54,13 @@ export const Button = styled(InternalLinkButton)<PropsButton>`
   --font-size-short: 11px;
   display: flex;
   ${props => 
-    props.backgroundColor === "login" ?
+    props.BackgroundColor === "login" ?
       'background-color: var(--background-pink);'
       : 
       'background-color: var(--color-text-yellow);'
   };
   ${props => 
-    props.backgroundColor === "login" ?
+    props.BackgroundColor === "login" ?
       'color: var(--color-text-yellow);'
       : 
       'color: var(--background-pink);'
