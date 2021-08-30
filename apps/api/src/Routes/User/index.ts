@@ -16,6 +16,8 @@ import { ParseUpdateUser  } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
 
+import subscribeToCourse from "./SubscribeToCourse";
+import CourseRepository from "Repository/CourseRepository";
 
 type UserDeps = {
   conn: Connection;
@@ -24,6 +26,7 @@ type UserDeps = {
 
 const UserRouter: Router<UserDeps> = (deps, options) => {
   const { conn, UserRepo = conn.getCustomRepository(UserRepository) } = deps;
+  const CourseRepo = conn.getCustomRepository(CourseRepository)
 
   return express
     .Router(options)

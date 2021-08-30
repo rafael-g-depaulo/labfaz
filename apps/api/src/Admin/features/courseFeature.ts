@@ -1,24 +1,9 @@
-import adminjs, { BaseRecord, buildFeature, RecordInList } from 'adminjs'
+import adminjs, { BaseRecord, buildFeature } from 'adminjs'
 import { CourseRepository } from "Repository/CourseRepository"
 
 // Create new action for admin example
 export const courseActions = (courseRepo?: CourseRepository) => buildFeature({
   actions: {
-    new:{
-      handler: async(request, _response, context) => {
-        const { currentAdmin } = context
-        const { payload } = request
-        let course
-
-        if(payload) {
-          course = courseRepo!.create(payload)
-        }        
-
-        return {
-          record: context.record?.toJSON(currentAdmin)
-        }
-      }
-    },
     abrirCurso: {
       icon: "Task",
       actionType: "record",
@@ -74,16 +59,13 @@ export const courseActions = (courseRepo?: CourseRepository) => buildFeature({
     inscricoes: {
       actionType: "record",
       component: adminjs.bundle("../components/subscription.tsx"),
-      handler: async (request, _response, context) => {
+      handler: async (_request, _response, context) => {
         const { currentAdmin, record } = context
         
         if(record) {
-          console.log("ID: ", record.id())
-          courseRepo?.getStudents(record.id())
-
           record.params = {
             ...record?.params,
-            coisaBesta: "E la vamos nós"
+            courseRepo: courseRepo
           }
         }
 

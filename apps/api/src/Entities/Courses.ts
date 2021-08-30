@@ -5,7 +5,9 @@ import {
   BeforeInsert,
   BaseEntity,
   ManyToOne,
-  OneToOne
+  OneToOne,
+  ManyToMany,
+  JoinTable
 } from "typeorm";
 import { nanoid } from "nanoid";
 import Admin from "./Admin"
@@ -19,19 +21,20 @@ export class Course extends BaseEntity {
   @ManyToOne(() => Admin, (admin) => admin.email)
   teacher: Admin
 
-  @OneToOne(() => Request, request => request.student)
+  @ManyToMany(() => Request, request => request.student)
+  @JoinTable()
   students: Request[]
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
 
-  @Column('simple-array', { array: true })
+  @Column('simple-array', { array: true, nullable: true })
   tags: string[]
 
-  @Column('simple-array', { array: true })
+  @Column('simple-array', { array: true , nullable: true})
   detail: string[]
 
-  @Column('simple-array', { array: true })
+  @Column('simple-array', { array: true, nullable: true })
   fonte: string[]
 
   @Column()
