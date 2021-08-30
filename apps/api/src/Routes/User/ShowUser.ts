@@ -25,7 +25,7 @@ export const ShowUser: (
     return badRequestError(res, "Invalid request param");
   }
 
-  const user = await UserRepo.findById(id);
+  const user = await UserRepo.findByIdWithAll(id);
 
   if (!user) {
     return unauthenticatedError(res, "Not found user with that id" );
@@ -35,12 +35,7 @@ export const ShowUser: (
     return unauthorizedError(res, "This user didn't confirm his account in the email!!");
   }
 
-  //remove password from usersFind
-  const userAsArray = Object.entries(user);
-  const userWithoutPassword = userAsArray.filter(
-    ([key, _]) => key !== "password"
-  );
-  const userQueried = Object.fromEntries(userWithoutPassword);
+  let { password: _, ...userQueried } = user;
 
   return createdSuccessfully(res, { user: userQueried })
 };

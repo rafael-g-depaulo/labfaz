@@ -21,6 +21,7 @@ export class UserRepository extends Repository<User> {
   findByEmail(email: string) {
     return this.findOne({
       where: { email },
+      relations: ["artist"],
     });
   }
 
@@ -29,13 +30,12 @@ export class UserRepository extends Repository<User> {
       where: { id },
       relations: [
         "artist",
-        "contact",
-        "address",
-        "technical",
-        "idiom",
-        "area",
-        "curriculum",
-        "certificate",
+        "artist.contact",
+        "artist.address",
+        "artist.technical",
+        "artist.technical.area",
+        "artist.technical.idiom",
+        "artist.technical.area.certificate",
       ],
     });
   }
@@ -64,7 +64,7 @@ export class UserRepository extends Repository<User> {
       artist.technical.areas?.[0]?.technical_formation ?? TechFormation.AUTO;
     createdArea.describe = artist.technical.areas?.[0]?.describe ?? "";
 
-    //criando varios certificados de acordo com area mesmo caso do idioma 
+    //criando varios certificados de acordo com area mesmo caso do idioma
     const certicates = artist.technical.areas?.[0]?.certificate?.map(
       async (certficate) => {
         const createdCertificate = new Certificate();
@@ -78,22 +78,22 @@ export class UserRepository extends Repository<User> {
     createdArea.certificate = await Promise.all(certicates ?? []);
 
     //mesmo caso com areas
-    const areaRepo = getRepository(Area)
+    const areaRepo = getRepository(Area);
     await areaRepo.save(createdArea);
 
-    //criamos uma ficha tecnica ela que possui idiomas e areas 
+    //criamos uma ficha tecnica ela que possui idiomas e areas
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
     createdTech.is_ceac = artist.technical.is_ceac;
     createdTech.is_cnpj = artist.technical.is_cnpj;
     createdTech.is_drt = artist.technical.is_drt;
 
-    //criamos associamos a ficha tecnicas seus idiomas 
+    //criamos associamos a ficha tecnicas seus idiomas
     createdTech.idiom = await Promise.all(Idioms ?? []);
 
     //mesmo para area neste caso só temos uma area
-    createdTech.area = [createdArea]
-    const techRepo = getRepository(Technical)
+    createdTech.area = [createdArea];
+    const techRepo = getRepository(Technical);
     await techRepo.save(createdTech);
 
     //contato é um a um com artista então todo artista tem um contato e todo contato tem um artista
@@ -106,7 +106,7 @@ export class UserRepository extends Repository<User> {
     createdContact.whatsapp = artist.contact.whatsapp ?? null;
     createdContact.youtube = artist.contact.youtube ?? null;
 
-    const contactRepo = getRepository(Contact)
+    const contactRepo = getRepository(Contact);
     await contactRepo.save(createdContact);
 
     //mesmo caso do contato aplica para endereço um a um artista <=> endereço
@@ -117,8 +117,8 @@ export class UserRepository extends Repository<User> {
     createdAddress.neighbourhood = artist.address.neighbourhood;
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
-    
-    const addrRepo = getRepository(Address)
+
+    const addrRepo = getRepository(Address);
     await addrRepo.save(createdAddress);
 
     //finalmente criamos o artista ela um tipo de instância do usuário da plataforma e nela tem uma
@@ -139,26 +139,25 @@ export class UserRepository extends Repository<User> {
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
 
-    const artistRepo = getRepository(Artist)
+    const artistRepo = getRepository(Artist);
     await artistRepo.save(createdArtist);
 
-    //colocamos as associações um para um do artista 
+    //colocamos as associações um para um do artista
     createdAddress.artist = createdArtist;
     createdContact.artist = createdArtist;
 
-    //criamos um usuário e associamos ele com artista 
-    const createdUser = new User()
-    createdUser.email = email
-    createdUser.password = hashedPwd
-    createdUser.active = false
-    createdUser.isVerified = false
-    createdUser.banned = false
-    createdUser.artist = createdArtist
-    
+    //criamos um usuário e associamos ele com artista
+    const createdUser = new User();
+    createdUser.email = email;
+    createdUser.password = hashedPwd;
+    createdUser.active = false;
+    createdUser.isVerified = false;
+    createdUser.banned = false;
+    createdUser.artist = createdArtist;
+
     createdArtist.user = createdUser;
 
-    return createdUser.save()
-      .then(() => createdUser)
+    return createdUser.save().then(() => createdUser);
   }
 
   findById(id: string) {

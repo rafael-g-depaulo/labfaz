@@ -7,23 +7,18 @@ interface GetAllUsersInterface {
   UserRepo: UserRepository;
 }
 
-export const GetAllUsers: (
-  deps: GetAllUsersInterface
-) => RouteHandler<Req> = ({
+export const GetAllUsers: (deps: GetAllUsersInterface) => RouteHandler<Req> = ({
   UserRepo,
 }: GetAllUsersInterface) => async (_, res) => {
   let usersFind = await UserRepo.find();
 
   //remove password from usersFind
   const users = usersFind.map((user: any) => {
-    const userAsArray = Object.entries(user);
-    const userWithoutPassword = userAsArray.filter(([key, _]) => key !== 'password')
-    const newUser = Object.fromEntries(userWithoutPassword);
-    return newUser;    
-  })
+    let { password: _, ...newUser } = user;
+    return newUser;
+  });
 
   return createdSuccessfully(res, { users });
 };
-
 
 export default GetAllUsers;
