@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Container, PageTitle } from '../styles'
+import { Container, Span } from '../styles'
 import WithImageContainerForm from 'Components/WithImageContainerForm'
 import Footer from 'Components/Footer'
 import Header from 'Components/Header'
@@ -20,11 +20,11 @@ export const Display: FC<DisplayProps> = ({ image, token }) => {
     <>
       <Header />
       <Container>
-        <PageTitle> Recuperação de senha </PageTitle>
-        <WithImageContainerForm  image={image.image}> 
+        <WithImageContainerForm  image={image.image} title="Recuperação de senha" > 
           <PasswordChange token={token} />
         </WithImageContainerForm>
       </Container>
+      <Span> Laboratorio dos Fazeres e Saberes Tecnicos da Economia Criativa </Span>
       <Footer />
     </>
   )

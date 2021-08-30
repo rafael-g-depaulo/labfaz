@@ -1,20 +1,24 @@
 import React, { FC } from 'react'
 import { Image } from 'Utils/Image'
 
-import { Container, Image as Frame, ImageDiv } from './style'
+import { Container, Image as Frame, ImageDiv, PageTitle, Content } from './style'
 
 interface ContainerProps {
-  image: Image
+  image: Image,
+  title: string
 }
 
-export const WithImageContainerForm: FC<ContainerProps> = ({ children, image}) => {
+export const WithImageContainerForm: FC<ContainerProps> = ({ children, image, title}) => {
 
   return (
     <Container>
-      <ImageDiv>
-        <Frame src={image.url} alt={image.alternativeText} />
-      </ImageDiv>
-      {children}
+      <PageTitle> { title } </PageTitle>
+      <Content>
+        <ImageDiv>
+          <Frame src={image.url} alt={image.alternativeText} />
+        </ImageDiv>
+        {children}
+      </Content>
     </Container>
   )
 }

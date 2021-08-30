@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
-import { Wrapper, InputContainer, FormButton, Span } from './styles'
+import { Wrapper, InputContainer, FormButton, Span, Message } from './styles'
 import { Input } from 'Components/Input'
 import { Text } from 'Components/Typography/Text'
 import { Modal } from './Modal'
@@ -19,7 +19,7 @@ export const AskReset: FC = () => {
 
   const [isVisible, setIsVisible] = useState(false)
 
-  // const AskReset = askResetPassword
+  const [isError, setIsError] = useState(false)
 
   const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
@@ -29,9 +29,11 @@ export const AskReset: FC = () => {
         setValues({
           email: ""
         })
+        setIsError(false)
       })
       .catch(() => {
         setEmailStatus("Email incorreto.")
+        setIsError(true)
       })
     setSubmitting(false)
   }
@@ -69,7 +71,8 @@ export const AskReset: FC = () => {
                   placeholder="Digite seu email" 
                   name="email"
                   />
-                <Text> {emailStatus ? emailStatus : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text> 
+                  {emailStatus ? (<Message isError={isError} > {emailStatus} </Message>) : <Text> Enviaremos um email com as instruções para recuperar a sua senha </Text> }
+                {/* <Text> {emailStatus ? emailStatus : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text>  */}
               </InputContainer>
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
