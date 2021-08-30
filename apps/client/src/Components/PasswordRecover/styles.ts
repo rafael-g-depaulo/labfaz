@@ -15,7 +15,7 @@ export const Wrapper = styled.div<ModalProps>`
   max-width: 640px;
   max-height: 707px;
   min-height: 45vh;
-  min-width: 40vw;
+  min-width: 50%;
 
   display: flex;
   flex-direction: column;
@@ -69,12 +69,11 @@ export const Wrapper = styled.div<ModalProps>`
   `)}
 
   ${DesktopSmall(css`
-    max-width: 99vw;
-    max-height: 99vh;
-    min-height: 99vh;
-    min-width: 99vw;
-    border: none;
-
+    min-width: 100%;
+    max-width: 305px;
+    max-height: 406px;
+    min-height: 100%;
+    
     form {
       margin-top: 0;
     }
@@ -275,7 +274,7 @@ export const ModalDiv = styled.div`
 
   ${DesktopSmall(css`
     min-height: 600px;
-    max-height: 600px;
+    max-height: 600px;406px
     min-width: 400px;
     max-width: 400px;
 

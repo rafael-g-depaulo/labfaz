@@ -4,24 +4,35 @@ import { MobileSmall, DesktopSmall, Mobile, MobileLarge } from 'Utils/breakpoint
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
 
   max-width: 1280px;
-  max-height: 707px;
-  min-height: 45vh;
-  margin-bottom: 23vh;
+  max-height: 860px;
+  min-height: 80%;
+  min-width: 67%;
 
   ${MobileSmall(css`
-    max-width: 420px;
-    max-height: 100vh;
+    min-width: 100%;
+    max-width: 305px;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
   `)}
 
   ${Mobile(css`
-    border: none;
+    min-width: 100%;
+    max-width: 305px;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
   `)}
 
   ${DesktopSmall(css`
-    max-width: 100vw;
-    min-width: 100vw;
+    min-width: 100%;
+    max-width: 305px;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
   `)}
   `;
 
@@ -34,22 +45,26 @@ export const Image = styled.img`
   ${MobileSmall(css`
     display: none;
   `)}
+  
+
 
   ${DesktopSmall(css`
     background-color: aqua;
     display: block;
   `)}
 `
+
 export const ImageDiv = styled.div`
   display: flex;
   max-width: 640px;
   max-height: 707px;
-  min-height: 70vh;
-  /* border: 1px solid black; */
+  min-height: 100%;
+  min-width: 50%;
   align-content: center;
 
   ${Mobile(css`
     border: none;
+    display: none;
   `)}
 
   ${MobileLarge(css`
@@ -60,5 +75,40 @@ export const ImageDiv = styled.div`
   ${DesktopSmall(css`
     display: none;
     border: none;
+  `)}
+`
+
+export const PageTitle = styled.h1`
+  font-size: var(--font-size-title-xxlarge);
+  justify-self: center;
+  margin-right: 40%;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+
+  ${DesktopSmall(css`
+    display: none;
+  `)}
+
+  ${MobileLarge(css`
+    display: none;
+  `)}
+
+  ${MobileSmall(css`
+    display: none;
+  `)}
+`
+
+export const Content = styled.div`
+  display: flex;
+  max-height: 707px;
+  max-width: 640px;
+  min-width: 100%;
+  min-height: 100%;
+
+  align-content: center;
+  justify-items: center;
+
+  ${DesktopSmall(css`
+    min-height: 100%;
   `)}
 `
