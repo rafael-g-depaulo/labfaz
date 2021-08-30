@@ -6,18 +6,18 @@ import StrapiAsset from "Utils/StrapiAsset"
 interface StrapiAboutUsBannerInfo {
   title: string,
   subtitle: string,
-  image: StrapiAsset,
+  image: StrapiAsset | null,
 }
 
 export interface AboutUsBannerInfo {
   title: string,
   subtitle: string,
-  image: Image,
+  image?: Image,
 }
 
 export const fetchAboutUsBannerInfo: () => Promise<AboutUsBannerInfo> = () => strapi
   .get<StrapiAboutUsBannerInfo>(`/about-us-banner-info`)
   .then(({ data }) => data)
-  .then(({ title, subtitle, image }) => ({ title, subtitle, image: Asset2Image(image) }))
+  .then(({ title, subtitle, image }) => ({ title, subtitle, image: image ? Asset2Image(image) : undefined }))
 
 export const useAboutUsBannerInfo = () => useFetchApi<AboutUsBannerInfo>(`/about-us-banner-info`, fetchAboutUsBannerInfo)

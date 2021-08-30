@@ -21,9 +21,6 @@
       "repeatable": true,
       "component": "about-us.apresentation",
       "max": 3
-    },
-    "banner_data": {
-      "type": "string"
     }
   }
 }
