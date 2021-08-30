@@ -40,3 +40,8 @@ export class AdminRepository extends Repository<Admin> {
 
 
 export default AdminRepository
+<<<<<<< HEAD
+=======
+ 
+ 
+>>>>>>> 7a7ee42 (🔥 🐛 Fix: Commit with conflicts)
