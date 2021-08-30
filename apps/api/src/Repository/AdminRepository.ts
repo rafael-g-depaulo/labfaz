@@ -40,5 +40,3 @@ export class AdminRepository extends Repository<Admin> {
 
 
 export default AdminRepository
-
-  
