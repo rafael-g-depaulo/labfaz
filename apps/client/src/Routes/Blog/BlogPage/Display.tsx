@@ -13,11 +13,11 @@ export interface DisplayProps {
 }
 
 export const Display: FC<DisplayProps> = ({ data, posts }) => {
-  const { title, subtitle } = data;
+  const { title, subtitle, image } = data;
 
   return (
     <Wireframe>
-      <Banner title={title} subtitle={subtitle} align="left" />
+      <Banner title={title} subtitle={subtitle} image={image} align="left" />
       <PostCard posts={posts}/>
     </Wireframe>
   )
