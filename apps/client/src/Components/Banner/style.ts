@@ -6,13 +6,19 @@ import { Title } from 'Components/Typography/Title'
 
 export interface Props {
   align: string
+  BgImage?: string
 }
 
 export const Container = styled.div<Props>`
   display: flex;
   padding: ${props => props.align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0 4rem 0'};
   justify-content: ${props => props.align};
-  background-color: var(--background-pink);
+  background:
+    ${props => props.BgImage && `url("${props.BgImage}")`}
+    var(--background-pink)
+  ;
+  background-position: center;
+  background-size: cover;
   
   div {
     width: 30rem;

@@ -19,21 +19,19 @@ export const Display: FC<DisplayProps> = ({ data }) => {
 
   return (
     <Wireframe>
+      <Banner title={data.title} subtitle={data.subtitle} image={data.image || undefined} />
       {mobile ? (
         <>
-        <Banner title={data.title} subtitle={data.subtitle} />
           <Presentation />
           <Partners />
-          <CoursesPresentation />
         </>
       ) : (
         <>
-          <Banner title={data.title} subtitle={data.subtitle} />
           <Partners />
           <Presentation />
-          <CoursesPresentation />
         </>
       )}
+      <CoursesPresentation />
     </Wireframe>
   );
 };

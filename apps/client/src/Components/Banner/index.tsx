@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Image } from 'Utils/Image'
 
 import { Container, TitleBanner, Subtitle, KnowMoreButton } from './style'
 
@@ -7,6 +8,7 @@ export interface BannerProps {
   subtitle: string,
   hrefKnowMore?: string,
   align?: string
+  image?: Image
 }
 
 
@@ -14,10 +16,11 @@ export const Banner: FC<BannerProps> = ({
     title,
     subtitle,
     hrefKnowMore="",
-    align='center'
+    align='center',
+    image,
   }) => {
   return (
-    <Container align={align}>
+    <Container align={align} BgImage={image?.url}>
       <div>
         <TitleBanner level={1}> {title} </TitleBanner>
         <Subtitle level={2}> {subtitle} </Subtitle>
