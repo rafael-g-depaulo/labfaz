@@ -55,7 +55,6 @@ export class UserRepository extends Repository<User> {
       createdIdiom.name = idiom.name;
       const idiomRepo = getRepository(Idiom);
       return idiomRepo.save(createdIdiom);
-
     });
 
     //Neste caso só temos uma area porém é possível criar varias areas a associar ao technical
@@ -166,6 +165,41 @@ export class UserRepository extends Repository<User> {
     createdArtist.user = createdUser;
 
     return createdUser.save().then(() => createdUser);
+  }
+
+  async updateUser(
+    user: User,
+    email?: string,
+    password?: string,
+    oldPassword?: string, 
+    artist?: ArtistInfo,
+    curriculum?: UploadedFile,
+    profilePicture?: UploadedFile
+  ) {
+
+    if (password) {
+      if (!oldPassword) {
+        throw Error("Should inform old password to change to a new password !!")
+      }
+  
+      if (password === oldPassword) {
+        throw Error("New password should be different from the old one !!");
+      }
+  
+      const checkOldPassword = await this.compareHash(
+        oldPassword,
+        user.password
+      );
+  
+      if (!checkOldPassword) {
+        throw Error("Your old password isn't correct !!")
+      }
+  
+      user.password = await this.generateHash(password);
+    }
+
+    return user.save().then(() => user)
+
   }
 
   findById(id: string) {

@@ -100,6 +100,7 @@ export const userSchema = yup.object({
   artist: userArtistSchema,
 });
 
+
 export interface UserInfo extends yup.Asserts<typeof userSchema> {}
 
 export interface ArtistInfo extends yup.Asserts<typeof userArtistSchema> {}

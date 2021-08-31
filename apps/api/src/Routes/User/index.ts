@@ -9,12 +9,12 @@ import UserRepository from "Repository/UserRepository"
 
 import { FileType, ParsedFiles, parseFiles } from "Middlewares/parseFiles"
 import ensureAuthenticated from "Middlewares/ensureAuthenticated"
-import MulterMiddleware from "Middlewares/upload"
 
 import ShowUser from "./ShowUser"
 import UpdateUser from "./UpdateUser"
 import GetAllUsers from "./GetAllUser"
 import { ParseUser } from "./ParseUser"
+import { ParseUpdateUser  } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
 
@@ -55,11 +55,12 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     )
     .put(
       "/update",
-      MulterMiddleware.fields([
-        { name: "profilePicture", maxCount: 1 },
-        { name: "curriculum", maxCount: 1 },
+      parseFiles([
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 100 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
       ]),
       ensureAuthenticated,
+      ParseUpdateUser,
       UpdateUser({ UserRepo })
     )
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))

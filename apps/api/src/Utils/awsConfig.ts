@@ -10,7 +10,7 @@ aws.config.update({
 
 export const s3 = new aws.S3();
 export const s3UploadPromise = (params: PutObjectRequest) => new Promise<ManagedUpload.SendData>((resolve, reject) => {
-  // return resolve({ Location: "a", Bucket: "a", ETag: "", Key: "a"})
+  return resolve({ Location: "a", Bucket: "a", ETag: "", Key: "a"})
   s3.upload(params, (err, data) => {
     if (err) return reject(err)
     return resolve(data)
