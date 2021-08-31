@@ -1,11 +1,37 @@
 import { resetTestEnv } from "Utils/resetTestEnv"
-import { getDbConnConfig, getTypeOrmConfig } from "./config"
+import { getDbConnConfig, getSslConfig, getTypeOrmConfig } from "./config"
 
 describe('TypeORM config', () => {
 
   // reset env between tests
   resetTestEnv()
 
+  describe('SSL config', () => {
+    it('uses ssl: false on development env', () => {
+      const db_url = "postgres://username:password@host:5432/database"
+      process.env.DATABASE_URL = db_url
+      process.env.NODE_ENV = "development"
+      const sslConfig = getSslConfig()
+
+      expect(sslConfig).toEqual(false)
+      
+      expect(getDbConnConfig()).toMatchObject({
+        ssl: false
+      })
+    })
+    it('uses rejectUnauthorized: false on production env', () => {
+      const db_url = "postgres://username:password@host:5432/database"
+      process.env.DATABASE_URL = db_url
+      process.env.NODE_ENV = "production"
+      const sslConfig = getSslConfig()
+
+      expect(sslConfig).toMatchObject({ rejectUnauthorized: false })
+      
+      expect(getDbConnConfig()).toMatchObject({
+        ssl: { rejectUnauthorized: false }
+      })
+    })
+  })
   describe('Db connection', () => {
     
     it('works with DATABASE_URL env var', () => {

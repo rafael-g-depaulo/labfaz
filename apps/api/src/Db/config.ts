@@ -5,13 +5,15 @@ const getDbFoldersRoot = () => process.env.IS_SERVING_BUNDLE === "true"
   ? `dist`
   : `src`
 
+// SSL config to make postgres work on heroku and local development
+export const getSslConfig = () => process.env.NODE_ENV === "production"
+  ? { rejectUnauthorized: false }
+  : false
+
 export const getDbConnConfig: () => PostgresConnectionOptions = () => {
-  const sslConfig = {
-    rejectUnauthorized: false
-  }
   const baseConfig: { type: "postgres" } & any = {
     type: "postgres",
-    ssl: sslConfig,
+    ssl: getSslConfig(),
   }
 
   // if DATABASE_URL provided
