@@ -1,4 +1,4 @@
-import { MailProvider, Addres } from "@labfaz/mail/src/index";
+import { MailProvider, Addres } from "@labfaz/mail";
 import { getApiUrl } from "@labfaz/server-conn-info";
 
 import UserRepository from "Repository/UserRepository";
