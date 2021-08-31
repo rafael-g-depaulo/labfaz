@@ -21,18 +21,19 @@ const sendResetEmail = (user: User, token: string) => {
     email: "noreply@labfaz.com.br",
   }
 
+  const userName = user.artist.displayName
   const frontendLink = `${getClientUrl()}/criar-nova-senha?token=${token}`
-  const text = `Olá ${user.artist.name}, você pediu um reset de senha. Para criar uma senha nova, vá em ${frontendLink}.`
+  const text = `Olá ${userName}, você pediu um reset de senha. Para criar uma senha nova, vá em ${frontendLink}.`
   const html = `
   <div>
-    <h1>Olá ${user.artist.name}, você pediu um reset de senha</h1>
+    <h1>Olá ${userName}, você pediu um reset de senha</h1>
     <p>Para criar uma nova senha, <a href="${frontendLink}">clique aqui</p>
     <p>TESTE: Esse é o token para utilizar na página <b>${token}</b></p>
   </div>
   `
   mailer.sendEmail({
     to: {
-      name: user.artist.name,
+      name: userName,
       email: user.email,
     },
     from: from,
@@ -66,9 +67,9 @@ export const AskReset: (
 
   const token = await UserRepo.generateResetPasswordToken(email);
 
-  // TODO: não enviar o text e html na resposta
   sendResetEmail(user, token)
-
+  
+  // TODO: não enviar o token na resposta
   return actionSuccessful(res, { message: "Reset token sent to email!!", token });
 };
 
