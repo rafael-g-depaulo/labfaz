@@ -140,8 +140,8 @@ export class Artist {
 
   // helper methods
   get displayName() {
-    if (this.show_name === ShowName.ARTISTIC) return this.artistic_name
-    if (this.show_name === ShowName.SOCIAL) return this.social_name
+    if (this.show_name === ShowName.ARTISTIC) return this.artistic_name ?? this.name
+    if (this.show_name === ShowName.SOCIAL) return this.social_name ?? this.name
     if (this.show_name === ShowName.NAME) return this.name
     return this.name
   }

@@ -30,14 +30,14 @@ export const sendConfirmationEmail = (user: User) => {
 
   mailer.sendEmail({
     to: {
-      name: user.artist.name,
+      name: user.artist.displayName,
       email: user.email,
     },
     from: from,
     subject: "Confirmação de Email - Labfaz",
     html: `
       <div>
-        <h1> Olá ${user.artist.name}, Bem Vindo ao Labfaz </h1>
+        <h1> Olá ${user.artist.displayName}, Bem Vindo ao Labfaz </h1>
         <a href='${getApiUrl()}/sessions/auth/account-verification/${
       user.id
     }'> Confirmar Email </a>
@@ -86,11 +86,10 @@ export const CreateUser: (
         return createdSuccessfully(res, removeCircularity(newUser));
       })
       .catch((err) => databaseError(res, "Error trying to create user.", err));
-  } catch (e) {
+  } catch {
     return badRequestError(
       res,
-      "Error trying to create curriculum or profilePicture",
-      { msg: JSON.stringify(e), e }
+      "Error trying to create curriculum or profilePicture"
     );
   }
 };
