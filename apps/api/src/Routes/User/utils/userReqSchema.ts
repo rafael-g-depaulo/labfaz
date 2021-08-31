@@ -77,7 +77,8 @@ export const userContactSchema = yup.object().required().shape({
 export const userArtistSchema = yup.object().required().shape({
   name: yup.string().required(),
   social_name: yup.string(),
-  artistic_name: yup.string().min(4).max(10),
+  artistic_name: yup.string(),
+  show_name: yup.mixed<ShowName>().required().oneOf(Object.values(ShowName)),
   gender: yup.string().required(),
   cpf: yup
     .string()
@@ -88,7 +89,6 @@ export const userArtistSchema = yup.object().required().shape({
   expedition_department: yup.string().required(),
   is_trans: yup.boolean().required(),
   race: yup.mixed<Race>().required().oneOf(Object.values(Race)),
-  show_name: yup.mixed<ShowName>().required().oneOf(Object.values(ShowName)),
   address: addressSchema,
   contact: userContactSchema,
   technical: userTechnicalSchema,
