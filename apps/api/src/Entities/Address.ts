@@ -32,7 +32,8 @@ export class Address {
   id: string;
 
   @OneToOne(() => Artist, artist => artist.address, {
-    cascade: ["insert", "update", "remove"]
+    eager: false,
+    cascade: ["insert", "update", "remove"],
   })
   @JoinColumn()
   artist: Artist;

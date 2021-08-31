@@ -42,17 +42,20 @@ export class Technical {
   id: string;
 
   @OneToOne(() => Artist, (artist) => artist.technical, {
+    eager: false,
     cascade: ["insert", "update", "remove"],
   })
   @JoinColumn()
   artist: Artist;
 
   @OneToMany(() => Area, (area) => area.technical, {
+    eager: true,
     cascade: ["insert", "update"],
   })
   area: Area[];
 
   @OneToMany(() => Idiom, (idiom) => idiom.technical, {
+    eager: true,
     cascade: ["insert", "update"],
   })
   idiom: Idiom[];

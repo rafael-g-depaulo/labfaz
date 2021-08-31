@@ -57,22 +57,26 @@ export class Artist {
   
   @OneToOne(() => User, (user) => user.artist, {
     cascade: ["insert","update"],
+    eager: false,
   })
   @JoinColumn()
   user: User;
 
   @OneToOne(() => Contact, contact => contact.artist, {
-    cascade: ["insert","update"]
+    cascade: ["insert","update"],
+    eager: true,
   })
   contact: Contact;
 
   @OneToOne(() => Address, address => address.artist, {
-    cascade: ["insert", "update"]
+    cascade: ["insert", "update"],
+    eager: true,
   })
   address: Address;
 
   @OneToOne(() => Technical, technical => technical.artist, {
-    cascade: ["insert", "update"]
+    cascade: ["insert", "update"],
+    eager: true,
   })
   technical: Technical;
 
@@ -132,6 +136,14 @@ export class Artist {
   @BeforeInsert()
   addId() {
     this.id = nanoid();
+  }
+
+  // helper methods
+  get displayName() {
+    if (this.show_name === ShowName.ARTISTIC) return this.artistic_name
+    if (this.show_name === ShowName.SOCIAL) return this.social_name
+    if (this.show_name === ShowName.NAME) return this.name
+    return this.name
   }
 }
 

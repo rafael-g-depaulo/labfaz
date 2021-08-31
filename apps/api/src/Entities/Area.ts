@@ -39,6 +39,7 @@ export class Area {
   technical: Technical;
 
   @OneToMany(() => Certificate, (certificate) => certificate.area, {
+    eager: true,
     cascade: ["insert", "update", "remove"],
   })
   certificate: Certificate[];

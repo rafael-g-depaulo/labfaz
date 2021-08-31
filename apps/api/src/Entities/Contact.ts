@@ -26,6 +26,7 @@ export class Contact {
   id: string;
 
   @OneToOne(() => Artist, (artist) => artist.contact, {
+    eager: false,
     cascade: ["insert", "update", "remove"],
   })
   @JoinColumn()
