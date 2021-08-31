@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  OneToMany,
   BaseEntity,
 } from "typeorm";
 import { nanoid } from "nanoid";
@@ -29,7 +30,7 @@ export class User extends BaseEntity {
   })
   artist: Artist;
 
-  @OneToOne(() => Request, request => request.course)
+  @OneToMany(() => Request, request => request.course)
   course: Request[]
 
   @Column()

@@ -2,6 +2,7 @@ import {
   Column,
   PrimaryColumn,
   OneToOne,
+  ManyToOne,
   Entity,
   BaseEntity,
   JoinColumn
@@ -17,12 +18,11 @@ export class Request extends BaseEntity {
   @Column()
   status: "pending" | "accepted" | "denied"
 
-  @OneToOne(() => Course)
+  @OneToOne(() => Course, course => course.id)
   @JoinColumn()
   course: Course
 
-  @OneToOne(() => User)
-  @JoinColumn()
+  @ManyToOne(() => User, user => user.course)
   student: User
 
 }

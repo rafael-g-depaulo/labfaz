@@ -6,11 +6,8 @@ const subscriptionResource = (): ResourceWithOptions => {
   return({
     resource: Request,
     options: {
-      navigation: {
-        icon: "Tools",
-        name: "Labfaz Admin Panel"
-      },
-    }
+      navigation: false
+    },
   })
 }
 

@@ -5,25 +5,17 @@ import {
   BeforeInsert,
   BaseEntity,
   ManyToOne,
-  OneToOne,
-  ManyToMany,
-  JoinTable
 } from "typeorm";
 import { nanoid } from "nanoid";
-import Admin from "./Admin"
-import Request from "./Requests";
+import Teacher from "./Teacher";
 
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  @ManyToOne(() => Admin, (admin) => admin.email)
-  teacher: Admin
-
-  @ManyToMany(() => Request, request => request.student)
-  @JoinTable()
-  students: Request[]
+  @ManyToOne(() => Teacher, (teacher) => teacher.id)
+  teacher: Teacher
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
