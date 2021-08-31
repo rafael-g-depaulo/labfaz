@@ -1,28 +1,30 @@
 import { EntityRepository, Repository } from "typeorm"
 import { hash, compare } from "bcryptjs";
 
-import Admin from "Entities/Admin"
+import Teacher from "Entities/Teacher"
 
-@EntityRepository(Admin)
-export class AdminRepository extends Repository<Admin> {
+@EntityRepository(Teacher)
+export class TeacherRepository extends Repository<Teacher> {
+
   findByEmail(email: string) {
     return this.findOne({
       where: { email },
     });
+// import User from 'Entities/User'; 
   }
 
 
-  async createAdmin(email: string, rawPassword: string) {
+  async createTeacher(email: string, rawPassword: string) {
     const hashedPwd = await this.generateHash(rawPassword)
 
-    const createdAdmin = this.create({
+    const createTeacher = this.create({
       email,
       password: hashedPwd
     })
 
-    await createdAdmin.save()
+    await createTeacher.save()
 
-    return createdAdmin
+    return createTeacher
   }
 
 
@@ -38,4 +40,4 @@ export class AdminRepository extends Repository<Admin> {
 }
 
 
-export default AdminRepository
+export default TeacherRepository

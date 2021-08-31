@@ -1,22 +1,17 @@
-import Admin from '../../Entities/Admin'
-import { ActionResponse, ResourceWithOptions, ValidationError } from 'adminjs'
+import Teacher from '../../Entities/Teacher'
+import { ResourceWithOptions, ValidationError } from 'adminjs'
 import { Connection } from 'typeorm'
-// import AdminRepository from 'Repository/AdminRepository'
+import TeacherRepository from 'Repository/TeacherRepository'
 
-export interface RequestData {
-  email: string,
-  password: string,
-  role: "admin" | "professor"
-}
 
-const adminResource = (_conn: Connection): ResourceWithOptions => {
+const teacherResource = (conn: Connection): ResourceWithOptions => {
 
-  // const adminRepo = conn.getCustomRepository(AdminRepository)
+  const teacherRepo = conn.getCustomRepository(TeacherRepository)
 
   return ({
-    resource: Admin,
+    resource: Teacher,
     options: {
-      listProperties: ["email"],
+      listProperties: ["email", "courses"],
       actions: {
         new: {
           isAccessible: ({ currentAdmin }) => {
@@ -30,8 +25,6 @@ const adminResource = (_conn: Connection): ResourceWithOptions => {
           before: async (request) => {
             const { payload } = request
             const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-
             if(payload) {
               const isValidEmail = re.test(payload.email)
               if(!isValidEmail) {
@@ -39,20 +32,19 @@ const adminResource = (_conn: Connection): ResourceWithOptions => {
                   email: {
                     message: "Email inválido"
                   }
-              })
+                })
+              }
+              payload.role = "professor"
             }
 
-              payload.role = "admin"
-            }
-            
             return request
           }
         }
       },
-      navigation: "Admin/Professores"
-    },
-  
+      navigation: "Admin/Professores",
+
+    }
   })
 }
 
-export default adminResource
+export default teacherResource

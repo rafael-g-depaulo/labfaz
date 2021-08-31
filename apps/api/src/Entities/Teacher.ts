@@ -5,26 +5,26 @@ import {
   BaseEntity,
   CreateDateColumn,
   BeforeInsert,
+  OneToMany
 } from "typeorm"
 import { nanoid } from "nanoid";
-
-export interface IAdmin {
-
-}
-
+import Course from "./Courses";
 @Entity()
-export class Admin extends BaseEntity {
+export class Teacher extends BaseEntity {
   @PrimaryColumn()
   id: string;
-  
+
   @Column()
   email: string
 
   @Column()
   password: string
 
-  @Column({ default: "admin" })
-  role: "admin"
+  @Column({ default: "professor" })
+  role: "professor"
+
+  @OneToMany(() => Course, course => course.id)
+  coursers: Course[]
 
   @CreateDateColumn()
   created_at: Date
@@ -33,10 +33,6 @@ export class Admin extends BaseEntity {
   addId() {
     this.id = nanoid();
   }
-
-  @Column()
-  name: string
-
 }
 
-export default Admin
+export default Teacher

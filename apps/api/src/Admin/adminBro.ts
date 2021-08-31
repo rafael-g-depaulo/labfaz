@@ -4,6 +4,7 @@ import { Database, Resource } from '@adminjs/typeorm';
 import { Connection } from 'typeorm'
 import { getResources, makeConnections } from './resources'
 import AdminRepository from 'Repository/AdminRepository';
+import TeacherRepository from 'Repository/TeacherRepository';
 
 
 // Vai precisar adicionar class validador ao adminBro caso use
@@ -19,7 +20,17 @@ export const getAdminBro = (conn: Connection) => {
         companyName: "Labfaz",
         logo: false
       },
-      rootPath: '/admin'
+      rootPath: '/admin',
+      locale: {
+        language: "pt",
+        translations: {
+          labels: {
+            Teacher: "Professores",
+            Course: "Cursos",
+            User: "Usuários"
+          }
+        }
+      }
     })
 }
 
@@ -27,6 +38,7 @@ const getAdminRouter = (adminBro: AdminBro, conn: Connection) => {
   return AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
       const adminRepo = conn.getCustomRepository(AdminRepository)
+      const teacherRepo = conn.getCustomRepository(TeacherRepository)
       // Tendo a entidade de usuario bem definida com roles da pra
       // fazer essa autenticação usando a dados do banco de dados
       if (email == process.env.ADMIN_EMAIL && password == process.env.ADMIN_PASSWORD) {
@@ -37,18 +49,27 @@ const getAdminRouter = (adminBro: AdminBro, conn: Connection) => {
         }
       } else {
 
-        const current = await adminRepo.findByEmail(email)
+        const currentAdmin = await adminRepo.findByEmail(email)
+        const currentTeacher =  await teacherRepo.findByEmail(email)
 
-        if(current) {
-          if(current.email === email && adminRepo.compareHash(password, current.password)) {
+        if(currentAdmin) {
+          if(currentAdmin.email === email && adminRepo.compareHash(password, currentAdmin.password)) {
             return {
               email,
-              title: current?.role,
-              id: current.id
+              title: currentAdmin.role,
+              id: currentAdmin.id
+            }
+          }          
+        }
+
+        if(currentTeacher) {
+          if(currentTeacher.email === email && teacherRepo.compareHash(password, currentTeacher.password)) {
+            return {
+              email,
+              title: currentTeacher.role,
+              id: currentTeacher.id
             }
           }
-          
-          return null
         }
       }
 
