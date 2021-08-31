@@ -53,7 +53,8 @@ export class UserRepository extends Repository<User> {
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
       const createdIdiom = new Idiom();
       createdIdiom.name = idiom.name;
-      return this.save(createdIdiom);
+      const idiomRepo = getRepository(Idiom);
+      return idiomRepo.save(createdIdiom);
     });
 
     //Neste caso só temos uma area porém é possível criar varias areas a associar ao technical
@@ -70,7 +71,8 @@ export class UserRepository extends Repository<User> {
         const createdCertificate = new Certificate();
         createdCertificate.name = certficate.name;
         createdCertificate.area = createdArea;
-        return this.save(createdCertificate);
+        const certRepo = getRepository(Certificate);
+        return certRepo.save(createdCertificate);
       }
     );
 
