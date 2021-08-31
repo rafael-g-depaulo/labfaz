@@ -6,7 +6,7 @@ import { compare } from "bcryptjs";
 import User from "Entities/User";
 import authConfig from "Config/auth";
 import { ArtistInfo } from "Routes/User/utils/userReqSchema";
-import Artist from "Entities/Artist";
+import Artist, { ShowName } from "Entities/Artist";
 
 import { UploadedFile } from "Utils/awsConfig";
 import Address from "Entities/Address";
@@ -131,6 +131,9 @@ export class UserRepository extends Repository<User> {
     createdArtist.gender = artist.gender;
     createdArtist.is_trans = artist.is_trans;
     createdArtist.name = artist.name;
+    createdArtist.show_name = artist.show_name ?? ShowName.NAME;
+    createdArtist.social_name = artist.social_name;
+    createdArtist.artistic_name = artist.artistic_name;
     createdArtist.race = artist.race;
     createdArtist.rg = artist.rg;
     createdArtist.photo_url = profilePicture.url;
@@ -138,6 +141,7 @@ export class UserRepository extends Repository<User> {
 
     createdArtist.address = createdAddress;
     createdArtist.contact = createdContact;
+    createdArtist.technical = createdTech;
 
     const artistRepo = getRepository(Artist);
     await artistRepo.save(createdArtist);
@@ -145,6 +149,7 @@ export class UserRepository extends Repository<User> {
     //colocamos as associações um para um do artista
     createdAddress.artist = createdArtist;
     createdContact.artist = createdArtist;
+    createdTech.artist = createdArtist;
 
     //criamos um usuário e associamos ele com artista
     const createdUser = new User();
