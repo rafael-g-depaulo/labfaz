@@ -171,58 +171,179 @@ export class UserRepository extends Repository<User> {
   async updateUser(
     user: User,
     artist?: ArtistUpdateInfo,
-    email?: string,
     password?: string,
-    oldPassword?: string, 
     curriculum?: UploadedFile,
     profilePicture?: UploadedFile
   ) {
-
     if (password) {
-      if (!oldPassword) {
-        throw Error("Should inform old password to change to a new password !!")
-      }
-  
-      if (password === oldPassword) {
-        throw Error("New password should be different from the old one !!");
-      }
-  
-      const checkOldPassword = await this.compareHash(
-        oldPassword,
-        user.password
-      );
-  
-      if (!checkOldPassword) {
-        throw Error("Your old password isn't correct !!")
-      }
-  
       user.password = await this.generateHash(password);
     }
 
-    if(email) {
-      if(email === user.email){
-        throw Error("Cannot change to the same email !!");
-      }else {
-        user.email = email;
-      }
-    }
-
-    if(artist) {
-      if(artist.address){
-        if(artist.address.cep){
+    if (artist) {
+      if (artist.address) {
+        if (artist.address.cep) {
           user.artist.address.cep = artist.address.cep;
         }
-        if(artist.address.city){
+        if (artist.address.city) {
           user.artist.address.city = artist.address.city;
         }
-        if(artist.address.complement){
+        if (artist.address.complement) {
           user.artist.address.complement = artist.address.complement;
         }
+        if (artist.address.neighbourhood) {
+          user.artist.address.neighbourhood = artist.address.neighbourhood;
+        }
+        if (artist.address.number) {
+          user.artist.address.number = artist.address.number;
+        }
+        if (artist.address.residency) {
+          user.artist.address.residency = artist.address.residency;
+        }
       }
+
+      if (artist.contact) {
+        if (artist.contact.facebook) {
+          user.artist.contact.facebook = artist.contact.facebook;
+        }
+        if (artist.contact.instagram) {
+          user.artist.contact.instagram = artist.contact.instagram;
+        }
+        if (artist.contact.linkedin) {
+          user.artist.contact.linkedin = artist.contact.linkedin;
+        }
+        if (artist.contact.tiktok) {
+          user.artist.contact.tiktok = artist.contact.tiktok;
+        }
+        if (artist.contact.twitter) {
+          user.artist.contact.twitter = artist.contact.twitter;
+        }
+        if (artist.contact.whatsapp) {
+          user.artist.contact.whatsapp = artist.contact.whatsapp;
+        }
+        if (artist.contact.youtube) {
+          user.artist.contact.youtube = artist.contact.youtube;
+        }
+      }
+
+      if (artist.technical) {
+        if (artist.technical.areas && artist.technical.areas.length == 1) {
+          if (
+            artist.technical.areas[0].certificate &&
+            artist.technical.areas[0].certificate.length >= 1
+          ) {
+            //Não ta salvando aqui estamo acreditando irá salvar por cascade
+            user.artist.technical.area[0].certificate = artist.technical.areas[0].certificate.map(
+              (certificate) => {
+                let newCertificate = new Certificate();
+                if (certificate.name) {
+                  newCertificate.name = certificate.name;
+                }
+                newCertificate.area = user.artist.technical.area[0];
+                return newCertificate;
+              }
+            );
+          }
+          if (artist.technical.areas[0].describe) {
+            user.artist.technical.area[0].describe =
+              artist.technical.areas[0].describe;
+          }
+          if (artist.technical.areas[0].name) {
+            user.artist.technical.area[0].name = artist.technical.areas[0].name;
+          }
+          if (artist.technical.areas[0].started_year) {
+            user.artist.technical.area[0].started_year =
+              artist.technical.areas[0].started_year;
+          }
+          if (artist.technical.areas[0].technical_formation) {
+            user.artist.technical.area[0].technical_formation =
+              artist.technical.areas[0].technical_formation;
+          }
+        }
+
+        if (artist.technical.idiom && artist.technical.idiom.length >= 1) {
+          user.artist.technical.idiom = artist.technical.idiom.map((idiom) => {
+            let newIdiom = new Idiom();
+            if (idiom.name) {
+              newIdiom.name = idiom.name;
+            }
+            newIdiom.technical = user.artist.technical;
+            return newIdiom;
+          });
+        }
+
+        if (artist.technical.formation) {
+          user.artist.technical.formation = artist.technical.formation;
+        }
+
+        if(artist.technical.is_ceac){
+          user.artist.technical.is_ceac = artist.technical.is_ceac;
+        }
+
+        if(artist.technical.is_cnpj){
+          user.artist.technical.is_cnpj = artist.technical.is_cnpj;
+        }
+
+        if(artist.technical.is_drt){
+          user.artist.technical.is_drt = artist.technical.is_drt;
+        }
+        
+      }
+
+      if(artist.artistic_name){
+        user.artist.artistic_name = artist.artistic_name;
+      }
+
+      if(artist.birthday){
+        user.artist.birthday = artist.birthday;
+      }
+
+      if(artist.cpf){
+        user.artist.cpf = artist.cpf;
+      }
+
+      if(artist.expedition_department){
+        user.artist.expedition_department = artist.expedition_department;
+      }
+
+      if(artist.gender){
+        user.artist.gender = artist.gender;
+      }
+
+      if(artist.is_trans){
+        user.artist.is_trans = artist.is_trans;
+      }
+
+      if(artist.name){
+        user.artist.name = artist.name;
+      }
+
+      if(artist.race){
+        user.artist.race =  artist.race;
+      }
+
+      if(artist.rg){
+        user.artist.rg = artist.rg;
+      }
+
+      if(artist.show_name){
+        user.artist.show_name = artist.show_name;
+      }
+
+      if(artist.social_name){
+        user.artist.social_name = artist.social_name;
+      }
+
     }
 
-    return user.save().then(() => user)
+    if(curriculum){
+      user.artist.curriculum = curriculum.url;
+    }
 
+    if(profilePicture){
+      user.artist.photo_url = profilePicture.url;
+    }
+
+    return user.save().then(() => user);
   }
 
   findById(id: string) {

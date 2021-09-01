@@ -3,7 +3,7 @@ import { Race, ShowName } from "Entities/Artist";
 import { Residency } from "Entities/Address";
 import { Formation } from "Entities/Technical";
 import { TechFormation } from "Entities/Area";
-import { userArtistSchema, userContactSchema } from "./userReqSchema"
+import { userContactSchema } from "./userReqSchema"
 
 export const userUpdateTechnicalSchema = yup.object().required().shape({
   formation: yup
@@ -23,14 +23,6 @@ export const userUpdateTechnicalSchema = yup.object().required().shape({
         name: yup.string(),
         describe: yup.string(),
         started_year: yup.string(),
-        curriculum: yup
-          .array()
-          .ensure()
-          .of(
-            yup.object({
-              url: yup.string().url(),
-            })
-          ),
         certificate: yup
           .array()
           .ensure()
@@ -82,7 +74,6 @@ export const userUpdateArtistSchema = yup.object().shape({
 })
 
 export const userUpdateSchema = yup.object({
-  email: yup.string().email(),
   password: yup.string().min(6),
   oldpassword: yup.string().min(6),
   artist: userUpdateArtistSchema,

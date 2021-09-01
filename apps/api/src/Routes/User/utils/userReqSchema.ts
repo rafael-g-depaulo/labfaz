@@ -24,14 +24,6 @@ export const userTechnicalSchema = yup.object().required().shape({
         name: yup.string().required(),
         describe: yup.string().required(),
         started_year: yup.string().required(),
-        curriculum: yup
-          .array()
-          .ensure()
-          .of(
-            yup.object({
-              url: yup.string().required().url(),
-            })
-          ),
         certificate: yup
           .array()
           .ensure()

@@ -56,7 +56,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .put(
       "/update",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 100 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 100 * 1024 },
         { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
       ]),
       ensureAuthenticated,

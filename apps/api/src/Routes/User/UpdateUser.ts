@@ -30,7 +30,7 @@ export const UpdateUser: (
 > = ({ UserRepo }: CreateUserInterface) => async (req, res) => {
   const { id } = req.user ?? { id: "" };
 
-  const { email, password, artist, oldpassword } = req.user_info! ?? {};
+  const { password, artist, oldpassword } = req.user_info! ?? {};
 
   if (!req.user) {
     return unauthenticatedError(res, "User need to be loged");
@@ -41,6 +41,26 @@ export const UpdateUser: (
   if (!user) {
     return notFoundError(res, "User not found.");
   }
+
+  if (password) {
+    if (!oldpassword) {
+     return badRequestError(res, "Should inform old password to change to a new password !!")
+    }
+
+    if (password === oldpassword) {
+     return badRequestError(res, "New password should be different from the old one !!");
+    }
+
+    const checkOldPassword = await UserRepo.compareHash(
+      oldpassword,
+      user.password
+    );
+
+    if (!checkOldPassword) {
+     return badRequestError(res, "Your old password isn't correct !!")
+    }
+  }
+
 
   try {
     const curriculum = req.parsedFiles?.curriculum ?? [];
@@ -57,9 +77,7 @@ export const UpdateUser: (
     return UserRepo.updateUser(
       user,
       artist,
-      email,
       password,
-      oldpassword,
       artistCurriculum,
       artistProfilePicture
     )
