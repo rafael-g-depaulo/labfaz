@@ -9,7 +9,7 @@
   "private": true,
   "workspaces": {
     "packages": [ "libs/*", "apps/*" ],
-    "nohoist": [ "**/adminjs", "**/adminjs/**", "**/@adminjs/**" ]
+    "nohoist": [ "**/adminjs", "**/adminjs/**", "**/@adminjs/**", "**/typeorm-seeding/**" ]
   },
   "scripts": {
     "build": "${BUILD_SCRIPT:-yarn build:all}",

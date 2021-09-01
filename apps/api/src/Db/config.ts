@@ -66,6 +66,8 @@ export const getTypeOrmConfig = () => {
     subscribersDir: `${dbFoldersRoot}/Subscribers`,
 
     migrationsTableName: "migrations",
+    seeds: [`${dbFoldersRoot}/seeds/**/*.{ts,js}`],
+    factories: [`${dbFoldersRoot}/factories/**/*.{ts,js}`]
   }
 }
 

@@ -5,6 +5,7 @@ import { Connection } from "typeorm"
 import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
+import CourseRoute from "./Course"
 import { actionSuccessful } from "Utils/endpointReturns"
 
 export interface RouterDeps {
@@ -28,6 +29,7 @@ const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => e
   .use("/animal-example", AnimalExampleRouter({ conn }, options))
   .use("/user", UserRouter({ conn }, options))
   .use("/sessions", SessionRouter({ conn }, options))
+  .use("/course", CourseRoute({ conn }, options))
 
 
 export default Routes

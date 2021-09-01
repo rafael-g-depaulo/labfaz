@@ -4,29 +4,27 @@ import {
   PrimaryColumn,
   BeforeInsert,
   BaseEntity,
-  ManyToOne,
 } from "typeorm";
 import { nanoid } from "nanoid";
-import Teacher from "./Teacher";
 
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  @ManyToOne(() => Teacher, (teacher) => teacher.id)
-  teacher: Teacher
+  @Column('simple-array', { array: true })
+  teacher: string[]
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
 
-  @Column('simple-array', { array: true, nullable: true })
+  @Column('simple-array', { array: true })
   tags: string[]
 
-  @Column('simple-array', { array: true , nullable: true})
+  @Column('simple-array', { array: true })
   detail: string[]
 
-  @Column('simple-array', { array: true, nullable: true })
+  @Column('simple-array', { array: true })
   fonte: string[]
 
   @Column()
@@ -46,14 +44,23 @@ export class Course extends BaseEntity {
   @Column()
   banner: string
 
-  @Column({ default: false })
+  @Column({ default: false, nullable: true })
   has_subscription: boolean
 
   @Column()
-  subscription_date: Date
+  subscription_start_date: Date
+
+  @Column()
+  subscription_finish_date: Date
 
   @Column()
   activity_date: Date
+
+  // @Column({  })
+  // class_dates: Date[]
+
+  @Column()
+  link: string
 
   @BeforeInsert()
   addId() {
