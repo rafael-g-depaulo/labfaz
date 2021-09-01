@@ -8,6 +8,7 @@ import {
 
 import LoadingFullPage from "Components/LoadingFullPage";
 import { showAboutUs, showBlog } from "FeatureFlags";
+import { CurrentUserProvider } from "Context/CurrentUser";
 
 const Home = lazy(() => import("./Home"));
 // const PeopleExample = lazy(() => import("./PeopleExample"))
@@ -91,7 +92,9 @@ const Routes: FC = () => {
         <Route path={["/login", "SignIn"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
-              <Login match={match} />
+              <CurrentUserProvider>
+                <Login match={match} />
+              </CurrentUserProvider>
             </Suspense>
           )}
         </Route>
