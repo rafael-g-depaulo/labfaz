@@ -27,9 +27,9 @@ export const Staff: FC<StaffProps> = ( { data } ) => {
           return(
             <Drawer teamName={team.name} description={team.description} key={team.id}>
               <StaffGrid>
-                {team.staff.map((staff) => {
+                {team.staff.map((staff, i) => {
                   return(
-                    <StaffCard data={staff} key={staff.id}/>                  
+                    <StaffCard data={staff} key={`${staff.id}+${i}`}/>                  
                   )
                 })}
               </StaffGrid>

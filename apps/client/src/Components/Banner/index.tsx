@@ -19,7 +19,6 @@ export const Banner: FC<BannerProps> = ({
     align='center',
     image,
   }) => {
-    console.log("teste", title, image)
   return (
     <Container align={align} BgImage={image?.url}>
       <div>
