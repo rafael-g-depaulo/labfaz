@@ -1,8 +1,12 @@
 import React, { FC, useCallback, useContext, useState } from 'react'
-import { Formik, Form } from 'formik'
 import { useHistory } from 'react-router-dom'
+import { Formik, Form } from 'formik'
 
 import { login } from 'Api/Session'
+import { ErrorObject } from 'Api'
+
+
+import { CheckboxInput } from 'Components/Input/CheckboxInput'
 import { CurrentUserContext } from 'Context/CurrentUser'
 
 import Icon from './Icon.svg'
@@ -17,12 +21,12 @@ import {
   RegisterButton,
   InputText,
   NavLink,
-  InputCheckBox,
   LoginTitle,
   LabfazText,
   ButtonContainer,
+  CheckboxInputContainer
 } from './style'
-import { ErrorObject } from 'Api'
+
 
 interface FormProps {
   name?: string
@@ -41,17 +45,18 @@ export const Login: FC<LoginComponentProps> = () => {
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
 
-  const history = useHistory()
+  // const history = useHistory()
 
   const handleSubmit = useCallback(
     (values) => {
-      console.log(values.email, values.password)
       login(values.email, values.password)
         .then(({ token, user }) => {
           setToken(token)
           setUser(user)
+          
+          localStorage.setItem('@Labfaz:User', JSON.stringify(user))
         })
-        .then(() => history.push('/home'))
+        // .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
     },
     [setToken, setUser]
@@ -96,11 +101,12 @@ export const Login: FC<LoginComponentProps> = () => {
                   />
                 </InputTextContainer>
 
-                <InputCheckBox
-                  type="checkbox"
-                  name="stayConnected"
-                  label="Permanecer conectado"
-                />
+                <CheckboxInputContainer>
+                  <CheckboxInput
+                    name="stayConnected"
+                    label="Permanecer conectado"
+                  />
+                </CheckboxInputContainer>
 
                 <ButtonContainer>
                   <Button type="submit">ENTRAR</Button>

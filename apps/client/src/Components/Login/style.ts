@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { Title } from 'Components/Typography/Title'
 import { Input } from 'Components/Input'
-import { Link } from 'react-router-dom'
-import { DesktopSmall, Mobile } from 'Utils/breakpoints'
+import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
 import { InternalLinkButton } from 'Components/Buttons/InternalLinkButton'
 
 interface ContainerProps {
@@ -28,7 +28,7 @@ export const Container = styled.div<ContainerProps>`
 
     background-color: #FC0061;
 
-    display: ${({openToastMessage}) => openToastMessage ? 'block' : 'none'};
+    display: ${({ openToastMessage }) => openToastMessage ? 'block' : 'none'};
   
     button {
       background-color: inherit;
@@ -50,15 +50,12 @@ export const Container = styled.div<ContainerProps>`
       span {
         font-size: var(--font-size-medium);
       }
-
-      
     `)}
 
     ${Mobile(css`
 
       padding: 0.2rem 0rem 0.2rem 0.5rem;
-
-
+      
       span {
         font-size: var(--font-size-short);
       }
@@ -115,6 +112,10 @@ export const LabfazText = styled(Title)`
   margin-top: 4.7rem;
   margin-bottom: 8.1rem;
 
+  ${DesktopSmall(css`
+    font-size: var(--font-size-subtitle);
+  `)}
+
   ${Mobile(css`
     display: none;
   `)}
@@ -133,6 +134,10 @@ export const FormContainer = styled.div`
   box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.6);
   border-radius: 7px;
 
+  @media (max-width: 1370px ) {
+    width: 57.5rem;
+  } 
+
   ${DesktopSmall(css`
     width: 47.6rem;
     height: 23.5rem;
@@ -149,8 +154,8 @@ export const FormContainer = styled.div`
 `
 
 export const LeftSide = styled.div`
-  width: 35.5rem;
-  height: 40rem;
+  width: 100%;
+  height: 100%;
   background-color: #CECECE;
   
   display: flex;
@@ -158,8 +163,8 @@ export const LeftSide = styled.div`
   justify-content: center;
 
   ${DesktopSmall(css`
-    width: 23.8rem;
-    height: 23.5rem;
+    width: 100%;
+    height: 100%;
   `)}
 
   ${Mobile(css`
@@ -168,23 +173,23 @@ export const LeftSide = styled.div`
 `
 
 export const RightSide = styled.div`
-  width: 35.5rem;
-  height: 40rem;
-  background-color: #111010;
-
-  ${DesktopSmall(css`
-    width: 23.8rem;
-    height: 23.5rem;
-  `)}
-
-  ${Mobile(css`
-    width: 100vw;
-  `)}
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 100%;
+  height: 100%;
+  background-color: #111010;
+
+  ${DesktopSmall(css`
+    width: 100%;
+    height: 100%;
+  `)}
+
+  ${Mobile(css`
+    width: 100vw;
+  `)}
 
   .checkboxContainer {
 
@@ -222,6 +227,8 @@ export const RegisterButton = styled(InternalLinkButton)`
 
   font-size: 16px;
 
+  white-space: nowrap;
+
   ${DesktopSmall(css`
 
     font-size: 10px;
@@ -239,6 +246,8 @@ export const RegisterButton = styled(InternalLinkButton)`
 
 export const InputTextContainer = styled.div`
   display: flex;
+
+  width: 100%;
 
   flex-direction: column;
 
@@ -261,7 +270,7 @@ export const InputText = styled(Input)`
   margin: 0;
 
   input[type="text"], input[type="password"] {
-    width: 21.7rem;
+    width: 100%;
     height: 2.4rem;
     font-size: var(--font-size-medium);
     padding-left: 2.1rem;
@@ -308,30 +317,6 @@ export const InputText = styled(Input)`
   }
 `
 
-
-export const InputCheckBox = styled(Input)`
-  display: flex;
-  flex-direction: row;
-
-  margin-top: 3.33rem;
-  margin-bottom: 3.7rem;
-
-  input[type="checkbox"] {
-    margin-right: 1.2rem;
-  }
-
-  label {
-    font-size: 14px;
-    color: #FAFAFA;
-  }
-
-  ${DesktopSmall(css`
-    margin-top: 1.47rem;
-    margin-bottom: 1rem;
-
-  `)}
-`
-
 export const Form = styled.form``
 
 export const NavLink = styled(Link)`
@@ -347,7 +332,6 @@ export const NavLink = styled(Link)`
 
   ${DesktopSmall(css`
     margin-top: 1.24rem;
-
   `)}
 `
 
@@ -365,4 +349,20 @@ export const ButtonContainer = styled.div`
   ${Mobile(css`
     width: 13.2rem;
   `)}  
+`
+export const CheckboxInputContainer = styled.div`
+  margin-top: 3.33rem;
+  margin-bottom: 3.7rem;
+
+  label {
+    font-size: var(--font-size-medium);
+  }
+
+  div .checkbox_input {
+    
+    ${Mobile(css`
+      width: 22px;
+      height: 20px;
+    `)}
+  }
 `
