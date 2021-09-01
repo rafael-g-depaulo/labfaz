@@ -18,6 +18,7 @@ import ShowCurrentUser from "./ShowCurrentUser"
 
 import subscribeToCourse from "./SubscribeToCourse";
 import CourseRepository from "Repository/CourseRepository";
+import RequestRepository from "Repository/RequestRepository";
 
 type UserDeps = {
   conn: Connection;
@@ -27,6 +28,7 @@ type UserDeps = {
 const UserRouter: Router<UserDeps> = (deps, options) => {
   const { conn, UserRepo = conn.getCustomRepository(UserRepository) } = deps;
   const CourseRepo = conn.getCustomRepository(CourseRepository)
+  const RequestRepo = conn.getCustomRepository(RequestRepository)
 
   return express
     .Router(options)

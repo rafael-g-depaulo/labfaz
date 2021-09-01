@@ -4,27 +4,30 @@ import {
   PrimaryColumn,
   BeforeInsert,
   BaseEntity,
+  JoinTable,
+  OneToOne,
 } from "typeorm";
 import { nanoid } from "nanoid";
+import Request from "./Requests";
 
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  @Column('simple-array', { array: true })
+  @Column('text', { array: true, default: {} })
   teacher: string[]
 
   @Column()
   type: "curso" | "live" | "oficina" | "roda de conversa"
 
-  @Column('simple-array', { array: true })
+  @Column('text', { array: true, default: {} })
   tags: string[]
 
-  @Column('simple-array', { array: true })
+  @Column('text', { array: true, default: {} })
   detail: string[]
 
-  @Column('simple-array', { array: true })
+  @Column('text', { array: true, default: {} })
   fonte: string[]
 
   @Column()
@@ -56,11 +59,15 @@ export class Course extends BaseEntity {
   @Column()
   activity_date: Date
 
-  // @Column({  })
-  // class_dates: Date[]
+  @Column('date', { array: true, default: {} })
+  class_dates: Date[]
 
   @Column()
   link: string
+
+  @OneToOne(() => Request, request => request.id)
+  @JoinTable()
+  requests: Request[]
 
   @BeforeInsert()
   addId() {

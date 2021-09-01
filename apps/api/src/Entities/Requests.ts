@@ -1,11 +1,13 @@
+import { nanoid } from 'nanoid'
 import {
   Column,
   PrimaryColumn,
-  OneToOne,
   ManyToOne,
   Entity,
   BaseEntity,
-  JoinColumn
+  OneToOne,
+  JoinColumn,
+  BeforeInsert
 } from 'typeorm'
 import Course from "./Courses"
 import User from "./User"
@@ -15,7 +17,7 @@ export class Request extends BaseEntity {
   @PrimaryColumn()
   id: string
 
-  @Column()
+  @Column({ default: "pending" })
   status: "pending" | "accepted" | "denied"
 
   @OneToOne(() => Course, course => course.id)
@@ -24,6 +26,11 @@ export class Request extends BaseEntity {
 
   @ManyToOne(() => User, user => user.course)
   student: User
+
+  @BeforeInsert()
+  addId() {
+    this.id = nanoid()
+  }
 
 }
 

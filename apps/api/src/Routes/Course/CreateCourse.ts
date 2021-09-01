@@ -1,12 +1,12 @@
-import { getApiUrl } from "@labfaz/server-conn-info"
+// import { getApiUrl } from "@labfaz/server-conn-info"
 
 import CourseRepository from "Repository/CourseRepository"
 
-import { createdSuccessfully, badRequestError, databaseError } from "Utils/endpointReturns"
+import { createdSuccessfully } from "Utils/endpointReturns"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import Course from "Entities/Courses"
+// import Course from "Entities/Courses"
 
 interface CreateCourseDeps {
   CourseRepo: CourseRepository
@@ -16,9 +16,9 @@ export const CreateCourse: (
   deps: CreateCourseDeps
 ) => RouteHandler<Req> = ({
   CourseRepo,
-}: CreateCourseDeps) => async (req, res) => {
+}: CreateCourseDeps) => async (_req, res) => {
 
-  const course1 = await CourseRepo.create({
+  const course1 = await CourseRepo.createCourse({
     teacher: ["Rafael Gonçalves"],
     type: "curso",
     tags: ["varios papos"],
@@ -36,7 +36,7 @@ export const CreateCourse: (
     link: "zooooooooooooooooom.com.br"
   })
 
-  const course2 = await CourseRepo.create({
+  const course2 = await CourseRepo.createCourse({
     teacher: ["Rafael Gonçalves"],
     type: "curso",
     tags: ["varios papos"],
@@ -53,6 +53,7 @@ export const CreateCourse: (
     activity_date: new Date(),
     link: "zooooooooooooooooom.com.br"
   })
+
 
   return createdSuccessfully(res, {
     course1,
