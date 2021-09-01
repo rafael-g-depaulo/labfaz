@@ -84,12 +84,13 @@ export const userUpdateArtistSchema = yup.object().shape({
 export const userUpdateSchema = yup.object({
   email: yup.string().email(),
   password: yup.string().min(6),
+  oldpassword: yup.string().min(6),
   artist: userUpdateArtistSchema,
 });
 
 
 export interface UpdateInfo extends yup.Asserts<typeof userUpdateSchema> {}
 
-export interface ArtistUpddateInfo extends yup.Asserts<typeof userArtistSchema> {}
+export interface ArtistUpdateInfo extends yup.Asserts<typeof userUpdateArtistSchema> {}
 
 export default userUpdateSchema;

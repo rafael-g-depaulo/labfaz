@@ -6,6 +6,7 @@ import { compare } from "bcryptjs";
 import User from "Entities/User";
 import authConfig from "Config/auth";
 import { ArtistInfo } from "Routes/User/utils/userReqSchema";
+import { ArtistUpdateInfo } from "Routes/User/utils/updateUserReqSchema";
 import Artist, { ShowName } from "Entities/Artist";
 
 import { UploadedFile } from "Utils/awsConfig";
@@ -169,10 +170,10 @@ export class UserRepository extends Repository<User> {
 
   async updateUser(
     user: User,
+    artist?: ArtistUpdateInfo,
     email?: string,
     password?: string,
     oldPassword?: string, 
-    artist?: ArtistInfo,
     curriculum?: UploadedFile,
     profilePicture?: UploadedFile
   ) {
@@ -196,6 +197,28 @@ export class UserRepository extends Repository<User> {
       }
   
       user.password = await this.generateHash(password);
+    }
+
+    if(email) {
+      if(email === user.email){
+        throw Error("Cannot change to the same email !!");
+      }else {
+        user.email = email;
+      }
+    }
+
+    if(artist) {
+      if(artist.address){
+        if(artist.address.cep){
+          user.artist.address.cep = artist.address.cep;
+        }
+        if(artist.address.city){
+          user.artist.address.city = artist.address.city;
+        }
+        if(artist.address.complement){
+          user.artist.address.complement = artist.address.complement;
+        }
+      }
     }
 
     return user.save().then(() => user)

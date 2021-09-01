@@ -11,10 +11,10 @@ import {
 import { removeCircularity } from "Utils/stringifyCircular";
 
 import { UserJWTPayload } from "Middlewares/ensureAuthenticated";
-import { ParsedUser } from "./ParseUser";
+import { ParsedUser } from "./ParesUpdateUser";
 import { ParsedFiles } from "Middlewares/parseFiles";
 
-import { UploadFiles } from "Utils/awsConfig"
+import { UploadFiles } from "Utils/awsConfig";
 
 interface CreateUserInterface {
   UserRepo: UserRepository;
@@ -28,11 +28,9 @@ export const UpdateUser: (
     UserJWTPayload & ParsedUser & ParsedFiles<"profilePicture" | "curriculum">
   >
 > = ({ UserRepo }: CreateUserInterface) => async (req, res) => {
-  
-  const { id } = req.user ?? { id: ""}
-  
-  const { email, password, artist } = req.user_info! ?? {};
+  const { id } = req.user ?? { id: "" };
 
+  const { email, password, artist, oldpassword } = req.user_info! ?? {};
 
   if (!req.user) {
     return unauthenticatedError(res, "User need to be loged");
@@ -56,10 +54,12 @@ export const UpdateUser: (
       (file) => file.fieldname === "profilePicture"
     )!;
 
-    return UserRepo.createUser(
+    return UserRepo.updateUser(
+      user,
+      artist,
       email,
       password,
-      artist,
+      oldpassword,
       artistCurriculum,
       artistProfilePicture
     )
