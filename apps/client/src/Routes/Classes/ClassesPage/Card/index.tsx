@@ -9,30 +9,42 @@ import {
   CardDate,
 } from "./styles";
 
-export interface Props {
+export interface CardProps {
   title: string;
   date: string;
   description: string;
   width: string;
   height: string;
+  marginLeft: string;
+  titleSize: string;
+  textSize: string;
 }
 
-export const Card: FC<Props> = ({
+export const Card: FC<CardProps> = ({
   title,
   date,
   description,
   width,
   height,
+  marginLeft,
+  titleSize,
+  textSize,
 }) => {
   return (
-    <Container width={width} height={height}>
+    <Container width={width} height={height} marginLeft={marginLeft}>
       <Image />
       <TextWrapper>
         <TopWrapper>
-          <CardTitle>{title}</CardTitle>
-          <CardDate>{date}</CardDate>
+          <CardTitle titleSize={titleSize} textSize={textSize}>
+            {title}
+          </CardTitle>
+          <CardDate titleSize={titleSize} textSize={textSize}>
+            {date}
+          </CardDate>
         </TopWrapper>
-        <CardText>{description}</CardText>
+        <CardText titleSize={titleSize} textSize={textSize}>
+          {description}
+        </CardText>
       </TextWrapper>
     </Container>
   );

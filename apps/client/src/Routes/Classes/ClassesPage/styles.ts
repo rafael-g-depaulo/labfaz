@@ -1,20 +1,17 @@
 import styled from "styled-components";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
-import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+//import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
 export const MainContainer = styled.div`
-  display: grid;
-  grid-template-columns: minmax(7%, auto) auto minmax(7%, auto);
-  grid-template-rows: minmax(5%, auto) auto 100px;
-  grid-template-areas:
-    ".      .      ."
-    ".   content   ."
-    ".      .      .";
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export const MainContent = styled.div`
-  grid-area: content;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -29,6 +26,7 @@ export const TopWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-left: 80px;
   margin-bottom: 90px;
 `;
 

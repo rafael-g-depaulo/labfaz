@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 
-import SearchBar from "Components/SearchBar";
-
 import { TitleWrapper, MainTitle, SecondaryTitle, TitleText } from "./styles";
 
 const Introduction: FC = () => {
@@ -14,7 +12,6 @@ const Introduction: FC = () => {
         ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet,
         consectetuer adipiscing elit.
       </TitleText>
-      <SearchBar />
     </TitleWrapper>
   );
 };

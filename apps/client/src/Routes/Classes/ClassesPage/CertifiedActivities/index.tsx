@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { MainTitle, MainText, Wrapper } from "./styles";
+import { ClassesWrapper } from "../styles";
 
-import CardCarousel from "Components/CardCarousel";
 import Card from "../Card";
 
 export const CertifiedActivities: FC = () => {
@@ -25,13 +25,7 @@ export const CertifiedActivities: FC = () => {
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
     },
     {
-      title: "O que é?",
-      date: "12/12/2021",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-    },
-    {
-      title: "O que é?",
+      title: "O que é visual?",
       date: "12/12/2021",
       description:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
@@ -46,17 +40,22 @@ export const CertifiedActivities: FC = () => {
         ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
         dis parturient montes, nascetur ridiculus.
       </MainText>
-      <CardCarousel
-        children={middleClasses.map((item) => (
-          <Card
-            title={item.title}
-            date={item.date}
-            description={item.description}
-            width="minmax(2%, auto) minmax(230px, 296px) minmax(2%, auto)"
-            height="minmax(150px, 185px) auto"
-          />
-        ))}
-      />
+      <ClassesWrapper>
+        {middleClasses.map((item) => {
+          return (
+            <Card
+              title={item.title}
+              date={item.date}
+              description={item.description}
+              width="256px"
+              height="320px"
+              marginLeft="0px"
+              titleSize="var(--font-size-short)"
+              textSize="var(--font-size-small)"
+            />
+          );
+        })}
+      </ClassesWrapper>
     </Wrapper>
   );
 };
