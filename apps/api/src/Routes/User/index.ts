@@ -48,7 +48,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     )
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
     .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
-    .get("/", GetAllUsers({ UserRepo }))
+    // .get("/", GetAllUsers({ UserRepo }))
 };
 
 export default UserRouter;
