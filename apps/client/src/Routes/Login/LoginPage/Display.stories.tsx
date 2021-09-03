@@ -7,4 +7,4 @@ const mockCallback = () => {}
 
 storiesOf("Pages/Login", module)
   .addParameters({ component: Login })
-  .add("default", () => <Login onSubmit={mockCallback} />)
+  .add("default", () => <Login onSubmit={mockCallback} buttonType="button"/>)
