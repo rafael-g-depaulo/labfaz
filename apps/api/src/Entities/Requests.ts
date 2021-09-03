@@ -5,8 +5,6 @@ import {
   ManyToOne,
   Entity,
   BaseEntity,
-  OneToOne,
-  JoinColumn,
   BeforeInsert
 } from 'typeorm'
 import Course from "./Courses"
@@ -20,11 +18,10 @@ export class Request extends BaseEntity {
   @Column({ default: "pending" })
   status: "pending" | "accepted" | "denied"
 
-  @OneToOne(() => Course, course => course.id)
-  @JoinColumn()
+  @ManyToOne(() => Course, course => course.requests, { eager: true })
   course: Course
 
-  @ManyToOne(() => User, user => user.course)
+  @ManyToOne(() => User, user => user.courses, { eager: true })
   student: User
 
   @BeforeInsert()

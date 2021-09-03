@@ -2,11 +2,11 @@ import Courses from '../../Entities/Courses'
 import { ResourceWithOptions } from 'adminjs'
 import { courseActions } from '../features/courseFeature'
 import { Connection } from 'typeorm'
-import CourseRepository from 'Repository/CourseRepository'
+import RequestRepository from 'Repository/RequestRepository'
 
 const courseResource = (conn: Connection): ResourceWithOptions => {
 
-  const CoureRepo = conn.getCustomRepository(CourseRepository)
+  const ReqestRepo = conn.getCustomRepository(RequestRepository)
 
   return ({
     resource: Courses,
@@ -16,7 +16,7 @@ const courseResource = (conn: Connection): ResourceWithOptions => {
         name: "Labfaz Admin Panel"
       }
     },
-    features: [courseActions(CoureRepo)]
+    features: [courseActions(ReqestRepo)]
   })
 }
 

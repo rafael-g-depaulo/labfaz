@@ -31,7 +31,7 @@ export class User extends BaseEntity {
   artist: Artist;
 
   @OneToMany(() => Request, request => request.course)
-  course: Request[]
+  courses: Request[]
 
   @Column()
   email: string;

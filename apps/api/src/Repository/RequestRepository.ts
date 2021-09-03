@@ -13,6 +13,18 @@ export class RequestRepository extends Repository<Request> {
       student: user
     })
     await createRequest.save()
+      .then(request => {
+        course.requests ??= []
+        user.courses ??= []
+        course.requests.push(request)
+        user.courses.push(request)
+      })
+      .catch(err => {
+        console.log(err)
+      })   
+
+    await user.save()
+    await course.save()
 
     return createRequest
   }

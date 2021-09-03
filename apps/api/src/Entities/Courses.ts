@@ -4,8 +4,7 @@ import {
   PrimaryColumn,
   BeforeInsert,
   BaseEntity,
-  JoinTable,
-  OneToOne,
+  OneToMany
 } from "typeorm";
 import { nanoid } from "nanoid";
 import Request from "./Requests";
@@ -65,8 +64,7 @@ export class Course extends BaseEntity {
   @Column()
   link: string
 
-  @OneToOne(() => Request, request => request.id)
-  @JoinTable()
+  @OneToMany(() => Request, request => request.course)
   requests: Request[]
 
   @BeforeInsert()

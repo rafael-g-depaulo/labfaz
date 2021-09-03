@@ -1,8 +1,9 @@
-import adminjs, { BaseRecord, buildFeature } from 'adminjs'
-import { CourseRepository } from "Repository/CourseRepository"
+import adminjs, { BaseRecord, BaseResource, buildFeature } from 'adminjs'
+import { request } from 'express'
+import { RequestRepository } from "Repository/RequestRepository"
 
 // Create new action for admin example
-export const courseActions = (courseRepo?: CourseRepository) => buildFeature({
+export const courseActions = (requestRepo: RequestRepository) => buildFeature({
   actions: {
     abrirCurso: {
       icon: "Task",
@@ -59,18 +60,47 @@ export const courseActions = (courseRepo?: CourseRepository) => buildFeature({
     inscricoes: {
       actionType: "record",
       component: adminjs.bundle("../components/subscription.tsx"),
+      hideActionHeader: true,
       handler: async (_request, _response, context) => {
         const { currentAdmin, record } = context
-        
+
         if(record) {
-          record.params = {
-            ...record?.params,
-            courseRepo: courseRepo
+          const inscricoes = await requestRepo.find({
+            where: { course: record.params.id }
+          })
+          .then(req => {
+            return req
+          })
+
+          const requests = context._admin.findResource("Request") as BaseResource
+
+          if(inscricoes) {
+
+            record.params = {
+              ...record?.params,
+              inscricoes
+            }
           }
         }
 
         return {
-          record: record!.toJSON(currentAdmin)
+          record: record!.toJSON(currentAdmin),
+          other: "asuhdauh"
+        }
+      }
+    },
+    updateSubscription: {
+      actionType: 'record',
+      component: false,
+      handler: async (request, response, context) => {
+        const { currentAdmin, record } = context
+
+        const req = context._admin.findResource("Request")
+        console.log(req)
+        
+
+        return {
+          record: record?.toJSON(currentAdmin)
         }
       }
     }
