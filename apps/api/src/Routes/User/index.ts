@@ -2,8 +2,6 @@ import express, { Response } from "express"
 import { Connection } from "typeorm"
 import { Router } from "Routes"
 
-import { UploadFiles } from "Utils/awsConfig"
-import { Req } from "Utils/request"
 
 import UserRepository from "Repository/UserRepository"
 
@@ -32,32 +30,17 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .post(
       "/create",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 100 * 1024 },
-        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 2 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 10 * 1024 * 1024 },
       ]),
       ParseUser,
       CreateUser({ UserRepo })
     )
-    .post(
-      "/upload_teste",
-      parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 100 * 1024 },
-        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
-      ]),
-      (req: Req<{}, ParsedFiles<"profilePicture" | "curriculum">>, res: Response) => {
-        const curriculum = req.parsedFiles?.curriculum ?? []
-        const profilePicture = req.parsedFiles?.profilePicture ?? []
-        
-        return UploadFiles([...curriculum, ...profilePicture ])
-          .then(files => res.json({ message: "here's your files, sir", files }))
-          .catch(errors => res.status(500).json(errors))
-      }
-    )
     .put(
       "/update",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 100 * 1024 },
-        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 100 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 2 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 10 * 1024 * 1024 },
       ]),
       ensureAuthenticated,
       ParseUpdateUser,
