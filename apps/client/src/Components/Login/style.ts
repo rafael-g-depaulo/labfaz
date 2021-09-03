@@ -2,27 +2,79 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import { Title } from 'Components/Typography/Title'
-import { Input } from 'Components/Input'
-import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
+import { DesktopSmall, Mobile } from 'Utils/breakpoints'
 import { InternalLinkButton } from 'Components/Buttons/InternalLinkButton'
+import { TextInput } from 'Components/Input/TextInput'
+import { PasswordInput } from 'Components/Input/PasswordInput'
 
 interface ContainerProps {
   openToastMessage: boolean
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  overflow-x: hidden; 
+`
+
+export const LoginTitle = styled(Title)`
+  color: #FC0061;
+
+  font-size: var(--font-size-title-xxxlarge);
+
+  border-bottom: 2px solid #FC0061;
+
+  margin-top: 3.5rem;
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-title-xlarge);
+  `)}
+
+  ${Mobile(css`
+    margin-top: 2.1rem;
+    border-bottom: none;
+    font-size: var(--font-size-title-xlarge);
+    line-height: 40px;
+  `)}
+`
+
+export const LabfazText = styled(Title)`
+  color: #FC0061;
+
+  font-size: var(--font-size-title-small);
+
+  text-align: center;
+
+  margin-top: 4.7rem;
+  margin-bottom: 8.1rem;
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-subtitle);
+  `)}
+
+  ${Mobile(css`
+    display: none;
+  `)}
+`
+
+export const FormContainer = styled.div<ContainerProps>`
   .errorMessage {
     position: absolute;
+
+    white-space: nowrap;
 
     color: #FFEC99;
     padding: 0.2rem 0rem 0.2rem 0.5rem;
 
     border-radius: 5px;
 
-    top: 0;
-    right: 0;
+    top: 3.5rem;
+    right: 1.5rem;
 
     animation: toast 1s forwards;
 
@@ -30,6 +82,11 @@ export const Container = styled.div<ContainerProps>`
 
     display: ${({ openToastMessage }) => openToastMessage ? 'block' : 'none'};
   
+    ${Mobile(css`
+      top: 5.5rem;
+      right: 1rem;
+    `)}
+
     button {
       background-color: inherit;
       outline: none;
@@ -69,7 +126,7 @@ export const Container = styled.div<ContainerProps>`
   
   @keyframes toast {
     0% {
-      transform: translateX(0%);
+      transform: translateX(100%);
     }
 
     40% {
@@ -77,80 +134,45 @@ export const Container = styled.div<ContainerProps>`
     }
 
     80% {
-      transform: translateX(10%);
+      transform: translateX(5%);
     }
 
     100% {
       transform: translateX(0%);
     }
   }
-`
 
-export const LoginTitle = styled(Title)`
-  color: #FC0061;
+  .formContainer {
+    max-width: 71.6rem;
+    width: 95vw;
+    height: 40.5rem;
 
-  font-size: var(--font-size-title-xxxlarge);
+    display: flex;
+    position: relative;
 
-  border-bottom: 2px solid #FC0061;
+    margin-top: 2rem;
+    
+    border: 5px solid rgba(17, 16, 16, 0.5);
+    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.6);
+    border-radius: 7px;
 
-  ${DesktopSmall(css`
-    font-size: var(--font-size-title-xlarge);
-  `)}
+    ${DesktopSmall(css`
+      max-width: 47.6rem;
+      width: 90vw;
+      height: 23.5rem;
+    `)}
 
-  ${Mobile(css`
-    display: none;
-  `)}
-`
+    ${Mobile(css`
+      width: 100%;
+      height: 23.5rem;
+      margin-bottom: 9.2rem;
+      margin-top: 4.4rem;
 
-export const LabfazText = styled(Title)`
-  color: #FC0061;
-
-  font-size: var(--font-size-title-small);
-
-  text-align: center;
-
-  margin-top: 4.7rem;
-  margin-bottom: 8.1rem;
-
-  ${DesktopSmall(css`
-    font-size: var(--font-size-subtitle);
-  `)}
-
-  ${Mobile(css`
-    display: none;
-  `)}
-`
-
-export const FormContainer = styled.div`
-  width: 71.6rem;
-  height: 40.5rem;
-
-  display: flex;
-  position: relative;
-
-  margin-top: 2rem;
-  
-  border: 5px solid rgba(17, 16, 16, 0.5);
-  box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.6);
-  border-radius: 7px;
-
-  @media (max-width: 1370px ) {
-    width: 57.5rem;
-  } 
-
-  ${DesktopSmall(css`
-    width: 47.6rem;
-    height: 23.5rem;
-  `)}
-
-  ${Mobile(css`
-    width: 100vw;
-    margin-bottom: 9.2rem;
-
-    border: 0;
-    box-shadow: 0px 0px 0px rgba(64, 64, 64, 0.6);
-    border-radius: 0px;
-  `)}
+      border: 0;
+      box-shadow: 0px 0px 0px rgba(64, 64, 64, 0.6);
+      border-radius: 0px;
+    `)}
+  }
 `
 
 export const LeftSide = styled.div`
@@ -182,25 +204,9 @@ export const RightSide = styled.div`
   height: 100%;
   background-color: #111010;
 
-  ${DesktopSmall(css`
-    width: 100%;
-    height: 100%;
-  `)}
-
   ${Mobile(css`
-    width: 100vw;
+    background-color: black;
   `)}
-
-  .checkboxContainer {
-
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-
-    input {
-      margin-right: 1.2rem;
-    }
-  }
 `
 export const Button = styled.button`
   border: 0;
@@ -258,62 +264,34 @@ export const InputTextContainer = styled.div`
   `)}
 
   ${Mobile(css`
-    align-items: center;
-    row-gap: 2.5rem;
+    margin-top: 4.3rem;
+    width: 13.16rem;
+    row-gap: 3.5rem;
   `)}  
 `
 
-export const InputText = styled(Input)`
+export const InputText = styled(TextInput)`
 
   position: relative;
 
   margin: 0;
 
-  input[type="text"], input[type="password"] {
+  input {
     width: 100%;
-    height: 2.4rem;
-    font-size: var(--font-size-medium);
-    padding-left: 2.1rem;
-    font-weight: 600;
-
-    color: #fafafa;
-
-    background-color: #090909;
-    border: 1px solid rgba(250, 250, 250, 0.7);;
-    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.6);
-    border-radius: 1px;
-    
-    &::placeholder {
-      font-size: var(--font-size-medium);
-
-      color: rgba(255, 255, 255, 0.25);
-    }
-
-    ${DesktopSmall(css`
-      width: 14rem;
-      height: 1.7rem;
-      padding-left: 1.2rem;   
-
-    `)}
 
     ${Mobile(css`
-      width: 13.2rem;
-      padding-left: 1.2rem;   
-    `)}   
+      width: 100%;
+    `)}     
   }
+`
 
-  label {
-    font-size: var(--font-size-medium);
-    color: #fafafa;
+export const InputPassword = styled(PasswordInput)`
+  input {
+    width: 100%;
 
-    position: absolute;
-
-    top: -1rem;
-    left: 1.2rem;
-
-    padding: 0 0.5rem;
-
-    background-color: #111010;
+    ${Mobile(css`
+      width: 100%;
+    `)} 
   }
 `
 
@@ -357,6 +335,16 @@ export const CheckboxInputContainer = styled.div`
   label {
     font-size: var(--font-size-medium);
   }
+
+  ${DesktopSmall(css`
+    margin-top: 1.47rem;
+    margin-bottom: 2rem;
+  `)}
+
+  ${Mobile(css`
+    margin-top: 3.5rem;
+    margin-bottom: 2.9rem;
+  `)}
 
   div .checkbox_input {
     

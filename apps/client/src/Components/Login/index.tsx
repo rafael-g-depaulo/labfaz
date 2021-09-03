@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useContext, useState } from 'react'
+import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 
 import { login } from 'Api/Session'
 import { ErrorObject } from 'Api'
-
 
 import { CheckboxInput } from 'Components/Input/CheckboxInput'
 import { CurrentUserContext } from 'Context/CurrentUser'
@@ -24,23 +24,24 @@ import {
   LoginTitle,
   LabfazText,
   ButtonContainer,
-  CheckboxInputContainer
+  CheckboxInputContainer,
+  InputPassword,
 } from './style'
 
-
 interface FormProps {
-  name?: string
-  password?: string
+  email: string
+  password: string
   stayConnected?: boolean
 }
 
 export interface LoginComponentProps {
   onSubmit: FormSubmitFn
+  buttonType?: 'submit' | 'button' | 'reset' | undefined
 }
 
 export type FormSubmitFn = (values: FormProps) => any
 
-export const Login: FC<LoginComponentProps> = () => {
+export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const { setToken, setUser } = useContext(CurrentUserContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
@@ -48,13 +49,11 @@ export const Login: FC<LoginComponentProps> = () => {
   // const history = useHistory()
 
   const handleSubmit = useCallback(
-    (values) => {
+    (values: FormProps) => {
       login(values.email, values.password)
         .then(({ token, user }) => {
           setToken(token)
           setUser(user)
-          
-          localStorage.setItem('@Labfaz:User', JSON.stringify(user))
         })
         // .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
@@ -63,73 +62,79 @@ export const Login: FC<LoginComponentProps> = () => {
   )
 
   return (
-    <Container openToastMessage={toastMessage}>
-      <LoginTitle level={1} children="Seja bem vinde!" />
-      <FormContainer>
-        <LeftSide>
-          <img src={Icon} alt="Temp" />
-        </LeftSide>
-        <RightSide>
-          <Formik
-            initialValues={{
-              email: '',
-              password: '',
-              stayConnected: false,
-            }}
-            onSubmit={() => {}}
-          >
-            {(props) => (
-              <Form
-                onSubmit={(e) => [
-                  handleSubmit(props.values),
-                  e.preventDefault(),
-                ]}
-              >
-                <InputTextContainer>
-                  <InputText
-                    name="email"
-                    type="text"
-                    label="E-mail"
-                    placeholder="Digite seu email"
-                  />
+    <Container>
+      <FormContainer openToastMessage={toastMessage}>
+        <LoginTitle level={1} children="Entrar" />
+        <div className="formContainer">
+          <LeftSide>
+            <img src={Icon} alt="Temp" />
+          </LeftSide>
+          <RightSide>
+            <Formik
+              initialValues={{
+                email: '',
+                password: '',
+                stayConnected: false,
+              }}
+              validationSchema={yup.object().shape({
+                email: yup
+                  .string()
+                  .required('Campo obrigatório')
+                  .email('Email inválido'),
+                password: yup.string().required('Campo obrigatório'),
+              })}
+              onSubmit={(values: FormProps) => handleSubmit(values)}
+            >
+              {() => (
+                <Form>
+                  <InputTextContainer>
+                    <InputText
+                      name="email"
+                      label="E-mail"
+                      placeholder="Digite seu email"
+                      obrigatory
+                    />
 
-                  <InputText
-                    name="password"
-                    type="password"
-                    label="Senha"
-                    placeholder="Digite sua senha"
-                  />
-                </InputTextContainer>
+                    <InputPassword
+                      name="password"
+                      label="Senha"
+                      placeholder="Digite sua senha"
+                      obrigatory
+                    />
+                  </InputTextContainer>
 
-                <CheckboxInputContainer>
-                  <CheckboxInput
-                    name="stayConnected"
-                    label="Permanecer conectado"
-                  />
-                </CheckboxInputContainer>
+                  <CheckboxInputContainer>
+                    <CheckboxInput
+                      name="stayConnected"
+                      label="Permanecer conectado"
+                    />
+                  </CheckboxInputContainer>
 
-                <ButtonContainer>
-                  <Button type="submit">ENTRAR</Button>
+                  <ButtonContainer>
+                    <Button type={buttonType ? buttonType : 'submit'}>
+                      ENTRAR
+                    </Button>
 
-                  <RegisterButton href="/SignUp">CADASTRE-SE</RegisterButton>
-                </ButtonContainer>
+                    <RegisterButton href="/SignUp">CADASTRE-SE</RegisterButton>
+                  </ButtonContainer>
 
-                <NavLink to="/recover">Esqueceu sua senha?</NavLink>
-              </Form>
-            )}
-          </Formik>
-        </RightSide>
+                  <NavLink to="/recover">Esqueceu sua senha?</NavLink>
+                </Form>
+              )}
+            </Formik>
+          </RightSide>
+        </div>
+        {error && (
+          <div className="errorMessage">
+            <span>{error.message}</span>
+            <button onClick={() => setToastMessage(false)}> X</button>
+          </div>
+        )}
       </FormContainer>
       <LabfazText
         level={2}
         children="Laboratorio dos Fazeres e Saberes Tecnicos da Economia Criativa"
       />
-      {error && (
-        <div className="errorMessage">
-          <span>{error.message}</span>
-          <button onClick={() => setToastMessage(false)}> X</button>
-        </div>
-      )}
     </Container>
   )
 }
