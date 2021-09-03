@@ -2,7 +2,6 @@ import React, { FC } from "react"
 
 import { Login, LoginComponentProps } from "Components/Login"
 
-import { LoginContainer } from "./style"
 import Wireframe from "Components/Wireframe"
 
 export const Display: FC<LoginComponentProps> = ({
@@ -10,9 +9,7 @@ export const Display: FC<LoginComponentProps> = ({
 }) => {
   return (
     <Wireframe>    
-      <LoginContainer>
-        <Login onSubmit={onSubmit}/>
-      </LoginContainer>
+        <Login onSubmit={onSubmit} />
     </Wireframe>
   )
 }
