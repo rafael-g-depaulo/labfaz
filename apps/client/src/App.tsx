@@ -1,12 +1,13 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
+import { showRoutes } from 'FeatureFlags'
+import GlobalContext from 'Context'
 import GlobalStyles from 'GlobalStyles'
 import Routes from 'Routes'
-import { showRoutes } from 'FeatureFlags'
-import Contruction from 'Pages/Construction'
 
 import useGoogleAnalytics from 'Hooks/useInitializeGA'
+import Contruction from 'Pages/Construction'
 
 
 export const App = () => {
@@ -16,7 +17,12 @@ export const App = () => {
   return (
     <>
       <GlobalStyles />
-      { showRoutes ? <Routes /> : <BrowserRouter><Contruction /></BrowserRouter>}
+      <GlobalContext>
+        { showRoutes
+          ? <Routes />
+          : <BrowserRouter><Contruction /></BrowserRouter>
+        }
+      </GlobalContext>
     </>
   )
 }

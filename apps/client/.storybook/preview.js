@@ -11,10 +11,12 @@ import {
   Stories,
 } from '@storybook/addon-docs/blocks'
 
-import GlobalStyles from "../src/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
 import { BrowserRouter } from 'react-router-dom'
 import Helmet from "react-helmet"
+
+import GlobalStyles from "../src/GlobalStyles"
+import GlobalContext from "../src/Context"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -66,8 +68,15 @@ const injectReactRouter = Story => (
   </BrowserRouter>
 )
 
+const injectGlobalContext = Story => (
+  <GlobalContext>
+    <Story />
+  </GlobalContext>
+)
+
 export const decorators = [
   injectGlobalStylesAndTheme,
   injectGoogleFonts,
   injectReactRouter,
+  injectGlobalContext,
 ]
