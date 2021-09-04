@@ -18,6 +18,13 @@ import { IAddress } from "Entities/Address";
 import { IContact } from "Entities/Contact";
 import { ITechnical } from "Entities/Technical";
 
+export enum GenderSpecific {
+  CIS = "cisgênero",
+  TRANS = "transgênero",
+  NBIN = "não-binário",
+  NONE = "prefiro não responder",
+}
+
 export enum Race {
   NONE = "nenhuma",
   WHITE = "branca",
@@ -42,7 +49,7 @@ export interface IArtist {
   birthday: Date;
   rg: string;
   expedition_department: string;
-  is_trans: boolean;
+  gender_specifics: GenderSpecific;
   race: Race;
   show_name: ShowName;
   address: IAddress;
@@ -110,8 +117,12 @@ export class Artist {
   @Column()
   expedition_department: string;
 
-  @Column()
-  is_trans: boolean;
+  @Column({
+    type: "enum",
+    enum: GenderSpecific,
+    default: GenderSpecific.NONE,
+  })
+  gender_specifics: GenderSpecific;
 
   @Column({
     type: "enum",

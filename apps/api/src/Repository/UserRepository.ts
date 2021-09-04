@@ -132,7 +132,7 @@ export class UserRepository extends Repository<User> {
     createdArtist.cpf = artist.cpf;
     createdArtist.expedition_department = artist.expedition_department;
     createdArtist.gender = artist.gender;
-    createdArtist.is_trans = artist.is_trans;
+    createdArtist.gender_specifics = artist.gender_specific;
     createdArtist.name = artist.name;
     createdArtist.show_name = artist.show_name ?? ShowName.NAME;
     createdArtist.social_name = artist.social_name;
@@ -309,8 +309,8 @@ export class UserRepository extends Repository<User> {
         user.artist.gender = artist.gender;
       }
 
-      if(artist.is_trans){
-        user.artist.is_trans = artist.is_trans;
+      if(artist.gender_specific){
+        user.artist.gender_specifics = artist.gender_specific;
       }
 
       if(artist.name){

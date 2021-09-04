@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Race, ShowName } from "Entities/Artist";
+import { Race, ShowName, GenderSpecific } from "Entities/Artist";
 import { Residency } from "Entities/Address";
 import { Formation } from "Entities/Technical";
 import { TechFormation } from "Entities/Area";
@@ -79,7 +79,7 @@ export const userArtistSchema = yup.object().required().shape({
   birthday: yup.date().required(),
   rg: yup.string().required(),
   expedition_department: yup.string().required(),
-  is_trans: yup.boolean().required(),
+  gender_specific: yup.mixed<GenderSpecific>().required().oneOf(Object.values(GenderSpecific)),
   race: yup.mixed<Race>().required().oneOf(Object.values(Race)),
   address: addressSchema,
   contact: userContactSchema,
