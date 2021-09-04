@@ -1,11 +1,15 @@
 import React, { FC } from "react"
-import { CurrentUserProvider } from "Context/CurrentUser"
+
+import { CurrentUserProvider } from "./CurrentUser"
+import { QueryClientProvider } from "./QueryClient"
 
 export const GlobalContext: FC = ({ children }) => {
   return (
-    <CurrentUserProvider>
-      {children}
-    </CurrentUserProvider>
+    <QueryClientProvider>
+      <CurrentUserProvider>
+        {children}
+      </CurrentUserProvider>
+    </QueryClientProvider>
   )
 }
 

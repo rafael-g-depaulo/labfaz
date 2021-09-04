@@ -1,36 +1,33 @@
 import { AxiosError } from "axios"
-import useSWR from "swr"
-import { fetcherFn } from "swr/dist/types"
+import { QueryFunction, useQuery, UseQueryOptions } from "react-query"
 
 type erroredFetch<T> = {
   error: T,
   data: undefined,
   isLoading: false,
+  status: "error"
 }
 
 type loadingFetch = {
-  error: undefined,
+  error: null,
   data: undefined,
   isLoading: true,
+  status: "loading"
 }
 
 type sucessfulFetch<T> = {
-  error: undefined,
+  error: null,
   data: T,
   isLoading: false,
+  status: "success"
 }
+
 
 export type fetchHookReturn<D, E> = erroredFetch<E> | loadingFetch | sucessfulFetch<D>
 type DefaultError = AxiosError
 
-export function useFetchApi<D, E = DefaultError> (key: string, fetcher: fetcherFn<D>) {
-  const { data, error, isValidating } = useSWR<D, E>(key, fetcher)
-
-  return {
-    error,
-    data,
-    isLoading: isValidating || (!data && !error),
-  } as fetchHookReturn<D, E>
+export function useFetchApi<D, E = DefaultError> (key: string, fetcher: QueryFunction<D, string>, options?: UseQueryOptions<D, E, D, typeof key>) {
+  return useQuery<D, E, D, typeof key>(key, fetcher, options) as fetchHookReturn<D, E>
 }
 
 export default useFetchApi
