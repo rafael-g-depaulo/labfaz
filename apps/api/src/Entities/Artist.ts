@@ -100,8 +100,8 @@ export class Artist {
   @Column()
   photo_url: string;
 
-  @Column()
-  curriculum: string;
+  @Column({ nullable: true })
+  curriculum?: string;
 
   @Column()
   name: string;
