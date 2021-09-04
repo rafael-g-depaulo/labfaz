@@ -1,16 +1,16 @@
-import express, { Response } from "express"
+import express from "express"
 import { Connection } from "typeorm"
 import { Router } from "Routes"
 
 
 import UserRepository from "Repository/UserRepository"
 
-import { FileType, ParsedFiles, parseFiles } from "Middlewares/parseFiles"
+import { FileType, parseFiles } from "Middlewares/parseFiles"
 import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 
 import ShowUser from "./ShowUser"
 import UpdateUser from "./UpdateUser"
-import GetAllUsers from "./GetAllUser"
+// import GetAllUsers from "./GetAllUser"
 import { ParseUser } from "./ParseUser"
 import { ParseUpdateUser  } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"

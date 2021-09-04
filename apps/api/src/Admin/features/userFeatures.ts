@@ -1,7 +1,7 @@
 import { BaseRecord, buildFeature } from 'adminjs'
 
 // Create new action for admin example
-export const userActions = (userRepo: any) => buildFeature({
+export const userActions = (_userRepo: any) => buildFeature({
   actions: {
     backstage: {
       icon: "Task",
