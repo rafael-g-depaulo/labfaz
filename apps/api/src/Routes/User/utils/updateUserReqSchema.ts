@@ -1,7 +1,7 @@
 import * as yup from "yup";
-import { Race, ShowName, GenderSpecific } from "Entities/Artist";
+import { Race, ShowName, GenderSpecific, SexualOrientation } from "Entities/Artist";
 import { Residency } from "Entities/Address";
-import { Formation } from "Entities/Technical";
+import { Formation, CNPJ } from "Entities/Technical";
 import { TechFormation } from "Entities/Area";
 import { userContactSchema } from "./userReqSchema"
 
@@ -10,8 +10,14 @@ export const userUpdateTechnicalSchema = yup.object().required().shape({
     .mixed<Formation>()
     .oneOf(Object.values(Formation)),
   is_drt: yup.boolean(),
+  drt: yup.string(),
   is_ceac: yup.boolean(),
+  ceac: yup.string(),
   is_cnpj: yup.boolean(),
+  cnpj: yup.string(),
+  cnpj_type: yup.mixed<CNPJ>().oneOf(Object.values(CNPJ)),
+  name_enterprise: yup.string(),
+  profission: yup.string(),
   areas: yup
     .array()
     .ensure()
@@ -52,6 +58,7 @@ export const addressSUpdateSchema = yup.object().shape({
   residency: yup
     .mixed<Residency>()
     .oneOf(Object.values(Residency)),
+  state: yup.string(),
 })
 
 export const userUpdateArtistSchema = yup.object().shape({
@@ -67,6 +74,7 @@ export const userUpdateArtistSchema = yup.object().shape({
   rg: yup.string(),
   expedition_department: yup.string(),
   gender_specific: yup.mixed<GenderSpecific>().oneOf(Object.values(GenderSpecific)),
+  sexual_orientation: yup.mixed<SexualOrientation>().oneOf(Object.values(SexualOrientation)),
   race: yup.mixed<Race>().oneOf(Object.values(Race)),
   address: addressSUpdateSchema,
   contact: userContactSchema,

@@ -20,8 +20,12 @@ import { IIdiom } from "Entities/Idiom";
 export interface ITechnical {
   formation: Formation;
   is_drt: boolean;
+  drt_number: string;
   is_ceac: boolean;
+  ceac_number: string;
   is_cnpj: boolean;
+  cnpj: string;
+  name_enterprise: string;
   areas: IArea[];
   idiom: IIdiom[];
 }
@@ -34,6 +38,16 @@ export enum Formation {
   TECH = "ensino médio tecnico",
   UNIVERSITY = "curso superior",
   POS = "pos",
+}
+
+export enum CNPJ {
+  MEI = "MEI",
+  MICRO = "Microempresa",
+  PEQ = "Pequena empresa",
+  EIRELLI = "Eireli",
+  OSC = "OSC",
+  OUTRO = "Outro",
+  NONE = "Nenhum",
 }
 
 @Entity()
@@ -70,11 +84,29 @@ export class Technical {
   @Column({ default: false })
   is_drt: boolean;
 
+  @Column({ nullable: true, type: "text" })
+  drt: string;
+
   @Column({ default: false })
   is_ceac: boolean;
 
+  @Column({ nullable: true, type: "text" })
+  ceac: string;
+
   @Column({ default: false })
   is_cnpj: boolean;
+
+  @Column({ nullable: true, type: "text" })
+  cnpj: string;
+
+  @Column({ nullable: true, type: "text" })
+  name_enterprise: string;
+
+  @Column({ type: "enum", enum: CNPJ, default: CNPJ.NONE })
+  cnpj_type: CNPJ;
+
+  @Column()
+  profission: string;
 
   @CreateDateColumn()
   created_at: Date;

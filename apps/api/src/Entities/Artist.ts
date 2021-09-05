@@ -34,6 +34,16 @@ export enum Race {
   NATIVE = "indigena",
 }
 
+export enum SexualOrientation {
+  ASS = "assexual",
+  BIS = "bissexual",
+  HET = "heterosexual",
+  PAN = "pansexual",
+  LES = "lésbica",
+  GAY = "gay",
+  NONE = "prefiro não dizer",
+}
+
 export enum ShowName {
   NAME = "nome",
   SOCIAL = "nome social",
@@ -61,27 +71,27 @@ export interface IArtist {
 export class Artist {
   @PrimaryColumn()
   id: string;
-  
+
   @OneToOne(() => User, (user) => user.artist, {
-    cascade: ["insert","update"],
+    cascade: ["insert", "update"],
     eager: false,
   })
   @JoinColumn()
   user: User;
 
-  @OneToOne(() => Contact, contact => contact.artist, {
-    cascade: ["insert","update"],
+  @OneToOne(() => Contact, (contact) => contact.artist, {
+    cascade: ["insert", "update"],
     eager: true,
   })
   contact: Contact;
 
-  @OneToOne(() => Address, address => address.artist, {
+  @OneToOne(() => Address, (address) => address.artist, {
     cascade: ["insert", "update"],
     eager: true,
   })
   address: Address;
 
-  @OneToOne(() => Technical, technical => technical.artist, {
+  @OneToOne(() => Technical, (technical) => technical.artist, {
     cascade: ["insert", "update"],
     eager: true,
   })
@@ -126,6 +136,13 @@ export class Artist {
 
   @Column({
     type: "enum",
+    enum: SexualOrientation,
+    default: SexualOrientation.NONE,
+  })
+  sexual_orientation: SexualOrientation;
+
+  @Column({
+    type: "enum",
     enum: Race,
     default: Race.NONE,
   })
@@ -151,10 +168,12 @@ export class Artist {
 
   // helper methods
   get displayName() {
-    if (this.show_name === ShowName.ARTISTIC) return this.artistic_name ?? this.name
-    if (this.show_name === ShowName.SOCIAL) return this.social_name ?? this.name
-    if (this.show_name === ShowName.NAME) return this.name
-    return this.name
+    if (this.show_name === ShowName.ARTISTIC)
+      return this.artistic_name ?? this.name;
+    if (this.show_name === ShowName.SOCIAL)
+      return this.social_name ?? this.name;
+    if (this.show_name === ShowName.NAME) return this.name;
+    return this.name;
   }
 }
 

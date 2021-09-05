@@ -14,7 +14,7 @@ import Artist from "./Artist";
 export enum Residency {
   DF = "df",
   BORDER = "entorno",
-  OUTSIDE = "fora df"
+  OUTSIDE = "fora df",
 }
 
 export interface IAddress {
@@ -24,14 +24,14 @@ export interface IAddress {
   number: number;
   complement: string;
   residency: Residency;
+  state: string;
 }
 @Entity()
 export class Address {
-
   @PrimaryColumn()
   id: string;
 
-  @OneToOne(() => Artist, artist => artist.address, {
+  @OneToOne(() => Artist, (artist) => artist.address, {
     eager: false,
     cascade: ["insert", "update", "remove"],
   })
@@ -50,15 +50,21 @@ export class Address {
   @Column()
   number: number;
 
-  @Column({ nullable: true, type: "text"})
+  @Column({ nullable: true, type: "text" })
   complement?: string;
 
   @Column({
     type: "enum",
     enum: Residency,
-    default: Residency.DF
+    default: Residency.DF,
   })
   residency: Residency;
+
+  @Column({
+    nullable: true,
+    type: "text",
+  })
+  state: string;
 
   @CreateDateColumn()
   created_at: Date;

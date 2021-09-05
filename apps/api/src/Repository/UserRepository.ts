@@ -88,8 +88,23 @@ export class UserRepository extends Repository<User> {
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
     createdTech.is_ceac = artist.technical.is_ceac;
+    if (artist.technical.is_ceac && artist.technical.ceac) {
+      createdTech.ceac = artist.technical.ceac;
+    }
     createdTech.is_cnpj = artist.technical.is_cnpj;
+    if (artist.technical.is_cnpj && artist.technical.cnpj) {
+      createdTech.cnpj = artist.technical.cnpj;
+      if (createdTech.name_enterprise) {
+        createdTech.name_enterprise = createdTech.name_enterprise;
+      }
+      if (artist.technical.cnpj_type) {
+        createdTech.cnpj_type = artist.technical.cnpj_type;
+      }
+    }
     createdTech.is_drt = artist.technical.is_drt;
+    if (artist.is_drt && artist.technical.drt) {
+      createdTech.drt = artist.technical.drt;
+    }
 
     //criamos associamos a ficha tecnicas seus idiomas
     createdTech.idiom = await Promise.all(Idioms ?? []);
@@ -120,6 +135,9 @@ export class UserRepository extends Repository<User> {
     createdAddress.neighbourhood = artist.address.neighbourhood;
     createdAddress.number = artist.address.number;
     createdAddress.residency = artist.address.residency;
+    if (artist.address.state) {
+      createdAddress.state = artist.address.state;
+    }
 
     const addrRepo = getRepository(Address);
     await addrRepo.save(createdAddress);
@@ -133,6 +151,7 @@ export class UserRepository extends Repository<User> {
     createdArtist.expedition_department = artist.expedition_department;
     createdArtist.gender = artist.gender;
     createdArtist.gender_specifics = artist.gender_specific;
+    createdArtist.sexual_orientation = artist.sexual_orientation;
     createdArtist.name = artist.name;
     createdArtist.show_name = artist.show_name ?? ShowName.NAME;
     createdArtist.social_name = artist.social_name;
@@ -198,6 +217,9 @@ export class UserRepository extends Repository<User> {
         }
         if (artist.address.residency) {
           user.artist.address.residency = artist.address.residency;
+        }
+        if (artist.address.state) {
+          user.artist.address.state = artist.address.state;
         }
       }
 
@@ -275,71 +297,90 @@ export class UserRepository extends Repository<User> {
           user.artist.technical.formation = artist.technical.formation;
         }
 
-        if(artist.technical.is_ceac){
+        if (artist.technical.is_ceac) {
           user.artist.technical.is_ceac = artist.technical.is_ceac;
+          if (artist.technical.ceac) {
+            user.artist.technical.ceac = artist.technical.ceac;
+          }
         }
 
-        if(artist.technical.is_cnpj){
+        if (artist.technical.is_cnpj) {
           user.artist.technical.is_cnpj = artist.technical.is_cnpj;
         }
-
-        if(artist.technical.is_drt){
-          user.artist.technical.is_drt = artist.technical.is_drt;
+        if (artist.technical.cnpj) {
+          user.artist.technical.cnpj = artist.technical.cnpj;
         }
-        
+        if (artist.technical.name_enterprise) {
+          user.artist.technical.name_enterprise =
+            artist.technical.name_enterprise;
+        }
+
+        if (artist.technical.cnpj_type) {
+          user.artist.technical.cnpj_type = artist.technical.cnpj_type;
+        }
+
+        if (artist.technical.is_drt) {
+          user.artist.technical.is_drt = artist.technical.is_drt;
+          if (artist.technical.drt) {
+            user.artist.technical.drt = artist.technical.drt;
+          }
+        }
       }
 
-      if(artist.artistic_name){
+      if (artist.artistic_name) {
         user.artist.artistic_name = artist.artistic_name;
       }
 
-      if(artist.birthday){
+      if (artist.birthday) {
         user.artist.birthday = artist.birthday;
       }
 
-      if(artist.cpf){
+      if (artist.cpf) {
         user.artist.cpf = artist.cpf;
       }
 
-      if(artist.expedition_department){
+      if (artist.expedition_department) {
         user.artist.expedition_department = artist.expedition_department;
       }
 
-      if(artist.gender){
+      if (artist.gender) {
         user.artist.gender = artist.gender;
       }
 
-      if(artist.gender_specific){
+      if (artist.gender_specific) {
         user.artist.gender_specifics = artist.gender_specific;
       }
 
-      if(artist.name){
+      if(artist.sexual_orientation){
+        user.artist.sexual_orientation = artist.sexual_orientation;
+      }
+
+      if (artist.name) {
         user.artist.name = artist.name;
       }
 
-      if(artist.race){
-        user.artist.race =  artist.race;
+      if (artist.race) {
+        user.artist.race = artist.race;
       }
 
-      if(artist.rg){
+      if (artist.rg) {
         user.artist.rg = artist.rg;
       }
 
-      if(artist.show_name){
+      if (artist.show_name) {
         user.artist.show_name = artist.show_name;
       }
 
-      if(artist.social_name){
+      if (artist.social_name) {
         user.artist.social_name = artist.social_name;
       }
-
     }
 
-    if(curriculum){
+    if (curriculum) {
       user.artist.curriculum = curriculum.url;
     }
 
-    if(profilePicture){
+    if (profilePicture) {
       user.artist.photo_url = profilePicture.url;
     }
 
