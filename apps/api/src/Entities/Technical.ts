@@ -105,8 +105,8 @@ export class Technical {
   @Column({ type: "enum", enum: CNPJ, default: CNPJ.NONE })
   cnpj_type: CNPJ;
 
-  @Column()
-  profission: string;
+  @Column({ nullable: true, type: "text" })
+  profession?: string;
 
   @CreateDateColumn()
   created_at: Date;
