@@ -24,7 +24,7 @@ export const userTechnicalSchema = yup
     is_cnpj: yup.boolean().required().default(false),
     cnpj: yup.string(),
     cnpj_type: yup.mixed<CNPJ>().oneOf(Object.values(CNPJ)),
-    profission: yup.string(),
+    profession: yup.string(),
     name_enterprise: yup.string(),
     areas: yup
       .array()

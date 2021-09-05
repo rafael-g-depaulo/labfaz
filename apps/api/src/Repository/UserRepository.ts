@@ -87,6 +87,7 @@ export class UserRepository extends Repository<User> {
     //criamos uma ficha tecnica ela que possui idiomas e areas
     const createdTech = new Technical();
     createdTech.formation = artist.technical.formation;
+    createdTech.profession = artist.technical.profession
     createdTech.is_ceac = artist.technical.is_ceac;
     if (artist.technical.is_ceac && artist.technical.ceac) {
       createdTech.ceac = artist.technical.ceac;
@@ -94,15 +95,15 @@ export class UserRepository extends Repository<User> {
     createdTech.is_cnpj = artist.technical.is_cnpj;
     if (artist.technical.is_cnpj && artist.technical.cnpj) {
       createdTech.cnpj = artist.technical.cnpj;
-      if (createdTech.name_enterprise) {
-        createdTech.name_enterprise = createdTech.name_enterprise;
+      if (artist.technical.name_enterprise) {
+        createdTech.name_enterprise = artist.technical.name_enterprise;
       }
       if (artist.technical.cnpj_type) {
         createdTech.cnpj_type = artist.technical.cnpj_type;
       }
     }
     createdTech.is_drt = artist.technical.is_drt;
-    if (artist.is_drt && artist.technical.drt) {
+    if (createdTech.is_drt && artist.technical.drt) {
       createdTech.drt = artist.technical.drt;
     }
 
@@ -297,11 +298,15 @@ export class UserRepository extends Repository<User> {
           user.artist.technical.formation = artist.technical.formation;
         }
 
+        if (artist.technical.profession) {
+          user.artist.technical.profession = artist.technical.profession;
+        }
+
         if (artist.technical.is_ceac) {
           user.artist.technical.is_ceac = artist.technical.is_ceac;
-          if (artist.technical.ceac) {
-            user.artist.technical.ceac = artist.technical.ceac;
-          }
+        }
+        if (artist.technical.ceac) {
+          user.artist.technical.ceac = artist.technical.ceac;
         }
 
         if (artist.technical.is_cnpj) {

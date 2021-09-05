@@ -17,7 +17,7 @@ export const userUpdateTechnicalSchema = yup.object().required().shape({
   cnpj: yup.string(),
   cnpj_type: yup.mixed<CNPJ>().oneOf(Object.values(CNPJ)),
   name_enterprise: yup.string(),
-  profission: yup.string(),
+  profession: yup.string(),
   areas: yup
     .array()
     .ensure()
