@@ -5,7 +5,7 @@ import { Router } from "Routes";
 import CourseRepository from "Repository/CourseRepository";
 // import ensureAuthenticated from "Middlewares/ensureAuthenticated";
 
-import { CreateCourse } from "./CreateCourse";
+// import { CreateCourse } from "./CreateCourse";
 import { GetAllCourers } from "./GetAllCoursers";
 
 
@@ -19,7 +19,7 @@ const CourseRoute: Router<CoureDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    .post("/create", CreateCourse({ CourseRepo }))
+    // .post("/create", CreateCourse({ CourseRepo }))
     .get("/list", GetAllCourers({ CourseRepo }))
 }
 

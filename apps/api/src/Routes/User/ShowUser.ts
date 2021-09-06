@@ -1,7 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { ParamsType, Req } from "Utils/request";
-import { createdSuccessfully, badRequestError, unauthenticatedError, unauthorizedError } from "Utils/endpointReturns";
+import { badRequestError, unauthenticatedError, unauthorizedError, fetchedSuccessfully } from "Utils/endpointReturns";
 
 interface ShowUserInterface {
   UserRepo: UserRepository;
@@ -37,7 +37,7 @@ export const ShowUser: (
 
   let { password: _, ...userQueried } = user;
 
-  return createdSuccessfully(res, { user: userQueried })
+  return fetchedSuccessfully(res, { user: userQueried })
 };
 
 export default ShowUser;

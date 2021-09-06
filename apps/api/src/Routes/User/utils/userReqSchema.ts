@@ -11,11 +11,11 @@ import { TechFormation } from "Entities/Area";
 
 export const userTechnicalSchema = yup
   .object()
-  .required()
+  // .required()
   .shape({
     formation: yup
       .mixed<Formation>()
-      .required()
+      // .required()
       .oneOf(Object.values(Formation)),
     is_drt: yup.boolean().required().default(false),
     drt: yup.string(),
