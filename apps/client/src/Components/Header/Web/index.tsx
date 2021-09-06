@@ -12,10 +12,13 @@ import {
   LogIn
 } from './style'
 import Logo from 'Components/Logo'
+import { loggedNavLinksList, navLinksList, unloggedNavLinksList } from 'Utils/navLinks'
+import { useCurrentUser } from 'Context/CurrentUser'
 
 export const Web: FC = () => {
 
   useEvent({ category: 'Navigation', action: 'click', value: 0 })
+  const { isLoggedIn } = useCurrentUser()
 
   return (
     <Container>
@@ -23,16 +26,18 @@ export const Web: FC = () => {
         <Logo />
       </RedirectLink>
       <Navbar>
-        <NavLink href="/about"> QUEM SOMOS </NavLink>
-        <NavLink href="/classes"> CURSOS </NavLink>
-        <NavLink href="/calendar"> AGENDA </NavLink>
-        <NavLink href="/blog"> BLOG </NavLink>
-        <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
+        {navLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)}
       </Navbar>
       <div className="line" />
       <UserSession>
-        <LogIn href='/login'> ENTRAR </LogIn>
-        <Button href='/register'> CADASTRE-SE </Button>
+        { isLoggedIn 
+          ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)
+          : unloggedNavLinksList.map(({ name, label, path }) =>
+            name === "login"
+              ? <LogIn href={path}> {label} </LogIn>
+              : <Button href={path}> {label} </Button>
+          )
+        }
       </UserSession>
     </Container>
   )

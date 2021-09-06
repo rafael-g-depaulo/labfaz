@@ -1,21 +1,30 @@
 import React, { FC } from 'react'
 
+import { useCurrentUser } from 'Context/CurrentUser'
+import { LinkNames, navLinks } from 'Utils/navLinks'
+
 import { NavigationContainer, Navbar, NavLink, Title } from './style';
 
+const RenderLink = (name: LinkNames) => navLinks[name] && <NavLink href={navLinks[name].path}> {navLinks[name].label} </NavLink>
+
 const Navigation: FC = () => {
+  const { isLoggedIn } = useCurrentUser()
   return (
     <NavigationContainer id="navigation-container">
       <Title>Navegação</Title>
       <Navbar>
         <div>
-          <NavLink href="/about"> QUEM SOMOS </NavLink>
-          <NavLink href="/classes"> CURSOS </NavLink>
-          <NavLink href="/calendar"> AGENDA </NavLink>
+          {RenderLink("about us")}
+          {RenderLink("cursos")}
+          {RenderLink("blog")}
         </div>
         <div>
-          <NavLink href="/blog"> BLOG </NavLink>
-          <NavLink href="/professionals"> BANCO DE PROFISSIONAIS </NavLink>
-          <NavLink href='/register'> CADASTRE-SE </NavLink>
+          {
+            // TODO: colocar observatório no lugar de blog
+          }
+          {RenderLink("blog")}
+          {RenderLink("busca profissionais")}
+          {RenderLink(isLoggedIn ? "perfil" : "cadastro")}
         </div>
       </Navbar>
     </NavigationContainer>
