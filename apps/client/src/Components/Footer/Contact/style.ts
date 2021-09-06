@@ -1,13 +1,16 @@
 import styled, { css } from 'styled-components'
 
 import { Text } from 'Components/Typography/Text'
-import { Mobile, DesktopSmall } from 'Utils/breakpoints';
+import { Mobile, DesktopSmall, Desktop } from 'Utils/breakpoints';
 
 export const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 8.5rem;
-
+  
+  ${Desktop(css`
+    height: 8.5rem;
+  `)}
+  
   .icons {
     display: flex;
     flex-direction: column;
