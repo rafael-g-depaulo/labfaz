@@ -1,5 +1,4 @@
-import adminjs, { BaseRecord, BaseResource, buildFeature } from 'adminjs'
-import { request } from 'express'
+import adminjs, { BaseProperty, BaseRecord, BaseResource, buildFeature } from 'adminjs'
 import { RequestRepository } from "Repository/RequestRepository"
 
 // Create new action for admin example
@@ -74,6 +73,14 @@ export const courseActions = (requestRepo: RequestRepository) => buildFeature({
 
           const requests = context._admin.findResource("Request") as BaseResource
 
+          const RequestReference = new BaseProperty({
+            type: "reference",
+            path: "Request"
+          })
+
+          context.resource.properties().push(RequestReference)
+          context.records
+          
           if(inscricoes) {
 
             record.params = {
@@ -86,21 +93,6 @@ export const courseActions = (requestRepo: RequestRepository) => buildFeature({
         return {
           record: record!.toJSON(currentAdmin),
           other: "asuhdauh"
-        }
-      }
-    },
-    updateSubscription: {
-      actionType: 'record',
-      component: false,
-      handler: async (request, response, context) => {
-        const { currentAdmin, record } = context
-
-        const req = context._admin.findResource("Request")
-        console.log(req)
-        
-
-        return {
-          record: record?.toJSON(currentAdmin)
         }
       }
     }

@@ -1,20 +1,17 @@
-import React, { FC } from 'react'
-import axios from 'axios'
+import React, { FC, useEffect, useState } from 'react'
 
 import { 
   Button, 
   H2, 
   Header, 
   Text,
-  TextProps,
   Table,
   TableRow,
   TableCell,
-  TableHead,
   TableBody
 } from '@adminjs/design-system'
-import { ActionProps, useRecord } from 'adminjs'
-import { Status, ListItem, StatusBar, Actions } from "./style"
+import { ActionProps, useRecord, ApiClient } from 'adminjs'
+import { Status, Actions } from "./style"
 
 interface student {
   active: boolean,
@@ -29,38 +26,34 @@ interface Inscricoes {
 
 const Subscription: FC<ActionProps> = (props) => {
   const { record: initialRecord, resource, action } = props
-  console.log(props)
   action.hideActionHeader = true
   const handleAction = async (id: string, newStatus: "denied" | "accepted") => {
-    console.log(id)
-    const url = `localhost:5000/admin/resources/Request/records/${id}/updateStatus`
-    console.log(url)
-    const response = axios.get(url)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  
-    console.log(response)
+    const actions = await api.recordAction({
+      resourceId: "Request",
+      recordId: id,
+      actionName: "updateStatus",
+      responseType: "json",
+      method: 'POST',
+      data: {
+        status: newStatus
+      }
+    })
+
+    if(actions) {
+      console.log(actions)
+    }
   }
+
 
   const {
     record,
   } = useRecord(initialRecord, resource.id)
+  const api = new ApiClient()
 
-  // console.log("Initial", initialRecord)
-  // console.log("record", record)
-  // console.log("actions", action)
-  // console.log("resourceId", resource.id)
-
-  // console.log("DATA", data)
-  const { id, about, available } = record.params
+  const { about, available } = record.params
   const inscricoes = record.params.inscricoes as Inscricoes[]
 
   const date = record.params.subscription_start_date as string
-
 
   const treatedDate = new Date(date);
   if(!inscricoes) {
@@ -75,18 +68,6 @@ const Subscription: FC<ActionProps> = (props) => {
         <Text> Começa das inscrições: {`${treatedDate.getDay()}/${treatedDate.getMonth()}/${treatedDate.getFullYear()}`} </Text>
       </Header>
       <Table>
-        <TableHead
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "center",
-            minWidth: "100%"
-          }}
-          >
-          <Text> Usuário </Text>
-          <Text> Status </Text>
-        </TableHead>
         <TableBody>
           {inscricoes.map(subscribe => (
             <TableRow>

@@ -12,12 +12,30 @@ const subscriptionResource = (): ResourceWithOptions => {
           actionType: "record",
           handler: async (request, _response, context) => {
             const {currentAdmin, record} = context
-            console.log("params", request.params)
-            console.log("payload", request.payload)
-            console.log("method", request.method)
+            
+            const status = request.payload
+
+            if(record) {
+              record.update({
+                status: status
+              })
+
+              await record.save()
+                .catch(err => {
+                  return {
+                    record: record.toJSON(currentAdmin),
+                    notice: {
+                      message: "request failed"
+                    }
+                  }
+                })
+            }
 
             return {
-              record: record!.toJSON(currentAdmin)
+              record: record!.toJSON(currentAdmin),
+              notice: {
+                message: "request updated"
+              }
             }
           },
           component: false
