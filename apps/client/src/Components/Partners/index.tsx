@@ -1,17 +1,15 @@
-import React, {FC} from 'react'
+import React, { FC } from "react";
 
-import { useHomePartners } from 'Api/HomePartners'
-import Loading from 'Components/Loading'
-import Display from './Display'
+import Display from "./Display";
 
-export const Partners: FC = () => {
-  const {data, error, isLoading} = useHomePartners()
+import { HomePartners } from "Api/HomePartners";
 
-  if (isLoading) return <Loading />
-
-  if (error) return <div>error: { error?.message ?? "" }</div>
-
-  return <Display data={data!}/>
+export interface Props {
+  partners: HomePartners[];
 }
 
-export default Partners
+export const Partners: FC<Props> = ({ partners }) => {
+  return <Display data={partners} />;
+};
+
+export default Partners;
