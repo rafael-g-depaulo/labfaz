@@ -21,6 +21,9 @@ export class Course extends BaseEntity {
   @PrimaryColumn()
   id: string
 
+  @Column()
+  name: string
+
   @Column('text', { array: true, default: {} })
   teacher: string[]
 

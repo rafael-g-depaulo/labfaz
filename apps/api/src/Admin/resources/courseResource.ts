@@ -11,7 +11,7 @@ const courseResource = (conn: Connection): ResourceWithOptions => {
   return ({
     resource: Courses,
     options: {
-      listProperties: ["type", "tags", "available"],
+      listProperties: ["type", "name", "available"],
       navigation: {
         name: "Labfaz Admin Panel"
       }
