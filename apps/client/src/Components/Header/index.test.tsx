@@ -27,9 +27,9 @@ describe('Check links succesfully redirects to another page', () => {
     expect(getByText('CURSOS').closest('a')).toHaveAttribute('href', '/classes')
   })
 
-  it('check link of calendar page', () => {
-    expect(getByText('AGENDA').closest('a')).toHaveAttribute('href', '/calendar')
-  })
+  // it('check link of calendar page', () => {
+  //   expect(getByText('AGENDA').closest('a')).toHaveAttribute('href', '/calendar')
+  // })
 
   it('check link of blog page', () => {
     expect(getByText('BLOG').closest('a')).toHaveAttribute('href', '/blog')
