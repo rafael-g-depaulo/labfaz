@@ -47,7 +47,7 @@ const Subscription: FC<ActionProps> = (props) => {
   const api = new ApiClient()
 
 
-  const { about, available } = record.params
+  const { name, available } = record.params
   const inscricoes = record.params.inscricoes as Inscricoes[]
 
   const date = record.params.subscription_start_date as string
@@ -60,7 +60,7 @@ const Subscription: FC<ActionProps> = (props) => {
   return (
     <>
       <Header>
-        <H2> {about} </H2>
+        <H2> {name} </H2>
         <Status isAvailable={available}>{available ? "aberto" : "fechado"} para inscrições </Status>    
         <Text> Começa das inscrições: {`${treatedDate.getDay()}/${treatedDate.getMonth()}/${treatedDate.getFullYear()}`} </Text>
       </Header>

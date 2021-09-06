@@ -69,9 +69,6 @@ export class Course extends BaseEntity {
   @Column()
   subscription_finish_date: Date
 
-  @Column()
-  activity_date: Date
-
   @Column('date', { array: true, default: {} })
   class_dates: Date[]
 
