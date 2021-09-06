@@ -10,7 +10,7 @@ import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 
 import ShowUser from "./ShowUser"
 import UpdateUser from "./UpdateUser"
-import GetAllUsers from "./GetAllUser"
+import SearchUsers from "./SearchUsers"
 import { ParseUser } from "./ParseUser"
 import { ParseUpdateUser  } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"
@@ -51,7 +51,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
       ParseUpdateUser,
       UpdateUser({ UserRepo })
     )
-    .get("/search", ensureAuthenticated, GetAllUsers({ UserRepo }))
+    .get("/search", ensureAuthenticated, SearchUsers({ UserRepo }))
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
     .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
 };
