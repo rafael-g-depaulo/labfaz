@@ -1,4 +1,4 @@
-import React, { FC, createContext, useState, useMemo } from "react"
+import React, { FC, createContext, useState, useMemo, useContext } from "react"
 
 export interface User {
   id: string
@@ -13,11 +13,13 @@ export interface User {
 export interface CurrentUser {
   user?: User
   setUser: (u: User) => void
-  loginToken?: string
+  token?: string
   setToken: (t: string) => void
+  isLoggedIn: boolean
 }
 
 export const CurrentUserContext = createContext<CurrentUser>({} as CurrentUser)
+export const useCurrentUser = () => useContext(CurrentUserContext)
 
 export const CurrentUserProvider: FC = ({
   children,
@@ -30,6 +32,7 @@ export const CurrentUserProvider: FC = ({
     setUser,
     token,
     setToken,
+    isLoggedIn: !!token,
   }), [user, setUser, token, setToken])
 
   console.log("user context.", token, user, "cuv", currentUserValue)
