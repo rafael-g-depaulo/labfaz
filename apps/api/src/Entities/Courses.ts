@@ -9,6 +9,13 @@ import {
 import { nanoid } from "nanoid";
 import Request from "./Requests";
 
+enum ActivityType {
+  CURSO = 'Curso',
+  LIVE = 'Live',
+  OFICINA = 'Oficina',
+  RODA_DE_CONVERSA = 'Roda de conversa'
+}
+
 @Entity()
 export class Course extends BaseEntity {
   @PrimaryColumn()
@@ -17,8 +24,12 @@ export class Course extends BaseEntity {
   @Column('text', { array: true, default: {} })
   teacher: string[]
 
-  @Column()
-  type: "curso" | "live" | "oficina" | "roda de conversa"
+  @Column({
+  type: "enum",
+  enum: ActivityType,
+  default: ActivityType.CURSO,}
+  )
+  type: ActivityType
 
   @Column('text', { array: true, default: {} })
   tags: string[]

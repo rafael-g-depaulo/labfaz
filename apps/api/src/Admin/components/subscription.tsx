@@ -28,7 +28,7 @@ const Subscription: FC<ActionProps> = (props) => {
   const { record: initialRecord, resource, action } = props
   action.hideActionHeader = true
   const handleAction = async (id: string, newStatus: "denied" | "accepted") => {
-    const actions = await api.recordAction({
+    await api.recordAction({
       resourceId: "Request",
       recordId: id,
       actionName: "updateStatus",
@@ -38,10 +38,6 @@ const Subscription: FC<ActionProps> = (props) => {
         status: newStatus
       }
     })
-
-    if(actions) {
-      console.log(actions)
-    }
   }
 
 
@@ -49,6 +45,7 @@ const Subscription: FC<ActionProps> = (props) => {
     record,
   } = useRecord(initialRecord, resource.id)
   const api = new ApiClient()
+
 
   const { about, available } = record.params
   const inscricoes = record.params.inscricoes as Inscricoes[]
