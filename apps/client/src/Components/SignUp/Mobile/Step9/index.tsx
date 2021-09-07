@@ -30,7 +30,7 @@ export const Step9: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.address.residency"
-              value="Distrito Federal"
+              value="df"
               label="Distrito Federal"
             />
           </InputRadioContainer>
@@ -38,7 +38,7 @@ export const Step9: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.address.residency"
-              value="Entorno"
+              value="entorno"
               label="Entorno"
             />
           </InputRadioContainer>
@@ -46,22 +46,23 @@ export const Step9: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.address.residency"
-              value="Resido fora do DF  e do Entorno"
+              value="fora df"
               label="Resido fora do DF  e do Entorno"
             />
           </InputRadioContainer>
 
-          {values.artist.address.residency === 'Resido fora do DF  e do Entorno' && (
+          {values.artist.address.residency === 'fora df' && (
             <SelectContainer htmlFor="state">
               <SelectInput
-                name="artist.state"
+                name="artist.address.state"
                 label="Qual seu estado?"
                 options={Estados}
+                obrigatory
               />
             </SelectContainer>
           )}
 
-          {values.artist.address.residency === 'Distrito Federal' && (
+          {values.artist.address.residency === 'df' && (
             <SelectContainer htmlFor="state">
               <SelectInput
                 name="artist.address.city"
@@ -72,22 +73,24 @@ export const Step9: FC = () => {
             </SelectContainer>
           )}
 
-          {values.artist.address.residency === 'Entorno' && (
+          {values.artist.address.residency === 'entorno' && (
             <SelectContainer htmlFor="state">
               <SelectInput
                 name="artist.address.city"
                 label="Cidade"
                 options={CidadesEntorno}
+                obrigatory
               />
             </SelectContainer>
           )}
 
-          {values.artist.address.residency === 'Resido fora do DF  e do Entorno' && (
+          {values.artist.address.residency === 'fora df' && (
             <InputTextContainer>
               <TextInput
                 name="artist.address.city"
                 label="Cidade"
                 placeholder="Digite o nome de sua cidade"
+                obrigatory
               />
             </InputTextContainer>
           )}

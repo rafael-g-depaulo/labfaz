@@ -15,7 +15,7 @@ import { useFormikContext } from 'formik'
 interface ErrorProps {
   artist: {
     technical: {
-      area: {
+      areas: {
         describe: String
       }
     }
@@ -32,17 +32,17 @@ export const Step13: FC = () => {
           <TextLabel>
             Descreva quais são as atividades e serviços oferecidos por você <p className="obrigatory"> *</p>:
             <span className="errorMessage">
-              {errors.artist?.technical?.area?.describe &&
-                errors.artist.technical.area.describe}
+              {errors.artist?.technical?.areas?.describe &&
+                errors.artist.technical.areas.describe}
             </span>
           </TextLabel>
 
-          <InputText component="textarea" name="artist.technical.area.describe" />
+          <InputText component="textarea" name="artist.technical.areas.describe" />
 
           <FileContainer>
             <FileInput
-              name="artist.technical.area.curriculum"
-              value="artist.technical.area.curriculum"
+              name="curriculum"
+              value="curriculum"
               label="Clique para enviar curriculo"
             />
           </FileContainer>

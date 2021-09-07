@@ -39,6 +39,7 @@ export const AvatarInput = styled.div`
     width: 190px;
     height: 190px;
     border-radius: 50%;
+    object-fit: cover;
   }
 `
 

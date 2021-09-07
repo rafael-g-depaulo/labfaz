@@ -2,6 +2,7 @@ import React, { FC, useRef, useState } from 'react'
 import { useFormikContext } from 'formik'
 import { IoMdArrowDropdownCircle } from 'react-icons/io'
 
+import { TextInput } from 'Components/Inputs/TextInput'
 import { RadioInput } from 'Components/Inputs/RadioInput'
 
 import { certificationOptionsMobile } from 'Utils/selectOptionsData'
@@ -17,6 +18,7 @@ import {
   CertificationOptionsContainer,
   InputCheckbox,
   InputSelect,
+  TechnicalContainer
 } from './style'
 
 interface ErrorProps {
@@ -32,7 +34,7 @@ export const Step14: FC = () => {
   const [isIdiomOptionsOpen, setIsIdiomOptionsOpen] = useState(false)
   const modalRef = useRef<HTMLInputElement | null>(null)
 
-  const { errors } = useFormikContext<ErrorProps>()
+  const { values, errors } = useFormikContext<ErrorProps>()
 
   const closeModal = (e: any) => {
     if (modalRef.current === e.target) {
@@ -62,25 +64,34 @@ export const Step14: FC = () => {
             </span>
           </LabelText>
 
-          <InputRadioContainer>
-            <RadioInput
-              id="yes_is_drt"
-              type="radio"
-              name="artist.technical.is_drt"
-              value="true"
-              label="Sim"
-            />
-          </InputRadioContainer>
+          <TechnicalContainer>
+            <InputRadioContainer>
+              <RadioInput
+                id="yes_is_drt"
+                type="radio"
+                name="artist.technical.is_drt"
+                value="true"
+                label="Sim"
+              />
+            </InputRadioContainer>
 
-          <InputRadioContainer>
-            <RadioInput
-              id="not_is_drt"
-              type="radio"
-              name="artist.technical.is_drt"
-              value="false"
-              label="Não"
-            />
-          </InputRadioContainer>
+            <InputRadioContainer>
+              <RadioInput
+                id="not_is_drt"
+                type="radio"
+                name="artist.technical.is_drt"
+                value="false"
+                label="Não"
+              />
+            </InputRadioContainer>
+
+            {values.artist.technical.is_drt === 'true' && (
+              <TextInput
+                name="artist.technical.drt"
+                placeholder="Número do drt"
+              />
+            )}
+          </TechnicalContainer>
 
           <LabelText>
             Você possui CEAC? <p className="obrigatory"> *</p>
@@ -90,25 +101,34 @@ export const Step14: FC = () => {
             </span>
           </LabelText>
 
-          <InputRadioContainer>
-            <RadioInput
-              id="yes_is_ceac"
-              type="radio"
-              name="artist.technical.is_ceac"
-              value="true"
-              label="Sim"
-            />
-          </InputRadioContainer>
+          <TechnicalContainer>
+            <InputRadioContainer>
+              <RadioInput
+                id="yes_is_ceac"
+                type="radio"
+                name="artist.technical.is_ceac"
+                value="true"
+                label="Sim"
+              />
+            </InputRadioContainer>
 
-          <InputRadioContainer>
-            <RadioInput
-              id="not_is_ceac"
-              type="radio"
-              name="artist.technical.is_ceac"
-              value="false"
-              label="Não"
-            />
-          </InputRadioContainer>
+            <InputRadioContainer>
+              <RadioInput
+                id="not_is_ceac"
+                type="radio"
+                name="artist.technical.is_ceac"
+                value="false"
+                label="Não"
+              />
+
+              {values.artist.technical.is_ceac === 'true' && (
+                <TextInput
+                  name="artist.technical.ceac"
+                  placeholder="Número do ceac"
+                />
+              )}
+            </InputRadioContainer>
+          </TechnicalContainer>
         </Content>
       </ContentContainer>
       <CertificationOptionsContainer
@@ -126,7 +146,7 @@ export const Step14: FC = () => {
               value={certification.value}
             >
               {certification.label}
-            </InputCheckbox>
+            </InputCheckbox>  
           ))}
         </CheckboxContainer>
       </CertificationOptionsContainer>

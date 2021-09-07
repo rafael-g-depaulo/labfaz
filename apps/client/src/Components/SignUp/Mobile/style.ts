@@ -91,7 +91,7 @@ export const RightSession = styled.div<StepProps>`
        
     &:nth-child(${({currentStep}) => currentStep }) {
       background-color: #2DAF2F;
-      border-radius: ${({currentStep}) => currentStep === 15 ? '0px 0px 0px 0px' : '0px 0px 50px 50px'};
+      border-radius: ${({currentStep}) => currentStep === 16 ? '0px 0px 0px 0px' : '0px 0px 50px 50px'};
 
       label {
         color: #FAFAFA;
@@ -105,7 +105,7 @@ export const RightSession = styled.div<StepProps>`
 `
 
 export const ButtonContainer = styled.div<StepProps>`
-  display: ${({currentStep}) => currentStep === 15 ? 'none' : 'flex'};
+  display: ${({currentStep}) => currentStep === 16 ? 'none' : 'flex'};
 
   position: absolute;
 

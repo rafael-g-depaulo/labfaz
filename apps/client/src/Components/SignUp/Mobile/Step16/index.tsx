@@ -14,9 +14,7 @@ import {
 } from './style'
 
 interface Step16Props {
-  artist: {
-    photo_url: string
-  }
+  profilePicture: string
 
   password: string
   confirm_password: string
@@ -33,11 +31,11 @@ export const Step16: FC = () => {
           <AvatarInput>
             <img
               src={
-                values.artist.photo_url
-                  ? URL.createObjectURL(values.artist.photo_url)
+                values.profilePicture
+                  ? URL.createObjectURL(values.profilePicture)
                   : undefined
               }
-              alt={values.artist.photo_url ? 'User avatar' : ''}
+              alt={values.profilePicture ? 'User avatar' : ''}
             />
           </AvatarInput>
 
@@ -59,7 +57,7 @@ export const Step16: FC = () => {
           </InputTextContainer>
 
           <InputCheckBoxContainer>
-            <InputCheckbox type="checkbox" name="use_term" value="sim">
+            <InputCheckbox type="checkbox" name="use_terms" value="sim">
               Li e concordo com os
               <a href="public/termos-e-condicoes.pdf">
                 {" "} Termos de Uso {" "}

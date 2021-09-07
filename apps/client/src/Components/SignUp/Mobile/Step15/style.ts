@@ -24,7 +24,7 @@ export const ContentContainer = styled.div`
   svg {
     color: #A3A3A3;
     position: absolute;
-    bottom: 1.8rem;
+    bottom: 10rem;
 
     left: 50%;
     transform: translateX(-50%);
@@ -95,7 +95,7 @@ export const CnpjContainer = styled.div`
 `
 
 export const CpnjContent = styled.div`
-  margin-top: 0rem;
+  margin-top: 5rem;
   width: 13.3rem;
 `
 

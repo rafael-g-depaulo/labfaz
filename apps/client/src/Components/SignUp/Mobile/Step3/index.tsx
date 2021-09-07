@@ -20,7 +20,7 @@ export const Step3: FC = () => {
               placeholder="Digite seu cpf"
               inputMask="999.999.999-99"
               onChange={(ev: any) =>
-                setFieldValue('cpf', OnlyNumbers(ev.target.value))
+                setFieldValue('artist.cpf', ev.target.value)
               }
               obrigatory
             />
@@ -32,7 +32,7 @@ export const Step3: FC = () => {
               label="Data de nascimento"
               inputMask="99/99/9999"
               onChange={(ev: any) =>
-                setFieldValue('birthday', OnlyNumbers(ev.target.value))
+                setFieldValue('artist.birthday', OnlyNumbers(ev.target.value))
               }
               placeholder="Digite sua data de nascimento"
               obrigatory

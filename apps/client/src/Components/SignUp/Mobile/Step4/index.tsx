@@ -92,8 +92,8 @@ export const Step4: FC = () => {
           <InputRadioContainer>
             <RadioInput
               type="radio"
-              name="artist.gender_identity"
-              value="cisgênero(a)"
+              name="artist.gender_specific"
+              value="cisgênero"
               label="Cisgênero(a)"
               information='Pessoa cisgênero consiste no/a indivíduo/a que se identifica com o seu "gênero de nascença". Por exemplo: um indivíduo que possui características biológicas típicas do gênero masculino e que se identifica (socialmente e psicologicamente) como um homem. Desta forma, pode-se dizer que trata-se de um homem cisgênero.'
             />
@@ -102,8 +102,8 @@ export const Step4: FC = () => {
           <InputRadioContainer>
             <RadioInput
               type="radio"
-              name="artist.gender_identity"
-              value="transexual/Transgênero(a)"
+              name="artist.gender_specific"
+              value="transgênero"
               label="Transexual/Transgênero(a)"
               information="pessoa transexual/transgênero é o(a) indivíduo(a) que se identifica com um gênero diferente daquele que lhe foi atribuído biologicamente no nascimento. Por exemplo: uma pessoa que nasce com características masculinas (do ponto de vista biológico), mas que se sente do gênero feminino; ou o indivíduo que possui características físicas femininas, mas que se identifica como um homem."
             />
@@ -112,8 +112,8 @@ export const Step4: FC = () => {
           <InputRadioContainer>
             <RadioInput
               type="radio"
-              name="artist.gender_identity"
-              value="não-binário(a)"
+              name="artist.gender_specific"
+              value="não-binário"
               label="Não-binário(a)"
               information="pessoa transexual/transgênero é o(a) indivíduo(a) que se identifica com um gênero diferente daquele que lhe foi atribuído biologicamente no nascimento. Por exemplo: uma pessoa que nasce com características masculinas (do ponto de vista biológico), mas que se sente do gênero feminino; ou o indivíduo que possui características físicas femininas, mas que se identifica como um homem."
             />
@@ -122,7 +122,7 @@ export const Step4: FC = () => {
           <InputRadioContainer>
             <RadioInput
               type="radio"
-              name="artist.gender_identity"
+              name="artist.gender_specific"
               value="prefiro não responder"
               label="Prefiro não responder"
             />

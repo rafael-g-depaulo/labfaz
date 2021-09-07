@@ -16,7 +16,6 @@ import {
   CnpjContainer,
   CpnjContent,
   InputText,
-  CnpjTextContainer,
 } from './style'
 
 interface Step15Props {
@@ -67,14 +66,14 @@ export const Step15: FC = () => {
             <>
               <TextContainer>
                 <TextInput
-                  name="company_name"
+                  name="artist.technical.name_enterprise"
                   placeholder="Digite o nome da sua empresa"
                   label="Nome da empresa"
                 />
               </TextContainer>
               <TextContainer>
                 <InputText
-                  name="cnpj_number"
+                  name="artist.technical.cnpj"
                   placeholder="Digite seu CNPJ"
                   label="Número do CNPJ"
                   inputMask="99.999.999/9999-99"
@@ -98,34 +97,13 @@ export const Step15: FC = () => {
         <CnpjContainer>
           <ContentContainer>
             <CpnjContent>
-              <CnpjTextContainer>
-                <TextContainer>
-                  <InputText
-                    name="company_name"
-                    placeholder="Digite o nome da sua empresa"
-                    label="Nome da empresa"
-                  />
-                </TextContainer>
-                <TextContainer>
-                  <InputText
-                    name="cnpj_number"
-                    placeholder="Digite seu CNPJ"
-                    label="Número do CNPJ"
-                    inputMask="99.999.999/9999-99"
-                    onChange={(ev: any) =>
-                      setFieldValue('cnpj_number', OnlyNumbers(ev.target.value))
-                    }
-                  />
-                </TextContainer>
-              </CnpjTextContainer>
-
               <LabelText>Seu CNPJ se enquadra em:</LabelText>
 
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="mei"
+                  name="artist.technical.cnpj_type"
+                  value="MEI"
                   label="MEI"
                   id="scroll"
                 />
@@ -133,8 +111,8 @@ export const Step15: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="microemresa"
+                  name="artist.technical.cnpj_type"
+                  value="Microempresa"
                   label="Microempresa"
                 />
               </InputRadioContainer>
@@ -142,8 +120,8 @@ export const Step15: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="pequena_empresa"
+                  name="artist.technical.cnpj_type"
+                  value="Pequena empresa"
                   label="Pequena empresa"
                 />
               </InputRadioContainer>
@@ -151,8 +129,8 @@ export const Step15: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="eireli"
+                  name="artist.technical.cnpj_type"
+                  value="Eireli"
                   label="Eireli"
                 />
               </InputRadioContainer>
@@ -160,8 +138,8 @@ export const Step15: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="osc"
+                  name="artist.technical.cnpj_type"
+                  value="OSC"
                   label="OSC"
                 />
               </InputRadioContainer>
@@ -169,8 +147,8 @@ export const Step15: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   type="radio"
-                  name="cnpj_category"
-                  value="outro"
+                  name="artist.technical.cnpj_type"
+                  value="Outro"
                   label="Outro"
                 />
               </InputRadioContainer>

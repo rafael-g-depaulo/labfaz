@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { useState } from 'react'
 import { IoMdArrowDropdownCircle } from 'react-icons/io'
 
-import { formationOptions } from 'Utils/selectOptionsData'
+import { formationOptions, idiomOptions } from 'Utils/selectOptionsData'
 
 import {
   Container,
@@ -99,79 +99,15 @@ export const Step11: FC = () => {
         isOpen={isIdiomOptionsOpen}
       >
         <CheckboxContainer>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Ingles"
-          >
-            Ingles
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Espanhol"
-          >
-            Espanhol
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Chines"
-          >
-            Chines
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Frances"
-          >
-            Frances
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Coreano"
-          >
-            Coreano
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Italiano"
-          >
-            Italiano
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Ingles"
-          >
-            Ingles
-          </InputCheckbox>
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Ingles"
-          >
-            Ingles
-          </InputCheckbox>
-
-          <InputCheckbox
-            type="checkbox"
-            inputRightSide
-            name="artist.technical.idiom"
-            value="Outro"
-          >
-            Outro
-          </InputCheckbox>
+          {idiomOptions.map((idiomOption, index) => (
+            <InputCheckbox 
+              key={index}
+              inputRightSide
+              name="artist.technical.idiom"
+              value={idiomOption.value}
+              label={idiomOption.label}
+            />
+          ))}
         </CheckboxContainer>
       </IdiomOptionsContainer>
     </Container>

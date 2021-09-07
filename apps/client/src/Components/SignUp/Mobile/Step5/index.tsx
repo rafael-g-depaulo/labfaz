@@ -53,7 +53,7 @@ export const Step5: FC = () => {
             <RadioInput
               type="radio"
               name="artist.sexual_orientation"
-              value="heterossexual"
+              value="heterosexual"
               label="Heterossexual"
               information="Orientação sexual heterossexual é atração romântica e/ou sexual entre pessoas do gênero oposto ao seu"
             />
@@ -73,7 +73,7 @@ export const Step5: FC = () => {
             <RadioInput
               type="radio"
               name="artist.sexual_orientation"
-              value="homossexualidade Lésbica"
+              value="lésbica"
               label="Homossexualidade Lésbica"
               information="é a denominação em que uma mulher sente-se atraída afetiva e/ou sexual com outra mulher"
             />
@@ -83,7 +83,7 @@ export const Step5: FC = () => {
             <RadioInput
               type="radio"
               name="artist.sexual_orientation"
-              value="homossexualidade Gay"
+              value="gay"
               label="Homossexualidade Gay"
               information="é a denominação em que um homem sente-se atraído afetivo e/ou sexual por outra homem"
             />

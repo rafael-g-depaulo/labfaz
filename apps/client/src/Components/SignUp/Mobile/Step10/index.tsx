@@ -45,7 +45,7 @@ export const Step10: FC = () => {
 
           <InputTextContainer>
             <TextInput
-              name="artist.address.address"
+              name="artist.address.complement"
               label="Endereco"
               placeholder="Digite seu logradouro"
               width={15}
@@ -65,7 +65,7 @@ export const Step10: FC = () => {
 
           <InputTextContainer>
             <TextInput
-              name="artist.address.complement"
+              name="artist.address.address"
               label="Complemento"
               placeholder="Digite seu complemento"
               width={15}

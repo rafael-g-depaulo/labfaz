@@ -185,3 +185,12 @@ export const CheckboxContainer = styled.div`
 `
 
 export const InputCheckbox = styled(CheckboxInput)``
+
+export const TechnicalContainer = styled.div`
+  position: relative;
+
+  input {
+    position: absolute;
+    bottom: -2rem;
+  }
+`

@@ -20,6 +20,7 @@ interface FileProps {
 }
 
 interface Step2Props {
+  profilePicture: string
   artist: {
     name: string
     social_name: string
@@ -32,9 +33,9 @@ export const Step2: FC = () => {
   const { values } = useFormikContext<Step2Props>()
 
   const options = [
-    { value: values?.artist?.name, label: values.artist?.name },
-    { value: values?.artist?.social_name, label: values.artist?.social_name },
-    { value: values?.artist?.artistic_name, label: values.artist?.artistic_name },
+    { value: 'nome', label: values.artist?.name },
+    { value: 'nome social', label: values.artist?.social_name },
+    { value: 'nome artistico', label: values.artist?.artistic_name },
   ]
 
   return (
@@ -44,18 +45,18 @@ export const Step2: FC = () => {
           <AvatarInput>
             <img
               src={
-                values.artist.photo_url
-                  ? URL.createObjectURL(values.artist.photo_url)
+                values.profilePicture
+                  ? URL.createObjectURL(values.profilePicture)
                   : undefined
               }
-              alt={values.artist.photo_url ? 'User avatar' : ''}
+              alt={values.profilePicture ? 'User avatar' : ''}
             />
           </AvatarInput>
 
           <FileInputContainer>
             <FileInput
-              name="artist.photo_url"
-              value="artist.photo_url"
+              name="profilePicture"
+              value="profilePicture"
               label="Clique para enviar foto"
             />
           </FileInputContainer>
@@ -63,7 +64,7 @@ export const Step2: FC = () => {
           <SelectContainer htmlFor="main_name">
             <SelectInput
               label="Nome principal"
-              name="artist.main_name"
+              name="artist.show_name"
               options={options}
               obrigatory
             />
