@@ -7,6 +7,7 @@ import Header from 'Components/Header'
 import RecoverForm from "Components/PasswordRecover"
 
 import { RecoverData } from "Api/RecoverPassImage"
+import FullPage from 'Components/FullPage'
 
 
 interface DisplayProps {
@@ -16,7 +17,7 @@ interface DisplayProps {
 export const Display: FC<DisplayProps> = ({ image }) => {
   
   return (
-    <>
+    <FullPage>
       <Header />
       <Container>
         <WithImageContainerForm  image={image.image} title="Alteração de senha" > 
@@ -25,7 +26,7 @@ export const Display: FC<DisplayProps> = ({ image }) => {
       </Container>
       <Span> Laboratorio dos Fazeres e Saberes Tecnicos da Economia Criativa </Span>
       <Footer />
-    </>
+    </FullPage>
   )
 }
 

@@ -16,6 +16,7 @@ export const Wrapper = styled.div<ModalProps>`
   max-height: 707px;
   min-height: 45vh;
   min-width: 50%;
+  background-color: #111010;
 
   display: flex;
   flex-direction: column;
@@ -40,8 +41,9 @@ export const Wrapper = styled.div<ModalProps>`
     }
   }
 
-  a {
+  p {
     text-align: center;
+    color: white;
   }
 
   ${MobileSmall(css`
@@ -86,7 +88,6 @@ export const InputContainer = styled.div`
   flex-direction: column;
   min-height: 136px;
 
-
   input {
     min-width: 379px;
     min-height: 51px;
@@ -97,12 +98,14 @@ export const InputContainer = styled.div`
   label {
     margin-bottom: 1em;
     font-size: var(--font-size-large);
+    color: white;
   }
 
   p {
     max-width: 379px;
     text-align: center;
     margin-bottom: 9.7rem;
+    color: white;
   }
 
   > div {
@@ -349,7 +352,6 @@ export const Container = styled.div<ModalProps>`
   place-items: center;
   z-index: 99999999;
   max-height: 85vh;
-
 `
 
 
