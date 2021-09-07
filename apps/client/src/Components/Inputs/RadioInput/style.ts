@@ -58,6 +58,11 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
     height: 100%;
 
+    ${Mobile(css`
+      width: 7px;
+      height: 7px;
+    `)}
+  
     border-radius: 50%;
 
     display: block;
