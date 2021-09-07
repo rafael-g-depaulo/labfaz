@@ -16,7 +16,7 @@ export const Container = styled.div`
     height: 100vh;
     max-width: 18rem;
     padding: 0 1rem;
-    z-index: 1;
+    z-index: 999;
     left: -18rem;
     transition: 800ms;
 
