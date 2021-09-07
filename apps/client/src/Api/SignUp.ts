@@ -10,48 +10,49 @@ const bodyFormParse = (values: any) => {
   formData.append('profilePicture', values.profilePicture)
   formData.append('curriculum', values.curriculum)
 
-  formData.append('artist[name]', values.artist.name)
-  formData.append('artist[show_name]', values.artist.show_name)
-  formData.append('artist[social_name]', values.artist.social_name)
-  formData.append('artist[artistic_name]', values.artist.artistic_name)
+  formData.append('artist[name]', values.artist?.name)
+  formData.append('artist[show_name]', values.artist?.show_name)
+  formData.append('artist[social_name]', values.artist?.social_name)
+  formData.append('artist[artistic_name]', values.artist?.artistic_name)
 
-  formData.append('artist[gender]', values.artist.gender)
+  formData.append('artist[gender]', values.artist?.gender)
+  formData.append('artist[gender_specific]', values.artist?.gender_specific)
   formData.append('artist[cpf]', values.artist.cpf)
-  formData.append('artist[birthday]', values.artist.birthday)
-  formData.append('artist[rg]', values.artist.rg)
-  formData.append('artist[expedition_department]', values.artist.expedition_department)
+  formData.append('artist[birthday]', values.artist?.birthday)
+  formData.append('artist[rg]', values.artist?.rg)
+  formData.append('artist[expedition_department]', values.artist?.expedition_department)
 
   formData.append('artist[is_trans]', values.artist.is_trans)
-  formData.append('artist[sexual_orientation]', values.sexual_orientation)
+  formData.append('artist[sexual_orientation]', values.artist?.sexual_orientation)
   formData.append('artist[race]', values.artist.race)
 
-  formData.append('artist[address][city]', values.address?.city)
-  formData.append('artist[address][cep]', values.address?.cep)
-  formData.append('artist[address][neighbourhood]', values.address?.neighbourhood)
-  formData.append('artist[address][number]', values.address?.number)
-  formData.append('artist[address][complement]', values.address?.complement)
-  formData.append('artist[address][residency]', values.address?.residency)
-  formData.append('artist[address][state]', values.address?.state)
+  formData.append('artist[address][city]', values.artist?.address?.city)
+  formData.append('artist[address][cep]', values.artist?.address?.cep)
+  formData.append('artist[address][neighbourhood]', values.artist?.address?.neighbourhood)
+  formData.append('artist[address][number]', values.artist?.address?.number)
+  formData.append('artist[address][complement]', values.artist?.address?.complement)
+  formData.append('artist[address][residency]', values.artist?.address?.residency)
+  formData.append('artist[address][state]', values.artist?.address?.state)
 
-  formData.append('artist[technical][is_drt]', values.technical?.is_drt)
-  formData.append('artist[technical][drt]', '123456')
+  formData.append('artist[technical][is_drt]', values.artist?.technical?.is_drt )
+  formData.append('artist[technical][drt]', values.artist?.technical?.drt)
   
-  formData.append('artist[technical][is_ceac]', values.technical?.is_ceac)
-  formData.append('artist[technical][ceac]', '123456')
+  formData.append('artist[technical][is_ceac]', values.artist?.technical?.is_ceac)
+  formData.append('artist[technical][ceac]', values.artist?.technical?.ceac)
 
-  formData.append('artist[technical][formation]', values.technical?.formation)
-  formData.append('artist[technical][profession]', '123456')
+  formData.append('artist[technical][formation]', values.artist?.technical?.formation)
+  formData.append('artist[technical][profession]', values.artist?.technical?.profession)
   
-  formData.append('artist[technical][is_cnpj]', values.technical?.is_cnpj)
-  formData.append('artist[technical][cnpj]', '123456')
-  formData.append('artist[technical][cnpj_type]', '123456')
-  formData.append('artist[technical][name_enterprise]', '123456')
+  formData.append('artist[technical][is_cnpj]', `${values.artist?.technical?.is_cnpj}`)
+  formData.append('artist[technical][cnpj]', values.artist?.technical?.cnpj)
+  formData.append('artist[technical][cnpj_type]', values.artist?.technical?.cnpj_type)
+  formData.append('artist[technical][name_enterprise]', values.artist?.technical?.name_enterprise)
 
 
-  formData.append('artist[technical][areas][0][name]', values.technical?.areas.name)
-  formData.append('artist[technical][areas][0][technical_formation]', values.technical?.areas.technical_formation)
-  formData.append('artist[technical][areas][0][describe]', values.technical?.areas.describe)  
-  formData.append('artist[technical][areas][0][started_year]', values.technical?.areas.started_year)
+  formData.append('artist[technical][areas][0][name]', values.artist?.technical?.areas.name)
+  formData.append('artist[technical][areas][0][technical_formation]', values.artist?.technical?.areas.technical_formation)
+  formData.append('artist[technical][areas][0][describe]', values.artist?.technical?.areas.describe)  
+  formData.append('artist[technical][areas][0][started_year]', values.artist?.technical?.areas.started_year)
 
   if (values.artist?.technical?.areas?.certificate) {
     values.artist.technical.areas.certificate.forEach((certificate: string, index: number) => {
@@ -84,24 +85,20 @@ export const SignUp = async (values: any) => {
 
   const formParsed = bodyFormParse(values)
 
-  // console.log(formParsed.get(''))
-
-  // console.log(formParsed.get('profilePicture'))
-
   // for (var pair of formParsed.entries()) {
   //   console.log(pair[0]+ ', ' + pair[1]); 
   // }
 
-  // return api.post<SuccessObject>('/user/create', formParsed, {
-  //   headers
-  // }).then(res => {
-  //   console.log(res)
+  return api.post<SuccessObject>('/user/create', formParsed, {
+    headers
+  }).then(res => {
+    console.log(res)
 
-  //   return res
-  // }).catch(err => {
-  //   console.log(err)  
+    return res
+  }).catch(err => {
+    console.log(err)  
 
-  //   throw err
-  // })
+    throw err
+  })
 
 }
