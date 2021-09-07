@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   place-items: center;
+  background-color: black;
 
   ${DesktopSmall(css`
     max-height: 100vh;
@@ -22,10 +23,12 @@ export const Container = styled.div`
 export const Span = styled.p`
   font-size: var(--font-size-title-small);
   font-weight: 700;
-  margin-top: 2.1em;
-  margin-bottom: 5.25em;
+  margin-top: 0;
+  padding-top: 2.1em;
+  padding-bottom: 5.25em;
   text-align: center;
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(252, 0, 97, 1);
+  background-color: black;
 
   ${DesktopSmall(css`
     display: none;
