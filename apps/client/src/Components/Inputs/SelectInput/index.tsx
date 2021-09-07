@@ -65,7 +65,7 @@ export const SelectInput: FC<InputProps> = ({
             {options?.map((option, index) => (
               <Fragment key={index}>
                 <option value={option.value} label={option.label}>
-                  {option.value}
+                  {option.label}
                 </option>
               </Fragment>
             ))}
