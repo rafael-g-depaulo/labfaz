@@ -1,16 +1,19 @@
 import React, { FC } from "react";
 
+import Display from "./Display";
+
 import { Homepage } from "Api/Homepage";
 import { CoursePresentation } from "Api/CoursePresentation";
 
-import Display from "./Display";
-
-export interface Props {
+export interface CoursesPresentationProps {
   texts: Homepage;
   courses: CoursePresentation[];
 }
 
-export const CoursesPresentation: FC<Props> = ({ texts, courses }) => {
+export const CoursesPresentation: FC<CoursesPresentationProps> = ({
+  courses,
+  texts,
+}) => {
   return <Display texts={texts} courses={courses} />;
 };
 

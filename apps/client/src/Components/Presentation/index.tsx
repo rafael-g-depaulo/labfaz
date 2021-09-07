@@ -1,36 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useState, useEffect } from 'react'
-import { strapi } from "Api"
+import React, { FC } from "react";
 
-import Loading from "Components/Loading"
-import Display from "./Display"
+import Display from "./Display";
 
-export const Presentation: FC = () => {
-  const[loading, setLoading] = useState(true)
-  const[data, setData] = useState(
-    {
-      Title: "",
-      SubTitle: "",
-      Video: ""
-    })
-  const[error, setError] = useState()
-
-  useEffect(() => {
-    // re-renders with useFetchApi hooks
-    strapi
-      .get(`/home-presentation-info`)
-      .then(({ data }) => data)
-      .then(({ Title, SubTitle, Video }) => {
-        setData({ Title, SubTitle, Video })
-        setLoading(false)
-      })
-      .catch((error) => setError(error.message))
-  }, [loading])
-
-  if (error) return <div>error: {error ?? ""} </div>
-  if (loading) return <Loading />
-
-  return <Display Video={data.Video} Title={data.Title} SubTitle={data.SubTitle}/>
+export interface PresentationProps {
+  title: string;
+  subtitle: string;
+  video: string;
 }
 
-export default Presentation
+export const Presentation: FC<PresentationProps> = ({
+  title,
+  subtitle,
+  video,
+}) => {
+  return <Display Video={video} Title={title} SubTitle={subtitle} />;
+};
+
+export default Presentation;

@@ -9,22 +9,28 @@ import Banner from "Components/Banner";
 import useMobile from "Utils/useMobile";
 
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
+import { HomePartners } from "Api/HomePartners";
 import { Homepage } from "Api/Homepage";
 import { CoursePresentation } from "Api/CoursePresentation";
-import { HomePartners } from "Api/HomePartners";
 
 export interface DisplayProps {
   data: HomepageBannerInfo;
-  texts: Homepage;
-  courses: CoursePresentation[];
-  partners: HomePartners[];
+  title: string | null;
+  subtitle: string | null;
+  video: string | null;
+  partners: HomePartners[] | null;
+  coursesText: Homepage | null;
+  coursesData: CoursePresentation[] | null;
 }
 
 export const Display: FC<DisplayProps> = ({
   data,
-  texts,
-  courses,
+  title,
+  subtitle,
+  video,
   partners,
+  coursesText,
+  coursesData,
 }) => {
   const mobile = useMobile();
 
@@ -37,16 +43,28 @@ export const Display: FC<DisplayProps> = ({
       />
       {mobile ? (
         <>
-          <Presentation />
-          <Partners partners={partners} />
+          {title && subtitle && video ? (
+            <Presentation title={title} subtitle={subtitle} video={video} />
+          ) : (
+            <></>
+          )}
+          {partners ? <Partners partners={partners} /> : <></>}
         </>
       ) : (
         <>
-          <Partners partners={partners} />
-          <Presentation />
+          {partners ? <Partners partners={partners} /> : <></>}
+          {title && subtitle && video ? (
+            <Presentation title={title} subtitle={subtitle} video={video} />
+          ) : (
+            <div style={{ paddingTop: "3.5em" }} />
+          )}
         </>
       )}
-      <CoursesPresentation texts={texts} courses={courses} />
+      {coursesText && coursesData ? (
+        <CoursesPresentation texts={coursesText} courses={coursesData} />
+      ) : (
+        <></>
+      )}
     </Wireframe>
   );
 };
