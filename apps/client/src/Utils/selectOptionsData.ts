@@ -295,37 +295,33 @@ export const idiomOptions = [
   {
     label: 'Outro',
     value: 'Outro',
-  },
-  {
-    label: 'Nenhum outro idioma',
-    value: 'Nenhum outro idioma'
   }
 ]
 
 export const formationOptions = [
   {
     label: 'Não tenho nenhuma formação escolar',
-    value: 'nao_tem',
+    value: 'não tem',
   },
   {
     label: 'Ensino fudamental 1 (até o 5º ano)',
-    value: 'ensino_fundamental_1',
+    value: 'ensino fundamental 1',
   },
   {
     label: 'Ensino fudamental 2 (até o 9º ano)',
-    value: 'ensino_fundamental_2',
+    value: 'ensino fundamental 2',
   },
   {
     label: 'Ensino Médio',
-    value: 'ensino_medio',
+    value: 'ensino médio',
   },
   {
     label: 'Ensino Médio em curso técnico profissionalizante',
-    value: 'ensino_medio_tecnico',
+    value: 'ensino médio tecnico',
   },
   {
     label: 'Curso Superior',
-    value: 'curso_superior',
+    value: 'curso superior',
   },
   {
     label: 'Pós Graduação',
