@@ -78,12 +78,21 @@ export const ImageDiv = styled.div`
   `)}
 `
 
+export const Line = styled.div`
+  min-height: 2px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.05);
+  margin-bottom: 3.5rem;
+`
+
 export const PageTitle = styled.h1`
   font-size: var(--font-size-title-xxlarge);
   justify-self: center;
   margin-right: 40%;
   margin-top: 3vh;
   margin-bottom: 2vh;
+  color: white;
 
   ${DesktopSmall(css`
     display: none;
