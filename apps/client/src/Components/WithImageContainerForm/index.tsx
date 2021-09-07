@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Image } from 'Utils/Image'
 
-import { Container, Image as Frame, ImageDiv, PageTitle, Content } from './style'
+import { Container, Frame, ImageDiv, PageTitle, Content } from './style'
 
 interface ContainerProps {
   image: Image,
