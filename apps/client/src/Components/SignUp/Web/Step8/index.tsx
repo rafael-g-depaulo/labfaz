@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { useFormikContext } from 'formik'
 
 import { RadioInput } from 'Components/Inputs/RadioInput'
-import { TextInput } from 'Components/Inputs/TextInput'
 
 import { OnlyNumbers } from 'Utils/inputRegex'
 
@@ -15,7 +14,6 @@ import {
   InputText,
   CnpjText,
   InputRadioContainer,
-  TextInputContainer,
 } from './style'
 
 interface Step8Props {
@@ -182,7 +180,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="mei"
+                  value="MEI"
                   label="MEI"
                 />
               </InputRadioContainer>
@@ -190,7 +188,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="microemresa"
+                  value="Microempresa"
                   label="Microempresa"
                 />
               </InputRadioContainer>
@@ -199,7 +197,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="pequena_empresa"
+                  value="Pequena empresa"
                   label="Pequena empresa"
                 />
               </InputRadioContainer>
@@ -208,7 +206,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="eireli"
+                  value="Eireli"
                   label="Eireli"
                 />
               </InputRadioContainer>
@@ -217,7 +215,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="osc"
+                  value="OSC"
                   label="OSC"
                 />
               </InputRadioContainer>
@@ -226,7 +224,7 @@ export const Step8: FC = () => {
                 <RadioInput
                   type="radio"
                   name="artist.technical.cnpj_type"
-                  value="outro"
+                  value="Outro"
                   label="Outro"
                 />
               </InputRadioContainer>

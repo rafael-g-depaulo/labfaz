@@ -6,7 +6,7 @@ import { Container, Content, TextLabel, InputText } from './style'
 interface ErrorProps {
   artist: {
     technical: {
-      area: {
+      areas: {
         describe: string
       }
     }
@@ -25,11 +25,11 @@ export const Step6: FC = () => {
             oferecidos por você.<p className="obrigatory"> *</p>
           </TextLabel>
 
-          {errors.artist?.technical?.area?.describe && (
-            <span className="errorMessage">{errors.artist.technical.area.describe}</span>
+          {errors.artist?.technical?.areas?.describe && (
+            <span className="errorMessage">{errors.artist.technical.areas.describe}</span>
           )}
 
-          <InputText component="textarea" name="artist.technical.area.describe" />
+          <InputText component="textarea" name="artist.technical.areas.describe" />
         </Content>
       </div>
     </Container>

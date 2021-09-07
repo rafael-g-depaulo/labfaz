@@ -23,9 +23,9 @@ export const Step3: FC = () => {
   const { values, setFieldValue } = useFormikContext<any>()
 
   const options = [
-    { value: values?.artist.name, label: values.artist.name },
-    { value: values?.artist.social_name, label: values.artist.social_name },
-    { value: values?.artist.artistic_name, label: values.artist.artistic_name },
+    { value: 'nome', label: values.artist.name },
+    { value: 'nome social', label: values.artist.social_name },
+    { value: 'nome artistico', label: values.artist.artistic_name },
   ]
 
   return (

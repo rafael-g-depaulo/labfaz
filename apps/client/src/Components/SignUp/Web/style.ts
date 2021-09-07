@@ -164,7 +164,6 @@ export const RightSession = styled.div<StepProps>`
         width: 26.67px;
         height: 26.67px;
         color: #FAFAFA;
-        cursor: pointer;
 
         ${DesktopSmall(css`
           width: 24px;

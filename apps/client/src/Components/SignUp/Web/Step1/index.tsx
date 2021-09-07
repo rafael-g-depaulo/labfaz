@@ -69,7 +69,7 @@ export const Step1: FC = () => {
                 placeholder="Digite seu cpf"
                 inputMask="999.999.999-99"
                 onChange={(ev: any) =>
-                  setFieldValue('artist.cpf', OnlyNumbers(ev.target.value))
+                  setFieldValue('artist.cpf', ev.target.value)
                 }
                 obrigatory
               />
@@ -125,7 +125,7 @@ export const Step1: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.address.residency"
-                value="df"
+                value="df"  
                 label="Distrito Federal"
               />
             </InputRadioContainer>
@@ -211,7 +211,7 @@ export const Step1: FC = () => {
           <div className="residencyContainer">
             <InputTextContainer>
               <TextInput
-                name="artist.address.address"
+                name="artist.address.complement"
                 label="Endereco"
                 placeholder="Digite seu logradouro"
                 obrigatory
@@ -240,7 +240,7 @@ export const Step1: FC = () => {
 
             <InputTextContainer>
               <TextInput
-                name="artist.address.complement"
+                name="artist.address.address"
                 label="Complemento"
                 placeholder="Digite seu complemento"
               />

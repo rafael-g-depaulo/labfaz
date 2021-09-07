@@ -3,7 +3,6 @@ import { useFormikContext } from 'formik'
 
 import { TextInput } from 'Components/Inputs/TextInput'
 import { RadioInput } from 'Components/Inputs/RadioInput'
-import { SelectInput } from 'Components/Inputs/SelectInput'
 import { FileInput } from 'Components/Inputs/FileInput'
 
 import {
@@ -15,7 +14,7 @@ import {
   InputRadioContainer,
   SelectContainer,
   FileContainer,
-  OtherTechnicalArea
+  OtherTechnicalArea,
 } from './style'
 
 interface ErrorProps {
@@ -24,6 +23,7 @@ interface ErrorProps {
       areas: {
         name: string
         technical_formation: string
+        started_year: string
       }
     }
   }
@@ -32,13 +32,6 @@ interface ErrorProps {
 export const Step5: FC = () => {
   const { values, errors } = useFormikContext<ErrorProps>()
 
-  const options = [
-    { value: '2018', label: '2018' },
-    { value: '2019', label: '2019' },
-    { value: '2020', label: '2020' },
-    { value: '2021', label: '2021' },
-  ]
-
   return (
     <Container>
       <LeftSide>
@@ -46,7 +39,7 @@ export const Step5: FC = () => {
           <label htmlFor="TecnicalArea" className="radioLabel">
             O seu trabalho na técnica está ligado à qual dessas áreas?
             <p className="obrigatory"> *</p>
-            {errors.artist?.technical?.areas && (
+            {errors.artist?.technical?.areas?.name && (
               <span className="errorMessage">
                 {errors.artist.technical.areas.name}
               </span>
@@ -182,15 +175,27 @@ export const Step5: FC = () => {
           </label>
 
           <SelectContainer className="selectContent">
-            <SelectInput name="artist.technical.profession" options={options} />
+            <TextInput
+              name="artist.technical.profession"
+              placeholder="Digite sua profissão"
+            />
           </SelectContainer>
 
           <label htmlFor="TecnicalArea" className="radioLabel">
             Em qual ano você começou a trabalhar nessa área?
+            {errors.artist?.technical?.areas && (
+              <span className="errorMessage">
+                {errors.artist.technical.areas.started_year}
+              </span>
+            )}
           </label>
 
           <SelectContainer className="selectContent">
-            <SelectInput name="artist.technical.areas.started_year" options={options} />
+            <TextInput
+              name="artist.technical.areas.started_year"
+              inputMask="9999"
+              placeholder="2010"
+            />
           </SelectContainer>
 
           <label htmlFor="technical_formation" className="radioLabel">
@@ -205,7 +210,7 @@ export const Step5: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.technical.areas.technical_formation"
-              value="Autodidata"
+              value="autodidata"
               label="Autodidata"
             />
           </InputRadioContainer>
@@ -213,7 +218,7 @@ export const Step5: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.technical.areas.technical_formation"
-              value="Curso especializado na área"
+              value="curso especializado"
               label="Curso especializado na área"
             />
           </InputRadioContainer>
@@ -221,7 +226,7 @@ export const Step5: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.technical.areas.technical_formation"
-              value="Formação Técnica"
+              value="tecnico"
               label="Formação Técnica"
             />
           </InputRadioContainer>
@@ -229,7 +234,7 @@ export const Step5: FC = () => {
           <InputRadioContainer>
             <RadioInput
               name="artist.technical.areas.technical_formation"
-              value="Formação Tecnológica"
+              value="tecnologica"
               label="Formação Tecnológica"
             />
           </InputRadioContainer>
@@ -238,7 +243,7 @@ export const Step5: FC = () => {
             <RadioInput
               type="radio"
               name="artist.technical.areas.technical_formation"
-              value="Formação Universitária"
+              value="universitaria"
               label="Formação Universitária"
             />
           </InputRadioContainer>

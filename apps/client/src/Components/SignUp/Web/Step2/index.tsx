@@ -17,7 +17,7 @@ interface ErrorProps {
   artist: {
     gender: string
     sexual_orientation: string
-    gender_identity: string
+    gender_specific: string
     race: string
   }
 }
@@ -60,7 +60,7 @@ export const Step2: FC = () => {
               <InputRadioContainer>
                 <RadioInput
                   name="artist.race"
-                  value="indígena"
+                  value="indigena"
                   label="Indígena"
                 />
               </InputRadioContainer>
@@ -114,14 +114,14 @@ export const Step2: FC = () => {
           <div className="genderIdentityContainer">
             <label htmlFor="gender_identity">
               Identidade de Genero <p className="obrigatory"> *</p>
-              {errors.artist?.gender_identity && (
+              {errors.artist?.gender_specific && (
                 <span className="errorMessage">Campo obrigatório</span>
               )}
             </label>
             <InputRadioContainer>
               <RadioInput
-                name="artist.gender_identity"
-                value="Cisgênero(a)"
+                name="artist.gender_specific"
+                value="cisgênero"
                 label="Cisgênero(a)"
                 information='Pessoa cisgênero consiste no/a indivíduo/a que se identifica com
                 o seu "gênero de nascença". Por exemplo: um indivíduo que possui
@@ -140,8 +140,8 @@ export const Step2: FC = () => {
 
             <InputRadioContainer>
               <RadioInput
-                name="artist.gender_identity"
-                value="Transexual/Transgênero(a)"
+                name="artist.gender_specific"
+                value="transgênero"
                 label="Transexual/Transgênero(a)"
                 information="pessoa transexual/transgênero é o(a) indivíduo(a) que se
                 identifica com um gênero diferente daquele que lhe foi atribuído
@@ -164,8 +164,8 @@ export const Step2: FC = () => {
 
             <InputRadioContainer>
               <RadioInput
-                name="artist.gender_identity"
-                value="Não-binário(a)"
+                name="artist.gender_specific"
+                value="não-binário"
                 label="Não-binário(a)"
                 information="pessoa transexual/transgênero é o(a) indivíduo(a) que se
                 identifica com um gênero diferente daquele que lhe foi atribuído
@@ -188,8 +188,8 @@ export const Step2: FC = () => {
 
             <InputRadioContainer>
               <RadioInput
-                name="artist.gender_identity"
-                value="Prefiro não responder"
+                name="artist.gender_specific"
+                value="prefiro não responder"
                 label="Prefiro não responder"
               />
             </InputRadioContainer>
@@ -209,7 +209,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Assexual"
+                value="assexual"
                 label="Assexual"
                 information="Assexualidade é a falta total, parcial ou condicional de atração sexual a qualquer pessoa, com pouco ou inexistente interesse nas atividades sexuais humanas. Pode ser considerada uma orientação sexual ou a falta de uma"
               />
@@ -224,7 +224,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Bissexual"
+                value="bissexual"
                 label="Bissexual"
                 information="Orientação sexual bissexual é atração romântica, atração sexual ou comportamento sexual voltado tanto a homens e como a mulheres, ou por mais de um sexo ou gênero."
               />
@@ -238,7 +238,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Heterossexual"
+                value="heterosexual"
                 label="Heterossexual"
                 information="Orientação sexual heterossexual é atração romântica e/ou sexual entre pessoas do gênero oposto ao seu"
               />
@@ -251,7 +251,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Pansexual"
+                value="pansexual"
                 label="Pansexual"
                 information="Pansexual é a denominação que abarca quem sente atração física, desejo sexual e amor independentemente de sexo ou identidade de gênero. Confundido com a bissexualidade, que é definida como a atração por mais de um gênero, em geral homem ou mulher"
               />
@@ -266,7 +266,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Homossexualidade Lésbica"
+                value="lésbica"
                 label="Homossexualidade Lésbica"
                 information="é a denominação em que uma mulher sente-se atraída afetiva e/ou sexual com outra mulher"
               />
@@ -279,7 +279,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Homossexualidade Gay"
+                value="gay"
                 label="Homossexualidade Gay"
                 information="é a denominação em que um homem sente-se atraído afetivo e/ou sexual por outra homem"
               />
@@ -292,7 +292,7 @@ export const Step2: FC = () => {
             <InputRadioContainer>
               <RadioInput
                 name="artist.sexual_orientation"
-                value="Prefiro não dizer"
+                value="prefiro não dizer"
                 label="Prefiro não dizer"
               />
             </InputRadioContainer>
