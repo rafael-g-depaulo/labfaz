@@ -20,12 +20,15 @@ export const AskReset: FC = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const [isError, setIsError] = useState(false)
+  const Title = "EMAIL ENVIADO!"
+  const [email, setEmail] = useState("mail@mail.com")
 
   const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
     askResetPassword(values.email)
       .then(() => {
-        setEmailStatus("O email com as instruções para recuperar sua senha foram enviados. Pode demorar alguns minutos para chegar, fique de olho na sua caixa de mensagens.")        
+        setEmail(values.email)
+        setIsVisible(true)        
         setValues({
           email: ""
         })
@@ -83,7 +86,12 @@ export const AskReset: FC = () => {
           )
           }        
         </Formik>
-        <Modal isVisible={isVisible} setFunction={setIsVisible} />
+        <Modal 
+          isVisible={isVisible} 
+          setFunction={setIsVisible}
+          title={Title}
+          userEmail={email}
+          />
       </>
   )
 }

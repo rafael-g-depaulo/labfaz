@@ -162,33 +162,114 @@ export const FormButton = styled.button`
 export const ModalDiv = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
-  min-height: 707px;
+  background-color: black;
+  max-height: 707px;
+  height: 80vh;
   min-width: 640px;
   max-width: 640px;
+  border: 5px solid rgba(40,40,40,0.5);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgba(10,10,10,0.8),
+    inset 0px 0px 20px rgba(10, 10, 10, 0.8);
 
   position: absolute;
 
-  background: rgba(229, 229, 229, 1);
-
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   text-align: justify;
 
   h3 {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    color: white;
+    font-size: var(--font-size-title-xlarge);
+  }
+
+
+  ${MobileSmall(css`
+    min-height: 530px;
+    max-height: 530px;
+    min-width: 303px;
+    max-width: 303px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+  `)}
+
+  ${Mobile(css`
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 350px;
+    max-width: 350px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+  `)}
+
+  ${DesktopSmall(css`
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 400px;
+    max-width: 400px;
+
+    h3 {
+      font-size: var(--font-size-title-smaller);
+      max-width: 80%;
+      text-align: center;
+      padding-top: 1em;
+      margin-top: 0;
+    }
+  `)}
+`
+
+export const ModalLine = styled.div`
+  min-height: 2px;
+  min-width: 80%;
+  box-shadow: 0px 3px 5px #0B0B0B;
+  margin-bottom: 2.3rem;
+  background: linear-gradient(to right, rgba(40, 40, 40, 0.1), rgba(40, 40, 40, 1), rgba(40, 40, 40, 0.1) );
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 90%;
+  max-width: 98%;
+  max-height: 525px;
+  height: 70%;
+
+  background: linear-gradient(180deg, #202020 0%, rgba(32, 32, 32, 0.7) 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px -5px 14px rgba(22, 22, 22, 0.8);
+  border-radius: 5px;
+
+
+
+  h3 {
     margin-top: 3.15em;
+    color: white;
   }
 
   > p {
     text-align: center;
     max-width: 488px;
     font-size: var(--font-size-title-short);
+    line-height: 26px;
+    color: white;
   }
 
-  p:first-child {
-    display: none;
-  }
 
   p:nth-child(2) {
     margin-top: 3em;
@@ -212,18 +293,7 @@ export const ModalDiv = styled.div`
   z-index: 999999999;
 
   ${MobileSmall(css`
-    min-height: 530px;
-    max-height: 530px;
-    min-width: 303px;
-    max-width: 303px;
 
-    h3 {
-      font-size: var(--font-size-title-smaller);
-      max-width: 80%;
-      text-align: center;
-      padding-top: 1em;
-      margin-top: 0;
-    }
 
     p {
       font-size: var(--font-size-short);
@@ -244,11 +314,6 @@ export const ModalDiv = styled.div`
   `)}
 
   ${Mobile(css`
-    min-height: 600px;
-    max-height: 600px;
-    min-width: 350px;
-    max-width: 350px;
-
     h3 {
       font-size: var(--font-size-title-smaller);
       max-width: 80%;
@@ -276,11 +341,6 @@ export const ModalDiv = styled.div`
   `)}
 
   ${DesktopSmall(css`
-    min-height: 600px;
-    max-height: 600px;406px
-    min-width: 400px;
-    max-width: 400px;
-
     h3 {
       font-size: var(--font-size-title-smaller);
       max-width: 80%;
@@ -308,11 +368,6 @@ export const ModalDiv = styled.div`
   `)}
 
   ${DesktopLarge(css`
-    min-height: 650px;
-    max-height: 650px;
-    min-width: 500px;
-    max-width: 500px;
-
     h3 {
       font-size: var(--font-size-title-smaller);
       max-width: 80%;
@@ -341,6 +396,7 @@ export const ModalDiv = styled.div`
   `)}
 
 `
+
 
 export const Container = styled.div<ModalProps>`
   display: ${props => props.isVisible ? "grid" : "none"};
