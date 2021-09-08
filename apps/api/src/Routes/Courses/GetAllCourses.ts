@@ -1,3 +1,4 @@
+import Course, { ActivityType } from "Entities/Courses";
 import CourseRepository from "Repository/CourseRepository"
 import { fetchedSuccessfully } from "Utils/endpointReturns";
 import { Req } from "Utils/request"
@@ -15,7 +16,13 @@ export const GetAllCourses: (
   const courses = await CourseRepo.find();
 
   // separate activities by type
-  const activities = courses.reduce((acc, cur) => ({ ...acc, [cur.type]: cur}), {})
+  const initial: {[k in ActivityType]: Course[]} = {
+    [ActivityType.CURSO]: [],
+    [ActivityType.LIVE]: [],
+    [ActivityType.OFICINA]: [],
+    [ActivityType.RODA_DE_CONVERSA]: [],
+  }
+  const activities = courses.reduce((acc, cur) => ({ ...acc, [cur.type]: [...acc[cur.type], cur]}), initial)
 
   return fetchedSuccessfully(res, activities)
 }
