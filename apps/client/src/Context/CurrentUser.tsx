@@ -1,4 +1,5 @@
-import React, { FC, createContext, useState, useMemo, useContext } from "react"
+import React, { FC, createContext, useMemo, useContext } from "react"
+
 import useLocalStorage from 'Hooks/useLocalStorage'
 
 export interface User {
@@ -17,10 +18,6 @@ export interface CurrentUser {
   token?: string
   setToken: (t: string) => void
   isLoggedIn: boolean
-  storedUser?: User,
-  setStoredUser:  (p: string, u: User) => void
-  storedToken?: string,
-  setStoredToken:  (p: string, u: string) => void
 
 }
 
@@ -30,10 +27,8 @@ export const useCurrentUser = () => useContext(CurrentUserContext)
 export const CurrentUserProvider: FC = ({
   children,
 }) => {
-  const [ user, setUser] = useState<User | undefined>(undefined)
-  const [ token, setToken] = useState<string | undefined>(undefined)
-  const [storedUser, setStoredUser] = useLocalStorage('user', user)
-  const [storedToken, setStoredToken] = useLocalStorage('token', token)
+  const [ user, setUser ] = useLocalStorage<User | undefined>('user', undefined)
+  const [ token, setToken ] = useLocalStorage<string | undefined>('token', undefined)
 
   const currentUserValue = useMemo<CurrentUser>(() => ({
     user,
@@ -41,10 +36,6 @@ export const CurrentUserProvider: FC = ({
     token,
     setToken,
     isLoggedIn: !!token,
-    storedUser,
-    setStoredUser,
-    storedToken,
-    setStoredToken
   }), [user, setUser, token, setToken])
 
   console.log("user context.", token, user, "cuv", currentUserValue)
