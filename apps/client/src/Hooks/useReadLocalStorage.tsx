@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useEffect, useState } from 'react'
 
 
@@ -10,32 +11,32 @@ function useReadLocalStorage<T>(key: string): Value<T> {
 
   // parse stored json or return initialValue
 
-  const readValue = (): Value<T> => {
+    const readValue = useCallback( (): Value<T> => {
 
-    // Prevent build error "window is undefined" but keep keep working
-
-    if (typeof window === 'undefined') {
-
-      return null
-
-    }
-
-
-    try {
-
-      const item = window.localStorage.getItem(key)
-
-      return item ? (JSON.parse(item) as T) : null
-
-    } catch (error) {
-
-      console.warn(`Error reading localStorage key “${key}”:`, error)
-
-      return null
-
-    }
-
-  }
+      // Prevent build error "window is undefined" but keep keep working
+  
+      if (typeof window === 'undefined') {
+  
+        return null
+  
+      }
+  
+  
+      try {
+  
+        const item = window.localStorage.getItem(key)
+  
+        return item ? (JSON.parse(item) as T) : null
+  
+      } catch (error) {
+  
+        console.warn(`Error reading localStorage key “${key}”:`, error)
+  
+        return null
+  
+      }
+  
+    }, [key])
 
 
   // State to store our value
@@ -53,7 +54,7 @@ function useReadLocalStorage<T>(key: string): Value<T> {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  }, [])
+  }, [setStoredValue, readValue])
 
 
   useEffect(() => {
@@ -85,9 +86,7 @@ function useReadLocalStorage<T>(key: string): Value<T> {
 
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
-  }, [])
+  }, [setStoredValue, readValue])
 
 
   return storedValue

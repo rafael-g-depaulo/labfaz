@@ -41,20 +41,20 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, setValue<T>] {
       console.warn(`Error setting localstorage key ${key}`, error)
     }
 
-    useEffect(() => {
-      setStoredValue(readValue())
-    }, [])
-  
-    useEffect(() => {
-      const handleStorageChange = () => {
-        setStoredValue(readValue())
-      }
-
-      window.removeEventListener('storage', handleStorageChange)
-      window.removeEventListener('local-storage', handleStorageChange)
-    }, [])
-
   }
+
+  useEffect(() => {
+    setStoredValue(readValue())
+  }, [])
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setStoredValue(readValue())
+    }
+
+    window.removeEventListener('storage', handleStorageChange)
+    window.removeEventListener('local-storage', handleStorageChange)
+  }, [])
 
   return [storedValue, setValue]
 }
