@@ -125,10 +125,7 @@ export const Web: FC<ButtonProps> = ({ buttonType }) => {
             artist: yup.object({
               name: yup.string().required('Nome obrigatório'),
               social_name: yup.string(),
-              artistic_name: yup
-                .string()
-                .min(4, 'Nome muito pequeno')
-                .max(10, 'Nome muito grande'),
+              artistic_name: yup.string(),
               cpf: yup
                 .string()
                 .required('Cpf obrigatório')

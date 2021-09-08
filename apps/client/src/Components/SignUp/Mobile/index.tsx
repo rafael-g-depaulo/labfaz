@@ -136,9 +136,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
             name: yup.string().required('Nome obrigatório'),
             social_name: yup.string(),
             artistic_name: yup
-              .string()
-              .min(4, 'Pelo menos 4 caracteres')
-              .max(10, 'Nome muito grande'),
+              .string(),
           }),
         })}
         >
