@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/client",
-  "version": "3.20.0",
+  "version": "3.21.0",
   "license": "MIT",
   "dependencies": {
     "@labfaz/server-conn-info": "^3.18.1",
@@ -27,9 +27,9 @@
     "react-ga4": "^1.0.4",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
+    "react-input-mask": "^2.0.4",
     "react-markdown": "^6.0.2",
     "react-query": "^3.21.1",
-    "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-spinners": "^0.11.0",
