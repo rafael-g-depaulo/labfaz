@@ -1,10 +1,10 @@
 import { EntityRepository, Repository } from "typeorm"
 
-import Course from "Entities/Courses"
+import Course, { ActivityType } from "Entities/Courses"
 
 interface CreateCourseInterface {
   teacher: string[],
-  type: "curso" | "live" | "oficina" | "roda de conversa",
+  type: ActivityType,
   tags: string[],
   detail: string[]
   fonte: string[]
@@ -16,7 +16,7 @@ interface CreateCourseInterface {
   has_subscription: boolean,
   subscription_start_date: Date,
   subscription_finish_date: Date,
-  activity_date: Date,
+  class_dates: Date[],
   link: string
 }
 
@@ -33,7 +33,7 @@ export class CourseRepository extends Repository<Course> {
   async createCourse(
     { 
       type, tags, detail, fonte, short_description, about, requirements, available, banner,
-      has_subscription,subscription_start_date, subscription_finish_date, activity_date, link 
+      has_subscription,subscription_start_date, subscription_finish_date, class_dates, link 
     } : CreateCourseInterface
     ) {
 
@@ -51,7 +51,7 @@ export class CourseRepository extends Repository<Course> {
       subscription_start_date,
       subscription_finish_date,
       link,
-      activity_date,
+      class_dates,
     })
 
     await createcourse.save()
