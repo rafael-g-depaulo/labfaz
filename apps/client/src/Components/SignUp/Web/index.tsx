@@ -395,22 +395,28 @@ function FormikStepper({
             </div>
 
             <div className="socialMedias">
-              {socialNetworks?.youtube && <a href={socialNetworks?.youtube} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.youtube && <a href={socialNetworks?.youtube} target="_blank" rel="noopener noreferrer">
                 <FaYoutubeSquare />
               </a>}
-              {socialNetworks?.facebook && <a href={socialNetworks?.facebook} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.facebook && <a href={socialNetworks?.facebook} target="_blank" rel="noopener noreferrer">
                 <FaFacebookSquare />
               </a>}
-              {socialNetworks?.twitter && <a href={socialNetworks?.twitter} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.twitter && <a href={socialNetworks?.twitter} target="_blank" rel="noopener noreferrer">
                 <FaTwitterSquare />
               </a>}
-              {socialNetworks?.googlePlus && <a href={socialNetworks?.googlePlus} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.googlePlus && <a href={socialNetworks?.googlePlus} target="_blank" rel="noopener noreferrer">
                 <FaGooglePlusSquare />
               </a>}
-              {socialNetworks?.linkedin && <a href={socialNetworks?.linkedin} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.linkedin && <a href={socialNetworks?.linkedin} target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
               </a>}
-              {socialNetworks?.instagram && <a href={socialNetworks?.instagram} target="blank">
+              { // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              socialNetworks?.instagram && <a href={socialNetworks?.instagram} target="_blank" rel="noopener noreferrer">
                 <FaInstagramSquare />
               </a>}
             </div>
