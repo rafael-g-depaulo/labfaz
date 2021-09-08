@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from 'react'
 import { Form, Formik, FormikConfig, FormikValues } from 'formik'
-import { useHistory } from 'react-router'
+
 import {
   FaRegCheckCircle,
   FaYoutubeSquare,
@@ -43,7 +43,7 @@ import {
   SessionContainer,
   ConfirmEmailModal,
 } from './style'
-import { fetchSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
+import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -330,30 +330,8 @@ function FormikStepper({
 
   const [confirmEmailModal, setConfirmEmailModal] = useState(false)
   const [email, setEmail] = useState('')
-
-  const [labfazEmail, setLabfazEmail] = useState('')
-  const [labfazFacebook, setLabfazFacebook] = useState<string | undefined>('')
-  const [labfazTwitter, setLabfazTwitter] = useState<string | undefined>('')
-  const [labfazgooglePlus, setLabfazgooglePlus] = useState<string | undefined>(
-    ''
-  )
-  const [labfazInstagram, setLabfazInstagram] = useState<string | undefined>('')
-  const [labfazLinkedin, setLabfazLinkedin] = useState<string | undefined>('')
-  const [labfazPhone, setLabfazPhone] = useState<string | undefined>('')
-  const [labfazYoutube, setLabfazYoutube] = useState<string | undefined>('')
-
-  const social_medias_labfaz = fetchSocialNetworksLabfaz()
-
-  social_medias_labfaz.then((res) => {
-    setLabfazEmail(res.email)
-    setLabfazFacebook(res.facebook)
-    setLabfazInstagram(res.instagram)
-    setLabfazLinkedin(res.linkedin)
-    setLabfazPhone(res.phone)
-    setLabfazTwitter(res.twitter)
-    setLabfazYoutube(res.youtube)
-    setLabfazgooglePlus(res.googlePlus)
-  })
+  
+  const { data: socialNetworks } = useSocialNetworksLabfaz()
 
   function isLastStep() {
     return step === childrenArray.length - 1
@@ -415,29 +393,29 @@ function FormikStepper({
             </h2>
 
             <div className="contact">
-              <label>{labfazPhone}</label>
-              <label >{labfazEmail}</label>
+              <label>{socialNetworks?.phone}</label>
+              <label >{socialNetworks?.email}</label>
             </div>
 
             <div className="socialMedias">
-              <a href={labfazYoutube} target="blank">
+              {socialNetworks?.youtube && <a href={socialNetworks?.youtube} target="blank">
                 <FaYoutubeSquare />
-              </a>
-              <a href={labfazFacebook} target="blank">
+              </a>}
+              {socialNetworks?.facebook && <a href={socialNetworks?.facebook} target="blank">
                 <FaFacebookSquare />
-              </a>
-              <a href={labfazTwitter} target="blank">
+              </a>}
+              {socialNetworks?.twitter && <a href={socialNetworks?.twitter} target="blank">
                 <FaTwitterSquare />
-              </a>
-              <a href={labfazgooglePlus} target="blank">
+              </a>}
+              {socialNetworks?.googlePlus && <a href={socialNetworks?.googlePlus} target="blank">
                 <FaGooglePlusSquare />
-              </a>
-              <a href={labfazLinkedin} target="blank">
+              </a>}
+              {socialNetworks?.linkedin && <a href={socialNetworks?.linkedin} target="blank">
                 <FaLinkedin />
-              </a>
-              <a href={labfazInstagram} target="blank">
+              </a>}
+              {socialNetworks?.instagram && <a href={socialNetworks?.instagram} target="blank">
                 <FaInstagramSquare />
-              </a>
+              </a>}
             </div>
 
             <button type="button" onClick={() => handleRedirect()}>VOLTAR</button>
