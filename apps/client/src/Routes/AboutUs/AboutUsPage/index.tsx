@@ -25,10 +25,15 @@ export const AboutUsPage: FC = () => {
     }),
   };
 
+  // loading
   if (aboutUs.isLoading || team.isLoading || banner.isLoading)
     return <LoadingFullPage />;
 
+  // errors
   if (aboutUs.error && team.error) {
+    console.log(aboutUs.error);
+    console.log(team.error);
+
     return (
       <Error
         errorStatus={aboutUs.error.response?.status}
@@ -37,12 +42,43 @@ export const AboutUsPage: FC = () => {
     );
   }
 
-  if (aboutUs.error)
+  if (banner.error && aboutUs.error) {
+    console.log(banner.error);
+    console.log(aboutUs.error);
+
+    return (
+      <Display
+        about_data={null}
+        team={team.data!}
+        banner_data={mockBannerInfo}
+      />
+    );
+  }
+
+  if (banner.error && team.error) {
+    console.log(banner.error);
+    console.log(team.error);
+
+    return (
+      <Display
+        about_data={aboutUs.data!}
+        team={null}
+        banner_data={mockBannerInfo}
+      />
+    );
+  }
+
+  if (aboutUs.error) {
+    console.log(aboutUs.error);
+
     return (
       <Display about_data={null} team={team.data!} banner_data={banner.data!} />
     );
+  }
 
-  if (team.error)
+  if (team.error) {
+    console.log(team.error);
+
     return (
       <Display
         about_data={aboutUs.data}
@@ -50,8 +86,11 @@ export const AboutUsPage: FC = () => {
         banner_data={banner.data!}
       />
     );
+  }
 
-  if (banner.error)
+  if (banner.error) {
+    console.log(banner.error);
+
     return (
       <Display
         about_data={aboutUs.data}
@@ -59,7 +98,8 @@ export const AboutUsPage: FC = () => {
         banner_data={mockBannerInfo}
       />
     );
-
+  }
+  
   return (
     <Display
       about_data={aboutUs.data}

@@ -25,6 +25,7 @@ export const BlogPage: FC = () => {
   if (bannerInfo.isLoading || posts.isLoading) return <LoadingFullPage />;
 
   if (posts.error) {
+    console.log(posts.error);
     return (
       <Error
         errorStatus={posts.error.response?.status}
@@ -33,8 +34,10 @@ export const BlogPage: FC = () => {
     );
   }
 
-  if (bannerInfo.error)
+  if (bannerInfo.error) {
+    console.log(bannerInfo.error);
     return <Display data={mockBannerInfo} posts={posts.data!} />;
+  }
 
   return <Display data={bannerInfo.data} posts={posts.data} />;
 };
