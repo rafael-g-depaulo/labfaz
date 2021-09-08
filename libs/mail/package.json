@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/mail",
-  "version": "3.18.1",
+  "version": "4.0.0",
   "description": "lib to use the mailer service",
   "author": "Lucas Gonçalves Ramalho <lucasramalho29@gmail.com>",
   "homepage": "https://github.com/rafael-g-depaulo/labfaz#readme",
