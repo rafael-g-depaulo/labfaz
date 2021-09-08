@@ -20,7 +20,7 @@ const CourseRoute: Router<CoureDeps> = (deps, options) => {
   return express
     .Router(options)
     // .post("/create", CreateCourse({ CourseRepo }))
-    .get("/list", GetAllCourers({ CourseRepo }))
+    .get("/", GetAllCourers({ CourseRepo }))
 }
 
 export default CourseRoute

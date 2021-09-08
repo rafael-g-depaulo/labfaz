@@ -9,7 +9,7 @@ import {
 import { nanoid } from "nanoid";
 import Request from "./Requests";
 
-enum ActivityType {
+export enum ActivityType {
   CURSO = 'Curso',
   LIVE = 'Live',
   OFICINA = 'Oficina',
