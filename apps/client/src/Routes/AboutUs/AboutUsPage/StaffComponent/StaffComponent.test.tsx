@@ -6,7 +6,7 @@ import Staff from '.'
 import { TeamsData, StaffObject, Team } from 'Api/AboutUs'
 import { mockImage } from 'Utils/Image'
 
-import { screen, logRoles } from "@testing-library/dom"
+// import { screen, logRoles } from "@testing-library/dom"
 
 const image = mockImage({
   url: "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
@@ -39,7 +39,7 @@ const team: Team = {
 }
 
 const teams: TeamsData = {
-  team: [team, team],
+  team: Array.from({ length: 3 }, (_, i) => ({ ...team, id: i})),
   subtitulo: "teste teste teste"
 }
 
