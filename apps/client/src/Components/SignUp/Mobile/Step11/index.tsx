@@ -26,7 +26,7 @@ interface Step11Props {
   artist: {
     technical: {
       formation: string
-      idiom: string
+      idiom: string[]
     }
   }
 }

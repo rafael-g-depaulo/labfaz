@@ -46,7 +46,7 @@ const bodyFormParse = (values: any) => {
   formData.append('artist[technical][is_cnpj]', `${values.artist?.technical?.is_cnpj}`)
   formData.append('artist[technical][cnpj]', values.artist?.technical?.cnpj)
   formData.append('artist[technical][cnpj_type]', values.artist?.technical?.cnpj_type)
-  formData.append('artist[technical][name_enterprise]', values.artist?.technical?.name_enterprise)
+  // formData.append('artist[technical][name_enterprise]', values.artist?.technical?.name_enterprise)
 
 
   formData.append('artist[technical][areas][0][name]', values.artist?.technical?.areas.name)
@@ -66,6 +66,7 @@ const bodyFormParse = (values: any) => {
     })
   }
 
+  formData.append('artist[contact][whatsapp]', values.artist.contact?.whatsapp)
   formData.append('artist[contact][facebook]', values.artist.contact?.facebook)
   formData.append('artist[contact][twitter]', values.artist.contact?.twitter)
   formData.append('artist[contact][tiktok]', values.artist.contact?.tiktok)

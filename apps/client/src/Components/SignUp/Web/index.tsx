@@ -103,7 +103,7 @@ export const Web: FC<ButtonProps> = ({ buttonType }) => {
               drt: '',
               ceac: '',
               cnpj: '',
-              name_enterprise: '',
+              // name_enterprise: '',
               cnpj_type: 'Nenhum',
               profession: '',
               areas: {
@@ -219,7 +219,7 @@ export const Web: FC<ButtonProps> = ({ buttonType }) => {
             artist: yup.object({
               technical: yup.object({
                 formation: yup.string().required('Formação obrigatória'),
-                idiom: yup.array().required('Pelo menos um obrigatório'),
+                idiom: yup.array(),
               }),
             }),
           })}

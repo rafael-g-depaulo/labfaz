@@ -148,11 +148,11 @@ export const Step8: FC = () => {
 
             {values.artist.technical.is_cnpj === 'true' && (
               <>
-                <InputText
+                {/* <InputText
                   name="artist.technical.name_enterprise"
                   placeholder="Digite o nome da sua empresa"
                   label="Nome da empresa"
-                />
+                /> */}
 
                 <CnpjText
                   name="artist.technical.cnpj"

@@ -3,7 +3,7 @@ import { useFormikContext } from 'formik'
 import { IoIosArrowDown } from 'react-icons/io'
 
 import { RadioInput } from 'Components/Inputs/RadioInput'
-import { TextInput } from 'Components/Inputs/TextInput'
+// import { TextInput } from 'Components/Inputs/TextInput'
 import { OnlyNumbers } from 'Utils/inputRegex'
 
 import {
@@ -65,11 +65,11 @@ export const Step15: FC = () => {
           {values.artist.technical.is_cnpj === 'true' && (
             <>
               <TextContainer>
-                <TextInput
+                {/* <TextInput
                   name="artist.technical.name_enterprise"
                   placeholder="Digite o nome da sua empresa"
                   label="Nome da empresa"
-                />
+                /> */}
               </TextContainer>
               <TextContainer>
                 <InputText

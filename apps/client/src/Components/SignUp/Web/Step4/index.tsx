@@ -24,7 +24,7 @@ interface ErrorProps {
   artist: {
     technical: {
       formation: string
-      idiom: string
+      idiom: string[]
     }
   }
 }

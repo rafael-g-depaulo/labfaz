@@ -28,7 +28,7 @@ export const Step7: FC = () => {
               label="Celular com WhatsApp"
               inputMask="(99) 9 9999-9999"
               onChange={(ev: any) =>
-                setFieldValue('birthday', OnlyNumbers(ev.target.value))
+                setFieldValue('whatsapp', OnlyNumbers(ev.target.value))
               }
               placeholder="Digite seu número"
             />

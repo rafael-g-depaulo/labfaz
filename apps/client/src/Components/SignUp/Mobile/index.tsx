@@ -113,7 +113,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
               drt: '',
               ceac: '',
               cnpj: '',
-              name_enterprise: '',
+              // name_enterprise: '',
               cnpj_type: 'Nenhum',
               profession: '',
               areas: {
@@ -468,10 +468,15 @@ function FormikStepper({
 
           delete values.use_terms
 
-          SignUp(values).then(() => {
-            setConfirmEmailModal(true)
-            setEmail(values.email)
-          })
+          SignUp(values)
+            .then(() => {
+              setConfirmEmailModal(true)
+              setEmail(values.email)
+            })
+            .catch(err => {
+              // TODO: dar feedback pro usuário
+              console.error("erro na tentativa de cadastro", err)
+            })
 
           console.log(values)
         } else {
