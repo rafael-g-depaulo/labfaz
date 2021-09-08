@@ -1,6 +1,6 @@
 import { 
   badRequestError, 
-  createdSuccessfully, 
+  createdSuccessfully,
   notFoundError, 
   unauthenticatedError, 
   unauthorizedError, 
@@ -32,6 +32,8 @@ export const SubscribeToCourse: (
   const course = await CourseRepo.findById(courseId ?? "")
 
 
+
+
   if(!id) {
     return badRequestError(res, "user id missing");
   }
@@ -58,8 +60,12 @@ export const SubscribeToCourse: (
 
   const request = await RequestRepo.createRequest(user, course)
 
+
   if(request) {
+    console.log(request)
     createdSuccessfully(res, "Request Created")
+  } else {
+    return unauthorizedError(res, "Alredy subscribed")
   }
 
   return unidentifiedError(res, "Something wrong happend")

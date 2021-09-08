@@ -8,6 +8,7 @@ import CourseRepository from "Repository/CourseRepository";
 // import { CreateCourse } from "./CreateCourse";
 import { GetAllCourses as GetAllCourses } from "./GetAllCourses";
 import ShowCourse from "./ShowCourse";
+import { CreateCourse } from "./CreateCourse";
 
 
 type CoureDeps = {
