@@ -6,7 +6,8 @@ import CourseRepository from "Repository/CourseRepository";
 // import ensureAuthenticated from "Middlewares/ensureAuthenticated";
 
 // import { CreateCourse } from "./CreateCourse";
-import { GetAllCourers } from "./GetAllCoursers";
+import { GetAllCourses as GetAllCourses } from "./GetAllCourses";
+import ShowCourse from "./ShowCourse";
 
 
 type CoureDeps = {
@@ -20,7 +21,8 @@ const CourseRoute: Router<CoureDeps> = (deps, options) => {
   return express
     .Router(options)
     // .post("/create", CreateCourse({ CourseRepo }))
-    .get("/", GetAllCourers({ CourseRepo }))
+    .get("/:course_id", ShowCourse({ CourseRepo }))
+    .get("/", GetAllCourses({ CourseRepo }))
 }
 
 export default CourseRoute
