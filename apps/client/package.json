@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/client",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "license": "MIT",
   "dependencies": {
     "@labfaz/server-conn-info": "^4.0.1",
