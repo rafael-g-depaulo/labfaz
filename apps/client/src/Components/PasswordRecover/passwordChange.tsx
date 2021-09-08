@@ -38,11 +38,11 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
       setError(true)
     }
 
-    setSubmitting(false)
     setValues({
       password: "",
       passwordConfirmation: ""
     })
+    setSubmitting(false)
   }
 
   const validateSubmit = (values: FormProps) => {
