@@ -63,11 +63,11 @@ export class Course extends BaseEntity {
   @Column({ default: false, nullable: true })
   has_subscription: boolean
 
-  @Column()
-  subscription_start_date: Date
+  @Column({ nullable: true })
+  subscription_start_date?: Date
 
-  @Column()
-  subscription_finish_date: Date
+  @Column({ nullable: true })
+  subscription_finish_date?: Date
 
   @Column('date', { array: true, default: {} })
   class_dates: Date[]
