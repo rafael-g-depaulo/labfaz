@@ -21,6 +21,7 @@ export class RequestRepository extends Repository<Request> {
       })
       .catch(err => {
         console.log(err)
+        return err
       })   
 
     await user.save()

@@ -6,6 +6,7 @@ import AnimalExampleRouter from "./AnimalExample"
 import UserRouter from "./User"
 import SessionRouter from './Session'
 import CourseRoute from "./Courses"
+import RequestRouter from "./Subscription"
 import { actionSuccessful } from "Utils/endpointReturns"
 
 export interface RouterDeps {
@@ -30,6 +31,7 @@ const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => e
   .use("/user", UserRouter({ conn }, options))
   .use("/sessions", SessionRouter({ conn }, options))
   .use("/courses", CourseRoute({ conn }, options))
+  .use("/subscription", RequestRouter({ conn }, options))
 
 
 export default Routes
