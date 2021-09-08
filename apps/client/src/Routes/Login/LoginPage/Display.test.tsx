@@ -22,8 +22,8 @@ describe('Check content of Login component', () => {
   )
 
   it('checks if title rendered', () => {
-    const title = getByText('Seja bem vinde!')
-    expect(title).toHaveTextContent('Seja bem vinde!')
+    const title = getByText('Entrar')
+    expect(title).toHaveTextContent('Entrar')
   })
 
   it('checks if subtitle rendered', () => {
