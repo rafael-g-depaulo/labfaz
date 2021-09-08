@@ -48,6 +48,6 @@ describe('Check user session links', () => {
   })
 
   it('check sign up button', () => {
-    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute('href', '/register')
+    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute('href', '/signup')
   })
 })

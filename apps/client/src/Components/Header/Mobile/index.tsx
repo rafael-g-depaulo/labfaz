@@ -24,11 +24,11 @@ export const Mobile: FC = () => {
       <div className={open ? 'navBar active' : 'navBar'}>
         <NavBar>
           <NavLink href="/"> HOME </NavLink>
-          {navLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)}
+          {navLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)}
           {isLoggedIn
-            ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)
+            ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)
             : unloggedNavLinksList.map(({ name, label, path }) =>
-              <Button BackgroundColor={name === "login" ? "login" : undefined} href={path}> {label} </Button>
+              <Button BackgroundColor={name === "login" ? "login" : undefined} href={path} key={`${label}+${path}`}> {label} </Button>
           )
           }
         </NavBar>

@@ -26,16 +26,16 @@ export const Web: FC = () => {
         <Logo />
       </RedirectLink>
       <Navbar>
-        {navLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)}
+        {navLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)}
       </Navbar>
       <div className="line" />
       <UserSession>
         { isLoggedIn 
-          ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path}> {label} </NavLink>)
+          ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)
           : unloggedNavLinksList.map(({ name, label, path }) =>
             name === "login"
-              ? <LogIn href={path}> {label} </LogIn>
-              : <Button href={path}> {label} </Button>
+              ? <LogIn href={path} key={`${label}+${path}`}> {label} </LogIn>
+              : <Button href={path} key={`${label}+${path}`}> {label} </Button>
           )
         }
       </UserSession>
