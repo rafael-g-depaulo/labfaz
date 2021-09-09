@@ -7,7 +7,7 @@ import Course from "Entities/Courses"
 @EntityRepository(Request)
 export class RequestRepository extends Repository<Request> {
 
-  checkExistingRequest(courseId: string, UserId: string){
+  async checkExistingRequest(courseId: string, UserId: string){
     return this.find({
       where: { 
         course: courseId,
@@ -48,9 +48,19 @@ export class RequestRepository extends Repository<Request> {
         })
         .catch(err => {
           return err
-        })   
-        await user.save()
-        await course.save()
+        })
+        
+        try {
+          await user.save()
+        } catch(e) {
+          console.log(e)
+        }
+
+        try {
+          await course.save()
+        } catch(e) {
+          console.log(e)
+        }
     
         return createRequest
     } else {

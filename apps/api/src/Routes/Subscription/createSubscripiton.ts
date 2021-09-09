@@ -32,8 +32,6 @@ export const SubscribeToCourse: (
   const course = await CourseRepo.findById(courseId ?? "")
 
 
-
-
   if(!id) {
     return badRequestError(res, "user id missing");
   }

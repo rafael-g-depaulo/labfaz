@@ -3,6 +3,7 @@ import { EntityRepository, Repository } from "typeorm"
 import Course, { ActivityType } from "Entities/Courses"
 
 interface CreateCourseInterface {
+  name: string
   teacher: string[],
   type: ActivityType,
   tags: string[],
@@ -32,12 +33,13 @@ export class CourseRepository extends Repository<Course> {
 
   async createCourse(
     { 
-      type, tags, detail, fonte, short_description, about, requirements, available, banner,
+      name, type, tags, detail, fonte, short_description, about, requirements, available, banner,
       has_subscription,subscription_start_date, subscription_finish_date, class_dates, link 
     } : CreateCourseInterface
     ) {
 
     const createcourse = this.create({
+      name,
       type,
       tags,
       detail,

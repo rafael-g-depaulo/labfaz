@@ -5,7 +5,7 @@ import CourseRepository from "Repository/CourseRepository"
 import { createdSuccessfully } from "Utils/endpointReturns"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
-
+import { ActivityType } from "Entities/Courses"
 // import Course from "Entities/Courses"
 
 interface CreateCourseDeps {
@@ -19,8 +19,9 @@ export const CreateCourse: (
 }: CreateCourseDeps) => async (_req, res) => {
 
   const course1 = await CourseRepo.createCourse({
+    name: "Some cool name",
     teacher: ["Rafael Gonçalves"],
-    type: "curso",
+    type: ActivityType.CURSO,
     tags: ["varios papos"],
     detail: ["vai aprender a gerenciar as paradas"],
     fonte: ["Da minha cabeça"],
@@ -32,13 +33,14 @@ export const CreateCourse: (
     has_subscription: true,
     subscription_start_date: new Date(),
     subscription_finish_date: new Date(),
-    activity_date: new Date(),
+    class_dates: [new Date()],
     link: "zooooooooooooooooom.com.br"
   })
 
   const course2 = await CourseRepo.createCourse({
+    name: "Other cool name",
     teacher: ["Rafael Gonçalves"],
-    type: "curso",
+    type: ActivityType.OFICINA,
     tags: ["varios papos"],
     detail: ["vai aprender a gerenciar as paradas"],
     fonte: ["Da minha cabeça"],
@@ -50,7 +52,7 @@ export const CreateCourse: (
     has_subscription: false,
     subscription_start_date: new Date(),
     subscription_finish_date: new Date(),
-    activity_date: new Date(),
+    class_dates: [new Date()],
     link: "zooooooooooooooooom.com.br"
   })
 
