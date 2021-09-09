@@ -5,7 +5,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   
-  width: 100vw;
 
   margin-bottom: 5.5rem;
 `
@@ -15,13 +14,11 @@ export const ProfileContentContainer = styled.div`
 
   flex-direction: column; 
 
-  border-radius: 15px 15px 15px 15px;
 
   padding-top: 2rem;
 `
 
 export const Header = styled.div`
-  width: 100vw;
 
   position: relative;
 
@@ -40,7 +37,6 @@ export const Header = styled.div`
 `
 
 export const UserPhotoContainer = styled.div`
-  width: 100%;
 
   display: flex;
   justify-content: center;
@@ -121,6 +117,8 @@ export const UserTechnicalInformation = styled.div`
 `
 
 export const UserInformation = styled.div`
+  /* width: 100%; */
+
   .Header {
     display: flex;
 
@@ -221,12 +219,16 @@ export const UserPhoto = styled.div`
   width: 217px;
   height: 217px;
   border-radius: 50%;
-  background-color: #A3A3A3;
+  background-color: #FC0061;
 
   img {
     width: 217px;
     height: 217px;
     border-radius: 50%;
+    object-fit: cover;
+
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
   }
 `
 
@@ -271,7 +273,7 @@ export const SocialMedias = styled.ul`
 
       margin-right: 0.94rem;
 
-      color: #6C6C6C;
+      color: #FC0061;
     }
   }
 `
@@ -335,7 +337,7 @@ export const Content = styled.section`
     align-items: center;
 
     svg {
-      color: #6C6C6C;
+      color: #FC0061;
       margin-right: 1.2rem;
 
       width: 22px;

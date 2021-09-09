@@ -34,13 +34,21 @@ import {
   UserInformation,
 } from './style'
 
-const Mobile: FC = () => {
+interface MobileProps {
+  data: object
+}
+
+const currentYear = new Date().getFullYear()
+
+const Mobile: FC<MobileProps> = ({ data }) => {
   return (
     <Container>
       <ProfileContentContainer>
         <Header>
           <UserPhotoContainer>
-            <UserPhoto />
+            <UserPhoto>
+              <img src="" alt="user photo" />
+            </UserPhoto>
           </UserPhotoContainer>
           <GoGear />
         </Header>
@@ -48,18 +56,22 @@ const Mobile: FC = () => {
           <UserBasicInformation>
             <div className="container">
               <div>
-                <NickName>Nickname</NickName>
-                <UserName>Name</UserName>
+                <NickName>{data.artist.show_name}</NickName>
+                <UserName>{data.artist.name}</UserName>
               </div>
 
-              <button className="downloadCurriculum">
-                <IoMdCloudDownload />
-                CV
-              </button>
+              {data.curriculum && (
+                <button className="downloadCurriculum">
+                  <IoMdCloudDownload />
+                  CV
+                </button>
+              )}
             </div>
             <div className="container">
               <div>
-                <UserLocation>Formosa, Entorno DF</UserLocation>
+                <UserLocation>
+                  {data.artist.address.city}, {data.artist.address.state}
+                </UserLocation>
               </div>
 
               <MdContactPhone />
@@ -67,32 +79,22 @@ const Mobile: FC = () => {
           </UserBasicInformation>
           <UserTechnicalInformation>
             <ul>
-              <li>AUDIOVISUAL</li>
-              <li>EXPERIENCIA: 7 ANOS</li>
+              <li>{data.artist.technical.areas[0].name}</li>
+              <li>
+                EXPERIENCIA:
+                {currentYear - data.artist.technical.areas[0].started_year} ANOS
+              </li>
               <li>ENGENHARIA DE SOM</li>
-              <li>ESPANHOL</li>
-              <li>MEI</li>
+              <li>{data.artist.technical.cnpj_type}</li>
               <li>FORMACAO TECNICA</li>
             </ul>
           </UserTechnicalInformation>
           <UserInformation>
             <div className="Header">
-              <a href="#Sobre">
-                Sobre
-                {/* <hr /> */}
-              </a>
-              <a href="#Formacao">
-                Formação
-                {/* <hr /> */}
-              </a>
-              <a href="#Certificacoes">
-                Certificações
-                {/* <hr /> */}
-              </a>
-              <a href="#CNPJ">
-                CNPJ
-                {/* <hr /> */}
-              </a>
+              <a href="#Sobre">Sobre</a>
+              <a href="#Formacao">Formação</a>
+              <a href="#Certificacoes">Certificações</a>
+
               <a href="#Contato">Contato</a>
             </div>
 
@@ -101,13 +103,7 @@ const Mobile: FC = () => {
 
               <div>
                 <ContentText>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                  natoque penatibus et magnis dis parturient montes, nascetur
-                  ridiculus. Lorem ipsum dolor sit amet, consectetuer adipiscing
-                  elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-                  sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus.
+                  {data.artist.technical.areas[0].describe}
                 </ContentText>
               </div>
             </div>
@@ -118,15 +114,15 @@ const Mobile: FC = () => {
               <div>
                 <span>
                   <FaCheckCircle />
-                  Ensino Médio em curso técnico profissionalizante
+                  {data.artist.technical.formation}
                 </span>
                 <ul>
-                  <li>
-                    <img alt="" /> INGLES
-                  </li>
-                  <li>
-                    <img alt="" /> ESPANHOL
-                  </li>
+                  {data.artist.technical.idiom &&
+                    data.artist.technical.idiom.map((idiom, index) => (
+                      <li key={index}>
+                        <img alt="" /> {idiom.name}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
@@ -135,32 +131,19 @@ const Mobile: FC = () => {
               <ContentTitle level={1}>Certificações</ContentTitle>
 
               <div>
-                <span>
-                  <FaCheckSquare />
-                  NR 05 – Comissão Interna de Prevenção de Acidentes
-                </span>
-                <span>
-                  <FaCheckSquare />
-                  NR 12 – Segurança no Trabalho em Máquinas e Equipamentos
-                </span>
-                <span>
-                  <FaCheckSquare />
-                  NR 35 – Trabalho em Altura
-                </span>
+                {data.artist.technical.areas[0].certificate &&
+                  data.artist.technical.areas[0].certificate.map(
+                    (certificate, index) => (
+                      <span key={index}>
+                        <FaCheckSquare />
+                        {certificate.name}
+                      </span>
+                    )
+                  )}
                 <ul>
-                  <li>CEAC</li>
-                  <li>DRT</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="profileInformation" id="CNPJ">
-              <ContentTitle level={1}>CNPJ</ContentTitle>
-
-              <div>
-                <span>Lorem Ipsum LTDA - Servicos Gerais</span>
-                <ul>
-                  <li>PEQUENA EMPRESA</li>
+                  {data.artist.technical.is_ceac && <li>CEAC</li>}
+                  {data.artist.technical.is_drt && <li>DRT</li>}
+                  {data.artist.technical.is_cnpj && <li>CNPJ</li>}
                 </ul>
               </div>
             </div>
@@ -172,32 +155,49 @@ const Mobile: FC = () => {
                 <div className="socialContacts">
                   <span>
                     <MdEmail />
-                    email@email.com
+                    {data.email}
                   </span>
-                  <span>
-                    <FaFacebookSquare />
-                    fb.nickname
-                  </span>
-                  <span>
-                    <FaInstagramSquare />
-                    insta.nickname
-                  </span>
-                  <span>
-                    <FaTwitterSquare />
-                    twitter.nickname
-                  </span>
-                  <span>
-                    <SiTiktok />
-                    tiktok.nickname
-                  </span>
-                  <span>
-                    <FaYoutubeSquare />
-                    yt.nickname
-                  </span>
-                  <span>
-                    <FaLinkedin />
-                    linkedin.nickname
-                  </span>
+                  {data.artist.contact.facebook && (
+                    <span>
+                      <FaFacebookSquare />
+                      {data.artist.contact.facebook}
+                    </span>
+                  )}
+
+                  {data.artist.contact.instagram && (
+                    <span>
+                      <FaInstagramSquare />
+                      {data.artist.contact.instagram}
+                    </span>
+                  )}
+
+                  {data.artist.contact.twitter && (
+                    <span>
+                      <FaTwitterSquare />
+                      {data.artist.contact.twitter}
+                    </span>
+                  )}
+
+                  {data.artist.contact.tiktok && (
+                    <span>
+                      <SiTiktok />
+                      {data.artist.contact.tiktok}
+                    </span>
+                  )}
+
+                  {data.artist.contact.youtube && (
+                    <span>
+                      <FaYoutubeSquare />
+                      {data.artist.contact.youtube}
+                    </span>
+                  )}
+
+                  {data.artist.contact.linkedin && (
+                    <span>
+                      <FaLinkedin />
+                      {data.artist.contact.linkedin}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
