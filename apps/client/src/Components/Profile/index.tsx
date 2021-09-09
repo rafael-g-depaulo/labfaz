@@ -4,10 +4,13 @@ import useMobile from 'Hooks/useMobile'
 import Mobile from 'Components/Profile/Mobile'
 import Web from 'Components/Profile/Web'
 
-export const Profile: FC = () => {
+interface ProfileProps {
+  data: object
+}
 
-  if(useMobile()) return <Mobile /> 
-  else return <Web />
+export const Profile: FC<ProfileProps> = ({ data }) => {
+  if (useMobile()) return <Mobile data={data} />
+  else return <Web data={data}/>
 }
 
 export default Profile
