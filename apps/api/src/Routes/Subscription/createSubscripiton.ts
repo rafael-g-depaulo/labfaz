@@ -60,13 +60,11 @@ export const SubscribeToCourse: (
 
 
   if(request) {
-    console.log(request)
     createdSuccessfully(res, "Request Created")
   } else {
-    return unauthorizedError(res, "Alredy subscribed")
+    return unidentifiedError(res, "Something went wrong")
   }
 
-  return unidentifiedError(res, "Something wrong happend")
 }
 
 export default SubscribeToCourse

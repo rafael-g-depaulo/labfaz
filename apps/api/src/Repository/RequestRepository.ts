@@ -53,13 +53,13 @@ export class RequestRepository extends Repository<Request> {
         try {
           await user.save()
         } catch(e) {
-          console.log(e)
+          return false
         }
 
         try {
           await course.save()
         } catch(e) {
-          console.log(e)
+          return false
         }
     
         return createRequest
