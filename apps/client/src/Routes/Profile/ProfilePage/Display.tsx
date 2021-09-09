@@ -3,11 +3,15 @@ import React, { FC } from 'react'
 import Profile from 'Components/Profile'
 import Wireframe from 'Components/Wireframe'
 
-export const Display: FC = () => {
+interface DisplayProps {
+  data: object
+}
+
+export const Display: FC<DisplayProps> = ({ data }) => {
   return (
     <>
       <Wireframe>
-        <Profile />
+        <Profile data={data} />
       </Wireframe>
     </>
   )
