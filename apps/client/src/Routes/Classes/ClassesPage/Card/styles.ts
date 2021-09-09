@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
+import { Mobile } from "Utils/breakpoints";
 
 interface GridProps {
   width: string;
@@ -37,6 +38,10 @@ export const TextWrapper = styled.div`
   justify-content: center;
   padding: 0 26px;
   background-color: #c4c4c4;
+
+  ${Mobile(css`
+    padding: 13px 13px;
+  `)}
 `;
 
 export const TopWrapper = styled.div`
@@ -74,4 +79,10 @@ export const CardText = styled(Text)<TextProps>`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   font-size: ${(props) => props.textSize};
+
+  ${Mobile(css`
+    margin: 10px 0 0 0;
+    -webkit-line-clamp: 3;
+    line-height: 1.5;
+  `)}
 `;

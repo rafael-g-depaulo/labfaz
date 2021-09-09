@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
-//import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+import { Mobile } from "Utils/breakpoints";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -28,31 +28,27 @@ export const TopWrapper = styled.div`
   justify-content: space-between;
   padding-left: 80px;
   margin-bottom: 90px;
+
+  ${Mobile(css`
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  `)}
 `;
 
-export const TitleWrapper = styled.div`
-  max-width: 38%;
+export const MainClass = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  line-height: 1;
+  margin: 10px 30px 70px 30px;
 `;
 
-export const SecondaryTitle = styled(Title)`
-  font-size: var(--font-size-subtitle);
-  margin: 0 0 25px 0;
-`;
-
-export const MainTitle = styled(Title)`
-  color: var(--color-text-black);
-  font-size: var(--font-size-title-xxxlarge);
-`;
-
-export const TitleText = styled(Text)`
-  margin: 50px 0 0 0;
-  text-align: left;
-  line-height: 2;
+export const MainClassTitle = styled(Title)`
+  font-size: var(--font-size-title);
+  margin: 0 0 30px 0;
 `;
 
 // styles for second section
