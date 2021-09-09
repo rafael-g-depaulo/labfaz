@@ -14,8 +14,6 @@ import {
   FaCheckSquare,
 } from 'react-icons/fa'
 
-import idiom_icon from './idiomIcon.svg'
-
 import {
   Container,
   ProfileContentContainer,
@@ -33,58 +31,91 @@ import {
   ContentText,
 } from './style'
 
-const Web: FC = () => {
+import icaroIMG from './Icaro_Rodrigues.jpg'
+
+interface ProfileProps {
+  data: object
+}
+
+const currentYear = new Date().getFullYear()
+
+const Web: FC<ProfileProps> = ({ data }) => {
+
   return (
     <Container>
       <ProfileContentContainer>
         <Aside>
           <AsideHeader>
-            <UserPhoto />
-            <NickName level={1}>Nickname</NickName>
-            <UserName level={2}>Name</UserName>
+            <UserPhoto>
+              <img src="" alt="User Photo" />
+            </UserPhoto>
+            <NickName level={1}>{data.artist?.show_name}</NickName>
+            <UserName level={2}>{data.artist?.name}</UserName>
           </AsideHeader>
 
-          <UserLocation>Formosa, Entorno DF</UserLocation>
+          <UserLocation>
+            {data.artist.address.city}, {data.artist.address.state}
+          </UserLocation>
 
           <hr />
 
           <SocialMedias>
             <li>
               <MdEmail />
-              <div>email@email.com</div>
+              <div>{data.email}</div>
             </li>
-            <li>
-              <FaFacebookSquare />
-              <div>fb.nickname</div>
-            </li>
-            <li>
-              <FaInstagramSquare />
-              <div>insta.nickname</div>
-            </li>
-            <li>
-              <FaTwitterSquare />
-              <div>twitter.nickname</div>
-            </li>
-            <li>
-              <SiTiktok />
-              <div>tiktok.nickname</div>
-            </li>
-            <li>
-              <FaYoutubeSquare />
-              <div>yt.nickname</div>
-            </li>
-            <li>
-              <FaLinkedin />
-              <div>linkedin.nickname</div>
-            </li>
+
+            {data.artist.contact.facebook && (
+              <li>
+                <FaFacebookSquare />
+                <div>{data.artist.contact.facebook}</div>
+              </li>
+            )}
+
+            {data.artist.contact.instagram && (
+              <li>
+                <FaInstagramSquare />
+                <div>{data.artist.contact.instagram}</div>
+              </li>
+            )}
+
+            {data.artist.contact.twitter && (
+              <li>
+                <FaTwitterSquare />
+                <div>{data.artist.contact.twitter}</div>
+              </li>
+            )}
+
+            {data.artist.contact.tiktok && (
+              <li>
+                <SiTiktok />
+                <div>{data.artist.contact.tiktok}</div>
+              </li>
+            )}
+
+            {data.artist.contact.youtube && (
+              <li>
+                <FaYoutubeSquare />
+                <div>{data.artist.contact.youtube}</div>
+              </li>
+            )}
+
+            {data.artist.contact.linkedin && (
+              <li>
+                <FaLinkedin />
+                <div>{data.artist.contact.linkedin}</div>
+              </li>
+            )}
           </SocialMedias>
 
           <hr />
 
           <ButtonContainer>
-            <button type="button" className="downloadCurriculum">
-              <GoGear /> BAIXAR CV
-            </button>
+            {data.curriculum && (
+              <button type="button" className="downloadCurriculum">
+                <GoGear /> BAIXAR CV
+              </button>
+            )}
 
             <button type="button" className="editProfile">
               <IoMdCloudDownload /> EDITAR PERFIL
@@ -97,17 +128,21 @@ const Web: FC = () => {
         <Content>
           <ContentHeader>
             <a href="#Sobre">
-              Sobre <hr />
+              Sobre
+              {/* <hr /> */}
             </a>
             <a href="#Formacao">
-              Formação <hr />
+              Formação
+              {/* <hr /> */}
             </a>
             <a href="#Certificacoes">
-              Certificações <hr />
+              Certificações
+              {/* <hr /> */}
             </a>
-            <a href="#CNPJ">
-              CNPJ <hr />
-            </a>
+            {/* <a href="#CNPJ">
+              CNPJ
+              <hr />
+            </a> */}
             <a href="#Contato">Contato</a>
           </ContentHeader>
 
@@ -116,18 +151,14 @@ const Web: FC = () => {
 
             <div>
               <ContentText>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus.
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus.
+                {data.artist.technical.areas[0].describe}
               </ContentText>
               <ul>
-                <li>AUDIOVISUAL</li>
+                <li>{data.artist.technical.areas[0].name}</li>
                 <li>ENGENHARIA DE SOM</li>
-                <li>EXPERIENCIA: 7 ANOS</li>
-                <li>FORMACAO TECNICA</li>
+                <li>EXPERIENCIA: {currentYear - data.artist.technical.areas[0].started_year} ANOS</li>
+                <li>{data.artist.technical.areas[0].technical_formation}</li>
+                <li>{data.artist.technical.cnpj_type}</li>
               </ul>
             </div>
           </div>
@@ -138,15 +169,16 @@ const Web: FC = () => {
             <div>
               <span>
                 <FaCheckCircle />
-                Ensino Médio em curso técnico profissionalizante
+                {data.artist.technical.formation}
               </span>
+
               <ul>
-                <li>
-                  <img src={idiom_icon} alt="" /> INGLES
-                </li>
-                <li>
-                  <img src={idiom_icon} alt="" /> ESPANHOL
-                </li>
+                {data.artist.technical.idiom &&
+                  data.artist.technical.idiom.map((idiom, index) => (
+                    <li key={index}>
+                      <img src={idiom_icon} alt="" /> {idiom.name}
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
@@ -155,26 +187,24 @@ const Web: FC = () => {
             <ContentTitle level={1}>Certificações</ContentTitle>
 
             <div>
-              <span>
-                <FaCheckSquare />
-                NR 05 – Comissão Interna de Prevenção de Acidentes
-              </span>
-              <span>
-                <FaCheckSquare />
-                NR 12 – Segurança no Trabalho em Máquinas e Equipamentos
-              </span>
-              <span>
-                <FaCheckSquare />
-                NR 35 – Trabalho em Altura
-              </span>
+              {data.artist.technical.areas[0].certificate &&
+                data.artist.technical.areas[0].certificate.map(
+                  (certificate, index) => (
+                    <span key={index}>
+                      <FaCheckSquare />
+                      {certificate.name}
+                    </span>
+                  )
+                )}
               <ul>
-                <li>CEAC</li>
-                <li>DRT</li>
+                {data.artist.technical.is_ceac && <li>CEAC</li>}
+                {data.artist.technical.is_drt && <li>DRT</li>}
+                {data.artist.technical.is_cnpj && <li>CNPJ</li>}
               </ul>
             </div>
           </div>
 
-          <div className="profileInformation" id="CNPJ">
+          {/* <div className="profileInformation" id="CNPJ">
             <ContentTitle level={1}>CNPJ</ContentTitle>
 
             <div>
@@ -183,40 +213,64 @@ const Web: FC = () => {
                 <li>PEQUENA EMPRESA</li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
           <div className="profileInformation" id="Contato">
             <ContentTitle level={1}>Contato</ContentTitle>
 
             <div className="socialContacts">
-              <span>
-                <MdEmail />
-                email@email.com
-              </span>
-              <span>
-                <FaFacebookSquare />
-                fb.nickname
-              </span>
-              <span>
-                <FaInstagramSquare />
-                insta.nickname
-              </span>
-              <span>
-                <FaTwitterSquare />
-                twitter.nickname
-              </span>
-              <span>
-                <SiTiktok />
-                tiktok.nickname
-              </span>
-              <span>
-                <FaYoutubeSquare />
-                yt.nickname
-              </span>
-              <span>
-                <FaLinkedin />
-                linkedin.nickname
-              </span>
+              <div>
+                {data.email && (
+                  <span>
+                    <MdEmail />
+                    {data.email}
+                  </span>
+                )}
+
+                {data.artist.contact.facebook && (
+                  <span>
+                    <FaFacebookSquare />
+                    {data.artist.contact.facebook}
+                  </span>
+                )}
+
+                {data.artist.contact.instagram && (
+                  <span>
+                    <FaInstagramSquare />
+                    {data.artist.contact.instagram}
+                  </span>
+                )}
+
+                {data.artist.contact.twitter && (
+                  <span>
+                    <FaTwitterSquare />
+                    {data.artist.contact.twitter}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                {data.artist.contact.tiktok && (
+                  <span>
+                    <SiTiktok />
+                    {data.artist.contact.tiktok}
+                  </span>
+                )}
+
+                {data.artist.contact.youtube && (
+                  <span>
+                    <FaYoutubeSquare />
+                    {data.artist.contact.youtube}
+                  </span>
+                )}
+
+                {data.artist.contact.youtube && (
+                  <span>
+                    <FaLinkedin />
+                    {data.artist.contact.linkedin}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </Content>

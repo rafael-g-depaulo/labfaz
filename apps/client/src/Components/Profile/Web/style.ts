@@ -1,29 +1,30 @@
 import { Text } from 'Components/Typography/Text'
 import { Title } from 'Components/Typography/Title'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { DesktopSmall } from 'Utils/breakpoints'
 
 export const Container = styled.div`
   display: flex;
   
   margin: 5.9rem auto 8.77rem auto;
+  
 
-  width: 90vw;
+  max-width: 90vw;
+  width: 78.5rem;
 `
 
 export const ProfileContentContainer = styled.div`
   display: flex;
 
-  margin: auto;
-
-
-  overflow-x: hidden;
-  border-radius: 150px 15px 15px 15px;
+  width: 100%;
 `
 
 export const Aside = styled.aside`
   width: 16.6rem;
   background-color: #111010;
   position: relative;
+
+  border-radius: 150px 0px 0px 15px;
 
   hr {
     width: 7.7rem;
@@ -35,12 +36,21 @@ export const Aside = styled.aside`
   .sideDivider {
     border: 0;
     border-left: 1px solid #090909;
-    height: 100rem;
+    height: 70rem;
     left: 17rem;
     top: 6rem;
   
     position: absolute;
+
+    ${DesktopSmall(css`
+      left: 14rem;
+    `)}
   }
+
+  ${DesktopSmall(css`
+    width: 13rem;
+  `)}
+
 `
 
 export const AsideHeader = styled.div`
@@ -51,13 +61,28 @@ export const UserPhoto = styled.div`
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background-color: #A3A3A3;
+  background-color: #FC0061;
   margin-bottom: 1.22rem;
 
+
+  ${DesktopSmall(css`
+    width: 240px;
+    height: 240px;
+  `)}
+
   img {
-    width: 100%;
-    height: 256px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+    object-fit: cover;
+
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+
+    ${DesktopSmall(css`
+      width: 240px;
+      height: 240px;
+    `)}
   }
 `
 
@@ -105,7 +130,7 @@ export const SocialMedias = styled.ul`
 
       margin-right: 0.94rem;
 
-      color: #6C6C6C;
+      color: #FC0061;
     }
   }
 `
@@ -140,11 +165,20 @@ export const ButtonContainer = styled.div`
     svg {
       position: absolute;
       left: 1.3rem;
+
+      ${DesktopSmall(css`
+        left: 0.5rem;
+      `)}
     }
 
     &:hover {
       cursor: pointer;
     }
+    
+    ${DesktopSmall(css`
+      width: 10rem;
+      height: 2rem;
+    `)}
   }
 
   .downloadCurriculum {
@@ -182,8 +216,11 @@ export const Button = styled.button`
 `
 
 export const Content = styled.section`
+  max-width: 95vw;
   width: 64.16rem;
   background-color: #111010;
+
+  border-radius: 0px 15px 15px 0px;
 
   ul {
     margin: 0;
@@ -206,6 +243,10 @@ export const Content = styled.section`
 
       font-size: var(--font-size-large);
       font-weight: bold;
+
+      ${DesktopSmall(css`
+        font-size: var(--font-size-medium);
+      `)}
     }
   }
 
@@ -213,21 +254,38 @@ export const Content = styled.section`
     font-weight: 600;
     display: block;
     
-
     display: flex;
     align-items: center;
 
+    ${DesktopSmall(css`
+      font-size: var(--font-size-medium);
+      line-height: 18px;
+      margin-bottom: 1rem;
+    `)}
+    
     svg {
-      color: #6C6C6C;
+      color: #FC0061;
       margin-right: 1.2rem;
 
       width: 22px;
       height: 22px;
+
+      ${DesktopSmall(css`
+        width: 18px;
+        height: 18px;
+      `)}
     }
   }
 
   .profileInformation {
+    max-width: 60vw;
     width: 47.8rem;
+
+    /* ${DesktopSmall(css`
+      font-size: var(--font-size-default);
+      width: 35rem;
+      max-width: 95vw;
+    `)} */
 
     padding-left: 5.88rem;
     margin-bottom: 4.11rem;    
@@ -257,9 +315,10 @@ export const Content = styled.section`
   .socialContacts {
 
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    column-gap: 7.5rem;
+    justify-content: space-between;
+
+    width: 29.5rem;
+    max-width: 80%;
 
     color: #FAFAFA;
 
@@ -269,7 +328,12 @@ export const Content = styled.section`
       margin-right: 0.83rem;
       width: 28px;
       height: 28px;
-      color: #6C6C6C;
+      color: #FC0061;
+
+      ${DesktopSmall(css`
+        width: 22px;
+        height: 22px;
+      `)}
     }
 
     span {
@@ -277,18 +341,25 @@ export const Content = styled.section`
       display: flex;
       align-items: center;
     }
+
+    div {
+      margin-top: 0;
+    }
   }
 `
 
 export const ContentHeader = styled.div`
   display: flex;
+  justify-content: space-around;
+
+  width: 100%; 
 
   color: #FAFAFA;
   
   border-bottom: 2px solid #282828;
   box-shadow: 0px 3px 5px #0B0B0B;
 
-  padding: 1.16rem 0rem 0.77rem 5.88rem;
+  padding: 1.5rem 0rem 1.5rem 5.88rem;
 
   margin-bottom: 2.94rem;
 
@@ -298,15 +369,26 @@ export const ContentHeader = styled.div`
 
     display: flex;
     align-items: center;
+    
+    height: 1rem;
 
-    hr {
+    /* border-right: 1px solid white; */
+
+    /* hr {
       border: 0;
       border-right: 1px solid #282828;
       height: 0.5rem;
-
       margin: 0rem 3.3rem;
-    }
+    } */
   }
+
+  ${DesktopSmall(css`
+    padding: 1.16rem 0rem 0.77rem 0rem;
+
+    a {
+      font-size: var(--font-size-medium);
+    }
+  `)}
 `
 
 export const ContentTitle = styled(Title)`
@@ -321,4 +403,8 @@ export const ContentText = styled(Text)`
   color: #FAFAFA;
   font-weight: 400;
   line-height: 2.39rem;
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-default);
+  `)}
 `
