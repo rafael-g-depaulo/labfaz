@@ -89,12 +89,18 @@ const Routes: FC = () => {
           </Route>
         )}
 
+        <Route path={["/sign-up", "/signup", "/SignUp"]}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <Register match={match} />
+            </Suspense>
+          )          }
+        </Route>
+
         <Route path={["/login", "SignIn"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
-              <CurrentUserProvider>
                 <Login match={match} />
-              </CurrentUserProvider>
             </Suspense>
           )}
         </Route>
