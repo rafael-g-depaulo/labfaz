@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
-import { DesktopSmall, Mobile } from "Utils/breakpoints"
+import { DesktopSmall, Mobile, MobileLarge } from "Utils/breakpoints"
 
 
 export const Container = styled.div`
-  min-width: 100vw;
-  max-height: 90vh;
+  max-width: 100vw;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -24,7 +24,8 @@ export const Span = styled.p`
   font-size: var(--font-size-title-small);
   font-weight: 700;
   margin-top: 0;
-  padding-top: 2.1em;
+  margin-bottom: 0;
+  padding-top: 3.3em;
   padding-bottom: 5.25em;
   text-align: center;
   color: rgba(252, 0, 97, 1);
@@ -35,6 +36,10 @@ export const Span = styled.p`
   `)}
 
   ${Mobile(css`
+    display: none;
+  `)}
+
+  ${MobileLarge(css`
     display: none;
   `)}
 `

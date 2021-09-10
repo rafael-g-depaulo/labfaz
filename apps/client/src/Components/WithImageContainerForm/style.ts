@@ -84,6 +84,14 @@ export const Line = styled.div`
   width: 100%;
   box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.05);
   margin-bottom: 3.5rem;
+
+  ${MobileLarge(css`
+    display: none
+  `)}
+
+  ${MobileSmall(css`
+    display: none
+  `)}
 `
 
 export const PageTitle = styled.h1`

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge } from "Utils/breakpoints"
 import { Text } from "Components/Typography/Text"
 
 interface ModalProps {
@@ -87,6 +87,8 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 136px;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
 
   input {
     min-width: 379px;
@@ -116,6 +118,7 @@ export const InputContainer = styled.div`
 
   ${MobileSmall(css`
     align-items: center;
+    margin-bottom: 0;
 
     input {
       min-width: 305px;
@@ -129,6 +132,28 @@ export const InputContainer = styled.div`
       font-size: var(--font-size-short);
       max-width: 231px;
     }
+  `)}
+
+  ${MobileLarge(css`
+    align-items: center;
+    margin-bottom: 0;
+
+    input {
+      min-width: 305px;
+      max-width: 305px;
+      min-height: 51px;
+      margin-bottom: 0.9rem;
+      color: black;
+    }
+
+    p {
+      font-size: var(--font-size-short);
+      max-width: 231px;
+    }
+  `)}
+
+  ${DesktopLarge(css`
+    margin-top: 6rem;
   `)}
 `
 export const FormButton = styled.button`
@@ -171,6 +196,8 @@ export const ModalDiv = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 0px 20px rgba(10,10,10,0.8),
     inset 0px 0px 20px rgba(10, 10, 10, 0.8);
+
+  backdrop-filter: blur(15px);
 
   position: absolute;
 
@@ -401,13 +428,15 @@ export const ModalContent = styled.div`
 export const Container = styled.div<ModalProps>`
   display: ${props => props.isVisible ? "grid" : "none"};
   position: fixed;
-  top: 7vh;
+  top: 10vh;
   left: 0;
   min-width: 100vw;
-  min-height: 85vh;
+  min-height: 90vh;
   place-items: center;
   z-index: 99999999;
   max-height: 85vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
 `
 
 
