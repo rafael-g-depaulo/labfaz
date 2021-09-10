@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { Title } from "Components/Typography/Title";
-import { Text } from "Components/Typography/Text";
 import { Mobile } from "Utils/breakpoints";
 
 export const MainContainer = styled.div`
@@ -26,8 +25,8 @@ export const TopWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-left: 80px;
   margin-bottom: 90px;
+  background-color: var(--background-black);
 
   ${Mobile(css`
     flex-direction: column;

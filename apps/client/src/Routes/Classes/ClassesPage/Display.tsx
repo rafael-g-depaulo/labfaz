@@ -1,30 +1,14 @@
 import React, { FC } from "react";
 //import Wireframe from "Components/Wireframe";
-import {
-  MainContainer,
-  MainContent,
-  TopWrapper,
-  MainClass,
-  MainClassTitle,
-} from "./styles";
-
-import useMobile from "Utils/useMobile";
+import { MainContainer, MainContent } from "./styles";
 
 import Introduction from "./Introduction";
-import Card from "./Card";
 import StayTuned from "./StayTuned";
 import CardRowComponent from "./CardRowComponent";
 
-export const Display: FC = () => {
-  const mainClass = [
-    {
-      title: "O que é audio visual?",
-      date: "12/12/2021",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-    },
-  ];
+import Wireframe from "Components/Wireframe";
 
+export const Display: FC = () => {
   const lives = [
     {
       title: "O que é uma live 1?",
@@ -72,55 +56,19 @@ export const Display: FC = () => {
     // },
   ];
 
-  const isMobile = useMobile();
-
   return (
-    <MainContainer>
-      <MainContent>
-        <TopWrapper>
+    <Wireframe>
+      <MainContainer>
+        <MainContent>
           <Introduction />
-          {isMobile ? (
-            <MainClass>
-              <MainClassTitle>Destaque</MainClassTitle>
-              {mainClass.map((item) => {
-                return (
-                  <Card
-                    title={item.title}
-                    date={item.date}
-                    description={item.description}
-                    width="300px"
-                    height="270px"
-                    marginLeft="0px"
-                    titleSize="var( --font-size-short)"
-                    textSize="var(--font-size-small)"
-                  />
-                );
-              })}
-            </MainClass>
-          ) : (
-            mainClass.map((item) => {
-              return (
-                <Card
-                  title={item.title}
-                  date={item.date}
-                  description={item.description}
-                  width="570px"
-                  height="520px"
-                  marginLeft="12%"
-                  titleSize="var(--font-size-large)"
-                  textSize="var(--font-size-default)"
-                />
-              );
-            })
-          )}
-        </TopWrapper>
-        <StayTuned />
-        <CardRowComponent title="Lives" classes={lives} />
-        <CardRowComponent title="Rodas de conversas" classes={lives} />
-        <CardRowComponent title="Cursos" classes={lives} />
-        <CardRowComponent title="Oficinas" classes={lives} />
-      </MainContent>
-    </MainContainer>
+          <StayTuned />
+          <CardRowComponent title="Cursos" classes={lives} />
+          {/* <CardRowComponent title="Rodas de conversas" classes={lives} />
+          <CardRowComponent title="Cursos" classes={lives} />
+          <CardRowComponent title="Oficinas" classes={lives} /> */}
+        </MainContent>
+      </MainContainer>
+    </Wireframe>
   );
 };
 

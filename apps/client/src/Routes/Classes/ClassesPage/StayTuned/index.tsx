@@ -9,6 +9,8 @@ import {
 } from "./styles";
 import useMobile from "Utils/useMobile";
 
+import image from "./index.jpeg";
+
 export const StayTuned: FC = () => {
   const isMobile = useMobile();
 
@@ -23,7 +25,7 @@ export const StayTuned: FC = () => {
               commodo ligula eget dolor. Aenean massa.{" "}
             </MainText>
           </TextWrapper>
-          <Image />
+          <Image src={image} alt="" />
           <Button href="">Saiba Mais</Button>
         </Wrapper>
       ) : (
@@ -32,11 +34,12 @@ export const StayTuned: FC = () => {
             <MainTitle>Fique Atento</MainTitle>
             <MainText>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa.{" "}
+              commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit
+              amet, consectetuer adipiscing elit.
             </MainText>
             <Button href="">Saiba Mais</Button>
           </TextWrapper>
-          <Image />
+          <Image src={image} alt="" />
         </Wrapper>
       )}
     </>

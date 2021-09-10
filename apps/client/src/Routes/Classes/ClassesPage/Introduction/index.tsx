@@ -1,11 +1,14 @@
 import React, { FC } from "react";
 
-import { TitleWrapper, MainTitle, SecondaryTitle, TitleText } from "./styles";
+import { Container, TitleWrapper, MainTitle, TitleText, Image } from "./styles";
+
+import image from "./index.jpeg";
 
 const Introduction: FC = () => {
   return (
-    <TitleWrapper>
-      <SecondaryTitle>Aprenda sobre</SecondaryTitle>
+    <Container>
+      <Image src={image} alt="" />
+      <TitleWrapper>
       <MainTitle>Lorem & Ipsum</MainTitle>
       <TitleText>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
@@ -13,6 +16,7 @@ const Introduction: FC = () => {
         consectetuer adipiscing elit.
       </TitleText>
     </TitleWrapper>
+    </Container>
   );
 };
 
