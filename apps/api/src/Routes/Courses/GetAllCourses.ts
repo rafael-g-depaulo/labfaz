@@ -13,7 +13,9 @@ export const GetAllCourses: (
 ) => RouteHandler<Req> = ({
   CourseRepo
 }: GetAllCourserInterface) => async (_, res) => {
-  const courses = await CourseRepo.find();
+  const courses = await CourseRepo.find({
+    loadEagerRelations: false,
+  });
 
   // separate activities by type
   const initial: {[k in ActivityType]: Course[]} = {
