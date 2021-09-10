@@ -14,57 +14,35 @@ export class RequestRepository extends Repository<Request> {
         student: UserId
       }
     })
-    .then(course => {
-      if(course && course.length > 0) {        
-        return true
-      } else if(course && course.length == 0) {
-        return false
-      }
-      return true
-    })
-    .catch(error => {
-      return error
-    }) 
+    .then(course => course.length !== 0)
+    .catch(() => null)
   }
 
 
   async createRequest(user: User, course: Course) {
 
-    const exists = await this.checkExistingRequest(course.id, user.id)
-
-
-    if(!exists) {
+    try {
+      const exists = await this.checkExistingRequest(course.id, user.id)
+  
+      if(exists) return null
+  
       const createRequest = this.create({
         course,
         student: user
       })
-      await createRequest.save()
-        .then(request => {
-          course.requests ??= []
-          user.courses ??= []
+      const request = await createRequest.save()
   
-          course.requests.push(request)
-          user.courses.push(request)
-        })
-        .catch(err => {
-          return err
-        })
-        
-        try {
-          await user.save()
-        } catch(e) {
-          return false
-        }
-
-        try {
-          await course.save()
-        } catch(e) {
-          return false
-        }
-    
-        return createRequest
-    } else {
-      return false
+      course.requests ??= []
+      user.courses ??= []
+  
+      course.requests.push(request)
+      user.courses.push(request)
+      
+      await Promise.all([user.save(), course.save()])
+  
+      return createRequest
+    } catch {
+      return null;
     }
   }
 }
