@@ -6,7 +6,7 @@ import { Formik, Form } from 'formik'
 import { login } from 'Api/Session'
 import { ErrorObject } from 'Api'
 
-import { CheckboxInput } from 'Components/Input/CheckboxInput'
+import { CheckboxInput } from 'Components/Inputs/CheckboxInput'
 import { CurrentUserContext } from 'Context/CurrentUser'
 
 import Icon from './Icon.svg'

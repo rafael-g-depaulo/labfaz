@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { Title } from 'Components/Typography/Title'
 import { DesktopSmall, Mobile } from 'Utils/breakpoints'
+
+import { Title } from 'Components/Typography/Title'
 import { InternalLinkButton } from 'Components/Buttons/InternalLinkButton'
-import { TextInput } from 'Components/Input/TextInput'
-import { PasswordInput } from 'Components/Input/PasswordInput'
+import { TextInput } from 'Components/Inputs/TextInput'
+import { PasswordInput } from 'Components/Inputs/PasswordInput'
 
 interface ContainerProps {
   openToastMessage: boolean
