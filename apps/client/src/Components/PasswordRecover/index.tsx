@@ -4,7 +4,6 @@ import { Formik, Form, FormikHelpers } from 'formik'
 
 import { Wrapper, InputContainer, FormButton, Span, Message } from './styles'
 import { Input } from 'Components/Input'
-import { Text } from 'Components/Typography/Text'
 import { Modal } from './Modal'
 
 import { askResetPassword } from 'Api/PasswordReset'  
@@ -20,14 +19,15 @@ export const AskReset: FC = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const [isError, setIsError] = useState(false)
-  const Title = "EMAIL ENVIADO!"
   const [email, setEmail] = useState("mail@mail.com")
+  const [title, setTitle] = useState(false) 
 
   const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
     askResetPassword(values.email)
       .then(() => {
         setEmail(values.email)
+        setTitle(true)
         setIsVisible(true)        
         setValues({
           email: ""
@@ -35,8 +35,8 @@ export const AskReset: FC = () => {
         setIsError(false)
       })
       .catch(() => {
-        setEmailStatus("Email incorreto.")
         setIsError(true)
+        setEmailStatus("Email incorreto.")
       })
     setSubmitting(false)
   }
@@ -74,8 +74,7 @@ export const AskReset: FC = () => {
                   placeholder="Digite seu email" 
                   name="email"
                   />
-                  {emailStatus ? (<Message isError={isError} > {emailStatus} </Message>) : <Text> Enviaremos um email com as instruções para recuperar a sua senha </Text> }
-                {/* <Text> {emailStatus ? emailStatus : "Enviaremos um email com as instruções para recuperar a sua senha"} </Text>  */}
+                  {emailStatus ? (<Message isError={isError} > {emailStatus} </Message>) : <Message> Enviaremos um email com as instruções para recuperar a sua senha </Message> }
               </InputContainer>
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
@@ -86,12 +85,13 @@ export const AskReset: FC = () => {
           )
           }        
         </Formik>
-        <Modal 
-          isVisible={isVisible} 
-          setFunction={setIsVisible}
-          title={Title}
-          userEmail={email}
+          <Modal 
+            isVisible={isVisible} 
+            setFunction={setIsVisible}
+            title={title}
+            userEmail={email}
           />
+
       </>
   )
 }

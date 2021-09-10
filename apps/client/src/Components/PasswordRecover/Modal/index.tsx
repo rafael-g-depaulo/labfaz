@@ -8,7 +8,7 @@ import SocialMediaIcons  from "Components/SocialMediaIcons"
 interface ModalProps {
   isVisible: boolean,
   setFunction: React.Dispatch<React.SetStateAction<boolean>>
-  title?: string,
+  title?: boolean,
   userEmail?: string
 }
 
@@ -18,10 +18,10 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
   return(
     <Container isVisible={isVisible}>
       <ModalDiv>
-        <Title level={3}> {title ? title : "DESCULPE PELOS PROBLEMAS :C"}   </Title>
+        <Title level={3}> {title ? "EMAIL ENVIADO" : "DESCULPE PELOS PROBLEMAS :C"}   </Title>
         <ModalLine />
         <ModalContent>
-          <Text> {userEmail ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
+          <Text> {title ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
             Cheque sua caixa de mensgems ou em alguns minutos tente novamente` :
             "Tente entrar em contato com a nossa equipe, pelos meios de comunicaca e midias abaixo, para resolver o seu problema."
           } </Text>

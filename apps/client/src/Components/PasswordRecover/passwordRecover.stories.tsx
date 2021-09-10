@@ -5,7 +5,6 @@ import PasswordChange from "./passwordChange"
 import { storiesOf } from "@storybook/react";
 
 const token = "aksjdkasjhdkahdkashdkasjdhaskjdhakjdhksjhda"
-const workingToken = ""
 
 
 storiesOf("Components/Recover", module)
