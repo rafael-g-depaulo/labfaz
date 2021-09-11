@@ -36,7 +36,7 @@ interface FormProps {
 
 export interface LoginComponentProps {
   onSubmit: FormSubmitFn
-  buttonType?: 'submit' | 'button' | 'reset' | undefined
+  buttonType?: 'submit' | 'button' | 'reset'
 }
 
 export type FormSubmitFn = (values: FormProps) => any
@@ -46,7 +46,7 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
 
-  // const history = useHistory()
+  const history = useHistory()
 
   const handleSubmit = useCallback(
     (values: FormProps) => {
@@ -55,10 +55,10 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
           setToken(token)
           setUser(user)
         })
-        // .then(() => history.push('/home'))
+        .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
     },
-    [setToken, setUser]
+    [setToken, setUser, history]
   )
 
   return (
