@@ -11,7 +11,7 @@ export const getResources = (conn: Connection) => {
     userResource(conn),
     adminResource(conn),
     courseResource(conn),
-    subscriptionResource(),
+    subscriptionResource(conn),
   ]
 }
 
