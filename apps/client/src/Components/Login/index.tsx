@@ -26,7 +26,9 @@ import {
   ButtonContainer,
   CheckboxInputContainer,
   InputPassword,
+  Img,
 } from './style'
+import { useLoginInfo } from 'Api/LoginAssets'
 
 interface FormProps {
   email: string
@@ -45,6 +47,8 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const { setToken, setUser } = useContext(CurrentUserContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
+  
+  const { data: infoData } = useLoginInfo()
 
   const history = useHistory()
 
@@ -61,13 +65,14 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
     [setToken, setUser, history]
   )
 
+  console.log(infoData)
   return (
     <Container>
       <FormContainer openToastMessage={toastMessage}>
-        <LoginTitle level={1} children="Entrar" />
+        <LoginTitle level={1}>{infoData?.titulo ?? "Entrar"}</LoginTitle>
         <div className="formContainer">
           <LeftSide>
-            <img src={Icon} alt="Temp" />
+            <Img src={infoData?.imagem?.url ?? Icon} alt="" />
           </LeftSide>
           <RightSide>
             <Formik
