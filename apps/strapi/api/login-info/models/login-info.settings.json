@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "login_infos",
+  "info": {
+    "name": "Login Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "default": "Entrar"
+    },
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
