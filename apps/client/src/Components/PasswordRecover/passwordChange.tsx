@@ -2,9 +2,10 @@ import React, { FC, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
-import { Wrapper, InputContainer, FormButton, Span, Message } from './styles'
-import { Input } from 'Components/Input'
+import { Wrapper, FormButton, Span, Message } from './styles'
 import { Modal } from './Modal'
+
+import { InputPassword, InputTextContainer } from "Components/Login/style"
 
 import { resetPassword } from "Api/PasswordReset"
 
@@ -74,28 +75,24 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
           {({ isSubmitting }) => (
           <Wrapper isVisible={isVisible}>
             <Form>
-              <InputContainer>
-                <Input 
-                  type="password" 
+              <InputTextContainer>
+                <InputPassword 
                   label="Escolha uma nova senha" 
                   placeholder="Digite sua nova senha" 
                   name="password"
                   />
-              </InputContainer>
-              <InputContainer>
-                <Input 
-                  type="password" 
+                <InputPassword
                   label="Confirmação de nova senha" 
                   placeholder="Confirme sua nova senha" 
                   name="passwordConfirmation"
                   />
-              </InputContainer>
-              <Message isError={error}> {message} </Message>
+                </InputTextContainer>
+                {message && <Message isError={error}> {message} </Message>}
               <FormButton type="submit" disabled={isSubmitting}>
                 ATUALIZAR SENHA
               </FormButton>
+              <Span onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </Span>
             </Form>
-            <Span onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </Span>
           </Wrapper>
           )
           }        

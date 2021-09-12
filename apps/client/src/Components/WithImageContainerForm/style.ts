@@ -11,6 +11,7 @@ export const Container = styled.div`
   min-height: 80%;
   min-width: 67%;
 
+
   ${MobileSmall(css`
     min-width: 100%;
     max-width: 305px;
@@ -100,7 +101,7 @@ export const PageTitle = styled.h1`
   margin-right: 40%;
   margin-top: 3vh;
   margin-bottom: 2vh;
-  color: white;
+  color: rgba(252, 0, 97, 1);
 
   ${DesktopSmall(css`
     display: none;
@@ -124,6 +125,13 @@ export const Content = styled.div`
 
   align-content: center;
   justify-items: center;
+
+  
+  box-sizing: border-box;
+  
+  border: 5px solid rgba(17, 16, 16, 0.5);
+    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.6);
+    border-radius: 7px;
 
   ${DesktopSmall(css`
     min-height: 100%;

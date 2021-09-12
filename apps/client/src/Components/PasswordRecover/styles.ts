@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge } from "Utils/breakpoints"
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
 import { Text } from "Components/Typography/Text"
 
 interface ModalProps {
@@ -26,6 +26,9 @@ export const Wrapper = styled.div<ModalProps>`
 
   form {
     min-height: 50%;
+    max-width: 75%;
+    min-width: 75%;
+    margin-top: 3rem;
 
     display: flex;
     flex-direction: column;
@@ -82,80 +85,6 @@ export const Wrapper = styled.div<ModalProps>`
   `)}
 `;
 
-
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 136px;
-  margin-top: 3rem;
-  margin-bottom: 5rem;
-
-  input {
-    min-width: 379px;
-    min-height: 51px;
-    margin-bottom: 0.9rem;
-    color: black;
-  }
-
-  label {
-    margin-bottom: 1em;
-    font-size: var(--font-size-large);
-    color: white;
-  }
-
-  p {
-    max-width: 379px;
-    text-align: center;
-    margin-bottom: 9.7rem;
-    color: white;
-  }
-
-  > div {
-    color: red;
-    font-weight: 600;
-    font-size: var(--font-size-short);
-  }
-
-  ${MobileSmall(css`
-    align-items: center;
-    margin-bottom: 0;
-
-    input {
-      min-width: 305px;
-      max-width: 305px;
-      min-height: 51px;
-      margin-bottom: 0.9rem;
-      color: black;
-    }
-
-    p {
-      font-size: var(--font-size-short);
-      max-width: 231px;
-    }
-  `)}
-
-  ${MobileLarge(css`
-    align-items: center;
-    margin-bottom: 0;
-
-    input {
-      min-width: 305px;
-      max-width: 305px;
-      min-height: 51px;
-      margin-bottom: 0.9rem;
-      color: black;
-    }
-
-    p {
-      font-size: var(--font-size-short);
-      max-width: 231px;
-    }
-  `)}
-
-  ${DesktopLarge(css`
-    margin-top: 6rem;
-  `)}
-`
 export const FormButton = styled.button`
   cursor: pointer;
   border: 0;
@@ -202,15 +131,16 @@ export const ModalDiv = styled.div`
   position: absolute;
 
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
   text-align: justify;
 
   h3 {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1rem;
     color: white;
     font-size: var(--font-size-title-xlarge);
+    max-width: 80%;
   }
 
 
@@ -272,7 +202,7 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   min-width: 90%;
   max-width: 98%;
   max-height: 525px;
@@ -285,39 +215,51 @@ export const ModalContent = styled.div`
 
 
   h3 {
-    margin-top: 3.15em;
+    margin-top: 1.5em;
     color: white;
   }
 
-  > p {
+  p {
     text-align: center;
     max-width: 488px;
     font-size: var(--font-size-title-short);
     line-height: 26px;
     color: white;
+    margin-top: 2rem;
   }
-
 
   p:nth-child(2) {
-    margin-top: 3em;
-    margin-bottom: 3em;
+    margin-top: 2rem;
   }
-
 
   p:nth-child(3) {
     font-weight: 700;
-    margin-bottom: 1em;
+    margin-top: 1.5rem;
   }
   
-  p:nth-child(4) {
-    font-weight: 700;
-  }
 
   button {
-    margin-top: 3rem;
-    margin-bottom: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    max-width: 60%;
+    min-width: 60%;
   }
   z-index: 999999999;
+
+  div:nth-child(4) {
+    margin: 0;
+
+    p {
+      display: none;
+    }
+
+    a {
+     * {
+        color: white;
+        max-width: 30px;
+      }
+    }
+  }
 
   ${MobileSmall(css`
 
@@ -329,8 +271,8 @@ export const ModalContent = styled.div`
 
 
     button {
-      margin-top: 2.7rem;
-      margin-bottom: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
       max-width: 80%;
       min-width: 70%;
     }
@@ -354,14 +296,6 @@ export const ModalContent = styled.div`
       max-width: 80%;
     }
 
-
-    button {
-      margin-top: 2.7rem;
-      margin-bottom: 1rem;
-      max-width: 80%;
-      min-width: 70%;
-    }
-
     div {
       margin-top: 1em;
     }
@@ -382,13 +316,6 @@ export const ModalContent = styled.div`
     }
 
 
-    button {
-      margin-top: 2.7rem;
-      margin-bottom: 1rem;
-      max-width: 80%;
-      min-width: 70%;
-    }
-
     div {
       margin-top: 1em;
     }
@@ -406,14 +333,6 @@ export const ModalContent = styled.div`
     p {
       font-size: var(--font-size-short);
       max-width: 80%;
-    }
-
-
-    button {
-      margin-top: 2.7rem;
-      margin-bottom: 1rem;
-      max-width: 80%;
-      min-width: 70%;
     }
 
     div {
@@ -461,7 +380,8 @@ export const Span = styled.p`
 
 export const Message = styled(Text)<MessageProps>`
   color: ${props => props.isError ? "red" : ""};
+  font-size: var(--font-size-medium);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.5em 0;
+  padding: 5em 0;
 `

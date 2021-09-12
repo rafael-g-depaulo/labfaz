@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
-import { Wrapper, InputContainer, FormButton, Span, Message } from './styles'
-import { Input } from 'Components/Input'
+import { Wrapper, FormButton, Span, Message } from './styles'
+import { InputText, InputTextContainer } from "Components/Login/style"
 import { Modal } from './Modal'
 
 import { askResetPassword } from 'Api/PasswordReset'  
@@ -16,13 +16,13 @@ export const AskReset: FC = () => {
 
   const [emailStatus, setEmailStatus] = useState("");
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
   const [isError, setIsError] = useState(false)
   const [email, setEmail] = useState("mail@mail.com")
   const [title, setTitle] = useState(false) 
 
-  const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
+  const handleSubmit = (values:FormProps, { setSubmitting, setValues, setErrors }: FormikHelpers<FormProps>)  => {    
 
     askResetPassword(values.email)
       .then(() => {
@@ -34,7 +34,9 @@ export const AskReset: FC = () => {
         })
         setIsError(false)
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e)
+        setErrors(e)
         setIsError(true)
         setEmailStatus("Email incorreto.")
       })
@@ -67,20 +69,19 @@ export const AskReset: FC = () => {
           {({ isSubmitting }) => (
           <Wrapper isVisible={isVisible}>
             <Form>
-              <InputContainer>
-                <Input 
-                  type="text" 
+              <InputTextContainer>
+                <InputText 
                   label="Email" 
                   placeholder="Digite seu email" 
                   name="email"
                   />
+              </InputTextContainer>
                   {emailStatus ? (<Message isError={isError} > {emailStatus} </Message>) : <Message> Enviaremos um email com as instruções para recuperar a sua senha </Message> }
-              </InputContainer>
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
               </FormButton>
+              <Span onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </Span>
             </Form>
-            <Span onClick={() => setIsVisible(!isVisible)}> Ainda está com problemas? </Span>
           </Wrapper>
           )
           }        
