@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { ModalDiv, ModalContent, Button, Container, ModalLine } from '../styles'
+import { ModalDiv, ModalContent, Container, ModalLine, FormButton } from '../styles'
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
 import SocialMediaIcons  from "Components/SocialMediaIcons"
@@ -21,7 +21,9 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
         <Title level={3}> {title ? "EMAIL ENVIADO" : "DESCULPE PELOS PROBLEMAS :C"}   </Title>
         <ModalLine />
         <ModalContent>
-          <Text> {title ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
+          <Text css={{
+            marginTop: "61px",
+          }}> {title ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
             Cheque sua caixa de mensgems ou em alguns minutos tente novamente` :
             "Tente entrar em contato com a nossa equipe, pelos meios de comunicaca e midias abaixo, para resolver o seu problema."
           } </Text>
@@ -33,7 +35,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
             </>
           ): 
           ""}
-          <Button onClick={() => setFunction(!isVisible)} > Voltar </Button>
+          <FormButton onClick={() => setFunction(!isVisible)} > Voltar </FormButton>
         </ModalContent>
       </ModalDiv>
     </Container>
