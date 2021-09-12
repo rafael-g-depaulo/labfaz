@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  //margin-top: 120px;
+  margin: 60px 0 70px 0;
   padding: 0 120px;
 
   ${Mobile(css`
@@ -19,34 +19,37 @@ export const Wrapper = styled.div`
     height: auto;
     flex-direction: column;
     justify-content: center;
-    margin: 0px 30px 0 30px;
+    margin: 0px 30px 75px 30px;
     padding: 0;
-    background-color: #2a2a2a;
+    background-color: #fafafa;
+    border-radius: 15px;
   `)}
 
   ${DesktopSmall(css`
     height: 320px;
-    margin-top: 80px;
+    //margin-top: 80px;
     padding: 0 40px;
   `)}
 `;
 
 export const Image = styled.img`
-  width: 40%;
+  width: 45%;
   height: 100%;
   border-radius: 0 22px 22px 0;
-  -webkit-filter: grayscale(100%);
-  filter: drop-shadow(0 0 50px 0 rgba(0, 0, 0, 0.5));
-  box-shadow: 0 0 50px 0 rgba(9, 9, 9, 1);
+  -webkit-filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
+  box-shadow: 0 0 50px 0 rgba(9, 9, 9, 1) inset;
 
   ${Mobile(css`
     width: 100%;
-    height: 180px;
+    height: 300px;
+    border-radius: 0;
+    box-shadow: 0 0 54px 0 rgba(9, 9, 9, 0.8);
   `)}
 `;
 
 export const TextWrapper = styled.div`
-  width: auto;
+  width: 55%;
   height: 100%;
   background-color: #2a2a2a;
   display: flex;
@@ -59,7 +62,10 @@ export const TextWrapper = styled.div`
   ${Mobile(css`
     width: 100%;
     height: auto;
-    padding: 0 20px;
+    padding: 0 15px;
+    align-items: center;
+    background-color: #fafafa;
+    border-radius: 15px;
     align-items: center;
   `)}
 
@@ -74,8 +80,8 @@ export const MainTitle = styled(Title)`
   line-height: 1;
 
   ${Mobile(css`
-    font-size: var(--font-size-title);
     margin-top: 35px;
+    color: var(--color-text-black);
   `)}
 
   ${DesktopSmall(css`
@@ -87,11 +93,12 @@ export const MainText = styled(Text)`
   color: var(--color-text-white);
   text-align: left;
   line-height: 2;
-  margin: 25px 0 40px 0;
+  margin: 30px 0 30px 0;
 
   ${Mobile(css`
     font-size: var(--font-size-medium);
-    margin: 40px 0;
+    color: var(--color-text-black);
+    margin: 23px 0 30px 0;
     text-align: justify;
     line-height: 1.5;
   `)}
@@ -118,6 +125,11 @@ export const Button = styled(InternalLinkButton)`
   border-radius: 5px;
 
   ${Mobile(css`
-    margin: 40px 0;
+    margin: 27px 0 20px 0;
+    font-size: var(--font-size-short);
+    color: var(--color-text-black);
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
   `)}
 `;

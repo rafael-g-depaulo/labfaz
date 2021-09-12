@@ -2,49 +2,57 @@ import React, { FC } from "react";
 import {
   Container,
   Image,
-  TopWrapper,
   TextWrapper,
   CardTitle,
-  CardText,
-  CardDate,
+  DescriptionWrapper,
+  LabelWrapper,
+  SubscribeWrapper,
+  DateContainer,
+  ButtonWrapper,
+  ButtonLayer,
+  Button,
+  ButtonText,
 } from "./styles";
+
+import image from "../Introduction/index.jpeg";
+
+import {
+  CardDescription,
+  DateText,
+} from "../../../../Components/CoursesPresentation/Card/styles";
+import Label from "Components/Label";
 
 export interface CardProps {
   title: string;
   date: string;
   description: string;
-  width: string;
-  height: string;
-  marginLeft: string;
-  titleSize: string;
-  textSize: string;
+  icon: string | undefined;
 }
 
-export const Card: FC<CardProps> = ({
-  title,
-  date,
-  description,
-  width,
-  height,
-  marginLeft,
-  titleSize,
-  textSize,
-}) => {
+export const Card: FC<CardProps> = ({ title, date, description, icon }) => {
   return (
-    <Container width={width} height={height} marginLeft={marginLeft}>
-      <Image />
+    <Container>
+      <Image src={image} alt="" />
       <TextWrapper>
-        <TopWrapper>
-          <CardTitle titleSize={titleSize} textSize={textSize}>
-            {title}
-          </CardTitle>
-          <CardDate titleSize={titleSize} textSize={textSize}>
-            {date}
-          </CardDate>
-        </TopWrapper>
-        <CardText titleSize={titleSize} textSize={textSize}>
-          {description}
-        </CardText>
+        <CardTitle>{title}</CardTitle>
+        <DescriptionWrapper>
+          <CardDescription>{description}</CardDescription>
+        </DescriptionWrapper>
+        <LabelWrapper>
+          <Label name="audiovisual" image={icon ? icon : undefined} />
+        </LabelWrapper>
+        <SubscribeWrapper>
+          <DateContainer>
+            <DateText>Inscreva-se até</DateText>
+            <DateText>{date}</DateText>
+          </DateContainer>
+          <ButtonWrapper>
+            <ButtonLayer />
+            <Button href="">
+              <ButtonText>inscreva-se</ButtonText>
+            </Button>
+          </ButtonWrapper>
+        </SubscribeWrapper>
       </TextWrapper>
     </Container>
   );

@@ -32,7 +32,8 @@ export const TitleWrapper = styled.div`
   ${Mobile(css`
     width: 100%;
     max-width: none;
-    padding: 30px 21px 70px 21px;
+    padding: 30px 21px 0px 21px;
+    margin-bottom: 65px;
   `)}
 
   ${DesktopSmall(css`
@@ -81,16 +82,16 @@ export const Image = styled.img`
   bottom: 150px;
   right: 70px;
   //margin-bottom: -150px;
-  -webkit-filter: grayscale(100%);
-  filter: drop-shadow(0 0 100px 5px rgba(255, 255, 255, 0.15));
-  box-shadow: 0 4px 60px 0px rgba(250, 250, 250, 0.15);
+  -webkit-filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.15));
+  filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.15));
+  box-shadow: 0 4px 4px 0px rgba(250, 250, 250, 0.34) inset;
   
   ${Mobile(css`
     width: 285px;
     height: 268px;
     bottom: 25px;
     right: 90px;
-    margin-bottom: -25px;
+    margin-bottom: -15px;
   `)}
 
   ${MobileLarge(css`
@@ -106,7 +107,7 @@ export const Image = styled.img`
     height: 420px;
     bottom: 60px;
     right: 70px;
-    //margin-bottom: -60px;
+    margin-bottom: 50px;
     margin-right: -30px;
   `)}
 `;

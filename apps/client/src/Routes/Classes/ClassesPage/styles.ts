@@ -56,6 +56,6 @@ export const ClassesWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 `;
