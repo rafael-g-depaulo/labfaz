@@ -7,15 +7,25 @@ declare namespace NodeJS {
   interface ProcessEnv {
     // node env
     NODE_ENV: 'development' | 'production' | 'test',
-
-    // feature flags
-    REACT_APP_SHOW_ROUTES: flagType,
-
+    
     // url of APIs used
     REACT_APP_STRAPI_URL: string
     REACT_APP_API_URL: string
-    REACT_APP_SHOW_HOME: string
-    REACT_APP_SHOW_BLOG: string
-    REACT_APP_SHOW_ABOUT_US: string
+
+    // feature flags
+      // routes
+      REACT_APP_SHOW_ROUTES: flagType,
+      REACT_APP_SHOW_HOME: flagType
+      REACT_APP_SHOW_BLOG: flagType
+      REACT_APP_SHOW_OBSERVATORIO: flagType
+      REACT_APP_SHOW_ABOUT_US: flagType
+      REACT_APP_SHOW_COURSES: flagType
+      REACT_APP_SHOW_PROFILE_ME: flagType
+      REACT_APP_SHOW_PROFILE_OTHER: flagType
+      REACT_APP_SHOW_USER_SEARCH: flagType
+      REACT_APP_SHOW_FORGOT_PASSWORD: flagType
+    // tools
+      REACT_APP_SHOW_RQUERY_DEVTOOLS: flagType
+    
   }
 }

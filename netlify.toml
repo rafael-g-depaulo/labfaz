@@ -32,26 +32,44 @@
 [context.master]
   command = "yarn build:client"
   [context.master.environment]
+    # api urls
     REACT_APP_API_URL="https://api.labfaz.com.br/"
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
     # feature flags
     REACT_APP_SHOW_ROUTES="false"
     REACT_APP_SHOW_HOME="false"
     REACT_APP_SHOW_BLOG="false"
+    REACT_APP_SHOW_OBSERVATORIO="false"
     REACT_APP_SHOW_ABOUT_US="false"
+    REACT_APP_SHOW_COURSES="false"
+    REACT_APP_SHOW_PROFILE_ME="false"
+    REACT_APP_SHOW_PROFILE_OTHER="false"
+    REACT_APP_SHOW_USER_SEARCH="false"
+    REACT_APP_SHOW_FORGOT_PASSWORD="false"
+    # devtools
+    REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 
 
 # these configurations are added to deploys from the development branch
 [context.develop]
   command = "yarn build:client"
   [context.develop.environment]
+    # api urls
     REACT_APP_API_URL="https://api-dev.labfaz.com.br/"
     REACT_APP_STRAPI_URL="https://backoffice.labfaz.com.br/"
     # feature flags
     REACT_APP_SHOW_ROUTES="true"
     REACT_APP_SHOW_HOME="true"
     REACT_APP_SHOW_BLOG="true"
+    REACT_APP_SHOW_OBSERVATORIO="false"
     REACT_APP_SHOW_ABOUT_US="true"
+    REACT_APP_SHOW_COURSES="true"
+    REACT_APP_SHOW_PROFILE_ME="false"
+    REACT_APP_SHOW_PROFILE_OTHER="false"
+    REACT_APP_SHOW_USER_SEARCH="false"
+    REACT_APP_SHOW_FORGOT_PASSWORD="false"
+    # devtools
+    REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 
 # The following redirect makes the app work as a SPA
 [[redirects]]
