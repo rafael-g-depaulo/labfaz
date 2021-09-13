@@ -16,8 +16,8 @@ export const Container = styled.div`
     height: 100vh;
     max-width: 18rem;
     padding: 0 1rem;
-    z-index: 999;
     left: -18rem;
+    z-index: 500;
     transition: 800ms;
 
     a:last-child {
@@ -77,6 +77,7 @@ export const CloseMenu = styled.div<PropsCloseMenu>`
   background-color: transparent;
   width: 100%;
   height: 100%;
+  z-index: 900;
   position: fixed;
   cursor: pointer;
   display: ${props => props.open ? 'flex' : 'none'};
