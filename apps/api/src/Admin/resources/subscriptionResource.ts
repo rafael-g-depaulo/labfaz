@@ -1,5 +1,5 @@
 import { ResourceWithOptions } from "adminjs"
-import { Connection } from "typeorm"
+import { Connection, Not } from "typeorm"
 
 import { ShowName } from "Entities/Artist"
 import { Request } from "Entities/Requests"
@@ -20,10 +20,10 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
       actions: {
         updateStatus: {
           actionType: "record",
-          guard: "Você deseja confirmar essa ação?",
+          guard: "Hello world",
           handler: async (request, _response, context) => {
             const { currentAdmin, record } = context
-            const status = request.payload
+            const status = request.payload!.status
 
             if (!record) return {
               record: record!.toJSON(currentAdmin),
@@ -142,16 +142,10 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
 
             if(!courseId) return response
             const requests = await requestRepo.find({
-              where: [
-                {
-                  course: courseId,
-                  status: "status:accepted"
-                },
-                {
-                  course: courseId,
-                  status: "status:denied"
-                }
-              ]
+              where: {
+                course: courseId,
+                status: Not("pending")
+              }
             })
             .then(req => {
               const subscriptions = [] as Inscricoes[]
@@ -164,7 +158,6 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
                   }
                 })
               })
-              console.log(subscriptions)
               return subscriptions
             })
             return {

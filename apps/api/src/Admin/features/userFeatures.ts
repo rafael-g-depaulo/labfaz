@@ -16,8 +16,10 @@ export const userActions = (_userRepo: any) => buildFeature({
         const { currentAdmin } = context
         const record = context.record as BaseRecord
 
+        const curretStatus = record.get("isVerified")
+
         record.update({
-          isVerified: true
+          isVerified: !curretStatus
         })
 
         return {

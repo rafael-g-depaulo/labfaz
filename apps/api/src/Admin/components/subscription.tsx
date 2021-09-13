@@ -9,7 +9,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Section
+  H3,
 } from '@adminjs/design-system'
 import { ActionProps, useRecord, ApiClient } from 'adminjs'
 import { Status, Actions } from "./style"
@@ -103,7 +103,10 @@ const Subscription: FC<ActionProps> = (props) => {
         <Text> Começa das inscrições: {`${treatedDate.getDay()}/${treatedDate.getMonth()}/${treatedDate.getFullYear()}`} </Text>
       </Header>
       <Table>
-        <TableBody>
+      <H3> <strong> INSCRICOES PENDENTES </strong> </H3>
+        <TableBody style={{
+          marginBottom: '1rem'
+        }}>
           {subscriptions.length !== 0 ? 
             subscriptions.map(subscription => {
                 return (
@@ -148,7 +151,8 @@ const Subscription: FC<ActionProps> = (props) => {
           <Text> Sem inscrições </Text>
         }
         </TableBody>
-      
+
+        <H3> <strong> INSCRICOES PROCESSADAS </strong> </H3>
         <TableBody>
           {anwseredSubs.length !== 0 ? 
             anwseredSubs.map(subscription => {
