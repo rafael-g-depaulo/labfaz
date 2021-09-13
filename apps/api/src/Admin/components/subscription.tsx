@@ -12,14 +12,11 @@ import {
 } from '@adminjs/design-system'
 import { ActionProps, useRecord, ApiClient } from 'adminjs'
 import { Status, Actions } from "./style"
-import { idText } from 'typescript'
 
 interface student {
-  active: boolean,
-  banner: boolean,
   email: string
 }
-interface Inscricoes {
+export interface Inscricoes {
   id: string,
   status: string,
   student: student
@@ -52,14 +49,15 @@ const Subscription: FC<ActionProps> = (props) => {
       resourceId: "Request",
       responseType: 'json',
       actionName: "getOpenSubscriptions",
-      method: "GET",
       params: {
         courseId: record.id
       },
-      query: record.id
     })
     .then(res => {
       console.log(res)
+    })
+    .catch(error => {
+      console.log("DEU RUIM", error)
     })
   }, [])
 
@@ -68,12 +66,12 @@ const Subscription: FC<ActionProps> = (props) => {
 
   const { name, available } = record.params
   const inscricoes = record.params.inscricoes as Inscricoes[]
-  inscricoes.forEach(inscricao => {
-    if(inscricao.status.includes("accepted")) {
-      console.log(inscricao.status)
+  const pending = inscricoes.map((inscricao) => {
+    if(inscricao.status.includes("pending")) {
+        return inscricao
     }
+    return
   })
-
 
 
   const date = record.params.subscription_start_date as string
@@ -94,44 +92,51 @@ const Subscription: FC<ActionProps> = (props) => {
       </Header>
       <Table>
         <TableBody>
-          {inscricoes.map(subscribe => (
-            <TableRow>
-              <TableCell>
-                <Text>
-                  {subscribe.student.email}
-                </Text>
-              </TableCell>
-              <TableCell>
-                <Text
-                  color="orange"
-                  as="p"
-                  style={{
-                    fontWeight: 700
-                  }}
-                >
-                  {subscribe.status}
-                </Text>
-              </TableCell>
-              <TableCell>
-                <Actions>
-                  <Button 
-                    size="sm" 
-                    variant="success"
-                    onClick={() => {
-                      handleAction(subscribe.id, "accepted")
-                    }}
-                    > Aceitar </Button>
-                    <Button 
-                    size="sm" 
-                    variant="danger"
-                    onClick={() => {
-                      handleAction(subscribe.id, "denied")
-                    }}
-                    > Recusar </Button>
-                </Actions>
-              </TableCell>
-            </TableRow>
-          ))}
+          {pending ? 
+            pending.map(subscription => {
+              if(subscription) {
+                return (
+                  <TableRow>
+                    <TableCell>
+                      <Text>
+                        {subscription.student.email}
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text
+                        color="orange"
+                        as="p"
+                        style={{
+                          fontWeight: 700
+                        }}
+                      >
+                        {subscription.status}
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Actions>
+                        <Button 
+                          size="sm" 
+                          variant="success"
+                          onClick={() => {
+                            handleAction(subscription.id, "accepted")
+                          }}
+                          > Aceitar </Button>
+                          <Button 
+                          size="sm" 
+                          variant="danger"
+                          onClick={() => {
+                            handleAction(subscription.id, "denied")
+                          }}
+                          > Recusar </Button>
+                      </Actions>
+                    </TableCell>
+                  </TableRow>
+                )
+              } else return
+            })  :
+          <Text> Sem inscrições </Text>
+        }
         </TableBody>
       </Table>
 

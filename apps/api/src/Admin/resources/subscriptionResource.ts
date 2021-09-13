@@ -6,7 +6,8 @@ import { Request } from "Entities/Requests"
 
 import { sendAprovedEmail, sendNotAprovedEmail } from "Mailer/courseSubscriptionResponse"
 import RequestRepository from "Repository/RequestRepository"
-// import UserRepository from "Repository/UserRepository"
+
+import { Inscricoes } from "../components/subscription"
 
 const subscriptionResource = (conn: Connection): ResourceWithOptions => {
 
@@ -103,43 +104,46 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
         getOpenSubscriptions: {
           actionType: "resource",
           component: false,
-          handler: async (request, response, context) => {
-            const { record, currentAdmin } = context
+          handler: async (request, response) => {
             const courseId = request.query?.courseId
+            console.log(request.params)
 
-            if(!courseId) return { record: context.record?.toJSON(context.currentAdmin) }
-
-            const requests = requestRepo.find({
+            if(!courseId) return response
+            console.log("has course")
+            const requests = await requestRepo.find({
               where: {
                 course: courseId,
                 status: "pending"
               }
             })
             .then(req => {
-              console.log(req)
-              if(!req) {
-                return []
+              const subscriptions = [] as Inscricoes[]
+              req.map(r => {
+                subscriptions.push({
+                  id: r.id,
+                  status: r.status,
+                  student: {
+                    email: r.student.email
+                  }
+                })
+              })
+              return subscriptions
+            })
+
+
+            if(requests) {
+              response.data = {
+                requests
               }
-              return req
-            })
-
-
-
-
-            
-
-            record?.storeParams({
-              requests
-            })
-            response.data = {
-              requests
             }
 
+            console.log(response.data)
+
             return {
-              record: record!.toJSON(currentAdmin),
               notice: {
-                message: "No pending requests",
-              }
+                message: "returning subscriptions"
+              },
+              response
             }
           }
         }
