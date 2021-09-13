@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 
+import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } from 'FeatureFlags'
+
 import Logo from 'Components/Logo'
 import {
   Container,
@@ -13,7 +15,11 @@ import {
   NavBar
 } from './style'
 import { useCurrentUser } from 'Context/CurrentUser'
-import { loggedNavLinksList, navLinksList, unloggedNavLinksList } from 'Utils/navLinks'
+import { navLink, navLinks } from 'Utils/navLinks'
+
+const Link = ({ link, show }: {link: navLink, show: boolean}) => (
+  !show ? <></> : <NavLink href={link.path}> {link.label} </NavLink> 
+)
 
 export const Mobile: FC = () => {
   const[open, setOpen] = useState(false)
@@ -24,12 +30,18 @@ export const Mobile: FC = () => {
       <div className={open ? 'navBar active' : 'navBar'}>
         <NavBar>
           <NavLink href="/"> HOME </NavLink>
-          {navLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)}
+          
+          { <Link show={showAboutUs}    link={navLinks["about us"]} />            }
+          { <Link show={showCourses}    link={navLinks["cursos"]} />              }
+          { <Link show={showBlog}       link={navLinks["blog"]} />                }
+          { <Link show={showUserSearch} link={navLinks["busca profissionais"]} /> }
+
           {isLoggedIn
-            ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)
-            : unloggedNavLinksList.map(({ name, label, path }) =>
-              <Button BackgroundColor={name === "login" ? "login" : undefined} href={path} key={`${label}+${path}`}> {label} </Button>
-          )
+            ? <Link show={showProfileMine} link={navLinks["perfil"]} />
+            : <>
+              <Button BackgroundColor={"login"} href={navLinks["login"].path} > {navLinks["login"].label} </Button>
+              <Button href={navLinks["cadastro"].path} > {navLinks["cadastro"].label} </Button>
+            </>
           }
         </NavBar>
       </div>

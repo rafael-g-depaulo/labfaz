@@ -1,6 +1,11 @@
 import React, { FC } from 'react'
 
+import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } from 'FeatureFlags'
+
+import Logo from 'Components/Logo'
 import useEvent from 'Hooks/useEvent'
+import { useCurrentUser } from 'Context/CurrentUser'
+import { navLink, navLinks } from 'Utils/navLinks'
 
 import {
   Container,
@@ -11,9 +16,10 @@ import {
   RedirectLink,
   LogIn
 } from './style'
-import Logo from 'Components/Logo'
-import { loggedNavLinksList, navLinksList, unloggedNavLinksList } from 'Utils/navLinks'
-import { useCurrentUser } from 'Context/CurrentUser'
+
+const Link = ({ label, path }: navLink) => (
+  <NavLink href={path}> {label} </NavLink>
+)
 
 export const Web: FC = () => {
 
@@ -26,17 +32,19 @@ export const Web: FC = () => {
         <Logo />
       </RedirectLink>
       <Navbar>
-        {navLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)}
+        { showAboutUs    && <Link {...navLinks["about us"]} />            }
+        { showCourses    && <Link {...navLinks["cursos"]} />              }
+        { showBlog       && <Link {...navLinks["blog"]} />                }
+        { showUserSearch && <Link {...navLinks["busca profissionais"]} /> }
       </Navbar>
       <div className="line" />
       <UserSession>
         { isLoggedIn 
-          ? loggedNavLinksList.map(({ label, path }) => <NavLink href={path} key={`${label}+${path}`}> {label} </NavLink>)
-          : unloggedNavLinksList.map(({ name, label, path }) =>
-            name === "login"
-              ? <LogIn href={path} key={`${label}+${path}`}> {label} </LogIn>
-              : <Button href={path} key={`${label}+${path}`}> {label} </Button>
-          )
+          ? showProfileMine && <Link {...navLinks["perfil"]} />
+          : <>
+            <LogIn href={navLinks["login"].path}> {navLinks["login"].label} </LogIn>
+            <Button href={navLinks["cadastro"].path}> {navLinks["cadastro"].label} </Button>
+          </>
         }
       </UserSession>
     </Container>
