@@ -20,6 +20,7 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
       actions: {
         updateStatus: {
           actionType: "record",
+          guard: "Você deseja confirmar essa ação?",
           handler: async (request, _response, context) => {
             const { currentAdmin, record } = context
             const status = request.payload
@@ -128,6 +129,44 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
               return subscriptions
             })
 
+            return {
+              requests
+            }
+          }
+        },
+        getRequests: {
+          actionType: "resource",
+          component: false,
+          handler: async (request, response) => {
+            const courseId = request.query?.courseId
+
+            if(!courseId) return response
+            const requests = await requestRepo.find({
+              where: [
+                {
+                  course: courseId,
+                  status: "status:accepted"
+                },
+                {
+                  course: courseId,
+                  status: "status:denied"
+                }
+              ]
+            })
+            .then(req => {
+              const subscriptions = [] as Inscricoes[]
+              req.map(r => {
+                subscriptions.push({
+                  id: r.id,
+                  status: r.status,
+                  student: {
+                    email: r.student.email
+                  }
+                })
+              })
+              console.log(subscriptions)
+              return subscriptions
+            })
             return {
               requests
             }

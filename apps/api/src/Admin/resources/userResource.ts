@@ -16,9 +16,19 @@ const userResource = (conn: Connection): ResourceWithOptions => {
       navigation: {
         icon: "Tools",
         name: "Labfaz Admin Panel"
+      },
+      actions: {
+        new: {
+          isAccessible: false
+        },
+        delete: {
+          isAccessible: false
+        },
+        edit: {
+          isAccessible: false
+        }
       }
     },
-
     features: [userActions(userRepo)]
 })
 }

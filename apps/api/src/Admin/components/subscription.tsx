@@ -8,7 +8,8 @@ import {
   Table,
   TableRow,
   TableCell,
-  TableBody
+  TableBody,
+  Section
 } from '@adminjs/design-system'
 import { ActionProps, useRecord, ApiClient } from 'adminjs'
 import { Status, Actions } from "./style"
@@ -36,6 +37,13 @@ const Subscription: FC<ActionProps> = (props) => {
         status: newStatus
       }
     })
+
+    setSubscripitons(subs => {
+      const newSubs = subs.slice(0)
+      const idToBeChanged = subs.findIndex(sub => sub.id == id)
+      newSubs[idToBeChanged] = {...subs[idToBeChanged], status: newStatus}
+      return newSubs
+    })
   }
 
   const {
@@ -44,6 +52,8 @@ const Subscription: FC<ActionProps> = (props) => {
   const api = new ApiClient()
 
   const [subscriptions, setSubscripitons] = useState<Inscricoes[]>([])
+  const [anwseredSubs, setAnwseredSubs] = useState<Inscricoes[]>([])
+  
   useEffect(() => {
   api.resourceAction({
       resourceId: "Request",
@@ -60,6 +70,23 @@ const Subscription: FC<ActionProps> = (props) => {
       console.log("DEU RUIM", error)
     })
   }, [])
+
+  useEffect(() => {
+    api.resourceAction({
+        resourceId: "Request",
+        responseType: 'json',
+        actionName: "getRequests",
+        params: {
+          courseId: record.id
+        },
+      })
+      .then(res => {
+        setAnwseredSubs(res.data.requests)
+      })
+      .catch(error => {
+        console.log("DEU RUIM", error)
+      })
+    }, [])
 
 
   const { name, available } = record.params
@@ -121,8 +148,53 @@ const Subscription: FC<ActionProps> = (props) => {
           <Text> Sem inscrições </Text>
         }
         </TableBody>
+      
+        <TableBody>
+          {anwseredSubs.length !== 0 ? 
+            anwseredSubs.map(subscription => {
+                return (
+                  <TableRow>
+                    <TableCell>
+                      <Text>
+                        {subscription.student.email}
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text
+                        color="orange"
+                        as="p"
+                        style={{
+                          fontWeight: 700
+                        }}
+                      >
+                        {subscription.status}
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Actions>
+                        <Button 
+                          size="sm" 
+                          variant="success"
+                          onClick={() => {
+                            handleAction(subscription.id, "accepted")
+                          }}
+                          > Aceitar </Button>
+                          <Button 
+                          size="sm" 
+                          variant="danger"
+                          onClick={() => {
+                            handleAction(subscription.id, "denied")
+                          }}
+                          > Recusar </Button>
+                      </Actions>
+                    </TableCell>
+                  </TableRow>
+                )
+            })  :
+          <Text> Sem inscrições </Text>
+        }
+        </TableBody>
       </Table>
-
     </>
   )
 }
