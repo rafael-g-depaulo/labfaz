@@ -71,8 +71,6 @@ export const courseActions = (requestRepo: RequestRepository) => buildFeature({
             return req
           })
 
-          const requests = context._admin.findResource("Request") as BaseResource
-
           const RequestReference = new BaseProperty({
             type: "reference",
             path: "Request"
@@ -92,7 +90,6 @@ export const courseActions = (requestRepo: RequestRepository) => buildFeature({
 
         return {
           record: record!.toJSON(currentAdmin),
-          other: "asuhdauh"
         }
       }
     }

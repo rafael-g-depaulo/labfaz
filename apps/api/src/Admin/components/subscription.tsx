@@ -12,6 +12,7 @@ import {
 } from '@adminjs/design-system'
 import { ActionProps, useRecord, ApiClient } from 'adminjs'
 import { Status, Actions } from "./style"
+import { idText } from 'typescript'
 
 interface student {
   active: boolean,
@@ -40,21 +41,48 @@ const Subscription: FC<ActionProps> = (props) => {
     })
   }
 
-
   const {
     record,
   } = useRecord(initialRecord, resource.id)
   const api = new ApiClient()
 
+  const [subscriptions, setSubscripitons] = useState([])
+  useEffect(() => {
+  api.resourceAction({
+      resourceId: "Request",
+      responseType: 'json',
+      actionName: "getOpenSubscriptions",
+      method: "GET",
+      params: {
+        courseId: record.id
+      },
+      query: record.id
+    })
+    .then(res => {
+      console.log(res)
+    })
+  }, [])
+
+
+
 
   const { name, available } = record.params
   const inscricoes = record.params.inscricoes as Inscricoes[]
+  inscricoes.forEach(inscricao => {
+    if(inscricao.status.includes("accepted")) {
+      console.log(inscricao.status)
+    }
+  })
+
+
 
   const date = record.params.subscription_start_date as string
 
   const treatedDate = new Date(date);
   if(!inscricoes) {
-    <Text> Sem inscrições </Text>
+    return(
+      <Text> Sem inscrições </Text>
+    )
   }
 
   return (
