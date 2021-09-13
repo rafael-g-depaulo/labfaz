@@ -29,6 +29,8 @@ import {
   Img,
 } from './style'
 import { useLoginInfo } from 'Api/LoginAssets'
+import { showForgotPassword } from 'FeatureFlags'
+import { navLinks } from 'Utils/navLinks'
 
 interface FormProps {
   email: string
@@ -120,10 +122,10 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
                       ENTRAR
                     </Button>
 
-                    <RegisterButton href="/SignUp">CADASTRE-SE</RegisterButton>
+                    <RegisterButton href={navLinks.cadastro.path}>CADASTRE-SE</RegisterButton>
                   </ButtonContainer>
 
-                  <NavLink to="/recover">Esqueceu sua senha?</NavLink>
+                  { showForgotPassword && <NavLink to={navLinks.forgotPass.path}>{navLinks.forgotPass.label}</NavLink> }
                 </Form>
               )}
             </Formik>

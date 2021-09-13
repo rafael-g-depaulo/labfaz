@@ -1,5 +1,5 @@
 export interface navLink {
-  name: LinkNames
+  name: LinkName
   label: string
   path: string
 }
@@ -8,22 +8,26 @@ export const linkNames = [
   "about us",
   "cursos",
   "blog",
+  "observatorio",
   "busca profissionais",
   "login",
   "cadastro",
   "perfil",
+  "forgotPass",
 ] as const
-export type LinkNames = typeof linkNames[number]
+export type LinkName = typeof linkNames[number]
 
-export type linkDict = {[k in LinkNames]: navLink & { name: k }}
+export type linkDict = {[k in LinkName]: navLink & { name: k }}
 export const navLinks: linkDict = {
-  "about us":            { name: "about us",            label: "QUEM SOMOS",             path: "/about"         },
-  "cursos":              { name: "cursos",              label: "CURSOS",                 path: "/classes"       },
-  "blog":                { name: "blog",                label: "BLOG",                   path: "/blog"          },
-  "busca profissionais": { name: "busca profissionais", label: "BANCO DE PROFISSIONAIS", path: "/professionals" },
-  "login":               { name: "login",               label: "ENTRAR",                 path: "/login"         },
-  "cadastro":            { name: "cadastro",            label: "CADASTRE-SE",            path: "/signup"      },
-  "perfil":              { name: "perfil",              label: "PERFIL",                 path: "/perfil/eu"     },
+  "about us":            { name: "about us",            label: "QUEM SOMOS",             path: "/about"           },
+  "cursos":              { name: "cursos",              label: "CURSOS",                 path: "/classes"         },
+  "blog":                { name: "blog",                label: "BLOG",                   path: "/blog"            },
+  "observatorio":        { name: "observatorio",        label: "OBSERVATÓRIO",           path: "/observatorio"    },
+  "busca profissionais": { name: "busca profissionais", label: "BANCO DE PROFISSIONAIS", path: "/professionals"   },
+  "login":               { name: "login",               label: "ENTRAR",                 path: "/login"           },
+  "cadastro":            { name: "cadastro",            label: "CADASTRE-SE",            path: "/signup"          },
+  "perfil":              { name: "perfil",              label: "PERFIL",                 path: "/perfil/eu"       },
+  "forgotPass":          { name: "forgotPass",          label: "Esqueceu sua senha?",    path: "/forgot-password" },
 }
 
 export const navLinksList: navLink[] = [
