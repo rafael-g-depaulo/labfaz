@@ -1,12 +1,13 @@
 import { ResourceWithOptions } from "adminjs"
-// import UserRepository from "Repository/UserRepository"
 import { Connection } from "typeorm"
-import { Request } from "../../Entities/Requests"
 
-const subscriptionResource = (conn: Connection): ResourceWithOptions => {
+import { ShowName } from "Entities/Artist"
+import { Request } from "Entities/Requests"
 
-  // Se a função do mailer estiver conectada a um repository pode-se pegar o repositorio aqui
-  // const userRepo = conn.getCustomRepository(UserRepository)
+import { sendAprovedEmail, sendNotAprovedEmail } from "Mailer/courseSubscriptionResponse"
+// import UserRepository from "Repository/UserRepository"
+
+const subscriptionResource = (_conn: Connection): ResourceWithOptions => {
 
   return({
     resource: Request,
@@ -16,59 +17,81 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
         updateStatus: {
           actionType: "record",
           handler: async (request, _response, context) => {
-            const {currentAdmin, record} = context
-            
+            const { currentAdmin, record } = context
             const status = request.payload
 
-            if(record) {
+            if (!record) return {
+              record: record!.toJSON(currentAdmin),
+              notice: {
+                type: "error",
+                message: "failed to update record"
+              }
+            }
+
+            // pegar o id do curso
+            const courseId = record.get('course.id')
+            const studentId = record.get('student.id')
+
+            // Para ter acesso a um resource
+            const courseResource = context._admin.findResource("Course")
+            const userResource = context._admin.findResource("User")
+            // retornar o curso
+            const [course, user] = await Promise.all([courseResource.findOne(courseId), userResource.findOne(studentId)])
+            
+            if (!course || !user) return {
+              record: record!.toJSON(currentAdmin),
+              notice: {
+                type: "error",
+                message: "failed to update record"
+              }
+            }
+
+            try {
               record.update({
                 status
               })
-
               record.save()
-                .catch(() => {
-                  return {
-                    record: record.toJSON(currentAdmin),
-                    notice: {
-                      message: "request failed"
-                    }
-                  }
-                })
-
-                // pegar o id do curso
-                const courseId = record.get('course.id')
-                const studentId = record.get('student.id')
-
-                // Para ter acesso a um resource
-                const courseResource = context._admin.findResource("Course")
-                const userResource = context._admin.findResource("User")
-                // retornar o curso
-                const course = await courseResource.findOne(courseId)
-                const user = await userResource.findOne(studentId)
-                
-                // os dados do curso vão estar em params do course
-                // dados em array é preciso pegar com o método "selectParams" que retornar um dicionario
-                if(course && user) {
-                  // course?.get()
-                  console.log(course.params)
-                  console.log(user.params.email)
-                  // console.log(course.params)
+            } catch (e) {
+              return {
+                record: record.toJSON(currentAdmin),
+                notice: {
+                  message: "request failed"
                 }
-    
-              // tendo os dados do curso necessários param mandar o email só mandar aqui!
-                
+              }
             }
 
-            
-            
-            /*
+            // parse info for email
+            const showName =
+              user.params["artist.show_name"] === ShowName.ARTISTIC ? "artistic_name"
+              : user.params["artist.show_name"] === ShowName.SOCIAL ? "social_name"
+              : "name"
+            const userName = user.params[`artist.${showName}`]
+            const userEmail = user.params.email
+            const courseName = course.params.name
 
-            */
+            // send correct email depending on status
+            try {
+              if (status?.status === 'accepted') {
+                const courseDates = Object.values(course.selectParams("class_dates") ?? {})
+                const courseLink = course.params.link
+                await sendAprovedEmail(userEmail, userName, courseName, courseLink, courseDates)
+              } else {
+                await sendNotAprovedEmail(userEmail, userName, courseName)
+              }
+            } catch {
+              return {
+                record: record.toJSON(currentAdmin),
+                notice: {
+                  message: "request failed"
+                }
+              }
+            }
 
             return {
-              record: record!.toJSON(currentAdmin),
+              record: record.toJSON(currentAdmin),
               notice: {
-                message: "request updated"
+                type: "success",
+                message: "request updated successfully"
               }
             }
           },
