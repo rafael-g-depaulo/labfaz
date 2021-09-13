@@ -106,10 +106,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
           component: false,
           handler: async (request, response) => {
             const courseId = request.query?.courseId
-            console.log(request.params)
 
             if(!courseId) return response
-            console.log("has course")
             const requests = await requestRepo.find({
               where: {
                 course: courseId,
@@ -130,20 +128,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
               return subscriptions
             })
 
-
-            if(requests) {
-              response.data = {
-                requests
-              }
-            }
-
-            console.log(response.data)
-
             return {
-              notice: {
-                message: "returning subscriptions"
-              },
-              response
+              requests
             }
           }
         }

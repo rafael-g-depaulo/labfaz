@@ -23,8 +23,8 @@ export interface Inscricoes {
 }
 
 const Subscription: FC<ActionProps> = (props) => {
-  const { record: initialRecord, resource, action } = props
-  action.hideActionHeader = true
+  const { record: initialRecord, resource } = props
+
   const handleAction = async (id: string, newStatus: "denied" | "accepted") => {
     await api.recordAction({
       resourceId: "Request",
@@ -43,7 +43,7 @@ const Subscription: FC<ActionProps> = (props) => {
   } = useRecord(initialRecord, resource.id)
   const api = new ApiClient()
 
-  const [subscriptions, setSubscripitons] = useState([])
+  const [subscriptions, setSubscripitons] = useState<Inscricoes[]>([])
   useEffect(() => {
   api.resourceAction({
       resourceId: "Request",
@@ -54,7 +54,7 @@ const Subscription: FC<ActionProps> = (props) => {
       },
     })
     .then(res => {
-      console.log(res)
+      setSubscripitons(res.data.requests)
     })
     .catch(error => {
       console.log("DEU RUIM", error)
@@ -62,26 +62,11 @@ const Subscription: FC<ActionProps> = (props) => {
   }, [])
 
 
-
-
   const { name, available } = record.params
-  const inscricoes = record.params.inscricoes as Inscricoes[]
-  const pending = inscricoes.map((inscricao) => {
-    if(inscricao.status.includes("pending")) {
-        return inscricao
-    }
-    return
-  })
-
 
   const date = record.params.subscription_start_date as string
 
   const treatedDate = new Date(date);
-  if(!inscricoes) {
-    return(
-      <Text> Sem inscrições </Text>
-    )
-  }
 
   return (
     <>
@@ -92,9 +77,8 @@ const Subscription: FC<ActionProps> = (props) => {
       </Header>
       <Table>
         <TableBody>
-          {pending ? 
-            pending.map(subscription => {
-              if(subscription) {
+          {subscriptions.length !== 0 ? 
+            subscriptions.map(subscription => {
                 return (
                   <TableRow>
                     <TableCell>
@@ -133,7 +117,6 @@ const Subscription: FC<ActionProps> = (props) => {
                     </TableCell>
                   </TableRow>
                 )
-              } else return
             })  :
           <Text> Sem inscrições </Text>
         }
