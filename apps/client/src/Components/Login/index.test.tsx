@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { navLinks } from 'Utils/navLinks'
 
 import render from 'Utils/render'
 import { Login } from './index'
@@ -48,16 +49,16 @@ describe('Check user session links', () => {
   })
 
   it('check SignUp button', () => {
-    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute(
+    expect(getByText(navLinks.cadastro.label).closest('a')).toHaveAttribute(
       'href',
-      '/SignUp'
+      navLinks.cadastro.path
     )
   })
 
   it('check Recover link', () => {
-    expect(getByText('Esqueceu sua senha?').closest('a')).toHaveAttribute(
+    expect(getByText(navLinks.forgotPass.label).closest('a')).toHaveAttribute(
       'href',
-      '/recover'
+      navLinks.forgotPass.path
     )
   })
 })

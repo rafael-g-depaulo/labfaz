@@ -38,7 +38,7 @@ export const CurrentUserProvider: FC = ({
     isLoggedIn: !!token,
   }), [user, setUser, token, setToken])
 
-  console.log("user context.", token, user, "cuv", currentUserValue)
+  if (process.env.NODE_ENV === 'development') console.log("user context.", token, user, "cuv", currentUserValue)
   return (
     <CurrentUserContext.Provider value={currentUserValue}>
       {children}

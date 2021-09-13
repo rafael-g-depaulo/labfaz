@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { navLinks } from 'Utils/navLinks'
 
 import render from 'Utils/render'
 import Display from './Display'
@@ -44,9 +45,9 @@ describe('Check user session links', () => {
   )
 
   it('check Recover link', () => {
-    expect(getByText('Esqueceu sua senha?').closest('a')).toHaveAttribute(
+    expect(getByText(navLinks.forgotPass.label).closest('a')).toHaveAttribute(
       'href',
-      '/recover'
+      navLinks.forgotPass.path
     )
   })
 })
