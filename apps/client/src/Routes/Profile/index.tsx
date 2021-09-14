@@ -1,12 +1,13 @@
 import Loading from "Components/Loading"
 import React, { lazy, Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, RouteComponentProps, Switch } from "react-router-dom";
 
 import { Router } from "Routes"
 
 import usePageview from "Hooks/usePageView"
 
-const ProfilePage = lazy(() => import("./ProfilePage"))
+const PersonalProfilePage = lazy(() => import("./PersonalProfilePage"))
+const UsersProfilePage = lazy(() => import("./UsersProfilePage"))
 
 export const Profile: Router = ({
   match,
@@ -17,10 +18,18 @@ export const Profile: Router = ({
 
   return (
     <Switch>
-      <Route path={path}>
+      <Route exact path={path}>
         {() => (
           <Suspense fallback={<Loading />}>
-            <ProfilePage />
+            <PersonalProfilePage />
+          </Suspense>
+        )}
+      </Route>
+
+      <Route path={`${path}/:id`}>
+        {({ match }: RouteComponentProps<{ id: string }>) => (
+          <Suspense fallback={<Loading />}>
+            <UsersProfilePage id={String(match?.params.id)} />
           </Suspense>
         )}
       </Route>
