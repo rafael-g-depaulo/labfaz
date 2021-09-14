@@ -1,21 +1,19 @@
-import Loading from "Components/Loading"
-import React, { lazy, Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
+import Loading from "Components/Loading";
+import React, { lazy, Suspense } from "react";
+import { Route, Switch, RouteComponentProps } from "react-router-dom";
 
-import { Router } from "Routes"
+import { Router } from "Routes";
 
-import usePageview from "Hooks/usePageView"
+import usePageview from "Hooks/usePageView";
 
-const ClassesPage = lazy(() => import("./ClassesPage"))
-// const PostPage = lazy(() => import("./PostPage"))
+const ClassesPage = lazy(() => import("./ClassesPage"));
+const ClassDetails = lazy(() => import("./ClassDetails"));
 
-export const Classes: Router = ({
-  match,
-}) => {
-  const { path = "/classes" } = match ?? {}
+export const Classes: Router = ({ match }) => {
+  const { path = "/classes" } = match ?? {};
 
-  usePageview({ name: 'classes', path })
-  
+  usePageview({ name: "classes", path });
+
   return (
     <Switch>
       <Route exact path={path}>
@@ -25,17 +23,16 @@ export const Classes: Router = ({
           </Suspense>
         )}
       </Route>
-
-      {/* show de um curso
+      show de um curso
       <Route path={`${path}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
           <Suspense fallback={<Loading />}>
-            <PostPage id={Number(match?.params.id)} />
+            <ClassDetails id={match?.params.id} />
           </Suspense>
         )}
-      </Route> */}
+      </Route>
     </Switch>
-  )
-}
+  );
+};
 
 export default Classes;

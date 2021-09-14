@@ -53,6 +53,8 @@ export const Card: FC<CardProps> = ({
   // const difference = timeDifference(date, actualDate);
   // const isAvailable = (available && difference < 1) ? true : false;
 
+  const route = `/classes/${id}`;
+
   return (
     <Container>
       <Image src={banner} alt="" />
@@ -85,7 +87,7 @@ export const Card: FC<CardProps> = ({
           </DateContainer>
           <ButtonWrapper>
             <ButtonLayer />
-            <Button href={available ? "" : has_subscription ? "" : "#"}>
+            <Button href={available ? route : has_subscription ? route : "#"}>
               <ButtonText>
                 {available
                   ? "inscreva-se"
