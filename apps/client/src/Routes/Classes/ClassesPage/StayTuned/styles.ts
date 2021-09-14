@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     height: auto;
     flex-direction: column;
     justify-content: center;
-    margin: 0px 30px 75px 30px;
+    margin: 80px 30px 75px 30px;
     padding: 0;
     background-color: #fafafa;
     border-radius: 15px;

@@ -22,14 +22,14 @@ export const Wrapper = styled.div<Props>`
     props.color
       ? props.color
       : "linear-gradient(to bottom, rgba(252, 0, 97, 0.1), rgba(0, 0, 0, 1))"};
-  filter: drop-shadow(0 0 20 0 rgba(252, 0, 97, 0.15));
+  filter: drop-shadow(0 0 20 rgba(252, 0, 97, 0.15));
   border-radius: 30px 30px 0 0;
   margin: 0 0 60px 0;
 
   ${Mobile(css`
     padding: 0;
     margin: 0;
-    filter: drop-shadow(0 0 10 0 rgba(250, 250, 250, 0.2));
+    filter: drop-shadow(0 0 10px rgba(250, 250, 250, 0.2));
   `)}
 `;
 

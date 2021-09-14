@@ -1,4 +1,5 @@
 import React, { FC, useRef } from "react";
+
 import {
   MainTitle,
   Wrapper,
@@ -8,21 +9,26 @@ import {
   CardWrapper,
   IconContainer,
 } from "./styles";
+
 import Card from "../Card";
-import { CardProps } from "../Card";
+
+import { Course } from "Api/Courses";
+
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 import useMobile from "Utils/useMobile";
 
 export interface Props {
   title: string;
-  classes: CardProps[];
+  subtitle: string;
+  classes: Course[];
   color: string;
   fontColor: string;
 }
 
 export const CardRowComponent: FC<Props> = ({
   title,
+  subtitle,
   classes,
   color,
   fontColor,
@@ -43,9 +49,9 @@ export const CardRowComponent: FC<Props> = ({
     <Wrapper color={color}>
       <MainTitle fontColor={fontColor}>{title}</MainTitle>
       {isMobile ? (
-        <Divisor fontColor={fontColor}/>
+        <Divisor fontColor={fontColor} />
       ) : (
-        <Subtitle>Novas atividades de diversas áreas todos os meses </Subtitle>
+        <Subtitle>{subtitle}</Subtitle>
       )}
       <IconContainer>
         {isMobile ? (
@@ -62,10 +68,14 @@ export const CardRowComponent: FC<Props> = ({
           <CardWrapper>
             {classes.map((item) => (
               <Card
-                title={item.title}
-                date={item.date}
-                description={item.description}
-                icon={item.icon}
+                id={item.id}
+                name={item.name}
+                tag={item.tags[0]}
+                short_description={item.short_description}
+                available={item.available}
+                banner={item.banner}
+                has_subscription={item.has_subscription}
+                subscription_finish_date={item.subscription_finish_date}
               />
             ))}
           </CardWrapper>

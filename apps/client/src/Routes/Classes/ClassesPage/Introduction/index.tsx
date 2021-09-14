@@ -2,20 +2,20 @@ import React, { FC } from "react";
 
 import { Container, TitleWrapper, MainTitle, TitleText, Image } from "./styles";
 
-import image from "./index.jpeg";
+import { CoursesPageIntroduction } from "Api/CoursesPageIntroduction";
 
-const Introduction: FC = () => {
+export interface Props {
+  data: CoursesPageIntroduction;
+}
+
+const Introduction: FC<Props> = ({ data }) => {
   return (
     <Container>
-      <Image src={image} alt="" />
+      <Image src={data.image.url} alt={data.image.alternativeText} />
       <TitleWrapper>
-      <MainTitle>Lorem & Ipsum</MainTitle>
-      <TitleText>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet,
-        consectetuer adipiscing elit.
-      </TitleText>
-    </TitleWrapper>
+        <MainTitle>{data.title}</MainTitle>
+        <TitleText>{data.description}</TitleText>
+      </TitleWrapper>
     </Container>
   );
 };

@@ -65,7 +65,7 @@ const Routes: FC = () => {
         { showBlog &&
         <Route path={["/classes"]}>
           {({ match }) => (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingFullPage />}>
               <Classes match={match} />
             </Suspense>
           )}

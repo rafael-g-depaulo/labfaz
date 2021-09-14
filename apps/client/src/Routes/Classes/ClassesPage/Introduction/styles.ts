@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   line-height: 1;
   padding-right: 60px;
@@ -51,16 +51,16 @@ export const MainTitle = styled(Title)`
   `)}
 
   ${DesktopSmall(css`
-    font-size: var(--font-size-title);
+    font-size: var(--font-size-title-xlarge);
   `)}
 `;
 
 export const TitleText = styled(Text)`
-  margin: 40px 0 0 0;
-  text-align: left;
+  margin: 80px 0 0 0;
+  text-align: center;
   line-height: 2;
   color: var(--color-text-white);
-  font-weight: bold;
+  font-weight: 600;
 
   ${Mobile(css`
     font-size: var(--font-size-medium);
@@ -73,15 +73,15 @@ export const TitleText = styled(Text)`
 `;
 
 export const Image = styled.img`
-  width: 750px;
-  height: 720px;
+  width: 680px;
+  height: 650px;
   border-radius: 50%;
   position: relative;
   object-fit: cover;
   object-position: center;
   bottom: 150px;
-  right: 70px;
-  //margin-bottom: -150px;
+  right: 80px;
+  margin-bottom: -30px;
   -webkit-filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.15));
   filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.15));
   box-shadow: 0 4px 4px 0px rgba(250, 250, 250, 0.34) inset;

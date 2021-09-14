@@ -9,9 +9,13 @@ import {
 } from "./styles";
 import useMobile from "Utils/useMobile";
 
-import image from "./index.jpeg";
+import { ApiStayTuned } from "Api/StayTuned";
 
-export const StayTuned: FC = () => {
+export interface Props {
+  data: ApiStayTuned;
+}
+
+export const StayTuned: FC<Props> = ({ data }) => {
   const isMobile = useMobile();
 
   return (
@@ -20,26 +24,19 @@ export const StayTuned: FC = () => {
         <Wrapper>
           <TextWrapper>
             <MainTitle>Fique Atento</MainTitle>
-            <MainText>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa.{" "}
-            </MainText>
+            <MainText>{data.description}</MainText>
           </TextWrapper>
-          <Image src={image} alt="" />
+          <Image src={data.image.url} alt={data.image.alternativeText} />
           <Button href="">Saiba Mais</Button>
         </Wrapper>
       ) : (
         <Wrapper>
           <TextWrapper>
             <MainTitle>Fique Atento</MainTitle>
-            <MainText>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit
-              amet, consectetuer adipiscing elit.
-            </MainText>
+            <MainText>{data.description}</MainText>
             <Button href="">Saiba Mais</Button>
           </TextWrapper>
-          <Image src={image} alt="" />
+          <Image src={data.image.url} alt={data.image.alternativeText} />
         </Wrapper>
       )}
     </>

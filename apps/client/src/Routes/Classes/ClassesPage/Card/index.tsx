@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 import {
   Container,
   Image,
@@ -14,37 +15,51 @@ import {
   ButtonText,
 } from "./styles";
 
-import image from "../Introduction/index.jpeg";
-
 import {
   CardDescription,
   DateText,
 } from "../../../../Components/CoursesPresentation/Card/styles";
+
 import Label from "Components/Label";
 
+import { format } from "date-fns";
+
 export interface CardProps {
-  title: string;
-  date: string;
-  description: string;
-  icon: string | undefined;
+  id: string;
+  name: string;
+  tag: string;
+  short_description: string;
+  available: boolean;
+  banner: string;
+  has_subscription: boolean;
+  subscription_finish_date: string;
 }
 
-export const Card: FC<CardProps> = ({ title, date, description, icon }) => {
+export const Card: FC<CardProps> = ({
+  name,
+  banner,
+  subscription_finish_date,
+  short_description,
+}) => {
   return (
     <Container>
-      <Image src={image} alt="" />
+      <Image src={banner} alt="" />
       <TextWrapper>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{name}</CardTitle>
         <DescriptionWrapper>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription>{short_description}</CardDescription>
         </DescriptionWrapper>
         <LabelWrapper>
-          <Label name="audiovisual" image={icon ? icon : undefined} />
+          <Label name="audiovisual" image={undefined} />
         </LabelWrapper>
         <SubscribeWrapper>
           <DateContainer>
             <DateText>Inscreva-se até</DateText>
-            <DateText>{date}</DateText>
+            <DateText>
+              {format(subscription_finish_date, "DD-MM-YYYY")
+                .replace("-", "/")
+                .replace("-", "/")}
+            </DateText>
           </DateContainer>
           <ButtonWrapper>
             <ButtonLayer />
