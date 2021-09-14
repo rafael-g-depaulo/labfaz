@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
-import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+import { ExternalLinkButton } from "Components/Buttons/ExternalLinkButton";
 import { Mobile, DesktopSmall } from "Utils/breakpoints";
 
 export const Wrapper = styled.div`
@@ -108,7 +108,7 @@ export const MainText = styled(Text)`
   `)}
 `;
 
-export const Button = styled(InternalLinkButton)`
+export const Button = styled(ExternalLinkButton)`
   width: 180px;
   height: 40px;
   //border: none;
