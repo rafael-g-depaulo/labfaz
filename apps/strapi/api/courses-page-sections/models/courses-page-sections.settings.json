@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "courses_page_sections",
+  "info": {
+    "name": "CoursesPageSections"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "first_title": {
+      "type": "string",
+      "required": true
+    },
+    "first_subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "second_title": {
+      "type": "string",
+      "required": true
+    },
+    "second_subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "third_title": {
+      "type": "string",
+      "required": true
+    },
+    "third_subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "fourth_title": {
+      "type": "string",
+      "required": true
+    },
+    "fourth_subtitle": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

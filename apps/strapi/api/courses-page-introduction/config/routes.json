@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/courses-page-introduction",
+      "handler": "courses-page-introduction.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/courses-page-introduction",
+      "handler": "courses-page-introduction.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/courses-page-introduction",
+      "handler": "courses-page-introduction.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

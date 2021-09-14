@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/stay-tuned",
+      "handler": "stay-tuned.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/stay-tuned",
+      "handler": "stay-tuned.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/stay-tuned",
+      "handler": "stay-tuned.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
