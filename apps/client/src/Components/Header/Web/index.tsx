@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { MdArrowDropDownCircle } from 'react-icons/md'
 
 import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } from 'FeatureFlags'
 
@@ -16,15 +15,12 @@ import {
   NavLink,
   RedirectLink,
   LogIn,
-  User,
-  UserAvatar,
 } from './style'
 
 const Link = ({ label, path }: navLink) => (
   <NavLink href={path}> {label} </NavLink>
 )
 
-const isLogged = true
 
 export const Web: FC = () => {
   useEvent({ category: 'Navigation', action: 'click', value: 0 })
