@@ -14,7 +14,7 @@ export const ShowCurrentUser: (
   UserRepo,
 }: ShowCurrentUserInterface) => async (req, res) => {
   const { id } = req.user ?? {}
-  const user = await UserRepo.findByIdWithAll(id ?? "")
+  const user = await UserRepo.findById(id ?? "")
 
   if (!user)
     return unauthenticatedError(res, "Not logged in")
