@@ -18,6 +18,13 @@ export const Profile: Router = ({
 
   return (
     <Switch>
+      <Route path={[`${path}/eu`, `${path}/me`]}>
+        {() => (
+          <Suspense fallback={<Loading />}>
+            <PersonalProfilePage />
+          </Suspense>
+        )}
+      </Route>
       <Route exact path={path}>
         {() => (
           <Suspense fallback={<Loading />}>

@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import useMobile from 'Hooks/useMobile'
 import Mobile from 'Components/Profile/Mobile'
 import Web from 'Components/Profile/Web'
-import { User } from 'Context/CurrentUser'
+import { User } from 'Context/LoggedUserToken'
 
 interface ProfileProps {
   data: User

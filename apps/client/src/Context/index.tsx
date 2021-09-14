@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 
-import { CurrentUserProvider } from "./CurrentUser"
+import { CurrentUserProvider } from "./LoggedUserToken"
 import { QueryClientProvider } from "./QueryClient"
 
 export const GlobalContext: FC = ({ children }) => {

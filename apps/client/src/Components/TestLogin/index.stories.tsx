@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { CurrentUserProvider } from 'Context/CurrentUser'
+import { CurrentUserProvider } from 'Context/LoggedUserToken'
 
 import TestLogin from './'
 

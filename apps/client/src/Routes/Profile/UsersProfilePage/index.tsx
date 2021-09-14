@@ -1,6 +1,6 @@
-import { useProfile } from 'Api/Profile'
+import { useUser } from 'Api/Profile'
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { CurrentUserContext } from 'Context/CurrentUser'
+import { CurrentUserTokenContext } from 'Context/LoggedUserToken'
 import Error from 'Pages/Error'
 import React, { FC, useContext } from 'react'
 
@@ -12,9 +12,9 @@ interface UserProfilePageProps {
 
 export const ProfilePage: FC<UserProfilePageProps> = ({ id }) => {
 
-  const { token } = useContext(CurrentUserContext)
+  const { token } = useContext(CurrentUserTokenContext)
   
-  const user = useProfile(id, token!)
+  const user = useUser(id, token!)
 
   if (user.isLoading || user.isLoading) return <LoadingFullPage />;
 

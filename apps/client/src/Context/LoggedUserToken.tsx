@@ -82,36 +82,38 @@ export interface User {
   artist: IArtist
 }
 
-export interface CurrentUser {
-  user?: User
-  setUser: (u: User) => void
-  token?: string
+type notLoggedIn = {
   setToken: (t: string) => void
-  isLoggedIn: boolean
-
+  token: undefined
+  isLoggedIn: false
 }
 
-export const CurrentUserContext = createContext<CurrentUser>({} as CurrentUser)
-export const useCurrentUser = () => useContext(CurrentUserContext)
+type loggedIn = {
+  setToken: (t: string) => void
+  token: string
+  isLoggedIn: true
+}
+export type CurrentUserToken = notLoggedIn | loggedIn
+
+export const CurrentUserTokenContext = createContext<CurrentUserToken>({} as CurrentUserToken)
+export const useCurrentUserToken = () => useContext(CurrentUserTokenContext)
 
 export const CurrentUserProvider: FC = ({
   children,
 }) => {
-  const [ user, setUser ] = useLocalStorage<User | undefined>('user', undefined)
   const [ token, setToken ] = useLocalStorage<string | undefined>('token', undefined)
 
-  const currentUserValue = useMemo<CurrentUser>(() => ({
-    user,
-    setUser,
+  const currentUserValue = useMemo<CurrentUserToken>(() => ({
     token,
     setToken,
     isLoggedIn: !!token,
-  }), [user, setUser, token, setToken])
+  } as CurrentUserToken), [token, setToken])
 
-  if (process.env.NODE_ENV === 'development') console.log("user context.", token, user, "cuv", currentUserValue)
+  if (process.env.NODE_ENV === 'development') console.log("user context.", currentUserValue)
+
   return (
-    <CurrentUserContext.Provider value={currentUserValue}>
+    <CurrentUserTokenContext.Provider value={currentUserValue}>
       {children}
-    </CurrentUserContext.Provider>
+    </CurrentUserTokenContext.Provider>
   )
 }

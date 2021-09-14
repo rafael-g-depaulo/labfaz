@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { showAboutUs, showBlog, showCourses, showObservatorio, showProfileMine, showUserSearch } from 'FeatureFlags'
 
-import { useCurrentUser } from 'Context/CurrentUser'
+import { useCurrentUserToken } from 'Context/LoggedUserToken'
 import { LinkName, navLinks } from 'Utils/navLinks'
 
 import { NavigationContainer, Navbar, NavLink, Title } from './style';
@@ -10,7 +10,7 @@ import { NavigationContainer, Navbar, NavLink, Title } from './style';
 const RenderLink = (name: LinkName) => navLinks[name] && <NavLink href={navLinks[name].path}> {navLinks[name].label} </NavLink>
 
 const Navigation: FC = () => {
-  const { isLoggedIn } = useCurrentUser()
+  const { isLoggedIn } = useCurrentUserToken()
   return (
     <NavigationContainer id="navigation-container">
       <Title>Navegação</Title>

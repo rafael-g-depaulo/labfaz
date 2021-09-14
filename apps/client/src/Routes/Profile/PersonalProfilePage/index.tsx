@@ -1,16 +1,17 @@
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { CurrentUserContext } from 'Context/CurrentUser'
+import { CurrentUserTokenContext } from 'Context/LoggedUserToken'
 import React, { FC, useContext } from 'react'
 
 import Display from './Display'
 
 export const ProfilePage: FC = () => {
 
-  const { user } = useContext(CurrentUserContext)
+  const { token } = useContext(CurrentUserTokenContext)
 
-  if ( !user ) return <LoadingFullPage />;
+  // if ( !user ) return <LoadingFullPage />;
 
-  return <Display data={user} />
+  // return <Display data={user} />
+  return <div>temp</div>
 }
 
 export default ProfilePage

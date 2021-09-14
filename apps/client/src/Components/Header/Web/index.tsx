@@ -4,7 +4,7 @@ import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } f
 
 import Logo from 'Components/Logo'
 import useEvent from 'Hooks/useEvent'
-import { useCurrentUser } from 'Context/CurrentUser'
+import { useCurrentUserToken } from 'Context/LoggedUserToken'
 import { navLink, navLinks } from 'Utils/navLinks'
 
 import {
@@ -24,7 +24,7 @@ const Link = ({ label, path }: navLink) => (
 
 export const Web: FC = () => {
   useEvent({ category: 'Navigation', action: 'click', value: 0 })
-  const { isLoggedIn } = useCurrentUser()
+  const { isLoggedIn } = useCurrentUserToken()
 
   return (
     <Container>

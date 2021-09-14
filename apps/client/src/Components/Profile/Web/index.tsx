@@ -4,7 +4,7 @@ import { SiTiktok } from 'react-icons/si'
 import { IoMdCloudDownload } from 'react-icons/io'
 import { GoGear } from 'react-icons/go'
 
-import { User } from 'Context/CurrentUser'
+import { User } from 'Context/LoggedUserToken'
 
 import {
   FaFacebookSquare,

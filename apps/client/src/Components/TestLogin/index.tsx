@@ -2,7 +2,7 @@ import React, { FC, useCallback, useContext, useState } from "react"
 import { useHistory } from "react-router"
 import styled from "styled-components"
 
-import { CurrentUserContext } from "Context/CurrentUser"
+import { CurrentUserTokenContext } from "Context/LoggedUserToken"
 import { login } from "Api/Session"
 import { ErrorObject } from "Api"
 
@@ -15,7 +15,7 @@ const Container = styled.div`
 `
 
 export const TestLogin: FC = ({}) => {
-  const { loginToken, setToken, setUser } = useContext(CurrentUserContext)
+  const { setToken } = useContext(CurrentUserTokenContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const history = useHistory()
 
@@ -27,13 +27,12 @@ export const TestLogin: FC = ({}) => {
     
     // login, set context and redirect
     login(email, password)
-      .then(({ token, user }) => {
+      .then(({ token }) => {
         setToken(token)
-        setUser(user)
       })
       .then(() => history.push("/home"))
       .catch(err => setError(err))
-  }, [setToken, loginToken])
+  }, [setToken])
 
   return (
     <>
@@ -48,9 +47,9 @@ export const TestLogin: FC = ({}) => {
       {/* example use with a component that internally uses the useContext hook */}
       <Test />
       {/* example use with Context.Consumer */}
-      <CurrentUserContext.Consumer>
-        {({ user }) => <div>logged in user is {JSON.stringify(user?.email)}</div> }
-      </CurrentUserContext.Consumer>
+      {/* <CurrentUserContext.Consumer> */}
+        {/* {({ user }) => <div>logged in user is {JSON.stringify(user?.email)}</div> } */}
+      {/* </CurrentUserContext.Consumer> */}
 
       { error && 
         <div>

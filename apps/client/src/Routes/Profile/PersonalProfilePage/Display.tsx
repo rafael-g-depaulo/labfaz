@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import Profile from 'Components/Profile'
 import Wireframe from 'Components/Wireframe'
-import { User } from 'Context/CurrentUser'
+import { User } from 'Context/LoggedUserToken'
 
 interface DisplayProps {
   data: User

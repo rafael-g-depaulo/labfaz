@@ -7,7 +7,7 @@ import { login } from 'Api/Session'
 import { ErrorObject } from 'Api'
 
 import { CheckboxInput } from 'Components/Inputs/CheckboxInput'
-import { CurrentUserContext } from 'Context/CurrentUser'
+import { CurrentUserTokenContext } from 'Context/LoggedUserToken'
 
 import Icon from './Icon.svg'
 
@@ -46,7 +46,7 @@ export interface LoginComponentProps {
 export type FormSubmitFn = (values: FormProps) => any
 
 export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
-  const { setToken, setUser } = useContext(CurrentUserContext)
+  const { setToken } = useContext(CurrentUserTokenContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
   
@@ -57,14 +57,13 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const handleSubmit = useCallback(
     (values: FormProps) => {
       login(values.email, values.password)
-        .then(({ token, user }) => {
+        .then(({ token }) => {
           setToken(token)
-          setUser(user)
         })
         .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
     },
-    [setToken, setUser, history]
+    [setToken, history]
   )
 
   console.log(infoData)

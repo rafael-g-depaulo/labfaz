@@ -14,7 +14,7 @@ import {
   LogoLink,
   NavBar
 } from './style'
-import { useCurrentUser } from 'Context/CurrentUser'
+import { useCurrentUserToken } from 'Context/LoggedUserToken'
 import { navLink, navLinks } from 'Utils/navLinks'
 
 const Link = ({ link, show }: {link: navLink, show: boolean}) => (
@@ -23,7 +23,7 @@ const Link = ({ link, show }: {link: navLink, show: boolean}) => (
 
 export const Mobile: FC = () => {
   const[open, setOpen] = useState(false)
-  const { isLoggedIn } = useCurrentUser()
+  const { isLoggedIn } = useCurrentUserToken()
 
   return (
     <Container>

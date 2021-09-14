@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 import Web from './'
-import { User } from 'Context/CurrentUser'
+// import { User } from 'Context/LoggedUserToken'
 
 storiesOf('Components/Profile', module)
   .addParameters({ component: Web })

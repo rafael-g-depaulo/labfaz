@@ -1,10 +1,11 @@
-import { CurrentUserContext } from "Context/CurrentUser"
-import React, { FC, useContext } from "react"
+// import { CurrentUserTokenContext } from "Context/LoggedUserToken"
+import React, { FC } from "react"
 
 export const Test: FC = () => {
-  const { user } = useContext(CurrentUserContext)
+  // const { user } = useContext(CurrentUserTokenContext)
   return (
-    <div>user's email is {user?.email}</div>
+    // <div>user's email is {user?.email}</div>
+    <div>user's email is email</div>
   )
 }
 
