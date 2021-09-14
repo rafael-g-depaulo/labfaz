@@ -12,15 +12,13 @@ import {
 export const Container = styled.div`
   width: 260px;
   height: 500px;
-  border-radius: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   margin-right: 60px;
   border: 5px groove rgba(9, 9, 9, 0.25);
-  /* -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6));
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6)); */
+  border-radius: 14px;
 
   ${Mobile(css`
     margin-right: 30px;
@@ -143,7 +141,7 @@ export const Button = styled(InternalLinkButton)`
   border: solid 1px #000;
   border-radius: 3px;
   padding: 5px 20px;
-
+  
   ${Mobile(css`
     height: 30px;
     bottom: 27px;

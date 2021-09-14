@@ -31,9 +31,9 @@ export const TitleWrapper = styled.div`
 
   ${Mobile(css`
     width: 100%;
-    max-width: none;
     padding: 30px 21px 0px 21px;
     margin-bottom: 65px;
+    justify-content: flex-start;
   `)}
 
   ${DesktopSmall(css`
@@ -47,6 +47,7 @@ export const MainTitle = styled(Title)`
   font-size: var(--font-size-title-xxxlarge);
 
   ${Mobile(css`
+    width: 100%;
     font-size: var(--font-size-title);
   `)}
 
@@ -65,6 +66,7 @@ export const TitleText = styled(Text)`
   ${Mobile(css`
     font-size: var(--font-size-medium);
     margin: 35px 0 0 0;
+    text-align: left;
   `)}
 
   ${DesktopSmall(css`

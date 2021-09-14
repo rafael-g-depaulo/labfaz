@@ -68,6 +68,7 @@ export const CardRowComponent: FC<Props> = ({
           <CardWrapper>
             {classes.map((item) => (
               <Card
+                key={item.id}
                 id={item.id}
                 name={item.name}
                 tag={item.tags[0]}
@@ -76,6 +77,7 @@ export const CardRowComponent: FC<Props> = ({
                 banner={item.banner}
                 has_subscription={item.has_subscription}
                 subscription_finish_date={item.subscription_finish_date}
+                subscription_start_date={item.subscription_start_date}
               />
             ))}
           </CardWrapper>

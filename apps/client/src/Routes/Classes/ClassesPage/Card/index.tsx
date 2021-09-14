@@ -23,6 +23,7 @@ import {
 import Label from "Components/Label";
 
 import { format } from "date-fns";
+import { timeDifference } from "Utils/formatPostDate";
 
 export interface CardProps {
   id: string;
@@ -33,14 +34,25 @@ export interface CardProps {
   banner: string;
   has_subscription: boolean;
   subscription_finish_date: string;
+  subscription_start_date: string;
 }
 
 export const Card: FC<CardProps> = ({
+  id,
   name,
-  banner,
-  subscription_finish_date,
+  tag,
   short_description,
+  available,
+  banner,
+  has_subscription,
+  subscription_finish_date,
+  subscription_start_date,
 }) => {
+  // const date = new Date(subscription_finish_date);
+  // const actualDate = new Date();
+  // const difference = timeDifference(date, actualDate);
+  // const isAvailable = (available && difference < 1) ? true : false;
+
   return (
     <Container>
       <Image src={banner} alt="" />
@@ -50,21 +62,37 @@ export const Card: FC<CardProps> = ({
           <CardDescription>{short_description}</CardDescription>
         </DescriptionWrapper>
         <LabelWrapper>
-          <Label name="audiovisual" image={undefined} />
+          <Label name={tag} image={undefined} />
         </LabelWrapper>
         <SubscribeWrapper>
           <DateContainer>
-            <DateText>Inscreva-se até</DateText>
             <DateText>
-              {format(subscription_finish_date, "DD-MM-YYYY")
-                .replace("-", "/")
-                .replace("-", "/")}
+              {available
+                ? "Inscreva-se até"
+                : has_subscription
+                ? "Encerrado em"
+                : "Iniciará em"}
+            </DateText>
+            <DateText>
+              {has_subscription
+                ? format(subscription_finish_date, "DD-MM-YYYY")
+                    .replace("-", "/")
+                    .replace("-", "/")
+                : format(subscription_start_date, "DD-MM-YYYY")
+                    .replace("-", "/")
+                    .replace("-", "/")}
             </DateText>
           </DateContainer>
           <ButtonWrapper>
             <ButtonLayer />
-            <Button href="">
-              <ButtonText>inscreva-se</ButtonText>
+            <Button href={available ? "" : has_subscription ? "" : "#"}>
+              <ButtonText>
+                {available
+                  ? "inscreva-se"
+                  : has_subscription
+                  ? "encerrado"
+                  : "aberto"}
+              </ButtonText>
             </Button>
           </ButtonWrapper>
         </SubscribeWrapper>

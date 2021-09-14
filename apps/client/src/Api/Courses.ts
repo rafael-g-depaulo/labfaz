@@ -17,7 +17,7 @@ export interface Course {
   has_subscription: boolean;
   subscription_start_date: string;
   subscription_finish_date: string;
-  classes_dates: string[];
+  class_dates: string[];
   link: string;
 }
 
@@ -53,7 +53,7 @@ export const fetchCourse = (id: string) =>
         has_subscription,
         subscription_start_date,
         subscription_finish_date,
-        classes_dates,
+        class_dates,
         link,
       }) => ({
         id,
@@ -71,7 +71,7 @@ export const fetchCourse = (id: string) =>
         has_subscription,
         subscription_start_date,
         subscription_finish_date,
-        classes_dates,
+        class_dates,
         link,
       })
     );

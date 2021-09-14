@@ -23,18 +23,18 @@ export const StayTuned: FC<Props> = ({ data }) => {
       {isMobile ? (
         <Wrapper>
           <TextWrapper>
-            <MainTitle>Fique Atento</MainTitle>
+            <MainTitle>{data.title}</MainTitle>
             <MainText>{data.description}</MainText>
           </TextWrapper>
           <Image src={data.image.url} alt={data.image.alternativeText} />
-          <Button href="">Saiba Mais</Button>
+          <Button href={data.link}>Saiba Mais</Button>
         </Wrapper>
       ) : (
         <Wrapper>
           <TextWrapper>
-            <MainTitle>Fique Atento</MainTitle>
+            <MainTitle>{data.title}</MainTitle>
             <MainText>{data.description}</MainText>
-            <Button href="">Saiba Mais</Button>
+            <Button href={data.link}>Saiba Mais</Button>
           </TextWrapper>
           <Image src={data.image.url} alt={data.image.alternativeText} />
         </Wrapper>
