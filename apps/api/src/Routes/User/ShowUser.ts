@@ -25,7 +25,7 @@ export const ShowUser: (
     return badRequestError(res, "Invalid request param");
   }
 
-  const user = await UserRepo.findByIdWithAll(id);
+  const user = await UserRepo.findById(id);
 
   if (!user) {
     return unauthenticatedError(res, "Not found user with that id" );
