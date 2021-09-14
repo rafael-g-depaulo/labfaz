@@ -4,6 +4,8 @@ import { SiTiktok } from 'react-icons/si'
 import { IoMdCloudDownload } from 'react-icons/io'
 import { GoGear } from 'react-icons/go'
 
+import { User } from 'Context/CurrentUser'
+
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -31,23 +33,25 @@ import {
   ContentText,
 } from './style'
 
-import icaroIMG from './Icaro_Rodrigues.jpg'
+import idiom_icon from '../idiomIcon.svg'
 
 interface ProfileProps {
-  data: object
+  data: User
+  personalProfilePage: boolean
 }
 
 const currentYear = new Date().getFullYear()
 
-const Web: FC<ProfileProps> = ({ data }) => {
-
+const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
   return (
     <Container>
       <ProfileContentContainer>
         <Aside>
           <AsideHeader>
             <UserPhoto>
-              <img src="" alt="User Photo" />
+              {data.artist.photo_url && (
+                <img src={data.artist.photo_url} alt="User avatar" />
+              )}
             </UserPhoto>
             <NickName level={1}>{data.artist?.show_name}</NickName>
             <UserName level={2}>{data.artist?.name}</UserName>
@@ -111,15 +115,17 @@ const Web: FC<ProfileProps> = ({ data }) => {
           <hr />
 
           <ButtonContainer>
-            {data.curriculum && (
+            {data.artist.curriculum && (
               <button type="button" className="downloadCurriculum">
-                <GoGear /> BAIXAR CV
+                <IoMdCloudDownload /> BAIXAR CV
               </button>
             )}
 
-            <button type="button" className="editProfile">
-              <IoMdCloudDownload /> EDITAR PERFIL
-            </button>
+            {personalProfilePage && (
+              <button type="button" className="editProfile">
+                <GoGear /> EDITAR PERFIL
+              </button>
+            )}
           </ButtonContainer>
 
           <hr className="sideDivider" />
@@ -127,22 +133,9 @@ const Web: FC<ProfileProps> = ({ data }) => {
 
         <Content>
           <ContentHeader>
-            <a href="#Sobre">
-              Sobre
-              {/* <hr /> */}
-            </a>
-            <a href="#Formacao">
-              Formação
-              {/* <hr /> */}
-            </a>
-            <a href="#Certificacoes">
-              Certificações
-              {/* <hr /> */}
-            </a>
-            {/* <a href="#CNPJ">
-              CNPJ
-              <hr />
-            </a> */}
+            <a href="#Sobre">Sobre</a>
+            <a href="#Formacao">Formação</a>
+            <a href="#Certificacoes">Certificações</a>
             <a href="#Contato">Contato</a>
           </ContentHeader>
 
@@ -151,14 +144,23 @@ const Web: FC<ProfileProps> = ({ data }) => {
 
             <div>
               <ContentText>
-                {data.artist.technical.areas[0].describe}
+                {data.artist.technical.area[0].describe}
               </ContentText>
               <ul>
-                <li>{data.artist.technical.areas[0].name}</li>
-                <li>ENGENHARIA DE SOM</li>
-                <li>EXPERIENCIA: {currentYear - data.artist.technical.areas[0].started_year} ANOS</li>
-                <li>{data.artist.technical.areas[0].technical_formation}</li>
-                <li>{data.artist.technical.cnpj_type}</li>
+                <li>{data.artist.technical.area[0].name.toUpperCase()}</li>
+                <li>
+                  EXPERIENCIA : 
+                  {` ${currentYear -
+                    parseInt(data.artist.technical.area[0].started_year)} `} 
+                  ANOS
+                </li>
+                <li>
+                  {data.artist.technical.area[0].technical_formation.toUpperCase()}
+                </li>
+
+                {data.artist.technical.cnpj_type !== 'Nenhum' && (
+                  <li>{data.artist.technical.cnpj_type.toUpperCase()}</li>
+                )}
               </ul>
             </div>
           </div>
@@ -169,7 +171,8 @@ const Web: FC<ProfileProps> = ({ data }) => {
             <div>
               <span>
                 <FaCheckCircle />
-                {data.artist.technical.formation}
+                {data.artist.technical.formation !== 'não tem' &&
+                  data.artist.technical.formation}
               </span>
 
               <ul>
@@ -187,8 +190,8 @@ const Web: FC<ProfileProps> = ({ data }) => {
             <ContentTitle level={1}>Certificações</ContentTitle>
 
             <div>
-              {data.artist.technical.areas[0].certificate &&
-                data.artist.technical.areas[0].certificate.map(
+              {data.artist.technical.area[0].certificate &&
+                data.artist.technical.area[0].certificate.map(
                   (certificate, index) => (
                     <span key={index}>
                       <FaCheckSquare />
@@ -204,73 +207,58 @@ const Web: FC<ProfileProps> = ({ data }) => {
             </div>
           </div>
 
-          {/* <div className="profileInformation" id="CNPJ">
-            <ContentTitle level={1}>CNPJ</ContentTitle>
-
-            <div>
-              <span>Lorem Ipsum LTDA - Servicos Gerais</span>
-              <ul>
-                <li>PEQUENA EMPRESA</li>
-              </ul>
-            </div>
-          </div> */}
-
           <div className="profileInformation" id="Contato">
             <ContentTitle level={1}>Contato</ContentTitle>
 
             <div className="socialContacts">
-              <div>
-                {data.email && (
-                  <span>
-                    <MdEmail />
-                    {data.email}
-                  </span>
-                )}
+              {data.email && (
+                <span>
+                  <MdEmail />
+                  {data.email}
+                </span>
+              )}
 
-                {data.artist.contact.facebook && (
-                  <span>
-                    <FaFacebookSquare />
-                    {data.artist.contact.facebook}
-                  </span>
-                )}
+              {data.artist.contact.facebook && (
+                <span>
+                  <FaFacebookSquare />
+                  {data.artist.contact.facebook}
+                </span>
+              )}
 
-                {data.artist.contact.instagram && (
-                  <span>
-                    <FaInstagramSquare />
-                    {data.artist.contact.instagram}
-                  </span>
-                )}
+              {data.artist.contact.instagram && (
+                <span>
+                  <FaInstagramSquare />
+                  {data.artist.contact.instagram}
+                </span>
+              )}
 
-                {data.artist.contact.twitter && (
-                  <span>
-                    <FaTwitterSquare />
-                    {data.artist.contact.twitter}
-                  </span>
-                )}
-              </div>
+              {data.artist.contact.twitter && (
+                <span>
+                  <FaTwitterSquare />
+                  {data.artist.contact.twitter}
+                </span>
+              )}
 
-              <div>
-                {data.artist.contact.tiktok && (
-                  <span>
-                    <SiTiktok />
-                    {data.artist.contact.tiktok}
-                  </span>
-                )}
+              {data.artist.contact.tiktok && (
+                <span>
+                  <SiTiktok />
+                  {data.artist.contact.tiktok}
+                </span>
+              )}
 
-                {data.artist.contact.youtube && (
-                  <span>
-                    <FaYoutubeSquare />
-                    {data.artist.contact.youtube}
-                  </span>
-                )}
+              {data.artist.contact.youtube && (
+                <span>
+                  <FaYoutubeSquare />
+                  {data.artist.contact.youtube}
+                </span>
+              )}
 
-                {data.artist.contact.youtube && (
-                  <span>
-                    <FaLinkedin />
-                    {data.artist.contact.linkedin}
-                  </span>
-                )}
-              </div>
+              {data.artist.contact.youtube && (
+                <span>
+                  <FaLinkedin />
+                  {data.artist.contact.linkedin}
+                </span>
+              )}
             </div>
           </div>
         </Content>

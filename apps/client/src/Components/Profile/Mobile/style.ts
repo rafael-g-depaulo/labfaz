@@ -192,7 +192,7 @@ export const UserInformation = styled.div`
 
         margin-top: 1.5rem;
         margin-right: 0.5rem;
-        padding: 0.2rem 1rem;
+        padding: 0.2rem 2rem;
 
         background-color: #fff;
         border-radius: 100px;
@@ -201,6 +201,27 @@ export const UserInformation = styled.div`
         font-weight: bold;
 
         color: black;
+
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        img {
+          position: absolute;
+          left: 0.17rem;
+        }
+
+        position: relative;
+
+        img {
+          position: absolute;
+          left: 0.17rem;
+          width: 25px;
+          height: 25px;
+        }
       }
     }
 

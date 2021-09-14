@@ -76,6 +76,8 @@ export const UserPhoto = styled.div`
     border-radius: 50%;
     object-fit: cover;
 
+    display: ${({isUserPhoto}) => isUserPhoto ? 'normal' : 'none'};
+
     margin-left: 0.1rem;
     margin-top: 0.1rem;
 
@@ -290,6 +292,35 @@ export const Content = styled.section`
     padding-left: 5.88rem;
     margin-bottom: 4.11rem;    
 
+    svg {
+      height: 22px;
+      width: 22px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+
+      padding-left: 2rem;
+
+      font-size: var(--font-size-default);
+
+      position: relative;
+
+      line-height: 18px;
+
+      svg {
+        width: 22px;
+        height: 22px;
+
+        position: absolute;
+
+        left: 0;
+      }
+
+      margin-bottom: 1.5rem;
+    }
+
     div {
       margin-top: 3.6rem;
       margin-left: 1.3rem;
@@ -315,31 +346,39 @@ export const Content = styled.section`
   .socialContacts {
 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    column-gap: 5rem;
 
     width: 29.5rem;
     max-width: 80%;
+    height: 10rem;
 
     color: #FAFAFA;
 
-    height: 12rem;
 
-    svg {
-      margin-right: 0.83rem;
-      width: 28px;
-      height: 28px;
-      color: #FC0061;
-
-      ${DesktopSmall(css`
-        width: 22px;
-        height: 22px;
-      `)}
-    }
+    ${DesktopSmall(css`
+      height: 20rem;
+    `)}
 
     span {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
+      padding-left: 2.5rem;
+
+      svg {
+        margin-right: 0.83rem;
+        width: 28px;
+        height: 28px;
+        color: #FC0061;
+
+        ${DesktopSmall(css`
+          width: 22px;
+          height: 22px;
+        `)}
+      }
     }
 
     div {

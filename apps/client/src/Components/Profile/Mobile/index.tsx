@@ -5,6 +5,8 @@ import { IoMdCloudDownload } from 'react-icons/io'
 import { MdContactPhone } from 'react-icons/md'
 import { GoGear } from 'react-icons/go'
 
+import { User } from 'Context/CurrentUser'
+
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -24,9 +26,7 @@ import {
   UserPhoto,
   UserName,
   UserLocation,
-  SocialMedias,
   NickName,
-  ContentHeader,
   ContentTitle,
   ContentText,
   Header,
@@ -34,23 +34,28 @@ import {
   UserInformation,
 } from './style'
 
-interface MobileProps {
-  data: object
+import idiom_icon from '../idiomIcon.svg'
+
+interface ProfileProps {
+  data: User
+  PersonalProfilePage: boolean
 }
 
 const currentYear = new Date().getFullYear()
 
-const Mobile: FC<MobileProps> = ({ data }) => {
+const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
   return (
     <Container>
       <ProfileContentContainer>
         <Header>
           <UserPhotoContainer>
             <UserPhoto>
-              <img src="" alt="user photo" />
+              {data.artist.photo_url && (
+                <img src={data.artist.photo_url} alt="User avatar" />
+              )}
             </UserPhoto>
           </UserPhotoContainer>
-          <GoGear />
+          {PersonalProfilePage && <GoGear />}
         </Header>
         <Content>
           <UserBasicInformation>
@@ -60,7 +65,7 @@ const Mobile: FC<MobileProps> = ({ data }) => {
                 <UserName>{data.artist.name}</UserName>
               </div>
 
-              {data.curriculum && (
+              {data.artist.curriculum && (
                 <button className="downloadCurriculum">
                   <IoMdCloudDownload />
                   CV
@@ -79,14 +84,20 @@ const Mobile: FC<MobileProps> = ({ data }) => {
           </UserBasicInformation>
           <UserTechnicalInformation>
             <ul>
-              <li>{data.artist.technical.areas[0].name}</li>
+              <li>{data.artist.technical.area[0].name.toUpperCase()}</li>
               <li>
                 EXPERIENCIA:
-                {currentYear - data.artist.technical.areas[0].started_year} ANOS
+                {currentYear -
+                  parseInt(data.artist.technical.area[0].started_year)}
+                ANOS
               </li>
-              <li>ENGENHARIA DE SOM</li>
-              <li>{data.artist.technical.cnpj_type}</li>
-              <li>FORMACAO TECNICA</li>
+              {data.artist.technical.cnpj_type !== 'Nenhum' && (
+                <li>{data.artist.technical.cnpj_type}</li>
+              )}
+
+              <li>
+                {data.artist.technical.area[0].technical_formation.toUpperCase()}
+              </li>
             </ul>
           </UserTechnicalInformation>
           <UserInformation>
@@ -103,7 +114,7 @@ const Mobile: FC<MobileProps> = ({ data }) => {
 
               <div>
                 <ContentText>
-                  {data.artist.technical.areas[0].describe}
+                  {data.artist.technical.area[0].describe}
                 </ContentText>
               </div>
             </div>
@@ -120,7 +131,8 @@ const Mobile: FC<MobileProps> = ({ data }) => {
                   {data.artist.technical.idiom &&
                     data.artist.technical.idiom.map((idiom, index) => (
                       <li key={index}>
-                        <img alt="" /> {idiom.name}
+                        <img src={idiom_icon} alt="" />{' '}
+                        {idiom.name.toUpperCase()}
                       </li>
                     ))}
                 </ul>
@@ -131,8 +143,8 @@ const Mobile: FC<MobileProps> = ({ data }) => {
               <ContentTitle level={1}>Certificações</ContentTitle>
 
               <div>
-                {data.artist.technical.areas[0].certificate &&
-                  data.artist.technical.areas[0].certificate.map(
+                {data.artist.technical.area[0].certificate &&
+                  data.artist.technical.area[0].certificate.map(
                     (certificate, index) => (
                       <span key={index}>
                         <FaCheckSquare />
