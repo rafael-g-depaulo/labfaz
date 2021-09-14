@@ -1,20 +1,18 @@
 import { useUser } from 'Api/Profile'
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { CurrentUserTokenContext } from 'Context/LoggedUserToken'
 import Error from 'Pages/Error'
-import React, { FC, useContext } from 'react'
+import React, { FC } from 'react'
 
 import Display from './Display'
 
 interface UserProfilePageProps {
   id: string
+  token: string
 }
 
-export const ProfilePage: FC<UserProfilePageProps> = ({ id }) => {
+export const ProfilePage: FC<UserProfilePageProps> = ({ id, token }) => {
 
-  const { token } = useContext(CurrentUserTokenContext)
-  
-  const user = useUser(id, token!)
+  const user = useUser(id, token)
 
   if (user.isLoading || user.isLoading) return <LoadingFullPage />;
 
