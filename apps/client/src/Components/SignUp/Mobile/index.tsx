@@ -478,7 +478,7 @@ function FormikStepper({
               console.error("erro na tentativa de cadastro", err)
             })
 
-          console.log(values)
+          // console.log(values)
         } else {
           setStep((currentStep) => currentStep + 1)
         }

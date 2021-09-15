@@ -66,7 +66,6 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
     [setToken, history]
   )
 
-  console.log(infoData)
   return (
     <Container>
       <FormContainer openToastMessage={toastMessage}>

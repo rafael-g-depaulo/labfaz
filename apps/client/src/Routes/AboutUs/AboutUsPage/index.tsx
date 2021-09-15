@@ -31,8 +31,8 @@ export const AboutUsPage: FC = () => {
 
   // errors
   if (aboutUs.error && team.error) {
-    console.log(aboutUs.error);
-    console.log(team.error);
+    // console.log(aboutUs.error);
+    // console.log(team.error);
 
     return (
       <Error
@@ -43,8 +43,8 @@ export const AboutUsPage: FC = () => {
   }
 
   if (banner.error && aboutUs.error) {
-    console.log(banner.error);
-    console.log(aboutUs.error);
+    // console.log(banner.error);
+    // console.log(aboutUs.error);
 
     return (
       <Display
@@ -56,8 +56,8 @@ export const AboutUsPage: FC = () => {
   }
 
   if (banner.error && team.error) {
-    console.log(banner.error);
-    console.log(team.error);
+    // console.log(banner.error);
+    // console.log(team.error);
 
     return (
       <Display
@@ -69,7 +69,7 @@ export const AboutUsPage: FC = () => {
   }
 
   if (aboutUs.error) {
-    console.log(aboutUs.error);
+    // console.log(aboutUs.error);
 
     return (
       <Display about_data={null} team={team.data!} banner_data={banner.data!} />
@@ -77,7 +77,7 @@ export const AboutUsPage: FC = () => {
   }
 
   if (team.error) {
-    console.log(team.error);
+    // console.log(team.error);
 
     return (
       <Display
@@ -89,7 +89,7 @@ export const AboutUsPage: FC = () => {
   }
 
   if (banner.error) {
-    console.log(banner.error);
+    // console.log(banner.error);
 
     return (
       <Display

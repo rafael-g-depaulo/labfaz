@@ -5,7 +5,7 @@ import { Login, LoginComponentProps } from "Components/Login"
 import Wireframe from "Components/Wireframe"
 
 export const Display: FC<LoginComponentProps> = ({
-  onSubmit = () => { console.log("submitted form" )},
+  onSubmit = () => {},
 }) => {
   return (
     <Wireframe>    

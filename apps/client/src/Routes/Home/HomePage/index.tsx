@@ -68,10 +68,10 @@ export const HomePage: FC = () => {
     coursesText.error &&
     coursesData.error
   ) {
-    console.log(partners.error);
-    console.log(presentationError);
-    console.log(coursesText.error);
-    console.log(coursesData.error);
+    // console.log(partners.error);
+    // console.log(presentationError);
+    // console.log(coursesText.error);
+    // console.log(coursesData.error);
     return (
       <Error
         errorStatus={partners.error.response?.status}
@@ -81,8 +81,8 @@ export const HomePage: FC = () => {
   }
 
   if (partners.error && presentationError) {
-    console.log(partners.error);
-    console.log(presentationError);
+    // console.log(partners.error);
+    // console.log(presentationError);
     return (
       <Error
         errorStatus={partners.error.response?.status}
@@ -92,9 +92,9 @@ export const HomePage: FC = () => {
   }
 
   if (partners.error && coursesText.error && coursesData.error) {
-    console.log(partners.error);
-    console.log(coursesText.error);
-    console.log(coursesData.error);
+    // console.log(partners.error);
+    // console.log(coursesText.error);
+    // console.log(coursesData.error);
     return (
       <Error
         errorStatus={partners.error.response?.status}
@@ -104,9 +104,9 @@ export const HomePage: FC = () => {
   }
 
   if (presentationError && coursesText.error && coursesData.error) {
-    console.log(presentationError);
-    console.log(coursesText.error);
-    console.log(coursesData.error);
+    // console.log(presentationError);
+    // console.log(coursesText.error);
+    // console.log(coursesData.error);
     return (
       <Error
         errorStatus={coursesText.error.response?.status}
@@ -116,7 +116,7 @@ export const HomePage: FC = () => {
   }
 
   if (presentationError) {
-    console.log(presentationError);
+    // console.log(presentationError);
     return (
       <Display
         data={result.data!}
@@ -131,7 +131,7 @@ export const HomePage: FC = () => {
   }
 
   if (partners.error) {
-    console.log(partners.error);
+    // console.log(partners.error);
     return (
       <Display
         data={result.data!}
@@ -146,8 +146,8 @@ export const HomePage: FC = () => {
   }
 
   if (coursesText.error || coursesData.error) {
-    console.log(coursesText.error);
-    console.log(coursesData.error);
+    // console.log(coursesText.error);
+    // console.log(coursesData.error);
     return (
       <Display
         data={result.data!}
@@ -162,7 +162,7 @@ export const HomePage: FC = () => {
   }
 
   if (result.error) {
-    console.log(result.error);
+    // console.log(result.error);
     return (
       <Display
         data={mockBannerInfo}
