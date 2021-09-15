@@ -10,7 +10,9 @@ aws.config.update({
 
 export const s3 = new aws.S3();
 export const s3UploadPromise = (params: PutObjectRequest) => new Promise<ManagedUpload.SendData>((resolve, reject) => {
-  return resolve({ Location: "a", Bucket: "a", ETag: "", Key: "a"})
+  if (process.env.USE_AWS === "false")
+    return resolve({ Location: "https://images-na.ssl-images-amazon.com/images/I/81BES%2BtsVvL.png", Bucket: "a", ETag: "", Key: "a"})
+
   s3.upload(params, (err, data) => {
     if (err) return reject(err)
     return resolve(data)
