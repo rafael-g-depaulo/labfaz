@@ -76,8 +76,6 @@ export const UserPhoto = styled.div`
     border-radius: 50%;
     object-fit: cover;
 
-    display: ${({isUserPhoto}) => isUserPhoto ? 'normal' : 'none'};
-
     margin-left: 0.1rem;
     margin-top: 0.1rem;
 

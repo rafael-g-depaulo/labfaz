@@ -23,7 +23,7 @@ import {
   Content,
   UserPhoto,
   AsideHeader,
-  UserName,
+  // UserName,
   UserLocation,
   SocialMedias,
   ButtonContainer,
@@ -34,6 +34,7 @@ import {
 } from './style'
 
 import idiom_icon from '../idiomIcon.svg'
+import { getUserName } from 'Utils/userUtils'
 
 interface ProfileProps {
   data: User
@@ -53,8 +54,8 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
                 <img src={data.artist.photo_url} alt="User avatar" />
               )}
             </UserPhoto>
-            <NickName level={1}>{data.artist?.show_name}</NickName>
-            <UserName level={2}>{data.artist?.name}</UserName>
+            <NickName level={1}>{getUserName(data)}</NickName>
+            {/* <UserName level={2}>{data.artist?.name}</UserName> */}
           </AsideHeader>
 
           <UserLocation>
