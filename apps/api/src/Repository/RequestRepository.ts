@@ -17,6 +17,17 @@ export class RequestRepository extends Repository<Request> {
     .then(course => course.length !== 0)
   }
 
+  getRequest({ userId, courseId }: { userId: User["id"], courseId: Course["id"]}) {
+    return this.findOne({
+      where: { 
+        course: courseId,
+        student: userId
+      },
+      loadEagerRelations: false,
+      loadRelationIds: false,
+    })
+  }
+
 
   async createRequest(user: User, course: Course) {
     try {

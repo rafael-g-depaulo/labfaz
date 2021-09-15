@@ -13,6 +13,7 @@ import ensureAuthenticated from "Middlewares/ensureAuthenticated";
 import { GetAllCourses as GetAllCourses } from "./GetAllCourses";
 import ShowCourse from "./ShowCourse";
 import SubscribeToCourse from "./SubscribeToCourse";
+import GetSubscriptionIfExists from "./GetSubscriptionIfExists";
 
 type CoureDeps = {
   conn: Connection;
@@ -33,6 +34,7 @@ const CourseRoute: Router<CoureDeps> = (deps, options) => {
     .Router(options)
     // .post("/create", CreateCourse({ CourseRepo }))
     .post("/:course_id/subscribe", ensureAuthenticated, SubscribeToCourse({ CourseRepo, RequestRepo, UserRepo }))
+    .get("/:course_id/subscription", ensureAuthenticated, GetSubscriptionIfExists({ RequestRepo }))
     .get("/:course_id", ShowCourse({ CourseRepo }))
     .get("/", GetAllCourses({ CourseRepo }))
 }

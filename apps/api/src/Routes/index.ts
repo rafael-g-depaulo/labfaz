@@ -31,5 +31,4 @@ const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => e
   .use("/sessions", SessionRouter({ conn }, options))
   .use("/courses", CourseRoute({ conn }, options))
 
-
 export default Routes
