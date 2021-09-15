@@ -24,7 +24,7 @@ import {
   UserTechnicalInformation,
   Content,
   UserPhoto,
-  UserName,
+  // UserName,
   UserLocation,
   NickName,
   ContentTitle,
@@ -32,9 +32,12 @@ import {
   Header,
   UserPhotoContainer,
   UserInformation,
+  UserVerified
 } from './style'
 
 import idiom_icon from '../idiomIcon.svg'
+import isVerified from '../isVerified.svg'
+import { getUserName } from 'Utils/userUtils'
 
 interface ProfileProps {
   data: User
@@ -61,8 +64,14 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
           <UserBasicInformation>
             <div className="container">
               <div>
-                <NickName>{data.artist.show_name}</NickName>
-                <UserName>{data.artist.name}</UserName>
+                <NickName>{getUserName(data)}</NickName>
+                {/* <UserName>{data.artist.name}</UserName> */}
+                {data.isVerified && (
+                  <UserVerified>
+                    Verificado Backstage
+                    <img src={isVerified} alt="isVerify" />
+                  </UserVerified>
+                )}
               </div>
 
               {data.artist.curriculum && (

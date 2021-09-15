@@ -31,9 +31,11 @@ import {
   ContentHeader,
   ContentTitle,
   ContentText,
+  UserVerified
 } from './style'
 
 import idiom_icon from '../idiomIcon.svg'
+import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
 
 interface ProfileProps {
@@ -56,6 +58,12 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
             </UserPhoto>
             <NickName level={1}>{getUserName(data)}</NickName>
             {/* <UserName level={2}>{data.artist?.name}</UserName> */}
+            {data.isVerified && (
+              <UserVerified>
+                Verificado Backstage
+                <img src={isVerified} alt="isVerify" />
+              </UserVerified>
+            )}
           </AsideHeader>
 
           <UserLocation>

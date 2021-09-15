@@ -86,6 +86,21 @@ export const UserBasicInformation = styled.div`
   }
 `
 
+export const UserVerified = styled.div`
+  display: flex;
+  align-items: center;
+
+  column-gap: 0.8rem;
+
+  color: #FAFAFA;
+  font-size: var(--font-size-default);
+  
+  img {
+    width: 22px;
+    height: 22px;
+  }
+`
+
 export const UserTechnicalInformation = styled.div`
   padding: 0 2rem;
 

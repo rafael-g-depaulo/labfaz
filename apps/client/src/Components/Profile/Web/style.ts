@@ -93,6 +93,22 @@ export const NickName = styled(Title)`
   color: #FAFAFA;
 `
 
+export const UserVerified = styled.div`
+  display: flex;
+  align-items: center;
+
+  column-gap: 0.8rem;
+
+  color: #FAFAFA;
+  margin-left: 2.2rem;
+  font-size: var(--font-size-default);
+  
+  img {
+    width: 22px;
+    height: 22px;
+  }
+`
+
 export const UserName = styled(Title)`
   margin-left: 2.2rem;
   font-size: var(--font-size-title-smaller);
