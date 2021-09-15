@@ -49,6 +49,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Cairo", sans-serif;
     font-size: var(--font-size-default);
     color: var(--colot-text-white);
+
+    scroll-behavior: smooth;
   }
 
   body {

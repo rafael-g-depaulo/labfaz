@@ -1,6 +1,4 @@
 import React, { FC } from 'react'
-import { MdEmail } from 'react-icons/md'
-import { SiTiktok } from 'react-icons/si'
 import { IoMdCloudDownload } from 'react-icons/io'
 import { MdContactPhone } from 'react-icons/md'
 import { GoGear } from 'react-icons/go'
@@ -8,11 +6,6 @@ import { GoGear } from 'react-icons/go'
 import { User } from 'Context/LoggedUserToken'
 
 import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaTwitterSquare,
-  FaYoutubeSquare,
-  FaLinkedin,
   FaCheckCircle,
   FaCheckSquare,
 } from 'react-icons/fa'
@@ -38,6 +31,7 @@ import {
 import idiom_icon from '../idiomIcon.svg'
 import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
+import { SocialMediaLinks } from '../SocialMediaLink'
 
 interface ProfileProps {
   data: User
@@ -174,51 +168,7 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
 
               <div className="socialContainer">
                 <div className="socialContacts">
-                  <span>
-                    <MdEmail />
-                    {data.email}
-                  </span>
-                  {data.artist.contact.facebook && (
-                    <span>
-                      <FaFacebookSquare />
-                      {data.artist.contact.facebook}
-                    </span>
-                  )}
-
-                  {data.artist.contact.instagram && (
-                    <span>
-                      <FaInstagramSquare />
-                      {data.artist.contact.instagram}
-                    </span>
-                  )}
-
-                  {data.artist.contact.twitter && (
-                    <span>
-                      <FaTwitterSquare />
-                      {data.artist.contact.twitter}
-                    </span>
-                  )}
-
-                  {data.artist.contact.tiktok && (
-                    <span>
-                      <SiTiktok />
-                      {data.artist.contact.tiktok}
-                    </span>
-                  )}
-
-                  {data.artist.contact.youtube && (
-                    <span>
-                      <FaYoutubeSquare />
-                      {data.artist.contact.youtube}
-                    </span>
-                  )}
-
-                  {data.artist.contact.linkedin && (
-                    <span>
-                      <FaLinkedin />
-                      {data.artist.contact.linkedin}
-                    </span>
-                  )}
+                  <SocialMediaLinks user={data} />
                 </div>
               </div>
             </div>

@@ -37,6 +37,7 @@ import {
 import idiom_icon from '../idiomIcon.svg'
 import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
+import { SocialMediaLinks } from '../SocialMediaLink'
 
 interface ProfileProps {
   data: User
@@ -73,52 +74,7 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
           <hr />
 
           <SocialMedias>
-            <li>
-              <MdEmail />
-              <div>{data.email}</div>
-            </li>
-
-            {data.artist.contact.facebook && (
-              <li>
-                <FaFacebookSquare />
-                <div>{data.artist.contact.facebook}</div>
-              </li>
-            )}
-
-            {data.artist.contact.instagram && (
-              <li>
-                <FaInstagramSquare />
-                <div>{data.artist.contact.instagram}</div>
-              </li>
-            )}
-
-            {data.artist.contact.twitter && (
-              <li>
-                <FaTwitterSquare />
-                <div>{data.artist.contact.twitter}</div>
-              </li>
-            )}
-
-            {data.artist.contact.tiktok && (
-              <li>
-                <SiTiktok />
-                <div>{data.artist.contact.tiktok}</div>
-              </li>
-            )}
-
-            {data.artist.contact.youtube && (
-              <li>
-                <FaYoutubeSquare />
-                <div>{data.artist.contact.youtube}</div>
-              </li>
-            )}
-
-            {data.artist.contact.linkedin && (
-              <li>
-                <FaLinkedin />
-                <div>{data.artist.contact.linkedin}</div>
-              </li>
-            )}
+            <SocialMediaLinks user={data} ContainerElement="li" />
           </SocialMedias>
 
           <hr />
