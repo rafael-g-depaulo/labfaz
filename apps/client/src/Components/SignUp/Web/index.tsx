@@ -44,6 +44,7 @@ import {
   ConfirmEmailModal,
 } from './style'
 import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
+import { useHistory } from 'react-router'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -323,7 +324,7 @@ function FormikStepper({
 
   const modalRef = useRef<HTMLInputElement | null>(null)
 
-  // const history = useHistory()
+  const history = useHistory()
 
   const [confirmEmailModal, setConfirmEmailModal] = useState(false)
   const [email, setEmail] = useState('')
@@ -335,8 +336,8 @@ function FormikStepper({
   }
 
   const handleRedirect = () => {
-    // history.push('/login')
-    console.log('redirecionado para login')
+    history.push('/login')
+    // console.log('redirecionado para login')
   }
 
   return (
