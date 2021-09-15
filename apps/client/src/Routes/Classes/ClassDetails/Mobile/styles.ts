@@ -48,6 +48,10 @@ export const CourseResumeDiv = styled(motion.div)<CustomProps>`
   flex-direction: column;
   place-items: center;
   margin: 2.5rem 0;
+
+  h6 {
+    align-self: flex-start;
+  }
 `
 
 export const CourseInfoDiv = styled.div<CustomProps>`
@@ -108,6 +112,18 @@ export const Button = styled.button`
 
   font-weight: 700;
   font-size: var(--font-size-medium);
+  cursor: pointer;
+
+
+
+  :hover {
+    box-shadow: 
+      10px 10px 0px black,
+      inset 0px 2.88px 2.88px rgba(0, 0, 0, 0.14);
+    background-color: aquamarine;
+    transition: 2s;
+  }
+
 `
 export const DrawerButton = styled.div`
   font-weight: 700;

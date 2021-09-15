@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Course } from "Api/Courses"
 
-import { CourseInfoDiv, TagContainer, Button, DrawerButton } from "./styles"
+import { CourseInfoDiv, TagContainer, Button, DrawerButton } from "../styles"
 
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"

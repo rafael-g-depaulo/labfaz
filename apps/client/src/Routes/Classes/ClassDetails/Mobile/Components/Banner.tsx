@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { BannerDiv, Image } from './styles'
+import { BannerDiv, Image } from '../styles'
 
 
 export interface BannerProps {

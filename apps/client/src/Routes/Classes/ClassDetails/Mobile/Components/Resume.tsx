@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { ResumeInfoDiv } from './styles'
+import { ResumeInfoDiv } from '../styles'
 
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"

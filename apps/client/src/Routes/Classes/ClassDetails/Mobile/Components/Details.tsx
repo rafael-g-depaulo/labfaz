@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { CourseResumeDiv } from './styles'
+import { CourseResumeDiv } from '../styles'
 
 import { Title } from "Components/Typography/Title"
 import List from "./List"
