@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Course } from "Api/Courses"
 
+
 import { CourseInfoDiv, TagContainer, DrawerButton } from "../styles"
 
 import { Title } from "Components/Typography/Title"
@@ -27,11 +28,15 @@ export const CourseInfo: FC<CourseResumeProps> = ({ course }) => {
       <Title> {data.name} </Title>
       <Text> {data.short_description} </Text>
       <TagContainer>
-        {data.tags.map(tag => {
-          return <Label name={tag} image={undefined}/>
+        {data.tags.map((tag, index) => {
+          return <Label name={tag} image={undefined} key={index}/>
         }) }
       </TagContainer>
-      <Button courseId={data.id} > INSCREVA-SE </Button>
+      <Button
+        courseId={data.id} 
+        isAvailabe={data.available}
+        link={data.link}
+        hasSubscription={data.has_subscription} > INSCREVA-SE </Button>
       <Text> inscriçoes até {
       format(data.subscription_finish_date, "DD-MM-YYYY")
       .replace('-', '/')

@@ -8,7 +8,7 @@ export interface BannerProps {
 
 export const Banner: FC<BannerProps> = ({ img }) => {
 
-  const fallbackImage = "https://upload.wikimedia.org/wikipedia/commons/e/ec/Capybara_%28Hydrochoerus_hydrochaeris%29.JPG"
+  const fallbackImage = "https://www.madrecor.com.br/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg"
 
   return (
     <BannerDiv>

@@ -36,32 +36,42 @@ export interface Courses {
   code: number;
 }
 
-export interface SubscriptionInfo {
+export interface SubscriptionDeps {
   status: string,
-  code: string
-  data: object | string | undefined
+  code: number,
+  data: {
+    exists: boolean,
+    request: {
+      id: string,
+      status: 'accepted' | 'pending' | 'denied'
+    }
+  } | undefined
 }
 
-export const subscribeToCourse = (courseId: string, userToken: string | undefined ) => {
+export const subscribeToCourse = (courseId: string, userToken: string | undefined ) => 
   api
-    .post<SubscriptionInfo>(`/courses/${courseId}/subscribe`, {
+    .post<SubscriptionDeps>(`/courses/${courseId}/subscribe`, {
       headers: {
         Authorization: `Bearer ${userToken}`
       }
     })
     .then(({data}) => data)
-}
 
 
-export const checkSubscription = (courseId: string, userToken: string | undefined) => {
+
+export const checkSubscription = (courseId: string, userToken: string | undefined) => 
   api
-    .get<SubscriptionInfo>(`/courses/${courseId}/subscribe`, {
+    .get<SubscriptionDeps>(`/courses/${courseId}/subscription`, {
       headers: {
         Authorization: `Bearer ${userToken}`
       }
     })
     .then(({data}) => data)
-}
+    .then(({ status, code, data }) => ({
+      status,
+      code,
+      data
+    }))
 
 export const fetchCourse = (id: string) =>
   api
