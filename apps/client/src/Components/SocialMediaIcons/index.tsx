@@ -8,7 +8,7 @@ import {
   AiOutlineWhatsApp
 } from "react-icons/ai";
 
-import { useMobile } from "Utils/useMobile";
+import { useMobile } from "Hooks/useMobile";
 
 export const SocialMediaIcons: FC = () => {
   const isMobile = useMobile();

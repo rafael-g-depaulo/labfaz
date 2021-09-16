@@ -6,7 +6,7 @@ import Presentation from "Components/Presentation";
 import CoursesPresentation from "Components/CoursesPresentation";
 import Banner from "Components/Banner";
 
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
 import { HomePartners } from "Api/HomePartners";

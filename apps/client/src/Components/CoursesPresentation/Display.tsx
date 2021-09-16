@@ -10,7 +10,7 @@ import {
   Button,
   ButtonText,
 } from "./styles";
-import { useMobile } from "Utils/useMobile";
+import { useMobile } from "Hooks/useMobile";
 import Card from "./Card";
 import { Homepage } from "Api/Homepage";
 import { CoursePresentation } from "Api/CoursePresentation";

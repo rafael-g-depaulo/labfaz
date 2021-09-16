@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { LoginContainer } from './style'
 import { SignUp } from 'Components/SignUp'
 import Wireframe from 'Components/Wireframe'
-import useMobile from 'Utils/useMobile'
+import useMobile from 'Hooks/useMobile'
 
 interface DisplayProps {
   button_type: "submit" | "button" | "reset"

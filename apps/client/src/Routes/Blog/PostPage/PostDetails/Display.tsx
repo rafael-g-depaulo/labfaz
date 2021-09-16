@@ -5,7 +5,7 @@ import { Container, Content, Wrapper } from "./styles";
 import { BlogPost } from "Api/BlogPost";
 import Web from "./Web";
 import Mobile from "./Mobile";
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 
 interface DisplayProps {
   post: BlogPost;
