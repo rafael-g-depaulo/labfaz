@@ -39,41 +39,51 @@ export interface Courses {
 }
 
 export interface SubscriptionDeps {
-  status: string,
-  code: number,
-  data: {
-    exists: boolean,
-    request: {
-      id: string,
-      status: 'accepted' | 'pending' | 'denied'
-    }
-  } | undefined
+  status: string;
+  code: number;
+  data:
+    | {
+        exists: boolean;
+        request: {
+          id: string;
+          status: "accepted" | "pending" | "denied";
+        };
+      }
+    | undefined;
 }
 
-export const subscribeToCourse = (courseId: string, userToken: string | undefined ) => 
+export const subscribeToCourse = (
+  courseId: string,
+  userToken: string | undefined
+) =>
   api
-    .post<SubscriptionDeps>(`/courses/${courseId}/subscribe`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`
+    .post<SubscriptionDeps>(
+      `/courses/${courseId}/subscribe`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + userToken,
+        },
       }
-    })
-    .then(({data}) => data)
+    )
+    .then(({ data }) => data);
 
-
-
-export const checkSubscription = (courseId: string, userToken: string | undefined) => 
+export const checkSubscription = (
+  courseId: string,
+  userToken: string | undefined
+) =>
   api
     .get<SubscriptionDeps>(`/courses/${courseId}/subscription`, {
       headers: {
-        Authorization: `Bearer ${userToken}`
-      }
+        Authorization: `Bearer ${userToken}`,
+      },
     })
-    .then(({data}) => data)
+    .then(({ data }) => data)
     .then(({ status, code, data }) => ({
       status,
       code,
-      data
-    }))
+      data,
+    }));
 
 export const fetchCourse = (id: string) =>
   api

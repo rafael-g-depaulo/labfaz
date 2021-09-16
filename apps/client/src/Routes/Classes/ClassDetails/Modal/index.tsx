@@ -12,14 +12,14 @@ export interface Props {
   link: string;
 }
 
-export const Modal: FC<Props> = ({
+export const ClassModal: FC<Props> = ({
   available,
   has_subscription,
   start_date,
   link,
 }) => {
   const modalRef = useRef<HTMLInputElement | null>(null);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   const date = new Date(start_date);
   const actualDate = new Date();
@@ -68,4 +68,4 @@ export const Modal: FC<Props> = ({
   );
 };
 
-export default Modal;
+export default ClassModal;

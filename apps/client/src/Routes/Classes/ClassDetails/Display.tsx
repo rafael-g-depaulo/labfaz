@@ -13,15 +13,11 @@ import { Container, FirstRow, SecondRow } from "./styles";
 import useMobile from "Utils/useMobile";
 import MobileCoursePage from "./Mobile";
 
-import Modal from "./Modal";
-
 export interface Props {
   data: Course;
 }
 
 export const Display: FC<Props> = ({ data }) => {
-  console.log(data);
-
   const isMobile = useMobile();
 
   return (
@@ -29,12 +25,6 @@ export const Display: FC<Props> = ({ data }) => {
       {isMobile ? (
         <>
           <MobileCoursePage course={data} />
-          <Modal
-            available={data?.available}
-            has_subscription={data?.has_subscription}
-            start_date={data?.subscription_start_date}
-            link={data?.link}
-          />
         </>
       ) : (
         <>
@@ -65,12 +55,6 @@ export const Display: FC<Props> = ({ data }) => {
               </SecondRow>
             </Container>
           </Wireframe>
-          <Modal
-            available={data?.available}
-            has_subscription={data?.has_subscription}
-            start_date={data?.subscription_start_date}
-            link={data?.link}
-          />
         </>
       )}
     </>

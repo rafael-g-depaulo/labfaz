@@ -1,4 +1,4 @@
-import Loading from "Components/Loading";
+import LoadingFullPage from "Components/LoadingFullPage";
 import React, { lazy, Suspense } from "react";
 import { Route, Switch, RouteComponentProps } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export const Classes: Router = ({ match }) => {
     <Switch>
       <Route exact path={path}>
         {() => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <ClassesPage />
           </Suspense>
         )}
@@ -26,7 +26,7 @@ export const Classes: Router = ({ match }) => {
       show de um curso
       <Route path={`${path}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <ClassDetails id={match?.params.id} />
           </Suspense>
         )}

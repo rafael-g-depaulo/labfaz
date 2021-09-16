@@ -31,7 +31,6 @@ export interface SubscriptionDeps {
 }
 
 export const Button: FC<ButtonProps> = ({
-  requestStatus,
   hasSubscription,
   isAvailabe,
   courseId,
@@ -50,15 +49,16 @@ export const Button: FC<ButtonProps> = ({
   const [request, setRequest] = useState<SubscriptionDeps>();
 
   useEffect(() => {
-    checkSubscription(courseId, user.token).then((res) => {
+    checkSubscription(courseId, user?.token).then((res) => {
       setRequest(res);
     });
     setIsLoading(false);
   }, [user, courseId]);
 
   const handleClick = () => {
-    if (user.isLoggedIn) subscribeToCourse(courseId, user.token);
-    else {
+    if (user.isLoggedIn) {
+      subscribeToCourse(courseId, user?.token);
+    } else {
       history.push("/login");
     }
   };
@@ -76,7 +76,7 @@ export const Button: FC<ButtonProps> = ({
     return <ButtonStyled disabled>{status[key]}</ButtonStyled>;
   }
 
-  if (!hasSubscription || requestStatus === "accepted") {
+  if (!hasSubscription || request?.data?.request.status === "accepted") {
     return (
       <>
         <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
@@ -88,7 +88,7 @@ export const Button: FC<ButtonProps> = ({
 
   return (
     <>
-      <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>;
+      <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>
     </>
   );
 };
