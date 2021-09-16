@@ -11,7 +11,7 @@ export const List: FC<ListProps> = ({ data }) => {
   return (
     <Ul>
       {
-        data.map((item) => (
+        data?.map((item) => (
           <Li>
             {item}
           </Li>

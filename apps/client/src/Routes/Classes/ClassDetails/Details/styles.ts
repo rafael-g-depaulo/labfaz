@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { Text } from "Components/Typography/Text";
-import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 import { DesktopSmall } from "Utils/breakpoints";
 
 export const Container = styled.div`
@@ -14,6 +13,7 @@ export const ImageContainer = styled.div`
   background-color: #2daf2f;
   padding: 50px 97px 0 16px;
   border-radius: 21px 21px 0 0;
+  
 
   ${DesktopSmall(css`
     height: 400px;
@@ -26,6 +26,7 @@ export const Image = styled.img`
   height: 400px;
   border-radius: 21px 21px 0 0;
   filter: drop-shadow(0 0 5px rgba(9, 9, 9, 1));
+  //border: 5.4px solid rgba(0, 0, 0, 0.25);
   object-fit: cover;
   object-position: center;
 
@@ -70,22 +71,12 @@ export const SubscribeText = styled(Text)`
   font-size: var(--font-size-title-short);
   font-weight: bold;
   margin-top: 35px;
+  margin-bottom: 45px;
   text-align: center;
 
   ${DesktopSmall(css`
     font-size: var(--font-size-large);
-  `)}
-`;
-
-export const SubscribeButton = styled(InternalLinkButton)`
-  margin-top: 45px;
-  color: black;
-  text-transform: uppercase;
-  font-size: var(--font-size-default);
-
-  ${DesktopSmall(css`
-    font-size: var(--font-size-large);
-    margin-top: 35px;
+    margin-bottom: 35px;
   `)}
 `;
 

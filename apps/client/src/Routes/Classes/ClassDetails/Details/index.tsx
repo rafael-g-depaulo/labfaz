@@ -8,7 +8,6 @@ import {
   TextContainer,
   TextBackground,
   SubscribeText,
-  SubscribeButton,
   ActivityContainer,
   ActivityTitle,
   ActivityItem,
@@ -16,7 +15,10 @@ import {
 
 import { format } from "date-fns";
 
+import { Button } from "../../SubscriptionButton";
+
 export interface Props {
+  id: string;
   teacher: string[];
   details: string[];
   font: string[];
@@ -25,9 +27,12 @@ export interface Props {
   finish_date: string;
   class_dates: string[];
   link: string;
+  available: boolean;
+  has_subscription: boolean;
 }
 
 export const Details: FC<Props> = ({
+  id,
   teacher,
   details,
   font,
@@ -36,6 +41,8 @@ export const Details: FC<Props> = ({
   finish_date,
   class_dates,
   link,
+  available,
+  has_subscription,
 }) => {
   return (
     <Container>
@@ -51,7 +58,15 @@ export const Details: FC<Props> = ({
                 .replace("-", "/")
                 .replace("-", "/")}
             </SubscribeText>
-            <SubscribeButton href="">inscreva-se</SubscribeButton>
+            <Button
+              courseId={id}
+              isAvailabe={available}
+              link={link}
+              hasSubscription={has_subscription}
+            >
+              {" "}
+              INSCREVA-SE{" "}
+            </Button>
             <ActivityContainer>
               <ActivityTitle>Detalhes da atividade:</ActivityTitle>
               {details?.map((item) => (

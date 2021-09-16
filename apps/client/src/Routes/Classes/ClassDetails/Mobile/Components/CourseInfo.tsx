@@ -1,61 +1,65 @@
-import React, { FC, useState } from 'react'
-import { Course } from "Api/Courses"
+import React, { FC, useState } from "react";
+import { Course } from "Api/Courses";
 
+import { CourseInfoDiv, TagContainer, DrawerButton } from "../styles";
 
-import { CourseInfoDiv, TagContainer, DrawerButton } from "../styles"
+import { Title } from "Components/Typography/Title";
+import { Text } from "Components/Typography/Text";
+import Label from "Components/Label";
+import Details from "./Details";
 
-import { Title } from "Components/Typography/Title"
-import { Text } from "Components/Typography/Text"
-import Label from 'Components/Label'
-import Details from "./Details"
+import Button from "Routes/Classes/SubscriptionButton";
 
-import Button from "Routes/Classes/SubscriptionButton"
-
-import { format } from 'date-fns'
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"
+import { format } from "date-fns";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 interface CourseResumeProps {
-  course: Course
+  course: Course;
 }
 
 export const CourseInfo: FC<CourseResumeProps> = ({ course }) => {
-
-  const { data } = course
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <CourseInfoDiv background_color={"rgba(12, 116, 255, 1)"}>
-      <Title> {data.name} </Title>
-      <Text> {data.short_description} </Text>
+      <Title> {course?.name} </Title>
+      <Text> {course?.short_description} </Text>
       <TagContainer>
-        {data.tags.map((tag, index) => {
-          return <Label name={tag} image={undefined} key={index}/>
-        }) }
+        {course?.tags.map((tag, index) => {
+          return <Label name={tag} image={undefined} key={index} />;
+        })}
       </TagContainer>
       <Button
-        courseId={data.id} 
-        isAvailabe={data.available}
-        link={data.link}
-        hasSubscription={data.has_subscription} > INSCREVA-SE </Button>
-      <Text> inscriçoes até {
-      format(data.subscription_finish_date, "DD-MM-YYYY")
-      .replace('-', '/')
-      } </Text>
+        courseId={course?.id}
+        isAvailabe={course?.available}
+        link={course?.link}
+        hasSubscription={course?.has_subscription}
+      >
+        {" "}
+        INSCREVA-SE{" "}
+      </Button>
+      <Text>
+        {" "}
+        inscriçoes até{" "}
+        {format(course?.subscription_finish_date, "DD-MM-YYYY")
+          .replace("-", "/")
+          .replace("-", "/")}{" "}
+      </Text>
 
-      <Details 
+      <Details
         isOpen={isOpen}
-        details={course.data.detail}
-        teachers={course.data.teacher}
-        fonte={course.data.fonte}
+        details={course?.detail}
+        teachers={course?.teacher}
+        fonte={course?.fonte}
       />
 
-        <DrawerButton
-          onClick={() => setIsOpen(!isOpen)}
-        > {isOpen ? "Minimizar resumo" : "Abrir resumo"} 
-          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
-        </DrawerButton>
+      <DrawerButton onClick={() => setIsOpen(!isOpen)}>
+        {" "}
+        {isOpen ? "Minimizar resumo" : "Abrir resumo"}
+        {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+      </DrawerButton>
     </CourseInfoDiv>
-  )
-}
+  );
+};
 
-export default CourseInfo
+export default CourseInfo;

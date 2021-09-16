@@ -39,6 +39,7 @@ export const Display: FC<Props> = ({ data }) => {
             </FirstRow>
             <SecondRow>
               <Details
+                id={data?.id}
                 teacher={data?.teacher}
                 details={data?.detail}
                 font={data?.fonte}
@@ -47,6 +48,8 @@ export const Display: FC<Props> = ({ data }) => {
                 finish_date={data?.subscription_finish_date}
                 class_dates={data?.class_dates}
                 link={data?.link}
+                available={data?.available}
+                has_subscription={data?.has_subscription}
               />
             </SecondRow>
           </Container>

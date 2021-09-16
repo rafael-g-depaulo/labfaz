@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Text } from "Components/Typography/Text";
+import { Mobile } from "Utils/breakpoints";
 
 interface Props {
   icon: boolean;
@@ -11,10 +12,14 @@ export const Container = styled.div`
   background-color: #090909;
   border-radius: 64px;
   display: grid;
-  grid-template-columns: 21px auto 21px;
-  grid-template-rows: 23px;
+  grid-template-columns: 18px auto 18px;
+  grid-template-rows: 30px;
   grid-template-areas: "image text .";
   margin-right: 20px;
+
+  ${Mobile(css`
+    margin-right: 0px;
+  `)}
 `;
 
 export const LabelText = styled(Text)`

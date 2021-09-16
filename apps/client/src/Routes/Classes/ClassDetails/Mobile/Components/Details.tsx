@@ -25,10 +25,10 @@ export const CourseResume: FC<CourseResumeProps> = ({isOpen, details, teachers, 
       }
     }}
     >
-    <Title level={6} > Detalhes da atividade </Title>
+    <Title level={6} > Detalhes da atividade: </Title>
     <List data={details}/>
 
-    <Title level={6} > Profesores </Title>
+    <Title level={6} > Profesores: </Title>
     <List data={teachers}/>
 
     <Title level={6} > Quem está oferecendo esse curso? </Title>
