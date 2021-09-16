@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/api",
-  "version": "6.5.0",
+  "version": "7.0.0",
   "description": "express.js api in typescript",
   "keywords": [
     "api",
@@ -45,7 +45,7 @@
     "@adminjs/design-system": "^2.0.1",
     "@adminjs/express": "^4.0.0",
     "@adminjs/typeorm": "^2.0.0",
-    "@labfaz/adder": "^6.4.0",
+    "@labfaz/adder": "^7.0.0",
     "@types/aws-sdk": "^2.7.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",
