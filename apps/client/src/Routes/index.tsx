@@ -17,6 +17,7 @@ const AboutUs = lazy(() => import("./AboutUs"))
 const NotFound = lazy(() => import("../Pages/NotFound"))
 const Register = lazy(() => import('./SignUp'))
 const Login = lazy(() => import('./Login'))
+const EmailConfirmation = lazy(() => import('./ConfirmEmail'))
 const Profile = lazy(() => import('./Profile'))
 
 export type RouterProps<MatchParams = {}> = {
@@ -109,6 +110,15 @@ const Routes: FC = () => {
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
                 <Login match={match} />
+            </Suspense>
+          )}
+        </Route>
+
+        {/* email confirmation router */}
+        <Route path={['/email-confirmation', '/confirmação-email']}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <EmailConfirmation match={match} />
             </Suspense>
           )}
         </Route>

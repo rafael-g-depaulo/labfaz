@@ -16,4 +16,10 @@ export const StyledButton = styled(Link)`
   /* TODO color: ; */
   color: var(--color-text-yellow);
   border-color: var(--button-color-yellow);
+
+  &.empty-black {
+    border: .175em solid black;
+    border-radius: .5em;
+    color: black;
+  }
 `
