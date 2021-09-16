@@ -1,5 +1,5 @@
 import { MailProvider, Addres } from "@labfaz/mail";
-import { getApiUrl } from "@labfaz/server-conn-info";
+import { getClientUrl } from "@labfaz/server-conn-info";
 
 import UserRepository from "Repository/UserRepository";
 import { UploadFiles } from "Utils/awsConfig";
@@ -28,7 +28,7 @@ export const sendConfirmationEmail = (user: User) => {
     email: "noreply@labfaz.com.br",
   };
 
-  const link = `${getApiUrl()}/sessions/auth/account-verification/${user.id}`
+  const link = `${getClientUrl()}/email-confirmation/${user.id}`
   const userName = user.artist.displayName
   const text = `Olá ${userName}, você pediu um reset de senha. Para criar uma senha nova, vá em ${link}.`
   const html = `
