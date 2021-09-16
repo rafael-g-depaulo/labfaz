@@ -20,9 +20,9 @@ export const NavigationContainer = styled.div`
 export const Title = styled(Text)`
   && {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     font-size: var(--font-size-large);
-    color: var(--color-text-beige);
+    color: var(--color-text-pink);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
@@ -40,7 +40,7 @@ export const Navbar = styled.div`
 
 export const NavLink = styled(InternalLinkButton)`
   ${Navbar} & {
-    color: var(--color-text-beige);
+    color: var(--color-text-white-gray);
     background-color: transparent;
     border: none;
     font-size: var(--font-size-large);

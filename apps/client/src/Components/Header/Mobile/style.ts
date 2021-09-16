@@ -11,7 +11,7 @@ export interface PropsButton {
 export const Container = styled.div`
   z-index: 920;
   .navBar {
-    background-color: var(--background-black);
+    background-color: var(--backgound-black-gray);
     display: flex;
     position: fixed;
     height: 100vh;
@@ -84,7 +84,7 @@ export const CloseMenu = styled.div<PropsCloseMenu>`
 `
 
 export const ContainerIcon = styled.div`
-  background-color: var(--background-black);
+  background-color: var(--backgound-black-gray);
   display: flex;
   padding: 0.5rem 0;
   justify-content: center;

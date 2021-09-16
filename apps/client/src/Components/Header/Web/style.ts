@@ -4,7 +4,7 @@ import { DesktopSmall } from 'Utils/breakpoints'
 import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
 export const Container = styled.div`
-  background-color: var(--background-black);
+  background-color: var(--backgound-black-gray);
   padding: 0.5rem 0;
   display: flex;
   justify-content: space-around;

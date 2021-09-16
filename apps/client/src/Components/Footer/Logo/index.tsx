@@ -20,7 +20,7 @@ const LogoFooter: FC<LogoProps> = ({ data }) => {
   const { facebook, twitter, googlePlus, linkedin, instagram, youtube } = data
   return (
     <LogoContainer id="logo-container">
-      <Logo color="black"/>
+      <Logo color="pink"/>
       <Title>Nossas redes e mídias</Title>
       <IconContainer>
         {

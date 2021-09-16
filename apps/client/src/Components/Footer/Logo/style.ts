@@ -12,9 +12,9 @@ export const LogoContainer = styled.div`
 export const Title = styled(Text)`
   && {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     font-size: var(--font-size-large);
-    color: var(--button-color-yellow);
+    color: var(--color-text-white-gray);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
@@ -34,14 +34,21 @@ export const Icon = styled(ExternalLinkButton)`
   box-shadow: none;
   background-color: transparent;
   border: none;
-  color: var(--button-color-yellow);
+  color: var(--button-color-pink);
   padding: 0;
   display: flex;
   align-items: center;
+
+  
   svg {
-    font-size: var(--font-size-large);
+    width: 20px;
+    height: 20px;
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
+    `)}
+
+    ${Mobile(css`
+      color: var(--color-text-white-gray);
     `)}
   }
 `;

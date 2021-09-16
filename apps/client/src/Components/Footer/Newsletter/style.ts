@@ -16,9 +16,9 @@ export const NewsletterContainer = styled.div`
 
 export const Title = styled(Text)`
   && {
-    font-weight: bold;
+    font-weight: 500;
     text-transform: uppercase;
-    color: var(--color-text-yellow);
+    color: var(--color-text-pink);
     font-size: var(--font-size-large);
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
@@ -34,13 +34,13 @@ export const FormContainer = styled.div`
 export const Input = styled.input`
   max-width: 15rem;
   border: none;
-  border-right: 1px solid var(--background-pink);
-  background-color: var(--color-text-yellow);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: var(--backgound-black-gray);
   padding: 0.5rem 1rem;
   font-size: var(--font-size-large);
 
   ::placeholder {
-    color: var(--background-pink);
+    color: var(--color-text-dark-gray);
     font-size: var(--font-size-large);
 
     ${DesktopSmall(css`
@@ -50,7 +50,7 @@ export const Input = styled.input`
 
   :focus {
     outline: var(--background-pink);
-    color: var(--background-pink);
+    color: var(--color-text-white);
   }
   ${DesktopSmall(css`
     font-size: var(--font-size-short);
@@ -59,9 +59,10 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-  background-color: var(--color-text-yellow);
-  border: none;
-  color: var(--background-pink);
+  background-color: var(--backgound-black-gray);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  /* border: none; */
+  color: var(--color-text-white);
   font-size: var(--font-size-large);
   padding: 0 1rem;
   cursor: pointer;

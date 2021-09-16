@@ -28,7 +28,7 @@ export const ContactContainer = styled.div`
   `)}
 `
 export const Icon = styled.div`
-  color: var(--button-color-yellow);
+  color: var(--button-color-pink);
   display: flex;
   align-items: center;
   svg {
@@ -40,21 +40,23 @@ export const Icon = styled.div`
   }
   ${Mobile(css`
     justify-content: center;
+    color: var(--color-text-white-gray);
   `)}
 `;
 
 export const Title = styled(Text)`
   && {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     font-size: var(--font-size-large);
-    color: var(--button-color-yellow);
+    color: var(--color-text-pink);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);
     `)}
     ${Mobile(css`
       font-weight: 500;
+      color: var(--color-text-white-gray);
     `)}
   }
 `
@@ -63,7 +65,7 @@ export const Subtitle = styled(Text)`
   && {
     font-weight: 500;
     font-size: var(--font-size-large);
-    color: var(--button-color-yellow);
+    color: var(--color-text-white-gray);
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);

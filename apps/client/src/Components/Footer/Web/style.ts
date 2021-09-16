@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 export const FooterContainer = styled.div`
-  background: var(--background-pink);
+  background: var(--backgound-black-gray);
   height: 12rem;
   display: flex;
   align-items: center;

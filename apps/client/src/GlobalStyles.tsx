@@ -6,10 +6,12 @@ export const GlobalStyles = createGlobalStyle`
   html {
     --color-text-black: #000000;
     --color-text-white: #FFFFFF;
+    --color-text-white-gray: #FAFAFA;
     --color-text-beige: #FFEC99;
     --color-text-yellow: #FFEC99;
     --color-text-pink: #FC0061;
     --color-text: var(---color-text-black);
+    --color-text-dark-gray: #C4C4C4;
 
     
     --background-dark-gray: #C4C4C4;
@@ -22,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     --background-light-white: #FAFAFA;
     --background-dark-dark-gray: #2a2a2a;
     --background-green: #2daf2f;
+    --backgound-black-gray: #090909;
 
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
