@@ -1,4 +1,4 @@
-import adminjs, { BaseProperty, BaseRecord, BaseResource, buildFeature } from 'adminjs'
+import adminjs, { BaseProperty, BaseRecord, buildFeature } from 'adminjs'
 import { RequestRepository } from "Repository/RequestRepository"
 
 // Create new action for admin example

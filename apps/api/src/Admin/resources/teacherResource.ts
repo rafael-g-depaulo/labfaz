@@ -1,12 +1,12 @@
-import Teacher from '../../Entities/Teacher'
+import Teacher from 'Entities/Admin'
+// import TeacherRepository from 'Repository/TeacherRepository'
 import { ResourceWithOptions, ValidationError } from 'adminjs'
 import { Connection } from 'typeorm'
-import TeacherRepository from 'Repository/TeacherRepository'
 
 
-const teacherResource = (conn: Connection): ResourceWithOptions => {
+const teacherResource = (_conn: Connection): ResourceWithOptions => {
 
-  const teacherRepo = conn.getCustomRepository(TeacherRepository)
+  // const teacherRepo = conn.getCustomRepository(TeacherRepository)
 
   return ({
     resource: Teacher,

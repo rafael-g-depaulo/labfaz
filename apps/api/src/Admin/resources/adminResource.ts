@@ -1,5 +1,5 @@
-import Admin from '../../Entities/Admin'
-import { ActionResponse, ResourceWithOptions, ValidationError } from 'adminjs'
+import Admin from 'Entities/Admin'
+import { ResourceWithOptions, ValidationError } from 'adminjs'
 import { Connection } from 'typeorm'
 // import AdminRepository from 'Repository/AdminRepository'
 

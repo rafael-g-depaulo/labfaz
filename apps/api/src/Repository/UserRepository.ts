@@ -13,7 +13,7 @@ import { UploadedFile } from "Utils/awsConfig";
 import Address from "Entities/Address";
 import Certificate from "Entities/Certificate";
 import Contact from "Entities/Contact";
-import Technical from "Entities/Technical";
+import Technical, { Formation } from "Entities/Technical";
 import Area, { TechFormation } from "Entities/Area";
 import Idiom from "Entities/Idiom";
 
@@ -86,7 +86,7 @@ export class UserRepository extends Repository<User> {
 
     //criamos uma ficha tecnica ela que possui idiomas e areas
     const createdTech = new Technical();
-    createdTech.formation = artist.technical.formation;
+    createdTech.formation = artist.technical.formation ?? Formation.NO;
     createdTech.profession = artist.technical.profession
     createdTech.is_ceac = artist.technical.is_ceac;
     if (artist.technical.is_ceac && artist.technical.ceac) {
