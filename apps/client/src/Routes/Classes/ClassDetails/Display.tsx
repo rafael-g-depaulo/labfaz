@@ -1,14 +1,59 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
-import { Course } from "Api/Courses"
+import { Course } from "Api/Courses";
 
-interface DisplayProps {
-  course: Course
+import About from "./About";
+import Details from "./Details";
+import Introduction from "./Introduction";
+
+import Wireframe from "Components/Wireframe";
+
+import { Container, FirstRow, SecondRow } from "./styles";
+
+import useMobile from "Utils/useMobile";
+import MobileCoursePage from "./Mobile";
+
+export interface Props {
+  data: Course;
 }
 
-export const Display: FC<DisplayProps> = (course) => {
+export const Display: FC<Props> = ({ data }) => {
+  console.log(data);
 
-  console.log(course)
+  const isMobile = useMobile();
 
-  return <p> OI </p>
-}
+  return (
+    <>
+      {isMobile ? (
+        <MobileCoursePage course={data} />
+      ) : (
+        <Wireframe>
+          <Container>
+            <FirstRow>
+              <Introduction
+                title={data?.name}
+                description={data?.short_description}
+                tags={data?.tags}
+              />
+              <About about={data?.about} requirements={data?.requirements} />
+            </FirstRow>
+            <SecondRow>
+              <Details
+                teacher={data?.teacher}
+                details={data?.detail}
+                font={data?.fonte}
+                banner={data?.banner}
+                start_date={data?.subscription_start_date}
+                finish_date={data?.subscription_finish_date}
+                class_dates={data?.class_dates}
+                link={data?.link}
+              />
+            </SecondRow>
+          </Container>
+        </Wireframe>
+      )}
+    </>
+  );
+};
+
+export default Display;

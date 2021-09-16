@@ -2,27 +2,29 @@ import { api } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
 
 export interface Course {
+  id: string;
+  name: string;
+  teacher: string[];
+  type: string;
+  tags: string[];
+  detail: string[];
+  fonte: string[];
+  short_description: string;
+  about: string;
+  requirements: string;
+  available: boolean;
+  banner: string;
+  has_subscription: boolean;
+  subscription_start_date: string;
+  subscription_finish_date: string;
+  class_dates: string[];
+  link: string;
+}
+
+export interface CourseData {
   status: string;
   code: number;
-  data: {
-    id: string;
-    name: string;
-    teacher: string[];
-    type: string;
-    tags: string[];
-    detail: string[];
-    fonte: string[];
-    short_description: string;
-    about: string;
-    requirements: string;
-    available: boolean;
-    banner: string;
-    has_subscription: boolean;
-    subscription_start_date: string;
-    subscription_finish_date: string;
-    class_dates: string[];
-    link: string;
-  };
+  data: Course;
 }
 
 export interface Courses {
@@ -75,7 +77,7 @@ export const checkSubscription = (courseId: string, userToken: string | undefine
 
 export const fetchCourse = (id: string) =>
   api
-    .get<Course>(`/courses/${id}`)
+    .get<CourseData>(`/courses/${id}`)
     .then(({ data }) => data)
     .then(({ status, data, code }) => ({
       status,
@@ -84,7 +86,7 @@ export const fetchCourse = (id: string) =>
     }));
 
 export const useCourse = (id: string) =>
-  useFetchApi<Course>(`/courses/${id}`, () => fetchCourse(id));
+  useFetchApi<CourseData>(`/courses/${id}`, () => fetchCourse(id));
 
 export const fetchCourses = () =>
   api

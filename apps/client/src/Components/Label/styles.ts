@@ -14,6 +14,7 @@ export const Container = styled.div`
   grid-template-columns: 21px auto 21px;
   grid-template-rows: 23px;
   grid-template-areas: "image text .";
+  margin-right: 20px;
 `;
 
 export const LabelText = styled(Text)`
