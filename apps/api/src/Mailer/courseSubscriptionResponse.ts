@@ -55,7 +55,7 @@ export const sendAprovedEmail = async (userEmail: string, userName: string, cour
   const emailInfo = {
     to: {
       name: userName,
-      email: "rafael.g.depaulo@gmail.com" ?? userEmail,
+      email: userEmail,
     },
     from: from,
     subject: `Resposta de inscrição - Curso ${courseName}`,
@@ -90,7 +90,7 @@ export const sendNotAprovedEmail = async (userEmail: string, userName: string, c
   const emailInfo = {
     to: {
       name: userName,
-      email: "rafael.g.depaulo@gmail.com" ?? userEmail,
+      email: userEmail,
     },
     from: from,
     subject: `Resposta de inscrição - Curso ${courseName}`,
