@@ -133,7 +133,8 @@ export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: flex-end;
 `;
 
 export const DateWrapper = styled.div`

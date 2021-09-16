@@ -33,8 +33,8 @@ export interface CardProps {
   available: boolean;
   banner: string;
   has_subscription: boolean;
-  subscription_finish_date: string;
-  subscription_start_date: string;
+  subscription_finish_date?: string;
+  subscription_start_date?: string;
 }
 
 export const Card: FC<CardProps> = ({
@@ -48,10 +48,10 @@ export const Card: FC<CardProps> = ({
   subscription_finish_date,
   subscription_start_date,
 }) => {
-  const date = new Date(subscription_finish_date);
+  const date = !!subscription_finish_date && !!subscription_start_date && new Date(subscription_finish_date)
   const actualDate = new Date();
-  const difference = timeDifference(date, actualDate);
-  const isAvailable = (has_subscription && available && difference < 1) ? true : false;
+  const difference = !!date && timeDifference(date, actualDate);
+  const isAvailable = has_subscription && available && !!difference && difference < 1
 
   const route = `/classes/${id}`;
 
@@ -67,24 +67,26 @@ export const Card: FC<CardProps> = ({
           <Label name={tag} image={undefined} />
         </LabelWrapper>
         <SubscribeWrapper>
-          <DateContainer>
-            <DateText>
-              {isAvailable
-                ? "Inscreva-se até"
-                : has_subscription
-                ? "Encerrado em"
-                : "Iniciará em"}
-            </DateText>
-            <DateText>
-              {has_subscription
-                ? format(subscription_finish_date, "DD-MM-YYYY")
-                    .replace("-", "/")
-                    .replace("-", "/")
-                : format(subscription_start_date, "DD-MM-YYYY")
-                    .replace("-", "/")
-                    .replace("-", "/")}
-            </DateText>
-          </DateContainer>
+          {!!date &&
+            <DateContainer>
+              <DateText>
+                {isAvailable
+                  ? "Inscreva-se até"
+                  : has_subscription
+                  ? "Encerrado em"
+                  : "Iniciará em"}
+              </DateText>
+              <DateText>
+                {has_subscription && !!date
+                  ? format(subscription_finish_date, "DD-MM-YYYY")
+                      .replace("-", "/")
+                      .replace("-", "/")
+                  : format(subscription_start_date, "DD-MM-YYYY")
+                      .replace("-", "/")
+                      .replace("-", "/")}
+              </DateText>
+            </DateContainer>
+          }
           <ButtonWrapper>
             <ButtonLayer />
             <Button href={isAvailable ? route : has_subscription ? "#" : route}>
