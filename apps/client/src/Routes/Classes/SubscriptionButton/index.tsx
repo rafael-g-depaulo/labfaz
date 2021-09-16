@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
+
 export interface ButtonProps {
   requestStatus?: "pending" | "accepted" | "denied" | undefined;
   courseId: string;
@@ -77,13 +78,19 @@ export const Button: FC<ButtonProps> = ({
 
   if (!hasSubscription || requestStatus === "accepted") {
     return (
-      <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
-        ENTRAR NO CURSO
-      </Link>
+      <>
+        <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
+          ENTRAR NO CURSO
+        </Link>
+      </>
     );
   }
 
-  return <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>;
+  return (
+    <>
+      <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>;
+    </>
+  );
 };
 
 export default Button;

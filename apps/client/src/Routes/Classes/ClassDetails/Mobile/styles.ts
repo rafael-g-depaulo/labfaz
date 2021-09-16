@@ -98,7 +98,7 @@ export const TagContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
   margin-bottom: 2.4rem;
-  max-width: 80%;
+  width: 80%;
 `;
 
 export const DrawerButton = styled.div`

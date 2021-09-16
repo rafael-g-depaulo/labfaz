@@ -17,7 +17,9 @@ export const Introduction: FC<Props> = ({ title, description, tags }) => {
       <Subtitle>{description}</Subtitle>
       <TagsWrapper>
         {tags?.map((name) => (
-          <Label name={name} image={undefined} />
+         <div style={{paddingBottom: "15px"}}>
+            <Label name={name} image={undefined} />
+         </div>
         ))}
       </TagsWrapper>
     </Container>
