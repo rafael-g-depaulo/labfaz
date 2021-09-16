@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "courses_page_sections",
   "info": {
-    "name": "CoursesPageSections"
+    "name": "CoursesPageSections",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,7 +17,7 @@
     },
     "first_subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "second_title": {
       "type": "string",
@@ -24,7 +25,7 @@
     },
     "second_subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "third_title": {
       "type": "string",
@@ -32,7 +33,7 @@
     },
     "third_subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "fourth_title": {
       "type": "string",
@@ -40,7 +41,7 @@
     },
     "fourth_subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }
