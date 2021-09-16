@@ -19,8 +19,8 @@ export const ButtonStyled = styled.button<ButtonStyleProps>`
 
   :hover {
     box-shadow: 10px 10px 0px black, inset 0px 2.88px 2.88px rgba(0, 0, 0, 0.14);
-    background-color: aquamarine;
-    transition: 2s;
+    opacity: 0.8;
+    transition: 500ms;
   }
 
   :disabled {

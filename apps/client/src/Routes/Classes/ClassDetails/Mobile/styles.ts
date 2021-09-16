@@ -32,6 +32,7 @@ export const ResumeInfoDiv = styled.div`
     text-align: justify;
     color: white;
     max-width: 80%;
+    overflow-wrap: break-word;
   }
 
   p:nth-child(4) {
@@ -70,6 +71,7 @@ export const CourseInfoDiv = styled.div<CustomProps>`
     font-size: var(--font-size-medium);
     margin-bottom: 1.8em;
     max-width: 80%;
+    overflow-wrap: break-word;
   }
 
   p:nth-child(5) {
