@@ -7,7 +7,7 @@ import {
   MainTitle,
   Button,
 } from "./styles";
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 
 import { ApiStayTuned } from "Api/StayTuned";
 

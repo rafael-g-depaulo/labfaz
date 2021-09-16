@@ -8,7 +8,7 @@ import CardRowComponent from "./CardRowComponent";
 
 import Wireframe from "Components/Wireframe";
 
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 
 import { CoursesPageIntroduction } from "Api/CoursesPageIntroduction";
 import { ApiStayTuned } from "Api/StayTuned";

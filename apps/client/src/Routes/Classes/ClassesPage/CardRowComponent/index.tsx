@@ -16,7 +16,7 @@ import { Course } from "Api/Courses";
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 
 export interface Props {
   title: string;

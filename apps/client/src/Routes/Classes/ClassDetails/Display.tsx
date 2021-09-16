@@ -10,7 +10,7 @@ import Wireframe from "Components/Wireframe";
 
 import { Container, FirstRow, SecondRow } from "./styles";
 
-import useMobile from "Utils/useMobile";
+import useMobile from "Hooks/useMobile";
 import MobileCoursePage from "./Mobile";
 
 export interface Props {
