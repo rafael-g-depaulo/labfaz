@@ -19,7 +19,7 @@ export const ClassesPage: FC = () => {
   if (
     courses.isLoading ||
     introduction.isLoading ||
-    stayTuned.isLoading ||
+    // stayTuned.isLoading ||
     sections.isLoading
   )
     return <LoadingFullPage />;
@@ -27,8 +27,8 @@ export const ClassesPage: FC = () => {
   // errors
   if (
     (courses.error || sections.error) &&
-    introduction.error &&
-    stayTuned.error
+    introduction.error
+    // && stayTuned.error
   )
     return (
       <Error
@@ -65,9 +65,18 @@ export const ClassesPage: FC = () => {
     return (
       <Display
         data={{ Curso: [], Live: [], Oficina: [], "Roda de conversa": [] }}
-        introduction={introduction.data!}
-        stayTuned={stayTuned.data!}
-        sections={sections.data!}
+        introduction={introduction.data}
+        stayTuned={stayTuned.data}
+        sections={{
+          first_subtitle: "",
+          first_title: "Cursos IATEC",
+          second_title: "Oficinas",
+          second_subtitle: "",
+          third_title: "Lives",
+          third_subtitle: "",
+          fourth_title: "Rodas de Conversa",
+          fourth_subtitle: "",
+        }}
       />
     );
 
@@ -76,8 +85,8 @@ export const ClassesPage: FC = () => {
       <Display
         data={courses.data.data}
         introduction={undefined}
-        stayTuned={stayTuned.data!}
-        sections={sections.data!}
+        stayTuned={stayTuned.data}
+        sections={sections.data}
       />
     );
 
@@ -85,18 +94,18 @@ export const ClassesPage: FC = () => {
     return (
       <Display
         data={courses.data.data}
-        introduction={introduction.data!}
+        introduction={introduction.data}
         stayTuned={undefined}
-        sections={sections.data!}
+        sections={sections.data}
       />
     );
 
   return (
     <Display
       data={courses.data.data}
-      introduction={introduction.data!}
-      stayTuned={stayTuned.data!}
-      sections={sections.data!}
+      introduction={introduction.data}
+      stayTuned={stayTuned.data}
+      sections={sections.data}
     />
   );
 };
