@@ -48,10 +48,10 @@ export const Card: FC<CardProps> = ({
   subscription_finish_date,
   subscription_start_date,
 }) => {
-  // const date = new Date(subscription_finish_date);
-  // const actualDate = new Date();
-  // const difference = timeDifference(date, actualDate);
-  // const isAvailable = (available && difference < 1) ? true : false;
+  const date = new Date(subscription_finish_date);
+  const actualDate = new Date();
+  const difference = timeDifference(date, actualDate);
+  const isAvailable = available && difference < 1 ? true : false;
 
   const route = `/classes/${id}`;
 
@@ -69,7 +69,7 @@ export const Card: FC<CardProps> = ({
         <SubscribeWrapper>
           <DateContainer>
             <DateText>
-              {available
+              {isAvailable
                 ? "Inscreva-se até"
                 : has_subscription
                 ? "Encerrado em"
@@ -87,9 +87,9 @@ export const Card: FC<CardProps> = ({
           </DateContainer>
           <ButtonWrapper>
             <ButtonLayer />
-            <Button href={available ? route : has_subscription ? route : "#"}>
+            <Button href={isAvailable ? route : has_subscription ? route : "#"}>
               <ButtonText>
-                {available
+                {isAvailable
                   ? "inscreva-se"
                   : has_subscription
                   ? "encerrado"

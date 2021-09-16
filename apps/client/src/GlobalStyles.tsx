@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -19,6 +19,9 @@ export const GlobalStyles = createGlobalStyle`
     --background-black: #000000;
     --background-pink: #FC0061;
     --background-yellow: #FFEC99;
+    --background-light-white: #FAFAFA;
+    --background-dark-dark-gray: #2a2a2a;
+    --background-green: #2daf2f;
 
     --button-color-yellow: #FFEC99;
     --button-color-pink: #FC0061;
@@ -63,6 +66,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     text-decoration: none;
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

@@ -4,13 +4,13 @@ import { DesktopSmall } from "Utils/breakpoints";
 
 export const Container = styled.div`
   width: 100%;
-  background-color: #2daf2f;
+  background-color: var(--background-green);
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
   height: 450px;
-  background-color: #2daf2f;
+  background-color: var(--background-green);
   padding: 50px 97px 0 16px;
   border-radius: 21px 21px 0 0;
   
@@ -26,7 +26,6 @@ export const Image = styled.img`
   height: 400px;
   border-radius: 21px 21px 0 0;
   filter: drop-shadow(0 0 5px rgba(9, 9, 9, 1));
-  //border: 5.4px solid rgba(0, 0, 0, 0.25);
   object-fit: cover;
   object-position: center;
 
@@ -38,7 +37,7 @@ export const Image = styled.img`
 export const TextContainer = styled.div`
   width: 100%;
   height: auto;
-  background-color: black;
+  background-color: var(--background-black);
   padding: 0 80px 0 0;
 
   ${DesktopSmall(css`
@@ -49,7 +48,7 @@ export const TextContainer = styled.div`
 export const TextSubContainer = styled.div`
   width: 100%;
   height: auto;
-  background-color: #2daf2f;
+  background-color: var(--background-green);
   padding: 0 15px 15px 15px;
   border-radius: 0 0 15px 15px;
 `;
@@ -59,7 +58,7 @@ export const TextBackground = styled.div`
   background-color: #f0f0f0;
   border-radius: 0 0 15px 15px;
   filter: drop-shadow(0 0 3px rgba(250, 250, 250, 1));
-  border: 2px solid #2daf2f;
+  border: 2px solid var(--background-green);
   border-top: none;
   display: flex;
   flex-direction: column;

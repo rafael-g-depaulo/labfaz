@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   padding: 80px 80px 80px 80px;
-  background-color: #2daf2f;
+  background-color: var(--background-green);
   filter: drop-shadow(0 4px 14px rgba(45, 175, 47, 0.33));
   border: 3px solid rgba(45, 175, 47, 0.66);
 

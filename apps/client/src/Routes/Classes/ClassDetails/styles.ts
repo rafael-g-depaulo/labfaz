@@ -6,8 +6,6 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  //padding-right: 120px;
-  //background-color: #2DAF2F;
 `;
 
 export const FirstRow = styled.div`
@@ -20,9 +18,5 @@ export const FirstRow = styled.div`
 
 export const SecondRow = styled.div`
   width: 40%;
-  background-color: #2daf2f;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-end; */
-  //border-radius: 0 0 15px 15px;
+  background-color: var(--background-green);
 `;

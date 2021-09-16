@@ -8,7 +8,6 @@ interface Props {
 
 export const Container = styled.div`
   width: 145px;
-  //height: 23px;
   background-color: #090909;
   border-radius: 64px;
   display: grid;

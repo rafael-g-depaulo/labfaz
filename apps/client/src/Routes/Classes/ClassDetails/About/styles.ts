@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding: 70px 80px 70px 80px;
-  background-color: black;
+  background-color: var(--background-black);
 
   ${DesktopSmall(css`
     padding: 50px 40px 40px 40px;
@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const MainTitle = styled(Title)`
   font-size: var(--font-size-title-medium);
   text-align: left;
-  color: #fafafa;
+  color: var(--background-light-white);
   margin-bottom: 60px;
 
   ${DesktopSmall(css`
@@ -32,7 +32,7 @@ export const MainTitle = styled(Title)`
 export const TextContent = styled(Text)`
   font-size: var(--font-size-title-short);
   text-align: left;
-  color: #fafafa;
+  color: var(--background-light-white);
   margin-bottom: 100px;
 
   ${DesktopSmall(css`

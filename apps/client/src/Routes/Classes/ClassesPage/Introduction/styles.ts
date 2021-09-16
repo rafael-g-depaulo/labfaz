@@ -9,7 +9,6 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  //padding-bottom: 150px;
   overflow: hidden;
 
   ${Mobile(css`

@@ -61,7 +61,11 @@ export const Subtitle = styled(Text)`
 export const Divisor = styled.hr<TitleProps>`
   width: 90%;
   border: none;
-  background: linear-gradient(to right, ${(props) => props.fontColor}, transparent);
+  background: linear-gradient(
+    to right,
+    ${(props) => props.fontColor},
+    transparent
+  );
   height: 1px;
   margin: 0 0 40px 0;
   align-self: center;
@@ -80,8 +84,8 @@ export const ClassesWrapper = styled.div`
     overflow-x: scroll;
 
     ::-webkit-scrollbar {
-      width: 0; /* Remove scrollbar space */
-      background: transparent; /* Optional: just make scrollbar invisible */
+      width: 0;
+      background: transparent;
     }
   `)}
 `;

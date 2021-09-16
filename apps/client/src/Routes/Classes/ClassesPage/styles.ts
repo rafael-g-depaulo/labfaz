@@ -1,6 +1,4 @@
-import styled, { css } from "styled-components";
-import { Title } from "Components/Typography/Title";
-import { Mobile } from "Utils/breakpoints";
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   width: 100%;

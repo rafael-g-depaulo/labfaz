@@ -9,7 +9,6 @@ interface CustomProps {
 export const BannerDiv = styled.div`
   width: 100vw;
   height: 360px;
-  //min-width: fit-content;
   border: 5.4px solid rgba(0, 0, 0, 0.25);
   filter: drop-shadow(0px 0px 6px #090909);
 `;
@@ -19,14 +18,14 @@ export const ResumeInfoDiv = styled.div`
   flex-direction: column;
   max-width: 100vw;
   min-height: 300px;
-  background-color: black;
+  background-color: var(--background-black);
 
   place-items: center;
 
   h1 {
     margin-bottom: 1em;
     margin-top: 2em;
-    color: white;
+    color: var(--color-text-white);
   }
 
   p {

@@ -92,13 +92,7 @@ export const CardRowComponent: FC<Props> = ({
             cursor="pointer"
           />
         )}
-        {isMobile ? (
-          <Subtitle>
-            Novas atividades de diversas áreas todos os meses{" "}
-          </Subtitle>
-        ) : (
-          <></>
-        )}
+        {isMobile ? <Subtitle>{subtitle}</Subtitle> : <></>}
       </IconContainer>
     </Wrapper>
   );

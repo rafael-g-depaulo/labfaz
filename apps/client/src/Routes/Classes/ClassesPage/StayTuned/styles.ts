@@ -21,13 +21,12 @@ export const Wrapper = styled.div`
     justify-content: center;
     margin: 80px 30px 75px 30px;
     padding: 0;
-    background-color: #fafafa;
+    background-color: var(--background-light-white);
     border-radius: 15px;
   `)}
 
   ${DesktopSmall(css`
     height: 320px;
-    //margin-top: 80px;
     padding: 0 40px;
   `)}
 `;
@@ -51,7 +50,7 @@ export const Image = styled.img`
 export const TextWrapper = styled.div`
   width: 55%;
   height: 100%;
-  background-color: #2a2a2a;
+  background-color: var(--background-dark-dark-gray);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -64,7 +63,7 @@ export const TextWrapper = styled.div`
     height: auto;
     padding: 0 15px;
     align-items: center;
-    background-color: #fafafa;
+    background-color: var(--background-light-white);
     border-radius: 15px;
     align-items: center;
   `)}
@@ -111,11 +110,8 @@ export const MainText = styled(Text)`
 export const Button = styled(ExternalLinkButton)`
   width: 180px;
   height: 40px;
-  //border: none;
-  //background-color: gray;
   text-transform: uppercase;
   font-size: var(--font-size-medium);
-  //color: black;
   text-align: center;
   padding: 6px;
   border-bottom: 2px solid;

@@ -37,7 +37,7 @@ export const Image = styled.img`
   object-position: center;
   border-bottom: 3px solid rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 3px 0 rgba(9, 9, 9, 0.33);
-  background-color: #fafafa;
+  background-color: var(--background-light-white);
 `;
 
 export const TextWrapper = styled.div`
@@ -48,7 +48,7 @@ export const TextWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 13px;
-  background-color: #fafafa;
+  background-color: var(--background-light-white);
   border-radius: 0 0 14px 14px;
 
   ${Mobile(css`
@@ -110,8 +110,7 @@ export const ButtonLayer = styled.div`
   width: 100%;
   height: 30px;
   position: relative;
-  //z-index: 1;
-  background-color: #000;
+  background-color: var(--background-black);
   right: 3px;
   border-radius: 3px;
 
@@ -129,7 +128,6 @@ export const ButtonLayer = styled.div`
 
 export const Button = styled(InternalLinkButton)`
   position: relative;
-  //z-index: 2;
   bottom: 27px;
   width: 100%;
   height: 30px;
@@ -138,10 +136,10 @@ export const Button = styled(InternalLinkButton)`
   align-items: center;
   justify-content: center;
   outline: none;
-  border: solid 1px #000;
+  border: solid 1px var(--background-black);
   border-radius: 3px;
   padding: 5px 20px;
-  
+
   ${Mobile(css`
     height: 30px;
     bottom: 27px;
@@ -158,7 +156,7 @@ export const Button = styled(InternalLinkButton)`
 export const ButtonText = styled(Text)`
   font-size: var(--font-size-short);
   font-weight: 700;
-  color: #000;
+  color: var(--color-text-black);
   text-transform: uppercase;
 
   ${DesktopSmall(css`
