@@ -76,7 +76,7 @@ export const Button: FC<ButtonProps> = ({
     return <ButtonStyled disabled>{status[key]}</ButtonStyled>;
   }
 
-  if (!hasSubscription || request?.data?.request.status === "accepted") {
+  if (!hasSubscription ||  (request?.data?.exists && request?.data?.request.status === "accepted")) {
     return (
       <>
         <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
