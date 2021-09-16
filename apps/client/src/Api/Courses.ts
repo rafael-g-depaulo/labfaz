@@ -1,5 +1,6 @@
-import { api } from "Api";
+import { api, SuccessObject } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
+import { useMutation } from "react-query";
 
 export interface Course {
   id: string;
@@ -52,61 +53,68 @@ export interface SubscriptionDeps {
     | undefined;
 }
 
+export interface ExistsSubscription {
+  exists: boolean;
+  request: {
+    id: string;
+    status: "accepted" | "pending" | "denied";
+  }
+}
+
 export const subscribeToCourse = (
   courseId: string,
   userToken: string | undefined
-) =>
-  api
-    .post<SubscriptionDeps>(
-      `/courses/${courseId}/subscribe`,
-      {},
-      {
-        headers: {
-          Authorization: "Bearer " + userToken,
-        },
-      }
-    )
-    .then(({ data }) => data);
+) => api
+  .post<SubscriptionDeps>(
+    `/courses/${courseId}/subscribe`,
+    {},
+    {
+      headers: {
+        Authorization: "Bearer " + userToken,
+      },
+    }
+  )
+  .then(({ data }) => data)
+
+export const useSubscribeToCouse = (courseId: string, userToken?: string) => useMutation(
+  [`/courses/${courseId}/subscribe`, userToken],
+  () => subscribeToCourse(courseId, userToken),
+)
 
 export const checkSubscription = (
   courseId: string,
   userToken: string | undefined
-) =>
-  api
-    .get<SubscriptionDeps>(`/courses/${courseId}/subscription`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
-    .then(({ data }) => data)
-    .then(({ status, code, data }) => ({
-      status,
-      code,
-      data,
-    }));
+) => api
+  .get<SuccessObject<ExistsSubscription>>(`/courses/${courseId}/subscription`, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  })
+  .then(({ data }) => data.data)
 
-export const fetchCourse = (id: string) =>
-  api
-    .get<CourseData>(`/courses/${id}`)
-    .then(({ data }) => data)
-    .then(({ status, data, code }) => ({
-      status,
-      data,
-      code,
-    }));
+export const useSubscription = (courseId: string, userToken?: string) => useFetchApi(`/courses/${courseId}/subscription/${userToken}`, () => checkSubscription(courseId, userToken))
+
+
+export const fetchCourse = (id: string) => api
+  .get<CourseData>(`/courses/${id}`)
+  .then(({ data }) => data)
+  .then(({ status, data, code }) => ({
+    status,
+    data,
+    code,
+  }))
 
 export const useCourse = (id: string) =>
   useFetchApi<CourseData>(`/courses/${id}`, () => fetchCourse(id));
 
-export const fetchCourses = () =>
-  api
-    .get<Courses>(`/courses`)
-    .then(({ data }) => data)
-    .then(({ status, data, code }) => ({
-      status,
-      data,
-      code,
-    }));
+export const fetchCourses = () => api
+  .get<Courses>(`/courses`)
+  .then(({ data }) => data)
+  .then(({ status, data, code }) => ({
+    status,
+    data,
+    code,
+  }))
 
 export const useCourses = () =>
   useFetchApi<Courses>(`/courses`, () => fetchCourses());

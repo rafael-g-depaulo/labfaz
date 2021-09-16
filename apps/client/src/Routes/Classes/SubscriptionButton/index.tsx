@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import { subscribeToCourse, checkSubscription } from "Api/Courses";
+import React, { FC, useCallback } from "react";
+
+import { useSubscription, useSubscribeToCouse } from "Api/Courses";
 import { useCurrentUserToken } from "Context/LoggedUserToken";
 
 import { ButtonStyled, Link } from "./styles";
-import { useState } from "react";
-import { useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
+import { navLinks } from "Utils/navLinks";
 
 export interface ButtonProps {
   requestStatus?: "pending" | "accepted" | "denied" | undefined;
@@ -45,51 +45,39 @@ export const Button: FC<ButtonProps> = ({
 
   const tratedLink = link?.startsWith("https") ? link : `https://${link}`;
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [request, setRequest] = useState<SubscriptionDeps>();
+  const { isLoading, error, data } = useSubscription(courseId, user.token)
+  const { mutate } = useSubscribeToCouse(courseId, user.token)
+  const handleClick = useCallback(() => {
+    if (user.isLoggedIn) mutate()
+    else history.push(navLinks.login.path)
+  }, [mutate, user.isLoggedIn, history])
 
-  useEffect(() => {
-    checkSubscription(courseId, user?.token).then((res) => {
-      setRequest(res);
-    });
-    setIsLoading(false);
-  }, [user, courseId]);
-
-  const handleClick = () => {
-    if (user.isLoggedIn) {
-      subscribeToCourse(courseId, user?.token);
-    } else {
-      history.push("/login");
-    }
-  };
+  if (error)
+    return <ButtonStyled disabled>ERRO TENTE DE NOVO MAIS TARDE</ButtonStyled>;
 
   if (isLoading) {
     return <ButtonStyled>Loading...</ButtonStyled>;
   }
 
   if (!isAvailabe) {
-    return <ButtonStyled disabled>INSCREVA-SE</ButtonStyled>;
+    return <ButtonStyled disabled>INDISPONÍVEL</ButtonStyled>;
   }
 
-  if (request?.data?.exists && request.data.request.status !== "accepted") {
-    const key = request.data.request.status;
+  if ( data?.exists && data?.request.status !== "accepted") {
+    const key = data.request.status;
     return <ButtonStyled disabled>{status[key]}</ButtonStyled>;
   }
 
-  if (!hasSubscription ||  (request?.data?.exists && request?.data?.request.status === "accepted")) {
+  if (!hasSubscription || (data?.exists && data?.request.status === "accepted")) {
     return (
-      <>
-        <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
-          ENTRAR NO CURSO
-        </Link>
-      </>
+      <Link href={tratedLink} target="_blank" rel="noopener noreferrer">
+        ENTRAR NO CURSO
+      </Link>
     );
   }
 
   return (
-    <>
-      <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>
-    </>
+    <ButtonStyled onClick={handleClick}>INSCREVA-SE</ButtonStyled>
   );
 };
 
