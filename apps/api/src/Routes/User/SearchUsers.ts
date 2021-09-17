@@ -6,13 +6,13 @@ import { Req } from "Utils/request";
 
 import { Formation } from "Entities/Technical";
 
-interface GetAllUsersInterface {
+interface UserSearchInterface {
   UserRepo: UserRepository;
 }
 
-export const GetAllUsers: (deps: GetAllUsersInterface) => RouteHandler<Req> = ({
+export const UserSearch: (deps: UserSearchInterface) => RouteHandler<Req> = ({
   UserRepo,
-}: GetAllUsersInterface) => async (_, res) => {
+}: UserSearchInterface) => async (_, res) => {
   let usersFind = await UserRepo.find({ where: {
     banned: false,
     active: true,
@@ -22,6 +22,8 @@ export const GetAllUsers: (deps: GetAllUsersInterface) => RouteHandler<Req> = ({
   const users = usersFind
     // filter users without experience
     .filter(user => user.artist.technical.profession !== null && user.artist.technical.formation !== Formation.NO)
+    // filter banned users
+    .filter(user => !user.banned)
     // remove password hash
     .map((user) => {
       let { password: _, ...newUser } = user
@@ -31,4 +33,4 @@ export const GetAllUsers: (deps: GetAllUsersInterface) => RouteHandler<Req> = ({
   return fetchedSuccessfully(res, { users });
 };
 
-export default GetAllUsers;
+export default UserSearch;
