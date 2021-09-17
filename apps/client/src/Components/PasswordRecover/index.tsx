@@ -85,6 +85,7 @@ export const AskReset: FC = () => {
             setFunction={setIsVisible}
             title={title}
             userEmail={email}
+            success={false}
           />
 
       </>

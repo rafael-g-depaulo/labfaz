@@ -50,10 +50,6 @@ export const Wrapper = styled.div<ModalProps>`
   }
 
   ${MobileLarge(css`
-    max-width: 99vw;
-    max-height: 99vh;
-    min-height: 99vh;
-    min-width: 99vw;
     border: none;
 
     form {
