@@ -83,7 +83,7 @@ export const Line = styled.div`
   background: linear-gradient(to left, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
   width: 100%;
   box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.05);
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
 
   ${MobileLarge(css`
     display: none
