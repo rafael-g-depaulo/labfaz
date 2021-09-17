@@ -11,7 +11,7 @@ import useMobile from "Hooks/useMobile";
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
 import { HomePartners } from "Api/HomePartners";
 import { Homepage } from "Api/Homepage";
-import { CoursePresentation } from "Api/CoursePresentation";
+// import { CoursePresentation } from "Api/CoursePresentation";
 
 export interface DisplayProps {
   data: HomepageBannerInfo;
@@ -20,7 +20,7 @@ export interface DisplayProps {
   video: string | null;
   partners: HomePartners[] | null;
   coursesText: Homepage | null;
-  coursesData: CoursePresentation[] | null;
+  // coursesData: CoursePresentation[] | null;
 }
 
 export const Display: FC<DisplayProps> = ({

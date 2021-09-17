@@ -15,22 +15,23 @@ export const twitterUserRegex = or(
 )
 
 export const linkedinUserRegex = or(
-  /^@?(?<rawHandle>[a-z0-9_-\.]{1,40})$/i,
+  /^@?(?<rawHandle>[a-z0-9_-]{1,40})$/i,
   /(?:https?:\/\/)?(?:www\.)?linkedin\.com\/in\/(?<linkHandle>[a-z0-9_-]{1,25})$/,
 )
 
 export const tiktokUserRegex = or(
-  /^@?(?<rawHandle>[a-z0-9\._-]{1,40})$/i,
+  /^@?(?<rawHandle>[a-z0-9_-]{1,40})$/i,
   /(?:https?:\/\/)?(?:www\.)?tiktok\.com\/@(?<linkHandle>[a-z0-9_-]{1,25})$/,
 )
 
 export const instagramUserRegex = or(
-  /^@?(?<rawHandle>[a-z0-9_-\.]{1,40})$/i,
+  // eslint-disable-next-line
+  /^@?(?<rawHandle>[a-z0-9_\-\.]{1,40})$/i,
   /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?<linkHandle>[a-z0-9_-]{1,25})$/,
 )
 
 export const youtubeUserRegex = or(
-  /^@?(?<rawHandle>[\w-\._]{1,40})$/i,
+  /^@?(?<rawHandle>[\w-]{1,40})$/i,
   /^https?:\/\/(www\.)?youtube\.com\/(channel\/UC(?<channelId>[\w-]{21}[AQgw])|(c\/|user\/)?(?<channelName>[\w-]+))$/,
 )
 

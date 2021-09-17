@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  height: 9rem;
+  /* height: 9rem; */
   justify-content: space-between;
   align-items: center;
   padding: 0 7% 0 7%;
