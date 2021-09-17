@@ -137,7 +137,7 @@ const Routes: FC = () => {
         </Route>
 
         {/* recover router */}
-        <Route path={["/recover"]}>
+        <Route path={["/recover", "/forgot-password", "/criar-nova-senha"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <Recover match={match} />
