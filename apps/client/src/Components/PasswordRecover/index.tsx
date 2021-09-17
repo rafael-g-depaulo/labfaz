@@ -13,7 +13,6 @@ interface FormProps {
 
 export const AskReset: FC = () => {
 
-
   const [emailStatus, setEmailStatus] = useState("");
 
   const [isVisible, setIsVisible] = useState(false)
@@ -71,7 +70,7 @@ export const AskReset: FC = () => {
                   name="email"
                   />
               </InputTextContainer>
-                  {emailStatus && <Message> {emailStatus} </Message>}
+                  {emailStatus && <Message isError> {emailStatus} </Message>}
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
               </FormButton>
