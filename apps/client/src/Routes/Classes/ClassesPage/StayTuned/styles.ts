@@ -6,12 +6,12 @@ import { Mobile, DesktopSmall } from "Utils/breakpoints";
 
 export const Wrapper = styled.div`
   height: 365px;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin: 60px 0 70px 0;
+  justify-content: center;
+  margin: 60px auto;
   padding: 0 120px;
 
   ${Mobile(css`
