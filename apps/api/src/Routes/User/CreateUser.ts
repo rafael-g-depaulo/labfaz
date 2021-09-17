@@ -1,6 +1,3 @@
-import { MailProvider, Addres } from "@labfaz/mail";
-import { getClientUrl } from "@labfaz/server-conn-info";
-
 import UserRepository from "Repository/UserRepository";
 import { UploadFiles } from "Utils/awsConfig";
 
@@ -14,41 +11,12 @@ import { Req } from "Utils/request";
 
 import { ParsedUser } from "./ParseUser";
 import { ParsedFiles } from "Middlewares/parseFiles";
-import User from "Entities/User";
 import { removeCircularity } from "Utils/stringifyCircular";
+import { sendConfirmationEmail } from "Mailer/emailConfirmation";
 
 interface CreateUserDeps {
   UserRepo: UserRepository;
 }
-
-export const sendConfirmationEmail = (user: User) => {
-  const mailer = new MailProvider();
-  const from: Addres = {
-    name: "LabFaz",
-    email: "noreply@labfaz.com.br",
-  };
-
-  const link = `${getClientUrl()}/email-confirmation/${user.id}`
-  const userName = user.artist.displayName
-  const text = `Olá ${userName}, você pediu um reset de senha. Para criar uma senha nova, vá em ${link}.`
-  const html = `
-    <div>
-      <h1> Olá ${userName}, Bem Vindo ao Labfaz </h1>
-      <a href='${link}'> Confirmar Email </a>
-    </div>
-  `
-
-  mailer.sendEmail({
-    to: {
-      name: userName,
-      email: user.email,
-    },
-    from: from,
-    subject: "Confirmação de Email - Labfaz",
-    html,
-    text,
-  });
-};
 
 export const CreateUser: (
   deps: CreateUserDeps
