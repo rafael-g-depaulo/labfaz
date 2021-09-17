@@ -11,13 +11,12 @@ interface ModalProps {
   setFunction: React.Dispatch<React.SetStateAction<boolean>>
   title?: boolean,
   userEmail?: string,
-  success?: boolean
+  success: boolean
 }
 
-export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail, success }) => {
+export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail, success = true }) => {
   const history = useHistory();
 
-  console.log(success)
   if(success) {
     return (
       <Container isVisible={isVisible}>

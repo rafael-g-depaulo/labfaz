@@ -20,7 +20,7 @@ interface PasswordChangeProps {
 
 export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
 
-  const { mutate, isSuccess, isError } = useResetPassword(token)
+  const { mutate, isSuccess, isError,  } = useResetPassword(token)
   const [isVisible, setIsVisible] = useState(false)
 
   const handleSubmit = useCallback(({ password }: FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
@@ -82,7 +82,8 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
           )
           }        
         </Formik>
-        <Modal isVisible={isVisible} setFunction={setIsVisible} success={isSuccess} />
+        <Modal isVisible={isVisible} setFunction={setIsVisible} success={false}/>
+        <Modal isVisible={isSuccess} setFunction={setIsVisible} success/>
       </>
   )
 }
