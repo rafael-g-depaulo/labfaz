@@ -31,13 +31,14 @@ import {
   ContentHeader,
   ContentTitle,
   ContentText,
-  UserVerified
+  UserVerified,
 } from './style'
 
 import idiom_icon from '../idiomIcon.svg'
 import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
 import { SocialMediaLinks } from '../SocialMediaLink'
+import { useHistory } from 'react-router'
 
 interface ProfileProps {
   data: User
@@ -47,6 +48,12 @@ interface ProfileProps {
 const currentYear = new Date().getFullYear()
 
 const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
+  const history = useHistory()
+
+  const handleRedirectToEditProfile = () => {
+    history.push('/edit-profile')
+  }
+
   return (
     <Container>
       <ProfileContentContainer>
@@ -87,7 +94,11 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
             )}
 
             {personalProfilePage && (
-              <button type="button" className="editProfile">
+              <button
+                type="button"
+                className="editProfile"
+                onClick={() => handleRedirectToEditProfile()}
+              >
                 <GoGear /> EDITAR PERFIL
               </button>
             )}
@@ -114,9 +125,11 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
               <ul>
                 <li>{data.artist.technical.area[0].name.toUpperCase()}</li>
                 <li>
-                  EXPERIENCIA : 
-                  {` ${currentYear -
-                    parseInt(data.artist.technical.area[0].started_year)} `} 
+                  EXPERIENCIA :
+                  {` ${
+                    currentYear -
+                    parseInt(data.artist.technical.area[0].started_year)
+                  } `}
                   ANOS
                 </li>
                 <li>

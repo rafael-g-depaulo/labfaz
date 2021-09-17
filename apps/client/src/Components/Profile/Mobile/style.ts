@@ -34,6 +34,11 @@ export const Header = styled.div`
     width: 25px;
     height: 25px;
   }
+
+  button {
+    border: 0;
+    background-color: inherit;
+  }
 `
 
 export const UserPhotoContainer = styled.div`

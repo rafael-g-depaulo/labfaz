@@ -5,10 +5,7 @@ import { GoGear } from 'react-icons/go'
 
 import { User } from 'Context/LoggedUserToken'
 
-import {
-  FaCheckCircle,
-  FaCheckSquare,
-} from 'react-icons/fa'
+import { FaCheckCircle, FaCheckSquare } from 'react-icons/fa'
 
 import {
   Container,
@@ -25,13 +22,14 @@ import {
   Header,
   UserPhotoContainer,
   UserInformation,
-  UserVerified
+  UserVerified,
 } from './style'
 
 import idiom_icon from '../idiomIcon.svg'
 import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
 import { SocialMediaLinks } from '../SocialMediaLink'
+import { useHistory } from 'react-router'
 
 interface ProfileProps {
   data: User
@@ -41,6 +39,12 @@ interface ProfileProps {
 const currentYear = new Date().getFullYear()
 
 const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
+  const history = useHistory()
+
+  const handleRedirectToEditProfile = () => {
+    history.push('/edit-profile')
+  }
+
   return (
     <Container>
       <ProfileContentContainer>
@@ -52,7 +56,9 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
               )}
             </UserPhoto>
           </UserPhotoContainer>
-          {PersonalProfilePage && <GoGear />}
+          {PersonalProfilePage && (
+            <GoGear onClick={() => handleRedirectToEditProfile()}/>
+          )}
         </Header>
         <Content>
           <UserBasicInformation>
