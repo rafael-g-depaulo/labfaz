@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import Wireframe from "Components/Wireframe";
 import Partners from "Components/Partners";
 import Presentation from "Components/Presentation";
-import CoursesPresentation from "Components/CoursesPresentation";
+// import CoursesPresentation from "Components/CoursesPresentation";
 import Banner from "Components/Banner";
 
 import useMobile from "Hooks/useMobile";
@@ -29,8 +29,8 @@ export const Display: FC<DisplayProps> = ({
   subtitle,
   video,
   partners,
-  coursesText,
-  coursesData,
+  // coursesText,
+  // coursesData,
 }) => {
   const mobile = useMobile();
 
@@ -60,11 +60,11 @@ export const Display: FC<DisplayProps> = ({
           )}
         </>
       )}
-      {coursesText && coursesData ? (
+      {/* {coursesText && coursesData ? (
         <CoursesPresentation texts={coursesText} courses={coursesData} />
       ) : (
         <></>
-      )}
+      )} */}
     </Wireframe>
   );
 };
