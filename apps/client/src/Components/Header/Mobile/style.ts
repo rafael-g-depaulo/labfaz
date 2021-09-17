@@ -25,6 +25,7 @@ export const Container = styled.div`
     }
   }
   .navBar.active {
+    z-index: 950;
     left: 0;
   }
 `;
