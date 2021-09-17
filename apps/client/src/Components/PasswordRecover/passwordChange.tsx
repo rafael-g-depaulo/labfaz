@@ -20,7 +20,7 @@ interface PasswordChangeProps {
 
 export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   const [message, setMessage] = useState("")
   const [error, setError] = useState(false)
 
