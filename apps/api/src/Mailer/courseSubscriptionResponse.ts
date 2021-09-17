@@ -1,4 +1,5 @@
 import { MailProvider, Addres } from "@labfaz/mail"
+import { AutoEmail } from "Mailer"
 
 export const sendAprovedEmail = async (userEmail: string, userName: string, courseName: string, courseLink: string, courseDates: Date[]) => {
   const mailer = new MailProvider()
@@ -6,6 +7,8 @@ export const sendAprovedEmail = async (userEmail: string, userName: string, cour
     name: "LabFaz",
     email: "noreply@labfaz.com.br",
   }
+
+  const padStart = (num: number) => `${num}`.padStart(2, '0')
 
   const html = `
     <div>
@@ -20,7 +23,7 @@ export const sendAprovedEmail = async (userEmail: string, userName: string, cour
       <ul>${courseDates
         .map(date =>
           // `<li>${date.getDate()}/${date.getMonth()}, às ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}</li>`
-          `<li>${date.getDate()}/${date.getMonth()}</li>`
+          `<li>${padStart(date.getDate())}/${padStart(date.getMonth()+1)}</li>`
         )
         .join("\n")
       }</ul>
@@ -50,6 +53,7 @@ export const sendAprovedEmail = async (userEmail: string, userName: string, cour
       <p>Seja bem-vinde!</p>
 
       <p>Abraço,<br />LabFaz</p>
+      ${AutoEmail}
     </div>
   `
 

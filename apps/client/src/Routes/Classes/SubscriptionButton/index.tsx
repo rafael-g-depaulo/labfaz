@@ -45,6 +45,7 @@ export const Button: FC<ButtonProps> = ({
 
   const tratedLink = link?.startsWith("https") ? link : `https://${link}`;
 
+  // TODO: USE DATA INVALIDATION AND REFETCHING HERE
   const { isLoading, error, data } = useSubscription(courseId, user.token)
   const { mutate } = useSubscribeToCouse(courseId, user.token)
   const handleClick = useCallback(() => {
