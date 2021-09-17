@@ -25,3 +25,16 @@ export const fetchHomepage: () => Promise<Homepage> = () =>
 
 export const useHomepage = () =>
   useFetchApi<Homepage>(`/homepage-text`, fetchHomepage);
+
+export interface HomePresentationInfo {
+  Title: string
+  SubTitle: string
+  Video: string
+
+}
+
+export const fetchHomepagePresentationInfo = () => strapi
+  .get<HomePresentationInfo>(`/home-presentation-info`)
+  .then(({ data }) => data)
+
+export const useHomepagePresentationInfo = () => useFetchApi<HomePresentationInfo>(`/home-presentation-info`, fetchHomepagePresentationInfo)
