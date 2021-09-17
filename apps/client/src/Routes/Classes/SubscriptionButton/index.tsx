@@ -45,13 +45,13 @@ export const Button: FC<ButtonProps> = ({
 
   const tratedLink = link?.startsWith("https") ? link : `https://${link}`;
 
-  // TODO: USE DATA INVALIDATION AND REFETCHING HERE
-  const { isLoading, error, data } = useSubscription(courseId, user.token)
-  const { mutate } = useSubscribeToCouse(courseId, user.token)
+  const { isLoading, error, data, refetch } = useSubscription(courseId, user.token)
+  const { mutateAsync } = useSubscribeToCouse(courseId, user.token)
+
   const handleClick = useCallback(() => {
-    if (user.isLoggedIn) mutate()
+    if (user.isLoggedIn) mutateAsync().then(() => refetch())
     else history.push(navLinks.login.path)
-  }, [mutate, user.isLoggedIn, history])
+  }, [mutateAsync, user.isLoggedIn, history, refetch])
 
   if (error)
     return <ButtonStyled disabled>ERRO TENTE DE NOVO MAIS TARDE</ButtonStyled>;

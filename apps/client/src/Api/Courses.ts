@@ -1,6 +1,6 @@
 import { api, SuccessObject } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 export interface Course {
   id: string;
@@ -92,7 +92,7 @@ export const checkSubscription = (
   })
   .then(({ data }) => data.data)
 
-export const useSubscription = (courseId: string, userToken?: string) => useFetchApi(`/courses/${courseId}/subscription/${userToken}`, () => checkSubscription(courseId, userToken))
+export const useSubscription = (courseId: string, userToken?: string) => useQuery(`/courses/${courseId}/subscription/${userToken}`, () => checkSubscription(courseId, userToken))
 
 
 export const fetchCourse = (id: string) => api
