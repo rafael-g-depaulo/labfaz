@@ -1,4 +1,4 @@
-import Loading from "Components/Loading"
+import LoadingFullPage from "Components/LoadingFullPage"
 import React, { lazy, Suspense } from "react"
 import { Route, RouteComponentProps, Switch } from "react-router-dom"
 
@@ -15,7 +15,7 @@ export const Login: Router = ({
     <Switch>
       <Route path={`${path}/:user_id`}>
         {({ match }: RouteComponentProps<{ user_id: string }>) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <RegisterPage userId={match.params.user_id}/>
           </Suspense>
         )}

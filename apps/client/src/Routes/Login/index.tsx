@@ -1,4 +1,4 @@
-import Loading from "Components/Loading"
+import LoadingFullPage from "Components/LoadingFullPage"
 import React, { lazy, Suspense } from "react"
 import { Route, Switch } from "react-router-dom"
 
@@ -16,7 +16,7 @@ export const Login: Router = ({
 
       <Route exact path={path}>
         {() => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <LoginPage />
           </Suspense>
         )}
