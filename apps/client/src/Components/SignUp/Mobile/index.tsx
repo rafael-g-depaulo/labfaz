@@ -53,6 +53,7 @@ import {
   youtubeUserRegex,
 } from 'Utils/regex'
 import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
+import { useHistory } from 'react-router'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -418,7 +419,7 @@ function FormikStepper({
   const [step, setStep] = useState(0)
   const currentChild = childrenArray[step]
 
-  // const history = useHistory()
+  const history = useHistory()
 
   const [confirmEmailModal, setConfirmEmailModal] = useState(false)
   
@@ -432,8 +433,8 @@ function FormikStepper({
   }
 
   const handleRedirect = () => {
-    // history.push('/login')
-    console.log('redirecionado para login')
+    history.push('/login')
+    // console.log('redirecionado para login')
   }
 
   return (
