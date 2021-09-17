@@ -81,9 +81,9 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
 
           <ButtonContainer>
             {data.artist.curriculum && (
-              <button type="button" className="downloadCurriculum">
+              <a className="downloadCurriculum" href={data.artist.curriculum} download>
                 <IoMdCloudDownload /> BAIXAR CV
-              </button>
+              </a>
             )}
 
             {personalProfilePage && (

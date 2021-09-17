@@ -66,6 +66,7 @@ export const UserBasicInformation = styled.div`
 
     .downloadCurriculum {
       display: flex;
+      /* display: inline-flex; */
       flex-direction: column;
       align-items: center;
       justify-content: center;

@@ -69,10 +69,12 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
               </div>
 
               {data.artist.curriculum && (
-                <button className="downloadCurriculum">
-                  <IoMdCloudDownload />
-                  CV
-                </button>
+                <a className="downloadCurriculum" href={data.artist.curriculum} download>
+                  {/* <button className="downloadCurriculum"> */}
+                    <IoMdCloudDownload />
+                    CV
+                  {/* </button> */}
+                </a>
               )}
             </div>
             <div className="container">

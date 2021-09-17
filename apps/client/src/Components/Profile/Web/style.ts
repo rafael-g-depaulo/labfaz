@@ -160,7 +160,7 @@ export const ButtonContainer = styled.div`
   
   row-gap: 3.5rem;
 
-  button {
+  button, .downloadCurriculum {
     width: 13.3rem;
     height: 2.37rem;
 
@@ -198,6 +198,7 @@ export const ButtonContainer = styled.div`
   }
 
   .downloadCurriculum {
+    display: inline-flex;
     background-color: #FC0061;
     color: #FFEC99;
 
