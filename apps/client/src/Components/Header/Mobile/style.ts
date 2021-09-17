@@ -9,6 +9,7 @@ export interface PropsButton {
   BackgroundColor?: string,
 }
 export const Container = styled.div`
+  z-index: 920;
   .navBar {
     background-color: var(--background-black);
     display: flex;
@@ -17,7 +18,6 @@ export const Container = styled.div`
     max-width: 18rem;
     padding: 0 1rem;
     left: -18rem;
-    z-index: 500;
     transition: 800ms;
 
     a:last-child {
