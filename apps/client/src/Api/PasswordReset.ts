@@ -1,4 +1,5 @@
-import { api } from "Api"
+import { api, ErrorObject } from "Api"
+import { useMutation } from "react-query"
 
 interface AskResetPassResponseData {
   status: string,
@@ -21,3 +22,6 @@ export const askResetPassword = (email: string) => api
 export const resetPassword = (password: string, token: string) => api
   .post<ResetPassData>('/sessions/reset-password', { password, token })
   .then(({data}) => data)
+
+export const useResetPassword = (token: string) =>
+  useMutation<ResetPassData, ErrorObject, { password: string }>(`/sessions/reset-password/${token}/`, ({ password }) => resetPassword(password, token))

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 
 import { Formik, Form, FormikHelpers } from 'formik'
 
@@ -7,7 +7,7 @@ import { Modal } from './Modal'
 
 import { InputPassword, InputTextContainer } from "Components/Login/style"
 
-import { resetPassword } from "Api/PasswordReset"
+import { useResetPassword } from "Api/PasswordReset"
 
 interface FormProps {
   password: string,
@@ -20,46 +20,31 @@ interface PasswordChangeProps {
 
 export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
 
-  const [isVisible, setIsVisible] = useState(true)
-  const [message, setMessage] = useState("")
-  const [error, setError] = useState(false)
+  const { mutate, isSuccess, isError } = useResetPassword(token)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const handleSubmit = ({ password }: FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
-    resetPassword(password, token)
-    .then(() => {
-        setMessage("Senha Alterada com sucesso!")
-    })
-    .catch(() => {
-      setMessage("Alguma coisa não está certa. Tente novamente.")
-      setError(true)
-    })
-
-    if(!message) {
-      setMessage("O Token de expirou, peça uma nova senha")
-      setError(true)
-    }
-
+  const handleSubmit = useCallback(({ password }: FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
+    mutate({ password })
     setValues({
       password: "",
       passwordConfirmation: ""
     })
     setSubmitting(false)
-  }
+  }, [mutate])
 
-  const validateSubmit = (values: FormProps) => {
-    const errors: any = { }
+  const validateSubmit = useCallback((values: FormProps) => {
+    const errors: { password?: string, passwordConfirmation?: string } = {}
 
-    if(values.password !== values.passwordConfirmation){
+    if (values.password !== values.passwordConfirmation) {
       errors.password = "As senhas devem ser iguais"
       errors.passwordConfirmation = "As senhas devem ser iguais"
     } 
-
-    if(!values.password || !values.passwordConfirmation) {
+    if (!values.password || !values.passwordConfirmation) {
       errors.password = "Required"
       errors.passwordConfirmation = "Required"
     }
     return errors
-  } 
+  }, [])
 
   
   return (
@@ -87,7 +72,7 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
                   name="passwordConfirmation"
                   />
                 </InputTextContainer>
-                {message && <Message isError={error}> {message} </Message>}
+                {isError && <Message isError>Alguma coisa não está certa. Tente novamente.</Message>}
               <FormButton type="submit" disabled={isSubmitting}>
                 ATUALIZAR SENHA
               </FormButton>
@@ -97,7 +82,7 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
           )
           }        
         </Formik>
-        <Modal isVisible={isVisible} setFunction={setIsVisible} />
+        <Modal isVisible={isVisible} setFunction={setIsVisible} success={isSuccess} />
       </>
   )
 }
