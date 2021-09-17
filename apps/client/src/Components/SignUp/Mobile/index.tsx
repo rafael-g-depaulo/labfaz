@@ -118,10 +118,10 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
               cnpj_type: 'Nenhum',
               profession: '',
               areas: {
-                technical_formation: '',
-                name: '',
+                technical_formation: 'autodidata',
+                name: 'Outro',
                 describe: '',
-                started_year: '',
+                started_year: '2021',
                 certificate: [],
               },
               idiom: [],
