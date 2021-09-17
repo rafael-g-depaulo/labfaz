@@ -22,7 +22,7 @@ const sendResetEmail = (user: User, token: string) => {
   }
 
   const userName = user.artist.displayName
-  const frontendLink = `${getClientUrl()}/criar-nova-senha?token=${token}`
+  const frontendLink = `${getClientUrl()}/criar-nova-senha/${token}`
   const text = `Olá ${userName}, você pediu um reset de senha. Para criar uma senha nova, vá em ${frontendLink}.`
   const html = `
   <div>
