@@ -1,6 +1,8 @@
-import Loading from "Components/Loading"
+
 import React, { lazy, Suspense } from "react"
 import { Route, Switch, RouteComponentProps } from "react-router-dom"
+
+import LoadingFullPage from "Components/LoadingFullPage"
 
 import { Router } from "Routes"
 
@@ -21,7 +23,7 @@ export const PasswordRecover: Router = ({
     <Switch>
       <Route exact path={path}>
         {() => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <AskResetPage />
           </Suspense>
         )}
@@ -30,7 +32,7 @@ export const PasswordRecover: Router = ({
       
       <Route path={`${path}/:token`}>
         {({ match }: RouteComponentProps<{ token: string }>) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<LoadingFullPage />}>
             <ResetEmail token={match?.params.token} />
           </Suspense>
         )}
