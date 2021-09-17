@@ -213,6 +213,14 @@ export const Container = styled.div<ContainerProps>`
       `)}
     }
   }
+
+  input:disabled {
+    color: rgba(196, 196, 196, 0.25);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 `
 
 export const Input = styled(Field)``

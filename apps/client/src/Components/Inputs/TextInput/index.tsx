@@ -14,6 +14,7 @@ export interface InputProps {
   inputMask?: string
   informationText?: string
   obrigatory?: boolean
+  disabled?: boolean
   onChange?: (ev: any) => void
 }
 
@@ -25,6 +26,7 @@ export const TextInput: FC<InputProps> = ({
   height,
   obrigatory,
   informationText,
+  disabled,
   children,
   ...props
 }) => {
@@ -67,6 +69,7 @@ export const TextInput: FC<InputProps> = ({
             type="text"
             placeholder={placeholder}
             {...inputProps}
+            disabled={disabled}
           />
         )}
       </Input>
