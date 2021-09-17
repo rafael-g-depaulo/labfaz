@@ -37,7 +37,7 @@ import {
   NextButton,
   SessionContainer,
   BackButton,
-  SignUpText,
+  // SignUpText,
   ButtonContainer,
   FormHeader,
   RightSession,
@@ -486,10 +486,10 @@ function FormikStepper({
     >
       <Form>
         <FormTitle level={1} children="Cadastre-se" />
-        <SignUpText>
+        {/* <SignUpText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta
           ligula nibh, nec interdum nunc maximus at.
-        </SignUpText>
+        </SignUpText> */}
         <SessionContainer>
           <FormContainer currentStep={step}>
             <div className="form">

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom"
 
 import {
   Container,
@@ -53,11 +54,14 @@ export const Card: FC<CardProps> = ({
   const difference = !!date && timeDifference(date, actualDate);
   const isAvailable = has_subscription && available && !!difference && difference < 1
 
-  const route = `/classes/${id}`;
+  const path = "classes"
+  const route = `/${path}/${id}`;
 
   return (
     <Container>
-      <Image src={banner} alt="" />
+      <Link to={route}>
+        <Image src={banner} alt="" />
+      </Link>
       <TextWrapper>
         <CardTitle>{name}</CardTitle>
         <DescriptionWrapper>

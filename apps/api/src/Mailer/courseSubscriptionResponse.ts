@@ -19,7 +19,8 @@ export const sendAprovedEmail = async (userEmail: string, userName: string, cour
       <p><strong>Em quais dias teremos aulas?</strong> A(s) aula(s) do curso ${courseName} ocorrerá(ão) no(s) dia(s):</p>
       <ul>${courseDates
         .map(date =>
-          `<li>${date.getDate()}/${date.getMonth()}, às ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}</li>`
+          // `<li>${date.getDate()}/${date.getMonth()}, às ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}</li>`
+          `<li>${date.getDate()}/${date.getMonth()}</li>`
         )
         .join("\n")
       }</ul>
