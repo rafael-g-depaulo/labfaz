@@ -21,6 +21,7 @@ const Login = lazy(() => import('./Login'))
 const EmailConfirmation = lazy(() => import('./ConfirmEmail'))
 const Profile = lazy(() => import('./Profile'))
 const Recover = lazy(() => import("./PasswordRecover"));
+const EditProfile = lazy(() => import('./EditProfile'))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History
@@ -116,6 +117,14 @@ const Routes: FC = () => {
             <Suspense fallback={<LoadingFullPage />}>
               <Profile match={match} />
             </Suspense>
+          )}
+        </Route>
+
+        <Route path={'/edit-profile'}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <EditProfile match={match} />
+          </Suspense>
           )}
         </Route>
 
