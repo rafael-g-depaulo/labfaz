@@ -34,6 +34,7 @@ export const Wrapper = styled.div`
 export const Image = styled.img`
   width: 45%;
   height: 100%;
+  object-fit: cover;
   border-radius: 0 22px 22px 0;
   -webkit-filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
   filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
