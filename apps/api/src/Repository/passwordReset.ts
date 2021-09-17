@@ -6,7 +6,7 @@ import User from "Entities/User"
 export const sendPwdResetEmail = (user: User, token: string) => {
   
   const userName = user.artist.displayName
-  const frontendLink = `${getClientUrl()}/password-reset/${token}`
+  const frontendLink = `https://${getClientUrl()}/password-reset/${token}`
 
   const subject = "Esqueceu a senha? A gente te ajuda! "
   const text = `Oi, ${userName}. Você voltará a acessar o app LABFAZ agora mesmo. Vamos te ajudar a trocar sua senha! É só entrar nesse link: ${frontendLink}`
