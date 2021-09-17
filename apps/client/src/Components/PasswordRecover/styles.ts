@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge, mobileLarge } from "Utils/breakpoints"
 import { Text } from "Components/Typography/Text"
 
 interface ModalProps {
@@ -46,10 +46,10 @@ export const Wrapper = styled.div<ModalProps>`
 
   p {
     text-align: center;
-    color: white;
+    /* color: white; */
   }
 
-  ${MobileSmall(css`
+  ${MobileLarge(css`
     max-width: 99vw;
     max-height: 99vh;
     min-height: 99vh;
@@ -58,18 +58,21 @@ export const Wrapper = styled.div<ModalProps>`
 
     form {
       margin-top: 0;
+      min-width: 100%;
+      align-items: center;
     }
   `)}
 
   ${Mobile(css`
-    max-width: 99vw;
-    max-height: 99vh;
-    min-height: 99vh;
-    min-width: 99vw;
+    max-width: 100%;
+    max-height: 100%;
     border: none;
+    min-width: 100%;
 
     form {
       margin-top: 0;
+      align-items: center;
+      min-width: 100%;
     }
   `)}
 
@@ -77,7 +80,7 @@ export const Wrapper = styled.div<ModalProps>`
     min-width: 100%;
     max-width: 305px;
     max-height: 406px;
-    min-height: 100%;
+    min-height: 500px;
     
     form {
       margin-top: 0;
@@ -91,6 +94,7 @@ export const FormButton = styled.button`
   padding: 0.5rem 2rem;
   text-decoration: none;
   font-weight: bold;
+  margin-top: 5rem;
 
   color: var(--color-text-yellow);
   background-color: var(--button-color-pink);
@@ -106,7 +110,15 @@ export const FormButton = styled.button`
   ${MobileSmall(css`
     align-self: center;
 
-    min-width: 305px;
+    min-width: 230px;
+    max-width: 305px;
+    min-height: 38px;
+  `)}
+
+  ${MobileLarge(css`
+    align-self: center;
+
+    min-width: 230px;
     max-width: 305px;
     min-height: 38px;
   `)}
@@ -356,6 +368,7 @@ export const Container = styled.div<ModalProps>`
   max-height: 85vh;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
+
 `
 
 
@@ -372,6 +385,7 @@ export const Span = styled.p`
   margin-top: 1rem;
   text-decoration: underline;
   align-self: center;
+  color: white;
 
   :hover {
     cursor: pointer;
@@ -379,9 +393,9 @@ export const Span = styled.p`
 ` 
 
 export const Message = styled(Text)<MessageProps>`
-  color: ${props => props.isError ? "red" : ""};
+  color: red;
   font-size: var(--font-size-medium);
   text-decoration: none;
   font-weight: 600;
-  padding: 5em 0;
+  padding-top: 1em;
 `
