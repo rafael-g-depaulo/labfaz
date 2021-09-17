@@ -29,11 +29,10 @@ export const Container = styled.div`
   `)}
 
   ${DesktopSmall(css`
-    min-width: 100%;
-    max-width: 305px;
+    max-width: 400px;
     min-height: 90vh;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   `)}
   `;
 
@@ -98,13 +97,12 @@ export const Line = styled.div`
 export const PageTitle = styled.h1`
   font-size: var(--font-size-title-xxlarge);
   justify-self: center;
-  margin-right: 40%;
   margin-top: 3vh;
   margin-bottom: 2vh;
   color: rgba(252, 0, 97, 1);
 
   ${DesktopSmall(css`
-    display: none;
+    display: block;
   `)}
 
   ${MobileLarge(css`
@@ -135,5 +133,9 @@ export const Content = styled.div`
 
   ${DesktopSmall(css`
     min-height: 100%;
+  `)}
+
+  ${Mobile(css`
+    min-width: 80%;
   `)}
 `

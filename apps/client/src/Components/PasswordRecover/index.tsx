@@ -16,13 +16,12 @@ export const AskReset: FC = () => {
 
   const [emailStatus, setEmailStatus] = useState("");
 
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const [isError, setIsError] = useState(false)
-  const [email, setEmail] = useState("mail@mail.com")
+  const [email, setEmail] = useState("")
   const [title, setTitle] = useState(false) 
 
-  const handleSubmit = (values:FormProps, { setSubmitting, setValues, setErrors }: FormikHelpers<FormProps>)  => {    
+  const handleSubmit = (values:FormProps, { setSubmitting, setValues }: FormikHelpers<FormProps>)  => {    
 
     askResetPassword(values.email)
       .then(() => {
@@ -32,13 +31,9 @@ export const AskReset: FC = () => {
         setValues({
           email: ""
         })
-        setIsError(false)
       })
-      .catch((e) => {
-        console.log(e)
-        setErrors(e)
-        setIsError(true)
-        setEmailStatus("Email incorreto.")
+      .catch(() => {
+        setEmailStatus('Email não cadastrado')
       })
     setSubmitting(false)
   }
@@ -76,7 +71,7 @@ export const AskReset: FC = () => {
                   name="email"
                   />
               </InputTextContainer>
-                  {emailStatus ? (<Message isError={isError} > {emailStatus} </Message>) : <Message> Enviaremos um email com as instruções para recuperar a sua senha </Message> }
+                  {emailStatus && <Message> {emailStatus} </Message>}
               <FormButton type="submit" disabled={isSubmitting}>
                 RECUPERAR SENHA
               </FormButton>
