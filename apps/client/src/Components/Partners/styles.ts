@@ -52,7 +52,7 @@ export const Logos = styled.div`
 
 export const Image = styled.img`
   height: 4rem;
-  object-fit: cover;
+  object-fit: contain;
 
   ${Mobile(css`
     width: 40%;
