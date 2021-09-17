@@ -18,7 +18,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
   return(
     <Container isVisible={isVisible}>
       <ModalDiv>
-        <Title level={3}> {title ? "EMAIL ENVIADO" : "DESCULPE PELOS PROBLEMAS :C"}   </Title>
+        <Title level={3}> {title ? "EMAIL ENVIADO" : "DESCULPE PELOS PROBLEMAS"}   </Title>
         <ModalLine />
         <ModalContent>
           <Text css={{

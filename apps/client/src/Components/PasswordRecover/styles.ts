@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge, mobileLarge } from "Utils/breakpoints"
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge } from "Utils/breakpoints"
 import { Text } from "Components/Typography/Text"
 
 interface ModalProps {
@@ -94,7 +94,7 @@ export const FormButton = styled.button`
   padding: 0.5rem 2rem;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 5rem;
+  margin-top: 3rem;
 
   color: var(--color-text-yellow);
   background-color: var(--button-color-pink);
@@ -130,8 +130,8 @@ export const ModalDiv = styled.div`
   flex-direction: column;
   background-color: black;
   max-height: 707px;
-  height: 80vh;
-  min-width: 640px;
+  height: 75vh;
+  width: 40vw;
   max-width: 640px;
   border: 5px solid rgba(40,40,40,0.5);
   box-sizing: border-box;
@@ -145,22 +145,20 @@ export const ModalDiv = styled.div`
   align-items: center;
   justify-content: center;
 
-  text-align: justify;
-
   h3 {
-    margin-top: 1em;
-    margin-bottom: 1rem;
     color: white;
     font-size: var(--font-size-title-xlarge);
-    max-width: 80%;
+    max-width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
 
   ${MobileSmall(css`
     min-height: 530px;
     max-height: 530px;
-    min-width: 303px;
-    max-width: 303px;
+    min-width: 400px;
+    max-width: 100vw;
 
     h3 {
       font-size: var(--font-size-title-smaller);
@@ -174,8 +172,8 @@ export const ModalDiv = styled.div`
   ${Mobile(css`
     min-height: 600px;
     max-height: 600px;
-    min-width: 350px;
-    max-width: 350px;
+    min-width: 400px;
+    max-width: 100%;
 
     h3 {
       font-size: var(--font-size-title-smaller);
@@ -196,7 +194,6 @@ export const ModalDiv = styled.div`
       font-size: var(--font-size-title-smaller);
       max-width: 80%;
       text-align: center;
-      padding-top: 1em;
       margin-top: 0;
     }
   `)}
@@ -218,7 +215,7 @@ export const ModalContent = styled.div`
   min-width: 90%;
   max-width: 98%;
   max-height: 525px;
-  height: 70%;
+  height: inherit;
 
   background: linear-gradient(180deg, #202020 0%, rgba(32, 32, 32, 0.7) 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px -5px 14px rgba(22, 22, 22, 0.8);
@@ -227,7 +224,6 @@ export const ModalContent = styled.div`
 
 
   h3 {
-    margin-top: 1.5em;
     color: white;
   }
 
@@ -237,22 +233,18 @@ export const ModalContent = styled.div`
     font-size: var(--font-size-title-short);
     line-height: 26px;
     color: white;
-    margin-top: 2rem;
   }
 
   p:nth-child(2) {
-    margin-top: 2rem;
   }
 
   p:nth-child(3) {
     font-weight: 700;
-    margin-top: 1.5rem;
   }
   
 
   button {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin: 0;
     max-width: 60%;
     min-width: 60%;
   }
@@ -283,8 +275,6 @@ export const ModalContent = styled.div`
 
 
     button {
-      margin-top: 1rem;
-      margin-bottom: 3rem;
       max-width: 80%;
       min-width: 70%;
     }
