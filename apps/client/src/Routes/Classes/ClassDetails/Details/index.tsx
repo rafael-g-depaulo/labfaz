@@ -11,6 +11,7 @@ import {
   ActivityContainer,
   ActivityTitle,
   ActivityItem,
+  ListsList,
 } from "./styles";
 
 import { format } from "date-fns";
@@ -37,9 +38,9 @@ export const Details: FC<Props> = ({
   details,
   font,
   banner,
-  start_date,
+  // start_date,
   finish_date,
-  class_dates,
+  // class_dates,
   link,
   available,
   has_subscription,
@@ -67,24 +68,28 @@ export const Details: FC<Props> = ({
               {" "}
               INSCREVA-SE{" "}
             </Button>
-            <ActivityContainer>
-              <ActivityTitle>Detalhes da atividade:</ActivityTitle>
-              {details?.map((item) => (
-                <ActivityItem>{item}</ActivityItem>
-              ))}
-            </ActivityContainer>
-            <ActivityContainer>
-              <ActivityTitle>Professores:</ActivityTitle>
-              {teacher?.map((item) => (
-                <ActivityItem>{item}</ActivityItem>
-              ))}
-            </ActivityContainer>
-            <ActivityContainer>
-              <ActivityTitle>Quem está oferecendo esse curso?</ActivityTitle>
-              {font?.map((item) => (
-                <ActivityItem>{item}</ActivityItem>
-              ))}
-            </ActivityContainer>
+
+            <ListsList>
+              <ActivityContainer>
+                <ActivityTitle>Detalhes da atividade:</ActivityTitle>
+                {details?.map((item) => (
+                  <ActivityItem>{item}</ActivityItem>
+                ))}
+              </ActivityContainer>
+              <ActivityContainer>
+                <ActivityTitle>Professores:</ActivityTitle>
+                {teacher?.map((item) => (
+                  <ActivityItem>{item}</ActivityItem>
+                ))}
+              </ActivityContainer>
+              <ActivityContainer>
+                <ActivityTitle>Quem está oferecendo esse curso?</ActivityTitle>
+                {font?.map((item) => (
+                  <ActivityItem>{item}</ActivityItem>
+                ))}
+              </ActivityContainer>
+            </ListsList>
+
           </TextBackground>
         </TextSubContainer>
       </TextContainer>

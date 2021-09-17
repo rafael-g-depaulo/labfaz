@@ -2,6 +2,13 @@ import styled, { css } from "styled-components";
 import { Text } from "Components/Typography/Text";
 import { DesktopSmall } from "Utils/breakpoints";
 
+export const ListsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  margin: auto
+`
+
 export const Container = styled.div`
   width: 100%;
   background-color: var(--background-green);
