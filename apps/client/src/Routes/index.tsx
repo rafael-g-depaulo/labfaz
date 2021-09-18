@@ -22,6 +22,7 @@ const EmailConfirmation = lazy(() => import('./ConfirmEmail'))
 const Profile = lazy(() => import('./Profile'))
 const Recover = lazy(() => import("./PasswordRecover"));
 const EditProfile = lazy(() => import('./EditProfile'))
+const UserSearch = lazy(() => import("./UserSearch"))
 
 export type RouterProps<MatchParams = {}> = {
   history?: History
@@ -153,6 +154,15 @@ const Routes: FC = () => {
             </Suspense>
           )}
         </Route>}
+
+        {/* user search */}
+        <Route path={["/banco-profissionais", "/user-search", "/busca-usuários"]}>
+          {({ match }) => (
+            <Suspense fallback={<LoadingFullPage />}>
+              <UserSearch match={match} />
+            </Suspense>
+          )}
+        </Route>
 
         {/* default route (404) */}
         <Route>
