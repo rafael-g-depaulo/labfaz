@@ -69,6 +69,7 @@ export const Haeder = styled.div<VisibilityProps>`
   margin-top: ${props => props.isOpen ? '3em' : '0'};
   margin-bottom: ${props => props.isOpen ? '5em' : '0'};
   padding: 0 2em;
+  overflow: auto;
 
   ${props => props.isOpen ?
     MobileSmall(css`
