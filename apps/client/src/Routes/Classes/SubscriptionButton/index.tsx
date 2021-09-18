@@ -45,18 +45,20 @@ export const Button: FC<ButtonProps> = ({
 
   const tratedLink = link?.startsWith("https") ? link : `https://${link}`;
 
-  const { isLoading, error, data, refetch } = useSubscription(courseId, user.token)
-  const { mutateAsync } = useSubscribeToCouse(courseId, user.token)
+  const { isLoading, data, refetch } = useSubscription(courseId, user.token)
+  const { isLoading: subscribeLoading, mutateAsync, error } = useSubscribeToCouse(courseId, user.token)
 
   const handleClick = useCallback(() => {
     if (user.isLoggedIn) mutateAsync().then(() => refetch())
     else history.push(navLinks.login.path)
   }, [mutateAsync, user.isLoggedIn, history, refetch])
 
-  if (error)
+  if (error) {
+    console.log("erro em inscrição: ")
     return <ButtonStyled disabled>ERRO TENTE DE NOVO MAIS TARDE</ButtonStyled>;
+  }
 
-  if (isLoading) {
+  if (isLoading || subscribeLoading) {
     return <ButtonStyled>Loading...</ButtonStyled>;
   }
 
@@ -64,7 +66,7 @@ export const Button: FC<ButtonProps> = ({
     return <ButtonStyled disabled>INDISPONÍVEL</ButtonStyled>;
   }
 
-  if ( data?.exists && data?.request.status !== "accepted") {
+  if ( data && data?.exists && data?.request.status !== "accepted") {
     const key = data.request.status;
     return <ButtonStyled disabled>{status[key]}</ButtonStyled>;
   }
