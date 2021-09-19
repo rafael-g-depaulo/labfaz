@@ -79,15 +79,14 @@ export const Container = styled.div`
   label {
     font-weight: 600;
     color: var(--color-text-black);
-    display: inline-block;
+    display: block;
 
     color: #fafafa;
 
-    margin-left: 1.20rem;
-
     line-height: 22px;
-
+    
     padding: 0;
+    padding-left: 1.20rem;
     margin-top: 0;
     margin-bottom: 0;
 

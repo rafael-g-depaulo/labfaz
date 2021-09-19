@@ -83,8 +83,8 @@ export const Container = styled.div<ContainerProps>`
     color: #FAFAFA;
     display: block;
 
-    margin-left: 1.20rem;
-    margin-right: 0.5rem;
+    padding-left: 1.20rem;
+    padding-right: 0.5rem;
 
     
     ${DesktopSmall(css`
