@@ -50,7 +50,7 @@
     # devtools
     REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
     # google analytics key
-    REACT_APP_ANALYTICS_ID='G-GFFT7B8KX0'
+    REACT_APP_ANALYTICS_ID='UA-200607957-3'
 
 # these configurations are added to deploys from the development branch
 [context.develop]
