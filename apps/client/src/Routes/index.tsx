@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { showAboutUs, showBlog } from 'FeatureFlags'
+import { showAboutUs, showBlog, showEditProfile, showForgotPassword } from 'FeatureFlags'
 
 const Home = lazy(() => import('./Home'))
 // const PeopleExample = lazy(() => import("./PeopleExample"))
@@ -120,13 +120,13 @@ const Routes: FC = () => {
           )}
         </Route>
 
-        <Route path={'/edit-profile'}>
+        { showEditProfile && <Route path={'/edit-profile'}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <EditProfile match={match} />
           </Suspense>
           )}
-        </Route>
+        </Route>}
 
         <Route path={["/login", "SignIn"]}>
           {({ match }) => (
@@ -146,13 +146,14 @@ const Routes: FC = () => {
         </Route>
 
         {/* recover router */}
-        <Route path={["/recover", "/forgot-password", "/password-reset","/criar-nova-senha"]}>
+        { showForgotPassword && <Route path={["/recover", "/forgot-password", "/password-reset","/criar-nova-senha"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <Recover match={match} />
             </Suspense>
           )}
-        </Route>
+        </Route>}
+
         {/* default route (404) */}
         <Route>
           <Suspense fallback={<LoadingFullPage />}>

@@ -39,6 +39,7 @@ import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
 import { SocialMediaLinks } from '../SocialMediaLink'
 import { useHistory } from 'react-router'
+import { showEditProfile } from 'FeatureFlags'
 
 interface ProfileProps {
   data: User
@@ -93,7 +94,7 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
               </a>
             )}
 
-            {personalProfilePage && (
+            {showEditProfile && personalProfilePage && (
               <button
                 type="button"
                 className="editProfile"

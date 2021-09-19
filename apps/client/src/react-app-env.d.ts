@@ -24,6 +24,7 @@ declare namespace NodeJS {
       REACT_APP_SHOW_PROFILE_OTHER: flagType
       REACT_APP_SHOW_USER_SEARCH: flagType
       REACT_APP_SHOW_FORGOT_PASSWORD: flagType
+      REACT_APP_SHOW_EDIT_PROFILE: flagType
     // tools
       REACT_APP_SHOW_RQUERY_DEVTOOLS: flagType
     

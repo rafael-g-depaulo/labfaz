@@ -30,6 +30,7 @@ import isVerified from '../isVerified.svg'
 import { getUserName } from 'Utils/userUtils'
 import { SocialMediaLinks } from '../SocialMediaLink'
 import { useHistory } from 'react-router'
+import { showEditProfile } from 'FeatureFlags'
 
 interface ProfileProps {
   data: User
@@ -56,7 +57,7 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
               )}
             </UserPhoto>
           </UserPhotoContainer>
-          {PersonalProfilePage && (
+          {showEditProfile && PersonalProfilePage && (
             <GoGear onClick={() => handleRedirectToEditProfile()}/>
           )}
         </Header>

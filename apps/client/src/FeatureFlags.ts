@@ -14,5 +14,6 @@ export const showProfileMine = useEnvVar("REACT_APP_SHOW_PROFILE_ME", true)
 export const showProfileOther = useEnvVar("REACT_APP_SHOW_PROFILE_OTHER", true)
 export const showUserSearch = useEnvVar("REACT_APP_SHOW_USER_SEARCH", true)
 export const showForgotPassword = useEnvVar("REACT_APP_SHOW_FORGOT_PASSWORD", true)
+export const showEditProfile = useEnvVar("REACT_APP_SHOW_EDIT_PROFILE", true)
 
 export const showReactQueryDevtools = useEnvVar("REACT_APP_SHOW_RQUERY_DEVTOOLS", true)
