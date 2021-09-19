@@ -38,6 +38,9 @@ export const Step10: FC = () => {
                 label="Numero"
                 placeholder={`Número`}
                 width={5.55}
+                onChange={(ev: any) =>
+                  setFieldValue('artist.address.number', OnlyNumbers(ev.target.value))
+                }
                 obrigatory
               />
             </InputTextContainer>

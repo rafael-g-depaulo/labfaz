@@ -234,6 +234,9 @@ export const Step1: FC = () => {
                 name="artist.address.number"
                 label="Numero"
                 placeholder="Digite seu número"
+                onChange={(ev: any) =>
+                  setFieldValue('artist.address.number', OnlyNumbers(ev.target.value))
+                }
                 obrigatory
               />
             </InputTextContainer>
