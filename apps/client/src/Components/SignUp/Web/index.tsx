@@ -232,7 +232,7 @@ export const Web: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
+            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 10 * 1024 * 1024),
             artist: yup.object({
               technical: yup.object({
                 areas: yup.object({
