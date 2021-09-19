@@ -42,6 +42,7 @@ import {
   FormHeader,
   RightSession,
   ConfirmEmailModal,
+  ErrorModalContainer
 } from './style'
 
 import {
@@ -54,6 +55,7 @@ import {
 } from 'Utils/regex'
 import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 import { useHistory } from 'react-router'
+import { ErrorObject } from 'Api'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -421,6 +423,9 @@ function FormikStepper({
 
   const history = useHistory()
 
+  const [error, setError] = useState<ErrorObject | undefined>(undefined)
+  const [errorModal, setErrorModal] = useState(false)
+
   const [confirmEmailModal, setConfirmEmailModal] = useState(false)
   
   const [email, setEmail] = useState('')
@@ -474,10 +479,7 @@ function FormikStepper({
               setConfirmEmailModal(true)
               setEmail(values.email)
             })
-            .catch(err => {
-              // TODO: dar feedback pro usuário
-              console.error("erro na tentativa de cadastro", err)
-            })
+            .catch(err => [setError(err.message), setErrorModal(true)])
 
           // console.log(values)
         } else {
@@ -538,6 +540,20 @@ function FormikStepper({
                   <button type="button" onClick={() => handleRedirect()}>VOLTAR</button>
                 </div>
               </ConfirmEmailModal>
+
+              <ErrorModalContainer ref={modalRef} isOpen={errorModal} >
+                <div className="errorModalContainer">
+                  <h1>Ops... algo deu errado</h1>
+                  <h2>{error}</h2>
+
+                  <button 
+                    type="button" 
+                    onClick={() => [setErrorModal(false), setStep(0)]}
+                  >
+                    VOLTAR
+                  </button>
+                </div>
+              </ErrorModalContainer>
 
               {currentChild}
 
