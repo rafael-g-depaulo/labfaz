@@ -48,17 +48,26 @@ export const Button: FC<ButtonProps> = ({
   const { isLoading, data, refetch } = useSubscription(courseId, user.token)
   const { isLoading: subscribeLoading, mutateAsync, error } = useSubscribeToCouse(courseId, user.token)
 
+  const redirectLogin = useCallback(() => {
+    history.push(navLinks.login.path)
+  }, [history])
+
   const handleClick = useCallback(() => {
     if (user.isLoggedIn) mutateAsync().then(() => refetch())
-    else history.push(navLinks.login.path)
-  }, [mutateAsync, user.isLoggedIn, history, refetch])
+    else redirectLogin()
+  }, [redirectLogin, mutateAsync, user.isLoggedIn, refetch])
+
+
+  if (!user.isLoggedIn) {
+    return <ButtonStyled onClick={redirectLogin}>FAZER LOGIN</ButtonStyled>
+  }
 
   if (error) {
     console.log("erro em inscrição: ")
     return <ButtonStyled disabled>ERRO TENTE DE NOVO MAIS TARDE</ButtonStyled>;
   }
 
-  if (isLoading || subscribeLoading) {
+  if (isLoading || (user.isLoggedIn && subscribeLoading)) {
     return <ButtonStyled>Loading...</ButtonStyled>;
   }
 
