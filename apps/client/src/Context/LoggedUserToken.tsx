@@ -52,6 +52,13 @@ export interface ITechnicalArea {
   certificate: ITechnicalAreaCertificate[]
 }
 
+export enum GenderSpecific {
+  CIS = "cisgênero",
+  TRANS = "transgênero",
+  NBIN = "não-binário",
+  NONE = "prefiro não responder",
+}
+
 export interface IArtist {
   name: string
   artistic_name: string
@@ -65,12 +72,13 @@ export interface IArtist {
   sexual_orientation: string
   gender: string
   race: string
-  gender_specifics: string
+  gender_specifics: GenderSpecific
   expedition_department: string
   address: IAddress
   contact: IContact
   technical: ITechnical
 }
+
 export interface User {
   id: string
   email: string
