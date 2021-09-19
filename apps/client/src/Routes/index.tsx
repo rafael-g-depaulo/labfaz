@@ -156,7 +156,7 @@ const Routes: FC = () => {
         </Route>}
 
         {/* user search */}
-        <Route path={["/banco-profissionais", "/user-search", "/busca-usuários"]}>
+        <Route path={["/banco-profissionais", "/user-search", "/busca-usuários", "/professionals"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <UserSearch match={match} />

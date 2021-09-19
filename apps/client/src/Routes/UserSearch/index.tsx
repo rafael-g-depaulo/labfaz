@@ -5,7 +5,7 @@ import { Router } from "Routes"
 import usePageview from "Hooks/usePageView"
 import LoadingFullPage from "Components/LoadingFullPage"
 
-const UserSearchPage = lazy(() => import("./UserSearchPage"))
+const UserSearchPage = lazy(() => import("./UserSearchPage/index"))
 
 export const UserSearch: Router = ({
   match

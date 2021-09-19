@@ -1,8 +1,10 @@
 import React, { FC } from "react"
 
+import Display from "./Display"
+
 export const UserSearchPage: FC = () => {
   return (
-    <div>aa</div>
+    <Display />
   )
 }
 
