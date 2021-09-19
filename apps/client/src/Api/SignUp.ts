@@ -93,14 +93,8 @@ export const SignUp = async (values: any) => {
   return api.post<SuccessObject>('/user/create', formParsed, {
     headers
   })
-  // .then(res => {
-  //   console.log(res)
-
-  //   return res
-  // }).catch(err => {
-  //   console.log(err)  
-
-  //   throw err
-  // })
+  .then(res => {
+    return res
+  }).catch(err => Promise.reject(err.response.data))
 
 }
