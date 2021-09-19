@@ -174,7 +174,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            profilePicture: yup.string().required('Foto obrigatória'),
+            profilePicture: yup.mixed().required('Foto obrigatória').test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
             email: yup
               .string()
               .email('Email inválido')
@@ -229,7 +229,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            curriculum: yup.string(),
+            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
             artist: yup.object({
               technical: yup.object({
                 areas: yup.object({

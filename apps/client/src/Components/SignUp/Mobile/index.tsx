@@ -148,7 +148,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          profilePicture: yup.string().required('Foto obrigatória'),
+          profilePicture: yup.mixed().required('Foto obrigatória').test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
           artist: yup.object({
             show_name: yup.string().required('Como quer ser chamado?'),
           }),
@@ -341,6 +341,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
         validationSchema={yup.object({
+          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
           artist: yup.object({
             technical: yup.object({
               areas: yup.object({
