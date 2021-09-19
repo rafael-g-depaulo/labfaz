@@ -1,9 +1,11 @@
-import LoadingFullPage from "Components/LoadingFullPage"
-import usePageview from "Hooks/usePageView"
-import React, { Suspense } from "react"
-import { Route, Switch } from "react-router"
+import React, { Suspense, lazy } from "react"
+import { Route, Switch } from "react-router-dom"
+
 import { Router } from "Routes"
-import { lazy } from "yup"
+import usePageview from "Hooks/usePageView"
+import LoadingFullPage from "Components/LoadingFullPage"
+
+// import UserSearchPage from "./UserSearchPage"
 
 const UserSearchPage = lazy(() => import("./UserSearchPage"))
 
