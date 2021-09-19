@@ -48,7 +48,8 @@
     REACT_APP_SHOW_FORGOT_PASSWORD="false"
     # devtools
     REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
-
+    # google analytics key
+    REACT_APP_ANALYTICS_ID='G-GFFT7B8KX0'
 
 # these configurations are added to deploys from the development branch
 [context.develop]
