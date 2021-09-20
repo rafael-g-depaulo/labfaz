@@ -95,7 +95,9 @@ export const EditProfile = async (values: any, token: string) => {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`
     }
-  })
+  }).then(res => {
+    return res
+  }).catch(err => Promise.reject(err.response.data))
   // .then(res => {
   //   console.log(res)
 
