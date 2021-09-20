@@ -72,8 +72,8 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
           confirm_password: '',
           other_idiom: '',
           use_terms: '',
-          profilePicture: '',
-          curriculum: '',
+          profilePicture: null,
+          curriculum: null,
           Other_TechnicalArea: '',
           artist: {
             name: '',
@@ -341,7 +341,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 10 * 1024 * 1024),
+          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value === null || (value && value.size <= 10 * 1024 * 1024)),
           artist: yup.object({
             technical: yup.object({
               areas: yup.object({
