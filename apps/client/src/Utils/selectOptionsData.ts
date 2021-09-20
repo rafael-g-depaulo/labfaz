@@ -1,7 +1,15 @@
 export const CidadesDF = [
   {
+    value: 'Águas Claras',
+    label: 'Águas Claras',
+  },
+  {
+    value: 'Arniqueira',
+    label: 'Arniqueira',
+  },
+  {
     value: 'Brasília',
-    label: 'Brasíla',
+    label: 'Brasília',
   },
   {
     value: 'Brazlândia',
@@ -16,6 +24,14 @@ export const CidadesDF = [
     label: 'Ceilândia',
   },
   {
+    value: 'Cruzeiro',
+    label: 'Cruzeiro',
+  },
+  {
+    value: 'Fercal',
+    label: 'Fercal',
+  },
+  {
     value: 'Gama',
     label: 'Gama',
   },
@@ -24,12 +40,40 @@ export const CidadesDF = [
     label: 'Guará',
   },
   {
+    value: 'Itapoã',
+    label: 'Itapoã',
+  },
+  {
+    value: 'Jardim Botânico',
+    label: 'Jardim Botânico',
+  },
+  {
+    value: 'Lago Norte',
+    label: 'Lago Norte',
+  },
+  {
+    value: 'Lago Sul',
+    label: 'Lago Sul',
+  },
+  {
     value: 'Núcleo Bandeirante',
     label: 'Núcleo Bandeirante',
   },
   {
     value: 'Paranoá',
     label: 'Paranoá',
+  },
+  {
+    value: 'Park Way',
+    label: 'Park Way',
+  },
+  {
+    value: 'Planaltina',
+    label: 'Planaltina',
+  },
+  {
+    value: 'Plano Piloto',
+    label: 'Plano Piloto',
   },
   {
     value: 'Recanto das Emas',
@@ -55,13 +99,42 @@ export const CidadesDF = [
     value: 'São Sebastião',
     label: 'São Sebastião',
   },
+
   {
-    value: 'Sobradinho',
-    label: 'Sobradinho',
+    value: 'SCIA',
+    label: 'SCIA',
+  },
+  {
+    value: 'SIA',
+    label: 'SIA',
+  },
+  {
+    value: 'Sobradinho I',
+    label: 'Sobradinho I',
+  },
+  {
+    value: 'Sobradinho II',
+    label: 'Sobradinho II',
+  },
+  {
+    value: 'Sol Nascente/Pôr do Sol',
+    label: 'Sol Nascente/Pôr do Sol',
+  },
+  {
+    value: 'Sudoeste/Octogonal',
+    label: 'Sudoeste/Octogonal',
   },
   {
     value: 'Taguatinga',
     label: 'Taguatinga',
+  },
+  {
+    value: 'Varjão',
+    label: 'Varjão',
+  },
+  {
+    value: 'Vicente Pires',
+    label: 'Vicente Pires',
   }
 ]
 
