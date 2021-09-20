@@ -50,6 +50,7 @@ export const GlobalStyles = createGlobalStyle`
     --line-height-medium: 30px;
 
     --max-content-width: 100rem;
+    --max-content-small: 60rem;
   }
 
   * {

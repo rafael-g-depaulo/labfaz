@@ -18,6 +18,7 @@ export const Container = styled.div`
     padding: 60px 25px 25px 25px;
   `)}
   .ContainerContent {
+    max-width: var(--max-content-small);
     display: flex;
     justify-content: space-around;
     gap: 3rem;

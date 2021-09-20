@@ -40,6 +40,7 @@ export const Logos = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: var(--max-content-small);
   height: 5rem;
   width: 100%;
 
