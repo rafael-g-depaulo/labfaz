@@ -11,16 +11,8 @@ import {
   InputTextContainer,
 } from './style'
 
-interface Step16Props {
-  profilePicture: any
-
-  password: string
-  confirm_password: string
-  use_term: string
-}
-
 export const Step16: FC = () => {
-  const { values } = useFormikContext<Step16Props>()
+  const { values } = useFormikContext<any>()
 
   return (
     <Container>
@@ -60,7 +52,7 @@ export const Step16: FC = () => {
             />
           </InputTextContainer>
 
-          <Button type="submit">FINALIZAR EDIÇÃO</Button>
+          <Button  disabled={values.buttonDisabled} type="submit">FINALIZAR EDIÇÃO</Button>
         </Content>
       </ContentContainer>
     </Container>
