@@ -117,6 +117,88 @@ export const ButtonContainer = styled.div<StepProps>`
   transform: translateX(-50%);
 `
 
+export const ErrorModalContainer = styled.div<ModalProps>`
+  position: absolute;
+
+  display: ${({isOpen}) => isOpen ? 'flex' : 'none' };
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 10;
+
+  background: rgba(196, 196, 196, 0.0);
+  backdrop-filter: blur(1.5px);
+
+  touch-action: none;
+
+  .errorModalContainer {
+    background-color: #202020;
+
+    color: #fafafa;
+
+    width: 15rem;
+    height: 30rem;
+
+    padding: 0 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 2rem;
+      line-height: 20px;
+      color: #FC0061;
+    
+    }
+    
+    h2 {
+      font-size: 14px;
+      margin-bottom: 2rem;
+      line-height: 26px;
+    }
+
+    animation: fadeIn 0.4s;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform:  scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform:  scale(1);
+
+      }
+    }
+  }
+
+  button {
+    width: 12rem;
+    height: 2rem;
+
+    border: 0;
+    background: #FC0061;
+    box-shadow: inset 0px 0px 3px #000000;
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    color: #FFEC99;
+  }
+`
+
 export const FormHeader = styled(Header)`
   position: fixed;
 `

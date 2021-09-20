@@ -1,9 +1,7 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { Form, Formik, FormikConfig, FormikValues } from 'formik'
 
-import {
-  FaRegCheckCircle,
-} from 'react-icons/fa'
+import { FaRegCheckCircle } from 'react-icons/fa'
 import * as yup from 'yup'
 
 import {
@@ -33,11 +31,13 @@ import {
   BackButton,
   RightSession,
   SessionContainer,
+  ErrorModalContainer
 } from './style'
 
 import { useHistory } from 'react-router'
 import { User } from 'Context/LoggedUserToken'
 import { EditProfile } from 'Api/EditProfile'
+import { ErrorObject } from 'Api'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -46,7 +46,6 @@ interface ButtonProps {
 }
 
 export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
-  
   return (
     <Container>
       <FormikStepper
@@ -104,17 +103,20 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
               cnpj_type: data?.artist.technical.cnpj_type,
               profession: data?.artist.technical.profession,
               areas: {
-                technical_formation: data?.artist.technical.area[0].technical_formation,
+                technical_formation:
+                  data?.artist.technical.area[0].technical_formation,
                 name: data?.artist.technical.area[0].name,
                 describe: data?.artist.technical.area[0].describe,
                 started_year: data?.artist.technical.area[0].started_year,
-                certificate: data?.artist.technical.area[0].certificate.map(certificate => certificate.name),
+                certificate: data?.artist.technical.area[0].certificate.map(
+                  (certificate) => certificate.name
+                ),
               },
-              idiom: data?.artist.technical.idiom.map(idiom => idiom.name),
+              idiom: data?.artist.technical.idiom.map((idiom) => idiom.name),
             },
           },
           buttonType,
-          token: token
+          token: token,
         }}
         onSubmit={() => {}}
       >
@@ -172,7 +174,16 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= 2 * 1024 * 1024)),
+            profilePicture: yup
+              .mixed()
+              .test(
+                'fileSize',
+                'Arquivo muito grande',
+                (value) =>
+                  (value && !value.name) ||
+                  value === null ||
+                  (value && value.size <= 2 * 1024 * 1024)
+              ),
             email: yup
               .string()
               .email('Email inválido')
@@ -227,7 +238,16 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= 10 * 1024 * 1024)),
+            curriculum: yup
+              .mixed()
+              .test(
+                'fileSize',
+                'Arquivo muito grande',
+                (value) =>
+                  (value && !value.name) ||
+                  value === null ||
+                  (value && value.size <= 10 * 1024 * 1024)
+              ),
             artist: yup.object({
               technical: yup.object({
                 areas: yup.object({
@@ -278,20 +298,14 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            old_password: yup
-              .string()
-              .min(6, 'Senha no minimo 6 digítos'),
-            password: yup
-              .string()
-              .min(6, 'Senha no minimo 6 digítos'),
-            confirm_password: yup
-              .string()
-              .when('password', {
-                is: (val) => (val && val.length > 0 ? true : false),
-                then: yup
-                  .string()
-                  .oneOf([yup.ref('password')], 'Senhas não são iguais.'),
-              }),
+            old_password: yup.string().min(6, 'Senha no minimo 6 digítos'),
+            password: yup.string().min(6, 'Senha no minimo 6 digítos'),
+            confirm_password: yup.string().when('password', {
+              is: (val) => (val && val.length > 0 ? true : false),
+              then: yup
+                .string()
+                .oneOf([yup.ref('password')], 'Senhas não são iguais.'),
+            }),
           })}
         >
           <Step9 />
@@ -319,19 +333,27 @@ function FormikStepper({
   const [step, setStep] = useState(0)
   const currentChild = childrenArray[step]
 
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+
+  const modalRef = useRef<HTMLInputElement | null>(null)
+
+  const [error, setError] = useState<ErrorObject | undefined>(undefined)
+  const [errorModal, setErrorModal] = useState(false)
+
   const history = useHistory()
 
   function isLastStep() {
     return step === childrenArray.length - 1
   }
 
- 
   return (
     <Formik
       {...props}
       validationSchema={currentChild.props.validationSchema}
       onSubmit={async (values: any) => {
         if (isLastStep()) {
+          setButtonDisabled(true)
+
           if (values.other_idiom) {
             const index = values.artist.technical.idiom.indexOf('Outro')
 
@@ -358,17 +380,33 @@ function FormikStepper({
 
           delete values.use_terms
 
-          EditProfile(values, values.token ).then(() => {
-            history.push('/profile')
-          })
+          EditProfile(values, values.token)
+            .then(() => {
+              history.push('/profile')
+            })
+            .catch((err) => [setError(err.message), setErrorModal(true), setButtonDisabled(false)])
         } else {
           setStep((currentStep) => currentStep + 1)
         }
       }}
     >
       <Form>
+        <ErrorModalContainer ref={modalRef} isOpen={errorModal}>
+          <div className="errorModalContainer">
+            <h1>Ops... algo deu errado</h1>
+            <h2>{error}</h2>
+
+            <button
+              type="button"
+              onClick={() => [setErrorModal(false), setStep(0)]}
+            >
+              VOLTAR
+            </button>
+          </div>
+        </ErrorModalContainer>
 
         <FormTitle level={1} children="Cadastre-se" />
+
         <SessionContainer>
           <FormContainer>
             <div className="form">{currentChild}</div>
@@ -409,6 +447,7 @@ function FormikStepper({
               </BackButton>
             )}
             <NextButton
+              disabled={buttonDisabled}
               type={isLastStep() ? props.initialValues.buttonType : 'submit'}
             >
               {isLastStep() ? 'FINALIZAR' : 'AVANÇAR'}

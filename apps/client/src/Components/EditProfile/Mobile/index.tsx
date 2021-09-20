@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { Formik, FormikConfig, FormikValues, Form } from 'formik'
 import * as yup from 'yup'
 
@@ -29,6 +29,7 @@ import {
   ButtonContainer,
   FormHeader,
   RightSession,
+  ErrorModalContainer
 } from './style'
 
 import {
@@ -42,6 +43,7 @@ import {
 import { User } from 'Context/LoggedUserToken'
 import { EditProfile } from 'Api/EditProfile'
 import { useHistory } from 'react-router'
+import { ErrorObject } from 'Api'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -118,6 +120,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
           },
           buttonType,
           token,
+          buttonDisabled: false,
         }}
         onSubmit={() => {}}
       >
@@ -410,6 +413,11 @@ function FormikStepper({
   const [step, setStep] = useState(0)
   const currentChild = childrenArray[step]
 
+  const modalRef = useRef<HTMLInputElement | null>(null)
+
+  const [error, setError] = useState<ErrorObject | undefined>(undefined)
+  const [errorModal, setErrorModal] = useState(false)
+
   const history = useHistory()
 
   function isLastStep() {
@@ -422,6 +430,9 @@ function FormikStepper({
       validationSchema={currentChild.props.validationSchema}
       onSubmit={async (values: any) => {
         if (isLastStep()) {
+
+          values.buttonDisabled = true
+
           if (values.other_idiom) {
             const index = values.artist.technical.idiom.indexOf('Outro')
 
@@ -451,11 +462,7 @@ function FormikStepper({
           EditProfile(values, values.token)
             .then(() => {
               history.push('/profile')
-            })
-            .catch(err => {
-              // TODO: dar feedback pro usuário
-              console.error("erro na tentativa de cadastro", err)
-            })
+            }).catch(err => [setError(err.message), setErrorModal(true)])
 
           // console.log(values)
         } else {
@@ -472,6 +479,20 @@ function FormikStepper({
         <SessionContainer>
           <FormContainer currentStep={step}>
             <div className="form">
+
+            <ErrorModalContainer ref={modalRef} isOpen={errorModal} >
+                <div className="errorModalContainer">
+                  <h1>Ops... algo deu errado</h1>
+                  <h2>{error}</h2>
+
+                  <button 
+                    type="button" 
+                    onClick={() => [setErrorModal(false), setStep(0)]}
+                  >
+                    VOLTAR
+                  </button>
+                </div>
+              </ErrorModalContainer>
 
               {currentChild}
 
