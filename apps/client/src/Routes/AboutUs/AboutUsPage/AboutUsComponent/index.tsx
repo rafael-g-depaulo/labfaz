@@ -12,20 +12,14 @@ const About: FC<AboutProps> = ({data}) => {
 
   return (
     <Wrapper>
-      {
-        data.map((item) => {
-          return (
-            <Container key={item.id} about="true">
-              <TextDiv>
-                <Text>
-                  {item.text}
-                </Text>
-              </TextDiv>
-              <Image src={item.img.url} alt={item.img.caption}/>
-            </Container>
-          )
-        })
-      }
+      {data.map((item) => (
+        <Container key={item.id} about="true">
+          <TextDiv>
+            <Text>{item.text}</Text>
+          </TextDiv>
+          <Image src={item.img.url} alt={item.img.caption}/>
+        </Container>
+      ))}
     </Wrapper>
   )
 }

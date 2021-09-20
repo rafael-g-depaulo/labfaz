@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Mobile, DesktopSmall, MobileLarge, MobileSmall } from 'Utils/breakpoints'
+import { Mobile, DesktopSmall, MobileLarge, MobileSmall, DesktopLarge, Desktop } from 'Utils/breakpoints'
 
 interface WrapperProps {
   color?: string,
@@ -30,12 +30,11 @@ export const Spacer = styled.div`
 `
 
 export const Wrapper = styled.div<WrapperProps>`
-  max-width: 100vw;
+  width: 100%;
   box-sizing: content-box;
   display: flex;
   flex-direction: column;
   align-self: center;
-  margin-bottom: 4em;
 
   background-color: var(--background-black);
   color: var(--color-text-white);
@@ -43,138 +42,87 @@ export const Wrapper = styled.div<WrapperProps>`
 
 export const Container = styled.div<ContainerProps>`
   display: grid;
-  grid-template-columns: ${props => props.about ? "2fr 1fr" : "1fr 2fr"};
+  width: 100%;
+  max-width: 100em;
+  margin: auto;
+  
+  grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   grid-template-areas:
-  "left right"
-  "left right";
-  grid-column-gap: 4em;
-  grid-row-gap: 25vh;
-  min-height: 400px;
-  max-height: 1000px;
-  max-width: 100%;
-  line-height: var(--line-height-default);
-  padding: 10vh 5vw;
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : ""};
-  margin-top: ${props => props.marginTop ? props.marginTop : ""};
-  font-size: var(--font-size-default);
+    "top"
+    "bottom"
+  ;
   text-align: justify;
+  align-items: center;
+  justify-content: center;
 
   background-color: var(--background-black);
   color: var(--color-text-white);
 
-  ${
-    Mobile(css`
-      margin: 0 2vw;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-      "top top"
-      "bottom bottom";
-      grid-column-gap: 14vw;
-      grid-row-gap: 1vh;
+  ${Desktop(css`
+    padding: 1.6em 2.4em;
+    align-items: flex-start;
+  `)}
 
-      margin-bottom: 7vh;
-      margin-top: 4vh;
+  ${props => DesktopLarge(css`
+    grid-template-columns: ${props.about ? "3fr 2fr" : "2fr 3fr"};
+    grid-template-areas: "left right";
+    grid-column-gap: 2.4em;
+  `)}
 
-      align-items: center;
-      justify-content: center;
-    `)
-  }
+  ${DesktopSmall(css`
+    grid-row-gap: 1.6rem;
 
-${
-    MobileLarge(css`
-      margin: 0 2vw;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-      "top top"
-      "bottom bottom";
-      grid-column-gap: 14vw;
-      grid-row-gap: 1vh;
+    align-items: center;
+    justify-content: center;
+  `)}
 
-      margin-bottom: 7vh;
-      margin-top: 4vh;
-
-      align-items: center;
-      justify-content: center;
-
-      font-size: var(--font-size-medium);
-      line-height: var(--line-height-medium);
-    `)
-  }
-  
-  ${
-    DesktopSmall(css`
-      margin: 0 2vw;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-      "top top"
-      "bottom bottom";
-      grid-column-gap: 14vw;
-      grid-row-gap: 1vh;
-
-      margin-bottom: 7vh;
-      margin-top: 4vh;
-
-      align-items: center;
-      justify-content: center;
-
-      font-size: var(--font-size-large);
-      line-height: var(--line-height-medium);
-    `)
-  }
-
+  ${Mobile(css`
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "top"
+      "bottom"
+    ;
+    grid-row-gap: 1.6rem;
+    padding: 1.6em 1.2em;
+    p { 
+      line-height: var(--line-height-medium) !important;
+    }
+  `)}
 `
 
 export const Image = styled.img<ImageProps>`
-  max-height: 400px;
-  max-width: 789px;
-  min-width: auto;
+  width: 100%;
   object-fit: contain;
+  object-position: center center;
+  margin: auto;
   grid-area: ${props => props.position ? props.position : "right"};
 
-  ${Mobile(
-    css`
-    max-height: 75%;
-    max-width: 100%;
-    min-height: 200px;
-    min-width: 300px;
+  ${Mobile(css`
     align-self: center;
     justify-self: center;
     grid-area: bottom;
-    `
-  )}
+  `)}
 
-${MobileLarge(
-    css`
-    max-height: 75%;
-    max-width: 100%;
-    min-height: 200px;
-    min-width: 300px;
+  ${MobileLarge(css`
     align-self: center;
     justify-self: center;
     grid-area: bottom;
-    `
-  )}
+  `)}
 
-${DesktopSmall(
-    css`
-    max-height: 75%;
-    max-width: 100%;
-    min-height: 200px;
-    min-width: 300px;
+  ${DesktopSmall(css`
     align-self: center;
     justify-self: center;
     grid-area: bottom;
-    `
-  )}
+  `)}
 `
 
 export const TextDiv = styled.div<DivProps>`
   display: flex;
-  max-width: 100%;
+  width: 100%;
   min-height: fit-content;
   grid-area: ${props => props.position ? props.position : "left"};
-  
 
   p {
     color: var(--color-text-white);
@@ -182,43 +130,25 @@ export const TextDiv = styled.div<DivProps>`
   }
 
   ${Mobile(css`
-    max-width: 100%;
     grid-area: top;
   `)}
 
-  ${
-    MobileLarge(css`
-      display: flex;
-      flex-direction: column;
+  ${MobileLarge(css`
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+  `)}
 
-      max-width: 90%;
+  ${MobileSmall(css`
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    text-align: justify;
+  `)}
 
-      justify-items: center;
-    `)
-  }
-
-${
-    MobileSmall(css`
-      display: flex;
-      flex-direction: column;
-
-      max-width: 90%;
-
-      justify-self: center;
-
-      text-align: justify;
-    `)
-  }
-
-${DesktopSmall(
-    css`
-    max-height: 80%;
-    max-width: 100%;
-    min-height: 200px;
-    min-width: 300px;
+  ${DesktopSmall(css`
     align-self: center;
     justify-self: center;
     grid-area: top;
-    `
-  )}
+  `)}
 `
