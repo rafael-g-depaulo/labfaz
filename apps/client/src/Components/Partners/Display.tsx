@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { HomePartners } from 'Api/HomePartners'
-import { Container, Image, Title, Logos } from './styles'
+import { Container, Image, Logos } from './styles'
 
 export interface HomePartnersProps {
   data: HomePartners[]
@@ -12,7 +12,7 @@ export const Display: FC<HomePartnersProps> = ({
 }) => {
   return (
     <Container>
-      <Title> APOIO </Title>
+      {/* <Title> APOIO </Title> */}
       <Logos>
         {
           data.map((partner) => {
