@@ -63,7 +63,7 @@ export const Button: FC<ButtonProps> = ({
   }
 
   if (error) {
-    console.log("erro em inscrição: ")
+    console.log("erro em inscrição: ", error)
     return <ButtonStyled disabled>ERRO TENTE DE NOVO MAIS TARDE</ButtonStyled>;
   }
 

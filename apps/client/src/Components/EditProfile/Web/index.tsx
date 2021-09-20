@@ -47,7 +47,7 @@ interface ButtonProps {
 
 export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
   
-  console.log(data)
+  // console.log(data)
 
   return (
     <Container>
