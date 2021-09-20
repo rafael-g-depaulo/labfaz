@@ -13,16 +13,18 @@ export const Container = styled.div<VisibilityProps>`
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 8px;
   max-width: 92%;
+  min-width: 92%;
   max-height: inherit;
   min-height: 118px;
-  min-width: 92%;
 
   align-self: center;
   align-items: ${props => props.isOpen ? "" : "center"};
   justify-content: start;
   
   padding-bottom: ${props => props.isOpen ? "2.9rem" : ""};
-  margin-bottom: 15vh;
+  & + & {
+    margin-top: 2.4rem;
+  }
 
   :hover {
     cursor: pointer;
@@ -39,7 +41,6 @@ export const Container = styled.div<VisibilityProps>`
       padding-left: 5em;
     `
   }
-    /* padding-right: ${props => props.isOpen ? "5em" : "3em"}; */
     margin-bottom: ${props => props.isOpen ? "1.3em" : "0"};
     min-width: fit-content;
   }
@@ -69,36 +70,21 @@ export const Haeder = styled.div<VisibilityProps>`
   margin-top: ${props => props.isOpen ? '3em' : '0'};
   margin-bottom: ${props => props.isOpen ? '5em' : '0'};
   padding: 0 2em;
-  overflow: auto;
+  
+  h1 {
+    padding-left: 0;
+  }
 
-  ${props => props.isOpen ?
-    MobileSmall(css`
+  ${props => props.isOpen && css`
       flex-direction: column;
       margin-bottom: 2.4em;
+  `}
 
-      h1 {
-        padding-left: 0;
-      }
-  `) : ''}
-
-  ${props => props.isOpen ?
-    DesktopSmall(css`
-      flex-direction: column;
-      margin-bottom: 2.4em;
-      h1 {
-        padding-left: 0;
-      }
-  `) : ''}
-
-  ${props => props.isOpen ?
-    MobileLarge(css`
-      flex-direction: column;
-      margin-bottom: 2.4em;
-      h1 {
-        padding-left: 0;
-      }
-  `) : ''}
-
+  ${props => props.isOpen &&
+    DesktopLarge(css`
+      margin: 0;
+      flex-direction: row;
+  `)}
 `
 
 export const Button =  styled.button`
@@ -111,7 +97,7 @@ export const Button =  styled.button`
   display: flex;
   align-self: baseline;
   
-  padding-left: 10vw;
+  padding-left: 2.4em;
 
   ${DesktopSmall(css`
     top: calc((79px - 35px)/2);

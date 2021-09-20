@@ -47,7 +47,9 @@ export const GlobalStyles = createGlobalStyle`
     
     --line-height-default: 48.72px; 
     --line-height-small: 25px; 
-    --line-height-medium: 30px; 
+    --line-height-medium: 30px;
+
+    --max-content-width: 100rem;
   }
 
   * {

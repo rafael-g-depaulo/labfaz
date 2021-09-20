@@ -8,8 +8,9 @@ interface ImageCircleProps {
 
 export const StaffGrid = styled.div`
   display: grid;
-  grid-row-gap: 5vh;
+  grid-gap: 1.6rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  padding: 0 0.8rem;
   
   justify-items: center;
 
@@ -25,7 +26,7 @@ export const StaffGrid = styled.div`
   `)}
 
   ${MobileSmall(css`
-    grid-row-gap: 10vh;
+    /* grid-row-gap: 10vh; */
   `)}
 `;
 
@@ -37,7 +38,7 @@ export const StaffHeader = styled.div`
   justify-content: center;
   color: var(--color-text-white);
 
-  margin-bottom: 10vh;
+  margin: 3.2rem 0;
 
   .level-1 {
     color: var(--color-text-white);
@@ -100,7 +101,6 @@ export const Card = styled.div`
     padding-left: calc((100% - 560px)/2)
   `)}
 `
-
 
 export const CardThumb = styled.div`
   display: flex;

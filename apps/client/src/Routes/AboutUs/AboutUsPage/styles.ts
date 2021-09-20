@@ -31,6 +31,7 @@ export const Spacer = styled.div`
 
 export const Wrapper = styled.div<WrapperProps>`
   width: 100%;
+  max-width: var(--max-content-width);
   box-sizing: content-box;
   display: flex;
   flex-direction: column;
@@ -43,7 +44,7 @@ export const Wrapper = styled.div<WrapperProps>`
 export const Container = styled.div<ContainerProps>`
   display: grid;
   width: 100%;
-  max-width: 100em;
+  max-width: var(--max-content-width);
   margin: auto;
   
   grid-template-columns: 1fr;
