@@ -15,7 +15,9 @@ import {
   NavLink,
   RedirectLink,
   LogIn,
+  LogoutButton
 } from './style'
+import { useHistory } from 'react-router'
 
 const Link = ({ label, path }: navLink) => (
   <NavLink href={path}> {label} </NavLink>
@@ -25,6 +27,16 @@ const Link = ({ label, path }: navLink) => (
 export const Web: FC = () => {
   useEvent({ category: 'Navigation', action: 'click', value: 0 })
   const { isLoggedIn } = useCurrentUserToken()
+
+  const history = useHistory()
+
+  const handleLogoutUser = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+
+    history.push('/home')
+    history.go(0)
+  }
 
   return (
     <Container>
@@ -40,7 +52,12 @@ export const Web: FC = () => {
       <div className="line" />
       <UserSession>
         { isLoggedIn 
-          ? showProfileMine && <Link {...navLinks["perfil"]} />
+          ? showProfileMine && (
+            <>
+              <Link {...navLinks["perfil"]} />
+              <LogoutButton onClick={() => handleLogoutUser()}>SAIR</LogoutButton>
+            </>
+          )
           : <>
             <LogIn href={navLinks["login"].path}> {navLinks["login"].label} </LogIn>
             <Button href={navLinks["cadastro"].path}> {navLinks["cadastro"].label} </Button>

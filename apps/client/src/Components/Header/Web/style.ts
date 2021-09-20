@@ -66,6 +66,26 @@ export const UserSession = styled.div`
   ${DesktopSmall(css`
     flex-Grow: 0.4;
   `)}
+
+  a {
+    padding: 0.2rem 1.5rem;
+    color: var(--color-text-beige);
+    border: none;
+    font-size: var(--font-size-large);
+    margin: 0 5px;
+    background-color: var(--background-pink);
+
+    &:hover {
+      border-top: 2px solid;
+      border-left: 2px solid;
+      border-color: var(--button-color-yellow);
+    }
+
+    ${DesktopSmall(css`
+      font-size: var(--font-size-short: 11px);
+      padding: 0.3rem;
+    `)}
+  }
 `;
 
 export const Button = styled(InternalLinkButton)`
@@ -86,6 +106,29 @@ export const Button = styled(InternalLinkButton)`
     padding: 0.3rem;
   `)}
 `;
+
+export const LogoutButton = styled.button`
+  padding: 0.2rem 1.5rem;
+  color: var(--color-text-beige);
+  border: none;
+  font-size: var(--font-size-large);
+  margin: 0 5px;
+  background-color: var(--background-pink);
+
+  font-weight: bold;
+
+  &:hover {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-color: var(--button-color-yellow);
+    cursor: pointer;
+  }
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-short: 11px);
+    padding: 0.3rem;
+  `)}
+`
 
 export const LogIn = styled(InternalLinkButton)`
   color: var(--background-pink);

@@ -12,10 +12,12 @@ import {
   NavLink,
   IconButton,
   LogoLink,
-  NavBar
+  NavBar,
+  LogoutButton
 } from './style'
 import { useCurrentUserToken } from 'Context/LoggedUserToken'
 import { navLink, navLinks } from 'Utils/navLinks'
+import { useHistory } from 'react-router'
 
 const Link = ({ link, show }: {link: navLink, show: boolean}) => (
   !show ? <></> : <NavLink href={link.path}> {link.label} </NavLink> 
@@ -24,6 +26,16 @@ const Link = ({ link, show }: {link: navLink, show: boolean}) => (
 export const Mobile: FC = () => {
   const[open, setOpen] = useState(false)
   const { isLoggedIn } = useCurrentUserToken()
+
+  const history = useHistory()
+
+  const handleLogoutUser = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+
+    history.push('/home')
+    history.go(0)
+  }
 
   return (
     <Container>
@@ -37,7 +49,12 @@ export const Mobile: FC = () => {
           { <Link show={showUserSearch} link={navLinks["busca profissionais"]} /> }
 
           {isLoggedIn
-            ? <Link show={showProfileMine} link={navLinks["perfil"]} />
+            ? (
+            <>
+              <Link show={showProfileMine} link={navLinks["perfil"]} />
+              <LogoutButton onClick={() => handleLogoutUser()}>SAIR</LogoutButton>
+            </>
+              )
             : <>
               <Button BackgroundColor={"login"} href={navLinks["login"].path} > {navLinks["login"].label} </Button>
               <Button href={navLinks["cadastro"].path} > {navLinks["cadastro"].label} </Button>

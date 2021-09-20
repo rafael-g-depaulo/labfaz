@@ -74,6 +74,20 @@ export const Button = styled(InternalLinkButton)<PropsButton>`
   font-size: var(--font-size-short);
 `;
 
+export const LogoutButton = styled.button`
+  
+  flex-grow: 0.8;
+  font-size: var(--font-size-short);
+  color: var(--background-pink);
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 export const CloseMenu = styled.div<PropsCloseMenu>`
   background-color: transparent;
   width: 100%;
