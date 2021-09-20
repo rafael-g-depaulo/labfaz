@@ -17,6 +17,8 @@ export const ProfileContentContainer = styled.div`
   display: flex;
 
   width: 100%;
+
+  min-height: 90rem;
 `
 
 export const Aside = styled.aside`
@@ -36,7 +38,7 @@ export const Aside = styled.aside`
   .sideDivider {
     border: 0;
     border-left: 1px solid #090909;
-    height: 70rem;
+    height: 85%;
     left: 17rem;
     top: 6rem;
   
@@ -134,7 +136,7 @@ export const SocialMedias = styled.ul`
     display: flex;
     align-items: center;
     
-    div {
+    span {
       width: 9.5rem;
       overflow: hidden;
       text-overflow: ellipsis;

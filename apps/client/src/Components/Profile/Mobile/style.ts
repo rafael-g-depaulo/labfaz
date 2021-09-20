@@ -252,6 +252,11 @@ export const UserInformation = styled.div`
 
       .socialContacts {
         margin-top: 0;
+
+        span {
+          display: flex;
+          align-items: baseline;
+        }
       }
     }
   }

@@ -34,12 +34,12 @@ export const SocialMediaLink: FC<SocialMediaLinkProps> = ({
   const labelWithAt = noAt || label.startsWith("@") ? label : `@${label}`
 
   if (!labelToLink) return (
-    <ContainerElement><Icon />{labelWithAt}</ContainerElement>
+    <ContainerElement><Icon /><span>{labelWithAt}</span></ContainerElement>
   )
 
   return (
     <ExternalLink href={labelToLink(label)}>
-      <ContainerElement><Icon />{labelWithAt}</ContainerElement>
+      <ContainerElement><Icon /><span>{labelWithAt}</span></ContainerElement>
     </ExternalLink>
   )
 }
