@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 import { OptionDiv, Label } from "../style"
 
 import { Title } from "Components/Typography/Title"
@@ -15,7 +15,7 @@ interface OptionsProps {
 
 type Field = "cities" | "areas" | "services" | "diversity" | "experience"
 
-export const Option: FC<OptionsProps> = ({ name, options, setFuntion, data }) => {  
+export const Option: FC<OptionsProps> = ({ name, options, setFuntion }) => {  
 
   const Translate = {
     cidades: "cities",
@@ -25,7 +25,7 @@ export const Option: FC<OptionsProps> = ({ name, options, setFuntion, data }) =>
     experiência: "experience"
   }
 
-  const [focus, setFocus] = useState(false)
+  // const [focus, setFocus] = useState(false)
   const handleClick = (option: Fields, selected: string) => {
     const field = Translate[option] as Field
     setFuntion(formData => {
