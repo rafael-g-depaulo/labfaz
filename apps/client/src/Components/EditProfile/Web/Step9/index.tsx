@@ -10,14 +10,8 @@ import {
   PasswordInputContainer,
 } from './style'
 
-interface Step10Prosp {
-  profilePicture: string
-
-  use_terms: string
-}
-
 export const Step9: FC = () => {
-  const { values } = useFormikContext<Step10Prosp>()
+  const { values } = useFormikContext<any>()
 
   return (
     <Container>
@@ -26,9 +20,9 @@ export const Step9: FC = () => {
           <AvatarInput>
             <img
               src={
-                values.profilePicture
+                values.profilePicture?.name
                   ? URL.createObjectURL(values.profilePicture)
-                  : undefined
+                  : values.profilePicture
               }
               alt={values.profilePicture ? 'User avatar' : ''}
             />

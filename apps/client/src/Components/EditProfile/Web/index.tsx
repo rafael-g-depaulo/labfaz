@@ -47,8 +47,6 @@ interface ButtonProps {
 
 export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
   
-  // console.log(data)
-
   return (
     <Container>
       <FormikStepper
@@ -59,8 +57,8 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
           old_password: '',
           other_idiom: '',
           use_terms: '',
-          profilePicture: '',
-          curriculum: '',
+          profilePicture: data?.artist.photo_url,
+          curriculum: data?.artist.curriculum,
           Other_TechnicalArea: '',
           artist: {
             name: data?.artist.name,
@@ -174,7 +172,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            profilePicture: yup.mixed().required('Foto obrigatória').test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
+            profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= 2 * 1024 * 1024)),
             email: yup
               .string()
               .email('Email inválido')
@@ -229,7 +227,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
 
         <FormikStep
           validationSchema={yup.object({
-            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value && value.size <= 10 * 1024 * 1024),
+            curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= 10 * 1024 * 1024)),
             artist: yup.object({
               technical: yup.object({
                 areas: yup.object({

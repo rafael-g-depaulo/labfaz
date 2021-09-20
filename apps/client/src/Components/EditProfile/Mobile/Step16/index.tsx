@@ -12,7 +12,7 @@ import {
 } from './style'
 
 interface Step16Props {
-  profilePicture: string
+  profilePicture: any
 
   password: string
   confirm_password: string
@@ -29,9 +29,9 @@ export const Step16: FC = () => {
           <AvatarInput>
             <img
               src={
-                values.profilePicture
+                values.profilePicture?.name
                   ? URL.createObjectURL(values.profilePicture)
-                  : undefined
+                  : values.profilePicture
               }
               alt={values.profilePicture ? 'User avatar' : ''}
             />

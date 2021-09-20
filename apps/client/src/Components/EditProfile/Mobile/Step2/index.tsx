@@ -20,7 +20,7 @@ interface FileProps {
 }
 
 interface Step2Props {
-  profilePicture: string
+  profilePicture: any
   artist: {
     name: string
     social_name: string
@@ -45,9 +45,9 @@ export const Step2: FC = () => {
           <AvatarInput>
             <img
               src={
-                values.profilePicture
+                values.profilePicture?.name
                   ? URL.createObjectURL(values.profilePicture)
-                  : undefined
+                  : values.profilePicture
               }
               alt={values.profilePicture ? 'User avatar' : ''}
             />
