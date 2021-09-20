@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/server-conn-info",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "description": "lib to get connection info to connect apps to servers",
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
   "homepage": "https://github.com/rafael-g-depaulo/labfaz#readme",
