@@ -158,6 +158,14 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus,
+  select:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+  }
+
   svg {
     position: absolute;
     z-index: 1;

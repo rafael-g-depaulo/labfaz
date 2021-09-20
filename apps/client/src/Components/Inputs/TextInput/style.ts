@@ -214,6 +214,15 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+  }
+
+
   input:disabled {
     color: rgba(196, 196, 196, 0.25);
 
