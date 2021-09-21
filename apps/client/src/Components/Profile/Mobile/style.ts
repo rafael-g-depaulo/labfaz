@@ -33,6 +33,10 @@ export const Header = styled.div`
 
     width: 25px;
     height: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   button {
@@ -193,6 +197,10 @@ export const UserInformation = styled.div`
         position: absolute;
 
         left: 0;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
 
@@ -256,6 +264,10 @@ export const UserInformation = styled.div`
         span {
           display: flex;
           align-items: baseline;
+
+          span {
+            overflow-wrap: anywhere;
+          }
         }
       }
     }
