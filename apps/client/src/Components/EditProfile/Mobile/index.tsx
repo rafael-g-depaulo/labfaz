@@ -51,6 +51,9 @@ interface ButtonProps {
   token: string
 }
 
+const profileSize = 2 * 1024 * 1024
+const curriculumSize = 10 * 1024 * 1024
+
 export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
   return (
     <>
@@ -139,7 +142,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= 2 * 1024 * 1024)),
+          profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= profileSize)),
           artist: yup.object({
             show_name: yup.string().required('Como quer ser chamado?'),
           }),
@@ -332,7 +335,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= 10 * 1024 * 1024)),
+          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= curriculumSize)),
           artist: yup.object({
             technical: yup.object({
               areas: yup.object({

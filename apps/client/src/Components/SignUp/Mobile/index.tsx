@@ -56,6 +56,7 @@ import {
 import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 import { useHistory } from 'react-router'
 import { ErrorObject } from 'Api'
+import { curriculumMaxSize, profilePictureMaxSize } from 'Utils/userUtils'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -148,7 +149,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          profilePicture: yup.mixed().required('Foto obrigatória').test("fileSize", "Arquivo muito grande", value => value && value.size <= 2 * 1024 * 1024),
+          profilePicture: yup.mixed().required('Foto obrigatória').test("fileSize", "Arquivo muito grande", value => value && value.size <= profilePictureMaxSize),
           artist: yup.object({
             show_name: yup.string().required('Como quer ser chamado?'),
           }),
@@ -341,7 +342,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value === null || (value && value.size <= 10 * 1024 * 1024)),
+          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => value === null || (value && value.size <= curriculumMaxSize)),
           artist: yup.object({
             technical: yup.object({
               areas: yup.object({
@@ -505,10 +506,10 @@ function FormikStepper({
                     conta foram enviados para {email}
                   </h2>
 
-                  <div className="contact">
+                  {/* <div className="contact">
                     <label>{socialNetworks?.phone}</label>
                     <label>{socialNetworks?.email}</label>
-                  </div>
+                  </div> */}
 
                   <div className="socialMedias">
                     { 

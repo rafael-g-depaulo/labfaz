@@ -38,6 +38,7 @@ import { useHistory } from 'react-router'
 import { User } from 'Context/LoggedUserToken'
 import { EditProfile } from 'Api/EditProfile'
 import { ErrorObject } from 'Api'
+import { curriculumMaxSize, profilePictureMaxSize } from 'Utils/userUtils'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
@@ -182,7 +183,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
                 (value) =>
                   (value && !value.name) ||
                   value === null ||
-                  (value && value.size <= 2 * 1024 * 1024)
+                  (value && value.size <=profilePictureMaxSize)
               ),
             email: yup
               .string()
@@ -246,7 +247,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
                 (value) =>
                   (value && !value.name) ||
                   value === null ||
-                  (value && value.size <= 10 * 1024 * 1024)
+                  (value && value.size <= curriculumMaxSize)
               ),
             artist: yup.object({
               technical: yup.object({
