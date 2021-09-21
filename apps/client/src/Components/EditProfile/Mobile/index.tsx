@@ -427,6 +427,10 @@ function FormikStepper({
     return step === childrenArray.length - 1
   }
 
+  const handleScroll = () => {
+    window.scrollTo(0, 150)
+  }
+
   return (
     <Formik
       {...props}
@@ -512,6 +516,8 @@ function FormikStepper({
                   type={
                     isLastStep() ? props.initialValues.buttonType : 'submit'
                   }
+
+                  onClick={() => handleScroll()}
                 >
                   {isLastStep() ? 'FINALIZAR' : 'AVANÇAR'}
                 </NextButton>

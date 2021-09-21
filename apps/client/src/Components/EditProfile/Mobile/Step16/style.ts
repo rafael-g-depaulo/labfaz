@@ -14,7 +14,6 @@ export const ContentContainer = styled.div`
   flex-direction: column;
 
   width: 100vw;
-  height: 100vh;
   
   scroll-snap-align: start;
 `
@@ -62,6 +61,8 @@ export const Button = styled.button`
  
   font-size: var(--font-size-large);
   font-weight: 700;
+
+  margin-bottom: 2rem;
 `
 
 export const InputCheckBoxContainer = styled.div`

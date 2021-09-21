@@ -444,6 +444,10 @@ function FormikStepper({
     // console.log('redirecionado para login')
   }
 
+  const handleScroll = () => {
+    window.scrollTo(0, 150)
+  }
+
   return (
     <Formik
       {...props}
@@ -572,6 +576,7 @@ function FormikStepper({
                   type={
                     isLastStep() ? props.initialValues.buttonType : 'submit'
                   }
+                  onClick={() => handleScroll()}
                 >
                   {isLastStep() ? 'FINALIZAR' : 'AVANÇAR'}
                 </NextButton>

@@ -34,6 +34,8 @@ export const FormContainer = styled.div<StepProps>`
     justify-content: center;
 
     width: 88vw;
+
+    flex-direction: column;
   }
 `
 
@@ -107,14 +109,9 @@ export const RightSession = styled.div<StepProps>`
 export const ButtonContainer = styled.div<StepProps>`
   display: ${({currentStep}) => currentStep === 16 ? 'none' : 'flex'};
 
-  position: absolute;
-
   column-gap: 2.1rem;
 
-  bottom: 1.8rem;
-
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 2rem 0;
 `
 
 export const ErrorModalContainer = styled.div<ModalProps>`

@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
 
 `
 export const ContentContainer = styled.div`  
@@ -15,7 +14,6 @@ export const ContentContainer = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
 
   scroll-snap-align: start;
 `

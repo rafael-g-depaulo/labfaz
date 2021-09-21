@@ -16,7 +16,6 @@ export const ContentContainer = styled.div`
   position: relative;
 
   width: 100vw;
-  height: 100vh;
 
   scroll-snap-align: start;
 `

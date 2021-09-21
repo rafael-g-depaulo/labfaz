@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { useFormikContext } from 'formik'
-import { IoIosArrowDown } from 'react-icons/io'
 
 import { RadioInput } from 'Components/Inputs/RadioInput'
 // import { TextInput } from 'Components/Inputs/TextInput'
@@ -85,12 +84,6 @@ export const Step15: FC = () => {
             </>
           )}
         </Content>
-
-        {values.artist.technical.is_cnpj === 'true' && (
-          <a href="#scroll">
-            <IoIosArrowDown />
-          </a>
-        )}
       </ContentContainer>
 
       {values.artist.technical.is_cnpj === 'true' && (

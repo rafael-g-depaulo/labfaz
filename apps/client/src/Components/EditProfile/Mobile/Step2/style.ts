@@ -11,8 +11,6 @@ export const ContentContainer = styled.div`
   flex-direction: column;
 
   width: 100vw;
-  height: 100vh;
-  
 
   scroll-snap-align: start;
 `

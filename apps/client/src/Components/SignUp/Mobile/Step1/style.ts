@@ -12,7 +12,6 @@ export const ContentContainer = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
 `
 
 export const Content = styled.div`
