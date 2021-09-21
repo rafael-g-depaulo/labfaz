@@ -36,6 +36,7 @@ export interface UserSearchParams {
   ceacOnly: boolean
   meiOnly: boolean
   // nrOnly: boolean
+  showNothing?: boolean
 }
 
 export type UserSearchResults =
@@ -56,6 +57,8 @@ export type UserSearchResults =
 export const useUserSearch = (params: UserSearchParams): UserSearchResults => {
   // get users
   const { data, error, isLoading } = useUsersListOnce()
+
+  if (params.showNothing) return { isLoading: false, users: [], error: undefined }
 
   // pass errors forward, if they exist
   if (error) return { isLoading: false, error: error!, users: undefined }
@@ -150,7 +153,10 @@ const compareStrings = (real: string, filterStr: string) => {
 }
 const isInArea = (user: User, area: string) => compareStrings(user.artist?.technical?.area[0]?.name, area)
 const isInCity = (user: User, city: string) => compareStrings(user.artist.address.city, city)
-const hasNameOrProfession = (user: User, nameOrProfession: string) => compareStrings(getUserName(user), nameOrProfession) || compareStrings(user.artist.technical.profession, nameOrProfession)
+const hasNameOrProfession = (user: User, nameOrProfession: string) =>
+  compareStrings(getUserName(user), nameOrProfession) ||
+  compareStrings(user.artist.artistic_name, nameOrProfession) ||
+  compareStrings(user.artist.technical.profession, nameOrProfession)
 
 const hasCurriculum = (user: User) => !!user.artist.curriculum && user.artist.curriculum !== ""
 const socialAmmount = (user: User) => Object.keys(user.artist.contact).filter(contact => !!contact && contact !== "").length
