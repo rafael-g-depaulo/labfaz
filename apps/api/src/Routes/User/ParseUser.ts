@@ -2,6 +2,7 @@ import { badRequestError } from "Utils/endpointReturns"
 import { Req } from "Utils/request"
 import { RouteHandler } from "Utils/routeHandler"
 import userSchema, { UserInfo } from "./utils/userReqSchema"
+import { ValidationError } from "yup"
 
 export interface ParsedUser {
   user_info: UserInfo
@@ -16,5 +17,5 @@ export const ParseUser: RouteHandler<Req<UserInfo, ParsedUser>> = (req, res, nex
       next()
     })
     // if bad request, return
-    .catch(err => badRequestError(res, "Bad request", err))
+    .catch((err: ValidationError) => badRequestError(res, err.message, err))
 }
