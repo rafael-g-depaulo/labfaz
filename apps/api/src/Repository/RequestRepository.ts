@@ -39,9 +39,7 @@ export class RequestRepository extends Repository<Request> {
         student: user
       })
 
-      const request = await createRequest.save()
-
-      return request
+      return createRequest.save()
     } catch {
       return null
     }
