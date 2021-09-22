@@ -43,7 +43,6 @@ export const Step3: FC = () => {
             <TextInput
               name="artist.rg"
               label="RG"
-              inputMask="9.999.999"
               onChange={(ev: any) =>
                 setFieldValue('artist.rg', OnlyNumbers(ev.target.value))
               }
