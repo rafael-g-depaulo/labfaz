@@ -77,14 +77,14 @@ export const Card = styled.div`
 
   ${MobileSmall(css`
     max-width: 81%;
-    max-height: 247px;
+    max-height: 100%;
     min-width: 81%;
     min-height: 247px;
     `)}
 
 
   ${MobileLarge(css`
-    max-height: 460px;
+    max-height: 100%;
     max-width: 280px;
     min-width: 280px;
     min-height: 460px;
@@ -92,7 +92,7 @@ export const Card = styled.div`
 
   ${Mobile(css`
     max-width: 260px;
-    max-height: 260px;
+    max-height: 100%;
     min-width: 260px;
     min-height: 260px;
   `)}
@@ -225,6 +225,10 @@ export const CardBody = styled.div`
         font-size: var(--font-size-small);
         padding-top: 0;
       }
+
+      > p:last-child {
+        padding-bottom: .5rem;
+      }
     `)}
 
   ${MobileSmall(css`
@@ -240,6 +244,9 @@ export const CardBody = styled.div`
       font-size: var(--font-size-small);
       padding-top: 0;
     }
+    > p:last-child {
+        padding-bottom: .5rem;
+      }
   `)}
 `;
 
