@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { showAboutUs, showBlog, showEditProfile, showForgotPassword } from 'FeatureFlags'
+import { showAboutUs, showBlog, showCourses, showEditProfile, showForgotPassword } from 'FeatureFlags'
 
 const Home = lazy(() => import('./Home'))
 // const PeopleExample = lazy(() => import("./PeopleExample"))
@@ -65,7 +65,7 @@ const Routes: FC = () => {
         )}
 
         {/* classes router */}
-        { showBlog &&
+        { showCourses &&
         <Route path={["/classes"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
