@@ -1,15 +1,15 @@
-import React, {  FC, FormEvent } from 'react'
+import React, {  Dispatch, FC, FormEvent, SetStateAction } from 'react'
 import { SearchButton, SearchDiv, InputSearch } from './style'
 import { FiSearch } from 'react-icons/fi'
+import { UserSearchParams } from 'Api/UserSeatch'
 
 
 interface FormProps {
   handler: (e: FormEvent) => void,
-  setFunction: (name: string) => void,
-  name: string
+  setFunction: Dispatch<SetStateAction<UserSearchParams>>,
 }
 
-export const Form: FC<FormProps> = ({ handler, setFunction, name }) => {
+export const Form: FC<FormProps> = ({ handler, setFunction }) => {
 
   return (
     <>
@@ -17,11 +17,13 @@ export const Form: FC<FormProps> = ({ handler, setFunction, name }) => {
         <SearchDiv>
           <FiSearch size={15} />
           <InputSearch 
-            placeholder="Procurar profissional"
+            placeholder="Digite um nome ou profissão"
             type="text"
-            value={name}
             onChange={({target}) => {
-              setFunction(target.value)
+              setFunction(formData => {
+                formData['nameOrProfession'] = target.value
+                return formData
+              })
             }}
             />
           <SearchButton type="submit"> Procurar </SearchButton>

@@ -4,6 +4,10 @@ interface LabelProps {
   isFocused?: boolean
 }
 
+interface BadgeProps {
+  isChecked?: boolean
+}
+
 export const FormDiv = styled.div`
   margin-top: 5rem;
   height: 90vh;
@@ -65,5 +69,67 @@ export const Label = styled.div<LabelProps>`
 
   :active {
     background-color: rgba(252, 0, 97, 1);
+  }
+`
+
+
+export const Select = styled.select`
+  border: 1px solid gray;
+  background: transparent;
+  border-radius: 4px;
+  display: flex;
+  text-align: center;
+
+
+  ::placeholder {
+    color: white;
+    font-size: var(--font-size-short)
+  }
+`
+
+export const SelectDiv = styled.div`
+  display: flex;
+  margin-top: 4rem;
+  * {
+    color: white;
+  }
+
+  h4 {
+    margin-right: 2.6rem;
+  }
+`
+
+export const BadgeInput = styled.input`
+
+  opacity: 1;
+  float: left;
+  width: 18px;
+`
+
+export const BadgeDiv = styled.div<BadgeProps>`
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  margin: 0 1rem;
+  justify-content: center;
+
+  border: 1px solid gray;
+  border-radius: 8px;
+  background-color: ${props => props.isChecked ? 'rgba(252, 0, 97, 1)' : 'gray'};
+  min-width: 65px;
+  min-height: 20px;
+
+  p {
+    font-size: var(--font-size-short);
+    padding: 0 0.5em;
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
   }
 `

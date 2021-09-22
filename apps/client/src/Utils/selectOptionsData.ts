@@ -550,3 +550,73 @@ export const certificationOptionsPage2 = [
     value: 'NR 35 – Trabalho em Altura',
   },
 ]
+
+export const Areas = [
+  {
+    label: "Áudio",
+    value: "Áudio"
+  },
+  {
+    label: "Iluminação",
+    value: "Iluminação"
+  },
+  {
+    label: "Cenografia",
+    value: "Cenografia"
+  },
+  {
+    label: "Figurino",
+    value: "Figurino"
+  },
+  {
+    label: "Maquiagem/Visagismo",
+    value: "Maquiagem/Visagismo"
+  },
+  {
+    label: "Audiovisual",
+    value: "Audiovisual"
+  },
+  {
+    label: "Montagem de palco e infra-estrutura",
+    value: "Montagem de palco e infra-estrutura"
+  },
+  {
+    label: "Montagem de exposições",
+    value: "Montagem de exposições"
+  },
+  {
+    label: "Produção técnica",
+    value: "Produção técnica"
+  },
+  {
+    label: "Novas tecnologias",
+    value: "Novas tecnologias"
+  },
+  {
+    label: "Tecnologias Assistivas",
+    value: "Tecnologias Assistivas"
+  },
+  {
+    label: "Serviços Gerais",
+    value: "Serviços Gerais"
+  }
+]
+
+export const Experience = [
+  {
+    value: "drtOnly",
+    label: "DRT"
+  },
+  {
+    value: "cpnjOnly",
+    label: "CNPJ"
+  },
+  {
+    value: "ceacOnly",
+    label: "CEAC"
+  },
+  {
+    value: "meiOnly",
+    label: "MEI"
+  }
+]

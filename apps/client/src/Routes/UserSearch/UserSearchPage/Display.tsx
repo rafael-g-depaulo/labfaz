@@ -1,83 +1,71 @@
 import React, { FC, FormEvent, useState } from 'react'
 import Header from 'Components/Header';
 import Form from '../Form'
-import Option from "./Options"
+import SelectInput from '../Form/Select';
+import OptionGender from "../Form/Options/OptionGender"
+import OptionsExperience from "../Form/Options/OptionsExperience"
+import LGBTField from "../Form/Options/LgbtCheckbox"
 import FullPage from 'Components/FullPage';
+
+import { UserSearchParams, useUserSearch } from 'Api/UserSeatch';
 
 import { FormDiv, OptionsDiv } from './style'
 
-export interface FormData {
-  name: string,
-  cities: string,
-  areas: string,
-  services: string,
-  diversity: string,
-  experience: string
-}
-
-export type Fields = "cidades" | "areas" | "serviços" | "diversidade" | "experiência"
+export type Fields = "areas" | "serviços" | "diversidade" | "experiência"
 
 export const Display: FC = () => {
-
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const updatedFrom: FormData = {
-      ...formData,
-      name: name,
-    }
-    
-    console.log(updatedFrom)
+  }
+  
+  const [formData, setFormData] = useState<UserSearchParams>({
+    nameOrProfession: "",
+    city: "",
+    area: "",
+    nonMenOnly: false,
+    LBTQOnly: false,
+    drtOnly: false,
+    cpnjOnly: false,
+    ceacOnly: false,
+    meiOnly: false
+  })
+  
+  const { isLoading, error, users } = useUserSearch(formData)
+
+   // TODO: pegar esses dados do back
+  if(isLoading) {
+    console.log("Carregante")
   }
 
-  const [name, setName] = useState("")
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    cities: "",
-    areas: "",
-    services: "",
-    diversity: "",
-    experience: "",
-  })
-
-  // Todo pegar esses dados do back
-  const options = ["CEILANDIA", "TAGUATINGA", "PLANO PILOTO", "ESTRUTURAL", "RECANTO DAS EMAS", 'LAGO NORTE']
-  const areas = ["AUDIO", "PRODUÇAO", "ILUMINAÇÃO", "ELETRICA"]
-  const servicos = ["CABEAMENTO DE AUDIO", "SAC", "PLANEJAMENTO"]
-  const experiencias = ["DRT", "CEAC", "CNPJ", "MEI", "NR-1"]
-
+  if(users) {
+    console.log("usuários", users)
+  }
   return (
     <FullPage>
       <Header />
       <FormDiv>
         <Form 
-          name={name} 
-          setFunction={setName}
+          setFunction={setFormData}
           handler={handleSubmit}/>
           <OptionsDiv>
-            <Option 
-              name="cidades" 
-              options={options}
-              setFuntion={setFormData}
-              data={formData}
-              />
-            <Option 
-              name="areas" 
-              options={areas}
-              setFuntion={setFormData}
-              data={formData}
-              />
-            <Option 
-              name="serviços" 
-              options={servicos}
-              setFuntion={setFormData}
-              data={formData}
-              />
-            <Option 
-              name="experiência" 
-              options={experiencias}
-              setFuntion={setFormData}
-              data={formData}
-              />            
+            <SelectInput
+              label="cidade"
+              setInput={setFormData}
+            />
+            <SelectInput
+              label="area"
+              setInput={setFormData}
+            />
+            <OptionGender 
+              setFunction={setFormData}
+            />
+            <LGBTField 
+              setFormData={setFormData}
+            />
+            <OptionsExperience 
+              setFunction={setFormData}
+            />
           </OptionsDiv>
       </FormDiv>
     </FullPage>
