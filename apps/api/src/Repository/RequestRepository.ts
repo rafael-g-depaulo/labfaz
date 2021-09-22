@@ -40,13 +40,8 @@ export class RequestRepository extends Repository<Request> {
       })
 
       const request = await createRequest.save()
-      course.requests ??= []
-      user.courses ??= []
-      course.requests.push(request)
-      user.courses.push(request)
 
-      await Promise.all([user.save(), course.save()])
-      return createRequest
+      return request
     } catch {
       return null
     }
