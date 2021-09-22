@@ -10,20 +10,18 @@ interface BadgeProps {
 
 export const FormDiv = styled.div`
   margin-top: 5rem;
-  height: 90vh;
-  width: 100vw;
+  max-height: 90vh;
+  max-width: 100vw;
   background-color: black;
-
-  form {
-    margin-left: 6.5rem;
-  }
 `
 
 export const OptionsDiv = styled.div`
-  max-height: 220px;
-  max-width: 70vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
+  > div:nth-child(2) {
+    margin-top: 1rem;
+  }
 `
 
 export const OptionDiv = styled.div`
@@ -37,6 +35,8 @@ export const OptionDiv = styled.div`
   h4 {
     margin-right: 2.6rem;
   }
+
+
 `
 
 export const Label = styled.div<LabelProps>`
@@ -110,7 +110,7 @@ export const BadgeDiv = styled.div<BadgeProps>`
   display: flex;
   cursor: pointer;
   position: relative;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   justify-content: center;
 
   border: 1px solid gray;
