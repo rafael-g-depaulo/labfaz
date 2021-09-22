@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC } from "react";
 
 import Display from "./Display"
 import { useUsersListOnce } from "Api/UserSeatch"
@@ -10,4 +10,4 @@ export const UserSearchPage: FC = () => {
   )
 }
 
-export default UserSearchPage
+export default UserSearchPage;

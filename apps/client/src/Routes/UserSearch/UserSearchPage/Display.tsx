@@ -6,6 +6,8 @@ import OptionGender from "../Form/Options/OptionGender"
 import OptionsExperience from "../Form/Options/OptionsExperience"
 import LGBTField from "../Form/Options/LgbtCheckbox"
 import FullPage from 'Components/FullPage';
+import UserCard from "../UserCard";
+import Wireframe from 'Components/Wireframe';
 
 import { UserSearchParams, useUserSearch } from 'Api/UserSeatch';
 
@@ -42,8 +44,7 @@ export const Display: FC = () => {
     console.log("usuários", users)
   }
   return (
-    <FullPage>
-      <Header />
+    <Wireframe>
       <FormDiv>
         <Form 
           setFunction={setFormData}
@@ -68,7 +69,8 @@ export const Display: FC = () => {
             />
           </OptionsDiv>
       </FormDiv>
-    </FullPage>
+      <UserCard />
+    </Wireframe>
   )
 }
 
