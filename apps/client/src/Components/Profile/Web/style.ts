@@ -378,12 +378,23 @@ export const Content = styled.section`
     ${DesktopSmall(css`
       height: 20rem;
     `)}
+    
+    li {
+      margin-bottom: 0.9rem;
+      /* display: flex; */
+      /* align-items: center; */
+      /* padding-left: 2.5rem; */
+      text-decoration: none;
+      list-style-type: none;
 
-    span {
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      padding-left: 2.5rem;
+      width: fit-content;
+      height: fit-content;
+      
+      span {
+        padding: 0;
+        margin: 0;
+        color: #fafafa;
+      }
 
       svg {
         margin-right: 0.83rem;

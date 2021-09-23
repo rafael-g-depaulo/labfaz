@@ -1,17 +1,10 @@
 import React, { FC } from 'react'
-import { MdEmail } from 'react-icons/md'
-import { SiTiktok } from 'react-icons/si'
 import { IoMdCloudDownload } from 'react-icons/io'
 import { GoGear } from 'react-icons/go'
 
 import { User } from 'Context/LoggedUserToken'
 
 import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaTwitterSquare,
-  FaYoutubeSquare,
-  FaLinkedin,
   FaCheckCircle,
   FaCheckSquare,
 } from 'react-icons/fa'
@@ -190,54 +183,7 @@ const Web: FC<ProfileProps> = ({ data, personalProfilePage }) => {
             <ContentTitle level={1}>Contato</ContentTitle>
 
             <div className="socialContacts">
-              {data.email && (
-                <span>
-                  <MdEmail />
-                  {data.email}
-                </span>
-              )}
-
-              {data.artist.contact.facebook && (
-                <span>
-                  <FaFacebookSquare />
-                  {data.artist.contact.facebook}
-                </span>
-              )}
-
-              {data.artist.contact.instagram && (
-                <span>
-                  <FaInstagramSquare />
-                  {data.artist.contact.instagram}
-                </span>
-              )}
-
-              {data.artist.contact.twitter && (
-                <span>
-                  <FaTwitterSquare />
-                  {data.artist.contact.twitter}
-                </span>
-              )}
-
-              {data.artist.contact.tiktok && (
-                <span>
-                  <SiTiktok />
-                  {data.artist.contact.tiktok}
-                </span>
-              )}
-
-              {data.artist.contact.youtube && (
-                <span>
-                  <FaYoutubeSquare />
-                  {data.artist.contact.youtube}
-                </span>
-              )}
-
-              {data.artist.contact.youtube && (
-                <span>
-                  <FaLinkedin />
-                  {data.artist.contact.linkedin}
-                </span>
-              )}
+              <SocialMediaLinks user={data} ContainerElement="li" />
             </div>
           </div>
         </Content>
