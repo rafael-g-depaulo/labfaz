@@ -225,25 +225,25 @@ export class UserRepository extends Repository<User> {
       }
 
       if (artist.contact) {
-        if (artist.contact.facebook) {
+        if (artist.contact.facebook || artist.contact.facebook === "") {
           user.artist.contact.facebook = artist.contact.facebook;
         }
-        if (artist.contact.instagram) {
+        if (artist.contact.instagram || artist.contact.instagram === "") {
           user.artist.contact.instagram = artist.contact.instagram;
         }
-        if (artist.contact.linkedin) {
+        if (artist.contact.linkedin || artist.contact.linkedin === "") {
           user.artist.contact.linkedin = artist.contact.linkedin;
         }
-        if (artist.contact.tiktok) {
+        if (artist.contact.tiktok || artist.contact.tiktok === "") {
           user.artist.contact.tiktok = artist.contact.tiktok;
         }
-        if (artist.contact.twitter) {
+        if (artist.contact.twitter || artist.contact.twitter === "") {
           user.artist.contact.twitter = artist.contact.twitter;
         }
-        if (artist.contact.whatsapp) {
+        if (artist.contact.whatsapp || artist.contact.whatsapp === "") {
           user.artist.contact.whatsapp = artist.contact.whatsapp;
         }
-        if (artist.contact.youtube) {
+        if (artist.contact.youtube || artist.contact.youtube === "") {
           user.artist.contact.youtube = artist.contact.youtube;
         }
       }
@@ -252,7 +252,7 @@ export class UserRepository extends Repository<User> {
         if (artist.technical.areas && artist.technical.areas.length == 1) {
           if (
             artist.technical.areas[0].certificate &&
-            artist.technical.areas[0].certificate.length >= 1
+            artist.technical.areas[0].certificate.length >= 0
           ) {
             //Não ta salvando aqui estamo acreditando irá salvar por cascade
             user.artist.technical.area[0].certificate = artist.technical.areas[0].certificate.map(
@@ -283,7 +283,7 @@ export class UserRepository extends Repository<User> {
           }
         }
 
-        if (artist.technical.idiom && artist.technical.idiom.length >= 1) {
+        if (artist.technical.idiom && artist.technical.idiom.length >= 0) {
           user.artist.technical.idiom = artist.technical.idiom.map((idiom) => {
             let newIdiom = new Idiom();
             if (idiom.name) {
@@ -298,21 +298,23 @@ export class UserRepository extends Repository<User> {
           user.artist.technical.formation = artist.technical.formation;
         }
 
-        if (artist.technical.profession) {
+        if (artist.technical.profession || artist.technical.profession === "") {
           user.artist.technical.profession = artist.technical.profession;
         }
 
-        if (artist.technical.is_ceac) {
+        if (artist.technical.is_ceac !== undefined) {
           user.artist.technical.is_ceac = artist.technical.is_ceac;
         }
-        if (artist.technical.ceac) {
+        if (artist.technical.ceac || artist.technical.ceac === "") {
           user.artist.technical.ceac = artist.technical.ceac;
         }
 
-        if (artist.technical.is_cnpj) {
+        if (artist.technical.is_cnpj !== undefined) {
+
           user.artist.technical.is_cnpj = artist.technical.is_cnpj;
         }
-        if (artist.technical.cnpj) {
+        
+        if (artist.technical.cnpj || artist.technical.cnpj === "") {
           user.artist.technical.cnpj = artist.technical.cnpj;
         }
         if (artist.technical.name_enterprise) {
@@ -324,15 +326,15 @@ export class UserRepository extends Repository<User> {
           user.artist.technical.cnpj_type = artist.technical.cnpj_type;
         }
 
-        if (artist.technical.is_drt) {
+        if (artist.technical.is_drt !== undefined) {
           user.artist.technical.is_drt = artist.technical.is_drt;
-          if (artist.technical.drt) {
+          if (artist.technical.drt || artist.technical.drt === "") {
             user.artist.technical.drt = artist.technical.drt;
           }
         }
       }
 
-      if (artist.artistic_name) {
+      if (artist.artistic_name || artist.artistic_name === "") {
         user.artist.artistic_name = artist.artistic_name;
       }
 
@@ -376,7 +378,7 @@ export class UserRepository extends Repository<User> {
         user.artist.show_name = artist.show_name;
       }
 
-      if (artist.social_name) {
+      if (artist.social_name || artist.social_name === "") {
         user.artist.social_name = artist.social_name;
       }
     }
