@@ -9,6 +9,10 @@ import RequestRepository from "Repository/RequestRepository"
 
 import { Inscricoes } from "../components/subscription"
 
+type Conector = {
+  conector?: string[]
+}
+
 const subscriptionResource = (conn: Connection): ResourceWithOptions => {
 
   const requestRepo = conn.getCustomRepository(RequestRepository)
@@ -24,6 +28,7 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
           handler: async (request, _response, context) => {
             const { currentAdmin, record } = context
             const status = request.payload!.status
+            
 
             if (!record) return {
               record: record!.toJSON(currentAdmin),
@@ -50,10 +55,19 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
                 message: "failed to update record"
               }
             }
+            
+            let { conector } = record.selectParams("conector") as Conector
+            if(!conector) {
+              conector = []
+            }
+
+            conector.push(currentAdmin!.email)
+            console.log(conector)
 
             try {
               record.update({
-                status
+                status,
+                conector
               })
               record.save()
             } catch (e) {
@@ -157,7 +171,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
                   status: r.status,
                   student: {
                     email: r.student.email
-                  }
+                  },
+                  conector: r.conector
                 })
               })
               return subscriptions

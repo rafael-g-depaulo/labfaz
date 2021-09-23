@@ -10,6 +10,9 @@ import {
   TableCell,
   TableBody,
   H3,
+  DropDown,
+  DropDownItem,
+  DropDownMenu
 } from '@adminjs/design-system'
 import { ActionProps, useRecord, ApiClient } from 'adminjs'
 import { Status, Actions } from "./style"
@@ -20,7 +23,8 @@ interface student {
 export interface Inscricoes {
   id: string,
   status: string,
-  student: student
+  student: student,
+  conector?: string[]
 }
 
 const Subscription: FC<ActionProps> = (props) => {
@@ -156,6 +160,7 @@ const Subscription: FC<ActionProps> = (props) => {
         <TableBody>
           {anwseredSubs.length !== 0 ? 
             anwseredSubs.map(subscription => {
+              console.log(subscription.conector)
                 return (
                   <TableRow>
                     <TableCell>
@@ -173,6 +178,25 @@ const Subscription: FC<ActionProps> = (props) => {
                       >
                         {subscription.status}
                       </Text>
+                    </TableCell>
+                    <TableCell>
+                      <DropDown>
+                          <Button
+                            size="sm"
+                          >
+                            Conectores
+                          </Button>
+                          <DropDownMenu>
+                            <DropDownItem
+                              colorVariant="info"
+                              size="sm"
+                            >
+                              <Text
+                                variant="sm"
+                              > {subscription.conector && subscription.conector} </Text>
+                            </DropDownItem>
+                          </DropDownMenu>
+                        </DropDown>
                     </TableCell>
                     <TableCell>
                       <Actions>

@@ -5,7 +5,8 @@ import {
   ManyToOne,
   Entity,
   BaseEntity,
-  BeforeInsert
+  BeforeInsert,
+  UpdateDateColumn
 } from 'typeorm'
 import Course from "./Courses"
 import User from "./User"
@@ -23,6 +24,12 @@ export class Request extends BaseEntity {
 
   @ManyToOne(() => User, user => user.courses, { eager: true })
   student: User
+
+  @UpdateDateColumn()
+  updated: Date
+
+  @Column("text" ,{ array: true, nullable: true, default: [""]})
+  conector: string[]
 
   @BeforeInsert()
   addId() {
