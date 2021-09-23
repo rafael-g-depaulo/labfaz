@@ -55,6 +55,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
               record.update({
                 status
               })
+              console.log("ON SUBSCRIPTION RESOURCE ******")
+              console.log(record)
               record.save()
             } catch (e) {
               return {
@@ -118,6 +120,7 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
               }
             })
             .then(req => {
+              console.log("GET SUBSCRIPTION RESOURCE", req)
               const subscriptions = [] as Inscricoes[]
               req.map(r => {
                 subscriptions.push({
@@ -141,6 +144,7 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
           component: false,
           handler: async (request, response) => {
             const courseId = request.query?.courseId
+            console.log("GET REQUESTS", courseId)
 
             if(!courseId) return response
             const requests = await requestRepo.find({

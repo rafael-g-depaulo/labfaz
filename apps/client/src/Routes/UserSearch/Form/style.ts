@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const SearchDiv = styled.div`
   max-width: fit-content;
   max-height: 44px;
-  min-height: 40px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   background-color: white;
@@ -21,6 +21,7 @@ export const SearchButton = styled.button`
   background: transparent;
   border: none;
   border-left: 1px solid;
+  padding: 0 0.9rem;
 `
 
 export const InputSearch = styled.input`

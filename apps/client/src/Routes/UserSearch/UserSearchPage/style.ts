@@ -13,6 +13,7 @@ export const FormDiv = styled.div`
   max-height: 90vh;
   max-width: 100vw;
   background-color: black;
+  margin-left: 6.4rem;
 `
 
 export const OptionsDiv = styled.div`
@@ -132,4 +133,10 @@ export const BadgeDiv = styled.div<BadgeProps>`
     width: 100%;
     cursor: pointer;
   }
+`
+
+export const Presentation = styled.div`
+  display: flex;
+  min-height: 30vh;
+  min-width: 100vw;
 `

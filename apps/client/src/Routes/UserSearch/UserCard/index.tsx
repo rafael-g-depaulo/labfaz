@@ -10,14 +10,37 @@ import {
 } from "./styles";
 import Label from "Components/Label";
 
-export const UserCard: FC = () => {
+interface UserCardData {
+  data: { 
+    id: string,
+    isVerified: boolean,
+    name: string,
+    area: {
+      name: string
+    }[],
+    photo: string
+  }
+}
+
+export const UserCard: FC<UserCardData> = ({data}) => {
+  const { id, isVerified, name, area, photo } = data
   return (
     <Container>
       <TextWrapper>
-        <CardTitle>Claudia Maria</CardTitle>
+        <CardTitle> {name} </CardTitle>
         <LabelWrapper>
-          <Label name="audiovisual" image={undefined} />
-          <Label name="formação tecnica" image={undefined} />
+          {
+            area.map(a => {
+              return (
+                <Label 
+                  name={a.name}
+                  image={undefined}
+              />
+              )
+            })
+          }
+          {/* <Label name="audiovisual" image={undefined} />
+          <Label name="formação tecnica" image={undefined} /> */}
         </LabelWrapper>
         <Description>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -27,7 +50,7 @@ export const UserCard: FC = () => {
         </Description>
         <Button href="">visualizar perfil</Button>
       </TextWrapper>
-      <Image src="https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+      <Image src={photo} />
     </Container>
   );
 };

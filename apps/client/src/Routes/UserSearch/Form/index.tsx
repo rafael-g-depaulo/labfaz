@@ -1,19 +1,16 @@
-import React, {  Dispatch, FC, FormEvent, SetStateAction } from 'react'
+import React, {  Dispatch, FC, SetStateAction } from 'react'
 import { SearchButton, SearchDiv, InputSearch } from './style'
 import { FiSearch } from 'react-icons/fi'
 import { UserSearchParams } from 'Api/UserSeatch'
-
-
 interface FormProps {
-  handler: (e: FormEvent) => void,
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
 }
 
-export const Form: FC<FormProps> = ({ handler, setFunction }) => {
+export const Form: FC<FormProps> = ({ setFunction }) => {
 
   return (
     <>
-      <form onSubmit={handler}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <SearchDiv>
           <FiSearch size={15} />
           <InputSearch 

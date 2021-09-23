@@ -43,10 +43,10 @@ export const SubscribeToCourse: (
 
   if (!course.available) return badRequestError(res, "Não pode se inscrever em um curso que não está mais disponível")
   if (!course.has_subscription) return badRequestError(res, "Essa atividade não aceita pedidos de inscrição")
-
+  
   return RequestRepo.createRequest(user, course)
     .then(() => createdSuccessfully(res, "Request Created"))
     .catch(() => unidentifiedError(res, "Something went wrong"))
-}
+  }
 
 export default SubscribeToCourse

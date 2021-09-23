@@ -5,6 +5,7 @@ import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
 
 import { UserSearchParams } from 'Api/UserSeatch'
+import { LGBTCheckbox } from '../style'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
 }
@@ -26,7 +27,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
           value={"Todes"}
           key="todes"
           defaultChecked
-          onClick={(e) =>  setFunction(formData => {
+          onChange={(e) =>  setFunction(formData => {
             formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
             return formData
           })
@@ -43,12 +44,28 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
           name="gender" 
           value={"Não-homem"}
           key="nao_homem"
-          onClick={(e) => setFunction(formData => {
+          onChange={(e) => setFunction(formData => {
             formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
             return formData
           })}
         />
       </BadgeDiv>
+      
+      <BadgeDiv>
+        <Text> LGBTQ+ </Text>
+        <BadgeInput 
+          type="checkbox"
+          onChange={({ target }) => {
+            const value = target.checked
+            console.log(value)
+
+            setFunction(formData => {
+              formData['LBTQOnly'] = value
+              return formData
+            })
+          }}
+          />
+        </BadgeDiv>
 
     </OptionDiv>
   )

@@ -1,11 +1,8 @@
-import React, { FC, FormEvent, useState } from 'react'
-import Header from 'Components/Header';
+import React, { FC, useState } from 'react'
 import Form from '../Form'
 import SelectInput from '../Form/Select';
 import OptionGender from "../Form/Options/OptionGender"
 import OptionsExperience from "../Form/Options/OptionsExperience"
-import LGBTField from "../Form/Options/LgbtCheckbox"
-import FullPage from 'Components/FullPage';
 import UserCard from "../UserCard";
 import Wireframe from 'Components/Wireframe';
 
@@ -16,10 +13,6 @@ import { FormDiv, OptionsDiv } from './style'
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência"
 
 export const Display: FC = () => {
-  
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-  }
   
   const [formData, setFormData] = useState<UserSearchParams>({
     nameOrProfession: "",
@@ -43,12 +36,13 @@ export const Display: FC = () => {
   if(users) {
     console.log("usuários", users)
   }
+
   return (
     <Wireframe>
       <FormDiv>
         <Form 
           setFunction={setFormData}
-          handler={handleSubmit}/>
+          />
           <OptionsDiv>
             <SelectInput
               label="cidade"
@@ -61,15 +55,27 @@ export const Display: FC = () => {
             <OptionGender 
               setFunction={setFormData}
             />
-            <LGBTField 
-              setFormData={setFormData}
-            />
             <OptionsExperience 
               setFunction={setFormData}
             />
           </OptionsDiv>
       </FormDiv>
-      <UserCard />
+      {
+        users && users.map(user => {
+          const { id, isVerified } = user
+          const name = user.artist.show_name
+          const area = user.artist.technical.area
+          const photo = user.artist.photo_url
+          const data = {
+            id,
+            isVerified,
+            name,
+            area,
+            photo
+          }
+          return <UserCard data={data}/>
+        })
+      }
     </Wireframe>
   )
 }
