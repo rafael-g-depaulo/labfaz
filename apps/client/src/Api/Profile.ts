@@ -1,4 +1,5 @@
-import { api } from "Api"
+import { api, ErrorObject } from "Api"
+import { AxiosError } from "axios"
 import { User } from "Context/LoggedUserToken"
 import useFetchApi from "Hooks/useFetchApi"
 
@@ -19,7 +20,7 @@ export const fetchUser = (id: string, token: string) => api
   .then(({ user }) => user)
 
 export const useUser = (id: string, token: string) => 
-  useFetchApi<User>(`user/${id}`, () => fetchUser(id, token))
+  useFetchApi<User, AxiosError<ErrorObject>>(`user/${id}`, () => fetchUser(id, token))
 
 export const fetchCurrentUser = (token: string) => api
   .get<ApiUser>(`user/me`, {
@@ -30,4 +31,4 @@ export const fetchCurrentUser = (token: string) => api
   .then(({ data }) => data.data)
   .then(({ user }) => user)
 
-export const useCurrentUser = (token: string) => useFetchApi<User>(`user/me`, () => fetchCurrentUser(token))
+export const useCurrentUser = (token: string) => useFetchApi<User, AxiosError<ErrorObject>>(`user/me`, () => fetchCurrentUser(token))

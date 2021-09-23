@@ -1,7 +1,7 @@
 import UserRepository from "Repository/UserRepository";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
-import { createdSuccessfully, unauthenticatedError, unauthorizedError } from "Utils/endpointReturns";
+import { fetchedSuccessfully, unauthenticatedError, unauthorizedError } from "Utils/endpointReturns";
 import { UserJWTPayload } from "Middlewares/ensureAuthenticated";
 
 interface ShowCurrentUserInterface {
@@ -23,7 +23,7 @@ export const ShowCurrentUser: (
 
   const { password: _, ...userWithoutPassword } = user
 
-  return createdSuccessfully(res, { user: userWithoutPassword })
+  return fetchedSuccessfully(res, { user: userWithoutPassword })
 };
 
 export default ShowCurrentUser;

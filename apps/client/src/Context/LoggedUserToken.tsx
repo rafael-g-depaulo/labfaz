@@ -1,6 +1,7 @@
 import React, { FC, createContext, useMemo, useContext } from "react"
 
 import useLocalStorage from 'Hooks/useLocalStorage'
+import { useCurrentUser } from "Api/Profile"
 
 export interface IAddress {
   cep: string
@@ -91,13 +92,13 @@ export interface User {
 }
 
 type notLoggedIn = {
-  setToken: (t: string) => void
+  setToken: (t?: string) => void
   token: undefined
   isLoggedIn: false
 }
 
 type loggedIn = {
-  setToken: (t: string) => void
+  setToken: (t?: string) => void
   token: string
   isLoggedIn: true
 }
@@ -111,17 +112,38 @@ export const CurrentUserProvider: FC = ({
 }) => {
   const [ token, setToken ] = useLocalStorage<string | undefined>('token', undefined)
 
-  const currentUserValue = useMemo<CurrentUserToken>(() => ({
-    token,
-    setToken,
-    isLoggedIn: !!token,
-  } as CurrentUserToken), [token, setToken])
+  const currentUserValue = useMemo<CurrentUserToken>(() => {
+    // console.log("updating")
+    return ({
+      token,
+      setToken,
+      isLoggedIn: !!token,
+    } as CurrentUserToken)
+  }, [token, setToken])
+
 
   if (process.env.NODE_ENV === 'development') console.log("user context.", currentUserValue)
 
   return (
     <CurrentUserTokenContext.Provider value={currentUserValue}>
-      {children}
+      { !token ? children :
+        <UserUpdateChecker token={token}>
+          {children}
+        </UserUpdateChecker>
+      }
     </CurrentUserTokenContext.Provider>
   )
+}
+
+export const UserUpdateChecker: FC<{ token: string }> = ({ token: contextToken, children }) => {
+  // call API
+  const currentlyLoggedUser = useCurrentUser(contextToken)
+  const { setToken } = useCurrentUserToken()
+
+  if (currentlyLoggedUser.error?.response?.data.code === 401) {
+    // console.log("user unlogged. removing token")
+    setToken(undefined)
+  } 
+
+  return (<>{children}</>)
 }
