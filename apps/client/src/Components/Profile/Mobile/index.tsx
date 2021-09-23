@@ -104,7 +104,7 @@ const Mobile: FC<ProfileProps> = ({ data, PersonalProfilePage }) => {
                 ANOS
               </li>
               {data.artist.technical.cnpj_type !== 'Nenhum' && (
-                <li>{data.artist.technical.cnpj_type}</li>
+                <li>{data.artist.technical.cnpj_type.toUpperCase()}</li>
               )}
 
               <li>
