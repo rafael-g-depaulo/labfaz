@@ -9,9 +9,6 @@ import RequestRepository from "Repository/RequestRepository"
 
 import { Inscricoes } from "../components/subscription"
 
-type Conector = {
-  conector?: string[]
-}
 
 const subscriptionResource = (conn: Connection): ResourceWithOptions => {
 
@@ -56,18 +53,13 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
               }
             }
             
-            let { conector } = record.selectParams("conector") as Conector
-            if(!conector) {
-              conector = []
-            }
-
-            conector.push(currentAdmin!.email)
-            console.log(conector)
+            // const { conector } = record.selectParams("conector") as Conector
+            
 
             try {
               record.update({
                 status,
-                conector
+                conector: currentAdmin!.email
               })
               console.log("ON SUBSCRIPTION RESOURCE ******")
               console.log(record)
@@ -142,7 +134,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
                   status: r.status,
                   student: {
                     email: r.student.email
-                  }
+                  },
+                  updated: r.updated.toISOString()
                 })
               })
               return subscriptions
@@ -176,7 +169,8 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
                   student: {
                     email: r.student.email
                   },
-                  conector: r.conector
+                  conector: r.conector,
+                  updated: r.updated.toISOString()
                 })
               })
               return subscriptions

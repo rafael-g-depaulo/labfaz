@@ -28,8 +28,8 @@ export class Request extends BaseEntity {
   @UpdateDateColumn()
   updated: Date
 
-  @Column("text" ,{ array: true, nullable: true, default: [""]})
-  conector: string[]
+  @Column({ nullable: true, default: ""})
+  conector: string
 
   @BeforeInsert()
   addId() {

@@ -24,7 +24,8 @@ export interface Inscricoes {
   id: string,
   status: string,
   student: student,
-  conector?: string[]
+  conector?: string,
+  updated: string
 }
 
 const Subscription: FC<ActionProps> = (props) => {
@@ -100,6 +101,7 @@ const Subscription: FC<ActionProps> = (props) => {
 
   const treatedDate = new Date(date);
 
+
   return (
     <>
       <Header>
@@ -161,7 +163,8 @@ const Subscription: FC<ActionProps> = (props) => {
         <TableBody>
           {anwseredSubs.length !== 0 ? 
             anwseredSubs.map(subscription => {
-              console.log(subscription.conector)
+              const date = `${subscription.updated.substring(8,10)}/${subscription.updated.substring(5,7)}/${subscription.updated.substring(0,4)}`
+
                 return (
                   <TableRow>
                     <TableCell>
@@ -185,16 +188,24 @@ const Subscription: FC<ActionProps> = (props) => {
                           <Button
                             size="sm"
                           >
-                            Conectores
+                            Responsável
                           </Button>
                           <DropDownMenu>
                             <DropDownItem
-                              colorVariant="info"
+                              colorVariant="success"
+                              backgroundColor="#FFFFFF "
                               size="sm"
                             >
                               <Text
                                 variant="sm"
+                                color="black"
                               > {subscription.conector && subscription.conector} </Text>
+                              <Text
+                                color="black"
+                              >
+                                : {" "}
+                                {date}
+                              </Text>
                             </DropDownItem>
                           </DropDownMenu>
                         </DropDown>
