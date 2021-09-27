@@ -25,9 +25,9 @@ export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
       </Title>
       <Select
         onChange={({target}) => {
-          console.log(target.value)
           setInput(formData => {
             formData[key] = target.value
+            formData['showNothing'] = false
             return formData
           })
         } }

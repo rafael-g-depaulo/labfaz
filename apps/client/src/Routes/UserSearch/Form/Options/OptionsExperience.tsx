@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, SetStateAction, useState } from 'react'
-import { OptionDiv, BadgeInput, BadgeDiv } from "../../UserSearchPage/style"
+import { OptionDiv, BadgeInput, BadgeDiv, OptionWrapper } from "../../UserSearchPage/style"
 
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
@@ -22,30 +22,32 @@ export const OptionsExperience: FC<OptionsProps> = ({ setFunction }) => {
       <Title 
         level={4}
       >  EXPERIÊNCIA </Title>
-      {
-        Experience.map(option => (
-          <BadgeDiv 
-            isChecked={isChecked}
-          >
-            <Text> {option.label} </Text>
-            <BadgeInput 
-              type="checkbox" 
-              name="experience" 
-              value={option.value}
-              key="DRT"
-              onChange={(e) =>{
-                setFunction(formData => {
-                  const key = option.value as SearchKeys
-                  formData[key] = !formData[key]
-                  setIsChecked(formData[key])
-                  return formData
-                })
-                console.log(e.currentTarget)
-              }}
-            />
-        </BadgeDiv>
-        ))
-      }
+      <OptionWrapper>
+        {
+          Experience.map(option => (
+            <BadgeDiv 
+              isChecked={isChecked}
+            >
+              <Text> {option.label} </Text>
+              <BadgeInput 
+                type="checkbox" 
+                name="experience" 
+                value={option.value}
+                key="DRT"
+                onChange={() =>{
+                  setFunction(formData => {
+                    const key = option.value as SearchKeys
+                    formData[key] = !formData[key]
+                    formData['showNothing'] = false
+                    setIsChecked(formData[key])
+                    return formData
+                  })
+                }}
+              />
+          </BadgeDiv>
+          ))
+        }
+      </OptionWrapper>
     </OptionDiv>
   )
 }

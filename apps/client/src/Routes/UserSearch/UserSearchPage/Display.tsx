@@ -23,10 +23,11 @@ export const Display: FC = () => {
     drtOnly: false,
     cpnjOnly: false,
     ceacOnly: false,
-    meiOnly: false
+    meiOnly: false,
+    showNothing: true
   })
   
-  const { isLoading, error, users } = useUserSearch(formData)
+  const { isLoading, users } = useUserSearch(formData)
 
    // TODO: pegar esses dados do back
   if(isLoading) {
