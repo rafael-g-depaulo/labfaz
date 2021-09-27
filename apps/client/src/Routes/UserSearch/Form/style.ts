@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { Mobile } from "Utils/breakpoints"
 
 
 export const SearchDiv = styled.div`
@@ -13,6 +14,10 @@ export const SearchDiv = styled.div`
   svg {
     margin-left: 1rem;
   }
+
+  ${Mobile(css`
+    max-width: 90vw;
+  `)}
 `
 
 export const SearchButton = styled.button`
@@ -40,6 +45,10 @@ export const InputSearch = styled.input`
   :focus {
     outline: none
   }
+
+  ${Mobile(css`
+    margin: 0;
+  `)}
 `
 
 export const LGBTCheckbox = styled.input`

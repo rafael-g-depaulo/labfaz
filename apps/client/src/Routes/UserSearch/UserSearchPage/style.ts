@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Mobile } from 'Utils/breakpoints'
 
 interface LabelProps {
   isFocused?: boolean
@@ -14,6 +15,13 @@ export const FormDiv = styled.div`
   max-width: 100vw;
   background-color: black;
   margin-left: 6.4rem;
+
+  ${Mobile(css`
+    margin: 0;
+    padding-top: 1em;
+    padding-left: 1em;
+    margin-bottom: 2rem;
+  `)}
 `
 
 export const OptionsDiv = styled.div`
@@ -23,6 +31,16 @@ export const OptionsDiv = styled.div`
   > div:nth-child(2) {
     margin-top: 1rem;
   }
+
+  ${Mobile(css`
+    > div:first-child {
+      margin-top: 2rem;
+    } 
+  `)}
+`
+
+export const OptionWrapper = styled.div`
+  display: flex;
 `
 
 export const OptionDiv = styled.div`
@@ -37,7 +55,11 @@ export const OptionDiv = styled.div`
     margin-right: 2.6rem;
   }
 
-
+  ${Mobile(css`
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-around;
+`)}
 `
 
 export const Label = styled.div<LabelProps>`
@@ -98,6 +120,12 @@ export const SelectDiv = styled.div`
   h4 {
     margin-right: 2.6rem;
   }
+
+  ${Mobile(css`
+      flex-direction: column;
+      max-width: 80%;
+      margin-bottom: 1em;
+  `)}
 `
 
 export const BadgeInput = styled.input`
@@ -111,7 +139,7 @@ export const BadgeDiv = styled.div<BadgeProps>`
   display: flex;
   cursor: pointer;
   position: relative;
-  margin: 1rem 1rem;
+  margin: 1rem;
   justify-content: center;
 
   border: 1px solid gray;
@@ -133,6 +161,10 @@ export const BadgeDiv = styled.div<BadgeProps>`
     width: 100%;
     cursor: pointer;
   }
+
+  ${Mobile(css`
+    margin: 0.5rem
+  `)}
 `
 
 export const Presentation = styled.div`
