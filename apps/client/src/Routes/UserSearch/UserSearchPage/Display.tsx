@@ -9,6 +9,8 @@ import Wireframe from 'Components/Wireframe';
 import { UserSearchParams, useUserSearch } from 'Api/UserSeatch';
 
 import { FormDiv, OptionsDiv } from './style'
+import Loading from 'Components/Loading';
+import useTimeout from 'Hooks/useTimeout';
 
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência"
 
@@ -28,15 +30,14 @@ export const Display: FC = () => {
   })
   
   const { isLoading, users } = useUserSearch(formData)
+  const { start, stop, done } = useTimeout(1000)
 
-   // TODO: pegar esses dados do back
   if(isLoading) {
-    console.log("Carregante")
+    return <Loading />
   }
 
-  if(users) {
-    console.log("usuários", users)
-  }
+  console.log(users)
+  console.log(done)
 
   return (
     <Wireframe>
@@ -48,21 +49,25 @@ export const Display: FC = () => {
             <SelectInput
               label="cidade"
               setInput={setFormData}
+              start={start}
             />
             <SelectInput
               label="area"
               setInput={setFormData}
+              start={start}
             />
             <OptionGender 
               setFunction={setFormData}
+              start={start}
             />
             <OptionsExperience 
               setFunction={setFormData}
+              start={start}
             />
           </OptionsDiv>
       </FormDiv>
       {
-        users && users.map(user => {
+        users && done ? users.map(user => {
           const { id, isVerified } = user
           const name = user.artist.show_name
           const area = user.artist.technical.area
@@ -75,7 +80,9 @@ export const Display: FC = () => {
             photo
           }
           return <UserCard data={data}/>
-        })
+        }) 
+        :
+        <Loading /> 
       }
     </Wireframe>
   )

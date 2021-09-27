@@ -7,9 +7,10 @@ import { Text } from "Components/Typography/Text"
 import { UserSearchParams } from 'Api/UserSeatch'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
+  start: () => void
 }
 
-export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {  
+export const OptionGender: FC<OptionsProps> = ({ setFunction, start }) => {  
 
   return(
     <OptionDiv>
@@ -30,6 +31,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
             onChange={(e) =>  setFunction(formData => {
               formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
               formData['showNothing'] = false
+              start()
               return formData
             })
         }
@@ -47,6 +49,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
             key="nao_homem"
             onChange={(e) => setFunction(formData => {
               formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
+              start()
               return formData
             })}
           />
@@ -57,13 +60,12 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
           <BadgeInput 
             type="checkbox"
             onChange={({ target }) => {
-              const value = target.checked
-              console.log(value)
-
+              const value = target.checked              
               setFunction(formData => {
                 formData['LBTQOnly'] = value
                 return formData
               })
+              start()
             }}
             />
         </BadgeDiv>

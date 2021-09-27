@@ -10,9 +10,10 @@ import { CidadesDF, CidadesEntorno, Areas } from "Utils/selectOptionsData"
 interface CitySelectProps {
   label: "cidade" | "area"
   setInput: Dispatch<SetStateAction<UserSearchParams>>
+  start: () => void
 }
 
-export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
+export const SelectInput: FC<CitySelectProps> = ({ setInput, label, start }) => {
 
   const options = label === "cidade" ? CidadesDF.concat(CidadesEntorno) : Areas
   const key = label === "cidade" ? 'city' : 'area'
@@ -30,6 +31,8 @@ export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
             formData['showNothing'] = false
             return formData
           })
+          console.log("ON change")
+          start()
         } }
       >
         {

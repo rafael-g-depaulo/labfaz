@@ -9,11 +9,12 @@ import { Experience } from "Utils/selectOptionsData"
 import { UserSearchParams } from 'Api/UserSeatch'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
+  start: () => void
 }
 
 type SearchKeys = "drtOnly" | "cpnjOnly" | "ceacOnly" | "meiOnly"
 
-export const OptionsExperience: FC<OptionsProps> = ({ setFunction }) => {  
+export const OptionsExperience: FC<OptionsProps> = ({ setFunction, start }) => {  
 
   const [isChecked, setIsChecked] = useState(false)
 
@@ -42,6 +43,7 @@ export const OptionsExperience: FC<OptionsProps> = ({ setFunction }) => {
                     setIsChecked(formData[key])
                     return formData
                   })
+                  start()
                 }}
               />
           </BadgeDiv>
