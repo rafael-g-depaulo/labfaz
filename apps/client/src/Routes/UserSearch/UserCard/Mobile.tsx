@@ -13,6 +13,8 @@ import {
 import Label from "../../../Components/Label";
 import { getIcon } from "../../../Utils/IconDictionary";
 
+import { Link } from "react-router-dom";
+
 interface UserCardData {
   data: {
     id: string;
@@ -22,36 +24,34 @@ interface UserCardData {
       name: string;
     }[];
     photo: string;
+    description: string;
   };
 }
 
 export const Mobile: FC<UserCardData> = ({ data }) => {
-  const { id, isVerified, name, area, photo } = data;
+  const { id, isVerified, name, area, photo, description } = data;
 
   return (
-    <Container>
-      <MobileWrapper>
-        <MobileMainContent>
-          <Image src={photo} />
-          <TextWrapper>
-            <CardTitle>{name}</CardTitle>
-            <Description>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit
-              amet, consectetuer adipiscing elit. Aenean massa. Lorem ipsum
-              dolor sit amet, consectetuer adipiscing elit.
-            </Description>
-          </TextWrapper>
-        </MobileMainContent>
-        <LabelWrapper>
-          {area.map((a) => {
-            return (
-              <Label name={a.name} image={getIcon(a.name)} lightMode={true} />
-            );
-          })}
-        </LabelWrapper>
-      </MobileWrapper>
-    </Container>
+    <Link to={`/profile/${id}`}>
+      <Container>
+        <MobileWrapper>
+          <MobileMainContent>
+            <Image src={photo} />
+            <TextWrapper>
+              <CardTitle>{name}</CardTitle>
+              <Description>{description}</Description>
+            </TextWrapper>
+          </MobileMainContent>
+          <LabelWrapper>
+            {area.map((a) => {
+              return (
+                <Label name={a.name} image={getIcon(a.name)} lightMode={true} />
+              );
+            })}
+          </LabelWrapper>
+        </MobileWrapper>
+      </Container>
+    </Link>
   );
 };
 

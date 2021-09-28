@@ -14,6 +14,7 @@ interface UserCardData {
       name: string;
     }[];
     photo: string;
+    description: string;
   };
 }
 

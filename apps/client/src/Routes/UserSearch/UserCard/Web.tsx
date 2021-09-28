@@ -20,11 +20,12 @@ interface UserCardData {
       name: string;
     }[];
     photo: string;
+    description: string;
   };
 }
 
 export const Web: FC<UserCardData> = ({ data }) => {
-  const { id, isVerified, name, area, photo } = data;
+  const { id, isVerified, name, area, photo, description } = data;
 
   return (
     <Container>
@@ -37,13 +38,8 @@ export const Web: FC<UserCardData> = ({ data }) => {
             );
           })}
         </LabelWrapper>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean massa. Lorem ipsum dolor sit
-          amet, consectetuer adipiscing elit.
-        </Description>
-        <Button href="">visualizar perfil</Button>
+        <Description>{description}</Description>
+        <Button href={`/profile/${id}`}>visualizar perfil</Button>
       </TextWrapper>
       <Image src={photo} />
     </Container>

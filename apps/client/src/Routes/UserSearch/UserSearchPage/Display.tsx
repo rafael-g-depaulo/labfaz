@@ -41,10 +41,11 @@ export const Display: FC = () => {
       {
         name: "maquiagem",
       },
-      
     ],
     photo:
       "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+    description:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
   };
 
   if (isLoading) {
@@ -71,12 +72,14 @@ export const Display: FC = () => {
           const name = user.artist.show_name;
           const area = user.artist.technical.area;
           const photo = user.artist.photo_url;
+          const description = user.artist.technical.area[0].describe;
           const data = {
             id,
             isVerified,
             name,
             area,
             photo,
+            description,
           };
           return <UserCard data={data} />;
         })
