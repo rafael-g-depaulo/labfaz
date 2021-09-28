@@ -1,6 +1,7 @@
 import { api, SuccessObject } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
 import { useMutation, useQuery } from "react-query";
+import { timeDifference } from "Utils/formatPostDate";
 
 export interface Course {
   id: string;
@@ -31,10 +32,10 @@ export interface CourseData {
 export interface Courses {
   status: string;
   data: {
-    Curso: [];
-    Live: [];
-    Oficina: [];
-    "Roda de conversa": [];
+    Curso: Course[];
+    Live: Course[];
+    Oficina: Course[];
+    "Roda de conversa": Course[];
   };
   code: number;
 }
@@ -107,14 +108,38 @@ export const fetchCourse = (id: string) => api
 export const useCourse = (id: string) =>
   useFetchApi<CourseData>(`/courses/${id}`, () => fetchCourse(id));
 
+const isAvailable = ({ subscription_finish_date, subscription_start_date, has_subscription, available }: Course) => {
+  const date = !!subscription_finish_date && !!subscription_start_date && new Date(subscription_finish_date)
+  const actualDate = new Date()
+  const difference = !!date && timeDifference(date, actualDate)
+  return has_subscription && available && !!difference && difference < 1
+}
+
+const sortCourses = (a: Course, b: Course) => {
+  const a_available = isAvailable(a)
+  const b_available = isAvailable(b)
+  if (a_available && !b_available) return -1
+  if (b_available && !a_available) return 1
+
+  const a_first_class_time = a.class_dates?.length > 0 ? (new Date(a.class_dates[0])).getTime() : Infinity
+  const b_first_class_time = b.class_dates?.length > 0 ? (new Date(b.class_dates[0])).getTime() : Infinity
+  return a_first_class_time - b_first_class_time
+}
+
 export const fetchCourses = () => api
   .get<Courses>(`/courses`)
   .then(({ data }) => data)
-  .then(({ status, data, code }) => ({
-    status,
-    data,
-    code,
-  }))
+  .then(({ status, data, code }) => {
+    const orderedData: Courses["data"] = Object.fromEntries(Object.entries(data)
+      .map(([name, entries]) => [name, entries.sort(sortCourses)])
+    ) as Courses["data"]
+
+    return ({
+      status,
+      data: orderedData,
+      code,
+    })
+  })
 
 export const useCourses = () =>
   useFetchApi<Courses>(`/courses`, () => fetchCourses());
