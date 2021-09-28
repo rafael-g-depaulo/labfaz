@@ -158,7 +158,7 @@ export const MobileWrapper = styled.div`
 
 export const MobileMainContent = styled.div`
   width: 100%;
-  height: 75px;
+  height: 90px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -186,7 +186,7 @@ export const TitleWrapper = styled.div`
   justify-content: flex-start;
 
   ${Mobile(css`
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
   `)}
 `;
