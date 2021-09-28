@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Title } from "../../../Components/Typography/Title";
 import { Text } from "../../../Components/Typography/Text";
 import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
+import { DesktopSmall, Mobile } from "Utils/breakpoints";
 
 export const Container = styled.div`
   width: 100%;
@@ -11,6 +12,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 80px;
+
+  ${Mobile(css`
+    height: auto;
+    padding: 36px 32px;
+  `)}
+
+  ${DesktopSmall(css`
+    height: 440px;
+    padding: 60px 27px;
+  `)}
 `;
 
 export const Image = styled.img`
@@ -22,6 +33,11 @@ export const Image = styled.img`
   box-shadow: 0 0 36px 0 rgba(9, 9, 9, 1) inset;
   background-color: #2a2a2a;
   border-radius: 0 15px 15px 0;
+
+  ${Mobile(css`
+    width: 48%;
+    border-radius: 0;
+  `)}
 `;
 
 export const TextWrapper = styled.div`
@@ -34,6 +50,14 @@ export const TextWrapper = styled.div`
   justify-content: flex-start;
   background-color: #2a2a2a;
   border-radius: 15px 0 0 15px;
+
+  ${Mobile(css`
+    width: 50%;
+    margin-left: 10px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  `)}
 `;
 
 export const CardTitle = styled(Title)`
@@ -42,6 +66,15 @@ export const CardTitle = styled(Title)`
   text-align: left;
   line-height: 1;
   color: var(--color-text-white-gray);
+
+  ${Mobile(css`
+    font-size: var(--font-size-short);
+    margin-bottom: 10px;
+  `)}
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-title-medium);
+  `)}
 `;
 
 export const LabelWrapper = styled.div`
@@ -51,6 +84,12 @@ export const LabelWrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin: 25px 0;
+  overflow: hidden;
+
+  ${Mobile(css`
+    margin: 21px 0 0 0;
+    justify-content: space-evenly;
+  `)}
 `;
 
 export const Description = styled(Text)`
@@ -63,6 +102,15 @@ export const Description = styled(Text)`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  ${Mobile(css`
+    width: 100%;
+    font-size: var(--font-size-small);
+  `)}
+
+  ${DesktopSmall(css`
+    font-size: var(--font-size-large);
+  `)}
 `;
 
 export const Button = styled(InternalLinkButton)`
@@ -76,7 +124,7 @@ export const Button = styled(InternalLinkButton)`
   margin-top: 30px;
 
   font-weight: 700;
-  font-size: var(--font-size-default);
+  font-size: var(--font-size-large);
   text-transform: uppercase;
   cursor: pointer;
 
@@ -86,4 +134,33 @@ export const Button = styled(InternalLinkButton)`
     opacity: 0.8;
     transition: 200ms;
   }
+
+  ${DesktopSmall(css`
+    min-width: 160px;
+    min-height: 30px;
+    margin-top: 20px;
+    font-size: var(--font-size-short);
+  `)}
+`;
+
+export const MobileWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 12px;
+  background-color: transparent;
+  border: 1px solid #6c6c6c;
+  border-radius: 11px;
+`;
+
+export const MobileMainContent = styled.div`
+  width: 100%;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 `;
