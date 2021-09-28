@@ -8,12 +8,14 @@ import {
   CardTitle,
   TextWrapper,
   LabelWrapper,
+  VerifiedWrapper,
+  TitleWrapper,
 } from "./styles";
 
 import Label from "../../../Components/Label";
 import { getIcon } from "../../../Utils/IconDictionary";
-
 import { Link } from "react-router-dom";
+import verifiedIcon from "./verified.png";
 
 interface UserCardData {
   data: {
@@ -38,7 +40,16 @@ export const Mobile: FC<UserCardData> = ({ data }) => {
           <MobileMainContent>
             <Image src={photo} />
             <TextWrapper>
-              <CardTitle>{name}</CardTitle>
+              <TitleWrapper>
+                <CardTitle>{name}</CardTitle>
+                {isVerified ? (
+                  <VerifiedWrapper>
+                    <img src={verifiedIcon} />
+                  </VerifiedWrapper>
+                ) : (
+                  <></>
+                )}
+              </TitleWrapper>
               <Description>{description}</Description>
             </TextWrapper>
           </MobileMainContent>

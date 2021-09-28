@@ -7,9 +7,13 @@ import {
   LabelWrapper,
   Description,
   Button,
+  VerifiedWrapper,
+  VerifiedText,
+  TitleWrapper,
 } from "./styles";
 import Label from "../../../Components/Label";
 import { getIcon } from "../../../Utils/IconDictionary";
+import verifiedIcon from "./verified.png";
 
 interface UserCardData {
   data: {
@@ -30,7 +34,17 @@ export const Web: FC<UserCardData> = ({ data }) => {
   return (
     <Container>
       <TextWrapper>
-        <CardTitle>{name}</CardTitle>
+        <TitleWrapper>
+          <CardTitle>{name}</CardTitle>
+          {isVerified ? (
+            <VerifiedWrapper>
+              <img src={verifiedIcon} />
+              <VerifiedText>Verificado Backstage</VerifiedText>
+            </VerifiedWrapper>
+          ) : (
+            <></>
+          )}
+        </TitleWrapper>
         <LabelWrapper>
           {area.map((a) => {
             return (

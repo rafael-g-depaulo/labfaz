@@ -69,7 +69,6 @@ export const CardTitle = styled(Title)`
 
   ${Mobile(css`
     font-size: var(--font-size-short);
-    margin-bottom: 10px;
   `)}
 
   ${DesktopSmall(css`
@@ -106,6 +105,7 @@ export const Description = styled(Text)`
   ${Mobile(css`
     width: 100%;
     font-size: var(--font-size-small);
+    margin-top: 10px;
   `)}
 
   ${DesktopSmall(css`
@@ -163,4 +163,30 @@ export const MobileMainContent = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+`;
+
+export const VerifiedWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+`;
+
+export const VerifiedText = styled(Text)`
+  font-size: var(--font-size-small);
+  color: var(--color-text-white-gray);
+  margin-left: 5px;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  ${Mobile(css`
+    align-items: center;
+    justify-content: center;
+  `)}
 `;

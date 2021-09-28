@@ -30,23 +30,6 @@ export const Display: FC = () => {
 
   const { isLoading, users } = useUserSearch(formData);
   const { start, stop, done } = useTimeout(1000);
-  const example = {
-    id: "2",
-    isVerified: true,
-    name: "Clementina Maria",
-    area: [
-      {
-        name: "maquiagem",
-      },
-      {
-        name: "maquiagem",
-      },
-    ],
-    photo:
-      "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    description:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  };
 
   if (isLoading) {
     return <Loading />;
@@ -86,7 +69,6 @@ export const Display: FC = () => {
       ) : (
         <Loading />
       )}
-      <UserCard data={example} />;
     </Wireframe>
   );
 };
