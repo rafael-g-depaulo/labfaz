@@ -1,6 +1,6 @@
 import React, { FC, SetStateAction, Dispatch } from 'react'
 
-import { UserSearchParams } from 'Api/UserSeatch'
+import { UserSearchParams } from 'Api/UserSearch'
 
 import { Select, SelectDiv } from '../../UserSearchPage/style'
 import { Title } from "Components/Typography/Title"

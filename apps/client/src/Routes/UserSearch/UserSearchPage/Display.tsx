@@ -12,7 +12,7 @@ import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
 import { Pagination } from "Components/Pagination/Static"
 
-import { UserSearchParams, useUserSearch } from "Api/UserSeatch";
+import { UserSearchParams, useUserSearch } from "Api/UserSearch";
 
 import { FormDiv, OptionsDiv, Header, ContentDiv } from "./style";
 

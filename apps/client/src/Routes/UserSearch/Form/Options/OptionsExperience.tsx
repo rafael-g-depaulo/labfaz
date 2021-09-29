@@ -2,11 +2,11 @@ import React, { Dispatch, FC, SetStateAction } from 'react'
 import { OptionDiv, BadgeInput, BadgeDiv, OptionWrapper } from "../../UserSearchPage/style"
 
 import { Title } from "Components/Typography/Title"
-import { Text } from "Components/Typography/Text"
+// import { Text } from "Components/Typography/Text"
 
 import { Experience } from "Utils/selectOptionsData"
 
-import { UserSearchParams } from 'Api/UserSeatch'
+import { UserSearchParams } from 'Api/UserSearch'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
 }

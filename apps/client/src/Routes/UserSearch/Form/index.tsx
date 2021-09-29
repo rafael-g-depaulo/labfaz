@@ -1,7 +1,7 @@
 import React, {  Dispatch, FC, SetStateAction } from 'react'
 import { SearchButton, SearchDiv, InputSearch } from './style'
 import { FiSearch } from 'react-icons/fi'
-import { UserSearchParams } from 'Api/UserSeatch'
+import { UserSearchParams } from 'Api/UserSearch'
 interface FormProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
   onInput: () => void
