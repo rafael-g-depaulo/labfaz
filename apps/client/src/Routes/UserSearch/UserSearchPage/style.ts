@@ -177,9 +177,12 @@ export const BadgeDiv = styled.span`
   max-width: auto;
   overflow: hidden;
   font-size: var(--font-size-short);
+  
   label {
     font-size: var(--font-size-short);
     padding: 0 0.5em;
+    pointer-events: none;
+    z-index: 1;
   }
 
   input[type="checkbox"] {
