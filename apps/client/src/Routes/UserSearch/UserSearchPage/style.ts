@@ -44,6 +44,10 @@ export const OptionsDiv = styled.div`
 
 export const OptionWrapper = styled.div`
   display: flex;
+
+  div:first-child {
+    margin-left: 0;
+  }
 `
 
 export const OptionDiv = styled.div`
@@ -148,33 +152,53 @@ export const BadgeInput = styled.input`
   width: 18px;
 `
 
-export const BadgeDiv = styled.div<BadgeProps>`
+export const BadgeDiv = styled.span`
   display: flex;
   cursor: pointer;
   position: relative;
   margin: 1rem;
   justify-content: center;
 
-  border: 1px solid gray;
   border-radius: 8px;
-  background-color: ${props => props.isChecked ? 'rgba(252, 0, 97, 1)' : 'gray'};
+  background-color: rgba(31, 31, 31, 1);
   min-width: 65px;
   min-height: 20px;
   max-height: min-content;
   max-width: auto;
+  overflow: hidden;
 
   p {
     font-size: var(--font-size-short);
     padding: 0 0.5em;
   }
 
-  input {
-    opacity: 0;
+  input[type="checkbox"] {
     position: absolute;
     margin: 0;
     height: 100%;
     width: 100%;
     cursor: pointer;
+    appearance: none;
+    transition: 300ms;
+
+    :checked {
+      background-color: rgba(252, 0, 97, 1);
+    }
+  }
+
+
+  input[type="radio"] {
+    position: absolute;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    transition: 300ms;
+
+    :checked {
+      background-color: rgba(252, 0, 97, 1);
+    }
   }
 
   ${Mobile(css`

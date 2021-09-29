@@ -29,14 +29,8 @@ export const Display: FC = () => {
   });
 
   const { isLoading, users } = useUserSearch(formData);
-  const { start, stop, done } = useTimeout(1000);
+  const { start, done } = useTimeout(1000);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  console.log(users);
-  console.log(done);
 
   return (
     <Wireframe>
@@ -49,7 +43,7 @@ export const Display: FC = () => {
           <OptionsExperience setFunction={setFormData} />
         </OptionsDiv>
       </FormDiv>
-      {users && done ? (
+      {users && !isLoading && done ? (
         users.map((user) => {
           const { id, isVerified } = user;
           const name = user.artist.show_name;

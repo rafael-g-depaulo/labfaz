@@ -36,6 +36,7 @@ export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
           })
         } }
       >
+        <option value=''> </option>
         {
           options.map((option, index) => (
             <option value={option.value} key={index}  > {option.label} </option>

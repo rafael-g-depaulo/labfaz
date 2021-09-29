@@ -17,10 +17,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
         level={4}
         >  GÊNERO </Title>
       <OptionWrapper>
-        <BadgeDiv
-          isChecked
-        >
-          <Text> Todes </Text>
+        <BadgeDiv >
           <BadgeInput 
             type="radio" 
             name="gender" 
@@ -33,14 +30,12 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
               updateFormData['showNothing'] = false
               return updateFormData
             })
-        }
+          }
           />
+          <Text> Todes </Text>
         </BadgeDiv>
           
-        <BadgeDiv
-          isChecked
-        >
-          <Text> Não-homem </Text>
+        <BadgeDiv>
           <BadgeInput 
             type="radio" 
             name="gender" 
@@ -52,11 +47,11 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
               updateFormData['showNothing'] = false
               return updateFormData
             })}
-          />
+            />
+          <Text> Não-homem </Text>
         </BadgeDiv>
         
         <BadgeDiv>
-          <Text> LGBTQ+ </Text>
           <BadgeInput 
             type="checkbox"
             onChange={({ target }) => {
@@ -69,6 +64,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
               })
             }}
             />
+          <Text> LGBTQ+ </Text>
         </BadgeDiv>
       </OptionWrapper>
     </OptionDiv>

@@ -2,6 +2,7 @@ import React, { Dispatch, FC, SetStateAction } from 'react'
 import { OptionDiv, BadgeInput, BadgeDiv, OptionWrapper } from "../../UserSearchPage/style"
 
 import { Title } from "Components/Typography/Title"
+import { Text } from "Components/Typography/Text"
 
 import { Experience } from "Utils/selectOptionsData"
 
@@ -25,6 +26,7 @@ export const OptionsExperience: FC<OptionsProps> = ({ setFunction  }) => {
             <BadgeDiv
               key={index}
             >
+              <Text> {option.label} </Text>
               <BadgeInput 
                 type="checkbox" 
                 name="experience" 
