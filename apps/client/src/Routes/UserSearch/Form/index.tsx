@@ -4,13 +4,13 @@ import { FiSearch } from 'react-icons/fi'
 import { UserSearchParams } from 'Api/UserSeatch'
 interface FormProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
+  onInput: () => void
 }
 
-export const Form: FC<FormProps> = ({ setFunction }) => {
+export const Form: FC<FormProps> = ({ setFunction, onInput, children }) => {
 
   return (
-    <>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} onInput={onInput}>
         <SearchDiv>
           <FiSearch size={15} />
           <InputSearch 
@@ -18,15 +18,18 @@ export const Form: FC<FormProps> = ({ setFunction }) => {
             type="text"
             onChange={({target}) => {
               setFunction(formData => {
-                formData['nameOrProfession'] = target.value
-                return formData
+                const value = target.value
+                const updateFormData = {...formData}
+                updateFormData['nameOrProfession'] = value
+                updateFormData['showNothing'] = false
+                return updateFormData
               })
             }}
             />
           <SearchButton type="submit"> Procurar </SearchButton>
         </SearchDiv>      
+        { children }
       </form>
-    </>
   )
 }
 

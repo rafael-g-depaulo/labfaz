@@ -7,10 +7,9 @@ import { Text } from "Components/Typography/Text"
 import { UserSearchParams } from 'Api/UserSeatch'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
-  start: () => void
 }
 
-export const OptionGender: FC<OptionsProps> = ({ setFunction, start }) => {  
+export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {  
 
   return(
     <OptionDiv>
@@ -28,11 +27,11 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction, start }) => {
             value={"Todes"}
             key="todes"
             defaultChecked
-            onChange={(e) =>  setFunction(formData => {
-              formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
-              formData['showNothing'] = false
-              start()
-              return formData
+            onChange={() =>  setFunction(formData => {
+              const updateFormData = {...formData}
+              updateFormData['nonMenOnly'] = false
+              updateFormData['showNothing'] = false
+              return updateFormData
             })
         }
           />
@@ -45,12 +44,13 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction, start }) => {
           <BadgeInput 
             type="radio" 
             name="gender" 
-            value={"Não-homem"}
+            value={"Nao-homem"}
             key="nao_homem"
-            onChange={(e) => setFunction(formData => {
-              formData['nonMenOnly'] = e.currentTarget.value !== "Todes"
-              start()
-              return formData
+            onChange={() => setFunction(formData => {
+              const updateFormData = {...formData}
+              updateFormData['nonMenOnly'] = true
+              updateFormData['showNothing'] = false
+              return updateFormData
             })}
           />
         </BadgeDiv>
@@ -62,10 +62,11 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction, start }) => {
             onChange={({ target }) => {
               const value = target.checked              
               setFunction(formData => {
-                formData['LBTQOnly'] = value
-                return formData
+                const updateFormData = {...formData}
+                updateFormData['LBTQOnly'] = value
+                updateFormData['showNothing'] = false
+                return updateFormData
               })
-              start()
             }}
             />
         </BadgeDiv>

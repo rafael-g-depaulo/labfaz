@@ -27,6 +27,10 @@ export const SearchButton = styled.button`
   border: none;
   border-left: 1px solid;
   padding: 0 0.9rem;
+
+  ${Mobile(css`
+    padding-left: 0.5rem;
+  `)}
 `
 
 export const InputSearch = styled.input`
@@ -48,6 +52,7 @@ export const InputSearch = styled.input`
 
   ${Mobile(css`
     margin: 0;
+    max-width: 240px;
   `)}
 `
 

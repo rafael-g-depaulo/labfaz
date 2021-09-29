@@ -1,13 +1,6 @@
 import styled, { css } from 'styled-components'
-import { Mobile } from 'Utils/breakpoints'
+import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
 
-interface LabelProps {
-  isFocused?: boolean
-}
-
-interface BadgeProps {
-  isChecked?: boolean
-}
 
 export const FormDiv = styled.div`
   margin-top: 5rem;
@@ -28,6 +21,8 @@ export const OptionsDiv = styled.div`
   max-width: 100vw;
   display: flex;
   flex-direction: column;
+  min-height: 50vh;
+  justify-content: space-between;
   > div:nth-child(2) {
     margin-top: 1rem;
   }
@@ -37,6 +32,14 @@ export const OptionsDiv = styled.div`
       margin-top: 2rem;
     } 
   `)}
+
+  ${DesktopLarge(css`
+    min-height: 35vh;
+  `)}
+
+  ${DesktopSmall(css`
+    min-height: 400px;
+  `)}
 `
 
 export const OptionWrapper = styled.div`
@@ -44,7 +47,9 @@ export const OptionWrapper = styled.div`
 `
 
 export const OptionDiv = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px auto;
+  max-height: min-content;
   align-items: center;
   
   * {
@@ -56,13 +61,17 @@ export const OptionDiv = styled.div`
   }
 
   ${Mobile(css`
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: space-around;
+    grid-template-columns: auto;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+
+    label:first-child {
+      margin-left: 0;
+    }
 `)}
 `
 
-export const Label = styled.div<LabelProps>`
+export const Label = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +111,8 @@ export const Select = styled.select`
   border-radius: 4px;
   display: flex;
   text-align: center;
-
+  padding-right: 0.5em;
+  max-width: 275px;
 
   ::placeholder {
     color: white;
@@ -111,8 +121,11 @@ export const Select = styled.select`
 `
 
 export const SelectDiv = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px auto;
   margin-top: 4rem;
+  position: relative;
+  align-items: end;
   * {
     color: white;
   }
@@ -122,9 +135,9 @@ export const SelectDiv = styled.div`
   }
 
   ${Mobile(css`
-      flex-direction: column;
-      max-width: 80%;
-      margin-bottom: 1em;
+    grid-template-columns: auto;
+    max-width: 80%;
+    margin-bottom: 1em;
   `)}
 `
 
@@ -147,6 +160,8 @@ export const BadgeDiv = styled.div<BadgeProps>`
   background-color: ${props => props.isChecked ? 'rgba(252, 0, 97, 1)' : 'gray'};
   min-width: 65px;
   min-height: 20px;
+  max-height: min-content;
+  max-width: auto;
 
   p {
     font-size: var(--font-size-short);

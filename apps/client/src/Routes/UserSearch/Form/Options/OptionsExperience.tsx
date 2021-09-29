@@ -1,22 +1,18 @@
-import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 import { OptionDiv, BadgeInput, BadgeDiv, OptionWrapper } from "../../UserSearchPage/style"
 
 import { Title } from "Components/Typography/Title"
-import { Text } from "Components/Typography/Text"
 
 import { Experience } from "Utils/selectOptionsData"
 
 import { UserSearchParams } from 'Api/UserSeatch'
 interface OptionsProps {
   setFunction: Dispatch<SetStateAction<UserSearchParams>>,
-  start: () => void
 }
 
 type SearchKeys = "drtOnly" | "cpnjOnly" | "ceacOnly" | "meiOnly"
 
-export const OptionsExperience: FC<OptionsProps> = ({ setFunction, start }) => {  
-
-  const [isChecked, setIsChecked] = useState(false)
+export const OptionsExperience: FC<OptionsProps> = ({ setFunction  }) => {  
 
   return(
     <OptionDiv>
@@ -25,25 +21,22 @@ export const OptionsExperience: FC<OptionsProps> = ({ setFunction, start }) => {
       >  EXPERIÊNCIA </Title>
       <OptionWrapper>
         {
-          Experience.map(option => (
-            <BadgeDiv 
-              isChecked={isChecked}
+          Experience.map((option, index) => (
+            <BadgeDiv
+              key={index}
             >
-              <Text> {option.label} </Text>
               <BadgeInput 
                 type="checkbox" 
                 name="experience" 
                 value={option.value}
-                key="DRT"
                 onChange={() =>{
                   setFunction(formData => {
                     const key = option.value as SearchKeys
-                    formData[key] = !formData[key]
-                    formData['showNothing'] = false
-                    setIsChecked(formData[key])
-                    return formData
+                    const updateFormData = {...formData}
+                    updateFormData[key] = !formData[key]
+                    updateFormData['showNothing'] = false
+                    return updateFormData
                   })
-                  start()
                 }}
               />
           </BadgeDiv>

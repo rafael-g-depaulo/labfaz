@@ -10,34 +10,35 @@ import { CidadesDF, CidadesEntorno, Areas } from "Utils/selectOptionsData"
 interface CitySelectProps {
   label: "cidade" | "area"
   setInput: Dispatch<SetStateAction<UserSearchParams>>
-  start: () => void
 }
 
-export const SelectInput: FC<CitySelectProps> = ({ setInput, label, start }) => {
+export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
 
   const options = label === "cidade" ? CidadesDF.concat(CidadesEntorno) : Areas
   const key = label === "cidade" ? 'city' : 'area'
 
   // TODO: Adicionar cidades do entorno
   return (
-    <SelectDiv>
+    <SelectDiv
+      key={label}
+    >
       <Title level={4} >
         {label.toUpperCase()}
       </Title>
       <Select
         onChange={({target}) => {
           setInput(formData => {
-            formData[key] = target.value
-            formData['showNothing'] = false
-            return formData
+            const value = target.value
+            const updateFormData = {...formData}
+            updateFormData[key] = value
+            updateFormData['showNothing'] = false
+            return updateFormData
           })
-          console.log("ON change")
-          start()
         } }
       >
         {
-          options.map(option => (
-            <option value={option.value}> {option.label} </option>
+          options.map((option, index) => (
+            <option value={option.value} key={index}  > {option.label} </option>
           ))
         }
       </Select>

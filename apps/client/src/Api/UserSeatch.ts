@@ -57,7 +57,6 @@ export type UserSearchResults =
 export const useUserSearch = (params: UserSearchParams): UserSearchResults => {
   // get users
   const { data, error, isLoading } = useUsersListOnce()
-
   if (params.showNothing) return { isLoading: false, users: [], error: undefined }
 
   // pass errors forward, if they exist

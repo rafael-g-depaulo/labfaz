@@ -41,12 +41,12 @@ export const Display: FC = () => {
   return (
     <Wireframe>
       <FormDiv>
-        <Form setFunction={setFormData} />
+        <Form setFunction={setFormData} onInput={start}/>
         <OptionsDiv>
-          <SelectInput label="cidade" setInput={setFormData} start={start} />
-          <SelectInput label="area" setInput={setFormData} start={start} />
-          <OptionGender setFunction={setFormData} start={start} />
-          <OptionsExperience setFunction={setFormData} start={start} />
+          <SelectInput label="cidade" setInput={setFormData} />
+          <SelectInput label="area" setInput={setFormData}  />
+          <OptionGender setFunction={setFormData}  />
+          <OptionsExperience setFunction={setFormData} />
         </OptionsDiv>
       </FormDiv>
       {users && done ? (
