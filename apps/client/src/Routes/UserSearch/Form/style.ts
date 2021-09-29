@@ -13,10 +13,16 @@ export const SearchDiv = styled.div`
 
   svg {
     margin-left: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  input {
+    justify-self: start;
   }
 
   ${Mobile(css`
-    max-width: 90vw;
+    min-width: fit-content;
+    max-width: 100%;
   `)}
 `
 
@@ -29,18 +35,18 @@ export const SearchButton = styled.button`
   padding: 0 0.9rem;
 
   ${Mobile(css`
-    padding-left: 0.5rem;
+    padding: 0 0.3rem;
   `)}
 `
 
 export const InputSearch = styled.input`
   max-height: 44px;
   height: 1.3em;
-  width: auto;
   border: none;
   margin-left: 1rem;
   margin-right: 2.5rem;
   padding: 0;
+  width: 80%;
 
   ::placeholder {
     font-size: var(--font-size-medium);
@@ -52,8 +58,8 @@ export const InputSearch = styled.input`
 
   ${Mobile(css`
     margin: 0;
-    max-width: 240px;
-  `)}
+    flex-grow: 1;
+`)}
 `
 
 export const LGBTCheckbox = styled.input`

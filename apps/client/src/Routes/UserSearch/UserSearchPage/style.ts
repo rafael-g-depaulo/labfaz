@@ -6,7 +6,7 @@ export const FormDiv = styled.div`
   margin-top: 3rem;
   margin-bottom: 5rem;
   max-height: 90vh;
-  max-width: 100vw;
+  max-width: 95vw;
   background-color: black;
   margin-left: 6.4rem;
 
@@ -128,6 +128,11 @@ export const Select = styled.select`
     color: white;
     font-size: var(--font-size-short)
   }
+
+  ${Mobile(css`
+    min-width: 275px;
+    max-width: 100%;
+  `)}
 `
 
 export const SelectDiv = styled.div`
@@ -146,7 +151,6 @@ export const SelectDiv = styled.div`
 
   ${Mobile(css`
     grid-template-columns: auto;
-    max-width: 80%;
     margin-bottom: 1em;
   `)}
 `
@@ -172,8 +176,8 @@ export const BadgeDiv = styled.span`
   max-height: min-content;
   max-width: auto;
   overflow: hidden;
-
-  p {
+  font-size: var(--font-size-short);
+  label {
     font-size: var(--font-size-short);
     padding: 0 0.5em;
   }
@@ -248,5 +252,5 @@ export const ContentDiv = styled.div`
   flex-direction: column;
   align-items: center;
   min-width: 90vw;
-  max-width: 100vw;
+  max-width: 1000px;
 `
