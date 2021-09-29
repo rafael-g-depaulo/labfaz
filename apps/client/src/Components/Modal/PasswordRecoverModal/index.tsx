@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
-import { ModalDiv, ModalContent, Container, ModalLine, FormButton } from '../styles'
+import { ModalDiv, ModalContent, Container, ModalLine } from '../styles'
+import { FormButton } from "Components/PasswordRecover/styles"
 import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
 import SocialMediaIcons  from "Components/SocialMediaIcons"

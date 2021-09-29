@@ -4,7 +4,7 @@ import { Formik, Form, FormikHelpers } from 'formik'
 
 import { Wrapper, FormButton, Span, Message } from './styles'
 import { InputText, InputTextContainer } from "Components/Login/style"
-import { Modal } from './Modal'
+import { Modal } from 'Components/Modal/PasswordRecoverModal'
 
 import { askResetPassword } from 'Api/PasswordReset'  
 interface FormProps {
@@ -61,7 +61,7 @@ export const AskReset: FC = () => {
           onSubmit={handleSubmit}
           >
           {({ isSubmitting }) => (
-          <Wrapper isVisible={isVisible}>
+          <Wrapper>
             <Form>
               <InputTextContainer>
                 <InputText 

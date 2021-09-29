@@ -3,7 +3,7 @@ import React, { FC, useCallback, useState } from 'react'
 import { Formik, Form, FormikHelpers } from 'formik'
 
 import { Wrapper, FormButton, Span, Message } from './styles'
-import { Modal } from './Modal'
+import { Modal } from 'Components/Modal/PasswordRecoverModal'
 
 import { InputPassword, InputTextContainer } from "Components/Login/style"
 
@@ -58,7 +58,7 @@ export const PasswordChange: FC<PasswordChangeProps> = ({ token }) => {
           onSubmit={handleSubmit}
           >
           {({ isSubmitting }) => (
-          <Wrapper isVisible={isVisible}>
+          <Wrapper>
             <Form>
               <InputTextContainer>
                 <InputPassword 

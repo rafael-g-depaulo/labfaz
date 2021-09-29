@@ -31,6 +31,7 @@ import {
 import { useLoginInfo } from 'Api/LoginAssets'
 import { showForgotPassword } from 'FeatureFlags'
 import { navLinks } from 'Utils/navLinks'
+import { Modal } from 'Components/Modal/LoginModal'
 
 interface FormProps {
   email: string
@@ -49,6 +50,7 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const { setToken } = useContext(CurrentUserTokenContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   
   const { data: infoData } = useLoginInfo()
 
@@ -122,6 +124,7 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
                   </ButtonContainer>
 
                   { showForgotPassword && <NavLink to={navLinks.forgotPass.path}>{navLinks.forgotPass.label}</NavLink> }
+                  {error && error.message==="Email confimation needed" && <span onClick={() => setIsVisible(true)}> Reenviar email de confirmação ? </span> }
                 </Form>
               )}
             </Formik>
@@ -134,6 +137,7 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
           </div>
         )}
       </FormContainer>
+      <Modal isVisible={isVisible} setFunction={setIsVisible} />
       <LabfazText
         level={2}
         children="Laboratorio dos Fazeres e Saberes Tecnicos da Economia Criativa"
