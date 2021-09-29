@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "profissionais_banners",
+  "info": {
+    "name": "Profissionais Banner"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 255
+    }
+  }
+}
