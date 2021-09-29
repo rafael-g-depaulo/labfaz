@@ -24,7 +24,7 @@ interface UserSearchInterface {
 }
 
 export const Display: FC<UserSearchInterface> = ({title, description}) => {
-  console.log(title)
+  
   const [formData, setFormData] = useState<UserSearchParams>({
     nameOrProfession: "",
     city: "",
@@ -41,6 +41,11 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
   const { isLoading, users } = useUserSearch(formData);
   const { start, done } = useTimeout(1000);
 
+  // console.log(users && !isLoading && done)
+  // console.log("Done", done)
+  // console.log("users", users)
+  // console.log("isLoading", isLoading)
+
 
   return (
     <Wireframe>
@@ -49,13 +54,14 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
         <Text> {description}  </Text>
       </Header>
       <FormDiv>
-        <Form setFunction={setFormData} onInput={start}/>
-        <OptionsDiv>
-          <SelectInput label="cidade" setInput={setFormData} />
-          <SelectInput label="area" setInput={setFormData}  />
-          <OptionGender setFunction={setFormData}  />
-          <OptionsExperience setFunction={setFormData} />
-        </OptionsDiv>
+        <Form setFunction={setFormData} onInput={start}>
+          <OptionsDiv>
+            <SelectInput label="cidade" setInput={setFormData} />
+            <SelectInput label="area" setInput={setFormData}  />
+            <OptionGender setFunction={setFormData}  />
+            <OptionsExperience setFunction={setFormData} />
+          </OptionsDiv>
+      </Form>
       </FormDiv>
       <ContentDiv>
         {users && !isLoading && done ? (
@@ -79,9 +85,7 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
               })
             }
           </Pagination>
-        ) : (
-          <Loading />
-        )}
+        ) : <Loading />}
       </ContentDiv>
     </Wireframe>
   );

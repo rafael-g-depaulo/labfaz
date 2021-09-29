@@ -10,7 +10,6 @@ const useTimeout = (ms: number, autoStart = false) => {
 
   const start = useCallback(() => {
     if (timeout.current !== null) return
-  
     setDone(false)
     timeout.current = setTimeout(onFinish, ms)
   }, [onFinish])

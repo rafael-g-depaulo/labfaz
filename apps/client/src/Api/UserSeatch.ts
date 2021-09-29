@@ -58,7 +58,7 @@ export const useUserSearch = (params: UserSearchParams): UserSearchResults => {
   // get users
   const { data, error, isLoading } = useUsersListOnce()
   if (params.showNothing) return { isLoading: false, users: [], error: undefined }
-  console.log(params)
+  
   // pass errors forward, if they exist
   if (error) return { isLoading: false, error: error!, users: undefined }
 

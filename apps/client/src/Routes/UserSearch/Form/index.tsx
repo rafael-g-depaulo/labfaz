@@ -10,7 +10,10 @@ interface FormProps {
 export const Form: FC<FormProps> = ({ setFunction, onInput, children }) => {
 
   return (
-      <form onSubmit={(e) => e.preventDefault()} onInput={onInput}>
+      <form 
+        onSubmit={(e) => e.preventDefault()} 
+        onInput={onInput}
+        >
         <SearchDiv>
           <FiSearch size={15} />
           <InputSearch 

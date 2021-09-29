@@ -26,7 +26,7 @@ export const OptionsExperience: FC<OptionsProps> = ({ setFunction  }) => {
             <BadgeDiv
               key={index}
             >
-              <Text> {option.label} </Text>
+              <label> {option.label} </label>
               <BadgeInput 
                 type="checkbox" 
                 name="experience" 

@@ -32,7 +32,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
             })
           }
           />
-          <Text> Todes </Text>
+          <label> Todes </label>
         </BadgeDiv>
           
         <BadgeDiv>
@@ -48,7 +48,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
               return updateFormData
             })}
             />
-          <Text> Não-homem </Text>
+          <label> Não-homem </label>
         </BadgeDiv>
         
         <BadgeDiv>
@@ -64,7 +64,7 @@ export const OptionGender: FC<OptionsProps> = ({ setFunction }) => {
               })
             }}
             />
-          <Text> LGBTQ+ </Text>
+          <label> LGBTQ+ </label>
         </BadgeDiv>
       </OptionWrapper>
     </OptionDiv>
