@@ -3,7 +3,7 @@ import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
 
 
 export const FormDiv = styled.div`
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
   max-height: 90vh;
   max-width: 100vw;
@@ -221,6 +221,10 @@ export const Header = styled.div`
   align-self: center;
   align-items: center;
 
+  ${Mobile(css`
+    width: 90vw
+  `)}
+
   h1 {
     font-size: var(--font-size-xxlarge);
     color: white;
@@ -232,5 +236,9 @@ export const Header = styled.div`
     color: white;
     text-align: center;
     line-height: var(--line-height-medium);
+
+    ${Mobile(css`
+      font-size: var(--font-size-medium)
+    `)}
   }
 `
