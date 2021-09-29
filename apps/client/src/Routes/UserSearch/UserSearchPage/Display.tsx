@@ -8,13 +8,21 @@ import Wireframe from "Components/Wireframe";
 
 import { UserSearchParams, useUserSearch } from "Api/UserSeatch";
 
-import { FormDiv, OptionsDiv } from "./style";
+import { FormDiv, OptionsDiv, Header } from "./style";
 import Loading from "Components/Loading";
 import useTimeout from "Hooks/useTimeout";
+import { Title } from "Components/Typography/Title";
+import { Text } from "Components/Typography/Text";
 
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência";
 
-export const Display: FC = () => {
+interface UserSearchInterface {
+  title: string,
+  description: string
+}
+
+export const Display: FC<UserSearchInterface> = ({title, description}) => {
+  console.log(title)
   const [formData, setFormData] = useState<UserSearchParams>({
     nameOrProfession: "",
     city: "",
@@ -34,6 +42,10 @@ export const Display: FC = () => {
 
   return (
     <Wireframe>
+      <Header>
+        <Title> {title} </Title>
+        <Text> {description}  </Text>
+      </Header>
       <FormDiv>
         <Form setFunction={setFormData} onInput={start}/>
         <OptionsDiv>

@@ -4,6 +4,7 @@ import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
 
 export const FormDiv = styled.div`
   margin-top: 5rem;
+  margin-bottom: 5rem;
   max-height: 90vh;
   max-width: 100vw;
   background-color: black;
@@ -25,6 +26,11 @@ export const OptionsDiv = styled.div`
   justify-content: space-between;
   > div:nth-child(2) {
     margin-top: 1rem;
+    margin-bottom: 0.5rem
+  }
+
+  > div:first-child {
+    margin-bottom: 0.5rem
   }
 
   ${Mobile(css`
@@ -45,7 +51,7 @@ export const OptionsDiv = styled.div`
 export const OptionWrapper = styled.div`
   display: flex;
 
-  div:first-child {
+  span:first-child {
     margin-left: 0;
   }
 `
@@ -206,8 +212,25 @@ export const BadgeDiv = styled.span`
   `)}
 `
 
-export const Presentation = styled.div`
+export const Header = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 30vh;
-  min-width: 100vw;
+  width: 70vw;
+  max-width: 709px;
+  align-self: center;
+  align-items: center;
+
+  h1 {
+    font-size: var(--font-size-xxlarge);
+    color: white;
+    margin-bottom: 1em;
+    margin-top: 1.2em;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+    line-height: var(--line-height-medium);
+  }
 `

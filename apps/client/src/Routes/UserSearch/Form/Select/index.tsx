@@ -19,9 +19,7 @@ export const SelectInput: FC<CitySelectProps> = ({ setInput, label }) => {
 
   // TODO: Adicionar cidades do entorno
   return (
-    <SelectDiv
-      key={label}
-    >
+    <SelectDiv>
       <Title level={4} >
         {label.toUpperCase()}
       </Title>
