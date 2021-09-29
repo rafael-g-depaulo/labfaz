@@ -30,8 +30,8 @@ interface UserCardData {
 
 export const Web: FC<UserCardData> = ({ data }) => {
   const { id, isVerified, name, area, photo, description } = data;
-  area.length = 2; 
-  
+  area.length = 2;
+
   return (
     <Container>
       <TextWrapper>
@@ -39,7 +39,7 @@ export const Web: FC<UserCardData> = ({ data }) => {
           <CardTitle>{name}</CardTitle>
           {isVerified ? (
             <VerifiedWrapper>
-              <img src={verifiedIcon} />
+              <img src={verifiedIcon} alt="verificado.png"/>
               <VerifiedText>Verificado Backstage</VerifiedText>
             </VerifiedWrapper>
           ) : (

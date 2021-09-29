@@ -8,7 +8,7 @@ export const FormDiv = styled.div`
   max-height: 90vh;
   max-width: 95vw;
   background-color: black;
-  margin-left: 6.4rem;
+  margin-left: 27px;
 
   ${Mobile(css`
     margin: 0;
@@ -230,6 +230,11 @@ export const Header = styled.div`
 
   ${Mobile(css`
     width: 90vw
+  `)}
+
+  ${DesktopSmall(css`
+    min-height: 0;
+    margin-bottom: 20px;
   `)}
 
   h1 {

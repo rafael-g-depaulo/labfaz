@@ -50,7 +50,7 @@ export const Mobile: FC<UserCardData> = ({ data }) => {
                 <CardTitle>{name}</CardTitle>
                 {isVerified ? (
                   <VerifiedWrapper>
-                    <img src={verifiedIcon} />
+                    <img src={verifiedIcon} alt="verificado.png"/>
                   </VerifiedWrapper>
                 ) : (
                   <></>
