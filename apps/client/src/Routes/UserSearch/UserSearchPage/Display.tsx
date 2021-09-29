@@ -1,18 +1,20 @@
 import React, { FC, useState } from "react";
+
 import Form from "../Form";
 import SelectInput from "../Form/Select";
 import OptionGender from "../Form/Options/OptionGender";
 import OptionsExperience from "../Form/Options/OptionsExperience";
 import UserCard from "../UserCard";
 import Wireframe from "Components/Wireframe";
-
-import { UserSearchParams, useUserSearch } from "Api/UserSeatch";
-
-import { FormDiv, OptionsDiv, Header } from "./style";
 import Loading from "Components/Loading";
 import useTimeout from "Hooks/useTimeout";
 import { Title } from "Components/Typography/Title";
 import { Text } from "Components/Typography/Text";
+import { Pagination } from "Components/Pagination/Static"
+
+import { UserSearchParams, useUserSearch } from "Api/UserSeatch";
+
+import { FormDiv, OptionsDiv, Header, ContentDiv } from "./style";
 
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência";
 
@@ -55,26 +57,32 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
           <OptionsExperience setFunction={setFormData} />
         </OptionsDiv>
       </FormDiv>
-      {users && !isLoading && done ? (
-        users.map((user) => {
-          const { id, isVerified } = user;
-          const name = user.artist.show_name;
-          const area = user.artist.technical.area;
-          const photo = user.artist.photo_url;
-          const description = user.artist.technical.area[0].describe;
-          const data = {
-            id,
-            isVerified,
-            name,
-            area,
-            photo,
-            description,
-          };
-          return <UserCard data={data} />;
-        })
-      ) : (
-        <Loading />
-      )}
+      <ContentDiv>
+        {users && !isLoading && done ? (
+          <Pagination items={users} >
+            {
+              users => users.map((user, index) => {
+                const { id, isVerified } = user;
+                const name = user.artist.show_name;
+                const area = user.artist.technical.area;
+                const photo = user.artist.photo_url;
+                const description = user.artist.technical.area[0].describe;
+                const data = {
+                  id,
+                  isVerified,
+                  name,
+                  area,
+                  photo,
+                  description,
+                };
+                return <UserCard data={data} key={index} />;
+              })
+            }
+          </Pagination>
+        ) : (
+          <Loading />
+        )}
+      </ContentDiv>
     </Wireframe>
   );
 };

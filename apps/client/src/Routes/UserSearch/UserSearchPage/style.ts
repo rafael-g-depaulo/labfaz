@@ -242,3 +242,11 @@ export const Header = styled.div`
     `)}
   }
 `
+
+export const ContentDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90vw;
+  max-width: 100vw;
+`
