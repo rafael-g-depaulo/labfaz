@@ -35,7 +35,12 @@ export const Mobile: FC<UserCardData> = ({ data }) => {
   area.length = 2;
 
   return (
-    <Link to={`/profile/${id}`}>
+    <Link 
+      to={`/profile/${id}`}
+      style={{
+        width: "100%"
+      }}
+    >
       <Container>
         <MobileWrapper>
           <MobileMainContent>
