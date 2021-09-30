@@ -86,10 +86,6 @@ export const EditProfile = async (values: any, token: string) => {
 
   const formParsed = bodyFormParse(values)
 
-  // for (var pair of formParsed.entries()) {
-  //   console.log(pair[0]+ ', ' + pair[1]); 
-  // }
-
   return api.put<SuccessObject>('/user/update', formParsed, {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -98,14 +94,5 @@ export const EditProfile = async (values: any, token: string) => {
   }).then(res => {
     return res
   }).catch(err => Promise.reject(err.response.data))
-  // .then(res => {
-  //   console.log(res)
-
-  //   return res
-  // }).catch(err => {
-  //   console.log(err)  
-
-  //   throw err
-  // })
 
 }
