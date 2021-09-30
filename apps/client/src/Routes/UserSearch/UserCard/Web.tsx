@@ -39,7 +39,7 @@ export const Web: FC<UserCardData> = ({ data }) => {
           <CardTitle>{name}</CardTitle>
           {isVerified ? (
             <VerifiedWrapper>
-              <img src={verifiedIcon} alt="verificado.png"/>
+              <img src={verifiedIcon} alt="verificade"/>
               <VerifiedText>Verificado Backstage</VerifiedText>
             </VerifiedWrapper>
           ) : (
@@ -54,7 +54,7 @@ export const Web: FC<UserCardData> = ({ data }) => {
           })}
         </LabelWrapper>
         <Description>{description}</Description>
-        <Button href={`/profile/${id}`}>visualizar perfil</Button>
+        <Button href={`/perfil/${id}`}>visualizar perfil</Button>
       </TextWrapper>
       <Image src={photo} />
     </Container>
