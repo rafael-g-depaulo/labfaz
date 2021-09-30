@@ -9,23 +9,26 @@ const useTimeout = (ms: number, autoStart = false) => {
   const onFinish = useCallback(() => setDone(true), [setDone])
 
   const start = useCallback(() => {
-    if (timeout.current !== null) return
     setDone(false)
     timeout.current = setTimeout(onFinish, ms)
-  }, [onFinish])
+  }, [onFinish, ms])
 
   const stop = useCallback(() => {
     if (timeout.current === null) return
 
     setDone(true)
     clearTimeout(timeout.current)
+    timeout.current = null
   }, [])
 
   // start timeout on first render if autoStart prop given
-  // TODO: maybe add a state to make sure this is only called on first render?
+  const [firstRender, setFirstRender] = useState(true)
   useEffect(() => {
-    if (autoStart) start()
-  }, [start, autoStart])
+    if (autoStart && firstRender) {
+      start()
+      setFirstRender(false)
+    }
+  }, [start, autoStart, firstRender])
 
   return { start, stop, done }
 }

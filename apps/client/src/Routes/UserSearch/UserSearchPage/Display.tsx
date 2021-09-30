@@ -38,14 +38,8 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
     showNothing: true,
   });
 
-  const { isLoading, users } = useUserSearch(formData);
-  const { start, done } = useTimeout(1000);
-
-  // console.log(users && !isLoading && done)
-  // console.log("Done", done)
-  // console.log("users", users)
-  // console.log("isLoading", isLoading)
-
+  const { isLoading, users } = useUserSearch(formData)
+  const { start, done } = useTimeout(250)
 
   return (
     <Wireframe>
