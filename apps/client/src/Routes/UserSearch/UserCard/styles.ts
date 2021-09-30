@@ -6,6 +6,7 @@ import { DesktopSmall, Mobile } from "Utils/breakpoints";
 
 export const Container = styled.div`
   width: 100%;
+  max-width: var(--max-content-small);
   height: 510px;
   display: flex;
   flex-direction: row;
