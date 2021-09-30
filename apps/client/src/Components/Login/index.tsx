@@ -97,14 +97,12 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
                       name="email"
                       label="E-mail"
                       placeholder="Digite seu email"
-                      obrigatory
                     />
 
                     <InputPassword
                       name="password"
                       label="Senha"
                       placeholder="Digite sua senha"
-                      obrigatory
                     />
                   </InputTextContainer>
 
