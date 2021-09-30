@@ -90,16 +90,21 @@ export const Container = styled.div<ContainerProps>`
   .labelContainer {
     position: absolute;
     left: 1.27rem;
-    top: -50%;
+    top: -60%;
 
-    padding: 1px 9px;
+    height: 1.66rem;
+
+    padding: 0px 9px;
+
+    z-index: 2;
 
     background-color: #111010;
 
     ${DesktopSmall(css`
-      padding: 0.1px 9px;
+      padding: 0px 9px;
       left: 0.8rem;
       top: -68%;
+      height: 1.3rem;
     `)}
 
     ${Mobile(css`
@@ -137,6 +142,8 @@ export const Container = styled.div<ContainerProps>`
 
     column-gap: 0.5rem;
     position: relative;
+
+    height: fit-content;
 
     span {
       

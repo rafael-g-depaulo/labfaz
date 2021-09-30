@@ -37,7 +37,8 @@ export const Container = styled.div<ContainerProps>`
   .labelContainer {
     position: absolute;
     left: 1.27rem;
-    top: -50%;
+    top: -60%;
+    height: 1.6rem;
 
     padding: 1px 9px;
 
@@ -45,7 +46,8 @@ export const Container = styled.div<ContainerProps>`
 
     ${DesktopSmall(css`
       left: 0.6rem;
-      top: -75%;
+      top: -80%;
+      height: 1.5rem;
       padding: 0px 9px;
     `)}
 
@@ -53,7 +55,8 @@ export const Container = styled.div<ContainerProps>`
       left: 0.6rem;
       top: -75%;
       padding: 0px 9px;
-    background-color: #000000;
+      background-color: #000000;
+      height: 1.8rem;
 
     `)}
   }

@@ -14,15 +14,29 @@ export const Container = styled.div<ContainerProps>`
   .labelContainer {
     position: absolute;
     left: 1.27rem;
-    top: -50%;
+    top: -60%;
 
-    padding: 1px 9px;
+    height: 1.66rem;
+
+    padding: 0px 9px;
+
+    z-index: 2;
 
     background-color: #111010;
     
     ${DesktopSmall(css`
-      top: -65%;
       padding: 0px 9px;
+      left: 0.8rem;
+      top: -60%;
+      height: 1.5rem;
+    `)}
+
+    ${Mobile(css`
+      padding: 0.1px 9px;
+      left: 0.4rem;
+      top: -60%;
+      background-color: #000000;
+
     `)}
   }
 
@@ -33,6 +47,8 @@ export const Container = styled.div<ContainerProps>`
 
     column-gap: 0.5rem;
     position: relative;
+
+    height: fit-content;
 
     span {
       
@@ -100,6 +116,8 @@ export const Container = styled.div<ContainerProps>`
       margin-bottom: 0.5rem;
 
     `)}
+
+    
     
     padding: 0.7rem 0.2rem 0.7rem 0.7rem;
 
@@ -107,6 +125,11 @@ export const Container = styled.div<ContainerProps>`
       color: rgba(255, 255, 255, 0.25);
       font-weight: 600;
       font-size: var(--font-size-medium);
+
+      ${DesktopSmall(css`
+        font-size: var(--font-size-small);
+    	`)}
+
     }
   }
 
