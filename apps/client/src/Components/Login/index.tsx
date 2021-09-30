@@ -50,7 +50,7 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const { setToken } = useContext(CurrentUserTokenContext)
   const [error, setError] = useState<ErrorObject | undefined>(undefined)
   const [toastMessage, setToastMessage] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   
   const { data: infoData } = useLoginInfo()
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { MobileSmall, Mobile, DesktopSmall, DesktopLarge, MobileLarge } from "Utils/breakpoints"
+import { MobileSmall, Mobile, DesktopSmall, DesktopLarge } from "Utils/breakpoints"
 
 
 interface ModalProps {
@@ -250,7 +250,7 @@ export const Container = styled.div<ModalProps>`
   place-items: center;
   z-index: 99999999;
   max-height: 85vh;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(15px);
 
 `

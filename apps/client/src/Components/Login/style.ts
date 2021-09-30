@@ -217,6 +217,16 @@ export const RightSide = styled.div`
   height: 100%;
   background-color: #111010;
 
+  form span {
+    color: white;
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    font-size: var(--font-size-large);
+    cursor: pointer;
+  }
+
   ${Mobile(css`
     background-color: black;
   `)}

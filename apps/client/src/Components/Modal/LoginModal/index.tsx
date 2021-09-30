@@ -3,9 +3,11 @@ import React, { FC, useState } from 'react'
 import { ModalDiv, ModalContent, Container, ModalLine, Button } from '../styles'
 import { FormButton } from "Components/PasswordRecover/styles"
 import { Title } from "Components/Typography/Title"
-import SocialMediaIcons  from "Components/SocialMediaIcons"
+import { Text } from "Components/Typography/Text"
 import { TextInput } from "Components/Inputs/TextInput"
 import { Formik, Form } from 'formik'
+
+import { ResendEmail } from "Api/ResendEmail"
 
 interface ModalProps {
   isVisible: boolean,
@@ -28,7 +30,10 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction }) => {
             initialValues={{
               email: '',
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => ResendEmail(values.email)
+              .then(() => setMessage("Email enviado com sucesso!"))
+              .catch(() => setMessage("Email não encontrado"))
+            }
           >
             {
               () => (
@@ -44,10 +49,9 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction }) => {
             }
 
           </Formik>
-          <SocialMediaIcons />
-            
+          {/* <SocialMediaIcons /> */}
+          {message && <Text> {message} </Text> }
           <FormButton onClick={() => setFunction(!isVisible)}> Voltar </FormButton>
-
         </ModalContent>
       </ModalDiv>
     </Container>
