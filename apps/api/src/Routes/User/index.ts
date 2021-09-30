@@ -15,6 +15,7 @@ import { ParseUser } from "./ParseUser"
 import { ParseUpdateUser  } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
+import ResendEmail from "./ResendEmail"
 
 // import subscribeToCourse from "./SubscribeToCourse";
 // import CourseRepository from "Repository/CourseRepository";
@@ -54,6 +55,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .get("/search", SearchUsers({ UserRepo }))
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
     .get("/:id", ShowUser({ UserRepo }))
+    .post("/confirm-mail", ResendEmail({ UserRepo }))
 };
 
 export default UserRouter;
