@@ -20,7 +20,7 @@ export const ContentContainer = styled.div`
 
 export const Content = styled.div`
   
-  margin-top: 2.5rem; 
+  margin-top: 2rem; 
 
   display: flex;
   flex-direction: column;

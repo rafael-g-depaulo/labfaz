@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
 
 export const Content = styled.div`
   
-  margin-top: 6.38rem;
+  margin-top: 2rem;
 
   .radioLabel {
     font-weight: 600;

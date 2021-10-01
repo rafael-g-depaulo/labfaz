@@ -26,7 +26,7 @@ export const ContentContainer = styled.div`
 `
 
 export const Content = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
 `
 
 export const LabelText = styled(Text)`

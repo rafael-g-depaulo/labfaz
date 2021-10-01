@@ -17,7 +17,7 @@ export const ContentContainer = styled.div`
 `
 
 export const Content = styled.div`
- margin-top: 8rem;
+ margin-top: 2rem;
 
   div {
     display: flex;
