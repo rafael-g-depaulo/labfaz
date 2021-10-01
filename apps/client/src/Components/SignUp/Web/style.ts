@@ -16,14 +16,14 @@ export const Container = styled.div`
   position: relative;
 
   background-color: black;
-  padding-top: 5.83rem;
+  padding-top: 2rem;
 
   ${DesktopSmall(css`
     padding-top: 3.91rem;
   `)}
 `
 export const FormTitle = styled(Title)`
-  font-size: var(--font-size-title-xxxxlarge);
+  font-size: var(--font-size-title-xlarge);
   color: #FC0061;
 
   ${DesktopSmall(css`
@@ -37,7 +37,7 @@ export const SessionContainer = styled.div`
 
 export const FormContainer = styled.div`
   display: flex;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 3.83rem;
   
   position: relative;
