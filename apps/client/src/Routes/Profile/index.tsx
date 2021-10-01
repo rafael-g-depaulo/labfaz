@@ -17,12 +17,11 @@ export const Profile: Router = ({
   const { path = "/profile" } = match ?? {}
   usePageview({ name: 'profile', path: path });
 
-  if (!token) return <Redirect to="/" />
-
   return (
     <Switch>
       <Route path={[`${path}/eu`, `${path}/me`]}>
         {() => (
+          !token ? <Redirect to="/" /> :
           <Suspense fallback={<LoadingFullPage />}>
             <PersonalProfilePage token={token}/>
           </Suspense>
@@ -30,6 +29,7 @@ export const Profile: Router = ({
       </Route>
       <Route exact path={path}>
         {() => (
+          !token ? <Redirect to="/" /> :
           <Suspense fallback={<LoadingFullPage />}>
             <PersonalProfilePage token={token}/>
           </Suspense>
@@ -39,7 +39,7 @@ export const Profile: Router = ({
       <Route path={`${path}/:id`}>
         {({ match }: RouteComponentProps<{ id: string }>) => (
           <Suspense fallback={<LoadingFullPage />}>
-            <UsersProfilePage id={String(match?.params.id)} token={token} />
+            <UsersProfilePage id={String(match?.params.id)} />
           </Suspense>
         )}
       </Route>

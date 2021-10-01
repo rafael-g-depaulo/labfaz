@@ -7,12 +7,11 @@ import Display from './Display'
 
 interface UserProfilePageProps {
   id: string
-  token: string
 }
 
-export const ProfilePage: FC<UserProfilePageProps> = ({ id, token }) => {
+export const ProfilePage: FC<UserProfilePageProps> = ({ id }) => {
 
-  const user = useUser(id, token)
+  const user = useUser(id)
 
   if (user.isLoading || user.isLoading) return <LoadingFullPage />;
 

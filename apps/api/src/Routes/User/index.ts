@@ -53,7 +53,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     )
     .get("/search", SearchUsers({ UserRepo }))
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
-    .get("/:id", ensureAuthenticated, ShowUser({ UserRepo }))
+    .get("/:id", ShowUser({ UserRepo }))
 };
 
 export default UserRouter;

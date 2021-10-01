@@ -9,18 +9,14 @@ export interface ApiUser {
   }
 }
 
-export const fetchUser = (id: string, token: string) => api
-  .get<ApiUser>(`user/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
+export const fetchUser = (id: string) => api
+  .get<ApiUser>(`user/${id}`)
   .then(({ data }) => data)
   .then(({ data }) => data)
   .then(({ user }) => user)
 
-export const useUser = (id: string, token: string) => 
-  useFetchApi<User, AxiosError<ErrorObject>>(`user/${id}`, () => fetchUser(id, token))
+export const useUser = (id: string) => 
+  useFetchApi<User, AxiosError<ErrorObject>>(`user/${id}`, () => fetchUser(id))
 
 export const fetchCurrentUser = (token: string) => api
   .get<ApiUser>(`user/me`, {
