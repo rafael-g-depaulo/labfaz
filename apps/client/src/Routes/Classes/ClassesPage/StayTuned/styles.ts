@@ -37,14 +37,14 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 0 22px 22px 0;
   -webkit-filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
-  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
-  box-shadow: 0 0 50px 0 rgba(9, 9, 9, 1) inset;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  box-shadow: 0 0 10px 0 rgba(9, 9, 9, 1) inset;
 
   ${Mobile(css`
     width: 100%;
     height: 300px;
     border-radius: 0;
-    box-shadow: 0 0 54px 0 rgba(9, 9, 9, 0.8);
+    box-shadow: 0 0 10px 0 rgba(9, 9, 9, 0.2);
   `)}
 `;
 
@@ -115,11 +115,18 @@ export const Button = styled(ExternalLinkButton)`
   font-size: var(--font-size-medium);
   text-align: center;
   padding: 6px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-  border-top: none;
-  border-left: none;
-  border-radius: 5px;
+  border: none;
+  border-radius: 2.16px;
+
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
 
   ${Mobile(css`
     margin: 27px 0 20px 0;
@@ -127,6 +134,6 @@ export const Button = styled(ExternalLinkButton)`
     color: var(--color-text-black);
     border: none;
     padding: 8px;
-    border-radius: 3px;
+    border-radius: 2.16px;
   `)}
 `;
