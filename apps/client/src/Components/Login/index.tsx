@@ -71,7 +71,6 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   return (
     <Container>
       <FormContainer openToastMessage={toastMessage}>
-        <LoginTitle level={1}>{infoData?.titulo ?? "Entrar"}</LoginTitle>
         <div className="formContainer">
           <LeftSide>
             <Img src={infoData?.imagem?.url ?? Icon} alt="" />
