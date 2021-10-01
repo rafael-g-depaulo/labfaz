@@ -54,7 +54,7 @@ export const Web: FC = () => {
         { isLoggedIn 
           ? showProfileMine && (
             <>
-              <Link {...navLinks["perfil"]} />
+              <Button href={navLinks["perfil"].path}> PERFIL </Button>
               <LogoutButton onClick={() => handleLogoutUser()}>SAIR</LogoutButton>
             </>
           )
