@@ -19,8 +19,8 @@ import { FormDiv, OptionsDiv, Header, ContentDiv } from "./style";
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência";
 
 interface UserSearchInterface {
-  title: string,
-  description: string
+  title?: string,
+  description?: string
 }
 
 export const Display: FC<UserSearchInterface> = ({title, description}) => {
@@ -44,8 +44,8 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
   return (
     <Wireframe>
       <Header>
-        <Title> {title} </Title>
-        <Text> {description}  </Text>
+        {title && <Title>{title}</Title> }
+        {description && <Text>{description}</Text> }
       </Header>
       <FormDiv>
         <Form setFunction={setFormData} onInput={start}>

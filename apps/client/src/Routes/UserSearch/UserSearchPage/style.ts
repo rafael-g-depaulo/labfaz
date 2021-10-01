@@ -3,12 +3,9 @@ import { DesktopLarge, DesktopSmall, Mobile } from 'Utils/breakpoints'
 
 
 export const FormDiv = styled.div`
-  margin-top: 3rem;
-  margin-bottom: 5rem;
-  max-height: 90vh;
-  max-width: 95vw;
+  max-width: var(--max-content-small);
+  margin: 1.6rem auto 2.4rem auto;
   background-color: black;
-  margin-left: 27px;
 
   ${Mobile(css`
     margin: 0;
@@ -138,7 +135,7 @@ export const Select = styled.select`
 export const SelectDiv = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
-  margin-top: 4rem;
+  margin-top: 1.6rem;
   position: relative;
   align-items: end;
   * {
@@ -222,9 +219,7 @@ export const BadgeDiv = styled.span`
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 30vh;
-  width: 70vw;
-  max-width: 709px;
+  max-width: var(--max-content-small);
   align-self: center;
   align-items: center;
 
@@ -240,7 +235,7 @@ export const Header = styled.div`
   h1 {
     font-size: var(--font-size-xxlarge);
     color: white;
-    margin-bottom: 1em;
+    margin: 0;
     margin-top: 1.2em;
   }
 
@@ -259,6 +254,6 @@ export const ContentDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 90vw;
-  max-width: 1000px;
+  max-width: var(--max-content-small);
+  margin: auto;
 `
