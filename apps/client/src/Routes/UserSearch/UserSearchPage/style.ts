@@ -114,12 +114,20 @@ export const Label = styled.div`
 
 export const Select = styled.select`
   border: 1px solid gray;
-  background: transparent;
+  background: black;
   border-radius: 4px;
   display: flex;
   text-align: center;
   padding-right: 0.5em;
   max-width: 275px;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+  }
 
   ::placeholder {
     color: white;
