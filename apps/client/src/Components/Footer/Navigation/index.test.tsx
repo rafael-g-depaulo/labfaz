@@ -33,7 +33,7 @@ describe('Check links succesfully redirects to another page', () => {
 
   it('checks link of professionals page', () => {
     expect(getByText('BUSCA DE PROFISSIONAIS'))
-    .toHaveAttribute('href', '/professionals')
+    .toHaveAttribute('href', '/busca-profissionais')
   })
 })
 
