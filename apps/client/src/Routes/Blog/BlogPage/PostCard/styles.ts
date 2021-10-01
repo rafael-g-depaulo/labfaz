@@ -122,14 +122,13 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
- margin-top: 5px;
+  margin-top: 5px;
 `;
 
 export const ButtonLayer = styled.div`
   position: relative;
   width: 250px;
   height: 45px;
-  background-color: var(--background-yellow);
   z-index: 1;
   top: 41px;
   right: 3px;
@@ -151,7 +150,18 @@ export const Button = styled(InternalLinkButton)`
   align-items: center;
   justify-content: center;
   outline: none;
-  border-color: var(--background-black);
+  border: none;
+  border-radius: 2.16px;
+
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
 
   ${Mobile(css`
     width: 150px;
@@ -164,6 +174,7 @@ export const ButtonText = styled(Text)`
   font-weight: 700;
   color: var(--color-text-beige);
   text-transform: uppercase;
+
 
   ${Mobile(css`
     font-size: var(--font-size-short);
