@@ -13,8 +13,9 @@ export const Title = styled(Text)`
   && {
     text-transform: uppercase;
     font-weight: 500;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     color: var(--color-text-white-gray);
+    margin-bottom: 0.5rem;
 
     ${DesktopSmall(css`
       font-size: var(--font-size-short);

@@ -6,7 +6,7 @@ import { DesktopSmall } from 'Utils/breakpoints'
 
 export const NavigationContainer = styled.div`
   width: 18rem;
-  height: 8.5rem;
+  height: min-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,7 +21,7 @@ export const Title = styled(Text)`
   && {
     text-transform: uppercase;
     font-weight: 500;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     color: var(--color-text-pink);
 
     ${DesktopSmall(css`
@@ -43,7 +43,7 @@ export const NavLink = styled(InternalLinkButton)`
     color: var(--color-text-white-gray);
     background-color: transparent;
     border: none;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     font-weight: 500;
     margin: 0;
     padding: 0 0 0 1rem;

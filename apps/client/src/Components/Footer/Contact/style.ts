@@ -8,7 +8,7 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   
   ${Desktop(css`
-    height: 8.5rem;
+    height: min-content;
   `)}
   
   .icons {
@@ -20,7 +20,7 @@ export const ContactContainer = styled.div`
   }
 
   ${DesktopSmall(css`
-    height: 5.5rem;
+    height: min-content;
     gap: 0.5rem;
   `)}
   ${Mobile(css`
@@ -48,7 +48,7 @@ export const Title = styled(Text)`
   && {
     text-transform: uppercase;
     font-weight: 500;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     color: var(--color-text-pink);
 
     ${DesktopSmall(css`
@@ -64,7 +64,7 @@ export const Title = styled(Text)`
 export const Subtitle = styled(Text)`
   && {
     font-weight: 500;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     color: var(--color-text-white-gray);
 
     ${DesktopSmall(css`
