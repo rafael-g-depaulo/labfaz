@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
-interface ButtonStyleProps {
-  requestStatus?: string;
-}
 
-export const ButtonStyled = styled.button<ButtonStyleProps>`
+export const ButtonStyled = styled.button`
   min-width: 211px;
   min-height: 47px;
   background-color: var(--button-color-pink);

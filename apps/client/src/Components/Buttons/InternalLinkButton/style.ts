@@ -17,6 +17,8 @@ export const StyledButton = styled(Link)`
   color: var(--color-text-yellow);
   border-color: var(--button-color-yellow);
 
+
+
   &.empty-black {
     border: .175em solid black;
     border-radius: .5em;

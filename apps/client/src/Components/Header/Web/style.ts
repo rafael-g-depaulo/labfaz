@@ -3,6 +3,8 @@ import styled, { css } from "styled-components"
 import { DesktopSmall } from 'Utils/breakpoints'
 import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 
+import { ButtonStyled } from "Routes/Classes/SubscriptionButton/styles";
+
 export const Container = styled.div`
   background-color: var(--backgound-black-gray);
   padding: 0.5rem 0;
@@ -75,12 +77,6 @@ export const UserSession = styled.div`
     margin: 0 5px;
     background-color: var(--background-pink);
 
-    &:hover {
-      border-top: 2px solid;
-      border-left: 2px solid;
-      border-color: var(--button-color-yellow);
-    }
-
     ${DesktopSmall(css`
       font-size: var(--font-size-short: 11px);
       padding: 0.3rem;
@@ -94,12 +90,16 @@ export const Button = styled(InternalLinkButton)`
   border: none;
   font-size: var(--font-size-large);
   margin: 0 5px;
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
 
-  &:hover {
-    border-top: 2px solid;
-    border-left: 2px solid;
-    border-color: var(--button-color-yellow);
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
   }
+
 
   ${DesktopSmall(css`
     font-size: var(--font-size-short: 11px);
@@ -107,7 +107,7 @@ export const Button = styled(InternalLinkButton)`
   `)}
 `;
 
-export const LogoutButton = styled.button`
+export const LogoutButton = styled(ButtonStyled)`
   padding: 0.2rem 1.5rem;
   color: var(--color-text-beige);
   border: none;
@@ -118,10 +118,9 @@ export const LogoutButton = styled.button`
   font-weight: bold;
 
   &:hover {
-    border-top: 2px solid;
-    border-left: 2px solid;
-    border-color: var(--button-color-yellow);
-    cursor: pointer;
+    box-shadow: 10px 10px 0px black, inset 0px 2.88px 2.88px rgba(0, 0, 0, #FFEC99);
+    opacity: 0.8;
+    transition: 500ms;
   }
 
   ${DesktopSmall(css`
@@ -131,13 +130,30 @@ export const LogoutButton = styled.button`
 `
 
 export const LogIn = styled(InternalLinkButton)`
-  color: var(--background-pink);
-  border-top: none;
-  border-left: none;
-  background-color: transparent;
-  border-bottom: 1px solid var(--background-pink);
-  padding: 0.5rem 2rem;
+  color: var(--color-text-beige);
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+  padding: 0rem 1rem;
   font-size: var(--font-size-large);
+  max-height: 37px;
+  min-height: 38px;
+  min-width: 30px;
+  margin-bottom: 0;
+  border: none;
+
+  font-size: var(--font-size-medium);
+  cursor: pointer;
+
+  :disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
 
   ${DesktopSmall(css`
     font-size: var(--font-size-short: 11px);
