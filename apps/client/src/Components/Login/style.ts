@@ -241,6 +241,16 @@ export const Button = styled.button`
   font-size: var(--font-size-large);
   font-weight: 700;
 
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
+
   ${DesktopSmall(css`
 
     font-size: 10px;
@@ -257,6 +267,16 @@ export const RegisterButton = styled(InternalLinkButton)`
   font-size: 16px;
 
   white-space: nowrap;
+
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+  border: none;
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
 
   ${DesktopSmall(css`
 

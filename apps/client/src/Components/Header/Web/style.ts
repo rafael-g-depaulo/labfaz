@@ -108,18 +108,25 @@ export const Button = styled(InternalLinkButton)`
 `;
 
 export const LogoutButton = styled(ButtonStyled)`
-  padding: 0.2rem 1.5rem;
+  padding: 0.2rem 1rem;
   color: var(--color-text-beige);
   border: none;
   font-size: var(--font-size-large);
   margin: 0 5px;
   background-color: var(--background-pink);
 
+  min-width: 100px;
+  min-height: 38px;
+
   font-weight: bold;
 
-  &:hover {
-    box-shadow: 10px 10px 0px black, inset 0px 2.88px 2.88px rgba(0, 0, 0, #FFEC99);
-    opacity: 0.8;
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
     transition: 500ms;
   }
 

@@ -72,6 +72,16 @@ export const NextButton = styled.button`
   right: 6rem;
   bottom: 2.2rem;
 
+  background-color: rbga(297, 0, 97, 1);
+  box-shadow: 1px 1px 0px rgba(255, 236, 153, 1);
+  border: none;
+
+  :hover {
+    box-shadow: 3px 3px 0px rgba(255, 236, 153, 1);
+    opacity: 1;
+    transition: 500ms;
+  }
+
   ${DesktopSmall(css`
     width: 6.5rem;
     height: 1.48rem;
