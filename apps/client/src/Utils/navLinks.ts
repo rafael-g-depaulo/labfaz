@@ -23,7 +23,7 @@ export const navLinks: linkDict = {
   "cursos":              { name: "cursos",              label: "CURSOS",                 path: "/classes"         },
   "blog":                { name: "blog",                label: "BLOG",                   path: "/blog"            },
   "observatorio":        { name: "observatorio",        label: "OBSERVATÓRIO",           path: "/observatorio"    },
-  "busca profissionais": { name: "busca profissionais", label: "BANCO DE PROFISSIONAIS", path: "/professionals"   },
+  "busca profissionais": { name: "busca profissionais", label: "BUSCA DE PROFISSIONAIS", path: "/busca-profissionais"   },
   "login":               { name: "login",               label: "ENTRAR",                 path: "/login"           },
   "cadastro":            { name: "cadastro",            label: "CADASTRE-SE",            path: "/signup"          },
   "perfil":              { name: "perfil",              label: "PERFIL",                 path: "/perfil/eu"       },

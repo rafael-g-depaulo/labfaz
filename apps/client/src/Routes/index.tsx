@@ -105,7 +105,7 @@ const Routes: FC = () => {
           </Route>
         )}
 
-        <Route path={["/sign-up", "/signup", "/SignUp"]}>
+        <Route path={["/sign-up", "/signup", "/SignUp", "/cadastro", "/cadastre-se"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <Register match={match} />
@@ -121,7 +121,7 @@ const Routes: FC = () => {
           )}
         </Route>
 
-        { showEditProfile && <Route path={'/edit-profile'}>
+        { showEditProfile && <Route path={['/edit-profile', '/editar-perfil']}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <EditProfile match={match} />
@@ -129,7 +129,7 @@ const Routes: FC = () => {
           )}
         </Route>}
 
-        <Route path={["/login", "SignIn"]}>
+        <Route path={["/login", "/SignIn", "/logar", "/entrar"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
                 <Login match={match} />
@@ -156,7 +156,7 @@ const Routes: FC = () => {
         </Route>}
 
         {/* user search */}
-        <Route path={["/banco-profissionais", "/user-search", "/busca-usuários", "/professionals"]}>
+        <Route path={["/banco-profissionais", "/user-search", "/busca-usuários", "/professionals", "/busca-profissionais"]}>
           {({ match }) => (
             <Suspense fallback={<LoadingFullPage />}>
               <UserSearch match={match} />
