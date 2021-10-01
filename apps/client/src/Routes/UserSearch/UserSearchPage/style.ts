@@ -256,4 +256,8 @@ export const ContentDiv = styled.div`
   align-items: center;
   max-width: var(--max-content-small);
   margin: auto;
+
+  ${Mobile(css`
+    margin: 0 1rem;
+  `)}
 `

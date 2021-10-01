@@ -38,6 +38,7 @@ export const Image = styled.img`
   ${Mobile(css`
     width: 48%;
     border-radius: 0;
+    height: 6rem;
   `)}
 `;
 
@@ -54,7 +55,7 @@ export const TextWrapper = styled.div`
 
   ${Mobile(css`
     width: 50%;
-    margin-left: 10px;
+    margin-left: 12px;
     padding: 0;
     background-color: transparent;
     border-radius: 0;
@@ -68,8 +69,13 @@ export const CardTitle = styled(Title)`
   line-height: 1;
   color: var(--color-text-white-gray);
 
+  
+
   ${Mobile(css`
     font-size: var(--font-size-short);
+    font-size: var(--font-size-medium);
+    margin-bottom: 0.4rem;
+    margin-top: 0.4rem;
   `)}
 
   ${DesktopSmall(css`
@@ -87,8 +93,13 @@ export const LabelWrapper = styled.div`
   overflow: hidden;
 
   ${Mobile(css`
-    margin: 21px 0 0 0;
-    justify-content: space-evenly;
+    margin-right: 0px;
+    grid-template-rows: 23px;
+    grid-template-columns: 21px auto 21px;
+    border-radius: 64px;
+    position: absolute;
+    bottom: -33px;    
+    justify-content: center;
   `)}
 `;
 
@@ -100,13 +111,19 @@ export const Description = styled(Text)`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  box-orient: vertical;
 
   ${Mobile(css`
-    width: 100%;
+    width: 90%;
     font-size: var(--font-size-small);
-    margin-top: 10px;
+    color: var(--color-text-white-gray);
+    /* text-align: justify; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 4;
+    box-orient: vertical;    
   `)}
 
   ${DesktopSmall(css`
@@ -146,15 +163,18 @@ export const Button = styled(InternalLinkButton)`
 
 export const MobileWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 8rem;
   display: flex;
   flex-direction: column;
+  -webkit-box-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 19px 12px;
-  background-color: transparent;
-  border: 1px solid #6c6c6c;
+  /* padding: 19px 12px; */
+  background-color: rgb(42, 42, 42);
+  border: 1px solid rgb(108, 108, 108, 0.1);
   border-radius: 11px;
+  filter: drop-shadow(rgba(100, 100, 100, 0.5) 0px 0px 4px);
 `;
 
 export const MobileMainContent = styled.div`
@@ -164,6 +184,10 @@ export const MobileMainContent = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+
+  > img {
+    border-radius: 10px 0px 10px 0px;
+  }
 `;
 
 export const VerifiedWrapper = styled.div`
