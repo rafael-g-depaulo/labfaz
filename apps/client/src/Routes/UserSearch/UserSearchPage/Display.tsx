@@ -15,6 +15,7 @@ import { Pagination } from "Components/Pagination/Static"
 import { UserSearchParams, useUserSearch } from "Api/UserSearch";
 
 import { FormDiv, OptionsDiv, Header, ContentDiv } from "./style";
+import { getUserName } from "Utils/userUtils";
 
 export type Fields = "areas" | "serviços" | "diversidade" | "experiência";
 
@@ -63,7 +64,7 @@ export const Display: FC<UserSearchInterface> = ({title, description}) => {
             {
               users => users.map((user, index) => {
                 const { id, isVerified } = user;
-                const name = user.artist.show_name;
+                const name = getUserName(user)
                 const area = user.artist.technical.area;
                 const photo = user.artist.photo_url;
                 const description = user.artist.technical.area[0].describe;
