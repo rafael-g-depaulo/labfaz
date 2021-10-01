@@ -21,7 +21,7 @@ import {
   RegisterButton,
   InputText,
   NavLink,
-  LoginTitle,
+  // LoginTitle,
   LabfazText,
   ButtonContainer,
   CheckboxInputContainer,
