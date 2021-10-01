@@ -154,7 +154,7 @@ export const Container = styled.div<ContainerProps>`
 
       width: 13rem;
 
-      bottom: -15%;
+      bottom: -30%;
 
       font-size: 10px;
 
@@ -165,7 +165,7 @@ export const Container = styled.div<ContainerProps>`
       z-index: 1;
 
       ${DesktopSmall(css`
-        bottom: -40%;
+        bottom: -50%;
         font-size: 8px;
       `)}
 
@@ -205,7 +205,10 @@ export const Container = styled.div<ContainerProps>`
     padding: 0.7rem 0.2rem 0.7rem 0.7rem;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.25);
+      /* color: rgba(255, 255, 255, 0.25); */
+
+      color: ${({ validationError }) => validationError ? '#090909' : 'rgba(255, 255, 255, 0.25)'};
+
       font-weight: 600;
       font-size: var(--font-size-large);
 
