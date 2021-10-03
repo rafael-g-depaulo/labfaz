@@ -7,12 +7,13 @@ import {
 } from 'react-router-dom'
 
 import LoadingFullPage from 'Components/LoadingFullPage'
-import { showAboutUs, showBlog, showCourses, showEditProfile, showForgotPassword } from 'FeatureFlags'
+import { showAboutUs, showBlog, showCourses, showEditProfile, showForgotPassword, showObservatorio } from 'FeatureFlags'
 
 const Home = lazy(() => import('./Home'))
 // const PeopleExample = lazy(() => import("./PeopleExample"))
 // const SingletonExample = lazy(() => import("./SingletonExample"))
 const Blog = lazy(() => import("./Blog"))
+const Observatorio = lazy(() => import('./Observatorio'))
 const AboutUs = lazy(() => import("./AboutUs"))
 const Classes = lazy(() => import("./Classes"))
 const NotFound = lazy(() => import("../Pages/NotFound"))
@@ -59,6 +60,17 @@ const Routes: FC = () => {
             {({ match }) => (
               <Suspense fallback={<LoadingFullPage />}>
                 <Blog match={match} />
+              </Suspense>
+            )}
+          </Route>
+        )}
+
+        {/* observatorio router */}
+        {showObservatorio && (
+          <Route path={['/observatorio']}>
+            {({ match }) => (
+              <Suspense fallback={<LoadingFullPage />}>
+                <Observatorio match={match} />
               </Suspense>
             )}
           </Route>

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 
-import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } from 'FeatureFlags'
+import { showAboutUs, showBlog, showCourses, showObservatorio, showProfileMine, showUserSearch } from 'FeatureFlags'
 
 import Logo from 'Components/Logo'
 import {
@@ -42,11 +42,11 @@ export const Mobile: FC = () => {
       <div className={open ? 'navBar active' : 'navBar'}>
         <NavBar>
           <NavLink href="/"> HOME </NavLink>
-          
-          { <Link show={showAboutUs}    link={navLinks["about us"]} />            }
-          { <Link show={showCourses}    link={navLinks["cursos"]} />              }
-          { <Link show={showBlog}       link={navLinks["blog"]} />                }
-          { <Link show={showUserSearch} link={navLinks["busca profissionais"]} /> }
+          { <Link show={showAboutUs}      link={navLinks["about us"]} />            }
+          { <Link show={showCourses}      link={navLinks["cursos"]} />              }
+          { <Link show={showBlog}         link={navLinks["blog"]} />                }
+          { <Link show={showUserSearch}   link={navLinks["busca profissionais"]} /> }
+          { <Link show={showObservatorio} link={navLinks["observatorio"]} />        }
 
           {isLoggedIn
             ? (
