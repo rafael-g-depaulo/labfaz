@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/observatorio-posts",
+      "handler": "observatorio-posts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/observatorio-posts/count",
+      "handler": "observatorio-posts.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/observatorio-posts/:id",
+      "handler": "observatorio-posts.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/observatorio-posts",
+      "handler": "observatorio-posts.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/observatorio-posts/:id",
+      "handler": "observatorio-posts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/observatorio-posts/:id",
+      "handler": "observatorio-posts.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
