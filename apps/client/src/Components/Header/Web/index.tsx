@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch } from 'FeatureFlags'
+import { showAboutUs, showBlog, showCourses, showProfileMine, showUserSearch, showObservatorio } from 'FeatureFlags'
 
 import Logo from 'Components/Logo'
 import useEvent from 'Hooks/useEvent'
@@ -44,10 +44,12 @@ export const Web: FC = () => {
         <Logo />
       </RedirectLink>
       <Navbar>
-        { showAboutUs    && <Link {...navLinks["about us"]} />            }
-        { showCourses    && <Link {...navLinks["cursos"]} />              }
-        { showBlog       && <Link {...navLinks["blog"]} />                }
-        { showUserSearch && <Link {...navLinks["busca profissionais"]} /> }
+        { showAboutUs      && <Link {...navLinks["about us"]} />              }
+        { showCourses      && <Link {...navLinks["cursos"]} />                }
+        { showBlog         && <Link {...navLinks["blog"]} />                  }
+        { showUserSearch   && <Link {...navLinks["busca profissionais"]} />   }
+        { showObservatorio && <Link {...navLinks["observatorio"]} />          }
+
       </Navbar>
       <div className="line" />
       <UserSession>
