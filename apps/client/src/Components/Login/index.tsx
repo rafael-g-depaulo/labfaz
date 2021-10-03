@@ -6,6 +6,8 @@ import { Formik, Form } from 'formik'
 import { login } from 'Api/Session'
 import { ErrorObject } from 'Api'
 
+import useQueries from 'Hooks/useUrlQueries'
+
 import { CheckboxInput } from 'Components/Inputs/CheckboxInput'
 import { CurrentUserTokenContext } from 'Context/LoggedUserToken'
 
@@ -55,17 +57,19 @@ export const Login: FC<LoginComponentProps> = ({ buttonType }) => {
   const { data: infoData } = useLoginInfo()
 
   const history = useHistory()
+  const queries = useQueries()
+  const redirect_to = queries.get("redirect_to")
 
   const handleSubmit = useCallback(
     (values: FormProps) => {
       login(values.email, values.password)
         .then(({ token }) => {
           setToken(token)
+          history.push(`/${redirect_to ?? "home"}`)
         })
-        .then(() => history.push('/home'))
         .catch((err) => [setError(err), setToastMessage(true)])
     },
-    [setToken, history]
+    [setToken, redirect_to, history]
   )
 
   return (
