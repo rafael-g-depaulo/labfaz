@@ -63,9 +63,9 @@ export const addressSchema = yup
   .required()
   .shape({
     city: yup.string().required(),
-    cep: yup.string().required(),
-    neighbourhood: yup.string().required(),
-    number: yup.number().integer().required(),
+    cep: yup.string(),
+    neighbourhood: yup.string(),
+    number: yup.number().integer(),
     complement: yup.string(),
     residency: yup
       .mixed<Residency>()
@@ -95,11 +95,11 @@ export const userArtistSchema = yup
     gender: yup.string().required(),
     cpf: yup
       .string()
-      .required()
+      // .required()
       .matches(/\d{3}\.\d{3}\.\d{3}-\d{2}/),
     birthday: yup.date().required(),
-    rg: yup.string().required(),
-    expedition_department: yup.string().required(),
+    rg: yup.string(),
+    expedition_department: yup.string(),
     gender_specific: yup
       .mixed<GenderSpecific>()
       .required()

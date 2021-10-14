@@ -53,7 +53,7 @@ export const addressSUpdateSchema = yup.object().shape({
   city: yup.string(),
   cep: yup.string(),
   neighbourhood: yup.string(),
-  number: yup.number().integer().required(),
+  number: yup.number().integer(),
   complement: yup.string(),
   residency: yup
     .mixed<Residency>()
