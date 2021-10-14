@@ -67,6 +67,14 @@ export const Step6: FC = () => {
               label="Indígena"
             />
           </InputRadioContainer>
+          <InputRadioContainer>
+            <RadioInput
+              type="radio"
+              name="artist.race"
+              value="nenhuma"
+              label="Prefiro não responder"
+            />
+          </InputRadioContainer>
         </Content>
       </ContentContainer>
     </Container>

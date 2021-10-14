@@ -64,6 +64,15 @@ export const Step2: FC = () => {
                   label="Indígena"
                 />
               </InputRadioContainer>
+
+              <InputRadioContainer>
+                <RadioInput
+                  type="radio"
+                  name="artist.race"
+                  value="nenhuma"
+                  label="Prefiro não responder"
+                />
+              </InputRadioContainer>
             </div>
             <div className="genderContainer">
               <label htmlFor="gender">
