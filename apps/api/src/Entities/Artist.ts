@@ -124,8 +124,8 @@ export class Artist {
   @Column({ nullable: true, type: "text" })
   rg?: string;
 
-  @Column()
-  expedition_department: string;
+  @Column({ nullable: true, type: "text" })
+  expedition_department?: string;
 
   @Column({
     type: "enum",
