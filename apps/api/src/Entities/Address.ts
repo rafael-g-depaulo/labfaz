@@ -38,17 +38,17 @@ export class Address {
   @JoinColumn()
   artist: Artist;
 
-  @Column()
-  city: string;
+  @Column({ nullable: true, type: "text" })
+  city?: string;
 
-  @Column()
-  cep: string;
+  @Column({ nullable: true, type: "text" })
+  cep?: string;
 
-  @Column()
-  neighbourhood: string;
+  @Column({ nullable: true, type: "text" })
+  neighbourhood?: string;
 
-  @Column()
-  number: number;
+  @Column({ nullable: true, type: "text" })
+  number?: number;
 
   @Column({ nullable: true, type: "text" })
   complement?: string;
@@ -64,7 +64,7 @@ export class Address {
     nullable: true,
     type: "text",
   })
-  state: string;
+  state?: string;
 
   @CreateDateColumn()
   created_at: Date;

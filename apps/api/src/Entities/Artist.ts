@@ -115,14 +115,14 @@ export class Artist {
   @Column()
   gender: string;
 
-  @Column()
-  cpf: string;
+  @Column({ nullable: true, type: "text" })
+  cpf?: string;
 
   @Column()
   birthday: Date;
 
-  @Column()
-  rg: string;
+  @Column({ nullable: true, type: "text" })
+  rg?: string;
 
   @Column()
   expedition_department: string;
