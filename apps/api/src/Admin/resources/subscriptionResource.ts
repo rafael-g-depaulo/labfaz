@@ -79,7 +79,7 @@ const subscriptionResource = (conn: Connection): ResourceWithOptions => {
             // send correct email depending on status
             try {
               if (status === "accepted" || status?.status === 'accepted') {
-                const courseDates = Object.values(course.selectParams("class_dates") ?? {})
+                const courseDates = Object.values((course.selectParams("class_dates") ?? {}) as {[s: string]: any})
                 const courseLink = course.params.link
                 await sendAprovedEmail(userEmail, userName, courseName, courseLink, courseDates)
                   .then(() => console.log("sent confirmation email to", userEmail))
