@@ -25,7 +25,7 @@
     "serve": "IS_SERVING_BUNDLE=true NODE_PATH=dist node -r tsconfig-paths/register dist/index.js",
     "build": "yarn build:server & yarn build:db",
     "build:server": "tsc --project tsconfig.prod.json",
-    "build:db": "yarn typeorm migration:run || yarn typeorm schema:sync",
+    "build:db": "yarn db:build || yarn db:build:force",
     "clean": "rm -fr dist; rm -f .ultra.cache.json; rm -f tsconfig.tsbuildinfo",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm --config ./src/Db/config.cli",
     "test": "jest --reporters=\"default\"",
@@ -35,7 +35,8 @@
     "report": "yarn coverage",
     "db:drop": "yarn typeorm schema:drop",
     "db:build": "yarn typeorm migration:run",
-    "db:build:force": "yarn typeorm schema:sync",
+    "db:build:force": "if-env NODE_ENV=development && yarn typeorm schema:sync",
+    "db:build:force:extreme": "yarn typeorm schema:sync",
     "db:reset": "yarn db:drop && yarn db:build"
   },
   "bugs": {
