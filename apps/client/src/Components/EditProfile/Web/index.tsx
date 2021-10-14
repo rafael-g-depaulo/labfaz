@@ -129,7 +129,7 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
               artistic_name: yup.string(),
               cpf: yup
                 .string()
-                .required('Cpf obrigatório')
+                // .required('Cpf obrigatório')
                 .min(11, 'Cpf incompleto'),
               birthday: yup
                 .string()
@@ -137,20 +137,21 @@ export const Web: FC<ButtonProps> = ({ buttonType, data, token }) => {
                 .min(8, 'Data incompleta'),
               rg: yup
                 .string()
-                .required('Rg é obrigatório')
+                // .required('Rg é obrigatório')
                 .min(7, 'Rg incompleto'),
               expedition_department: yup
                 .string()
-                .required('Orgão expedidor obrigatório'),
+                // .required('Orgão expedidor obrigatório')
+                ,
               address: yup.object({
-                cep: yup.string().required('CEP obrigatório'),
-                neighbourhood: yup.string().required('Bairro obrigatório'),
-                number: yup.string().required('Número obrigatório'),
-                complement: yup.string().required('Endereço obrigatório'),
-                residency: yup.string().required('Campo obrigatório'),
+                cep: yup.string(), //.required('CEP obrigatório'),
+                neighbourhood: yup.string(), //.required('Bairro obrigatório'),
+                number: yup.string(), //.required('Número obrigatório'),
+                complement: yup.string(), //.required('Endereço obrigatório'),
+                residency: yup.string(), //.required('Campo obrigatório'),
                 state: yup
                   .string()
-                  .required('Estado obrigatório')
+                  // .required('Estado obrigatório')
                   .default('null'),
                 city: yup.string().required('Cidade obrigatória'),
               }),

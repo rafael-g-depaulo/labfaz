@@ -22,7 +22,7 @@ export const Step3: FC = () => {
               onChange={(ev: any) =>
                 setFieldValue('artist.cpf', ev.target.value)
               }
-              obrigatory
+              // obrigatory
             />
           </InputTextContainer>
 
@@ -47,7 +47,7 @@ export const Step3: FC = () => {
                 setFieldValue('artist.rg', OnlyNumbers(ev.target.value))
               }
               placeholder="Digite seu rg"
-              obrigatory
+              // obrigatory
             />
           </InputTextContainer>
 
@@ -56,7 +56,7 @@ export const Step3: FC = () => {
               name="artist.expedition_department"
               label="Orgão expedidor"
               placeholder="Digite o orgão expedidor"
-              obrigatory
+              // obrigatory
             />
           </InputTextContainer>
         </Content>

@@ -98,7 +98,7 @@ export const LeftSideContent = styled.div`
   }
 
   .genderIdentityContainer {
-    margin-top: 4rem;
+    margin-top: 1rem;
 
     ${DesktopSmall(css`
       margin-top: 2rem;

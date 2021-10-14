@@ -71,7 +71,7 @@ export const Step1: FC = () => {
                 onChange={(ev: any) =>
                   setFieldValue('artist.cpf', ev.target.value)
                 }
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
 
@@ -98,7 +98,7 @@ export const Step1: FC = () => {
                   setFieldValue('artist.rg', OnlyNumbers(ev.target.value))
                 }
                 placeholder="Digite seu rg"
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
 
@@ -107,7 +107,7 @@ export const Step1: FC = () => {
                 name="artist.expedition_department"
                 label="Orgão expedidor"
                 placeholder="Digite o orgão expedidor"
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
           </div>
@@ -199,7 +199,7 @@ export const Step1: FC = () => {
                 label="CEP"
                 placeholder="Digite seu cep"
                 inputMask="99999-999"
-                obrigatory
+                // obrigatory
                 onChange={(ev: any) =>
                   setFieldValue('cep', OnlyNumbers(ev.target.value))
                 }
@@ -213,7 +213,7 @@ export const Step1: FC = () => {
                 name="artist.address.complement"
                 label="Endereco"
                 placeholder="Digite seu logradouro"
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
 
@@ -222,7 +222,7 @@ export const Step1: FC = () => {
                 name="artist.address.neighbourhood"
                 label="Bairro"
                 placeholder="Digite seu bairro"
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
           </div>
@@ -236,7 +236,7 @@ export const Step1: FC = () => {
                 onChange={(ev: any) =>
                   setFieldValue('artist.address.number', OnlyNumbers(ev.target.value))
                 }
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
 

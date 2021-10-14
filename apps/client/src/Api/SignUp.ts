@@ -1,5 +1,7 @@
 import { api, SuccessObject } from "Api"
 
+const toNumString = (numStr: string) => isNaN(parseInt(numStr)) ? "" : `${parseInt(numStr)}`
+
 const bodyFormParse = (values: any) => {
 
   const formData = new FormData()
@@ -17,7 +19,7 @@ const bodyFormParse = (values: any) => {
 
   formData.append('artist[gender]', values.artist?.gender)
   formData.append('artist[gender_specific]', values.artist?.gender_specific)
-  formData.append('artist[cpf]', values.artist.cpf)
+  if (values.artist.cpf !== "") formData.append('artist[cpf]', values.artist.cpf)
   formData.append('artist[birthday]', values.artist?.birthday)
   formData.append('artist[rg]', values.artist?.rg)
   formData.append('artist[expedition_department]', values.artist?.expedition_department)
@@ -29,7 +31,7 @@ const bodyFormParse = (values: any) => {
   formData.append('artist[address][city]', values.artist?.address?.city)
   formData.append('artist[address][cep]', values.artist?.address?.cep)
   formData.append('artist[address][neighbourhood]', values.artist?.address?.neighbourhood)
-  formData.append('artist[address][number]', values.artist?.address?.number)
+  if (values.artist?.address?.number) formData.append('artist[address][number]', toNumString(values.artist?.address?.number))
   formData.append('artist[address][complement]', values.artist?.address?.complement)
   formData.append('artist[address][residency]', values.artist?.address?.residency)
   formData.append('artist[address][state]', values.artist?.address?.state)

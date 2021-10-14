@@ -163,7 +163,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
           artist: yup.object({
             cpf: yup
               .string()
-              .required('Cpf obrigatório')
+              // .required('Cpf obrigatório')
               .min(11, 'Cpf incompleto'),
             birthday: yup
               .string()
@@ -171,11 +171,11 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
               .min(8, 'Data incompleta'),
             rg: yup
               .string()
-              .required('Rg é obrigatório')
+              // .required('Rg é obrigatório')
               .min(7, 'Rg incompleto'),
             expedition_department: yup
               .string()
-              .required('Orgão expedidor obrigatório'),
+              // .required('Orgão expedidor obrigatório'),
           }),
         })}
         >
@@ -271,7 +271,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
               city: yup.string().required('Cidade obrigatória'),
               state: yup
                 .string()
-                .required('Estado obrigatório')
+                // .required('Estado obrigatório')
                 .default('Distrito Federal'),
               residency: yup.string().required('Campo obrigatório'),
             }),
@@ -285,10 +285,10 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
         validationSchema={yup.object({
           artist: yup.object({
             address: yup.object({
-              cep: yup.string().required('CEP obrigatório'),
-              neighbourhood: yup.string().required('Bairro obrigatório'),
-              number: yup.string().required('Número obrigatório'),
-              complement: yup.string().required('Endereço obrigatório'),
+              cep: yup.string(), //.required('CEP obrigatório'),
+              neighbourhood: yup.string(), //.required('Bairro obrigatório'),
+              number: yup.string(), //.required('Número obrigatório'),
+              complement: yup.string(), //.required('Endereço obrigatório'),
             }),
           }),
         })}

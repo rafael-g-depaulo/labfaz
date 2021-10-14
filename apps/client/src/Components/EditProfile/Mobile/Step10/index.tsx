@@ -28,7 +28,7 @@ export const Step10: FC = () => {
                   setFieldValue('cep', OnlyNumbers(ev.target.value))
                 }
                 width={8.18}
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
 
@@ -41,7 +41,7 @@ export const Step10: FC = () => {
                 onChange={(ev: any) =>
                   setFieldValue('artist.address.number', OnlyNumbers(ev.target.value))
                 }
-                obrigatory
+                // obrigatory
               />
             </InputTextContainer>
           </div>
@@ -52,7 +52,7 @@ export const Step10: FC = () => {
               label="Endereco"
               placeholder="Digite seu logradouro"
               width={15}
-              obrigatory
+              // obrigatory
             />
           </InputTextContainer>
 
@@ -62,7 +62,7 @@ export const Step10: FC = () => {
               label="Bairro"
               placeholder="Digite seu bairro"
               width={15}
-              obrigatory
+              // obrigatory
             />
           </InputTextContainer>
 
