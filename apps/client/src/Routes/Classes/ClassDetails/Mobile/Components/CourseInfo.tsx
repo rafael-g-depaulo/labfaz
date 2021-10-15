@@ -20,6 +20,11 @@ interface CourseResumeProps {
 export const CourseInfo: FC<CourseResumeProps> = ({ course }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const finish_date = course.subscription_finish_date
+  const now = (new Date()).getTime()
+  const finish = (new Date(finish_date)).getTime()
+  const passedFinish = finish < now
+
   return (
     <CourseInfoDiv background_color={"rgba(12, 116, 255, 1)"}>
       <Title> {course?.name} </Title>
@@ -38,13 +43,15 @@ export const CourseInfo: FC<CourseResumeProps> = ({ course }) => {
         {" "}
         INSCREVA-SE{" "}
       </Button>
-      <Text>
-        {" "}
-        inscriçoes até{" "}
-        {format(course?.subscription_finish_date, "DD-MM-YYYY")
-          .replace("-", "/")
-          .replace("-", "/")}{" "}
-      </Text>
+      
+      {!!finish_date &&
+        <Text>
+          {passedFinish ? "Inscrições encerraram em" : "Inscrições até"}
+          {" "}
+          {format(course?.subscription_finish_date, "DD-MM-YYYY")
+            .replaceAll("-", "/")}{" "}
+        </Text>
+      }
 
       <Details
         isOpen={isOpen}

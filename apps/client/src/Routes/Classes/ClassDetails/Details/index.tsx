@@ -45,7 +45,9 @@ export const Details: FC<Props> = ({
   available,
   has_subscription,
 }) => {
-  console.log("finish_date", finish_date)
+  const now = (new Date()).getTime()
+  const finish = (new Date(finish_date)).getTime()
+  const passedFinish = finish < now
   return (
     <Container>
       <ImageContainer>
@@ -56,7 +58,8 @@ export const Details: FC<Props> = ({
           <TextBackground>
             {finish_date &&
             <SubscribeText>
-              Inscrições até{" "}
+              {passedFinish ? "Inscrições encerraram em" : "Inscrições até"}
+              {" "}
               {format(finish_date, "DD-MM-YYYY")
                 .replace("-", "/")
                 .replace("-", "/")}
