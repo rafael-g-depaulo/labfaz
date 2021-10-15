@@ -1,6 +1,8 @@
 import React, { PropsWithChildren, ReactElement, ReactNode, useCallback, useMemo, useState } from "react"
 import RcPagination, { PaginationProps as PagProps } from "rc-pagination"
 
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
+
 import { PaginationControls } from "./styles"
 import isFunction from "Utils/isFunction"
 
@@ -14,7 +16,7 @@ export interface PaginationProps<T> {
 export const Pagination = <T extends any> ({
   items,
   baseProps = {},
-  itemsPerPage = 10,
+  itemsPerPage = 3,
   children,
 }: PropsWithChildren<PaginationProps<T>>): ReactElement<PaginationProps<T>> => {
     const [page, setPage] = useState(1)
@@ -40,8 +42,8 @@ export const Pagination = <T extends any> ({
             next_page: "próxima",
             prev_page: "anterior",
           }}
-          prevIcon="<"
-          nextIcon=">"
+          prevIcon={<FaAngleLeft />}
+          nextIcon={<FaAngleRight />}
           showPrevNextJumpers
           {...baseProps}
         />

@@ -92,6 +92,8 @@ export const Description = styled(Text)`
   text-align: justify;
   line-height: 40px;
   margin: 50px 0 20px 0;
+  max-width: 100%;
+  word-wrap: break-word;
 
   ${Mobile(css`
     font-size: var(--font-size-medium);

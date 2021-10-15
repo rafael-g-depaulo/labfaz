@@ -12,6 +12,7 @@ export const PaginationControls = styled.div`
   }
   .rc-pagination > li {
     list-style: none;
+    border: none;
   }
   .rc-pagination-total-text {
     float: left;
@@ -38,19 +39,19 @@ export const PaginationControls = styled.div`
     text-align: center;
     list-style: none;
     float: left;
-    border: 1px solid #d9d9d9;
-    background-color: #fff;
+    background: transparent;
     margin-right: 8px;
   }
   .rc-pagination-item a {
     text-decoration: none;
-    color: #666;
+    color: #FFF;
+    font-weight: 400;
   }
   .rc-pagination-item:hover {
     border-color: #2db7f5;
   }
   .rc-pagination-item:hover a {
-    color: #2db7f5;
+    font-weight: 700;
   }
   .rc-pagination-item-disabled {
     cursor: not-allowed;
@@ -61,9 +62,9 @@ export const PaginationControls = styled.div`
   .rc-pagination-item-disabled:hover a {
     color: #d9d9d9;
   }
-  .rc-pagination-item-active {
-    background-color: #2db7f5;
-    border-color: #2db7f5;
+  .rc-pagination-item-active a {
+    text-decoration: underline;
+    font-weight: 700;
   }
   .rc-pagination-item-active a {
     color: #fff;
@@ -148,7 +149,13 @@ export const PaginationControls = styled.div`
     height: 28px;
     line-height: 28px;
     float: left;
-    text-align: center;
+    display: flex;
+    align-items: center;
+
+    svg {
+      color: white;
+    }
+
   }
   .rc-pagination-prev a:after {
     content: "‹";
