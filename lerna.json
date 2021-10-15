@@ -3,7 +3,7 @@
     "libs/*",
     "apps/*"
   ],
-  "version": "16.3.0",
+  "version": "17.0.0",
   "npmClient": "yarn",
   "useWorkspaces": true
 }
