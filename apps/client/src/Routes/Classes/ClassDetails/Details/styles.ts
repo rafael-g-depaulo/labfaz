@@ -71,18 +71,18 @@ export const TextBackground = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 0.8em;
 `;
 
 export const SubscribeText = styled(Text)`
   font-size: var(--font-size-title-short);
   font-weight: bold;
-  margin-top: 35px;
-  margin-bottom: 45px;
+  margin: 1.2em 0;
   text-align: center;
 
   ${DesktopSmall(css`
     font-size: var(--font-size-large);
-    margin-bottom: 35px;
+    /* margin-bottom: 35px; */
   `)}
 `;
 
@@ -92,14 +92,14 @@ export const ActivityContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 60px 30px 0 30px;
+  padding: 40px 30px 0 30px;
 
   &:last-child {
     padding-bottom: 80px;
   }
 
   ${DesktopSmall(css`
-    padding: 40px 15px 0 15px;
+    padding: 20px 15px 0 15px;
   `)}
 `;
 

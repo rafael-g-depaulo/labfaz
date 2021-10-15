@@ -45,6 +45,7 @@ export const Details: FC<Props> = ({
   available,
   has_subscription,
 }) => {
+  console.log("finish_date", finish_date)
   return (
     <Container>
       <ImageContainer>
@@ -53,12 +54,14 @@ export const Details: FC<Props> = ({
       <TextContainer>
         <TextSubContainer>
           <TextBackground>
+            {finish_date &&
             <SubscribeText>
               Inscrições até{" "}
               {format(finish_date, "DD-MM-YYYY")
                 .replace("-", "/")
                 .replace("-", "/")}
             </SubscribeText>
+            }
             <Button
               courseId={id}
               isAvailabe={available}
