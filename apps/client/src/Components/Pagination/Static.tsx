@@ -16,7 +16,7 @@ export interface PaginationProps<T> {
 export const Pagination = <T extends any> ({
   items,
   baseProps = {},
-  itemsPerPage = 3,
+  itemsPerPage = 10,
   children,
 }: PropsWithChildren<PaginationProps<T>>): ReactElement<PaginationProps<T>> => {
     const [page, setPage] = useState(1)
