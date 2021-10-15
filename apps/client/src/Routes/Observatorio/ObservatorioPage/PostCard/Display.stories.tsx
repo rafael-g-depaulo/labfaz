@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { ObservatorioPost } from 'Api/ObservatorioPost'
 import PostCardDisplay from './Display'
+import { Image } from 'Utils/Image'
 // import Web from './Web'
 // import Mobile from './Mobile'
 
@@ -15,8 +16,8 @@ const samplePost: ObservatorioPost = {
   image: {
     url:
     "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    name: "imagem aleatória",
-  },
+    // name: "imagem aleatória",
+  } as Image,
   content: "Esse é o conteúdo do post!",
 }
 const posts = Array.from({ length: 4 }, () => samplePost)

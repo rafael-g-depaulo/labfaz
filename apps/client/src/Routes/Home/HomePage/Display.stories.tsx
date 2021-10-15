@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import HomePage from "./Display";
+import HomePage, { DisplayProps } from "./Display";
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
 import { mockImage } from "Utils/Image";
 
@@ -15,6 +15,8 @@ const data: HomepageBannerInfo = {
   }),
 };
 
+const props = {} as DisplayProps
 storiesOf("Pages/Home", module)
   .addParameters({ component: HomePage })
-  .add("list posts", () => <HomePage data={data} />);
+  // eslint-disable-next-line 
+  .add("list posts", () => <HomePage {...props} data={data} />);

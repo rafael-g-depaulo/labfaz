@@ -6,7 +6,7 @@ import HomePageDisplay from "./Display";
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
 import { HomePartners } from "Api/HomePartners";
 import { Homepage } from "Api/Homepage";
-import { CoursePresentation } from "Api/CoursePresentation";
+// import { CoursePresentation } from "Api/CoursePresentation";
 
 const mockedData: HomepageBannerInfo = {
   title: "LABFAZ",
@@ -55,25 +55,25 @@ const mockedCoursesTexts: Homepage = {
     "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.",
 };
 
-const mockedCoursesData: CoursePresentation[] = [
-  {
-    title: "IX Workshop de Iluminacao",
-    subtitle: "iluminação",
-    description:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ",
-    finish_date: "2020-08-05",
-    banner_image: {
-      url:
-        "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-      alternativeText: "imagem aleatória",
-      caption: "",
-      width: 0,
-      height: 0,
-      ext: "jpeg",
-    },
-    finished: true,
-  },
-];
+// const mockedCoursesData: CoursePresentation[] = [
+//   {
+//     title: "IX Workshop de Iluminacao",
+//     subtitle: "iluminação",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ",
+//     finish_date: "2020-08-05",
+//     banner_image: {
+//       url:
+//         "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+//       alternativeText: "imagem aleatória",
+//       caption: "",
+//       width: 0,
+//       height: 0,
+//       ext: "jpeg",
+//     },
+//     finished: true,
+//   },
+// ];
 
 describe("Home Page", () => {
   it("renders without exploding", () => {
@@ -87,7 +87,7 @@ describe("Home Page", () => {
             video={mockedVideo}
             partners={mockedPartners}
             coursesText={mockedCoursesTexts}
-            coursesData={mockedCoursesData}
+            // coursesData={mockedCoursesData}
           />
         </BrowserRouter>
       )
@@ -104,7 +104,7 @@ describe("Home Page", () => {
           video={mockedVideo}
           partners={mockedPartners}
           coursesText={mockedCoursesTexts}
-          coursesData={mockedCoursesData}
+          // coursesData={mockedCoursesData}
         />
       </BrowserRouter>
     );

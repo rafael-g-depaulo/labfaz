@@ -5,7 +5,7 @@ import Display from "./Display"
 export const RegisterPage: FC = () => {
 
   return (
-    <Display />
+    <Display button_type="submit"/>
   )
 }
 

@@ -70,8 +70,8 @@ describe("Check content of Card component", () => {
   });
 
   it("checks if date rendered", () => {
-    const date = getByText("05/12/2021");
-    expect(date).toHaveTextContent("05/12/2021");
+    const date = getByText("01/12/2021");
+    expect(date).toHaveTextContent("01/12/2021");
   });
 
   it("checks if label rendered", () => {

@@ -49,7 +49,7 @@ export const CourseInfo: FC<CourseResumeProps> = ({ course }) => {
           {passedFinish ? "Inscrições encerraram em" : "Inscrições até"}
           {" "}
           {format(course?.subscription_finish_date, "DD-MM-YYYY")
-            .replaceAll("-", "/")}{" "}
+            .replace(/-/g, "/")}{" "}
         </Text>
       }
 

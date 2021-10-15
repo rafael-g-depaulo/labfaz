@@ -31,7 +31,7 @@ export interface CardProps extends Course {
 }
 
 const formatDate = (dateStr: string) => format(dateStr, "DD-MM-YYYY")
-    .replaceAll("-", "/")
+    .replace(/-/g, "/")
 
 export const Card: FC<CardProps> = ({
   id,
@@ -80,8 +80,8 @@ export const Card: FC<CardProps> = ({
             <DateContainer>
               <DateText>
                 {
-                  willStart ? "Inscreva-se até" :
-                  isAvailable ? "Iniciará em" : "Encerrado em"}
+                  willStart ? "Iniciará em" :
+                  isAvailable ? "Inscreva-se até" : "Encerrado em"}
               </DateText>
               <DateText>
                 {isAvailable
