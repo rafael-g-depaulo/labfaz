@@ -95,11 +95,10 @@ export const Card: FC<CardProps> = ({
             <ButtonLayer />
             <Button href={isAvailable ? route : has_subscription ? "#" : route}>
               <ButtonText>
-                {isAvailable
-                  ? "inscreva-se"
-                  : has_subscription
-                  ? "encerrado"
-                  : "aberto"}
+                {
+                  !isAvailable ? "encerrado" :
+                  has_subscription ? "inscreva-se" : "aberto"
+                }
               </ButtonText>
             </Button>
           </ButtonWrapper>

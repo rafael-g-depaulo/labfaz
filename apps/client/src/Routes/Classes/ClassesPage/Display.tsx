@@ -13,13 +13,14 @@ import useMobile from "Hooks/useMobile";
 import { CoursesPageIntroduction } from "Api/CoursesPageIntroduction";
 import { ApiStayTuned } from "Api/StayTuned";
 import { CoursesPageSections } from "Api/CoursesPageSections";
+import { Course } from "Api/Courses";
 
 export interface Props {
   data: {
-    Curso: [];
-    Live: [];
-    Oficina: [];
-    "Roda de conversa": [];
+    Curso: Course[];
+    Live: Course[];
+    Oficina: Course[];
+    "Roda de conversa": Course[];
   };
   introduction: CoursesPageIntroduction | undefined;
   stayTuned: ApiStayTuned | undefined;

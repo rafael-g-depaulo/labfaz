@@ -5,10 +5,10 @@ import { Container, LabelText, LabelImage } from "./styles";
 export interface LabelProps {
   name: string;
   image: string | undefined;
-  lightMode: boolean;
+  lightMode?: boolean;
 }
 
-export const Label: FC<LabelProps> = ({ name, image, lightMode }) => {
+export const Label: FC<LabelProps> = ({ name, image, lightMode = false }) => {
   return (
     <Container lightMode={lightMode}>
       <LabelImage src={image} alt="" icon={image ? true : false} />
