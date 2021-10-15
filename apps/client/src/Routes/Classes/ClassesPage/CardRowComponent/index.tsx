@@ -68,6 +68,7 @@ export const CardRowComponent: FC<Props> = ({
           <CardWrapper>
             {classes.map((item) => (
               <Card
+                {...item}
                 key={item.id}
                 id={item.id}
                 name={item.name}

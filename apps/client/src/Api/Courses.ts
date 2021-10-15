@@ -1,7 +1,6 @@
 import { api, SuccessObject } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
 import { useMutation, useQuery } from "react-query";
-import { timeDifference } from "Utils/formatPostDate";
 
 export interface Course {
   id: string;
@@ -108,11 +107,19 @@ export const fetchCourse = (id: string) => api
 export const useCourse = (id: string) =>
   useFetchApi<CourseData>(`/courses/${id}`, () => fetchCourse(id));
 
-const isAvailable = ({ subscription_finish_date, subscription_start_date, has_subscription, available }: Course) => {
-  const date = !!subscription_finish_date && !!subscription_start_date && new Date(subscription_finish_date)
-  const actualDate = new Date()
-  const difference = !!date && timeDifference(date, actualDate)
-  return has_subscription && available && !!difference && difference < 1
+const now = (new Date()).getTime()
+const isAvailable = ({ subscription_finish_date, subscription_start_date, has_subscription, class_dates, available }: Course) => {
+  // const date = !!subscription_finish_date && !!subscription_start_date && new Date(subscription_finish_date)
+  // const difference = !!date && timeDifference(date, actualDate)
+  // return has_subscription && available && !!difference && difference < 1
+  const lastClassDate = class_dates?.length > 0 ? (new Date(class_dates[class_dates.length-1])).getTime() : -Infinity
+  const subscriptionStart = new Date(subscription_start_date).getTime()
+  const subscriptionFinish = new Date(subscription_finish_date).getTime()
+
+  return available && (
+    (!has_subscription && lastClassDate > now) ||
+    (has_subscription && subscriptionStart < now && now < subscriptionFinish)
+  )
 }
 
 const sortCourses = (a: Course, b: Course) => {
@@ -130,9 +137,15 @@ export const fetchCourses = () => api
   .get<Courses>(`/courses`)
   .then(({ data }) => data)
   .then(({ status, data, code }) => {
-    const orderedData: Courses["data"] = Object.fromEntries(Object.entries(data)
-      .map(([name, entries]) => [name, entries.sort(sortCourses)])
-    ) as Courses["data"]
+    const orderedData: Courses["data"] = {
+      "Roda de conversa": data["Roda de conversa"].sort(sortCourses),
+      Curso: data.Curso.sort(sortCourses),
+      Live: data.Live.sort(sortCourses),
+      Oficina: data.Oficina.sort(sortCourses),
+    }
+    // Object.fromEntries(Object.entries(data)
+    //   .map(([name, entries]) => [name, entries.])
+    // ) as Courses["data"]
 
     return ({
       status,

@@ -24,19 +24,14 @@ import {
 import Label from "Components/Label";
 
 import { format } from "date-fns";
-import { timeDifference } from "Utils/formatPostDate";
+import { Course } from "Api/Courses";
 
-export interface CardProps {
-  id: string;
-  name: string;
+export interface CardProps extends Course {
   tag: string;
-  short_description: string;
-  available: boolean;
-  banner: string;
-  has_subscription: boolean;
-  subscription_finish_date?: string;
-  subscription_start_date?: string;
 }
+
+const formatDate = (dateStr: string) => format(dateStr, "DD-MM-YYYY")
+    .replaceAll("-", "/")
 
 export const Card: FC<CardProps> = ({
   id,
@@ -48,11 +43,21 @@ export const Card: FC<CardProps> = ({
   has_subscription,
   subscription_finish_date,
   subscription_start_date,
+  class_dates,
 }) => {
-  const date = !!subscription_finish_date && !!subscription_start_date && new Date(subscription_finish_date)
-  const actualDate = new Date();
-  const difference = !!date && timeDifference(date, actualDate);
-  const isAvailable = has_subscription && available && !!difference && difference < 1
+
+  const firstClassDateStr = class_dates?.length > 0 && class_dates[0]
+  const lastClassDate = class_dates?.length > 0 ? (new Date(class_dates[class_dates.length-1])).getTime() : -Infinity
+  const now = (new Date()).getTime()
+  const subscriptionStart = new Date(subscription_start_date).getTime()
+  const subscriptionFinish = new Date(subscription_finish_date).getTime()
+
+  const isAvailable = available && (
+    (!has_subscription && lastClassDate > now) ||
+    (has_subscription && subscriptionStart < now && now < subscriptionFinish)
+  )
+  const willStart = has_subscription && subscriptionStart > now
+  // const notAvailable = !isAvailable && !willStart
 
   const path = "classes"
   const route = `/${path}/${id}`;
@@ -71,26 +76,24 @@ export const Card: FC<CardProps> = ({
           <Label name={tag} image={undefined} />
         </LabelWrapper>
         <SubscribeWrapper>
-          {!!date &&
+          {/* {!!date && */}
             <DateContainer>
               <DateText>
-                {isAvailable
-                  ? "Inscreva-se até"
-                  : has_subscription
-                  ? "Encerrado em"
-                  : "Iniciará em"}
+                {
+                  willStart ? "Inscreva-se até" :
+                  isAvailable ? "Iniciará em" : "Encerrado em"}
               </DateText>
               <DateText>
-                {has_subscription && !!date
-                  ? format(subscription_finish_date, "DD-MM-YYYY")
-                      .replace("-", "/")
-                      .replace("-", "/")
-                  : format(subscription_start_date, "DD-MM-YYYY")
-                      .replace("-", "/")
-                      .replace("-", "/")}
+                {isAvailable
+                  ? has_subscription
+                    ? formatDate(subscription_finish_date)
+                    : firstClassDateStr && formatDate(firstClassDateStr)
+                  : willStart ? formatDate(subscription_start_date)
+                  : firstClassDateStr && formatDate(firstClassDateStr)
+                }
               </DateText>
             </DateContainer>
-          }
+          {/* } */}
           <ButtonWrapper>
             <ButtonLayer />
             <Button href={isAvailable ? route : has_subscription ? "#" : route}>
