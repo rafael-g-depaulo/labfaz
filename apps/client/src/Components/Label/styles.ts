@@ -11,46 +11,30 @@ interface StyleProps {
 }
 
 export const Container = styled.div<StyleProps>`
-  width: auto;
+  display: flex;
+  flex-direction: row;
+
   background-color: ${(props) => (props.lightMode ? "#fafafa" : "#090909")};
   border-radius: 100px;
-  display: grid;
-  grid-template-columns: 30px auto 30px;
-  grid-template-rows: 34px;
-  grid-template-areas: "image text .";
-  margin-right: 20px;
-
-  ${Mobile(css`
-    margin-right: 0px;
-    grid-template-rows: 23px;
-    grid-template-columns: 21px auto 21px;
-    border-radius: 64px;
-  `)}
+  padding: 0.2em;
 `;
 
 export const LabelText = styled(Text)<StyleProps>`
-  grid-area: text;
-  justify-self: center;
-  align-self: center;
-  color: ${(props) =>
-    props.lightMode ? "var(--color-text-black)" : "var(--color-text-white)"};
+  color: ${(props) => props.lightMode ? "var(--color-text-black)" : "var(--color-text-white)"};
   font-size: var(--font-size-short);
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
-  margin: 0 20px;
 
+  flex-grow: 1;
+  
   ${Mobile(css`
     font-size: var(--font-size-small);
-    margin: 0 10px;
   `)}
 `;
 
 export const LabelImage = styled.img<Props>`
-  grid-area: image;
   display: ${(props) => (props.icon ? "flex" : "none")};
-  justify-self: center;
-  align-self: center;
   width: 28px;
   height: 28px;
   border-radius: 50%;

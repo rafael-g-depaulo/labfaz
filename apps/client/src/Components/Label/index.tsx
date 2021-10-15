@@ -4,14 +4,14 @@ import { Container, LabelText, LabelImage } from "./styles";
 
 export interface LabelProps {
   name: string;
-  image: string | undefined;
+  image?: string;
   lightMode?: boolean;
 }
 
 export const Label: FC<LabelProps> = ({ name, image, lightMode = false }) => {
   return (
     <Container lightMode={lightMode}>
-      <LabelImage src={image} alt="" icon={image ? true : false} />
+      { image && <LabelImage src={image} alt="" icon /> }
       <LabelText lightMode={lightMode}>{name}</LabelText>
     </Container>
   );
