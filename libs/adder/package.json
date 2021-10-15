@@ -1,6 +1,6 @@
 {
   "name": "@labfaz/adder",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
