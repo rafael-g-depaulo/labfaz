@@ -45,6 +45,7 @@ export const FileInput: FC<InputProps> = ({
             <input
               id="file"
               type="file"
+              accept="image/*"
               onChange={(event: any) => {
                 setFieldValue(`${value}`, event.currentTarget.files[0])
               }}
