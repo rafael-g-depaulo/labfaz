@@ -49,5 +49,5 @@ export const getYoutubeLink = (linkOrHandle: string) => {
 export const getFacebookHandle = getHandle("facebook", facebookUserRegex, ["rawHandle", "username"])
 export const getFacebookLink = (linkOrHandle: string) => `https://www.facebook.com/${getFacebookHandle(linkOrHandle)}`
 
-export const profilePictureMaxSize = 2 * 1024 * 1024
-export const curriculumMaxSize = 10 * 1024 * 1024
+export const profilePictureMaxSize = 15 * 1024 * 1024
+export const curriculumMaxSize = 20 * 1024 * 1024

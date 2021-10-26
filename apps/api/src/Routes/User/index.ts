@@ -36,8 +36,8 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .post(
       "/create",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 2 * 1024 * 1024 },
-        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 10 * 1024 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 15 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
       ParseUser,
       CreateUser({ UserRepo })
@@ -45,8 +45,8 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .put(
       "/update",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 2 * 1024 * 1024 },
-        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 10 * 1024 * 1024 },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 15 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
       ensureAuthenticated,
       ParseUpdateUser,
