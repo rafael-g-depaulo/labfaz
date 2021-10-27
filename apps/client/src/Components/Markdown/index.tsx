@@ -5,9 +5,10 @@ import Link from "Components/TextLink";
 
 interface Props {
   content: string;
+  Text?: FC<any>;
 }
 
-export const Markdown: FC<Props> = ({ content }) => {
+export const Markdown: FC<Props> = ({ content, Text = "p" }) => {
   return (
     <MarkdownStyles>
       <ReactMarkdown
@@ -31,8 +32,8 @@ export const Markdown: FC<Props> = ({ content }) => {
                 />
               );
             }
-            return <p>{children}</p>;
-          },          
+            return <Text>{children}</Text>
+          },
         }}
       />
     </MarkdownStyles>

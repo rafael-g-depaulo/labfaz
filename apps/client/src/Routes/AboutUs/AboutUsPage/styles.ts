@@ -60,6 +60,10 @@ export const Container = styled.div<ContainerProps>`
   background-color: var(--background-black);
   color: var(--color-text-white);
 
+  a:not(:hover) {
+    color: var(--color-text-yellow) !important;
+  }
+
   ${Desktop(css`
     padding: 1.6em 2.4em;
     align-items: flex-start;

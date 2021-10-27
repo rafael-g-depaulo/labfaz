@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 const Click = styled.a`  
-  color: var(--color-text-white);
+  color: var(--color-text-yellow);
   text-decoration: underline;
 
   &:hover {
