@@ -250,7 +250,7 @@ export const Step5: FC = () => {
 
           <FileContainer>
             <label htmlFor="curriculum" className="fileLabel">
-              Curriculo
+              Curriculo  (opcional)
             </label>
 
             <FileInput

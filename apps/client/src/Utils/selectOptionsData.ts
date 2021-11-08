@@ -148,6 +148,10 @@ export const CidadesEntorno = [
     label: 'Água Fria de Goiás',
   },
   {
+    value: 'Águas Lindas de Goiás',
+    label: 'Águas Lindas de Goiás',
+  },
+  {
     value: 'Alexânia',
     label: 'Alexânia',
   },
