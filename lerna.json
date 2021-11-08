@@ -3,7 +3,7 @@
     "libs/*",
     "apps/*"
   ],
-  "version": "19.1.0",
+  "version": "20.0.0",
   "npmClient": "yarn",
   "useWorkspaces": true
 }
