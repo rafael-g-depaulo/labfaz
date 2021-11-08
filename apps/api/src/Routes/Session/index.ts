@@ -19,7 +19,10 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
+    // i'm pretty sure the frontend is using get when it should be using post, but i don't have
+    // the time to check and fix it correctly, so this bad code duplication goes here instead
     .post("/ask-reset", AskReset({ UserRepo }))
+    .get("/ask-reset", AskReset({ UserRepo }))
     .post("/reset-password", ResetPassword({ UserRepo }))
     .post("/create", CreateSession({ UserRepo }))
     .post(
