@@ -36,10 +36,10 @@ export const ObservatorioPage: FC = () => {
 
   if (bannerInfo.error) {
     // console.log(bannerInfo.error);
-    return <Display data={mockBannerInfo} posts={posts.data!} />;
+    return <Display data={mockBannerInfo} />
   }
 
-  return <Display data={bannerInfo.data} posts={posts.data} />;
+  return <Display data={bannerInfo.data} />
 };
 
 export default ObservatorioPage;
