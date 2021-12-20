@@ -2,9 +2,9 @@ import React from "react";
 import render from "Utils/render";
 import { BrowserRouter } from "react-router-dom";
 
-import Card from ".";
+import Card, { CardProps } from ".";
 
-const cardExample = {
+const cardExample: CardProps = {
   id: "123abc",
   name: "IX Workshop de Iluminacao",
   tag: "audiovisual",
@@ -14,6 +14,15 @@ const cardExample = {
   banner:
     "https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
   has_subscription: true,
+  about: "safdsfsdf",
+  class_dates: ["12/07/2021"],
+  detail: ["asdadasfdd"],
+  fonte: ['SFSfsdfdfg'],
+  link: 'https://images.pexels.com/photos/8285483/pexels-photo-8285483.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+  requirements: "sadasd",
+  tags: ["sfsdf"],
+  teacher: ["sdffsdf"],
+  type: "curso",
   subscription_finish_date: "2021-12-05",
   subscription_start_date: "2021-12-01",
 };
@@ -22,17 +31,7 @@ it("renders Card component", () => {
   expect(() =>
     render(
       <BrowserRouter>
-        <Card
-          id={cardExample.id}
-          name={cardExample.name}
-          tag={cardExample.tag}
-          short_description={cardExample.short_description}
-          available={cardExample.available}
-          banner={cardExample.banner}
-          has_subscription={cardExample.has_subscription}
-          subscription_finish_date={cardExample.subscription_finish_date}
-          subscription_start_date={cardExample.subscription_start_date}
-        />
+        <Card {...cardExample}/>
       </BrowserRouter>
     )
   ).not.toThrow();
@@ -41,17 +40,7 @@ it("renders Card component", () => {
 describe("Check content of Card component", () => {
   const { getByText, getByRole } = render(
     <BrowserRouter>
-      <Card
-        id={cardExample.id}
-        name={cardExample.name}
-        tag={cardExample.tag}
-        short_description={cardExample.short_description}
-        available={cardExample.available}
-        banner={cardExample.banner}
-        has_subscription={cardExample.has_subscription}
-        subscription_finish_date={cardExample.subscription_finish_date}
-        subscription_start_date={cardExample.subscription_start_date}
-      />
+      <Card {...cardExample} />
     </BrowserRouter>
   );
 
@@ -70,8 +59,8 @@ describe("Check content of Card component", () => {
   });
 
   it("checks if date rendered", () => {
-    const date = getByText("01/12/2021");
-    expect(date).toHaveTextContent("01/12/2021");
+    const date = getByText("07/12/2021");
+    expect(date).toHaveTextContent("07/12/2021");
   });
 
   it("checks if label rendered", () => {

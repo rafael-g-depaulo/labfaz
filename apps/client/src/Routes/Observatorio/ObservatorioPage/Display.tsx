@@ -1,12 +1,9 @@
 import React, { FC } from "react"
 
-import { ObservatorioBannerInfo } from "Api/ObservatorioBannerInfo"
-
 import Wireframe from "Components/Wireframe"
 import styled from "styled-components"
 
 export interface DisplayProps {
-  data: ObservatorioBannerInfo
 }
 
 const Box = styled.div`
