@@ -1,5 +1,0 @@
-{
-  "baseUrl": "http://localhost:3000",
-  "redirectionLimit": 2000,
-  "chromeWebSecurity": false
-}

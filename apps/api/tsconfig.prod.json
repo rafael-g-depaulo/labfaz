@@ -1,8 +1,0 @@
-// use the same basic configs for build, but exclude tests
-{
-  "extends": "./tsconfig",
-  "exclude": [
-    "**/*.test.ts",
-    "dist/",
-  ]
-}
