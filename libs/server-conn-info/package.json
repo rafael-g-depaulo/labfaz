@@ -1,0 +1,33 @@
+{
+  "name": "@starter-project/server-conn-info",
+  "version": "14.0.3",
+  "description": "lib to get connection info to connect apps to servers",
+  "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
+  "homepage": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -fr dist; rm -f tsconfig.tsbuildinfo",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafael-g-depaulo/starter-project-fullstack-web.git"
+  },
+  "keywords": [
+    "lib",
+    "backend",
+    "connection",
+    "port",
+    "url"
+  ],
+  "devDependencies": {
+    "jest": "^27.4.2",
+    "typescript": "<4.5.0"
+  }
+}

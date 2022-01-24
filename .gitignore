@@ -1,0 +1,46 @@
+.env
+node_modules/
+build/
+dist/
+
+# yarn stuff
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/sdks
+!**/.yarn/versions
+
+# # uncomment this next line if you're using "Zero Installs" (Plug 'n Play)
+# !**/.yarn/cache
+# uncomment this next line if you're *NOT* using "Zero Installs" (Plug 'n Play)
+**/.pnp.*
+
+
+yarn-error.log
+
+# jest test coverage report
+coverage/
+
+# VS CODE FILES
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+!.vscode/commands.json
+!.vscode/terminals.json
+
+# Local History for Visual Studio Code
+.history/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# ultra runner
+.ultra.cache.json
+
+# Local Netlify folder
+.netlify

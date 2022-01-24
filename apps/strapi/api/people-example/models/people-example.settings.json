@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "people_examples",
+  "info": {
+    "name": "People Example"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    }
+  }
+}

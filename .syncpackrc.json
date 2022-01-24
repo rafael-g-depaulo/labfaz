@@ -1,0 +1,12 @@
+{
+  "filter": "typescript|yup|jest",
+  "indent": "  ",
+  "dev": true,
+  "peer": true,
+  "prod": true,
+  "semverRange": "",
+  "sortAz": ["contributors", "dependencies", "devDependencies", "keywords", "peerDependencies", "scripts"],
+  "sortFirst": ["name", "description", "version", "author"],
+  "source": ["package.json", "packages/*/package.json"],
+  "versionGroups": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@starter-project/strapi-utils",
+  "version": "14.0.3",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -fr dist; rm -f tsconfig.tsbuildinfo",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^27.4.2",
+    "typescript": "<4.5.0"
+  }
+}
