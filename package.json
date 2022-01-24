@@ -1,6 +1,6 @@
 {
   "name": "labfaz",
-  "version": "14.0.3",
+  "version": "21.0.0",
   "description": "Monorepo of my starter project for fullstack web projects using React.js, Express.js, Sequelize & PostgreSQL",
   "main": "index.js",
   "repository": "git@github.com:rafael-g-depaulo/labfaz-fullstack-web.git",
