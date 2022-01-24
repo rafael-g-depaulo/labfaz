@@ -1,7 +1,7 @@
 module.exports = {
   name: 'adder',
   displayName: {
-    name: 'LIB: PERMISSIONS',
+    name: 'LIB: MAIL',
     color: 'cyan',
   },
   

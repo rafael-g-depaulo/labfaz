@@ -1,4 +1,6 @@
 export const localhost = `localhost`
+// default protocol used in local development env
+export const protocol = `http`
 
 // API PORT
 export const getApiPort = () => {
@@ -29,3 +31,16 @@ export const getStrapiHost = () => process.env.NODE_ENV === 'production'
 export const getStrapiUrl = ({ hostname }: { hostname?: string } = {}) => process.env.NODE_ENV === 'production'
   ? getStrapiUrlEnvVar() ?? getStrapiHost()
   : `http://${hostname ?? getStrapiHost()}`
+
+// CLIENT
+export const getClientPort = () => {
+  const portEnv = Number(process.env.PORT || "3000")
+  if (isNaN(portEnv))
+    throw new Error("PORT environment variable present, but not a number")
+  return portEnv
+}
+const getClientUrlEnvVar = () => process.env.CLIENT_URL ?? process.env.REACT_APP_CLIENT_URL
+export const defaultClientUrl = `www.labfaz.com.br`
+export const getClientUrl = () => process.env.NODE_ENV === 'production'
+  ? getClientUrlEnvVar() ?? defaultClientUrl
+  : `${protocol}://${localhost}:${getClientPort()}`
