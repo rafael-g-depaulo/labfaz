@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/permissions",
+  "name": "@labfaz/permissions",
   "version": "14.0.3",
   "license": "MIT",
   "main": "dist/index.js",

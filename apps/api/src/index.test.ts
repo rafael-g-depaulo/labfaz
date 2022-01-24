@@ -1,4 +1,4 @@
-import { getStrapiPort } from '@starter-project/server-conn-info'
+import { getStrapiPort } from '@labfaz/server-conn-info'
 import Middlewares from 'Middlewares'
 
 describe('server', () =>{

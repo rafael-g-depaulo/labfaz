@@ -11,7 +11,7 @@ module.exports = ({ env }) => {
   const username  = result ? result.groups.username : env('DB_USER', 'user')
   const password  = result ? result.groups.password : env('DB_PASS', 'password')
   const port      = result ? result.groups.port     : env.int('DB_PORT', 5432)
-  const database  = result ? result.groups.database : env('DB_NAME', 'starter-project-strapi')
+  const database  = result ? result.groups.database : env('DB_NAME', 'labfaz-strapi')
 
   if (!loggedFirstAttempt) {
     loggedFirstAttempt = true

@@ -1,7 +1,7 @@
 import { Req } from "Utils/request"
 import { RouteHandler } from "Utils/routeHandler"
 import { AuthenticatedUser } from "Utils/reqBodyUser"
-import getAc, { ResourceActionStr, Resources, Roles } from "@starter-project/permissions"
+import getAc, { ResourceActionStr, Resources, Roles } from "@labfaz/permissions"
 
 
 import { unauthorizedError } from "Utils/endpointReturns"

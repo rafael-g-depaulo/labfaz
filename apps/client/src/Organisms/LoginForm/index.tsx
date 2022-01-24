@@ -1,7 +1,7 @@
 import { FC, useCallback } from "react"
 import { Formik, Form } from "formik"
 
-import { loginUserSchema, UserLogin } from "@starter-project/entities"
+import { loginUserSchema, UserLogin } from "@labfaz/entities"
 import { useLogin } from "Api/LoginUser"
 
 import EmailInputGroup from "Molecules/InputGroup/Email"

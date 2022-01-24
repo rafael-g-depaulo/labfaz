@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { getApiUrl } from "@starter-project/server-conn-info"
+import { getApiUrl } from "@labfaz/server-conn-info"
 
 // eslint-disable-next-line
 export const Home: FC = ({}) => {

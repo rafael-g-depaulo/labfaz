@@ -1,4 +1,4 @@
-import { Roles } from "@starter-project/permissions"
+import { Roles } from "@labfaz/permissions"
 
 export type AuthenticatedUser = {
   id: string

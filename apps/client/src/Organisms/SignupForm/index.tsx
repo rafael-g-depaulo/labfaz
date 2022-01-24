@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Formik, Form } from "formik"
 
-import { registerUserSchema, UserRegister } from "@starter-project/entities"
+import { registerUserSchema, UserRegister } from "@labfaz/entities"
 import { useSignup } from "Api/RegisterUser"
 
 import EmailInputGroup from "Molecules/InputGroup/Email"

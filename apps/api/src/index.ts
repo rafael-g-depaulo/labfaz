@@ -10,7 +10,7 @@ Middewares(app)
 import Db from "Db"
 import Routes from "Routes"
 import { actionSuccessful, badRequestError } from 'Utils/endpointReturns'
-import { getApiUrl } from '@starter-project/server-conn-info'
+import { getApiUrl } from '@labfaz/server-conn-info'
 
 import { errorHandler } from 'Middlewares/ErrorHandler'
 import { fileParseErrorHandler } from 'Middlewares/fileParseErrorHandler'

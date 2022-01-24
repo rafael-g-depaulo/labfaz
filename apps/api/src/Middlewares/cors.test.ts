@@ -48,8 +48,8 @@ describe('Middleware cors', () => {
     it('accepts requests with an origin that matches CORS_REGEX', () => {
 
       // setup request origin
-      const origin = `https://starter-project-client-dev.herokuapp.com`
-      process.env.CORS_REGEX = `starter-project-client-dev\\.herokuapp\\.com`
+      const origin = `https://labfaz-client-dev.herokuapp.com`
+      process.env.CORS_REGEX = `labfaz-client-dev\\.herokuapp\\.com`
       process.env.CORS_REGEX_FLAGS = "ig"
 
       // setup allowed origins

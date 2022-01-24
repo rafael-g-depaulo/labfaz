@@ -32,8 +32,8 @@
 [context.master]
   command = "yarn build:client"
   [context.master.environment]
-    REACT_APP_API_URL="https://starter-project-api-prod.herokuapp.com/"
-    REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
+    REACT_APP_API_URL="https://labfaz-api-prod.herokuapp.com/"
+    REACT_APP_STRAPI_URL="https://labfaz-strapi.herokuapp.com/"
     REACT_APP_SHOW_ROUTES="true"
     REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 
@@ -42,8 +42,8 @@
 [context.develop]
   command = "yarn build:client"
   [context.develop.environment]
-    REACT_APP_API_URL="https://starter-project-api-dev.herokuapp.com/"
-    REACT_APP_STRAPI_URL="https://starter-project-strapi.herokuapp.com/"
+    REACT_APP_API_URL="https://labfaz-api-dev.herokuapp.com/"
+    REACT_APP_STRAPI_URL="https://labfaz-strapi.herokuapp.com/"
     REACT_APP_SHOW_ROUTES="true"
     REACT_APP_SHOW_RQUERY_DEVTOOLS="false"
 

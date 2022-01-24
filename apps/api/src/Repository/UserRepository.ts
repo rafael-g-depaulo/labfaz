@@ -8,7 +8,7 @@ import User from "Entities/User"
 import authConfig from "Utils/authConfig"
 import { UploadedFile } from "Utils/aws"
 
-import { SerializedUser, UserRegister } from "@starter-project/entities"
+import { SerializedUser, UserRegister } from "@labfaz/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {

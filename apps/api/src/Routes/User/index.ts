@@ -7,7 +7,7 @@ import UserRepository from "Repository/UserRepository"
 import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 import ParseBody from "Middlewares/parseBody"
 
-import { loginUserSchema, registerUserSchema, maxProfilePictureSize } from "@starter-project/entities"
+import { loginUserSchema, registerUserSchema, maxProfilePictureSize } from "@labfaz/entities"
 
 import RegisterUser from "./Register"
 import LoginUsers from "./Login"

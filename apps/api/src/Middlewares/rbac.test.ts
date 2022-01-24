@@ -1,4 +1,4 @@
-import { Resources, Roles } from "@starter-project/permissions"
+import { Resources, Roles } from "@labfaz/permissions"
 
 import { Req } from "Utils/request"
 import { ErrorObj } from "Utils/responseObj"

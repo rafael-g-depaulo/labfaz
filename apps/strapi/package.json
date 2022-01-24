@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/strapi",
+  "name": "@labfaz/strapi",
   "private": true,
   "version": "14.0.3",
   "description": "A Strapi application",

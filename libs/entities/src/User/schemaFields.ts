@@ -1,4 +1,4 @@
-import { Roles } from "@starter-project/permissions"
+import { Roles } from "@labfaz/permissions"
 import { mixed, string } from "yup"
 import { MixedSchema } from "yup/lib/mixed"
 import { AnyObject } from "yup/lib/types"

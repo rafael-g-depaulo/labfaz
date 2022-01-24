@@ -4393,16 +4393,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@starter-project/api@workspace:apps/api":
+"@labfaz/api@workspace:apps/api":
   version: 0.0.0-use.local
-  resolution: "@starter-project/api@workspace:apps/api"
+  resolution: "@labfaz/api@workspace:apps/api"
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.12.1
     "@babel/plugin-proposal-decorators": ^7.12.1
     "@babel/plugin-transform-runtime": ^7.16.10
-    "@starter-project/entities": "workspace:*"
-    "@starter-project/permissions": "workspace:*"
-    "@starter-project/server-conn-info": "workspace:*"
+    "@labfaz/entities": "workspace:*"
+    "@labfaz/permissions": "workspace:*"
+    "@labfaz/server-conn-info": "workspace:*"
     "@types/aws-sdk": ^2.7.0
     "@types/babel__plugin-transform-runtime": ^7
     "@types/bcryptjs": ^2.4.2
@@ -4442,13 +4442,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@starter-project/client@workspace:apps/client":
+"@labfaz/client@workspace:apps/client":
   version: 0.0.0-use.local
-  resolution: "@starter-project/client@workspace:apps/client"
+  resolution: "@labfaz/client@workspace:apps/client"
   dependencies:
     "@bahmutov/add-typescript-to-cypress": ^2.1.2
-    "@starter-project/entities": "workspace:*"
-    "@starter-project/server-conn-info": "workspace:*"
+    "@labfaz/entities": "workspace:*"
+    "@labfaz/server-conn-info": "workspace:*"
     "@storybook/addon-a11y": ^6.4.9
     "@storybook/addon-actions": ^6.4.9
     "@storybook/addon-docs": ^6.4.9
@@ -4487,19 +4487,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@starter-project/entities@workspace:*, @starter-project/entities@workspace:libs/entities":
+"@labfaz/entities@workspace:*, @labfaz/entities@workspace:libs/entities":
   version: 0.0.0-use.local
-  resolution: "@starter-project/entities@workspace:libs/entities"
+  resolution: "@labfaz/entities@workspace:libs/entities"
   dependencies:
-    "@starter-project/permissions": "workspace:*"
+    "@labfaz/permissions": "workspace:*"
     jest: ^27.4.2
     typescript: <4.5.0
   languageName: unknown
   linkType: soft
 
-"@starter-project/permissions@workspace:*, @starter-project/permissions@workspace:libs/permissions":
+"@labfaz/permissions@workspace:*, @labfaz/permissions@workspace:libs/permissions":
   version: 0.0.0-use.local
-  resolution: "@starter-project/permissions@workspace:libs/permissions"
+  resolution: "@labfaz/permissions@workspace:libs/permissions"
   dependencies:
     accesscontrol: ^2.2.1
     jest: ^27.4.2
@@ -4507,27 +4507,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@starter-project/server-conn-info@workspace:*, @starter-project/server-conn-info@workspace:libs/server-conn-info":
+"@labfaz/server-conn-info@workspace:*, @labfaz/server-conn-info@workspace:libs/server-conn-info":
   version: 0.0.0-use.local
-  resolution: "@starter-project/server-conn-info@workspace:libs/server-conn-info"
+  resolution: "@labfaz/server-conn-info@workspace:libs/server-conn-info"
   dependencies:
     jest: ^27.4.2
     typescript: <4.5.0
   languageName: unknown
   linkType: soft
 
-"@starter-project/strapi-utils@workspace:libs/strapi-utils":
+"@labfaz/strapi-utils@workspace:libs/strapi-utils":
   version: 0.0.0-use.local
-  resolution: "@starter-project/strapi-utils@workspace:libs/strapi-utils"
+  resolution: "@labfaz/strapi-utils@workspace:libs/strapi-utils"
   dependencies:
     jest: ^27.4.2
     typescript: <4.5.0
   languageName: unknown
   linkType: soft
 
-"@starter-project/strapi@workspace:apps/strapi":
+"@labfaz/strapi@workspace:apps/strapi":
   version: 0.0.0-use.local
-  resolution: "@starter-project/strapi@workspace:apps/strapi"
+  resolution: "@labfaz/strapi@workspace:apps/strapi"
   dependencies:
     knex: <0.20.0
     pg: ^8.3.3
@@ -26131,9 +26131,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"starter-project@workspace:.":
+"labfaz@workspace:.":
   version: 0.0.0-use.local
-  resolution: "starter-project@workspace:."
+  resolution: "labfaz@workspace:."
   dependencies:
     "@babel/cli": ^7.10.5
     "@babel/core": ^7.11.0

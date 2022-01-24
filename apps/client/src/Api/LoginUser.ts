@@ -1,4 +1,4 @@
-import { UserLoginReturn, UserLogin } from "@starter-project/entities"
+import { UserLoginReturn, UserLogin } from "@labfaz/entities"
 
 import { api, SuccessObject } from "Api"
 import { useMutateApi } from "Hooks/useMutateApi"

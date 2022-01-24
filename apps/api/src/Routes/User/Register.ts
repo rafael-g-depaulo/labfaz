@@ -11,7 +11,7 @@ import { Req } from "Utils/request"
 
 import { ParsedFiles } from "Middlewares/parseFiles"
 
-import { UserRegister } from "@starter-project/entities"
+import { UserRegister } from "@labfaz/entities"
 
 type ReqBodyExtension = ParsedFiles<"profilePicture">
   & { user_info: UserRegister }

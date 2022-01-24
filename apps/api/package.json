@@ -1,5 +1,5 @@
 {
-  "name": "@starter-project/api",
+  "name": "@labfaz/api",
   "version": "14.0.3",
   "description": "express.js api in typescript",
   "keywords": [
@@ -8,13 +8,13 @@
     "typescript"
   ],
   "author": "Rafael G. de Paulo <rafael.g.depaulo@gmail.com>",
-  "homepage": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web#readme",
+  "homepage": "https://github.com/rafael-g-depaulo/labfaz-fullstack-web#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "typings": "dist/index.d.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafael-g-depaulo/starter-project-fullstack-web.git"
+    "url": "git+https://github.com/rafael-g-depaulo/labfaz-fullstack-web.git"
   },
   "scripts": {
     "start": "dotenv -- if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
@@ -41,12 +41,12 @@
     "db:migration:generate": "yarn typeorm migration:generate"
   },
   "bugs": {
-    "url": "https://github.com/rafael-g-depaulo/starter-project-fullstack-web/issues"
+    "url": "https://github.com/rafael-g-depaulo/labfaz-fullstack-web/issues"
   },
   "dependencies": {
-    "@starter-project/entities": "workspace:*",
-    "@starter-project/permissions": "workspace:*",
-    "@starter-project/server-conn-info": "workspace:*",
+    "@labfaz/entities": "workspace:*",
+    "@labfaz/permissions": "workspace:*",
+    "@labfaz/server-conn-info": "workspace:*",
     "@types/aws-sdk": "^2.7.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.2",

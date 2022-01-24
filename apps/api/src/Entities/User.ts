@@ -1,7 +1,7 @@
 import { BaseEntity, BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
 import { IsEmail, IsUrl, IsUUID } from "class-validator"
 import { nanoid } from "nanoid"
-import { Roles } from "@starter-project/permissions";
+import { Roles } from "@labfaz/permissions";
 
 // INFO: check https://github.com/ai/nanoid and https://zelark.github.io/nano-id-cc/ to understand what this is for
 const idSize = 10

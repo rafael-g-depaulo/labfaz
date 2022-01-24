@@ -32,7 +32,7 @@
       "parentId": null,
       "modified": 1640310073040,
       "created": 1640310073040,
-      "name": "starter-project-api-spec",
+      "name": "labfaz-api-spec",
       "description": "",
       "scope": "design",
       "_type": "workspace"
@@ -247,7 +247,7 @@
       "parentId": "wrk_f59d08ac7c07425eb7260938b727032b",
       "modified": 1640311196394,
       "created": 1640310073041,
-      "fileName": "starter-project",
+      "fileName": "labfaz",
       "contents": "",
       "contentType": "yaml",
       "_type": "api_spec"
@@ -265,7 +265,7 @@
       "parentId": "env_b01f9c43de33358182efc65f19bc6b18fc4ebbd8",
       "modified": 1642772218674,
       "created": 1640310264168,
-      "name": "starter-project",
+      "name": "labfaz",
       "data": {
         "protocol": "http",
         "host": "localhost",

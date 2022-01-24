@@ -9,7 +9,7 @@ import {
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import { UserLogin } from "@starter-project/entities"
+import { UserLogin } from "@labfaz/entities"
 
 interface LoginUserDeps {
   UserRepo: UserRepository
