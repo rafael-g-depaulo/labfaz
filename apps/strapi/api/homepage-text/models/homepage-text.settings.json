@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepage_texts",
+  "info": {
+    "name": "Homepage Text",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "course_presentation_first_text": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 250
+    },
+    "course_presentation_second_text": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 250
+    },
+    "course_presentation_title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

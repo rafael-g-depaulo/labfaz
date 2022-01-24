@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/course-presentations",
+      "handler": "course-presentation.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/course-presentations/count",
+      "handler": "course-presentation.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/course-presentations/:id",
+      "handler": "course-presentation.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/course-presentations",
+      "handler": "course-presentation.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/course-presentations/:id",
+      "handler": "course-presentation.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/course-presentations/:id",
+      "handler": "course-presentation.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

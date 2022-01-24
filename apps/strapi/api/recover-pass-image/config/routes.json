@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/recover-pass-image",
+      "handler": "recover-pass-image.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/recover-pass-image",
+      "handler": "recover-pass-image.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/recover-pass-image",
+      "handler": "recover-pass-image.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
