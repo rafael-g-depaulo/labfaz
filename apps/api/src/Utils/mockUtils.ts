@@ -39,3 +39,7 @@ export const createResponseMock = (_jest: Jest = jest) => {
 
 export const mockRouteHandler = <ReqBody extends object = {}, ReqParams extends {[s: string]: string} = {}>(handler: RouteHandler<Req<ReqBody, {}, ReqParams>>, request: MockRequest<ReqBody, ReqParams>, response: MockResponse, next?: MockNext) =>
   handler(request as Request<ReqParams>, response as unknown as Response, next as NextFunction)
+
+export type mock<Fn extends (...args: any) => any> = jest.Mock<ReturnType<Fn>, Parameters<Fn>>
+export const asMock = <A extends (...args: any) => any>(a: A) => a as any as mock<A>
+  

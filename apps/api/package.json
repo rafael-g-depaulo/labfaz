@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@labfaz/entities": "workspace:*",
+    "@labfaz/mail": "workspace:*",
     "@labfaz/permissions": "workspace:*",
     "@labfaz/server-conn-info": "workspace:*",
     "@types/aws-sdk": "^2.7.0",
