@@ -16,6 +16,9 @@ export const setupAllowedOrigins = () => {
     allowedOrigins.push(newAllowedOrigin)
   }
 
+  // add labfaz to allowed origins
+  allowedOrigins.push(/labfaz\.com\.br[^\.]*$/)
+
   return allowedOrigins
 }
 
