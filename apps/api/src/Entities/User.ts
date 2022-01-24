@@ -1,37 +1,72 @@
-import { BaseEntity, BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
-import { IsEmail, IsUrl, IsUUID } from "class-validator"
+import {
+  Column,
+  Entity,
+  PrimaryColumn,
+  BeforeInsert,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToOne,
+  OneToMany,
+  BaseEntity,
+} from "typeorm"
 import { nanoid } from "nanoid"
-import { Roles } from "@labfaz/permissions";
+
+import { Roles } from "@labfaz/permissions"
+
+import Artist from "./Artist"
+import Request from "./Requests"
+
+export interface IUser {
+  email: string
+  password: string
+}
 
 // INFO: check https://github.com/ai/nanoid and https://zelark.github.io/nano-id-cc/ to understand what this is for
 const idSize = 10
 
+// To work with admin bro classes must extend BaseEntity
 @Entity()
 export class User extends BaseEntity {
-
   @PrimaryColumn()
-  @IsUUID()
-  id: string;
+  id: string
 
-  @Column({ unique: true })
-  @IsEmail()
-  email: string;
-
-  @Column()
-  password_hash: string;
-
-  @Column({ nullable: true })
-  @IsUrl()
-  profile_picture_url?: string
-  
   @Column({
     type: "enum",
     enum: Roles,
     default: Roles.LOGGED_USER,
   })
-  role: Roles;
+  role: Roles
 
-  // add id to Animal
+  @OneToOne(() => Artist, (artist) => artist.user, {
+    eager: true,
+    cascade: ["remove", "update"],
+  })
+  artist: Artist
+
+  @OneToMany(() => Request, request => request.course)
+  courses: Request[]
+
+  @Column()
+  email: string
+
+  @Column()
+  password: string
+
+  @Column({ default: false })
+  isVerified: boolean
+
+  @Column({ default: false })
+  banned: boolean
+
+  @Column("boolean", { default: false })
+  active: boolean
+
+  @CreateDateColumn()
+  created_at: Date
+
+  @UpdateDateColumn()
+  updated_at: Date
+
   @BeforeInsert()
   addId() {
     this.id = nanoid(idSize)
