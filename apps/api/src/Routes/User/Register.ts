@@ -40,10 +40,10 @@ export const RegisterUser: (
   const profilePictureUrl = !!profilePictureFile && await UploadFile(profilePictureFile)
 
   // create and return user
-  return UserRepo.createUser(user_info!, profilePictureUrl)
-    // .then((user) => { sendConfirmationEmail(user); return user })
-    .then(user => createdSuccessfully(res, user))
-    .catch(err => databaseError(res, "Error trying to create user.", err))
+  // return UserRepo.createUser(user_info!, profilePictureUrl)
+  //   // .then((user) => { sendConfirmationEmail(user); return user })
+  //   .then(user => createdSuccessfully(res, user))
+  //   .catch(err => databaseError(res, "Error trying to create user.", err))
 }
 
 export default RegisterUser

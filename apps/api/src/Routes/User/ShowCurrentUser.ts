@@ -16,7 +16,8 @@ export const ShowCurrentUser: (
   return UserRepo.findById(userId)
     .then(user => {
       if (!user) throw new Error(`No user found with id ${userId}`)
-      return UserRepo.serialize(user)
+      // return UserRepo.serialize(user)
+      return { ...user }
     })
     .then(user => fetchedSuccessfully(res, { user }))
     .catch(err => databaseError(res, "Error trying to fetch user.", err))

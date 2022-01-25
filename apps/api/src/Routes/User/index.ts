@@ -1,19 +1,20 @@
 import express from "express"
 import { Connection } from "typeorm"
-
 import { Router } from "Routes"
+
 import UserRepository from "Repository/UserRepository"
 
-import ensureAuthenticated from "Middlewares/ensureAuthenticated"
-import ParseBody from "Middlewares/parseBody"
-
-import { loginUserSchema, registerUserSchema, maxProfilePictureSize } from "@labfaz/entities"
-
-import RegisterUser from "./Register"
-import LoginUsers from "./Login"
-import ListUsers from "./List"
-import ShowCurrentUser from "./ShowCurrentUser"
 import { FileType, parseFiles } from "Middlewares/parseFiles"
+import ensureAuthenticated from "Middlewares/ensureAuthenticated"
+
+import ShowUser from "./ShowUser"
+import UpdateUser from "./UpdateUser"
+import SearchUsers from "./SearchUsers"
+import { ParseUser } from "./ParseUser"
+import { ParseUpdateUser } from "./ParesUpdateUser"
+import { CreateUser } from "./CreateUser"
+import ShowCurrentUser from "./ShowCurrentUser"
+import ResendEmail from "./ResendEmail"
 
 type UserDeps = {
   conn: Connection
@@ -25,17 +26,29 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
 
   return express
     .Router(options)
-    .post("/register", 
+    .post(
+      "/create",
       parseFiles([
-        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: maxProfilePictureSize },
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 15 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
-      ParseBody(registerUserSchema, "user_info"),
-      RegisterUser({ UserRepo })
+      ParseUser,
+      CreateUser({ UserRepo })
     )
-    .post("/login", ParseBody(loginUserSchema, "user_info"), LoginUsers({ UserRepo }))
-    // .post("/logout", RegisterUser({ UserRepo }))
+    .put(
+      "/update",
+      parseFiles([
+        { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 15 * 1024 * 1024 },
+        { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
+      ]),
+      ensureAuthenticated,
+      ParseUpdateUser,
+      UpdateUser({ UserRepo })
+    )
+    .get("/search", SearchUsers({ UserRepo }))
     .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
-    .get("/", ensureAuthenticated, ListUsers({ UserRepo }))
+    .get("/:id", ShowUser({ UserRepo }))
+    .post("/confirm-mail", ResendEmail({ UserRepo }))
 }
 
 export default UserRouter
