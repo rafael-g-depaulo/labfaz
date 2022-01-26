@@ -14,13 +14,7 @@ import Certificate from "./Certificate";
 
 import { ICertificate } from "Entities/Certificate";
 
-export enum TechFormation {
-  AUTO = "autodidata",
-  ESPEC = "curso especializado",
-  TECH = "tecnico",
-  TECHLOG = "tecnologica",
-  UNIVERSITY = "universitaria",
-}
+import { TechFormation } from "@labfaz/entities";
 
 export interface IArea {
   technical_formation: TechFormation;

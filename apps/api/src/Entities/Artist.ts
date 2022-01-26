@@ -17,38 +17,8 @@ import Technical from "./Technical";
 import { IAddress } from "Entities/Address";
 import { IContact } from "Entities/Contact";
 import { ITechnical } from "Entities/Technical";
+import { GenderSpecific, Race, SexualOrientation, ShowName } from "@labfaz/entities";
 
-export enum GenderSpecific {
-  CIS = "cisgênero",
-  TRANS = "transgênero",
-  NBIN = "não-binário",
-  NONE = "prefiro não responder",
-}
-
-export enum Race {
-  NONE = "nenhuma",
-  WHITE = "branca",
-  BLACK = "preta",
-  BROWN = "parda",
-  YELLOW = "amarela",
-  NATIVE = "indigena",
-}
-
-export enum SexualOrientation {
-  ASS = "assexual",
-  BIS = "bissexual",
-  HET = "heterosexual",
-  PAN = "pansexual",
-  LES = "lésbica",
-  GAY = "gay",
-  NONE = "prefiro não dizer",
-}
-
-export enum ShowName {
-  NAME = "nome",
-  SOCIAL = "nome social",
-  ARTISTIC = "nome artistico",
-}
 export interface IArtist {
   photo_url: string;
   name: string;

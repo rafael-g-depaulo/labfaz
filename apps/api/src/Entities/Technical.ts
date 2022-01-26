@@ -16,6 +16,7 @@ import Idiom from "./Idiom";
 
 import { IArea } from "Entities/Area";
 import { IIdiom } from "Entities/Idiom";
+import { CNPJ, Formation } from "@labfaz/entities";
 
 export interface ITechnical {
   formation: Formation;
@@ -30,25 +31,6 @@ export interface ITechnical {
   idiom: IIdiom[];
 }
 
-export enum Formation {
-  NO = "não tem",
-  INITIAL_SCHOOL = "ensino fundamental 1",
-  MEDIUM_SCHOOL = "ensino fundamental 2",
-  HIGH_SCHOOL = "ensino médio",
-  TECH = "ensino médio tecnico",
-  UNIVERSITY = "curso superior",
-  POS = "pos",
-}
-
-export enum CNPJ {
-  MEI = "MEI",
-  MICRO = "Microempresa",
-  PEQ = "Pequena empresa",
-  EIRELLI = "Eireli",
-  OSC = "OSC",
-  OUTRO = "Outro",
-  NONE = "Nenhum",
-}
 
 @Entity()
 export class Technical {

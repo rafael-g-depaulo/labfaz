@@ -6,19 +6,16 @@ import { compare } from "bcryptjs"
 import authConfig from "Utils/authConfig"
 import { UploadedFile } from "Utils/aws"
 
-// import { SerializedUser, UserRegister } from "@labfaz/entities"
 
-import { ArtistUpdateInfo } from "Routes/User/utils/updateUserReqSchema"
-import { ArtistInfo } from "Routes/User/utils/userReqSchema"
-
-import Technical, { Formation } from "Entities/Technical"
-import Area, { TechFormation } from "Entities/Area"
-import Artist, { ShowName } from "Entities/Artist"
+import Technical from "Entities/Technical"
+import Area from "Entities/Area"
+import Artist from "Entities/Artist"
 import Certificate from "Entities/Certificate"
 import Contact from "Entities/Contact"
 import Address from "Entities/Address"
 import Idiom from "Entities/Idiom"
 import User from "Entities/User"
+import { Formation, SerializedArtist, ShowName, TechFormation } from "@labfaz/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -103,7 +100,7 @@ export class UserRepository extends Repository<User> {
   async createUser(
     email: string,
     rawPassword: string,
-    artist: ArtistInfo,
+    artist: SerializedArtist,
     curriculum: UploadedFile | undefined,
     profilePicture: UploadedFile
   ) {
@@ -249,7 +246,7 @@ export class UserRepository extends Repository<User> {
   
   async updateUser(
     user: User,
-    artist?: ArtistUpdateInfo,
+    artist?: SerializedArtist,
     password?: string,
     curriculum?: UploadedFile,
     profilePicture?: UploadedFile

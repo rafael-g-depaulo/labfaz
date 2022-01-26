@@ -10,12 +10,7 @@ import {
 } from "typeorm";
 import { nanoid } from "nanoid";
 import Artist from "./Artist";
-
-export enum Residency {
-  DF = "df",
-  BORDER = "entorno",
-  OUTSIDE = "fora df",
-}
+import { Residency } from "@labfaz/entities";
 
 export interface IAddress {
   city: string;
