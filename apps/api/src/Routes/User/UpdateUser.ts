@@ -9,25 +9,27 @@ import {
   databaseError,
 } from "Utils/endpointReturns"
 import { removeCircularity } from "Utils/stringifyCircular"
-
-import { UserJWTPayload } from "Middlewares/ensureAuthenticated"
-import { ParsedUser } from "./ParesUpdateUser"
-import { ParsedFiles } from "Middlewares/parseFiles"
-
 import { UploadFiles } from "Utils/aws"
 
-interface CreateUserInterface {
+import { UserJWTPayload } from "Middlewares/ensureAuthenticated"
+import { ParsedFiles } from "Middlewares/parseFiles"
+
+import { UpdateUser as UpdateUserI } from "@labfaz/entities"
+
+interface UpdateUserDeps {
   UserRepo: UserRepository
 }
 
+type ReqBodyExtension = UserJWTPayload
+  & { user_info: UpdateUserI }
+  & ParsedFiles<"profilePicture" | "curriculum">
+
 export const UpdateUser: (
-  deps: CreateUserInterface
-) => RouteHandler<
-  Req<
-    {},
-    UserJWTPayload & ParsedUser & ParsedFiles<"profilePicture" | "curriculum">
-  >
-> = ({ UserRepo }: CreateUserInterface) => async (req, res) => {
+  deps: UpdateUserDeps
+) => RouteHandler<Req<
+  {},
+  ReqBodyExtension
+>> = ({ UserRepo }: UpdateUserDeps) => async (req, res) => {
   const { id } = req.user ?? { id: "" }
 
   const { password, artist, oldpassword } = req.user_info! ?? {}
@@ -69,10 +71,10 @@ export const UpdateUser: (
 
     const artistCurriculum = files.find(
       (file) => file.fieldname === "curriculum"
-    )!
+    )
     const artistProfilePicture = files.find(
       (file) => file.fieldname === "profilePicture"
-    )!
+    )
 
     return UserRepo.updateUser(
       user,

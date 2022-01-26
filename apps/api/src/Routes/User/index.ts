@@ -10,11 +10,11 @@ import ensureAuthenticated from "Middlewares/ensureAuthenticated"
 import ShowUser from "./ShowUser"
 import UpdateUser from "./UpdateUser"
 import SearchUsers from "./SearchUsers"
-import { ParseUser } from "./ParseUser"
-import { ParseUpdateUser } from "./ParesUpdateUser"
 import { CreateUser } from "./CreateUser"
 import ShowCurrentUser from "./ShowCurrentUser"
 import ResendEmail from "./ResendEmail"
+import ParseBody from "Middlewares/parseBody"
+import { registerUserSchema, updateUserSchema } from "@labfaz/entities"
 
 type UserDeps = {
   conn: Connection
@@ -32,7 +32,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
         { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 15 * 1024 * 1024 },
         { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
-      ParseUser,
+      ParseBody(registerUserSchema, "user_info"),
       CreateUser({ UserRepo })
     )
     .put(
@@ -42,7 +42,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
         { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
       ensureAuthenticated,
-      ParseUpdateUser,
+      ParseBody(updateUserSchema, "user_info"),
       UpdateUser({ UserRepo })
     )
     .get("/search", SearchUsers({ UserRepo }))

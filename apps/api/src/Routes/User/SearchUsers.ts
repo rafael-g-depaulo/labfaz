@@ -1,10 +1,10 @@
+import { Formation } from "@labfaz/entities";
+
 import UserRepository from "Repository/UserRepository";
 
 import { fetchedSuccessfully } from "Utils/endpointReturns";
 import { RouteHandler } from "Utils/routeHandler";
 import { Req } from "Utils/request";
-
-import { Formation } from "Entities/Technical";
 
 interface UserSearchInterface {
   UserRepo: UserRepository;

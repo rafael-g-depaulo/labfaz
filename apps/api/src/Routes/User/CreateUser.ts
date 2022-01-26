@@ -10,25 +10,26 @@ import {
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
 
-import { ParsedUser } from "./ParseUser"
 import { ParsedFiles } from "Middlewares/parseFiles"
 import { removeCircularity } from "Utils/stringifyCircular"
 import { sendConfirmationEmail } from "Mailer/emailConfirmation"
+import { RegisterUser } from "@labfaz/entities"
 
 interface CreateUserDeps {
   UserRepo: UserRepository
 }
 
+type ReqBodyExtension = ParsedFiles<"profilePicture" | "curriculum">
+  & { user_info: RegisterUser }
+
 export const CreateUser: (
   deps: CreateUserDeps
-) => RouteHandler<
-  Req<{}, ParsedUser & ParsedFiles<"profilePicture" | "curriculum">>
-> = ({ UserRepo }: CreateUserDeps) => async (req, res) => {
-  const { email, password, artist } = req.user_info! ?? {}
+) => RouteHandler<Req<{}, ReqBodyExtension>> = ({ UserRepo }: CreateUserDeps) => async (req, res) => {
+  const { email, artist, password } = req.user_info! ?? {}
 
-  // const checkUserExists = await UserRepo.findByEmail(email)
-  // if (!!checkUserExists)
-  //   return badRequestError(res, "Email address already exists.")
+  const checkUserExists = await UserRepo.findByEmail(email)
+  if (!!checkUserExists)
+    return badRequestError(res, "Email address already exists.")
 
   try {
     const curriculum = req.parsedFiles?.curriculum ?? []

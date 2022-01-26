@@ -6,9 +6,9 @@ import UserRepository from "Repository/UserRepository"
 import UserRouterFactory from "./index"
 import User from "Entities/User"
 import createTestApp from "Utils/createTestApp"
-import { Race, ShowName } from "Entities/Artist"
 import { ErrorObj, SuccessObj } from "Utils/response"
-import { UserInfo } from "./utils/userReqSchema"
+import { Race, SerializedArtist, SerializedUser, ShowName } from "@labfaz/entities"
+import { Roles } from "@labfaz/permissions"
 
 describe('User Router', () => {
 
@@ -58,7 +58,7 @@ describe('User Router', () => {
 
     it('should 201 with a valid User in the request body', async (done) => {
 
-      const userInfo: UserInfo = {
+      const userInfo: SerializedUser = {
         artist: {
           artistic_name: "nome",
           name: "nome",
@@ -71,12 +71,14 @@ describe('User Router', () => {
           rg: "2342344354365",
           show_name: ShowName.SOCIAL,
           social_name: "123213435",
-        } as UserInfo["artist"],
+        } as SerializedArtist,
         email: 'johndoe@email.com',
-        password: '123456',
+        id: "sdsfdfdsdf",
+        profilePictureUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/VAN_CAT.png/220px-VAN_CAT.png",
+        role: Roles.LOGGED_USER
       }
 
-      const { password: _, ...userWithoutPwd } = userInfo
+      const { ...userWithoutPwd } = userInfo
 
       agent
         .post('/user')

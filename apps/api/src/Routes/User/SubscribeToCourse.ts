@@ -1,11 +1,11 @@
 import CourseRepository from "Repository/CourseRepository";
 
 import { RouteHandler } from "Utils/routeHandler";
-import { ParsedUser } from "./ParseUser";
 import { Req } from "Utils/request";
 import UserRepository from "Repository/UserRepository";
 import { badRequestError, createdSuccessfully } from "Utils/endpointReturns";
 import RequestRepository from "Repository/RequestRepository";
+import { SerializedUser } from "@labfaz/entities";
 
 interface CreateSubscriptionRelation {
   CourseRepo: CourseRepository,
@@ -20,7 +20,7 @@ interface  subscriptionBody {
 
 export const subscribeToCourse: (
   deps: CreateSubscriptionRelation
-) => RouteHandler<Req<subscriptionBody, ParsedUser>> = ({
+) => RouteHandler<Req<subscriptionBody, SerializedUser>> = ({
   CourseRepo,
   UserRepo,
   RequestRepo
