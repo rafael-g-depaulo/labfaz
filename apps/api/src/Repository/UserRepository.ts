@@ -15,7 +15,7 @@ import Contact from "Entities/Contact"
 import Address from "Entities/Address"
 import Idiom from "Entities/Idiom"
 import User from "Entities/User"
-import { Formation, SerializedArtist, SerializedUser, ShowName, TechFormation } from "@labfaz/entities"
+import { Formation, SerializedArtist, SerializedUser, ShowName, TechFormation, UpdateUserArtist } from "@labfaz/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -301,7 +301,7 @@ export class UserRepository extends Repository<User> {
   
   async updateUser(
     user: User,
-    artist?: SerializedArtist,
+    artist?: UpdateUserArtist,
     password?: string,
     curriculum?: UploadedFile,
     profilePicture?: UploadedFile

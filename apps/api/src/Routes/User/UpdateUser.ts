@@ -46,11 +46,11 @@ export const UpdateUser: (
 
   if (password) {
     if (!oldpassword) {
-     return badRequestError(res, "Should inform old password to change to a new password !!")
+     return badRequestError(res, "Should inform old password to change to a new password!!")
     }
 
     if (password === oldpassword) {
-     return badRequestError(res, "New password should be different from the old one !!")
+     return badRequestError(res, "New password should be different from the old one!!")
     }
 
     const checkOldPassword = await UserRepo.compareHash(
@@ -59,7 +59,7 @@ export const UpdateUser: (
     )
 
     if (!checkOldPassword) {
-     return badRequestError(res, "Your old password isn't correct !!")
+     return badRequestError(res, "Your old password isn't correct!!")
     }
   }
 
