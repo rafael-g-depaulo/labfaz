@@ -15,7 +15,7 @@ import Contact from "Entities/Contact"
 import Address from "Entities/Address"
 import Idiom from "Entities/Idiom"
 import User from "Entities/User"
-import { Formation, SerializedArtist, ShowName, TechFormation } from "@labfaz/entities"
+import { Formation, SerializedArtist, SerializedUser, ShowName, TechFormation } from "@labfaz/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -74,17 +74,72 @@ export class UserRepository extends Repository<User> {
     return sign({ id: user.id }, secret, { expiresIn })
   }
 
-  //! serialize user from starter-project
-  // serialize(user: User): SerializedUser {
-  //   const { email, id, role, profile_picture_url } = user
-  //   const serializedUser: SerializedUser = {
-  //     email,
-  //     id,
-  //     role,
-  //     profilePictureUrl: profile_picture_url,
-  //   }
-  //   return serializedUser
-  // }
+  serialize(user: User): SerializedUser {
+    const { email, id, role, artist } = user
+    const { photo_url } = artist
+    const {
+      name,
+      artistic_name,
+      show_name,
+      social_name,
+      rg,
+      cpf,
+      expedition_department,
+      birthday,
+      gender,
+      gender_specifics,
+      race,
+      sexual_orientation,
+
+      address,
+      contact,
+      technical
+    } = artist
+    const serializedUser: SerializedUser = {
+      email,
+      id,
+      role,
+      profilePictureUrl: photo_url,
+      artist: {
+        address: {
+          cep: address?.cep!,
+          city: address?.city!,
+          complement: address?.complement,
+          number: address?.number,
+          neighbourhood: address?.neighbourhood,
+          residency: address?.residency!,
+          state: address?.state!,
+        },
+        contact: {
+          facebook: contact?.facebook!,
+          instagram: contact?.instagram!,
+          linkedin: contact?.linkedin!,
+          tiktok: contact?.tiktok!,
+          twitter: contact?.twitter!,
+          whatsapp: contact?.whatsapp!,
+          youtube: contact?.youtube!,
+        },
+        technical: {
+          ...technical,
+          areas: technical?.area,
+          profession: technical?.profession!,
+        },
+        name,
+        artistic_name,
+        show_name,
+        social_name,
+        rg: rg!,
+        cpf: cpf!,
+        expedition_department: expedition_department!,
+        birthday,
+        gender,
+        gender_specific: gender_specifics,
+        race,
+        sexual_orientation,
+      }
+    }
+    return serializedUser
+  }
 
   async generateResetPasswordToken(email: string) {
     const { secret, expiresIn } = authConfig.token
@@ -109,7 +164,7 @@ export class UserRepository extends Repository<User> {
     //criando varios idiomas do usuário para cada string no array
     const Idioms = artist.technical.idiom?.map(async (idiom) => {
       const createdIdiom = new Idiom();
-      createdIdiom.name = idiom.name;
+      createdIdiom.name = idiom.name!;
       const idiomRepo = getRepository(Idiom);
       return idiomRepo.save(createdIdiom);
     });
@@ -203,17 +258,17 @@ export class UserRepository extends Repository<User> {
     // relação de um para um com o usuário, ou seja para cada usuário possui um artista
     const createdArtist = new Artist();
     createdArtist.artistic_name = artist.artistic_name;
-    createdArtist.birthday = artist.birthday;
+    createdArtist.birthday = artist.birthday!;
     createdArtist.cpf = artist.cpf;
     createdArtist.expedition_department = artist.expedition_department;
-    createdArtist.gender = artist.gender;
-    createdArtist.gender_specifics = artist.gender_specific;
-    createdArtist.sexual_orientation = artist.sexual_orientation;
+    createdArtist.gender = artist.gender!;
+    createdArtist.gender_specifics = artist.gender_specific!;
+    createdArtist.sexual_orientation = artist.sexual_orientation!;
     createdArtist.name = artist.name;
     createdArtist.show_name = artist.show_name ?? ShowName.NAME;
     createdArtist.social_name = artist.social_name;
     createdArtist.artistic_name = artist.artistic_name;
-    createdArtist.race = artist.race;
+    createdArtist.race = artist.race!;
     createdArtist.rg = artist.rg;
     createdArtist.photo_url = profilePicture.url;
     if (curriculum)

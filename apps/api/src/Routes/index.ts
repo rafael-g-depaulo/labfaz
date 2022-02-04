@@ -3,6 +3,7 @@ import { Connection } from "typeorm"
 
 // sub routers
 import CourseRoute from "./Courses"
+import SessionRouter from "./Session"
 import UserRouter from "./User"
 
 export interface RouterDeps {
@@ -24,6 +25,7 @@ type BaseRouterDeps = {
 const Routes: Router<BaseRouterDeps> = ({ conn }, options = defaultOptions) => express.Router(options)
   .get("/ping", (_, res) => res.json("pong"))
   .use("/users", UserRouter({ conn }, options))
+  .use("/sessions", SessionRouter({ conn }, options))
   .use("/courses", CourseRoute({ conn }, options))
 
 export default Routes

@@ -5,15 +5,14 @@ import { AnyObject } from "yup/lib/types"
 import { Roles } from "@labfaz/permissions"
 
 import { maxProfilePictureSize, maxCurriculumSize } from "./constants"
-import { CNPJ, TechFormation, Formation, Residency } from "./enums"
-import { GenderSpecific, Race, SexualOrientation, ShowName } from "."
+import { GenderSpecific, Race, SexualOrientation, ShowName, CNPJ, TechFormation, Formation, Residency } from "./enums"
 
 // fields
-export const id = string().required().min(10).max(10) //.uuid()
-export const email = string().required().email()
-export const password = string().required().min(6)
-export const role = mixed<Roles>().required().oneOf(Object.values(Roles))
-export const passwordConfirmation = string().required().test('passwords-match', 'Senhas não são iguais', function(value) {
+export const id = string().min(10).max(10) //.uuid()
+export const email = string().email()
+export const password = string().min(6)
+export const role = mixed<Roles>().oneOf(Object.values(Roles))
+export const passwordConfirmation = string().test('passwords-match', 'Senhas não são iguais', function(value) {
   return this.parent.password === value
 })
 
@@ -30,11 +29,11 @@ export const curriculumUrl = string().optional().url()
 // technical info
 export const formation = mixed<Formation>()
   .oneOf(Object.values(Formation))
-export const is_drt = boolean().required()
+export const is_drt = boolean()
 export const drt = string()
-export const is_ceac = boolean().required()
+export const is_ceac = boolean()
 export const ceac = string()
-export const is_cnpj = boolean().required()
+export const is_cnpj = boolean()
 export const cnpj = string()
 export const cnpj_type = mixed<CNPJ>().oneOf(Object.values(CNPJ))
 export const name_enterprise = string()
@@ -66,13 +65,12 @@ export const idiom = array()
   )
 
 // addess info
-export const city = string().required()
+export const city = string()
 export const cep = string()
 export const neighbourhood = string()
 export const house_number = number().integer()
 export const complement = string()
 export const residency = mixed<Residency>()
-  .required()
   .oneOf(Object.values(Residency))
 export const state = string()
 
@@ -86,21 +84,18 @@ export const tiktok = string()
 export const youtube = string()
 
 // artist info
-export const name = string().required()
+export const name = string()
 export const social_name = string()
 export const artistic_name = string()
-export const show_name = mixed<ShowName>().required().oneOf(Object.values(ShowName))
-export const gender = string().required()
+export const show_name = mixed<ShowName>().oneOf(Object.values(ShowName))
+export const gender = string()
 export const cpf = string().matches(/\d{3}\.\d{3}\.\d{3}-\d{2}/)
-export const birthday = date().required()
+export const birthday = date()
 export const rg = string()
 export const expedition_department = string()
 export const gender_specific = mixed<GenderSpecific>()
-  .required()
   .oneOf(Object.values(GenderSpecific))
 export const sexual_orientation = mixed<SexualOrientation>()
-  .required()
   .oneOf(Object.values(SexualOrientation))
 export const race = mixed<Race>()
-  .required()
   .oneOf(Object.values(Race))
