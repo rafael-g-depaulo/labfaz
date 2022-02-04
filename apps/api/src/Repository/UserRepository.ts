@@ -15,7 +15,7 @@ import Contact from "Entities/Contact"
 import Address from "Entities/Address"
 import Idiom from "Entities/Idiom"
 import User from "Entities/User"
-import { Formation, SerializedArtist, SerializedUser, ShowName, TechFormation, UpdateUserArtist } from "@labfaz/entities"
+import { Formation, SerializedArtist, SerializedUser, ShowName, TechFormation, UpdateUserArtist, User as UserClass } from "@labfaz/entities"
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -95,7 +95,8 @@ export class UserRepository extends Repository<User> {
       contact,
       technical
     } = artist
-    const serializedUser: SerializedUser = {
+
+    const userInfo: SerializedUser = {
       email,
       id,
       role,
@@ -138,7 +139,10 @@ export class UserRepository extends Repository<User> {
         sexual_orientation,
       }
     }
-    return serializedUser
+
+    // this may not be necessary, but i believe it's a good practice to do it instead of just returning userInfo
+    const nonSerializedUser = new UserClass(userInfo)
+    return nonSerializedUser.serialize()
   }
 
   async generateResetPasswordToken(email: string) {
