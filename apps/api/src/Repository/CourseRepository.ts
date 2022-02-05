@@ -1,6 +1,7 @@
 import { EntityRepository, Repository } from "typeorm"
 
-import Course, { ActivityType } from "Entities/Courses"
+import Course from "Entities/Courses"
+import { SerializedCourse, ActivityType, Course as CourseClass } from "@labfaz/entities";
 
 interface CreateCourseInterface {
   name: string
@@ -30,6 +31,48 @@ export class CourseRepository extends Repository<Course> {
     });
   }
 
+  serialize(course: Course): SerializedCourse {
+    const {
+      id,
+      name,
+      teacher,
+      type,
+      tags,
+      detail,
+      link,
+      fonte,
+      short_description,
+      about,
+      requirements,
+      available,
+      banner,
+      has_subscription,
+      subscription_start_date,
+      subscription_finish_date,
+      class_dates,
+    } = course
+    const nonSerializedCourse = new CourseClass({
+      id,
+      name,
+      teachers: teacher,
+      type,
+      tags,
+      details: detail,
+      link,
+      fontes: fonte,
+      shortDescription: short_description,
+      about,
+      requirements,
+      available,
+      banner,
+      hasSubscription: has_subscription,
+      subscriptionStart: subscription_start_date,
+      subscriptionFinish: subscription_finish_date,
+      classDates: class_dates,
+    })
+
+    return nonSerializedCourse.serialize()
+  }
 
   async createCourse(
     { 

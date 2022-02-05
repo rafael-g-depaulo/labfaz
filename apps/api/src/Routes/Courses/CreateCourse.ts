@@ -5,7 +5,7 @@ import CourseRepository from "Repository/CourseRepository"
 import { createdSuccessfully } from "Utils/endpointReturns"
 import { RouteHandler } from "Utils/routeHandler"
 import { Req } from "Utils/request"
-import { ActivityType } from "Entities/Courses"
+import { ActivityType } from "@labfaz/entities"
 // import Course from "Entities/Courses"
 
 interface CreateCourseDeps {

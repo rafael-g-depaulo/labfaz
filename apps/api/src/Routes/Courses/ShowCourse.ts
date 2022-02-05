@@ -14,7 +14,7 @@ export const ShowCourse: (
 }: GetAllCourserInterface) => async (req, res) => {
   const course = await CourseRepo.findById(req.params.course_id);
   if (!course) return notFoundError(res, "No course found with that id")
-  return fetchedSuccessfully(res, course)
+  return fetchedSuccessfully(res, CourseRepo.serialize(course))
 }
 
 export default ShowCourse

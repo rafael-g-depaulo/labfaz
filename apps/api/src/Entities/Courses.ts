@@ -5,16 +5,11 @@ import {
   BeforeInsert,
   BaseEntity,
   OneToMany
-} from "typeorm";
-import { nanoid } from "nanoid";
-import Request from "./Requests";
+} from "typeorm"
+import { nanoid } from "nanoid"
+import Request from "./Requests"
 
-export enum ActivityType {
-  CURSO = 'Curso',
-  LIVE = 'Live',
-  OFICINA = 'Oficina',
-  RODA_DE_CONVERSA = 'Roda de conversa'
-}
+import { ActivityType } from "@labfaz/entities"
 
 @Entity()
 export class Course extends BaseEntity {
