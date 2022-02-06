@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Formik, Form } from "formik"
 
-import { registerUserSchema, UserRegister } from "@labfaz/entities"
+import { registerUserSchema, RegisterUser } from "@labfaz/entities"
 import { useSignup } from "Api/RegisterUser"
 
 import EmailInputGroup from "Molecules/InputGroup/Email"
@@ -13,12 +13,16 @@ export interface SignupFormProps {
   
 }
 
-const initialValues: UserRegister = {
+// TODO: Fix this with old labfaz user
+const initialValues: RegisterUser = {
   email: "",
   password: "",
   passwordConfirmation: "",
-  profilePicture: undefined
-}
+  profilePicture: undefined,
+  artist: {
+
+  }
+} as RegisterUser
 
 export const SignupForm: FC<SignupFormProps> = () => {
   const { mutateAsync, error, data, isSuccess } = useSignup()
