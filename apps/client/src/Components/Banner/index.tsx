@@ -20,7 +20,7 @@ export const Banner: FC<BannerProps> = ({
     image,
   }) => {
   return (
-    <Container align={align} BgImage={image?.url}>
+    <Container $align={align} $BgImage={image?.url}>
       <div>
         <TitleBanner level={1}> {title} </TitleBanner>
         <Subtitle level={2}> {subtitle} </Subtitle>

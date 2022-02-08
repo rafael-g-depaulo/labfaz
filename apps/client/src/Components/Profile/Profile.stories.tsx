@@ -1,9 +1,34 @@
 import { User } from '@labfaz/entities'
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
 
 import Profile from './'
+import Mobile from './Mobile'
+import Web from './Web'
 
-storiesOf("Components/Header", module)
-  .addParameters({ component: Profile })
-  .add("profile", () => <BrowserRouter ><Profile personalProfilePage data={{} as User} /></BrowserRouter>)
+export default {
+  title: 'Components/Profile',
+
+  parameters: {
+    component: Profile,
+  },
+}
+
+export const profile = () => (
+  <Profile personalProfilePage data={{} as User} />
+)
+profile.story = {
+  name: 'profile',
+}
+
+export const web = () => (
+  <Web personalProfilePage={false} data={{} as User} />
+)
+web.story = {
+  name: 'web',
+}
+
+export const mobile = () => (
+  <Mobile PersonalProfilePage={false} data={{} as User} />
+)
+mobile.story = {
+  name: 'mobile',
+}

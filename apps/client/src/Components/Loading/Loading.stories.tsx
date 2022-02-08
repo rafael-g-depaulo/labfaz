@@ -1,12 +1,18 @@
-import { storiesOf } from '@storybook/react'
-
 import Loading from './'
 import LoadingTest from './LoadingTest'
 
-storiesOf("Components/Loading", module)
-  .addParameters({ component: Loading })
-  .add("loading", () => <Loading />)
+export default {
+  title: 'Components/Loading',
 
-storiesOf("Components/Loading", module)
-  .addParameters({ component: LoadingTest })
-  .add("loadingTest", () => <LoadingTest />)
+  parameters: {
+    component: Loading,
+  },
+}
+
+export const loading = () => (
+  <Loading />
+)
+
+export const loadingTest = () => (
+  <LoadingTest />
+)

@@ -1,5 +1,3 @@
-import { storiesOf } from "@storybook/react";
-
 import Partners from "./";
 import Display from "./Display";
 
@@ -24,10 +22,24 @@ const data = [
   },
 ];
 
-storiesOf("Components/Partners", module)
-  .addParameters({ component: Partners })
-  .add("partners", () => <Partners partners={data} />);
+export default {
+  title: 'Components/Partners',
 
-storiesOf("Components/Partners", module)
-  .addParameters({ component: Display })
-  .add("display", () => <Display data={data} />);
+  parameters: {
+    component: Partners,
+  },
+}
+
+export const partners = () => (
+  <Partners partners={data} />
+)
+partners.story = {
+  name: 'partners',
+}
+
+export const staticRender = () => (
+  <Display data={data} />
+)
+staticRender.story = {
+  name: 'display',
+}

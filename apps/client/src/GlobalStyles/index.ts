@@ -59,7 +59,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Cairo", sans-serif;
     font-size: var(--font-size-default);
-    color: var(--colot-text-white);
+    color: var(--color-text-white);
 
     scroll-behavior: smooth;
   }

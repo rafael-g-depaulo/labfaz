@@ -1,8 +1,17 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import Footer from '.'
 
-import Footer from 'Components/Footer'
+export default {
+  title: 'Components/Footer',
 
-storiesOf("Components/Footer", module)
-  .addParameters({ component: Footer })
-  .add("footer", () => <BrowserRouter><Footer /></BrowserRouter>)
+  parameters: {
+    component: Footer,
+  },
+}
+
+export const footer = () => (
+  <Footer />
+)
+
+footer.story = {
+  name: 'footer',
+}

@@ -6,7 +6,7 @@ import Web from 'Components/Profile/Web'
 import { User } from '@labfaz/entities'
 import { getTwitterHandle } from 'Utils/userUtils'
 
-interface ProfileProps {
+export interface ProfileProps {
   data: User
   personalProfilePage: boolean
 }

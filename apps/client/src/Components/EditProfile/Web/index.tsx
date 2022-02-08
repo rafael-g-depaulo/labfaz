@@ -39,7 +39,7 @@ import { User, maxCurriculumSize, maxProfilePictureSize } from '@labfaz/entities
 import { EditProfile } from 'Api/EditProfile'
 import { ErrorObject } from '@labfaz/server-conn-info'
 
-interface ButtonProps {
+export interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
   data?: User
   token: string

@@ -58,7 +58,7 @@ import { useNavigate } from 'react-router'
 import { ErrorObject } from '@labfaz/server-conn-info'
 import { curriculumMaxSize, profilePictureMaxSize } from 'Utils/userUtils'
 
-interface ButtonProps {
+export interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
 }
 

@@ -19,7 +19,7 @@ import {
 import { CoursePresentation } from "Api/CoursePresentation"
 import { formatDayMonth } from "Utils/formatPostDate"
 
-interface DisplayProps {
+export interface DisplayProps {
   courses: CoursePresentation[]
   isMobile: boolean
 }

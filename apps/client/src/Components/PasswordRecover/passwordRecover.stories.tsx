@@ -1,14 +1,26 @@
-import RecoverForm from '.';
+import RecoverForm from '.'
 import PasswordChange from "./passwordChange"
-
-import { storiesOf } from "@storybook/react";
 
 const token = "aksjdkasjhdkahdkashdkasjdhaskjdhakjdhksjhda"
 
+export default {
+  title: 'Components/Recover',
 
-storiesOf("Components/Recover", module)
-  .add("recover", () => <RecoverForm />)
+  parameters: {
+    component: RecoverForm,
+  },
+}
 
+export const recover = () => (
+  <RecoverForm />
+)
+recover.story = {
+  name: 'recover',
+}
 
-  storiesOf("Components/Recover", module)
-  .add("confirmed email", () => <PasswordChange token={token}/>)
+export const confirmedEmail = () => (
+  <PasswordChange token={token} />
+)
+confirmedEmail.story = {
+  name: 'confirmed email',
+}

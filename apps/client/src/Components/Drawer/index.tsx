@@ -5,7 +5,7 @@ import { Title } from "Components/Typography/Title";
 
 import { Container, Haeder, Button, Description, ContentDiv } from "./styles";
 
-interface DrawerProps {
+export interface DrawerProps {
   description?: string;
   teamName?: string;
 }

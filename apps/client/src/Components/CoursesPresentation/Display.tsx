@@ -15,7 +15,7 @@ import Card from "./Card";
 import { Homepage } from "Api/Homepage";
 import { CoursePresentation } from "Api/CoursePresentation";
 
-interface DisplayProps {
+export interface DisplayProps {
   texts: Homepage;
   courses: CoursePresentation[];
 }

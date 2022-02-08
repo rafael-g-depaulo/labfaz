@@ -1,8 +1,35 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import Header from '.'
+import Web from "./Web"
+import Mobile from "./Mobile"
 
-import Header from './'
+export default {
+  title: 'Components/Header',
 
-storiesOf("Components/Header", module)
-  .addParameters({ component: Header })
-  .add("header", () => <BrowserRouter ><Header /></BrowserRouter>)
+  parameters: {
+    component: Header,
+  },
+}
+
+export const header = () => (
+  <Header />
+)
+
+header.story = {
+  name: 'header',
+}
+
+export const web = () => (
+  <Web />
+)
+
+web.story = {
+  name: 'web',
+}
+
+export const mobile = () => (
+  <Mobile />
+)
+
+mobile.story = {
+  name: 'mobile',
+}

@@ -1,14 +1,16 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
-
 import { InternalLinkButton } from './'
 
-storiesOf("Components/InternalLinkButton", module)
-  .addParameters({ component: InternalLinkButton })
-  .add("internalLinkButton", () => 
-    <BrowserRouter >
-      <InternalLinkButton 
-        href="/blog" 
-        children="Internal Button"
-      />
-    </BrowserRouter>)
+export default {
+  title: 'Components/InternalLinkButton',
+
+  parameters: {
+    component: InternalLinkButton,
+  },
+}
+
+export const internalLinkButton = () => (
+  <InternalLinkButton 
+    href="https://google.com.br" 
+    children="External Button"
+  />
+)

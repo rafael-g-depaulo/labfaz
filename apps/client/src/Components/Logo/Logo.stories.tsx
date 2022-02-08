@@ -1,7 +1,17 @@
-import { storiesOf } from '@storybook/react'
-
 import Logo from './'
 
-storiesOf("Components/Logo", module)
-  .addParameters({ component: Logo })
-  .add("logo", () => <Logo />)
+export default {
+  title: 'Components/Logo',
+
+  parameters: {
+    component: Logo,
+  },
+}
+
+export const logo = () => (
+  <Logo />
+)
+
+logo.story = {
+  name: 'Logo',
+}

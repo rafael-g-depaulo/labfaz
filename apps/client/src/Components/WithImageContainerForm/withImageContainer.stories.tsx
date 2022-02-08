@@ -1,5 +1,3 @@
-import { storiesOf } from "@storybook/react";
-
 import WithImageContainerForm from './index'
 import RecoverForm from 'Components/PasswordRecover';
 
@@ -14,10 +12,20 @@ const image = mockImage({
   ext: "png"
 })
 
-storiesOf("Components/FormContainer", module)
-  .addParameters({ component: "FormContaier" })
-  .add("list posts", () => (
-    <WithImageContainerForm title="test" image={image}> 
-      <RecoverForm />
-    </WithImageContainerForm>
-    ));
+export default {
+  title: 'Components/FormContainer',
+
+  parameters: {
+    component: WithImageContainerForm,
+  },
+}
+
+export const list = () => (
+  <WithImageContainerForm title="test" image={image}> 
+    <RecoverForm />
+  </WithImageContainerForm>
+)
+
+list.story = {
+  name: 'list posts',
+}

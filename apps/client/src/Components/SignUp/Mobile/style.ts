@@ -13,8 +13,7 @@ interface ModalProps {
 }
 
 export const Container = styled.div`
-
-  background-color: black;
+  background-color: var(--background-black);
   padding-top: 5.83rem;
 `
 

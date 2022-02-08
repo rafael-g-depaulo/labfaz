@@ -4,7 +4,7 @@ import useMobile from 'Hooks/useMobile'
 import { Mobile } from './Mobile'
 import { Web } from './Web'
 
-interface SingUpProps {
+export interface SingUpProps {
   button_type: "submit" | "button" | "reset"
 }
 

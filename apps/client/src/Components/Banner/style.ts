@@ -5,16 +5,16 @@ import { InternalLinkButton  } from 'Components/Buttons/InternalLinkButton';
 import { Title } from 'Components/Typography/Title'
 
 export interface Props {
-  align: string
-  BgImage?: string
+  $align: string
+  $BgImage?: string
 }
 
 export const Container = styled.div<Props>`
   display: flex;
-  padding: ${props => props.align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0 4rem 0'};
-  justify-content: ${props => props.align};
+  padding: ${props => props.$align === 'left' ? '0.5rem 0 0.5rem 7rem' : '0.5rem 0 4rem 0'};
+  justify-content: ${props => props.$align};
   background:
-    ${props => props.BgImage && `url("${props.BgImage}")`}
+    ${props => props.$BgImage && `url("${props.$BgImage}")`}
     var(--background-pink)
   ;
   background-position: center;
@@ -24,9 +24,9 @@ export const Container = styled.div<Props>`
     width: 30rem;
     display: flex;
     flex-direction: column;
-    align-items: ${props => props.align};
+    align-items: ${props => props.$align};
     justify-content: space-evenly;
-    text-align: ${props => props.align};
+    text-align: ${props => props.$align};
     gap: 1rem;
   }
   ${Mobile(css`

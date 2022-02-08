@@ -45,7 +45,7 @@ import { EditProfile } from 'Api/EditProfile'
 import { useNavigate } from 'react-router'
 import { ErrorObject } from '@labfaz/server-conn-info'
 
-interface ButtonProps {
+export interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined
   data?: User
   token: string

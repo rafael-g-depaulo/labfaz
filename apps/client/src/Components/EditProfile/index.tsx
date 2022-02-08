@@ -5,7 +5,7 @@ import { Mobile } from './Mobile'
 import { Web } from './Web'
 import { User } from '@labfaz/entities'
 
-interface SingUpProps {
+export interface SingUpProps {
   button_type: "submit" | "button" | "reset"
   data: User
   token: string

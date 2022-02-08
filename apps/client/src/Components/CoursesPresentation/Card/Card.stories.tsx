@@ -1,8 +1,5 @@
-import { storiesOf } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
-
 import { CoursePresentation } from "Api/CoursePresentation";
-import Card from "./index";
+import Card from './'
 
 const sampleCard: CoursePresentation = {
   title: "IX Workshop de Iluminacao",
@@ -24,10 +21,15 @@ const sampleCard: CoursePresentation = {
 
 const cards = Array.from({ length: 4 }, () => sampleCard);
 
-storiesOf("Components/CoursesPresentation/Cards", module)
-  .addParameters({ component: Card })
-  .add("responsive", () => (
-    <BrowserRouter>
-      <Card courses={cards} isMobile={true} />
-    </BrowserRouter>
-  ));
+
+export default {
+  title: 'Components/Card',
+
+  parameters: {
+    component: Card,
+  },
+}
+
+export const responsive = () => (
+  <Card courses={cards} isMobile={true} />
+)

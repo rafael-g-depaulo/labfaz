@@ -3,7 +3,7 @@ import { Image } from '@labfaz/strapi-utils'
 
 import { Container, Frame, ImageDiv, PageTitle, Content, Line } from './style'
 
-interface ContainerProps {
+export interface ContainerProps {
   image: Image,
   title: string
 }

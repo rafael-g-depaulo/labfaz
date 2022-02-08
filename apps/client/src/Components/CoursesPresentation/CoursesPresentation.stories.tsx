@@ -1,6 +1,3 @@
-import { storiesOf } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
-
 import { Homepage } from "Api/Homepage";
 import { CoursePresentation } from "Api/CoursePresentation";
 import CoursesPresentation from "./Display";
@@ -33,10 +30,13 @@ const sampleCourse: CoursePresentation = {
 
 const courses = Array.from({ length: 4 }, () => sampleCourse);
 
-storiesOf("Components/CoursesPresentation", module)
-  .addParameters({ component: CoursesPresentation })
-  .add("responsive", () => (
-    <BrowserRouter>
-      <CoursesPresentation texts={texts} courses={courses} />
-    </BrowserRouter>
-  ));
+export default {
+  title: 'Components/CoursesPresentation',
+  parameters: {
+    component: CoursesPresentation,
+  },
+}
+
+export const responsive = () => (
+  <CoursesPresentation texts={texts} courses={courses} />
+)

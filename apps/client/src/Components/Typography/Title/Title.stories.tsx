@@ -1,61 +1,32 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
-
 import { Title } from './'
 
-storiesOf("Components/Title", module)
-  .addParameters({ component: Title })
-  .add("title h1", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={1}
-      />
-    </BrowserRouter>)
+export default {
+  title: 'Components/Title',
 
-  .add("Title h2", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={2}
-      />
-    </BrowserRouter>)
+  parameters: {
+    component: Title,
+  },
+}
 
-  .add("Title h3", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={3}
-      />
-    </BrowserRouter>)
+const t = (level: 1 | 2 | 3 | 4 | 5 | 6) => {
+  const story = () => (
+    <Title 
+      children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
+      porta ligula nibh, nec interdum nunc maximus at."
+      level={level}
+    />
+  )
+  
+  story.story = {
+    name: `Title h${level}`
+  }
 
-  .add("Title h4", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={4}
-      />
-    </BrowserRouter>)
+  return story  
+}
 
-  .add("Title h5", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={5}
-      />
-    </BrowserRouter>)
-
-
-  .add("Title h6", () => 
-    <BrowserRouter >
-      <Title 
-        children="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
-        porta ligula nibh, nec interdum nunc maximus at."
-        level={6}
-      />
-    </BrowserRouter>)
+export const titleh1 = t(1)
+export const titleh2 = t(2)
+export const titleh3 = t(3)
+export const titleh4 = t(4)
+export const titleh5 = t(5)
+export const titleh6 = t(6)

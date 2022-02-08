@@ -7,7 +7,7 @@ import { InputText, InputTextContainer } from "Components/Login/style"
 import { Modal } from 'Components/Modal/PasswordRecoverModal'
 
 import { askResetPassword } from 'Api/PasswordReset'  
-interface FormProps {
+export interface FormProps {
   email: string,
 }
 

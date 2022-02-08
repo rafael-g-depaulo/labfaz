@@ -1,6 +1,3 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
-
 import Drawer from '.'
 // import StaffCard from 'Routes/AboutUs/AboutUsPage/StaffComponent/StaffCard'
 // import { mockImage } from '@labfaz/strapi-utils'
@@ -26,7 +23,14 @@ const title = "TEAM #1"
 // const Card = <StaffCard  data={staff} />
 const Card = <div>TODO: uncomment StaffCard</div>
 
+export default {
+  title: 'Components/Drawer',
 
-storiesOf("Components/Drawer", module)
-  .addParameters({ component: Drawer })
-  .add("Drawer", () => <BrowserRouter> <Drawer description={description} teamName={title} children={Card}/> </BrowserRouter> )
+  parameters: {
+    component: Drawer,
+  },
+}
+
+export const responsive = () => (
+  <Drawer description={description} teamName={title} children={Card}/>
+)

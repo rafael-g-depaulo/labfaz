@@ -1,8 +1,17 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import { Mobile } from '.'
 
-import {Mobile} from '.'
+export default {
+  title: 'Components/Mobile',
 
-storiesOf("Components/SignUp", module)
-  .addParameters({ component: Mobile })
-  .add("mobile", () => <BrowserRouter ><Mobile buttonType="button" token=''/></BrowserRouter>)
+  parameters: {
+    component: Mobile,
+  },
+}
+
+export const mobile = () => (
+  <Mobile buttonType="button" token=''/>
+)
+
+mobile.story = {
+  name: 'mobile',
+}

@@ -1,13 +1,17 @@
-import { storiesOf } from '@storybook/react'
+import { Login } from "."
 
-import { CurrentUserProvider } from 'Context/LoggedUserToken'
+export default {
+  title: 'Components/Login',
 
-import { Login } from './'
+  parameters: {
+    component: Login,
+  },
+}
 
-storiesOf('Components/Login', module)
-  .addParameters({ component: Login })
-  .add('input', () => (
-    <CurrentUserProvider>
-      <Login onSubmit={() => {}}/>
-    </CurrentUserProvider>
-  ))
+export const login = () => (
+  <Login onSubmit={() => {}}/>
+)
+
+login.story = {
+  name: 'Login',
+}

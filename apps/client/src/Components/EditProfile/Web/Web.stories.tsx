@@ -1,8 +1,17 @@
-import { storiesOf } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
-
 import { Web } from '.'
 
-storiesOf("Components/SignUp", module)
-  .addParameters({ component: Web })
-  .add("web", () => <BrowserRouter ><Web buttonType="button" token=''/></BrowserRouter>)
+export default {
+  title: 'Components/Web',
+
+  parameters: {
+    component: Web,
+  },
+}
+
+export const web = () => (
+  <Web buttonType="button" token=''/>
+)
+
+web.story = {
+  name: 'web',
+}
