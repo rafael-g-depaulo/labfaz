@@ -5,6 +5,8 @@ module.exports = {
     name: 'CLIENT',
     color: 'blue',
   },
+  
+  testEnvironment: "jsdom",
 
   // setup jest
   setupFilesAfterEnv: ['./src/setupTests.ts'],
