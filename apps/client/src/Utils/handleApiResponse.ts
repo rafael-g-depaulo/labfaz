@@ -8,3 +8,5 @@ export const throwApiError = <ErrorData extends Data = object> (err: any) => {
 }
 
 export const extractApiData = <T extends Data = object> (response: AxiosResponse<SuccessObject<T>>) => (response.data.data)
+
+export const extractStrapiData = <T extends Data = object> (response: AxiosResponse<T>) => (response.data)
