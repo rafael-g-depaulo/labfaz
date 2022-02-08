@@ -1,5 +1,5 @@
 import useMobile from "Hooks/useMobile"
-import React, { FC } from "react"
+import { FC } from "react"
 
 import Web from "./Web"
 import Mobile from "./Mobile"

@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 
 import { InternalLinkButton } from "Components/Buttons/InternalLinkButton";
 import { navLinks } from "Utils/navLinks";

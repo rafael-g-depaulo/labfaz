@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import { FC, useEffect } from "react"
 
 import { useConfirmEmail } from "Api/ConfirmEmail"
 import LoadingFullPage from "Components/LoadingFullPage"

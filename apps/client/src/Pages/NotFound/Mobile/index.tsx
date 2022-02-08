@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import Header from "Components/Header"
 import Image from '../Image'
