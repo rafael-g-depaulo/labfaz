@@ -7,21 +7,15 @@ export type ColorName = RawColorName | PalleteColorName
 
 // raw colors
 const rawColorNames = [
-  'white',
-  'gray',
   'black',
-  'orange',
+  'white',
   'pink',
-  'teal'
 ] as const
 export type RawColorName = typeof rawColorNames[number]
 export const rawColors: ColorDict<RawColorName> = {
-  white:  `#FFFFFF`,
-  gray:   `#888888`,
-  black:  `#000000`,
-  orange: `#E27D60`,
-  pink:   `#C38D9E`,
-  teal:   `#41B3A3`,
+  black: '#000000',
+  white: '#FFFFFF',
+  pink: '#FC0061',
 }
 
 // pallete colors
@@ -34,9 +28,9 @@ const palleteColorNames = [
 export type PalleteColorName = typeof palleteColorNames[number]
 export const palleteColors: ColorDict<PalleteColorName> = {
   accent:    rawColors['pink'],
-  primary:   rawColors['orange'],
-  secondary: rawColors['teal'],
-  text:      rawColors['black'],
+  primary:   rawColors['white'],
+  secondary: rawColors['pink'],
+  text:      rawColors['white'],
 }
 
 export const setupColorVars = () => 
