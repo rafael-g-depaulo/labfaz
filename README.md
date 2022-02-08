@@ -39,3 +39,5 @@ Use either "major", "minor" or "patch" to signal what semver change you're makin
 `yarn version check -i` should be used instead if you don't plan to update all of the packages.
 
 Also when committing remember to `git tag vX.X.X`.
+
+TODO: fix curriculum and profile picture
