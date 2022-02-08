@@ -1,4 +1,5 @@
-import { api, SuccessObject } from "Api";
+import { SuccessObject } from "@labfaz/server-conn-info";
+import { api } from "Api";
 import useFetchApi from "Hooks/useFetchApi";
 import { useMutation, useQuery } from "react-query";
 

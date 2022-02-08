@@ -1,5 +1,6 @@
-import { api, SuccessObject } from "Api"
+import { api } from "Api"
 import { SerializedUser, User } from "@labfaz/entities"
+import { SuccessObject } from "@labfaz/server-conn-info"
 
 export interface SessionReturn {
   token: string

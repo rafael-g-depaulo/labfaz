@@ -1,26 +1,8 @@
+import { Data, ErrorObject, SuccessObject } from "@labfaz/server-conn-info"
 import { Response } from "express"
 
-export type ErrorObject = {
-  status: "error"
-  code: number
-  message: string
-  data?: object
-}
-
-export type Data = object | string
-export type SuccessObject = {
-  status: "success",
-  data: Data
-  code: number
-}
-
-export type ResponseObject = ErrorObject | SuccessObject
-
-export type ErrorObjFn = (code: number, message: string, data?: object) => ErrorObject
-export type SuccessObjFn = (code: number, data: Data) => SuccessObject
-
-export const ErrorObj: ErrorObjFn = (code, message, data) => {
-  const baseErrorObj: ErrorObject = {
+export const ErrorObj = <T extends Data> (code: number, message: string, data?: T): ErrorObject<T> => {
+  const baseErrorObj: ErrorObject<T> = {
     code,
     status: "error",
     message,
@@ -30,11 +12,14 @@ export const ErrorObj: ErrorObjFn = (code, message, data) => {
   return { ...baseErrorObj, data }
 }
 
-export const SuccessObj: SuccessObjFn = (code, data) => ({
-  code,
-  status: "success",
-  data,
-})
+export const SuccessObj = <T extends Data> (code: number, data: T): SuccessObject<T> => {
+  const returnVal: SuccessObject<T> = {
+    code,
+    status: "success",
+    data,
+  }
+  return returnVal
+}
 
 export type errorReturnFn = (res: Response, message: string, data?: object) => Response
 export const errorReturn = (errorCode: number): errorReturnFn => (res, message, data) => {

@@ -1,4 +1,4 @@
-import { ErrorObject } from "Api"
+import { ErrorObject } from "@labfaz/server-conn-info"
 import { AxiosError } from "axios"
 import { MutationFunction, useMutation, UseMutationOptions } from "react-query"
 

@@ -43,7 +43,7 @@ import {
 import { User } from '@labfaz/entities'
 import { EditProfile } from 'Api/EditProfile'
 import { useNavigate } from 'react-router'
-import { ErrorObject } from 'Api'
+import { ErrorObject } from '@labfaz/server-conn-info'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined

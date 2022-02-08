@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 
 import { login } from 'Api/Session'
-import { ErrorObject } from 'Api'
+import { ErrorObject } from '@labfaz/server-conn-info'
 
 import useQueries from 'Hooks/useUrlQueries'
 

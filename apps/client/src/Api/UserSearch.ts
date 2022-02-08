@@ -1,8 +1,9 @@
-import { api, ErrorObject, SuccessObject } from "Api"
+import { api } from "Api"
 import { GenderSpecific, User } from "@labfaz/entities"
 import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { getUserName } from "Utils/userUtils"
+import { ErrorObject, SuccessObject } from "@labfaz/server-conn-info"
 
 export interface UsersList {
   users: User[]

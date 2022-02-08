@@ -37,7 +37,7 @@ import {
 import { useNavigate } from 'react-router'
 import { User, maxCurriculumSize, maxProfilePictureSize } from '@labfaz/entities'
 import { EditProfile } from 'Api/EditProfile'
-import { ErrorObject } from 'Api'
+import { ErrorObject } from '@labfaz/server-conn-info'
 
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset' | undefined

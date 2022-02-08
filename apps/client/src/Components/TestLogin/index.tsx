@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import { CurrentUserContext } from "Context/LoggedUserToken"
 import { login } from "Api/Session"
-import { ErrorObject } from "Api"
+import { ErrorObject } from '@labfaz/server-conn-info'
 
 import Test from "./Test"
 

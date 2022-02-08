@@ -46,7 +46,7 @@ import {
 } from './style'
 import { useSocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz'
 import { useNavigate } from 'react-router'
-import { ErrorObject } from 'Api'
+import { ErrorObject } from '@labfaz/server-conn-info'
 import { curriculumMaxSize, profilePictureMaxSize } from 'Utils/userUtils'
 
 interface ButtonProps {

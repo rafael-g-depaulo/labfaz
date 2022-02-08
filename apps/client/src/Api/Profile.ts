@@ -1,8 +1,9 @@
-import { api, ErrorObject, SuccessObject } from "Api"
+import { api } from "Api"
 import { AxiosError } from "axios"
 import { SerializedUser, User } from "@labfaz/entities"
 import useFetchApi from "Hooks/useFetchApi"
 import { extractApiData } from "Utils/handleApiResponse"
+import { ErrorObject, SuccessObject } from "@labfaz/server-conn-info"
 
 export const fetchUser = (id: string) => api
   .get<SuccessObject<SerializedUser>>(`user/${id}`)

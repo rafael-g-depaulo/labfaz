@@ -1,4 +1,5 @@
-import { api, ErrorObject } from "Api"
+import { ErrorObject } from "@labfaz/server-conn-info"
+import { api } from "Api"
 import { useMutation } from "react-query"
 
 interface AskResetPassResponseData {

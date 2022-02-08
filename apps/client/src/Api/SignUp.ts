@@ -1,4 +1,5 @@
-import { api, SuccessObject } from "Api"
+import { SuccessObject } from "@labfaz/server-conn-info"
+import { api } from "Api"
 
 const toNumString = (numStr: string) => isNaN(parseInt(numStr)) ? "" : `${parseInt(numStr)}`
 

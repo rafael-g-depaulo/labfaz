@@ -10,17 +10,3 @@ export const api = axios.create({
 export const strapi = axios.create({
   baseURL: process.env.NODE_ENV === "development" ? getStrapiUrl({ hostname: window.location.hostname }) : getStrapiUrl(),
 })
-
-export type Data = object | string
-export type SuccessObject<T extends Data = object> = {
-  status: "success"
-  data: T
-  code: number
-}
-
-export type ErrorObject<T extends Data = object> = {
-  status: "error"
-  code: number
-  message: string
-  data?: T
-}
