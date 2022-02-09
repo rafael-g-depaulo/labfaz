@@ -6,6 +6,11 @@ import { Title } from "Components/Typography/Title"
 import { Text } from "Components/Typography/Text"
 import SocialMediaIcons  from "Components/SocialMediaIcons"
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components'
+
+const StyledText = styled(Text)`
+  margin-top: 61px;
+`
 
 interface ModalProps {
   isVisible: boolean,
@@ -25,9 +30,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
         <Title level={3}> SENHA ALTERADA COM SUCESSO </Title>
         <ModalLine />
         <ModalContent>
-          <Text css={{
-            marginTop: "61px",
-          }}> Parabéns o sua senha foi alterada com sucesso! Volte para a tela de login para logar com a sua nova senha. </Text>
+          <StyledText> Parabéns o sua senha foi alterada com sucesso! Volte para a tela de login para logar com a sua nova senha. </StyledText>
             <>
             <Text> (99)9999-999 </Text>
             <Text> contato@labfaz.com.br </Text>
@@ -48,12 +51,10 @@ export const Modal: FC<ModalProps> = ({ isVisible, setFunction, title, userEmail
         <Title level={3}> {title ? "EMAIL ENVIADO" : "DESCULPE PELOS PROBLEMAS"}   </Title>
         <ModalLine />
         <ModalContent>
-          <Text css={{
-            marginTop: "61px",
-          }}> {title ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
+          <StyledText> {title ? `O email com as instruções para recuperar senha foram enviadas para ${userEmail}.\n \n
             Cheque sua caixa de mensgems ou em alguns minutos tente novamente` :
             "Tente entrar em contato com a nossa equipe, pelos meios de comunicaca e midias abaixo, para resolver o seu problema."
-          } </Text>
+          } </StyledText>
           {!title ? (
             <>
             <Text> (99)9999-999 </Text>
