@@ -85,7 +85,12 @@ export const UserSession = styled.div`
 `;
 
 export const Button = styled(InternalLinkButton)`
-  padding: 0.2rem 1.5rem;
+  /* TODO: fix this. these are hardcoded values and prone to fuck ups and bad responsivity */
+  padding: 0 1.5rem;
+  line-height: 31px;
+  max-height: 38px;
+  /* TODO: fix this */
+
   color: var(--color-text-beige);
   border: none;
   font-size: var(--font-size-large);
