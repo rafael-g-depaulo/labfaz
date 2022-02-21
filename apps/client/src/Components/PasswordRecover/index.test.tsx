@@ -2,22 +2,18 @@ import Render from "Utils/render"
 import { AskReset } from './'
 import { PasswordChange } from './passwordChange'
 
-import { render } from '@testing-library/react'
-import { BrowserRouter } from "react-router-dom"
+// import { render } from '@testing-library/react'
+// import { BrowserRouter } from "react-router-dom"
 
 it('Shoud render ask reset form properly', () => {
   expect(() => Render(
-    // <BrowserRouter>
-      <AskReset />
-    // </BrowserRouter>
+    <AskReset />
   )).not.toThrow()
 })
 
 it('Should have a text input page title', () => {
-  const Component = render(
-    <BrowserRouter>
-      <AskReset />
-    </BrowserRouter>
+  const Component = Render(
+    <AskReset />
   ).getByRole('textbox')
 
   expect(Component).toBeTruthy()
@@ -25,8 +21,6 @@ it('Should have a text input page title', () => {
 
 it('Shoud render reset password form properly', () => {
   expect(() => Render(
-    // <BrowserRouter>
-      <PasswordChange token=""/>
-    // </BrowserRouter>
+    <PasswordChange token=""/>
   )).not.toThrow()
 })

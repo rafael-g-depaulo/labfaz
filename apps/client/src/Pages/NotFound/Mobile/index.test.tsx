@@ -1,21 +1,15 @@
-import { BrowserRouter } from 'react-router-dom';
-
 import render from 'Utils/render'
 import Mobile from './'
 
 it('renders header component', () => {
   expect(() => render(
-    <BrowserRouter>
-      <Mobile/>
-    </BrowserRouter>
+    <Mobile/>
   )).not.toThrow()
 })
 
 describe('Check content of Page', () => {
   const { getByText, getAllByRole } = render(
-    <BrowserRouter>
-      <Mobile/>
-    </BrowserRouter>
+    <Mobile/>
   );
 
   it('check not_found image', () => {

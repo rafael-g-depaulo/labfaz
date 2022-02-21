@@ -1,5 +1,4 @@
 import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz';
-import { BrowserRouter } from 'react-router-dom';
 
 import render from 'Utils/render'
 import Web from '.'
@@ -16,17 +15,13 @@ const mockedData: SocialNetworksLabfaz = {
 
 it('renders header component', () => {
   expect(() => render(
-    <BrowserRouter>
-      <Web data={mockedData}/>
-    </BrowserRouter>
+    <Web data={mockedData}/>
   )).not.toThrow()
 })
 
 describe('Check content of Page', () => {
   const { getByText, getAllByRole } = render(
-    <BrowserRouter>
-      <Web data={mockedData}/>
-    </BrowserRouter>
+    <Web data={mockedData}/>
   );
 
   it('check construction image', () => {

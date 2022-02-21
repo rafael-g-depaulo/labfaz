@@ -1,21 +1,15 @@
-import { BrowserRouter } from 'react-router-dom';
-
 import render from 'Utils/render'
 import Web from './'
 
 it('renders header component', () => {
   expect(() => render(
-    <BrowserRouter>
-      <Web />
-    </BrowserRouter>
+    <Web />
   )).not.toThrow()
 })
 
 describe('Check content of Page', () => {
   const { getByText, getAllByRole } = render(
-    <BrowserRouter>
-      <Web />
-    </BrowserRouter>
+    <Web />
   );
 
   it('check not_found image', () => {

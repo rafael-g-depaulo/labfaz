@@ -1,5 +1,5 @@
 import render from "Utils/render";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 
 import HomePageDisplay from "./Display";
 import { HomepageBannerInfo } from "Api/HomepageBannerInfo";
@@ -78,24 +78,6 @@ describe("Home Page", () => {
   it("renders without exploding", () => {
     expect(() =>
       render(
-        <BrowserRouter>
-          <HomePageDisplay
-            data={mockedData}
-            title={mockedTitle}
-            subtitle={mockedSubtitle}
-            video={mockedVideo}
-            partners={mockedPartners}
-            coursesText={mockedCoursesTexts}
-            // coursesData={mockedCoursesData}
-          />
-        </BrowserRouter>
-      )
-    ).not.toThrow();
-  });
-
-  it("displays the data message", () => {
-    const { getAllByRole } = render(
-      <BrowserRouter>
         <HomePageDisplay
           data={mockedData}
           title={mockedTitle}
@@ -105,7 +87,21 @@ describe("Home Page", () => {
           coursesText={mockedCoursesTexts}
           // coursesData={mockedCoursesData}
         />
-      </BrowserRouter>
+      )
+    ).not.toThrow();
+  });
+
+  it("displays the data message", () => {
+    const { getAllByRole } = render(
+      <HomePageDisplay
+        data={mockedData}
+        title={mockedTitle}
+        subtitle={mockedSubtitle}
+        video={mockedVideo}
+        partners={mockedPartners}
+        coursesText={mockedCoursesTexts}
+        // coursesData={mockedCoursesData}
+      />
     );
 
     // expect retrieved data to be displayed

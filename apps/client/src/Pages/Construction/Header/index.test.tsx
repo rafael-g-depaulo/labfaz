@@ -1,5 +1,5 @@
 import { SocialNetworksLabfaz } from 'Api/SocialNetworksLabfaz';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 
 import render from 'Utils/render'
 import Header from '.'
@@ -16,17 +16,13 @@ const mockedData: SocialNetworksLabfaz = {
 
 it('renders header component', () => {
   expect(() => render(
-    <BrowserRouter>
-      <Header data={mockedData}/>
-    </BrowserRouter>
+    <Header data={mockedData}/>
   )).not.toThrow()
 })
 
 describe('Check links succesfully redirects to another page', () => {
   const { getByTestId } = render(
-    <BrowserRouter>
-      <Header data={mockedData}/>
-    </BrowserRouter>
+    <Header data={mockedData}/>
   );
   it('check link to facebook', () => {
     expect(getByTestId('facebook')).toHaveAttribute('href', 'https://www.facebook.com')

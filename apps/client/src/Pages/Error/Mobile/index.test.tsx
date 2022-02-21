@@ -1,5 +1,3 @@
-import { BrowserRouter } from "react-router-dom";
-
 import render from "Utils/render";
 import Mobile from ".";
 
@@ -9,18 +7,14 @@ const exampleMessage: string = "Internal server error";
 it("renders mobile error component", () => {
   expect(() =>
     render(
-      <BrowserRouter>
-        <Mobile status={exampleStatus} message={exampleMessage} />
-      </BrowserRouter>
+      <Mobile status={exampleStatus} message={exampleMessage} />
     )
   ).not.toThrow();
 });
 
 describe("Check if content of error page", () => {
   const { getByText, getAllByRole } = render(
-    <BrowserRouter>
-      <Mobile status={exampleStatus} message={exampleMessage} />
-    </BrowserRouter>
+    <Mobile status={exampleStatus} message={exampleMessage} />
   );
 
   it("renders error image", () => {
