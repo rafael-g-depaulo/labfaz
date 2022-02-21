@@ -3,7 +3,7 @@ import renderComponent from 'Utils/render'
 import App from './App'
 
 test('renders learn react link', () => {
-  renderComponent(<App />)
+  renderComponent(<App />, { router: false })
   // const linkElement = screen.getByText(/learn react/i)
   // expect(linkElement).toBeInTheDocument()
 })
