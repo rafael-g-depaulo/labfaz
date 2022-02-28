@@ -7,7 +7,9 @@ export enum Resources {
   ACCOUNT = 'account'
 }
 
-export type ResourceActionStr = `${'create' | 'read' | 'update' | 'delete'}:${'any' | 'own'}`
+type Action = 'create' | 'read' | 'update' | 'delete'
+type Subject = 'any' | 'own'
+export type ResourceActionStr = `${Action}:${Subject}`
 
 export type GrantConfig = {
   [role in Roles]: {

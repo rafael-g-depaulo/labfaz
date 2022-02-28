@@ -15,6 +15,8 @@ import ShowCurrentUser from "./ShowCurrentUser"
 import ResendEmail from "./ResendEmail"
 import ParseBody from "Middlewares/parseBody"
 import { registerUserSchema, updateUserSchema } from "@labfaz/entities"
+import rbac from "Middlewares/rbac"
+import { Resources } from "@labfaz/permissions"
 
 type UserDeps = {
   conn: Connection
@@ -28,6 +30,7 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     .Router(options)
     .post(
       "/create",
+      rbac("create:own", Resources.ACCOUNT),
       parseFiles([
         { fieldName: "profilePicture", type: FileType.image, max: 1, min: 1, maxSize: 15 * 1024 * 1024 },
         { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
@@ -37,17 +40,18 @@ const UserRouter: Router<UserDeps> = (deps, options) => {
     )
     .put(
       "/update",
+      ensureAuthenticated,
+      rbac("update:own", Resources.ACCOUNT),
       parseFiles([
         { fieldName: "profilePicture", type: FileType.image, max: 1, min: 0, maxSize: 15 * 1024 * 1024 },
         { fieldName: "curriculum", type: FileType.pdf , max: 1, min: 0, maxSize: 20 * 1024 * 1024 },
       ]),
-      ensureAuthenticated,
       ParseBody(updateUserSchema, "user_info"),
       UpdateUser({ UserRepo })
     )
-    .get("/search", SearchUsers({ UserRepo }))
-    .get("/me", ensureAuthenticated, ShowCurrentUser({ UserRepo }))
-    .get("/:id", ShowUser({ UserRepo }))
+    .get("/search", rbac("read:any", Resources.ACCOUNT), SearchUsers({ UserRepo }))
+    .get("/me", ensureAuthenticated, rbac("read:own", Resources.ACCOUNT), ShowCurrentUser({ UserRepo }))
+    .get("/:id", rbac("read:any", Resources.ACCOUNT), ShowUser({ UserRepo }))
     .post("/confirm-mail", ResendEmail({ UserRepo }))
 }
 
