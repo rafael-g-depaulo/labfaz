@@ -5,6 +5,7 @@ import LazyRoute from "./LazyRoute"
 
 const Home = lazy(() => import("Pages/Home"))
 const RegisterUser = lazy(() => import("Pages/SignUpUser"))
+const EmailConfirmation = lazy(() => import("Pages/EmailConfirmation"))
 const LoginUser = lazy(() => import("Pages/LoginUser"))
 const NotFound = lazy(() => import("Pages/NotFound"))
 
@@ -12,11 +13,13 @@ type RouteName = typeof routeNames[number]
 const routeNames = [
   "home",
   "register",
+  "emailConfirm"
 ] as const
 
 export const RoutePaths: {[name in RouteName]: string} = {
   home: "/home",
   register: "/cadastro",
+  emailConfirm: "/confirmar-email"
 }
 
 const Routes: FC = () => {
@@ -25,6 +28,7 @@ const Routes: FC = () => {
     <AppRoutes>
       <Route path="/" element={<LazyRoute><Home /></LazyRoute>} />
       <Route path="/cadastro" element={<LazyRoute><RegisterUser /></LazyRoute>} />
+      <Route path="/confirmar-email/:user_id" element={<LazyRoute><EmailConfirmation /></LazyRoute>} />
       <Route path="/login" element={<LazyRoute><LoginUser /></LazyRoute>} />
       <Route path="*" element={<LazyRoute><NotFound /></LazyRoute>}/>
     </AppRoutes>

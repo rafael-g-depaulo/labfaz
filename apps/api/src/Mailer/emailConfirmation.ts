@@ -4,7 +4,7 @@ import User from "Entities/User"
 import { AutoEmail, LABFAZ, Title, sendEmail } from "Mailer"
 
 export const sendConfirmationEmail = (user: User) => {
-  const link = `https://${getClientUrl()}/email-confirmation/${user.id}`
+  const link = `${getClientUrl()}/confirmar-email/${user.id}`
   const userName = user.artist.displayName
 
   const subject = `A gente só precisa confirmar seu e-mail!`

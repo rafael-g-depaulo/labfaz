@@ -40,7 +40,7 @@ export const getClientPort = () => {
   return portEnv
 }
 const getClientUrlEnvVar = () => process.env.CLIENT_URL ?? process.env.REACT_APP_CLIENT_URL
-export const defaultClientUrl = `www.labfaz.com.br`
+export const defaultClientUrl = `https://www.labfaz.com.br`
 export const getClientUrl = () => process.env.NODE_ENV === 'production'
   ? getClientUrlEnvVar() ?? defaultClientUrl
   : `${protocol}://${localhost}:${getClientPort()}`

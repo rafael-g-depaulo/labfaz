@@ -64,7 +64,7 @@ export const InputText = styled(Field)`
 
   margin-top: 1.83rem;
   resize: none;
-  color: ${getColor("black")}
+  color: ${getColor("black")};
 
   ${DesktopSmall(css`
     width: 21.19rem;

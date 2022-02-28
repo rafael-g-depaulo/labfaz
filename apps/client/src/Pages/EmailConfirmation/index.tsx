@@ -1,4 +1,6 @@
-import { FC, useEffect } from "react"
+import { ReactElement, useEffect } from "react"
+
+import { useParams } from "react-router"
 
 import { useConfirmEmail } from "Api/ConfirmEmail"
 import LoadingFullPage from "Components/LoadingFullPage"
@@ -6,13 +8,16 @@ import Error from "Pages/Error"
 
 import Display from "./Display"
 
-export interface EmailConfirmationProps {
-  userId: string
+export const EmailConfirmation = (): ReactElement => {
+  const { user_id } = useParams()
+  if (!user_id) {
+    console.log("TODO: handle URL param error")
+    return <></>
+  }
+  return <EmailConfirmationInner userId={user_id} />
 }
 
-export const EmailConfirmation: FC<EmailConfirmationProps> = ({
-  userId,
-}) => {
+const EmailConfirmationInner = ({ userId }: { userId: string }): ReactElement => {
   const { error, isLoading, isIdle, mutate } = useConfirmEmail(userId)
 
   // make request as soon as page loads
