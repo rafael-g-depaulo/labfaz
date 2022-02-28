@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { Field } from 'formik'
 import { Text } from 'Components/Typography/Text'
+import { getColor } from 'GlobalStyles/cssVar'
 
 export const Container = styled.div`
   display: flex;
@@ -58,6 +59,7 @@ export const InputText = styled(Field)`
 
   margin-top: 1.66rem;
   resize: none;
+  color: ${getColor("black")}
 `
 
 export const FileContainer = styled.div`

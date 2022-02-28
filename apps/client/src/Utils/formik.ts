@@ -10,5 +10,4 @@ type formikMutate<FormSchema extends TypedSchema, FormFields extends Asserts<For
 // eslint-disable-next-line
 export const useFormikSubmit = <FormSchema extends TypedSchema, FormFields extends Asserts<FormSchema>, ReturnData, ReturnError> (mutateFn: MutateFunction<ReturnData, ReturnError, FormFields>) => useCallback<formikMutate<FormSchema, FormFields, ReturnData>>((mutateFn) as formikMutate<FormSchema, FormFields, ReturnData>, [mutateFn])
 
-
 export type FormikOnSubmit<T> = (values: T, formikHelpers: FormikHelpers<T>) => void | Promise<any>

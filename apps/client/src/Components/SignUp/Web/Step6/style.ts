@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { Field } from 'formik'
 import { Text } from 'Components/Typography/Text'
 import { DesktopSmall } from 'Utils/breakpoints'
+import { getColor } from 'GlobalStyles/cssVar'
 
 export const Container = styled.div`
   display: flex;
@@ -63,6 +64,7 @@ export const InputText = styled(Field)`
 
   margin-top: 1.83rem;
   resize: none;
+  color: ${getColor("black")}
 
   ${DesktopSmall(css`
     width: 21.19rem;

@@ -7,9 +7,9 @@ import { SerializedUser } from "../serializedSchema"
 // register
 export interface RegisterUser extends Asserts<typeof registerUserSchema> {}
 export const registerUserSchema = object({
-  email,
-  password,
-  passwordConfirmation,
+  email: email.required(),
+  password: password.required(),
+  passwordConfirmation: passwordConfirmation.required(),
   profilePicture: profilePictureFile,
   curriculum: curriculumFile,
   artist: artistSchema.required(),

@@ -9,9 +9,10 @@ const bodyFormParse = (values: any) => {
 
   formData.append('email', values.email)
   formData.append('password', values.password)
+  formData.append('passwordConfirmation', values.password)
 
   formData.append('profilePicture', values.profilePicture)
-  formData.append('curriculum', values.curriculum)
+  // formData.append('curriculum', values.curriculum)
 
   formData.append('artist[name]', values.artist?.name)
   formData.append('artist[show_name]', values.artist?.show_name)
@@ -93,7 +94,7 @@ export const SignUp = async (values: any) => {
   //   console.log(pair[0]+ ', ' + pair[1]); 
   // }
 
-  return api.post<SuccessObject>('/user/create', formParsed, {
+  return api.post<SuccessObject>('/users/create', formParsed, {
     headers
   })
   .then(res => {

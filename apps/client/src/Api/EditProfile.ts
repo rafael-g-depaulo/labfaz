@@ -13,7 +13,7 @@ const bodyFormParse = (values: any) => {
   }
 
   formData.append('profilePicture', values.profilePicture)
-  formData.append('curriculum', values.curriculum)
+  // formData.append('curriculum', values.curriculum)
 
   formData.append('artist[name]', values.artist?.name)
   formData.append('artist[show_name]', values.artist?.show_name)

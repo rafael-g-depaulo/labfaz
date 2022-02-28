@@ -25,7 +25,7 @@ export const navLinks: linkDict = {
   "observatorio":        { name: "observatorio",        label: "OBSERVATÓRIO",           path: "/observatorio"    },
   "busca profissionais": { name: "busca profissionais", label: "BUSCA DE PROFISSIONAIS", path: "/busca-profissionais"   },
   "login":               { name: "login",               label: "ENTRAR",                 path: "/login"           },
-  "cadastro":            { name: "cadastro",            label: "CADASTRE-SE",            path: "/signup"          },
+  "cadastro":            { name: "cadastro",            label: "CADASTRE-SE",            path: "/cadastro"          },
   "perfil":              { name: "perfil",              label: "PERFIL",                 path: "/perfil/eu"       },
   "forgotPass":          { name: "forgotPass",          label: "Esqueceu sua senha?",    path: "/forgot-password" },
 }

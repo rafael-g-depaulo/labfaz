@@ -40,7 +40,11 @@ import {
   twitterUserRegex,
   youtubeUserRegex,
 } from 'Utils/regex'
-import { User } from '@labfaz/entities'
+import {
+  // maxCurriculumSize,
+  maxProfilePictureSize,
+  User,
+} from '@labfaz/entities'
 import { EditProfile } from 'Api/EditProfile'
 import { useNavigate } from 'react-router'
 import { ErrorObject } from '@labfaz/server-conn-info'
@@ -51,8 +55,8 @@ export interface ButtonProps {
   token: string
 }
 
-const profileSize = 2 * 1024 * 1024
-const curriculumSize = 10 * 1024 * 1024
+// const profileSize = 2 * 1024 * 1024
+// const curriculumSize = 10 * 1024 * 1024
 
 export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
   return (
@@ -66,7 +70,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
           other_idiom: '',
           use_terms: '',
           profilePicture: (data?.artist as any).photo_url,
-          curriculum: (data?.artist as any).curriculum,
+          // curriculum: (data?.artist as any).curriculum,
           Other_TechnicalArea: '',
           artist: {
             name: data?.artist.name,
@@ -142,7 +146,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= profileSize)),
+          profilePicture: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value &&  value.size <= maxProfilePictureSize)),
           artist: yup.object({
             show_name: yup.string().required('Como quer ser chamado?'),
           }),
@@ -336,7 +340,7 @@ export const Mobile: FC<ButtonProps> = ({ buttonType, data, token  }) => {
 
         <FormikStep
         validationSchema={yup.object({
-          curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= curriculumSize)),
+          // curriculum: yup.mixed().test("fileSize", "Arquivo muito grande", value => (value && !value.name) || value === null || (value && value.size <= maxCurriculumSize)),
           artist: yup.object({
             technical: yup.object({
               areas: yup.object({

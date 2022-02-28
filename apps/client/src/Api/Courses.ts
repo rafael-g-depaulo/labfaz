@@ -75,7 +75,6 @@ export const subscribeToCourse = (
       },
     }
   )
-  .then(({ data }) => data)
 
 export const useSubscribeToCouse = (courseId: string, userToken?: string) => useMutation(
   [`/courses/${courseId}/subscribe`, userToken],

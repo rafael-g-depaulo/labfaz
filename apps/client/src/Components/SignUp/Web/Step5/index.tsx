@@ -3,7 +3,7 @@ import { useFormikContext } from 'formik'
 
 import { TextInput } from 'Components/Inputs/TextInput'
 import { RadioInput } from 'Components/Inputs/RadioInput'
-import { FileInput } from 'Components/Inputs/FileInput'
+// import { FileInput } from 'Components/Inputs/FileInput'
 
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   RightSideContent,
   InputRadioContainer,
   SelectContainer,
-  FileContainer,
+  // FileContainer,
   OtherTechnicalArea,
 } from './style'
 
@@ -248,7 +248,7 @@ export const Step5: FC = () => {
             />
           </InputRadioContainer>
 
-          <FileContainer>
+          {/* <FileContainer>
             <label htmlFor="curriculum" className="fileLabel">
               Curriculo  (opcional)
             </label>
@@ -258,7 +258,7 @@ export const Step5: FC = () => {
               value="curriculum"
               label="Enviar curriculo"
             />
-          </FileContainer>
+          </FileContainer> */}
         </RightSideContent>
       </RightSide>
     </Container>

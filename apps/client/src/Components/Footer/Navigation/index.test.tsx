@@ -38,6 +38,6 @@ describe('Check user session links', () => {
   const { getByText } = render(<Navigation />);
 
   it('check sign up button', () => {
-    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute('href', '/signup')
+    expect(getByText('CADASTRE-SE').closest('a')).toHaveAttribute('href', '/cadastro')
   })
 })

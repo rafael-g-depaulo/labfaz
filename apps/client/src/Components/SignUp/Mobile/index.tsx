@@ -395,7 +395,8 @@ export const Mobile: FC<ButtonProps> = ({ buttonType }) => {
                 .string()
                 .oneOf([yup.ref('password')], 'Senhas não são iguais.'),
             }),
-          use_terms: yup.string().required('Termos de uso obrigatório'),
+          // use_terms: yup.string().required('Termos de uso obrigatório'),
+          use_terms: yup.array().min(1, 'Termos de uso obrigatório'),
         })}
         >
           <Step16 />
