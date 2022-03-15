@@ -22,7 +22,7 @@ export interface BlogPost {
 
 export const fetchBlogPost: (id: number) => Promise<BlogPost> = (id: number) =>
   strapi
-    .get<StrapiBlogPost>(`/blog-posts/${id}?_sort=created_at:desc`)
+    .get<StrapiBlogPost>(`/blog-posts/${id}`)
     .then(({ data }) => data)
     .then(({ title, description, created_at, image, content, id }) => ({
       title,
@@ -38,7 +38,7 @@ export const useBlogPost = (id: number) =>
 
 export const fetchBlogPosts: () => Promise<BlogPost[]> = () =>
   strapi
-    .get<StrapiBlogPost[]>(`/blog-posts`)
+    .get<StrapiBlogPost[]>(`/blog-posts?_sort=created_at:desc`)
     .then(({ data }) => data)
     .then((people) =>
       people.map(({ title, description, created_at, image, content, id }) => ({
