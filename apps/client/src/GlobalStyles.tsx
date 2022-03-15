@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-text-beige: #FFEC99;
     --color-text-yellow: #FFEC99;
     --color-text-pink: #FC0061;
-    --color-text: var(---color-text-black);
+    --color-text: var(--color-text-black);
     --color-text-dark-gray: #C4C4C4;
 
     

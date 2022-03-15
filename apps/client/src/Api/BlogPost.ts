@@ -22,7 +22,7 @@ export interface BlogPost {
 
 export const fetchBlogPost: (id: number) => Promise<BlogPost> = (id: number) =>
   strapi
-    .get<StrapiBlogPost>(`/blog-posts/${id}`)
+    .get<StrapiBlogPost>(`/blog-posts/${id}?_sort=created_at:desc`)
     .then(({ data }) => data)
     .then(({ title, description, created_at, image, content, id }) => ({
       title,
