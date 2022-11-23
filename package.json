@@ -37,6 +37,7 @@
     "start:api": "yarn workspace @labfaz/api run start",
     "start:client": "yarn workspace @labfaz/client run start",
     "start:strapi": "yarn workspace @labfaz/strapi run start",
+    "start:dev:strapi": "yarn workspace @labfaz/strapi run develop",
     "test": "jest",
     "test:api": "yarn workspace @labfaz/api run test",
     "test:client": "yarn workspace @labfaz/client run test",
